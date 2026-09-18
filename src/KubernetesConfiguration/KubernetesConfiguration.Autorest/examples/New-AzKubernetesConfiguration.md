@@ -12,7 +12,7 @@ azpstestk8s http://github.com/xxxx azps_test_group
 
 This command creates a configuration for Kubernetes Cluster.
 
-### Example 2: Create a configuration for Kubernetes Cluster with specify paramter OperatorNamespace
+### Example 2: Create a configuration for Kubernetes Cluster with specify parameter OperatorNamespace
 ```powershell
 New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorScope 'cluster' -ClusterType ConnectedClusters

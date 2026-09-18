@@ -1,17 +1,17 @@
 {
-  "Get-AzConnectedMachineRunCommand+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands?api-version=2024-03-31-preview+1": {
+  "Get-AzConnectedMachineRunCommand+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands?api-version=2024-07-31-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands?api-version=2024-03-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands?api-version=2024-07-31-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "114e4624-eeae-4bbd-94d4-43703b345c2f" ],
+        "x-ms-client-request-id": [ "25e5b719-cdf8-426e-9152-51a97bea88bd" ],
         "CommandName": [ "Get-AzConnectedMachineRunCommand" ],
         "FullCommandName": [ "Get-AzConnectedMachineRunCommand_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.ConnectedMachine/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,39 +22,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "01d403b8-1f41-407a-b214-b00f4004aad7" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "54ca5aa7-0ba9-41c1-8798-67080ac2ff15" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240515T203119Z:54ca5aa7-0ba9-41c1-8798-67080ac2ff15" ],
+        "x-ms-request-id": [ "6b947423-15dd-48b0-a866-fdf57291d327" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "afa3f647-d5a2-4315-a2e1-0b17cd8b9ded" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241105T210600Z:afa3f647-d5a2-4315-a2e1-0b17cd8b9ded" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7969E97488D042F488B8D2B793997BD3 Ref B: MNZ221060610025 Ref C: 2024-05-15T20:31:19Z" ],
-        "Date": [ "Wed, 15 May 2024 20:31:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 78B529EC15A646149499938406DC5756 Ref B: MNZ221060619045 Ref C: 2024-11-05T21:06:00Z" ],
+        "Date": [ "Tue, 05 Nov 2024 21:05:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "510" ],
+        "Content-Length": [ "659" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand\",\"name\":\"myRunCommand\",\"location\":\"centraluseuap\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"tags\":{\"Tag1\":\"tag1\",\"Tag2\":\"tag2\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Deleting\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Unknown\"}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3\",\"name\":\"myRunCommand3\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:03:04.1782253+00:00\",\"endTime\":\"2024-11-05T21:03:04.6093307+00:00\"}}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzConnectedMachineRunCommand+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand?api-version=2024-03-31-preview+1": {
+  "Get-AzConnectedMachineRunCommand+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand?api-version=2024-03-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "2144cf0e-0a4c-4a42-9785-c925b0295579" ],
+        "x-ms-client-request-id": [ "9d621b82-039d-49f6-96c8-28f4ecaf5598" ],
         "CommandName": [ "Get-AzConnectedMachineRunCommand" ],
         "FullCommandName": [ "Get-AzConnectedMachineRunCommand_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.ConnectedMachine/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -65,23 +65,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c0b41107-898b-4c08-acf3-404192987656" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f9642012-4326-4b7d-ba54-67d1a9cf8e6f" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240515T203120Z:f9642012-4326-4b7d-ba54-67d1a9cf8e6f" ],
+        "x-ms-request-id": [ "33a3714b-37db-4369-9219-23c760827a99" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "9a650958-5346-4ec3-893a-9b7b2a962a55" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241105T210600Z:9a650958-5346-4ec3-893a-9b7b2a962a55" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4459FFE9A5A543FAB5919B9897AE50A5 Ref B: MNZ221060610025 Ref C: 2024-05-15T20:31:19Z" ],
-        "Date": [ "Wed, 15 May 2024 20:31:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 87F1D6F4006F433FBF78F63E8509A0BB Ref B: MNZ221060619045 Ref C: 2024-11-05T21:06:00Z" ],
+        "Date": [ "Tue, 05 Nov 2024 21:06:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "498" ],
+        "Content-Length": [ "647" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"myRunCommand\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"centraluseuap\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand\",\"tags\":{\"Tag1\":\"tag1\",\"Tag2\":\"tag2\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Deleting\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Unknown\"}}}",
+      "Content": "{\"name\":\"myRunCommand3\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3\",\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:03:04.1782253+00:00\",\"endTime\":\"2024-11-05T21:03:04.6093307+00:00\"}}}",
       "isContentBase64": false
     }
   }

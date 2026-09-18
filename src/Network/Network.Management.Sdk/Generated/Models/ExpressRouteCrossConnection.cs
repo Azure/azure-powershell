@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the express route cross connection resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="primaryAzurePort">The name of the primary port.
         /// </param>
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="serviceProviderProvisioningState">The provisioning state of the circuit in the connectivity provider system.
         /// Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;,
-        /// &#39;Deprovisioning&#39;</param>
+        /// &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;</param>
 
         /// <param name="serviceProviderNotes">Additional read only notes set by the connectivity provider.
         /// </param>
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the express route cross connection resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the express route cross connection resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the provisioning state of the circuit in the connectivity
-        /// provider system. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;
+        /// provider system. Possible values include: &#39;NotProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Deprovisioning&#39;, &#39;DeProvisioned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceProviderProvisioningState")]
         public string ServiceProviderProvisioningState {get; set; }

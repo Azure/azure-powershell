@@ -18,14 +18,9 @@
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
 Commit the migrated Azure Front Door(Standard/Premium) profile..
-.Example
-PS C:\> {{ Add code here }}
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-{{ Add output here }}
+
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncommitprofiletoafdmigration
 #>
@@ -118,6 +113,21 @@ function Invoke-AzCdnCommitProfileToAFDMigration {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Invoke-AzCdnCommitProfileMigration_Commit' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 
     process {
         Write-Host("Start to migrate.")

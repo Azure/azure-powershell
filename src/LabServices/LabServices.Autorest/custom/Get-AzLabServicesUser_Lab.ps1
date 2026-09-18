@@ -12,17 +12,33 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Returns the properties of a lab user.
+.Description
+Returns the properties of a lab user.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuser
+#>
+
 function Get-AzLabServicesUser_Lab {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+        # The object of lab service lab.
         ${Lab},
-   
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the user that uniquely identifies it within containing lab.
+        # Used in resource URIs.
         ${Name},
 
         [Parameter()]
@@ -37,7 +53,8 @@ function Get-AzLabServicesUser_Lab {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]

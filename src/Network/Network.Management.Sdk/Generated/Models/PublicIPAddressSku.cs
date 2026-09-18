@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
 
         /// <param name="name">Name of a public IP address SKU.
-        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;StandardV2&#39;</param>
 
         /// <param name="tier">Tier of a public IP address SKU.
         /// Possible values include: &#39;Regional&#39;, &#39;Global&#39;</param>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of a public IP address SKU. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;
+        /// Gets or sets name of a public IP address SKU. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;StandardV2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }

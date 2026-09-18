@@ -15,11 +15,12 @@ Create Virtual Network Gateway Connection configuration
 ```
 New-AzVpnClientConnectionConfiguration -Name <String>
  -VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]> -VpnClientAddressPool <String[]>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Conneciton Configuration associate between the address space of the P2S client and the according virtual network gateway policy groups 
+Connection Configuration associate between the address space of the P2S client and the according virtual network gateway policy groups 
 
 ## EXAMPLES
 
@@ -29,19 +30,49 @@ $member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -Attribute
 $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
 $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
 $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
-$vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
-$vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24"
+$vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "config1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+$vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "config2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24"
 ```
 
 Create Client Connection configuration
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientAddressPool
-The Associatted client address pool
+The Associated client address pool
 
 ```yaml
 Type: System.String[]

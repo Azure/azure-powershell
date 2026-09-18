@@ -17,7 +17,7 @@ function Test-SynapseSparkPool
     $sparkAutoScaleMinNodeCount = 3
     $sparkAutoScaleMaxNodeCount = 6
     $sparkPoolNodeSize = "Small"
-    $sparkVersion = 2.4
+    $sparkVersion = 3.4
 
     try
     {
@@ -177,9 +177,9 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "wsstorage" + $testSuffix;
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
-              location = "eastus";
-              sparkPoolName = "spool" + $testSuffix;
+			  pwd = Get-TestPassword;
+			  location = "eastus";
+			  sparkPoolName = "spool" + $testSuffix;
 		}
 }
 

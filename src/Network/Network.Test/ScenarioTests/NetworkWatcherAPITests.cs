@@ -74,6 +74,22 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2ForVMWithRingBuffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMSSWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2WithRingBuffer");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
@@ -112,14 +128,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestProvidersList()
         {
             TestRunner.RunTestScript("Test-ProvidersList");
-        }
-
-        [Fact(Skip = "Need to rewrite test after introduction of ConnectionMonitor V2")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestConnectionMonitor()
-        {
-            TestRunner.RunTestScript("Test-ConnectionMonitor");
         }
 
         [Fact]
@@ -165,6 +173,30 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLogWithManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLogWithManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLogWithNoneManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLogWithNoneManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestSetVnetFlowLogWithManagedIdentityFromNoMIInput()
+        {
+            TestRunner.RunTestScript("Test-SetVnetFlowLogWithManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestCRUDSubnetFlowLog()
         {
             TestRunner.RunTestScript("Test-CRUDSubnetFlowLog");
@@ -176,6 +208,38 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestCRUDNicFlowLog()
         {
             TestRunner.RunTestScript("Test-CRUDNicFlowLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithFiltering()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithFiltering");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithEmptyFilteringCondition()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyFilteringCondition");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithRecordType()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithRecordType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithEmptyRecordTypeCondition()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyRecordTypeCondition");
         }
     }
 }

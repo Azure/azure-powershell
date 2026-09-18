@@ -15,19 +15,21 @@ Disables Azure Monitor in a specified HDInsight cluster.
 ### DisableByNameParameterSet (Default)
 ```
 Disable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DisableByResourceIdParameterSet
 ```
-Disable-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disable-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableByInputObjectParameterSet
 ```
 Disable-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

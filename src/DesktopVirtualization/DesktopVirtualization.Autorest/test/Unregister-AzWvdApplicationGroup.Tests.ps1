@@ -37,7 +37,7 @@ Describe 'Unregister-AzWvdApplicationGroup' {
                                 -CustomRdpProperty $null `
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
-                                -PreferredAppGroupType 'Desktop'
+                                -PreferredAppGroupType 'Desktop' 
 
             $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -66,7 +66,7 @@ Describe 'Unregister-AzWvdApplicationGroup' {
             $workspace = Get-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                             -ResourceGroupName $env.ResourceGroup `
                                             -Name 'WorkspacePowershell1'
-            $workspace.ApplicationGroupReference.length | Should -Be 0
+            $workspace.ApplicationGroupReference.Count | Should -Be 0
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `

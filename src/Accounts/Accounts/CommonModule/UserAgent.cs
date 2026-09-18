@@ -48,13 +48,27 @@ namespace Microsoft.Azure.Commands.Common
             {
                 list.Add(new ProductInfoHeaderValue(moduleName, moduleVersion));
             }
+            try
+            {
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                {
+                    hostEnv = hostEnv.Trim().Replace("@", "_").Replace("/", "_");
+                    list.Add(new ProductInfoHeaderValue(hostEnv, ""));
+                }
+            }
+            catch (Exception ) 
+            {
+                // ignore it
+            }
+                
             _userAgents = list.ToArray();
         }
 
         /// <summary>
         /// Pipeline delegate to add a unique id header to an outgoing request
         /// </summary>
-        /// <param name="request">The outgpoing request</param>
+        /// <param name="request">The outgoing request</param>
         /// <param name="token">The cancellation token</param>
         /// <param name="cancel">Additional cancellation action if the operation is cancelled</param>
         /// <param name="signal">Signal delegate for logging events</param>

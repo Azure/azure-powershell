@@ -15,21 +15,34 @@ Get version.
 ### List (Default)
 ```
 Get-AzMLWorkspaceDataVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WorkspaceName <String> [-ListViewType <ListViewType>] [-OrderBy <String>] [-Skip <String>] [-Tag <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -WorkspaceName <String> [-ListViewType <String>] [-OrderBy <String>] [-Skip <String>] [-Tag <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceDataVersion -Name <String> -Version <String>
+ -WorkspaceInputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceDataVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Version <String> -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Version <String> -WorkspaceName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityData
+```
+Get-AzMLWorkspaceDataVersion -Version <String> -DataInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceDataVersion -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +78,21 @@ Get a data version
 
 ## PARAMETERS
 
+### -DataInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityData
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -83,7 +111,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -101,7 +128,7 @@ Accept wildcard characters: False
 [ListViewType.ActiveOnly, ListViewType.ArchivedOnly, ListViewType.All]View type for including/excluding (for example) archived entities.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType
+Type: System.String
 Parameter Sets: List
 Aliases:
 
@@ -117,7 +144,7 @@ Container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, GetViaIdentityWorkspace, Get
 Aliases:
 
 Required: True
@@ -134,21 +161,6 @@ Please choose OrderBy value from ['createdtime', 'modifiedtime']
 Type: System.String
 Parameter Sets: List
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -225,13 +237,28 @@ Version identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityWorkspace, Get, GetViaIdentityData
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -274,7 +301,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDataVersionBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDataVersionBase
 
 ## NOTES
 

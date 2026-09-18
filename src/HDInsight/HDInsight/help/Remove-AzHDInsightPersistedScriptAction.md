@@ -113,5 +113,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzHDInsightPersistedScriptAction](./Get-AzHDInsightPersistedScriptAction.md)
 
 [Set-AzHDInsightPersistedScriptAction](./Set-AzHDInsightPersistedScriptAction.md)
-
-

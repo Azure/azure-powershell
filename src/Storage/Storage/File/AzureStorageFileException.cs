@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Initializes a new instance of the AzureStorageFileException class.
         /// </summary>
-        /// <param name="category">Indicating the error cateogory.</param>
+        /// <param name="category">Indicating the error category.</param>
         /// <param name="errorId">Indicating the error id.</param>
         /// <param name="errorDetails">Indicating the error message.</param>
         /// <param name="targetObject">Indicating the target object.</param>

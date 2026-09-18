@@ -21,7 +21,10 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationType <String>] [-CertificateAuthentication <PSCertificateAuthentication>]
+ [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateResourceWithTags
@@ -32,7 +35,10 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] -Tag <Hashtable> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationType <String>] [-CertificateAuthentication <PSCertificateAuthentication>]
+ [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -253,11 +259,72 @@ This will update gateway connection with removing these GatewayCustomBgpIpAddres
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthenticationType
+Authentication type for this VPN connection: PSK or Certificate
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: PSK, Certificate
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CertificateAuthentication
+Certificate authentication configuration for this VPN connection
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSCertificateAuthentication
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -393,6 +460,21 @@ A list of IPSec policies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingConfiguration
+The routing configuration for this connection, specifying inbound and outbound route maps.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
 Parameter Sets: (All)
 Aliases:
 

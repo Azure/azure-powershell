@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         static DataLakeStoreFileSystemClient()
         {
             // Registering the custom target class
-            Target.Register<AdlsLoggerTarget>("AdlsLogger"); //generic
+            LogManager.Setup().SetupExtensions(ext => ext.RegisterTarget<AdlsLoggerTarget>("AdlsLogger"));
             LogManager.ReconfigExistingLoggers();
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
             }
 
-            // Keep this outside if block because it is also used for diagnostic file loggind for BulkCopy
+            // Keep this outside if block because it is also used for diagnostic file logging for BulkCopy
             _adlsLoggerConfig = new LoggingConfiguration();
             if (_isDebugEnabled)
             {
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 System.Progress<AclProcessorStats> progressTracker = null;
                 ProgressRecord progress = null;
-                // If passing null, then we do not want progreess tracking
+                // If passing null, then we do not want progress tracking
                 if (trackProgress)
                 {
                     progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
@@ -344,13 +344,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="sourcePath">Source Path</param>
         /// <param name="accountName">Account name</param>
         /// <param name="destinationPath">Destination path</param>
-        /// <returns>True if rename is successful else fale</returns>
+        /// <returns>True if rename is successful else false</returns>
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
             return AdlsClientFactory.GetAdlsClient(accountName, _context).Rename(sourcePath, destinationPath);
         }
         /// <summary>
-        /// Reads the lines, updates the number of lines and returns the last positio of \r or \n in the byte buffer.
+        /// Reads the lines, updates the number of lines and returns the last position of \r or \n in the byte buffer.
         /// If a combined newline (\r\n), the index returned is that of the first character in the sequence.
         /// </summary>
         /// <param name="buffer">The buffer to search in.</param>
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             charPos -= bytesPerChar;
                         }
                     }
-                    // prevPos will always point to the last byte of the charcter previous to \n or \r
+                    // prevPos will always point to the last byte of the character previous to \n or \r
                     prevPos = charPos;
                 }
             }
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     readerAdl.Seek(initialOffset, SeekOrigin.Begin);
 
                     int dataActuallyRead = readerAdl.Read(buffer, 0, dataPerRead);
-                    // Reads the lines, updates the number of lines and returns the last poisiotn of \r or \n
+                    // Reads the lines, updates the number of lines and returns the last position of \r or \n
                     int newLineOffset = ReadNewLinesReverse(buffer, dataActuallyRead, encoding, numRows, ref toReturn, ref readRows);
                     if (newLineOffset != -1)
                     {
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="path">File Path</param>
         /// <param name="accountName">Account name</param>
         /// <param name="numThreads">Concurrency</param>
-        /// <param name="cancelToken">Cancelation token</param>
+        /// <param name="cancelToken">Cancellation token</param>
         /// <returns></returns>
         public ContentSummary GetContentSummary(string path, string accountName, int numThreads, CancellationToken cancelToken)
         {
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         #region Deleted item operations
         /// <summary>
-        /// Get items in trash matching query string
+        /// Get items in trash matching query string (for existing cmdlet - returns only items)
         /// </summary>
         /// <param name="accountName">Account name</param>
         /// <param name="filter">Query to match items in trash</param>
@@ -780,21 +780,53 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="cmdletCancellationToken">CancellationToken</param>
         public IEnumerable<TrashEntry> EnumerateDeletedItems(string accountName, string filter, int count, Cmdlet cmdlet, CancellationToken cmdletCancellationToken = default(CancellationToken))
         {
-            var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
+            var (items, _) = EnumerateDeletedItemsWithToken(accountName, filter, count, "", cmdlet, cmdletCancellationToken);
+            return items;
+        }
+
+        /// <summary>
+        /// Get items in trash matching query string with continuation token (for new cmdlet - returns items and token)
+        /// </summary>
+        /// <param name="accountName">Account name</param>
+        /// <param name="filter">Query to match items in trash</param>
+        /// <param name="count">Minimum number of entries to search for</param>
+        /// <param name="listAfter">The continuation token for pagination</param>
+        /// <param name="cmdlet"></param>
+        /// <param name="cmdletCancellationToken">CancellationToken</param>
+        public (IEnumerable<TrashEntry>, string) EnumerateDeletedItemsWithToken(string accountName, string filter, int count, string listAfter, Cmdlet cmdlet, CancellationToken cmdletCancellationToken = default(CancellationToken))
+        {
+            return ExecuteDeletedItemsOperation(
+                () => AdlsClientFactory.GetAdlsClient(accountName, _context).EnumerateDeletedItemsWithToken(filter, listAfter ?? "", count, null, cmdletCancellationToken),
+                cmdlet,
+                cmdletCancellationToken);
+        }
+
+        /// <summary>
+        /// Common helper method to execute deleted items operations with proper debug handling
+        /// </summary>
+        /// <param name="operation">The operation to execute</param>
+        /// <param name="cmdlet">Cmdlet for debug tracking</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Tuple of deleted items and continuation token</returns>
+        private (IEnumerable<TrashEntry>, string) ExecuteDeletedItemsOperation(
+            Func<(IEnumerable<TrashEntry>, string)> operation,
+            Cmdlet cmdlet,
+            CancellationToken cmdletCancellationToken)
+        {
             if (_isDebugEnabled)
             {
-                IEnumerable<TrashEntry> result = null;
+                (IEnumerable<TrashEntry>, string) result = (Enumerable.Empty<TrashEntry>(), string.Empty);
                 // Api call below consists of multiple rest calls so multiple debug statements will be posted
-                // so since we want to the debug lines to be updated while the command runs, we have to flush the debug statements in queue and thats why we want to do it this way
+                // so since we want to the debug lines to be updated while the command runs, we have to flush the debug statements in queue
                 var enumerateTask = Task.Run(() => {
-                result = client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+                    result = operation();
                 }, cmdletCancellationToken);
                 TrackTaskProgress(enumerateTask, cmdlet, null, cmdletCancellationToken);
                 return result;
             }
             else
             {
-                return client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+                return operation();
             }
         }
 
@@ -818,7 +850,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         #region private helpers
         /// <summary>
-        /// Tracks the task and shows the task progress or debug nessages after a regular interval in the PowerShell console.
+        /// Tracks the task and shows the task progress or debug messages after a regular interval in the PowerShell console.
         /// Call this method only if you want to do something for a task - like show progress, show debug messages
         /// </summary>
         /// <param name="task">The task that tracks the upload.</param>

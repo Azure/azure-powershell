@@ -1,0 +1,52 @@
+{
+  "resourceType": "exadbVmClusters/dbNodes",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleExascaleDbNode",
+      "description": "Get a ExascaleDbNode",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exadbVmClusters/{exadbVmClusterName}/dbNodes/{exascaleDbNodeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleexascaledbnode"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ExadbVMClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ExascaleDbNode",
+          "parameters": [
+            {
+              "name": "-ExadbVMClusterName",
+              "value": "[Path.exadbVmClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.exascaleDbNodeName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

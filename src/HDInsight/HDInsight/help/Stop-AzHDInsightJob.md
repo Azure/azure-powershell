@@ -15,7 +15,8 @@ Stops a specified running job on a cluster.
 
 ```
 Stop-AzHDInsightJob [-ClusterName] <String> [-JobId] <String> [-HttpCredential] <PSCredential>
- [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,5 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 [Wait-AzHDInsightJob](./Wait-AzHDInsightJob.md)
-
-

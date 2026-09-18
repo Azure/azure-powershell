@@ -25,13 +25,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="provisioningState">Gets the status of the resource at the time the operation was called.
-        /// Possible values include: 'Accepted', 'Creating', 'Deleting', 'Moving',
-        /// 'Failed', 'Succeeded', 'Disabled', 'Canceled'</param>
+        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;,
+        /// &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Disabled&#39;, &#39;Canceled&#39;</param>
 
         /// <param name="model">Properties of Cognitive Services account deployment model.
         /// </param>
 
-        /// <param name="scaleSettings">Properties of Cognitive Services account deployment model.
+        /// <param name="scaleSettings">Properties of Cognitive Services account deployment model. (Deprecated,
+        /// please use Deployment.sku instead.)
         /// </param>
 
         /// <param name="capabilities">The capabilities.
@@ -47,9 +48,21 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="versionUpgradeOption">Deployment model version upgrade option.
-        /// Possible values include: 'OnceNewDefaultVersionAvailable',
-        /// 'OnceCurrentVersionExpired', 'NoAutoUpgrade'</param>
-        public DeploymentProperties(string provisioningState = default(string), DeploymentModel model = default(DeploymentModel), DeploymentScaleSettings scaleSettings = default(DeploymentScaleSettings), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), string raiPolicyName = default(string), CallRateLimit callRateLimit = default(CallRateLimit), System.Collections.Generic.IList<ThrottlingRule> rateLimits = default(System.Collections.Generic.IList<ThrottlingRule>), string versionUpgradeOption = default(string))
+        /// Possible values include: &#39;OnceNewDefaultVersionAvailable&#39;,
+        /// &#39;OnceCurrentVersionExpired&#39;, &#39;NoAutoUpgrade&#39;</param>
+
+        /// <param name="dynamicThrottlingEnabled">If the dynamic throttling is enabled.
+        /// </param>
+
+        /// <param name="currentCapacity">The current capacity.
+        /// </param>
+
+        /// <param name="capacitySettings">Internal use only.
+        /// </param>
+
+        /// <param name="parentDeploymentName">The name of parent deployment.
+        /// </param>
+        public DeploymentProperties(string provisioningState = default(string), DeploymentModel model = default(DeploymentModel), DeploymentScaleSettings scaleSettings = default(DeploymentScaleSettings), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), string raiPolicyName = default(string), CallRateLimit callRateLimit = default(CallRateLimit), System.Collections.Generic.IList<ThrottlingRule> rateLimits = default(System.Collections.Generic.IList<ThrottlingRule>), string versionUpgradeOption = default(string), bool? dynamicThrottlingEnabled = default(bool?), int? currentCapacity = default(int?), DeploymentCapacitySettings capacitySettings = default(DeploymentCapacitySettings), string parentDeploymentName = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -60,6 +73,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             this.CallRateLimit = callRateLimit;
             this.RateLimits = rateLimits;
             this.VersionUpgradeOption = versionUpgradeOption;
+            this.DynamicThrottlingEnabled = dynamicThrottlingEnabled;
+            this.CurrentCapacity = currentCapacity;
+            this.CapacitySettings = capacitySettings;
+            this.ParentDeploymentName = parentDeploymentName;
             CustomInit();
         }
 
@@ -83,6 +100,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <summary>
         /// Gets or sets properties of Cognitive Services account deployment model.
+        /// (Deprecated, please use Deployment.sku instead.)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scaleSettings")]
         public DeploymentScaleSettings ScaleSettings {get; set; }
@@ -116,5 +134,51 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "versionUpgradeOption")]
         public string VersionUpgradeOption {get; set; }
+
+        /// <summary>
+        /// Gets if the dynamic throttling is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dynamicThrottlingEnabled")]
+        public bool? DynamicThrottlingEnabled {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the current capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "currentCapacity")]
+        public int? CurrentCapacity {get; set; }
+
+        /// <summary>
+        /// Gets or sets internal use only.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacitySettings")]
+        public DeploymentCapacitySettings CapacitySettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of parent deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "parentDeploymentName")]
+        public string ParentDeploymentName {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+
+
+            if (this.CapacitySettings != null)
+            {
+                this.CapacitySettings.Validate();
+            }
+
+        }
     }
 }

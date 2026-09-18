@@ -28,6 +28,14 @@ Get the list of CPU/memory/GPU capabilities of a region.
 Gets all the network dependencies for this container group to allow complete control of network setting and configuration.
 For container groups, this will always be an empty list.
 
+### [Get-AzContainerInstanceContainerGroupProfile](Get-AzContainerInstanceContainerGroupProfile.md)
+Gets the properties of the specified container group profile in the specified subscription and resource group.
+The operation returns the properties of container group profile including containers, image registry credentials, restart policy, IP address type, OS type, volumes, current revision number, etc.
+
+### [Get-AzContainerInstanceContainerGroupProfileRevision](Get-AzContainerInstanceContainerGroupProfileRevision.md)
+Get a list of all the revisions of the specified container group profile in the given subscription and resource group.
+This operation returns properties of each revision of the specified container group profile including containers, image registry credentials, restart policy, IP address type, OS type volumes, revision number, etc.
+
 ### [Get-AzContainerInstanceLog](Get-AzContainerInstanceLog.md)
 Get the logs for a specified container instance in a specified resource group and container group.
 
@@ -44,31 +52,41 @@ Create or update container groups with specified configurations.
 Create a in-memory object for ImageRegistryCredential
 
 ### [New-AzContainerGroupPortObject](New-AzContainerGroupPortObject.md)
-Create a in-memory object for Port
+Create an in-memory object for Port.
 
 ### [New-AzContainerGroupVolumeObject](New-AzContainerGroupVolumeObject.md)
 Create an in-memory object for Volume.
+
+### [New-AzContainerInstanceContainerGroupProfile](New-AzContainerInstanceContainerGroupProfile.md)
+Create container group profiles with specified configurations.
 
 ### [New-AzContainerInstanceEnvironmentVariableObject](New-AzContainerInstanceEnvironmentVariableObject.md)
 Create a in-memory object for EnvironmentVariable
 
 ### [New-AzContainerInstanceHttpHeaderObject](New-AzContainerInstanceHttpHeaderObject.md)
-Create a in-memory object for HttpHeader
+Create an in-memory object for HttpHeader.
 
 ### [New-AzContainerInstanceInitDefinitionObject](New-AzContainerInstanceInitDefinitionObject.md)
-Create a in-memory object for InitContainerDefinition
+Create an in-memory object for InitContainerDefinition.
+
+### [New-AzContainerInstanceNoDefaultObject](New-AzContainerInstanceNoDefaultObject.md)
+Create an in-memory object for Container.
 
 ### [New-AzContainerInstanceObject](New-AzContainerInstanceObject.md)
-Create a in-memory object for Container
+Create an in-memory object for Container.
 
 ### [New-AzContainerInstancePortObject](New-AzContainerInstancePortObject.md)
-Create a in-memory object for ContainerPort
+Create an in-memory object for ContainerPort.
 
 ### [New-AzContainerInstanceVolumeMountObject](New-AzContainerInstanceVolumeMountObject.md)
-Create a in-memory object for VolumeMount
+Create an in-memory object for VolumeMount.
 
 ### [Remove-AzContainerGroup](Remove-AzContainerGroup.md)
 Delete the specified container group in the specified subscription and resource group.
+The operation does not delete other resources provided by the user, such as volumes.
+
+### [Remove-AzContainerInstanceContainerGroupProfile](Remove-AzContainerInstanceContainerGroupProfile.md)
+Delete the specified container group profile in the specified subscription and resource group.
 The operation does not delete other resources provided by the user, such as volumes.
 
 ### [Remove-AzContainerInstanceSubnetServiceAssociationLink](Remove-AzContainerInstanceSubnetServiceAssociationLink.md)
@@ -77,7 +95,7 @@ The operation does not delete other resources provided by the user.
 
 ### [Restart-AzContainerGroup](Restart-AzContainerGroup.md)
 Restarts all containers in a container group in place.
-If container image has updates, new image will be downloaded.
+If container image has restart  new image will be downloaded.
 
 ### [Start-AzContainerGroup](Start-AzContainerGroup.md)
 Starts all containers in a container group.
@@ -88,5 +106,8 @@ Stops all containers in a container group.
 Compute resources will be deallocated and billing will stop.
 
 ### [Update-AzContainerGroup](Update-AzContainerGroup.md)
-Updates container group tags with specified values.
+Update container group tags with specified values.
+
+### [Update-AzContainerInstanceContainerGroupProfile](Update-AzContainerInstanceContainerGroupProfile.md)
+Patches container group profile with specified properties.
 

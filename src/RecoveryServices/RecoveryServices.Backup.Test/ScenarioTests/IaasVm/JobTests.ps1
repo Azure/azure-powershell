@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,10 +17,10 @@ function Test-AzureVMGetJobs
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4" # hiaganewvm3"
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganevm4" # "hiaganewvm3"	
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 	
 	try
 	{
@@ -36,6 +36,12 @@ function Test-AzureVMGetJobs
 		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
 		$job = Disable-AzRecoveryServicesBackupProtection -VaultId $vault.ID -Item $item[0] -RemoveRecoveryPoints -Force;
 		$job2 = Disable-AzRecoveryServicesBackupProtection -VaultId $vault.ID -Item $item[1] -RemoveRecoveryPoints -Force;
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+
+		# undelete backup item
+		# $undeleteJob = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[0] -VaultId $vault.ID
+		# $undeleteJob2 = Undo-AzRecoveryServicesBackupItemDeletion -Item $item[1] -VaultId $vault.ID
 
 		# Enable Protection
 		Enable-Protection $vault $vm1
@@ -190,10 +196,10 @@ function Test-AzureVMWaitJob
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganewvm3"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2"	
+	$vmFriendlyName1 = "pstest-ccy-vm"
+	$vmFriendlyName2 = "pstest-ccy-vm2"
 
 	try
 	{
@@ -230,8 +236,8 @@ function Test-AzureVMCancelJob
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
-	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmFriendlyName1 = "hiaga-adhoc-vm"
+	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm"
+	$vmFriendlyName1 = "pstest-ccy-vm"
 
 	try
 	{
@@ -260,5 +266,83 @@ function Test-AzureVMCancelJob
 	{
 		# Cleanup
 		# Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+# =====================================================================================================
+# CSB job scenario test. See the CSB header in ScenarioTests/IaasVm/ItemTests.ps1 for the values to update
+# when re-recording (the VM must live in a subscription different from the vault's, same region).
+# =====================================================================================================
+function Test-AzureVMCSBJobSubscription
+{
+	# Test Owner - singhprab
+	# Verifies the detailed job of a CSB item exposes ContainerSubscriptionId (from
+	# extendedInfo.propertyBag["VM Subscription ID"]). Self-contained: protect a cross-sub VM, back it up,
+	# inspect the job detail.
+	$resourceGroupName = "singhprab-csb-vault-rg-ea"
+	$vaultName = "singhprab-csb-job-vault"
+	$location = "eastus2euap"
+	$vmName = "testCsbPS"
+	$vmResourceGroupName = "singhprab-rg-1c"
+	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
+	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
+
+	$vault = $null
+
+	try
+	{
+		# Fresh vault so the test runs from a clean state.
+		New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag | Out-Null
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "EnhancedPolicy"
+
+		# Enable protection for the cross-sub VM via -ContainerSubscriptionId.
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-ContainerSubscriptionId $containerSubscriptionId;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
+
+		Assert-NotNull $item;
+
+		$expectedContainerSubscriptionId = $item.ContainerSubscriptionId
+		Assert-True { $expectedContainerSubscriptionId -eq $containerSubscriptionId };
+
+		# On-demand backup to produce a Backup job.
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $backupJob.Status -eq "Completed" };
+
+		# Job detail must expose ContainerSubscriptionId = VM's subscription.
+		$jobDetail = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $backupJob
+
+		Assert-NotNull $jobDetail;
+		Assert-True { $jobDetail.ContainerSubscriptionId -eq $expectedContainerSubscriptionId };
+	}
+	finally
+	{
+		# Cleanup: disable protection with delete-backup-data, then delete the fresh vault (Remove-AzRecoveryServicesVault purges the soft-deleted item; the vault has AlwaysOn soft delete).
+		if ($vault -ne $null)
+		{
+			$cleanupItem = Get-AzRecoveryServicesBackupItem `
+				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+				| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
+			if ($cleanupItem -ne $null)
+			{
+				Disable-AzRecoveryServicesBackupProtection `
+					-VaultId $vault.ID `
+					-Item $cleanupItem `
+					-RemoveRecoveryPoints -Force
+			}
+			Remove-AzRecoveryServicesVault -Vault $vault
+		}
 	}
 }

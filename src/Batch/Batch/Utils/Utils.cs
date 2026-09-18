@@ -38,11 +38,6 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 {
                     return ConvertApplicationPackageReference(apr);
                 });
-                pool.omObject.CertificateReferences = CreateSyncedList(pool.CertificateReferences,
-                (c) =>
-                {
-                    return ConvertCertificateReference(c);
-                });
 
                 pool.omObject.Metadata = CreateSyncedDict(pool.Metadata, ConvertMetadataItem);
 
@@ -210,12 +205,6 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (spec != null)
             {
-                spec.omObject.CertificateReferences = CreateSyncedList(spec.CertificateReferences,
-                    (c) =>
-                    {
-                        return ConvertCertificateReference(c);
-                    });
-
                 spec.omObject.Metadata = CreateSyncedDict(
                     spec.Metadata,
                     ConvertMetadataItem);
@@ -356,26 +345,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             return omList;
         }
 
-        /// <summary>
-        /// Converts a PSCertificateReference to a CertificateReference
-        /// </summary>
         private static MetadataItem ConvertMetadataItem(string key, string value) => new MetadataItem(key, value);
 
         private static EnvironmentSetting ConvertEnvironmentSetting(string key, string value) => new EnvironmentSetting(key, value);
-
-        /// <summary>
-        /// Converts a PSCertificateReference to a CertificateReference
-        /// </summary>
-        private static CertificateReference ConvertCertificateReference(PSCertificateReference psCert)
-        {
-            CertificateReference certReference = new CertificateReference();
-            certReference.StoreLocation = psCert.StoreLocation;
-            certReference.StoreName = psCert.StoreName;
-            certReference.Thumbprint = psCert.Thumbprint;
-            certReference.ThumbprintAlgorithm = psCert.ThumbprintAlgorithm;
-            certReference.Visibility = psCert.Visibility;
-            return certReference;
-        }
 
         /// <summary>
         /// Converts a PSApplicationPackageReference to a ApplicationPackageReference

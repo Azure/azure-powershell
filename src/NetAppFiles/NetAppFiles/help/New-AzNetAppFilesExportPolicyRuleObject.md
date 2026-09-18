@@ -16,7 +16,7 @@ Creates export policy rule object.
 New-AzNetAppFilesExportPolicyRuleObject -RuleIndex <Int32> [-UnixReadOnly] [-UnixReadWrite]
  [-Kerberos5ReadOnly] [-Kerberos5ReadWrite] [-Kerberos5iReadOnly] [-Kerberos5iReadWrite] [-Kerberos5p]
  [-Kerberos5pReadWrite] [-Cifs] [-Nfsv3] [-Nfsv41] [-AllowedClient <String>] [-HasRootAccess]
- [-ChownMode <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ChownMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -226,21 +226,6 @@ Allows NFSv41 protocol.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

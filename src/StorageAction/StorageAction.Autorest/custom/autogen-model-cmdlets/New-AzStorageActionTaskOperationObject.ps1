@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskOperation
 https://learn.microsoft.com/powershell/module/Az.StorageAction/new-azstorageactiontaskoperationobject
 #>
 function New-AzStorageActionTaskOperationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.StorageTaskOperation')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

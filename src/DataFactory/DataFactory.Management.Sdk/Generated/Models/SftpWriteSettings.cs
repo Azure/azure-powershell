@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SftpWriteSettings class.
         /// </summary>
 
+        /// <param name="additionalProperties">Connector write settings.
+        /// </param>
+
         /// <param name="maxConcurrentConnections">The maximum concurrent connection count for the source data store. Type:
         /// integer (or Expression with resultType integer).
         /// </param>
@@ -48,9 +51,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// server doesn&#39;t support rename operation. Type: boolean (or Expression with
         /// resultType boolean).
         /// </param>
-        public SftpWriteSettings(object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), object operationTimeout = default(object), object useTempFileRename = default(object))
+        public SftpWriteSettings(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), System.Collections.Generic.IList<MetadataItem> metadata = default(System.Collections.Generic.IList<MetadataItem>), object operationTimeout = default(object), object useTempFileRename = default(object))
 
-        : base(maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
+        : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
         {
             this.OperationTimeout = operationTimeout;
             this.UseTempFileRename = useTempFileRename;

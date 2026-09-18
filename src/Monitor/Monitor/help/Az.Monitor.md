@@ -15,7 +15,7 @@ This topic displays help topics for the Azure Insights Cmdlets.
 Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription.
 
 ### [Add-AzMetricAlertRule](Add-AzMetricAlertRule.md)
-Adds or updates a claasic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
+Adds or updates a classic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
 
 ### [Add-AzMetricAlertRuleV2](Add-AzMetricAlertRuleV2.md)
 Adds or updates a V2 (non-classic) metric-based alert rule.
@@ -48,7 +48,7 @@ Gets classic alert rules.
 Gets the Autoscale history.
 
 ### [Get-AzAutoscalePredictiveMetric](Get-AzAutoscalePredictiveMetric.md)
-get predictive autoscale metric future data
+Get predictive autoscale metric future data
 
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
@@ -96,6 +96,9 @@ Lists the metric values for multiple resources.
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
 Returns the specific Azure Monitor workspace
 
+### [Get-AzPipelineGroup](Get-AzPipelineGroup.md)
+Returns the specific pipeline group instance.
+
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Retrieve an scheduled query rule definition.
 
@@ -103,7 +106,7 @@ Retrieve an scheduled query rule definition.
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or Create an existing one.
+create a new action group or create an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -169,25 +172,25 @@ Create an in-memory object for ScaleRuleMetricDimension.
 Create an in-memory object for ScaleRule.
 
 ### [New-AzAutoscaleSetting](New-AzAutoscaleSetting.md)
-Creates or updates an autoscale setting.
+Create an autoscale setting.
 
 ### [New-AzAutoscaleWebhookNotificationObject](New-AzAutoscaleWebhookNotificationObject.md)
 Create an in-memory object for WebhookNotification.
 
 ### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
-Create a data collection endpoint.
+create a data collection endpoint.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
-Create a data collection rule.
+create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
-Create an association.
+create an association.
 
 ### [New-AzDataFlowObject](New-AzDataFlowObject.md)
 Create an in-memory object for DataFlow.
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
 Create an in-memory object for LogSettings.
@@ -235,10 +238,13 @@ Creates a metric dimension filter that can be used to query metrics.
 Create an in-memory object for MonitoringAccountDestination.
 
 ### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
-Create or update a workspace
+Create a workspace
 
 ### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
 Create an in-memory object for PerfCounterDataSource.
+
+### [New-AzPipelineGroup](New-AzPipelineGroup.md)
+Create a pipeline group instance.
 
 ### [New-AzPlatformTelemetryDataSourceObject](New-AzPlatformTelemetryDataSourceObject.md)
 Create an in-memory object for PlatformTelemetryDataSource.
@@ -247,7 +253,7 @@ Create an in-memory object for PlatformTelemetryDataSource.
 Create an in-memory object for PrometheusForwarderDataSource.
 
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
-Creates or updates a scheduled query rule.
+Create a scheduled query rule.
 
 ### [New-AzScheduledQueryRuleConditionObject](New-AzScheduledQueryRuleConditionObject.md)
 Create an in-memory object for Condition.
@@ -262,7 +268,7 @@ Create an in-memory object for StorageBlobDestination.
 Create an in-memory object for StorageTableDestination.
 
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 
 ### [New-AzSyslogDataSourceObject](New-AzSyslogDataSourceObject.md)
 Create an in-memory object for SyslogDataSource.
@@ -312,6 +318,9 @@ Removes a V2 (non-classic) metric alert rule.
 ### [Remove-AzMonitorWorkspace](Remove-AzMonitorWorkspace.md)
 Delete a workspace
 
+### [Remove-AzPipelineGroup](Remove-AzPipelineGroup.md)
+Delete a pipeline group instance.
+
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Deletes a scheduled query rule.
 
@@ -322,7 +331,7 @@ Deletes existing subscription diagnostic settings for the specified resource.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Update a new action group or Update an existing one.
+update a new action group or update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
@@ -334,20 +343,29 @@ Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-Update part of a data collection endpoint.
+update a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-Update an association.
+update an association.
+
+### [Update-AzDiagnosticSetting](Update-AzDiagnosticSetting.md)
+Update diagnostic settings for the specified resource.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
-Updates part of a workspace
+Update part of a workspace
+
+### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
+Update a pipeline group instance
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.
+
+### [Update-AzSubscriptionDiagnosticSetting](Update-AzSubscriptionDiagnosticSetting.md)
+Update subscription diagnostic settings for the specified resource.
 

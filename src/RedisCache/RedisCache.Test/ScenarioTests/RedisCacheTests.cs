@@ -114,5 +114,19 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AuthenticationCache");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateToAutomaticZonalAllocationPolicyForPremiumCache()
+        {
+            TestRunner.RunTestScript("Test-UpdateToAutomaticZonalAllocationPolicyForPremiumCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAutomaticZonalAllocationPolicyForStandardCache()
+        {
+            TestRunner.RunTestScript("Test-AutomaticZonalAllocationPolicyForStandardCache");
+        }
     }
 }

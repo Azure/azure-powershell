@@ -23,8 +23,8 @@ Get-AzStorageFileCopyState [-ShareName] <String> [-FilePath] <String> [-WaitForC
 
 ### File
 ```
-Get-AzStorageFileCopyState [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-WaitForComplete]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Get-AzStorageFileCopyState [-ShareFileClient] <ShareFileClient> [-WaitForComplete] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
@@ -49,8 +49,8 @@ $destfile = Start-AzStorageFileCopy -SrcShareName "contososhare" -SrcFilePath "c
 $destfile | Get-AzStorageFileCopyState
 ```
 
-The first command starts copy file "contosofile" to "contosofile_copy", and output the destiantion file object. 
-The second command pipeline the destiantion file object to Get-AzStorageFileCopyState, to get file copy state.
+The first command starts copy file "contosofile" to "contosofile_copy", and output the destination file object. 
+The second command pipeline the destination file object to Get-AzStorageFileCopyState, to get file copy state.
 
 ## PARAMETERS
 
@@ -136,22 +136,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -File
-Specifies a **CloudFile** object.
-You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFile
-Parameter Sets: File
-Aliases: CloudFile
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -FilePath
 Specifies the path of the file relative to an Azure Storage share.
 
@@ -190,8 +174,8 @@ Type: Azure.Storage.Files.Shares.ShareFileClient
 Parameter Sets: File
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -233,13 +217,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Azure.Storage.Files.Shares.ShareFileClient
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.File.CopyState
+### Microsoft.WindowsAzure.Commands.Storage.Common.PSCopyState
 
 ## NOTES
 

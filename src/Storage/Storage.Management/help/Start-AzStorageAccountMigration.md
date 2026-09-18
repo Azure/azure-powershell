@@ -17,28 +17,28 @@ Zone-redundant storage (ZRS) replicates your storage account synchronously acros
 ### CustomerExpanded (Default)
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -TargetSku <String> [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -TargetSku <String> [-Name <String>] [-Type <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CustomerViaJsonString
-```
-Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaJsonFilePath
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Force] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CustomerViaJsonString
+```
+Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Force] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaIdentityExpanded
 ```
 Start-AzStorageAccountMigration -InputObject <IStorageIdentity> -TargetSku <String> [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Type <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -132,9 +132,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Forces the cmdlet to convert the account's redundancy configuration without prompting for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
@@ -229,7 +243,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -244,7 +258,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: False

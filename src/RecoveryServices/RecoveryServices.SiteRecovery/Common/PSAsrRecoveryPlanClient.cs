@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginCreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     input.Properties,
                     this.GetRequestHeaders(true))
@@ -52,7 +54,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<RecoveryPlan> GetAzureSiteRecoveryRecoveryPlan()
         {
             var firstPage = this.GetSiteRecoveryClient()
-                .ReplicationRecoveryPlans.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ReplicationRecoveryPlans.ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName, 
+                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -78,6 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -95,6 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -114,6 +123,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginFailoverCommitWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -133,6 +144,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginFailoverCancelWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -154,6 +167,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginPlannedFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     input.Properties,
                     this.GetRequestHeaders(true))
@@ -176,6 +191,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginTestFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     input.Properties,
                     this.GetRequestHeaders(true))
@@ -198,6 +215,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginTestFailoverCleanupWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     input.Properties,
                     this.GetRequestHeaders(true))
@@ -220,6 +239,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginUnplannedFailoverWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     input.Properties,
                     this.GetRequestHeaders(true))
@@ -240,6 +261,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginReprotectWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
@@ -261,6 +284,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginUpdateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     recoveryPlanName,
                     input.Properties,
                     this.GetRequestHeaders(true))

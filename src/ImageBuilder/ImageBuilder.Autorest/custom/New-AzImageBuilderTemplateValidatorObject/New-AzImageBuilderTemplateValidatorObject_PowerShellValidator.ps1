@@ -21,15 +21,15 @@ Create an in-memory object for ImageTemplateValidator.
 Create an in-memory object for ImageTemplateValidator.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellValidator
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatevalidatorobject
 #>
 function New-AzImageBuilderTemplateValidatorObject_PowerShellValidator {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellValidator')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
         [Parameter(HelpMessage="Array of PowerShell commands to execute.")]
         [string[]]
         $Inline,
@@ -51,17 +51,13 @@ function New-AzImageBuilderTemplateValidatorObject_PowerShellValidator {
         [Parameter(HelpMessage="Friendly Name to provide context on what this validation step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of validation you want to use on the Image. For example, `"Shell`" can be shell validation.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Runs the specified PowerShell script during the validation phase (Windows). Corresponds to Packer powershell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.")]
         [Switch]
         $PowerShellValidator
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellValidator]::New()
 
         if ($PSBoundParameters.ContainsKey('Inline')) {
             $Object.Inline = $Inline
@@ -83,9 +79,6 @@ function New-AzImageBuilderTemplateValidatorObject_PowerShellValidator {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($PowerShellValidator.IsPresent) {
-            $Object.Type = "PowerShell"
         }
         return $Object
     }

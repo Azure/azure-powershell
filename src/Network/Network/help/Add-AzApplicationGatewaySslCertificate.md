@@ -16,6 +16,7 @@ Adds an SSL certificate to an application gateway.
 ```
 Add-AzApplicationGatewaySslCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-CertificateFile <String>] [-Password <SecureString>] [-KeyVaultSecretId <String>]
+ [-HsmKeyId <String>] [-HsmPublicCertData <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,7 +37,7 @@ This command gets an application gateway named ApplicationGateway01 and then add
 ### Example 2: Add an SSL certificate using KeyVault Secret (version-less secretId) to an application gateway.
 ```powershell
 $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$secret = Get-AzKeyVaultCertificate -VaultName "keyvault01" -Name "sslCert01"
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
 $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
 $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
@@ -47,7 +48,7 @@ Note: As version-less secretId is provided here, Application Gateway will sync t
 ### Example 3: Add an SSL certificate using KeyVault Secret (versioned secretId) to an application gateway.
 ```powershell
 $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$secret = Get-AzKeyVaultCertificate -VaultName "keyvault01" -Name "sslCert01"
+$secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
 $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
 $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
 ```
@@ -55,7 +56,30 @@ $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name
 Get the secret and reference it in the `Add-AzApplicationGatewaySslCertificate` to add it to the Application Gateway with name `Cert01`.
 Note: If it is required that Application Gateway syncs the certificate with the KeyVault, please provide the version-less secretId.
 
+### Example 4: Add an SSL certificate using Managed HSM to an application gateway.
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -HsmKeyId "https://myhsm.managedhsm.azure.net/keys/mykey/abc123"
+```
+
+Add an SSL certificate referencing a key stored in Managed HSM to the Application Gateway.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGateway
 Specifies the name of application gateway to which this cmdlet adds an SSL certificate.
@@ -87,6 +111,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -94,6 +133,36 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmKeyId
+Key identifier of a key stored in Managed HSM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmPublicCertData
+Base-64 encoded public certificate data corresponding to the key stored in Managed HSM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -169,5 +238,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzApplicationGatewaySslCertificate](./Remove-AzApplicationGatewaySslCertificate.md)
 
 [Set-AzApplicationGatewaySslCertificate](./Set-AzApplicationGatewaySslCertificate.md)
-
-

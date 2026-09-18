@@ -312,8 +312,20 @@
   <data name="RemoveRoleDefinition" xml:space="preserve">
     <value>Are you sure you want to remove role definition with id '{0}'.</value>
   </data>
+  <data name="RemovingRoleDefinitionById" xml:space="preserve">
+    <value>Removing role definition by id</value>
+  </data>
+  <data name="RemovingRoleDefinitionByName" xml:space="preserve">
+    <value>Removing role definition by name</value>
+  </data>
   <data name="InvalidActions" xml:space="preserve">
     <value>Invalid value for Actions</value>
+  </data>
+  <data name="InvalidPermissions" xml:space="preserve">
+    <value>Invalid value for Permissions</value>
+  </data>
+  <data name="RoleDefinitionMultiplePermissionsNotAllowed" xml:space="preserve">
+    <value>The Azure RBAC service does not currently accept role definitions with more than one permission entry. Provide a single entry in 'Permissions' when calling New-AzRoleDefinition or Set-AzRoleDefinition.</value>
   </data>
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>

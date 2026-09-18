@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RouteMapActionType
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Remove
+        /// </summary>
         public const string Remove = "Remove";
+        /// <summary>
+        /// Add
+        /// </summary>
         public const string Add = "Add";
+        /// <summary>
+        /// Replace
+        /// </summary>
         public const string Replace = "Replace";
+        /// <summary>
+        /// Drop
+        /// </summary>
         public const string Drop = "Drop";
     }
 }

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -79,9 +82,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Expression with resultType string).
         /// </param>
 
-        /// <param name="sncMode">SNC activation indicator to access the SAP server where the table is
-        /// located. Must be either 0 (off) or 1 (on). Type: string (or Expression with
-        /// resultType string).
+        /// <param name="sncMode">SNC activation flag (Boolean) to access the SAP server where the table is
+        /// located. Type: boolean (or Expression with resultType boolean).
         /// </param>
 
         /// <param name="sncMyName">Initiator&#39;s SNC name to access the SAP server where the table is located.
@@ -107,9 +109,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SapTableLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object server = default(object), object systemNumber = default(object), object clientId = default(object), object language = default(object), object systemId = default(object), object userName = default(object), SecretBase password = default(SecretBase), object messageServer = default(object), object messageServerService = default(object), object sncMode = default(object), object sncMyName = default(object), object sncPartnerName = default(object), object sncLibraryPath = default(object), object sncQop = default(object), object logonGroup = default(object), string encryptedCredential = default(string))
+        public SapTableLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object server = default(object), object systemNumber = default(object), object clientId = default(object), object language = default(object), object systemId = default(object), object userName = default(object), SecretBase password = default(SecretBase), object messageServer = default(object), object messageServerService = default(object), object sncMode = default(object), object sncMyName = default(object), object sncPartnerName = default(object), object sncLibraryPath = default(object), object sncQop = default(object), object logonGroup = default(object), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Server = server;
             this.SystemNumber = systemNumber;
@@ -201,9 +203,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object MessageServerService {get; set; }
 
         /// <summary>
-        /// Gets or sets sNC activation indicator to access the SAP server where the
-        /// table is located. Must be either 0 (off) or 1 (on). Type: string (or
-        /// Expression with resultType string).
+        /// Gets or sets sNC activation flag (Boolean) to access the SAP server where
+        /// the table is located. Type: boolean (or Expression with resultType
+        /// boolean).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.sncMode")]
         public object SncMode {get; set; }

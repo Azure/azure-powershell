@@ -1,6 +1,6 @@
 ### Example 1: Create Azure Synapse workspace data source object
 ```powershell
-New-AzPurviewAzureSynapseWorkspaceDataSourceObject -Kind 'AzureSynapseWorkspace' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DedicatedSqlEndpoint 'g1euap.sql.azuresynapse.net' -ServerlessSqlEndpoint 'rg1euap-ondemand.sql.azuresynapse.net'
+New-AzPurviewAzureSynapseWorkspaceDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DedicatedSqlEndpoint 'g1euap.sql.azuresynapse.net' -ServerlessSqlEndpoint 'rg1euap-ondemand.sql.azuresynapse.net'
 ```
 
 ```output

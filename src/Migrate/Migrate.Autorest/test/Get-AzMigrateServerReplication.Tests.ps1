@@ -13,28 +13,28 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMigrateServerReplication' {
     It 'ListByName' {
-        $output = Get-AzMigrateServerReplication -ProjectName $env.srsProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -ProjectName $env.migProjectName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'GetBySRSID' {
-        $output = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -TargetObjectID $env.migMachineId -SubscriptionId $env.migSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'GetBySDSID' {
-        $output = Get-AzMigrateServerReplication -DiscoveredMachineId $env.srsGetSDSMachineID -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -DiscoveredMachineId $env.migGetSDSMachineID -SubscriptionId $env.migSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'GetByInputObject' {
-        $output = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
-        $output = Get-AzMigrateServerReplication -InputObject $output -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -TargetObjectID $env.migMachineId -SubscriptionId $env.migSubscriptionId
+        $output = Get-AzMigrateServerReplication -InputObject $output -SubscriptionId $env.migSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'ListById' {
-        $output = Get-AzMigrateServerReplication -ProjectID $env.srsProjectId -ResourceGroupID $env.migResourceGroupId -SubscriptionId $env.srsSubscriptionId
+        $output = Get-AzMigrateServerReplication -ProjectID $env.migProjectId -ResourceGroupID $env.migResourceGroupId -SubscriptionId $env.migSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

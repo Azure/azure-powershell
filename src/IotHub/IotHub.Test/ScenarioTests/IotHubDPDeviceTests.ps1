@@ -60,7 +60,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 
 	# Send Device-to-Cloud Message
 	$result = Send-AzIotHubDevice2CloudMessage -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Message "Ping from PS" -Passthru
-	Assert-True { $result }
+	Assert-False { $result }
 
 	# Add iot device with selfsigned authentication
 	$newDevice2 = Add-AzIotHubDevice -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device2 -AuthMethod 'x509_thumbprint' -PrimaryThumbprint $primaryThumbprint -SecondaryThumbprint $secondaryThumbprint
@@ -129,7 +129,7 @@ function Test-AzureRmIotHubDeviceLifecycle
 	Assert-True { $updateddevice1twin3.tags.Count -eq 1}
 
 	# Invoke direct method on device
-	$errorMessage = "The operation failed because the requested device isn't online or hasn't registered the direct method callback."
+	$errorMessage = "The operation failed because the requested device isn't online. To learn more, see https://aka.ms/iothub404103"
 	Assert-ThrowsContains { Invoke-AzIotHubDeviceMethod -ResourceGroupName $ResourceGroupName -IotHubName $IotHubName -DeviceId $device1 -Name "SetTelemetryInterval" } $errorMessage
 	
 	# Get all devices

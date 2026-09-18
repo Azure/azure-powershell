@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public int? daysAfterModificationGreaterThan;
 
         [Parameter(Mandatory = true,
-            HelpMessage = "Integer value indicating the age in days after last blob access. This property can only be used in conjuction with last access time tracking policy.",
+            HelpMessage = "Integer value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy.",
             ParameterSetName = BaseBlobLastAccessTimeParameterSet)]
         [ValidateNotNullOrEmpty]
         public int DaysAfterLastAccessTimeGreaterThan
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         & SnapshotAction != ManagementPolicyAction.TierToArchive
                         & BlobVersionAction != ManagementPolicyAction.TierToArchive)
                     {
-                        throw new PSArgumentException("-DaysAfterLastTierChangeGreaterThan is only avaialbe with action TierToArchive.", "DaysAfterLastTierChangeGreaterThan");
+                        throw new PSArgumentException("-DaysAfterLastTierChangeGreaterThan is only available with action TierToArchive.", "DaysAfterLastTierChangeGreaterThan");
                     }
 
                     int? daysAfterCreationGreaterThan = this.DaysAfterCreationGreaterThan;

@@ -21,12 +21,13 @@ Create an in-memory object for WorkbookTemplateGallery.
 Create an in-memory object for WorkbookTemplateGallery.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery
 .Link
-https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-AzApplicationInsightsWorkbookTemplateGalleryObject
+https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-azapplicationinsightsworkbooktemplategalleryobject
 #>
 function New-AzApplicationInsightsWorkbookTemplateGalleryObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +49,7 @@ function New-AzApplicationInsightsWorkbookTemplateGalleryObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery]::New()
 
         if ($PSBoundParameters.ContainsKey('Category')) {
             $Object.Category = $Category

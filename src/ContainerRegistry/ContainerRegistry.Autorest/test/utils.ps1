@@ -65,7 +65,7 @@ function setupEnv() {
     write-host "start to create test group"
     $resourceGroup = "ContainerTest"
     $null = $env.Add("resourceGroup", $resourceGroup)
-    New-AzResourceGroup -Name $resourceGroup -Location "eastus"
+    # New-AzResourceGroup -Name $resourceGroup -Location "eastus"
     New-AzContainerRegistry -RegistryName $env.rstr1 -sku 'Premium' -ResourceGroupName $env.ResourceGroup -Location "eastus" -EnableAdminUser
     New-AzContainerRegistry -RegistryName $env.rstr3 -sku 'Premium' -ResourceGroupName $env.ResourceGroup -Location "eastus" -EnableAdminUser
     New-AzContainerRegistryReplication -name  $env.rstr1 -RegistryName  $env.rstr1 -ResourceGroupName $env.ResourceGroup -Location "westus"
@@ -76,12 +76,15 @@ function setupEnv() {
     New-AzContainerRegistryScopeMap  -Name $env.rstr3 -RegistryName  $env.rstr1 -ResourceGroupName $resourceGroup -Action "repositories/busybox/content/read"
     New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr1 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"
     New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr3 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"
-    $keyVaultUri = "https://lnxtestkeyvault.vault.azure.net/secrets/test/de11705d609e48b6a2faf6facc30a9e0"
-    $StorageAccount = "https://acrteststorageaccount.blob.core.windows.net/test"
-    New-AzContainerRegistryExportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -TargetType AzureStorageBlobContainer -TargetUri $StorageAccount -TargetKeyVaultUri $keyVaultUri
-    New-AzContainerRegistryExportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -TargetType AzureStorageBlobContainer -TargetUri $StorageAccount -TargetKeyVaultUri $keyVaultUri
-    New-AzContainerRegistryImportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri
-    New-AzContainerRegistryImportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri
+    $keyVaultUri = "https://lnxtestkeyvault.vault.azure.net/secrets/tskv1/1603b830d0a044af847791ca8a22c9c6"
+    $StorageAccount = "https://acrteststorageaccount1.blob.core.windows.net/tc1"
+    $null = $env.Add("keyVaultUri", $keyVaultUri)
+    $null = $env.Add("StorageAccount", $StorageAccount)
+
+    New-AzContainerRegistryExportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -EnableSystemAssignedIdentity -TargetType AzureStorageBlobContainer -TargetUri $env.StorageAccount -TargetKeyVaultUri $env.keyVaultUri
+    New-AzContainerRegistryExportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -EnableSystemAssignedIdentity -TargetType AzureStorageBlobContainer -TargetUri $env.StorageAccount -TargetKeyVaultUri $env.keyVaultUri
+    New-AzContainerRegistryImportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -EnableSystemAssignedIdentity -SourceType AzureStorageBlobContainer -SourceUri $env.StorageAccount -SourceKeyVaultUri $env.keyVaultUri
+    New-AzContainerRegistryImportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -EnableSystemAssignedIdentity -SourceType AzureStorageBlobContainer -SourceUri $env.StorageAccount -SourceKeyVaultUri $env.keyVaultUri
     $map = Get-AzContainerRegistryScopeMap -RegistryName $env.rstr1 -ResourceGroupName  $env.resourceGroup -Name $env.rstr1
     New-AzContainerRegistryToken -RegistryName $env.rstr1 -ResourceGroupName  $env.resourceGroup -Name $env.rstr3 -ScopeMapId $map.Id
     New-AzContainerRegistryToken -RegistryName $env.rstr1 -ResourceGroupName  $env.resourceGroup -Name $env.rstr4 -ScopeMapId $map.Id
@@ -95,6 +98,6 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -69,6 +70,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         return ((AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier == Tier;
                     }
 
+                    if (recoveryPoint.GetType() == typeof(AzureFileShareRecoveryPoint))
+                    {
+                        return ((AzureFileShareRecoveryPoint)recoveryPoint).RecoveryPointTier == Tier;
+                    }
+
                     return false;
                 }).ToList();
             }
@@ -76,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// filter move readness based on target tier
+        /// filter move readiness based on target tier
         /// </summary>
         /// <param name="recoveryPointList"></param>
         /// <param name="targetTier"></param>
@@ -367,6 +373,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 Zones = recoveryPoint.Zones,
                 RehydrationExpiryTime = (DateTime?)null,
                 ExtendedLocation = recoveryPoint.ExtendedLocation,
+                IsPrivateAccessEnabledOnAnyDisk = recoveryPoint.IsPrivateAccessEnabledOnAnyDisk,
+                ThreatStatus = recoveryPoint.ThreatStatus,
+                ThreatInfo = recoveryPoint.ThreatInfo
             };
 
             if (recoveryPoint.RecoveryPointTierDetails != null)
@@ -477,7 +486,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
             ServiceClientModel.AzureFileShareRecoveryPoint recoveryPoint =
                         rp.Properties as ServiceClientModel.AzureFileShareRecoveryPoint;
-
+            
             DateTime recoveryPointTime = DateTime.MinValue;
             if (recoveryPoint.RecoveryPointTime.HasValue)
             {

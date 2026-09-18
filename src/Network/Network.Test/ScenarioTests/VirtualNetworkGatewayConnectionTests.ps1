@@ -113,7 +113,7 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
-      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel    
 
       # Create VirtualNetworkGateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
@@ -974,3 +974,260 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
      }
 }
 
+function Test-VirtualNetworkGatewayConnectionWithCertificateAuth
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $vnetGatewayName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $identityName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try 
+    {
+
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create managed identity
+        $identity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName -Location $location
+
+        $keyVaultName = "kv" + $rgname.Substring(0, [Math]::Min(15, $rgname.Length))
+        $keyVault = New-AzKeyVault -ResourceGroupName $rgname -VaultName $keyVaultName -Location $location -EnabledForDeployment -Sku Standard -DisableRbacAuthorization
+
+        # 2. Grant managed identity access to Key Vault certificates
+        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $identity.PrincipalId -PermissionsToCertificates get,list -PermissionsToSecrets get,list
+
+        $currentUser = (Get-AzContext).Account.Id
+        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $currentUser -PermissionsToCertificates get,list,create,delete,import
+
+        # 3. Import certificate 
+        $certFilePath = "./ScenarioTests/Data/VpnGatewayoutboundcert.pfx"
+        $certPassword = ConvertTo-SecureString -String "12345" -Force -AsPlainText
+        Import-AzKeyVaultCertificate -VaultName $keyVaultName -Name "vpn-gateway-cert" `
+            -FilePath $certFilePath -Password $certPassword
+     
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $publicIpName
+
+        # Create VirtualNetworkGateway with managed identity
+        $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+        $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $vnetGatewayName -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -UserAssignedIdentityId $identity.Id
+        $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $vnetGatewayName
+
+        Assert-AreEqual "Succeeded" $vnetGateway.ProvisioningState
+        Assert-NotNull $vnetGateway.Identity
+
+        # Create LocalNetworkGateway
+        $localGateway = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.4.5
+
+        $cert = Get-AzKeyVaultCertificate -VaultName $keyVaultName -Name "vpn-gateway-cert"
+        $outboundCertUrl = $cert.Id
+        $certData = Get-AzKeyVaultCertificate -VaultName $keyVaultName -Name "vpn-gateway-cert"
+        $certBytes = [System.Convert]::ToBase64String($certData.Certificate.RawData)
+        $subjectName = $certData.Certificate.Subject
+
+        $inboundCert1Path = "./ScenarioTests/Data/VpnGatewayInboundCert.cer"
+        $inboundCert2Path = "./ScenarioTests/Data/VpnGatewayAuthCert.cer"
+        $inboundCert1Data = Get-Content -Path $inboundCert1Path -Raw
+        $inboundCert2Data = Get-Content -Path $inboundCert2Path -Raw
+        
+        # Remove PEM headers if present and get Base64 only
+        $inboundCert1Base64 = $inboundCert1Data -replace "-----BEGIN CERTIFICATE-----", "" -replace "-----END CERTIFICATE-----", ""
+        $inboundCert2Base64 = $inboundCert2Data -replace "-----BEGIN CERTIFICATE-----", "" -replace "-----END CERTIFICATE-----", ""
+        $certChain = @($inboundCert1Base64, $inboundCert2Base64) 
+
+        $certAuth = New-AzVirtualNetworkGatewayCertificateAuthentication `
+            -OutboundAuthCertificate $outboundCertUrl `
+            -InboundAuthCertificateSubjectName $subjectName `
+            -InboundAuthCertificateChain $certChain
+
+       # Verify certificate authentication object properties
+        Assert-AreEqual $outboundCertUrl $certAuth.OutboundAuthCertificate
+        Assert-AreEqual $subjectName $certAuth.InboundAuthCertificateSubjectName
+        Assert-AreEqual 2 $certAuth.InboundAuthCertificateChain.Count
+        Assert-NotNull $certAuth.InboundAuthCertificateChain[0]
+        Assert-NotNull $certAuth.InboundAuthCertificateChain[1]
+
+        # Create VirtualNetworkGatewayConnection with Certificate Authentication
+        $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localGateway -ConnectionType IPsec -RoutingWeight 3 -AuthenticationType "Certificate" -CertificateAuthentication $certAuth
+        
+        # Verify connection was created successfully
+        $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual $connection.ResourceGroupName $actual.ResourceGroupName	
+        Assert-AreEqual $connection.Name $actual.Name
+        Assert-AreEqual "Certificate" $connection.AuthenticationType
+        Assert-NotNull $connection.CertificateAuthentication
+        Assert-AreEqual $outboundCertUrl $connection.CertificateAuthentication.OutboundAuthCertificate
+        Assert-AreEqual $subjectName $connection.CertificateAuthentication.InboundAuthCertificateSubjectName
+        Assert-AreEqual 2 $connection.CertificateAuthentication.InboundAuthCertificateChain.Count
+
+        # Update with new certificate (just use same cert for test purposes)
+        $newCertAuth = New-AzVirtualNetworkGatewayCertificateAuthentication -OutboundAuthCertificate $outboundCertUrl -InboundAuthCertificateSubjectName $subjectName -InboundAuthCertificateChain $certChain
+        
+        $updatedConnection = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -AuthenticationType "Certificate" -CertificateAuthentication $newCertAuth -Force
+        
+        # Verify update
+        $verifyConnection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual "Certificate" $verifyConnection.AuthenticationType
+        Assert-AreEqual $outboundCertUrl $verifyConnection.CertificateAuthentication.OutboundAuthCertificate
+        Assert-AreEqual $subjectName $verifyConnection.CertificateAuthentication.InboundAuthCertificateSubjectName
+
+        # List connections and verify
+        $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name "*"
+        Assert-True { $list.Count -ge 1 }
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+VirtualNetworkGatewayConnectionWithRoutingConfiguration
+#>
+function Test-VirtualNetworkGatewayConnectionWithRoutingConfiguration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $publicIpName2 = Get-ResourceName
+    $domainNameLabel2 = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $vnetGatewayConfigName2 = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
+    $routeServerName = Get-ResourceName
+    $routeServerPublicIpName = Get-ResourceName
+    $routeMapName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create VNet first, then add private subnets to comply with policy
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16
+        
+        # Add RouteServerSubnet as a private subnet
+        $vnet = Add-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $false -VirtualNetwork $vnet
+        
+        # Add GatewaySubnet as a private subnet
+        $vnet = Add-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false -VirtualNetwork $vnet
+        
+        # Commit the VNet changes
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name "RouteServerSubnet" -VirtualNetwork $vnet
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+        # Create the public ip address for route server
+        $rsPublicIp = New-AzPublicIpAddress -Name $routeServerPublicIpName -ResourceGroupName $rgname -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+        $rsPublicIp = Get-AzPublicIpAddress -Name $routeServerPublicIpName -ResourceGroupName $rgname
+
+        # Create route server (this creates a VirtualHub resource internally)
+        $routeServer = New-AzRouteServer -ResourceGroupName $rgname -Location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedSubnet.Id -PublicIpAddress $rsPublicIp
+        $routeServer = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
+        Assert-AreEqual $routeServerName $routeServer.Name
+
+        # Get the route server hub using Get-AzVirtualHub
+        $virtualHubName = $routeServerName
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+        Assert-NotNull $virtualHub
+
+        # Wait for Virtual Hub Routing State to become Provisioned
+        $routingStatePollIntervalSeconds = 180
+        $maxRoutingStatePollAttempts = 10
+        $routingStatePollAttempt = 0
+        while ($virtualHub.RoutingState -eq "Provisioning" -and $routingStatePollAttempt -lt $maxRoutingStatePollAttempts)
+        {
+            Start-TestSleep -Seconds $routingStatePollIntervalSeconds
+            $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+            $routingStatePollAttempt++
+        }
+        Assert-AreEqual "Provisioned" $virtualHub.RoutingState
+
+        # Create a route map on the route server hub
+        $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+        $routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+        $routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+        $routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+        New-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1)
+        $routeMap = Get-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName
+        Assert-AreEqual $routeMapName $routeMap.Name
+        Assert-AreEqual 1 $routeMap.Rules.Count
+
+        # Create routing configuration with inbound and outbound route maps
+        $routingConfig = New-AzRoutingConfiguration -InboundRouteMap $routeMap.Id -OutboundRouteMap $routeMap.Id
+
+        # Create public IPs and configure an active-active VPN gateway when route server is in the same VNet.
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $rglocation -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
+        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $rglocation -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel2
+
+        # Create VirtualNetworkGateway using GatewaySubnet from same VNet
+        $vnetIpConfig1 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip1 -Subnet $subnet
+        $vnetIpConfig2 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip2 -Subnet $subnet
+        $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $rglocation -IpConfigurations $vnetIpConfig1,$vnetIpConfig2 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2Az -EnableActiveActiveFeature
+        $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $true $vnetGateway.ActiveActive
+
+        # Create LocalNetworkGateway
+        $actual = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $rglocation -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10
+        $localnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
+
+        # Create VirtualNetworkGatewayConnection with RoutingConfiguration
+        $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $rglocation -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -RoutingConfiguration $routingConfig
+        $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected.Name $actual.Name
+        Assert-AreEqual "IPsec" $expected.ConnectionType
+        Assert-NotNull $expected.RoutingConfiguration
+        Assert-AreEqual $expected.RoutingConfiguration.InboundRouteMap.Id $routeMap.Id
+        Assert-AreEqual $expected.RoutingConfiguration.OutboundRouteMap.Id $routeMap.Id
+
+        # Update VirtualNetworkGatewayConnection RoutingConfiguration
+        $routingConfig2 = New-AzRoutingConfiguration -InboundRouteMap $routeMap.Id -OutboundRouteMap $routeMap.Id
+        $expected.Location = $rglocation
+        $expected.VirtualNetworkGateway1.Location = $rglocation
+        $expected.LocalNetworkGateway2.Location = $rglocation
+        $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -RoutingConfiguration $routingConfig2 -Force
+        $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-NotNull $expected.RoutingConfiguration
+        Assert-AreEqual $expected.RoutingConfiguration.InboundRouteMap.Id $routeMap.Id
+        Assert-AreEqual $expected.RoutingConfiguration.OutboundRouteMap.Id $routeMap.Id
+
+        # Delete VirtualNetworkGatewayConnection
+        Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -Force
+
+        # Delete Route Map
+        Remove-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -Force
+
+        # Delete Route Server
+        Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -Force
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

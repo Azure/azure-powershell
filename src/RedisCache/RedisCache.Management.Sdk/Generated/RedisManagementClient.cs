@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.RedisCache
             this.AccessPolicy = new AccessPolicyOperations(this);
             this.AccessPolicyAssignment = new AccessPolicyAssignmentOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-03-01";
+            this.ApiVersion = "2024-11-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

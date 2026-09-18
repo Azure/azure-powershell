@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.EnvironmentSettings = new List<EnvironmentSetting>();
                 foreach (DictionaryEntry d in parameters.EnvironmentSettings)
                 {
-                    EnvironmentSetting setting = new EnvironmentSetting(d.Key.ToString(), d.Value.ToString());
+                    EnvironmentSetting setting = new EnvironmentSetting(d.Key.ToString(), d.Value?.ToString());
                     task.EnvironmentSettings.Add(setting);
                 }
             }

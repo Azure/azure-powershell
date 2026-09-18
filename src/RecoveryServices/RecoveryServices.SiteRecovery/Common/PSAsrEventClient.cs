@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationEvents
-                .GetWithHttpMessagesAsync(eventName, this.GetRequestHeaders(true))
+                .GetWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 eventName, this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -45,10 +48,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <returns>Events list response.</returns>
         public List<EventModel> ListAzureRmSiteRecoveryEvents(EventQueryParameter parameters)
         {
-            var odataQuery = new ODataQuery<EventQueryParameter>(parameters.ToQueryString());
+            var filter = parameters.ToQueryString();
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationEvents
-                .ListWithHttpMessagesAsync(odataQuery, this.GetRequestHeaders(true))
+                .ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 filter, this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -62,5 +68,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return Utilities.IpageToList(pages);
         }
+    }
+
+    /// <summary>
+    /// Implements the event query parameter used to build the OData $filter string for the
+    /// replication events list operation. Replaces the generated SDK type that was removed when
+    /// the 2026-02-01 API dropped the x-ms-odata annotation on the list operation (the $filter is
+    /// now passed as a plain string). The property names are used by ToQueryString() to build the
+    /// filter, so they must match the original schema property names.
+    /// </summary>
+    public class EventQueryParameter
+    {
+        /// <summary>Gets or sets the source id of the events to be queried.</summary>
+        public string EventCode { get; set; }
+
+        /// <summary>Gets or sets the severity of the events to be queried.</summary>
+        public string Severity { get; set; }
+
+        /// <summary>Gets or sets the type of the events to be queried.</summary>
+        public string EventType { get; set; }
+
+        /// <summary>Gets or sets the affected object server id of the events to be queried.</summary>
+        public string FabricName { get; set; }
+
+        /// <summary>Gets or sets the affected object name of the events to be queried.</summary>
+        public string AffectedObjectFriendlyName { get; set; }
+
+        /// <summary>Gets or sets the affected object correlationId for the events to be queried.</summary>
+        public string AffectedObjectCorrelationId { get; set; }
+
+        /// <summary>Gets or sets the start time of the range within which the events are queried.</summary>
+        public System.DateTime? StartTime { get; set; }
+
+        /// <summary>Gets or sets the end time of the range within which the events are queried.</summary>
+        public System.DateTime? EndTime { get; set; }
     }
 }

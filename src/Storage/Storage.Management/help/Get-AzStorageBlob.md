@@ -142,7 +142,7 @@ Name                 BlobType  Length          ContentType                    La
 blob2                BlockBlob 2097152         application/octet-stream       2020-07-03 16:19:16Z Hot                                     False      2020-07-03T16:19:16.2883167Z
 ```
 
-This command gets a single blobs verion with VersionId.
+This command gets a single blobs version with VersionId.
 
 ### Example 7: Get a single blob snapshot
 ```powershell
@@ -200,6 +200,21 @@ testblob             BlockBlob 2097152         application/octet-stream       20
 
 This command gets a single blob with blob tag condition. 
 The cmdlet will only success when the blob contains a tag with name "tag1" and value "value1", else the cmdlet will fail with error code 412.
+
+### Example 10: Get blob properties (example: ImmutabilityPolicy) of a single blob
+```powershell
+$blobProperties = (Get-AzStorageBlob -Container "ContainerName" -Blob "blob" -Context $ctx).BlobProperties
+$blobProperties.ImmutabilityPolicy
+```
+
+```output
+ExpiresOn                   PolicyMode
+---------                   ----------
+9/17/2024 2:49:32 AM +00:00   Unlocked
+```
+
+This example command gets the immutability property of a single blob. You can get a detailed list of blob properties from the **BlobProperties** property, including but not limited to: LastModified, ContentLength, ContentHash, BlobType, LeaseState, AccessTier, ETag, ImmutabilityPolicy, etc...
+To list multiple blobs (execute the cmdlet without blob name), use **ListBlobProperties.Properties** instead of **BlobProperties** for better performance.
 
 ## PARAMETERS
 

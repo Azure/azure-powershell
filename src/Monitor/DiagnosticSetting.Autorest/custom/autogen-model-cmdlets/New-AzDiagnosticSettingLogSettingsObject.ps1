@@ -21,12 +21,13 @@ Create an in-memory object for LogSettings.
 Create an in-memory object for LogSettings.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.LogSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingLogSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettinglogsettingsobject
 #>
 function New-AzDiagnosticSettingLogSettingsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.LogSettings')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +49,7 @@ function New-AzDiagnosticSettingLogSettingsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.LogSettings]::New()
 
         if ($PSBoundParameters.ContainsKey('Category')) {
             $Object.Category = $Category

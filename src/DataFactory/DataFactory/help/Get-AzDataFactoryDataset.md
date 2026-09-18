@@ -37,7 +37,7 @@ If you do not specify a name, this cmdlet gets information about all the dataset
 Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
 
-```output 
+```output
 DatasetName       : DACuratedWikiData
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
@@ -67,7 +67,7 @@ This command gets information about all datasets in the data factory named WikiA
 
 ### Example 2: Get information about a specific dataset
 ```powershell
-Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" 
+Get-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
 ```
 
 ```output
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

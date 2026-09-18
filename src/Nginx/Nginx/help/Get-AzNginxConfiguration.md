@@ -15,20 +15,26 @@ Get the NGINX configuration of given NGINX deployment
 ### List (Default)
 ```
 Get-AzNginxConfiguration -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityNginxDeployment
+```
+Get-AzNginxConfiguration -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNginxConfiguration -InputObject <INginxIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +90,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
@@ -103,7 +108,7 @@ The name of configuration, only 'default' is supported value due to the singleto
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityNginxDeployment
 Aliases: ConfigurationName
 
 Required: True
@@ -113,18 +118,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -NginxDeploymentInputObject
+Identity Parameter
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: GetViaIdentityNginxDeployment
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfiguration
 
 ## NOTES
 

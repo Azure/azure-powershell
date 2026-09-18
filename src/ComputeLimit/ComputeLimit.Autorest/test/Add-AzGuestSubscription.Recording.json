@@ -1,0 +1,37 @@
+{
+  "Add-AzGuestSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ],
+        "CommandName": [ "Add-AzGuestSubscription" ],
+        "FullCommandName": [ "Add-AzGuestSubscription_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b2c3d4e5-f6a7-8901-bcde-f12345678901" ],
+        "x-ms-correlation-request-id": [ "c3d4e5f6-a7b8-9012-cdef-123456789012" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001\",\"name\":\"00000000-0000-0000-0000-000000000001\",\"type\":\"Microsoft.ComputeLimit/locations/guestSubscriptions\",\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-12T12:00:00.0000000Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-12T12:00:00.0000000Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

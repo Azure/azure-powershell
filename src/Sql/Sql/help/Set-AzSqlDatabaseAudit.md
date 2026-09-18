@@ -17,7 +17,8 @@ Changes the auditing settings for an Azure SQL Database.
 ```
 Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>]
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
- [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
+ [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-RequiredFields <String[]>]
+ [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] [-ResourceGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -28,7 +29,8 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
 ```
 Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>]
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
- [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
+ [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-RequiredFields <String[]>]
+ [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] -DatabaseObject <AzureSqlDatabaseModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -96,6 +98,13 @@ Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server0
 Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -EventHubTargetState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId" -LogAnalyticsTargetState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
+### Example 12: Select the fields included in Azure Monitor audit records
+```powershell
+Set-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsTargetState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2" -RequiredFields "event_time", "action_id", "statement"
+```
+
+The command enables auditing to Azure Monitor through Log Analytics and limits each audit record to the specified fields.
+
 ## PARAMETERS
 
 ### -AuditAction
@@ -110,12 +119,12 @@ RECEIVE
 REFERENCES  
 The general form for defining an action to be audited is:
 [action] ON [object] BY [principal]
-Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
+Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema.if the reference object is dropped and recreated ,audit configuration should be resaved. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
 For example:  
 SELECT on dbo.myTable by public  
 SELECT on DATABASE::myDatabase by public  
 SELECT on SCHEMA::mySchema by public  
-For more information, see https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
+For more information, see https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions. 
 
 ```yaml
 Type: System.String[]
@@ -314,6 +323,25 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequiredFields
+The audit event fields that must be included in each audit record.
+Each item must be a valid `audit_event` field name.
+Specify no more than 52 unique fields, with each field name limited to 35 characters.
+This parameter can only be used when Azure Monitor is enabled as an audit target.
+Specify an empty array to clear the fields.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -222,7 +222,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// Storage Sync Service Assign Identity Parameter.
         /// </summary>
-        public const string StorageSyncServiceAssignIdentityParameter = "Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this paramter without \"-IdentityType\", will use system assigned identity.";
+        public const string StorageSyncServiceAssignIdentityParameter = "Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this parameter without \"-IdentityType\", will use system assigned identity.";
+
+        /// <summary>
+        /// Registered Server Assign Identity Parameter.
+        /// </summary>
+        public const string RegisteredServerAssignIdentityParameter = "Assign Identity parameter helps to dictate the kind of server registration - server certificate or identity.";
 
         /// <summary>
         /// Storage Sync Service Identity Type Parameter.
@@ -248,5 +253,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Storage sync service managed identity type parameter error.
         /// </summary>
         public const string StorageSyncServiceIdentityParameterError = "UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.";
+        
+        /// <summary>
+        /// The change enumeration interval day parameter
+        /// </summary>
+        public const string ChangeEnumerationIntervalDayParameter = "Interval in days between change enumeration operations for the cloud endpoint. Valid values range from 1 to 20 days.";
     }
 }

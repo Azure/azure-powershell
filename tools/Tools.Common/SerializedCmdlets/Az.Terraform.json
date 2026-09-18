@@ -1,0 +1,2091 @@
+{
+  "ModuleName": "Az.Terraform",
+  "ModuleVersion": "0.1.2",
+  "Cmdlets": [
+    {
+      "VerbName": "Export",
+      "NounName": "AzTerraform",
+      "Name": "Export-AzTerraform",
+      "ClassName": "Export-AzTerraform",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "Export",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatus",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IOperationStatus, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "AdditionalInfo": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo]",
+              "Detail": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail]",
+              "Errors": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail]",
+              "SkippedResource": "System.Collections.Generic.List`1[System.String]",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "PercentComplete": "System.Nullable`1[System.Double]",
+              "Code": "System.String",
+              "Configuration": "System.String",
+              "Id": "System.String",
+              "Message": "System.String",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "Status": "System.String",
+              "Target": "System.String"
+            }
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "SubscriptionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ExportParameter",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IBaseExportModel",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IBaseExportModel, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "FullProperty": "System.Nullable`1[System.Boolean]",
+              "MaskSensitive": "System.Nullable`1[System.Boolean]",
+              "TargetProvider": "System.String",
+              "Type": "System.String"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonFilePath",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonString",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRMContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSObject",
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Break",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelineAppend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "HttpPipelinePrepend",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "NoWait",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Proxy",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Uri",
+            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyCredential",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProxyUseDefaultCredentials",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "Export",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ExportParameter",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IBaseExportModel",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IBaseExportModel, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "FullProperty": "System.Nullable`1[System.Boolean]",
+                    "MaskSensitive": "System.Nullable`1[System.Boolean]",
+                    "TargetProvider": "System.String",
+                    "Type": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ExportViaJsonFilePath",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JsonFilePath",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ExportViaJsonString",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JsonString",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep[], Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoWait",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzTerraformExportQueryObject",
+      "Name": "New-AzTerraformExportQueryObject",
+      "ClassName": "New-AzTerraformExportQueryObject",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportQuery",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportQuery, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "FullProperty": "System.Nullable`1[System.Boolean]",
+              "MaskSensitive": "System.Nullable`1[System.Boolean]",
+              "Recursive": "System.Nullable`1[System.Boolean]",
+              "NamePattern": "System.String",
+              "Query": "System.String",
+              "TargetProvider": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [
+                  {
+                    "Name": "eventListener",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.IEventListener"
+                  }
+                ],
+                "ReturnType": "System.Threading.Tasks.Task"
+              },
+              {
+                "Name": "FromJson",
+                "Parameters": [
+                  {
+                    "Name": "node",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery"
+              },
+              {
+                "Name": "ToJson",
+                "Parameters": [
+                  {
+                    "Name": "container",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonObject"
+                  },
+                  {
+                    "Name": "serializationMode",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SerializationMode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+              },
+              {
+                "Name": "DeserializeFromDictionary",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Collections.IDictionary"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery"
+              },
+              {
+                "Name": "DeserializeFromPSObject",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Management.Automation.PSObject"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery"
+              },
+              {
+                "Name": "FromJsonString",
+                "Parameters": [
+                  {
+                    "Name": "jsonText",
+                    "Type": "System.String"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery"
+              },
+              {
+                "Name": "ToJsonString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Query",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "NamePattern",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Recursive",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FullProperty",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaskSensitive",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "TargetProvider",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Query",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NamePattern",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Recursive",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullProperty",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaskSensitive",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TargetProvider",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzTerraformExportResourceGroupObject",
+      "Name": "New-AzTerraformExportResourceGroupObject",
+      "ClassName": "New-AzTerraformExportResourceGroupObject",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResourceGroup",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResourceGroup, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "FullProperty": "System.Nullable`1[System.Boolean]",
+              "MaskSensitive": "System.Nullable`1[System.Boolean]",
+              "NamePattern": "System.String",
+              "ResourceGroupName": "System.String",
+              "TargetProvider": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [
+                  {
+                    "Name": "eventListener",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.IEventListener"
+                  }
+                ],
+                "ReturnType": "System.Threading.Tasks.Task"
+              },
+              {
+                "Name": "FromJson",
+                "Parameters": [
+                  {
+                    "Name": "node",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup"
+              },
+              {
+                "Name": "ToJson",
+                "Parameters": [
+                  {
+                    "Name": "container",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonObject"
+                  },
+                  {
+                    "Name": "serializationMode",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SerializationMode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+              },
+              {
+                "Name": "DeserializeFromDictionary",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Collections.IDictionary"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup"
+              },
+              {
+                "Name": "DeserializeFromPSObject",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Management.Automation.PSObject"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup"
+              },
+              {
+                "Name": "FromJsonString",
+                "Parameters": [
+                  {
+                    "Name": "jsonText",
+                    "Type": "System.String"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup"
+              },
+              {
+                "Name": "ToJsonString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "NamePattern",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FullProperty",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaskSensitive",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "TargetProvider",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NamePattern",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullProperty",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaskSensitive",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TargetProvider",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzTerraformExportResourceObject",
+      "Name": "New-AzTerraformExportResourceObject",
+      "ClassName": "New-AzTerraformExportResourceObject",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.ExportResource, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ResourceId": "System.Collections.Generic.List`1[System.String]",
+              "FullProperty": "System.Nullable`1[System.Boolean]",
+              "MaskSensitive": "System.Nullable`1[System.Boolean]",
+              "NamePattern": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "TargetProvider": "System.String",
+              "Type": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [
+                  {
+                    "Name": "eventListener",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.IEventListener"
+                  }
+                ],
+                "ReturnType": "System.Threading.Tasks.Task"
+              },
+              {
+                "Name": "FromJson",
+                "Parameters": [
+                  {
+                    "Name": "node",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource"
+              },
+              {
+                "Name": "ToJson",
+                "Parameters": [
+                  {
+                    "Name": "container",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonObject"
+                  },
+                  {
+                    "Name": "serializationMode",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SerializationMode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+              },
+              {
+                "Name": "DeserializeFromDictionary",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Collections.IDictionary"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource"
+              },
+              {
+                "Name": "DeserializeFromPSObject",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Management.Automation.PSObject"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource"
+              },
+              {
+                "Name": "FromJsonString",
+                "Parameters": [
+                  {
+                    "Name": "jsonText",
+                    "Type": "System.String"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource"
+              },
+              {
+                "Name": "ToJsonString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "NamePattern",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceType",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "FullProperty",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MaskSensitive",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "TargetProvider",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NamePattern",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "FullProperty",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MaskSensitive",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Boolean",
+                  "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TargetProvider",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "TypeDictionary": {
+    "System.String": {
+      "Name": "System.String"
+    },
+    "System.Boolean": {
+      "Name": "System.Boolean"
+    },
+    "System.Byte": {
+      "Name": "System.Byte"
+    },
+    "System.SByte": {
+      "Name": "System.SByte"
+    },
+    "System.Int16": {
+      "Name": "System.Int16"
+    },
+    "System.UInt16": {
+      "Name": "System.UInt16"
+    },
+    "System.Int32": {
+      "Name": "System.Int32"
+    },
+    "System.UInt32": {
+      "Name": "System.UInt32"
+    },
+    "System.Int64": {
+      "Name": "System.Int64"
+    },
+    "System.UInt64": {
+      "Name": "System.UInt64"
+    },
+    "System.Single": {
+      "Name": "System.Single"
+    },
+    "System.Double": {
+      "Name": "System.Double"
+    },
+    "System.Decimal": {
+      "Name": "System.Decimal"
+    },
+    "System.Char": {
+      "Name": "System.Char"
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Info": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IAny",
+        "Type": "System.String"
+      }
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IAny": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IAny",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IAny, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "AdditionalInfo": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorAdditionalInfo]",
+        "Detail": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IErrorDetail]",
+        "Code": "System.String",
+        "Message": "System.String",
+        "Target": "System.String"
+      }
+    },
+    "System.Collections.Generic.List`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Nullable`1[System.Double]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Double]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Double"
+      ]
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.SendAsyncStep, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Target": "System.Object",
+        "Method": "System.Reflection.MethodInfo"
+      },
+      "Methods": [
+        {
+          "Name": "Invoke",
+          "Parameters": [
+            {
+              "Name": "request",
+              "Type": "System.Net.Http.HttpRequestMessage"
+            },
+            {
+              "Name": "callback",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.IEventListener"
+            },
+            {
+              "Name": "next",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.ISendAsync"
+            }
+          ],
+          "ReturnType": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]"
+        },
+        {
+          "Name": "BeginInvoke",
+          "Parameters": [
+            {
+              "Name": "request",
+              "Type": "System.Net.Http.HttpRequestMessage"
+            },
+            {
+              "Name": "callback",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.IEventListener"
+            },
+            {
+              "Name": "next",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.ISendAsync"
+            },
+            {
+              "Name": "__callback",
+              "Type": "System.AsyncCallback"
+            },
+            {
+              "Name": "object",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.IAsyncResult"
+        },
+        {
+          "Name": "EndInvoke",
+          "Parameters": [
+            {
+              "Name": "result",
+              "Type": "System.IAsyncResult"
+            }
+          ],
+          "ReturnType": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]"
+        },
+        {
+          "Name": "GetObjectData",
+          "Parameters": [
+            {
+              "Name": "info",
+              "Type": "System.Runtime.Serialization.SerializationInfo"
+            },
+            {
+              "Name": "context",
+              "Type": "System.Runtime.Serialization.StreamingContext"
+            }
+          ],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetInvocationList",
+          "ReturnType": "System.Delegate[]"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "Clone",
+          "ReturnType": "System.Object"
+        },
+        {
+          "Name": "DynamicInvoke",
+          "Parameters": [
+            {
+              "Name": "args",
+              "Type": "System.Object[]"
+            }
+          ],
+          "ReturnType": "System.Object"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "Parameters": [
+            {
+              "Name": "object",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "method",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Object": {
+      "Namespace": "System",
+      "Name": "System.Object",
+      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Reflection.MethodInfo": {
+      "Namespace": "System.Reflection",
+      "Name": "System.Reflection.MethodInfo",
+      "AssemblyQualifiedName": "System.Reflection.MethodInfo, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]": {
+      "Namespace": "System.Threading.Tasks",
+      "Name": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]",
+      "AssemblyQualifiedName": "System.Threading.Tasks.Task`1[[System.Net.Http.HttpResponseMessage, System.Net.Http, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.Net.Http.HttpResponseMessage"
+      ]
+    },
+    "System.Net.Http.HttpResponseMessage": {
+      "Namespace": "System.Net.Http",
+      "Name": "System.Net.Http.HttpResponseMessage",
+      "AssemblyQualifiedName": "System.Net.Http.HttpResponseMessage, System.Net.Http, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    },
+    "System.IAsyncResult": {
+      "Namespace": "System",
+      "Name": "System.IAsyncResult",
+      "AssemblyQualifiedName": "System.IAsyncResult, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Delegate[]": {
+      "Namespace": "System",
+      "Name": "System.Delegate[]",
+      "AssemblyQualifiedName": "System.Delegate[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "ElementType": "System.Delegate"
+    },
+    "System.Delegate": {
+      "Namespace": "System",
+      "Name": "System.Delegate",
+      "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "System.Threading.Tasks.Task": {
+      "Namespace": "System.Threading.Tasks",
+      "Name": "System.Threading.Tasks.Task",
+      "AssemblyQualifiedName": "System.Threading.Tasks.Task, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportQuery, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Recursive": "System.Nullable`1[System.Boolean]",
+        "Query": "System.String",
+        "NamePattern": "System.String"
+      }
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Item": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Runtime.Json.JsonNode"
+      },
+      "Methods": [
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResourceGroup, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "NamePattern": "System.String",
+        "ResourceGroupName": "System.String"
+      }
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Terraform.Models.IExportResource, Az.Terraform.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "ResourceId": "System.Collections.Generic.List`1[System.String]",
+        "NamePattern": "System.String",
+        "ResourceName": "System.String",
+        "ResourceType": "System.String"
+      }
+    }
+  }
+}

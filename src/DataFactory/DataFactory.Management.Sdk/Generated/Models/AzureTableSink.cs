@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureTableSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -63,9 +66,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="azureTableInsertType">Azure Table insert type. Type: string (or Expression with resultType
         /// string).
         /// </param>
-        public AzureTableSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object azureTableDefaultPartitionKeyValue = default(object), object azureTablePartitionKeyName = default(object), object azureTableRowKeyName = default(object), object azureTableInsertType = default(object))
+        public AzureTableSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object azureTableDefaultPartitionKeyValue = default(object), object azureTablePartitionKeyName = default(object), object azureTableRowKeyName = default(object), object azureTableInsertType = default(object))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.AzureTableDefaultPartitionKeyValue = azureTableDefaultPartitionKeyValue;
             this.AzureTablePartitionKeyName = azureTablePartitionKeyName;

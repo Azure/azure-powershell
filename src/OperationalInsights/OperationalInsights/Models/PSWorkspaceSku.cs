@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
             if ((this.Capacity != null || this.Capacity != 0) && serviceTrier.Equals(AllowedWorkspaceServiceTiers.CapacityReservation))
             {
-                throw new PSArgumentException($"Failed to set Capacity for SKU: {serviceTrier}, Capacity is only supportted for {AllowedWorkspaceServiceTiers.CapacityReservation} SKU");
+                throw new PSArgumentException($"Failed to set Capacity for SKU: {serviceTrier}, Capacity is only supported for {AllowedWorkspaceServiceTiers.CapacityReservation} SKU");
             }
 
             if (this.Capacity != null && this.Capacity < 1000)

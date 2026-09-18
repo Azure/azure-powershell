@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string RoutingRegistryName { get; set; }
 
+        [JsonProperty(Order = 2)]
+        public List<PSPeeringPrefixConfig> AdvertisedPublicPrefixInfo { get; set; }
+
         [JsonIgnore]
         public string AdvertisedPublicPrefixesSText
         {
@@ -52,6 +55,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AdvertisedCommunitiesSText
         {
             get { return JsonConvert.SerializeObject(AdvertisedCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AdvertisedPublicPrefixInfoSText
+        {
+            get { return JsonConvert.SerializeObject(AdvertisedPublicPrefixInfo, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

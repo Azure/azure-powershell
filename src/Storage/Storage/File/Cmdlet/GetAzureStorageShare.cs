@@ -16,17 +16,15 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.Azure.Storage.File;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using global::Azure.Storage.Files.Shares.Models;
     using global::Azure.Storage.Files.Shares;
     using global::Azure;
+
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     [OutputType(typeof(AzureStorageFileShare))]
     public class GetAzureStorageShare : AzureStorageFileCmdletBase
@@ -50,8 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         Mandatory = false,
         ParameterSetName = Constants.SpecificParameterSetName,
         HelpMessage = "SnapshotTime of the file share snapshot to be received.")]
-                [ValidateNotNullOrEmpty]
-                public DateTimeOffset? SnapshotTime { get; set; }
+        [ValidateNotNullOrEmpty]
+        public DateTimeOffset? SnapshotTime { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Include deleted shares, by default get share won't include deleted shares",

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="failoverDirection">The failover direction.
-        /// Possible values include: 'PrimaryToRecovery', 'RecoveryToPrimary'</param>
+        /// Possible values include: &#39;PrimaryToRecovery&#39;, &#39;RecoveryToPrimary&#39;</param>
 
         /// <param name="sourceSiteOperations">A value indicating whether source site operations are required.
-        /// Possible values include: 'Required', 'NotRequired'</param>
+        /// Possible values include: &#39;Required&#39;, &#39;NotRequired&#39;</param>
 
         /// <param name="providerSpecificDetails">The provider specific properties.
         /// </param>

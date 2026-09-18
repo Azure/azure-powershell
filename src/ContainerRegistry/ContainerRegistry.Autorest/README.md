@@ -53,14 +53,9 @@ try-require:
 module-version: 0.1.0
 title: ContainerRegistry
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
 # Remove cmdlet, Private link related resource should be ignored. 
@@ -69,7 +64,10 @@ directive:
   hide: true
 # Remove the unexpanded parameter set
 - where:
-    variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaIdentity$|^ImportViaIdentity$|^ImportViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$|^PingViaIdentity$|^Check$|^RegenerateViaIdentity$|^Generate$|^GenerateViaIdentity$
+    variant: ^(Create|Update|Import|Check|Generate)(?!.*?(Expanded|JsonFilePath|JsonString))
+  remove: true
+- where:
+    variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^ImportViaIdentityExpanded$|^CheckViaIdentityExpanded$
   remove: true
 - where:
     subject: PrivateEndpointConnection
@@ -125,7 +123,6 @@ directive:
   set:
     parameter-name: Sku
 
-    
 - where:
     parameter-name: ServiceUri
   set:
@@ -324,3 +321,8 @@ directive:
   set:
     preview-announcement:
       preview-message: This is a preview version of ContainerRegistry. Let us know if you run into any issues.
+
+- model-cmdlet:
+    - model-name: IPRule
+      cmdlet-name: New-AzContainerRegistryIPRuleObject
+```

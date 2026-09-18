@@ -15,20 +15,23 @@ Creates a routing intent resource associated with a VirtualHub.
 ### ByVirtualHubName (Default)
 ```
 New-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- -RoutingPolicy <PSRoutingPolicy[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -RoutingPolicy <PSRoutingPolicy[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 New-AzRoutingIntent -ParentObject <PSVirtualHub> -Name <String> -RoutingPolicy <PSRoutingPolicy[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 New-AzRoutingIntent -ParentResourceId <String> -Name <String> -RoutingPolicy <PSRoutingPolicy[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,11 +92,41 @@ This command creates a routing intent of the virtual hub.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingPolicy
-The list of routing policies for this rouoting intent resource.
+The list of routing policies for this routing intent resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingPolicy[]

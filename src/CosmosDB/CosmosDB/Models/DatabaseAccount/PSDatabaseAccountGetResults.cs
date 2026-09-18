@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableMultipleWriteLocations = databaseAccountGetResults.EnableMultipleWriteLocations;
             ConnectorOffer = databaseAccountGetResults.ConnectorOffer;
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
+            DisableLocalAuth = databaseAccountGetResults.DisableLocalAuth;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
             CustomerManagedKeyStatus = databaseAccountGetResults.CustomerManagedKeyStatus;
@@ -69,6 +70,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
+            EnablePerRegionPerPartitionAutoscale = databaseAccountGetResults.EnablePerRegionPerPartitionAutoscale;
+            EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
+            DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
         }
 
         //
@@ -145,7 +149,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets the offer type for the Cosmos DB database account. Default value: Standard.
         //     Possible values include: 'Standard'
-        public DatabaseAccountOfferType? DatabaseAccountOfferType { get; }
+        public DatabaseAccountGetPropertiesDatabaseAccountOfferType? DatabaseAccountOfferType { get; }
         //
         // Summary:
         //     Gets the connection endpoint for the Cosmos DB database account.
@@ -168,6 +172,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets disable write operations on metadata resources (databases, containers,
         //     throughput) via account keys
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
+        //
+        // Summary:
+        //     Gets or sets opt-out of local authentication and ensure only MSI and AAD can
+        //     be used exclusively for authentication.
+        public bool? DisableLocalAuth { get; set; }
         //
         // Summary:
         //     Gets or sets Whether or not public endpoint access is allowed for this server.
@@ -240,5 +249,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
         public string MinimalTlsVersion { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Dynamic Scaling (Per Region Per Partition Autoscale) is enabled.
+        public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Priority Based Execution is enabled.
+        public bool? EnablePriorityBasedExecution { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
+        public string DefaultPriorityLevel { get; set; }
     }
 }

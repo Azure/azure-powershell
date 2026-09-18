@@ -109,7 +109,7 @@ echo "ContinuationToken: `t`t`t`t`t$($token)"
 echo "FailedEntries:"$($FailedEntries | ft)
 ```
 
-This script sets ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 200 in this script.
+This script sets ACL recursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 200 in this script.
 
 ### Example 4: Set ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContinueOnFailure
-Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
+Set this parameter to ignore failures and continue processing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

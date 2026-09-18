@@ -14,8 +14,8 @@ Publishes a Bicep file to a registry.
 
 ```
 Publish-AzBicepModule -FilePath <String> -Target <String> [-DocumentationUri <String>] [-WithSource] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,36 @@ Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}
 Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`, overwriting existing version.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -114,21 +144,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Target
 The target location where the bicep file will be published.
 
@@ -145,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -WithSource
-[Experimental] Publish source code with the module.
+Publish source code with the module.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -17,11 +17,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -53,16 +53,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the file would be uploaded to.")]
-        [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "ShareClient object indicated the share where the file would be uploaded to.")]
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
@@ -73,17 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be uploaded.")]
-        [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be uploaded.")]
+            HelpMessage = "ShareDirectoryClient object indicated the directory where the file would be uploaded.")]
         [ValidateNotNull]
         public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
@@ -101,6 +81,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Path to the cloud file which would be uploaded to.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Files. The mode permissions to be set on the file. Symbolic (rwxrw-rw-) is supported.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern("([r-][w-][xsS-]){2}([r-][w-][xtT-])")]
+        public string FileMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Files. The owner user identifier (UID) to be set on the file. The default value is 0 (root).")]
+        [ValidateNotNullOrEmpty]
+        public string Owner { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Files. The owner group identifier (GID) to be set on the file. The default value is 0 (root group).")]
+        [ValidateNotNullOrEmpty]
+        public string Group { get; set; }
 
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
@@ -135,30 +128,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
             long fileSize = localFile.Length;
 
-            // if FIPS policy is enabled, must use native MD5 for DMlib. 
-            if (fipsEnabled)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                if (fileSize < sizeTB)
-                {
-                    CloudStorageAccount.UseV1MD5 = false;
-                }
-                else // use Track2 SDK
-                {
-                    WriteWarning("The uploaded file won't have Content MD5 hash, since caculate MD5 hash fail, most possiblly caused by FIPS is enabled on this machine.");
-                }
+                CloudStorageAccount.UseV1MD5 = false;
             }
 
             bool isDirectory;
             string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
 
+            var cloudFileToBeUploaded =
+                        BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+            var fileClientToBeUploaded = BuildShareFileClientInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+
+
             this.RunTask(async taskId =>
             {
-                if (fileSize <= sizeTB && !WithOauthCredential() && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(this.Path)))
-                {
-                    // Step 2: Build the CloudFile object which pointed to the
-                    // destination cloud file.
-                    var cloudFileToBeUploaded =
-                        BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+                if (fileSize <= sizeTB 
+                    && !WithOauthCredential() 
+                    && (this.DisAllowTrailingDot.IsPresent || !Util.PathContainsTrailingDot(fileClientToBeUploaded.Path))
+                    && this.FileMode == null && this.Owner == null && this.Group == null)
+                {                    
                     if (ShouldProcess(cloudFileToBeUploaded.Name, "Set file content"))
                     {
                         var progressRecord = new ProgressRecord(
@@ -183,14 +172,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         if (this.PassThru)
                         {
                             // TODO: is get attributes necessary?
-                            cloudFileToBeUploaded.FetchAttributes();
-                            WriteCloudFileObject(taskId, (AzureStorageContext)this.Context, cloudFileToBeUploaded);
+                            ShareFileProperties fileProperties = fileClientToBeUploaded.GetProperties(this.CmdletCancellationToken).Value;
+                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClientToBeUploaded, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
                         }
                     }
                 }
                 else // use Track2 SDK
                 {
-                    var fileClientToBeUploaded = BuildShareFileClientInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+                   
                     if (ShouldProcess(fileClientToBeUploaded.Path, "Set file content"))
                     {
                         var progressRecord = new ProgressRecord(
@@ -210,7 +199,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             return;
                         }
 
-                        await fileClient.CreateAsync(fileSize, cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
+                        ShareFileCreateOptions createOptions = new ShareFileCreateOptions();
+                        // set nfs properties
+                        if (this.FileMode != null || this.Owner != null || this.Group != null)
+                        {
+                            createOptions.PosixProperties = new FilePosixProperties()
+                            {
+                                FileMode = this.FileMode is null ? null : NfsFileMode.ParseSymbolicFileMode(this.FileMode),
+                                Group = this.Group,
+                                Owner = this.Owner
+                            };
+                        }
+                        // set smb properties
+                        if (context != null && context.PreserveSMBAttribute.IsPresent)
+                        {
+                            FileInfo sourceFileInfo = new FileInfo(localFile.FullName);
+                            createOptions.SmbProperties = new FileSmbProperties();
+                            createOptions.SmbProperties.FileCreatedOn = sourceFileInfo.CreationTimeUtc;
+                            createOptions.SmbProperties.FileLastWrittenOn = sourceFileInfo.LastWriteTimeUtc;
+                            createOptions.SmbProperties.FileAttributes = Util.LocalAttributesToAzureFileNtfsAttributes(sourceFileInfo.Attributes);
+                        }
+
+                        await fileClient.CreateAsync(fileSize,
+                            createOptions,
+                            cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
 
                         //Prepare progress Handler
                         IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
@@ -229,12 +241,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                         List<Task> runningTasks = new List<Task>();
 
-                        IncrementalHash hash = null;
-                        if (!fipsEnabled)
-                        {
-                            hash = IncrementalHash.CreateHash(HashAlgorithmName.MD5);
-                        }
-
                         using (FileStream stream = File.OpenRead(localFile.FullName))
                         {
                             byte[] buffer = null;
@@ -246,10 +252,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                                 buffer = new byte[targetBlockSize];
 
                                 int actualBlockSize = await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)targetBlockSize);
-                                if (!fipsEnabled && hash != null)
-                                {
-                                    hash.AppendData(buffer, 0, actualBlockSize);
-                                }
 
                                 Task task = UploadFileRangAsync(fileClient,
                                     new HttpRange(offset, actualBlockSize),
@@ -281,30 +283,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             }
                             // Wait for all upload range tasks finished
                             await Task.WhenAll(runningTasks).ConfigureAwait(false);
-                        }
-
-                        // Need set file properties
-                        if ((!fipsEnabled && hash != null) || (context != null && context.PreserveSMBAttribute.IsPresent))
-                        {
-                            ShareFileHttpHeaders header = null;
-                            if (!fipsEnabled && hash != null)
-                            {
-                                header = new ShareFileHttpHeaders();
-                                header.ContentHash = hash.GetHashAndReset();
-                            }
-
-                            FileSmbProperties smbProperties = null;
-                            if (context != null && context.PreserveSMBAttribute.IsPresent)
-                            {
-                                FileInfo sourceFileInfo = new FileInfo(localFile.FullName);
-                                smbProperties = new FileSmbProperties();
-                                smbProperties.FileCreatedOn = sourceFileInfo.CreationTimeUtc;
-                                smbProperties.FileLastWrittenOn = sourceFileInfo.LastWriteTimeUtc;
-                                smbProperties.FileAttributes = Util.LocalAttributesToAzureFileNtfsAttributes(File.GetAttributes(localFile.FullName));
-                            }
-
-                            // set file header and attributes to the file
-                            fileClient.SetHttpHeaders(httpHeaders: header, smbProperties: smbProperties);
                         }
 
                         if (this.PassThru)
@@ -341,13 +319,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case LocalConstants.DirectoryParameterSetName:
-                    baseDirectory = this.Directory;
-                    // Build and set storage context for the output object when
-                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                    if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirectory = AzureStorageFileDirectory.GetTrack1FileDirClient(this.ShareDirectoryClient, ((AzureStorageContext)this.Context).StorageAccount.Credentials, ClientOptions);
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -356,13 +329,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case LocalConstants.ShareParameterSetName:
-                    baseDirectory = this.Share.GetRootDirectoryReference();
-                    // Build and set storage context for the output object when
-                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirectory = AzureStorageFileDirectory.GetTrack1FileDirClient(this.ShareClient.GetRootDirectoryClient(), ((AzureStorageContext)this.Context).StorageAccount.Credentials, ClientOptions);
                     break;
 
                 default:
@@ -432,14 +400,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case LocalConstants.DirectoryParameterSetName:
-                    if (this.ShareDirectoryClient != null)
-                    {
-                        baseDirectory = this.ShareDirectoryClient;
-                    }
-                    else
-                    {
-                        baseDirectory = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-                    }
+                    baseDirectory = this.ShareDirectoryClient;
                     break;
 
                 case LocalConstants.ShareNameParameterSetName:
@@ -452,14 +413,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case LocalConstants.ShareParameterSetName:
-                    if (this.ShareClient != null)
-                    {
-                        baseDirectory = this.ShareClient.GetRootDirectoryClient();
-                    }
-                    else
-                    {
-                        baseDirectory = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-                    }
+                    baseDirectory = this.ShareClient.GetRootDirectoryClient();
                     break;
 
                 default:
@@ -515,14 +469,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
         }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 context = new WindowsOnlyParameters();
                 return context;
             }
-            else return null;
+            return base.GetDynamicParameters();
         }
         private WindowsOnlyParameters context;
     }

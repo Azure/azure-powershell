@@ -29,10 +29,10 @@ function Test-SetGatewayCredential{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		$username = "admin"
-		$textPassword= "YourPw!00953"
+		$textPassword= "Sanitized"
 		$password = ConvertTo-SecureString $textPassword -AsPlainText -Force
 		$credential = New-Object System.Management.Automation.PSCredential($username, $password)
 
@@ -43,7 +43,6 @@ function Test-SetGatewayCredential{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

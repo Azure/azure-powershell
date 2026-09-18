@@ -1,7 +1,7 @@
 ---
 external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
-online version: https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
+online version: https://learn.microsoft.com/powershell/module/Az.Orbital/new-azorbitalspacecraftlinkobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for SpacecraftLink.
 ## SYNTAX
 
 ```
-New-AzOrbitalSpacecraftLinkObject -BandwidthMHz <Single> -CenterFrequencyMHz <Single> -Direction <Direction>
- -Name <String> -Polarization <Polarization> [<CommonParameters>]
+New-AzOrbitalSpacecraftLinkObject -BandwidthMHz <Single> -CenterFrequencyMHz <Single> -Direction <String>
+ -Name <String> -Polarization <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,10 +68,10 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-Direction (uplink or downlink).
+Direction (Uplink or Downlink).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,11 +98,12 @@ Accept wildcard characters: False
 ```
 
 ### -Polarization
-polarization.
-eg (RHCP, LHCP).
+Polarization.
+e.g.
+(RHCP, LHCP).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink
 
 ## NOTES
 

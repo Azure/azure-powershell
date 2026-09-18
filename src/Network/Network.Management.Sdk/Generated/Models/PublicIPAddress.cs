@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the public IP address resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="natGateway">The NatGateway for the Public IP address.
         /// </param>
@@ -101,7 +102,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="deleteOption">Specify what happens to the public IP address when the VM using it is
         /// deleted
         /// Possible values include: &#39;Delete&#39;, &#39;Detach&#39;</param>
-        public PublicIPAddress(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPAddressSku sku = default(PublicIPAddressSku), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), IPConfiguration ipConfiguration = default(IPConfiguration), DdosSettings ddosSettings = default(DdosSettings), string provisioningState = default(string), NatGateway natGateway = default(NatGateway), string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), PublicIPAddress servicePublicIPAddress = default(PublicIPAddress), string migrationPhase = default(string), PublicIPAddress linkedPublicIPAddress = default(PublicIPAddress), string deleteOption = default(string))
+
+        /// <param name="upgradedToV2">Whether the public IP address SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </param>
+        public PublicIPAddress(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPAddressSku sku = default(PublicIPAddressSku), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), IPConfiguration ipConfiguration = default(IPConfiguration), DdosSettings ddosSettings = default(DdosSettings), string provisioningState = default(string), NatGateway natGateway = default(NatGateway), string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), PublicIPAddress servicePublicIPAddress = default(PublicIPAddress), string migrationPhase = default(string), PublicIPAddress linkedPublicIPAddress = default(PublicIPAddress), string deleteOption = default(string), bool? upgradedToV2 = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -125,6 +130,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.MigrationPhase = migrationPhase;
             this.LinkedPublicIPAddress = linkedPublicIPAddress;
             this.DeleteOption = deleteOption;
+            this.UpgradedToV2 = upgradedToV2;
             CustomInit();
         }
 
@@ -174,7 +180,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public DdosSettings DdosSettings {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the public IP address resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the public IP address resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -261,5 +267,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.deleteOption")]
         public string DeleteOption {get; set; }
+
+        /// <summary>
+        /// Gets whether the public IP address SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upgradedToV2")]
+        public bool? UpgradedToV2 {get; private set; }
     }
 }

@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Added ChangeSafety Support
+
+## Version 0.1.3
+* Upgraded nuget package to signed package.
+
 ## Version 0.1.2
 * Removed the outdated deps.json file.
 

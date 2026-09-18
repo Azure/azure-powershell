@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ResourceMoveChangeHistory
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridresourcemovechangehistoryobject
 #>
 function New-AzEventGridResourceMoveChangeHistoryObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ResourceMoveChangeHistory')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

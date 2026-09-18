@@ -18,7 +18,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Tag                          : {
                                }
-TenantId                     : 11111111-2222-3333-4444-123456789123
+TenantId                     : 00001111-aaaa-2222-bbbb-3333cccc4444
 Type                         : microsoft.azuresphere/catalogs
 ```
 

@@ -14,7 +14,7 @@ Get the access keys of the CommunicationService resource.
 
 ```
 Get-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Get the access keys of the CommunicationService resource.
 
 ## EXAMPLES
 
-### Example 1: Fetch the Key for the specified Communcation service
+### Example 1: Fetch the Key for the specified Communication service
 ```powershell
 Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
@@ -34,7 +34,7 @@ PrimaryConnectionString              PrimaryKey            SecondaryConnectionSt
 endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-secondary-endpoint>   <example-secondarykey>
 ```
 
-Displays the ConnectionString and Key for the specified Communcation service.
+Displays the ConnectionString and Key for the specified Communication service.
 
 ## PARAMETERS
 
@@ -61,21 +61,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -154,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceKeys
 
 ## NOTES
 

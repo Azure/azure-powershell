@@ -1,6 +1,6 @@
 ### Example 1: Create AdlsGen1 Msi scan object
 ```powershell
-New-AzPurviewAdlsGen1MsiScanObject -Kind 'AdlsGen1Msi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen1MsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
 ```
 
 ```output

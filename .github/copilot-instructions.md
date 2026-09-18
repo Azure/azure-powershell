@@ -1,0 +1,271 @@
+# Azure PowerShell Repository
+
+Azure PowerShell is a collection of 200+ PowerShell modules for managing Azure resources. The repository contains modules with two types of projects: SDK-based projects and AutoRest-generated projects, all built using .NET and MSBuild.
+
+## Architecture Overview
+
+Azure PowerShell consists of **two main development approaches for projects**:
+
+1. **SDK-based projects** - Hand-written C# cmdlets with custom business logic
+2. **AutoRest-based projects** - Auto-generated from OpenAPI specs via AutoRest PowerShell (mostly newer Azure services)
+
+Always check project type before making changes - SDK vs AutoRest projects have different development patterns.
+
+### Modules vs Projects
+- **Module**: A complete PowerShell module (e.g., `Az.Compute`) that can consist of multiple projects
+- **Project**: Individual C# project within a module, developed with one approach (SDK-based OR AutoRest)
+- **Hybrid Module**: Contains both SDK-based and AutoRest projects (e.g., `Az.Resources` with both approaches)
+
+Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
+
+## Working Effectively
+
+### Prerequisites and Setup
+First-time setup requires these exact steps:
+- **CRITICAL**: Ensure you have network connectivity to Azure DevOps package feeds. Build failures with "Name or service not known" errors indicate firewall/connectivity issues that must be resolved before building.
+- Install .NET SDK 8.0+ and .NET Framework Dev Pack 4.7.2+: `dotnet --version` should show 8.0+
+- Install PowerShell 7+: `pwsh --version` should show 7.0+
+- Install platyPS module: `pwsh -c "Install-Module -Name platyPS -Force -Scope CurrentUser"`
+- Install PSScriptAnalyzer: `pwsh -c "Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser"`
+- Set PowerShell execution policy: `pwsh -c "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser"`
+
+### Building the Repository
+**NEVER CANCEL** any build commands - they may take 45-60 minutes to complete.
+
+Core build commands (run from repository root):
+- Clean: `dotnet msbuild build.proj /t:Clean` -- takes ~15 seconds
+- Full build: `dotnet msbuild build.proj` -- takes 45-60 minutes. NEVER CANCEL. Set timeout to 90+ minutes.
+- Build specific module: `dotnet msbuild build.proj /p:Scope=Accounts` -- takes 15-30 minutes
+- Generate help: `dotnet msbuild build.proj /t:GenerateHelp` -- takes 10-15 minutes. NEVER CANCEL. Set timeout to 30+ minutes.
+- Static analysis: `dotnet msbuild build.proj /t:StaticAnalysis` -- takes 10-15 minutes. NEVER CANCEL. Set timeout to 30+ minutes.
+- Run tests: `dotnet msbuild build.proj /t:Test` -- takes 15+ minutes. NEVER CANCEL. Set timeout to 45+ minutes.
+
+Alternative PowerShell build commands:
+- Build single module: `pwsh -c "./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(pwd) -Configuration Debug -TargetModule Accounts"` -- takes 5-15 minutes depending on module size
+
+### Testing
+**NEVER CANCEL** test commands - they can take 15+ minutes.
+
+Test execution patterns:
+- All tests: `dotnet msbuild build.proj /t:Test` -- takes 15+ minutes. NEVER CANCEL.
+- Core tests only: `dotnet msbuild build.proj /t:Test /p:TestsToRun=Core` -- tests Compute, Network, Resources, Sql, Websites modules
+- Individual module tests: Navigate to module test directory and run `dotnet test` or use Pester
+
+Test framework uses .NET 6 target framework and Azure Test Framework for recording/playback of HTTP requests.
+
+### Manual Validation Scenarios
+**CRITICAL**: Always perform manual validation after making changes. Simply building is not sufficient.
+
+**Core validation steps:**
+1. Build succeeds: `dotnet msbuild build.proj /p:Scope=YourModule` 
+2. Static analysis passes: `dotnet msbuild build.proj /t:StaticAnalysis`  
+3. Help generation succeeds: `dotnet msbuild build.proj /t:GenerateHelp`
+4. Tests pass: Navigate to test directory and run tests for your module
+
+**Manual testing scenarios:**
+After building, always test real functionality:
+```powershell
+# Import the built module
+Import-Module ./artifacts/Debug/Az.YourModule/Az.YourModule.psd1
+
+# Verify cmdlets are available  
+Get-Command -Module Az.YourModule
+
+# Test a basic cmdlet workflow (example for Compute module)
+# Get-AzVM -ResourceGroupName "test-rg" 
+# New-AzVM -Name "test-vm" -ResourceGroupName "test-rg" -Location "East US" -Image "Win2019Datacenter" -Credential (Get-Credential)
+
+# For AutoRest projects, test generated cmdlets
+# Get-AzQuota -SubscriptionId "your-subscription-id"
+
+# Verify help is working
+Get-Help Your-AzCmdlet -Examples
+
+# Test parameter validation and error handling
+Get-AzVM -InvalidParameterName "test"
+```
+
+**Required pre-commit validation workflow:**
+1. Clean and build your module: `dotnet msbuild build.proj /t:Clean; dotnet msbuild build.proj /p:Scope=YourModule`
+2. Run static analysis: `dotnet msbuild build.proj /t:StaticAnalysis` 
+3. Import and manually test your cmdlets using realistic scenarios
+4. Run your module's specific tests: `cd src/YourModule/YourModule.Test; dotnet test`
+5. Update ChangeLog.md files with your changes
+
+## Common Build Issues and Workarounds
+
+### Network Connectivity Issues
+**CRITICAL**: If you see "Failed to download package" or "Name or service not known" errors:
+- This indicates firewall/proxy issues blocking access to Azure DevOps package feeds
+- Affected URLs: `*.vsblob.vsassets.io`, `pkgs.dev.azure.com`
+- Workaround 1: Configure corporate proxy/firewall to allow these domains
+- Workaround 2: Use VPN or different network environment  
+- **DO NOT** attempt to modify NuGet.Config - this will break the build
+
+### Incomplete Builds
+If build appears to hang or shows no progress:
+- **DO NOT CANCEL** - builds can take 45+ minutes with periods of no visible progress
+- Monitor system resources - builds are CPU and network intensive
+- Check network connectivity if stuck on package restore
+- Builds may pause during package downloads or complex compilation steps
+
+### Module-Specific Issues
+- Help generation requires platyPS module to be installed and functioning
+- Static analysis requires PSScriptAnalyzer module  
+- Some projects depend on specific Azure SDK versions from Azure DevOps feeds
+- Missing ChangeLog.md updates will cause PR validation to fail
+
+### Build Artifacts Issues
+If you see errors like "Cannot find path '/artifacts/Debug'":
+- This means the build didn't complete successfully
+- Run a clean build: `dotnet msbuild build.proj /t:Clean; dotnet msbuild build.proj`
+- Check for network connectivity issues during package restore
+
+### PowerShell Module Import Issues
+If `Import-Module` fails after build:
+- Ensure the build completed successfully and artifacts exist in `/artifacts/Debug/`
+- Try restarting PowerShell session to clear any cached modules
+- Use `-Force` parameter: `Import-Module ./artifacts/Debug/Az.YourModule/Az.YourModule.psd1 -Force`
+
+## Repository Structure and Navigation
+
+### Key Directories
+- `/src/` - All modules, containing both SDK-based projects and AutoRest-based projects
+- `/generated/` - Pure generated code for AutoRest-based projects  
+- `/tools/` - Build scripts, static analysis, testing utilities
+- `/documentation/` - Developer guides, design guidelines, testing docs
+- `/artifacts/` - Build outputs (created during build process)
+
+### Project Types
+Two types of projects with different development approaches:
+
+**SDK-based projects** (in `/src/`):
+- Hand-written C# cmdlets using Azure .NET SDKs
+- Example: `/src/Accounts/`, `/src/Compute/`
+- Build using main repository build system
+- Follow patterns in `/documentation/development-docs/azure-powershell-developer-guide.md`
+
+**AutoRest-generated projects** (in `/generated/` and some `/src/`):
+- Generated from REST API specifications
+- Example: `/generated/Cdn/Cdn.Autorest/`
+- Have individual build scripts: `build-module.ps1`, `test-module.ps1`, `pack-module.ps1`
+- Follow patterns in individual module `how-to.md` files
+
+**Hybrid modules**: Some modules contain both SDK-based and AutoRest-based projects, requiring understanding of both approaches.
+
+### Important Files
+- `build.proj` - Main MSBuild file for entire repository
+- `NuGet.Config` - Package source configuration (DO NOT MODIFY)
+- `CONTRIBUTING.md` - Contribution guidelines and PR requirements
+- `ChangeLog.md` - Release notes (must be updated for changes)
+
+### Development Workflow Files
+- `/tools/BuildScripts/BuildModules.ps1` - Core module build automation
+- `/tools/GenerateHelp.ps1` - Help documentation generation
+- `/tools/StaticAnalysis/` - Code analysis and validation tools
+- `/tools/Test/` - Testing infrastructure and utilities
+
+## Typical Development Tasks
+
+### Adding a New Cmdlet
+1. Navigate to appropriate module directory in `/src/`
+2. Add cmdlet class following existing patterns
+3. Update module manifest (`.psd1`) if needed
+4. Build module: `dotnet msbuild build.proj /p:Scope=YourModule`
+5. Generate help: `dotnet msbuild build.proj /t:GenerateHelp`
+6. Add tests following patterns in `ModuleName.Test` directory
+7. Update `ChangeLog.md` with your changes
+
+### Individual Module Development
+For individual module work when you don't need to build the entire repository:
+
+**SDK-based projects** (in `/src/`):
+```bash
+# Build just your module (much faster than full repository build)
+dotnet msbuild build.proj /p:Scope=YourModule
+
+# Build with dependencies (recommended)
+dotnet msbuild build.proj /p:TargetModule=YourModule
+```
+
+**AutoRest projects** (in `/src/` and `/generated/`):
+```bash
+# Most AutoRest projects are built as part of the main build system
+dotnet msbuild build.proj /p:Scope=YourModule
+
+# Some generated projects have individual test scripts
+cd generated/YourModule/YourModule.Autorest
+./test-module.ps1 -Playback    # Run tests in playback mode
+./test-module.ps1 -Record      # Record new tests (requires Azure connection)
+```
+
+**Module testing patterns:**
+```bash
+# Run tests for specific module 
+cd src/YourModule/YourModule.Test
+dotnet test
+
+# For Pester-based tests
+cd src/YourModule/YourModule.Test  
+pwsh -c "Invoke-Pester"
+```
+
+### Running Specific Module Tests
+1. Navigate to module test directory: `cd src/YourModule/YourModule.Test`
+2. Set up test environment (see `/documentation/testing-docs/using-azure-test-framework.md`)
+3. Run tests: `dotnet test` or use PowerShell/Pester patterns
+4. Record new tests in "Record" mode, run existing tests in "Playback" mode
+
+### Pre-commit Validation
+Always run before submitting PR:
+1. `dotnet msbuild build.proj /t:Clean`
+2. `dotnet msbuild build.proj /p:Scope=YourModule` -- wait for completion, 15-30 minutes
+3. `dotnet msbuild build.proj /t:StaticAnalysis` -- wait for completion, 10-15 minutes  
+4. Test your specific changes manually by importing and using the cmdlets
+5. Update ChangeLog.md with your changes
+
+## Timing Expectations
+**CRITICAL**: All timing estimates include buffers. NEVER CANCEL commands before these timeouts:
+
+| Command | Expected Time | Timeout Setting |
+|---------|---------------|-----------------|
+| Clean build | 15 seconds | 60 seconds |
+| Full repository build | 45-60 minutes | 90 minutes |
+| Single module build | 15-30 minutes | 45 minutes |
+| Help generation | 10-15 minutes | 30 minutes |
+| Static analysis | 10-15 minutes | 30 minutes |  
+| Test execution | 15+ minutes | 45 minutes |
+
+**NEVER CANCEL** any build or test command before the timeout period. Builds may show no progress for extended periods while downloading packages or compiling.
+
+## Files to Always Update
+- **ChangeLog.md** - Add entry under "## Upcoming Release" section
+- **Module-specific ChangeLog.md** - Located at `src/YourModule/YourModule/ChangeLog.md`
+- **Help documentation** - Regenerate using help generation commands
+- **Tests** - Add or update tests for new functionality
+
+## Common Command Reference
+```bash
+# Repository setup
+dotnet --version                    # Check .NET version (need 8.0+)
+pwsh --version                     # Check PowerShell version (need 7.0+)
+
+# Build commands  
+dotnet msbuild build.proj /t:Clean                    # Clean build
+dotnet msbuild build.proj                             # Full build (45-60 min)
+dotnet msbuild build.proj /p:Scope=ModuleName         # Build specific module
+dotnet msbuild build.proj /t:GenerateHelp             # Generate help (10-15 min)  
+dotnet msbuild build.proj /t:StaticAnalysis           # Run static analysis (10-15 min)
+dotnet msbuild build.proj /t:Test                     # Run tests (15+ min)
+
+# Module development
+pwsh -c "Import-Module ./artifacts/Debug/Az.ModuleName/Az.ModuleName.psd1"
+pwsh -c "Get-Command -Module Az.ModuleName"
+
+# Individual module builds (for AutoRest projects)
+cd generated/ModuleName/ModuleName.Autorest
+./build-module.ps1                 # If available
+./test-module.ps1                  # If available
+```
+
+Remember: This is a large, complex repository with extensive build times. Plan accordingly and never cancel long-running operations.

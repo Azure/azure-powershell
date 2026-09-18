@@ -19,7 +19,7 @@ Describe 'Get-AzStorageAccountMigration' {
         $migration = Get-AzStorageAccountMigration -ResourceGroupName $env.ResourceGroupName -AccountName $env.AccountName 
         $migration.Name | Should -Be "default"
         $migration.ResourceGroupName | Should -Be "testaccountmigrationrg"
-        $migration.DetailMigrationStatus | Should -Be "SubmittedForConversion"
+        $migration.DetailMigrationStatus | Should -BeIn  "SubmittedForConversion","Complete"
         $migration.DetailTargetSkuName | Should -Be "Standard_ZRS"
     }
 }

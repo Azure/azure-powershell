@@ -15,27 +15,27 @@ Get a AutonomousDatabaseNationalCharacterSet
 ### List (Default)
 ```
 Get-AzOracleAutonomousDatabaseNationalCharacterSet -Location <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityLocation
 ```
 Get-AzOracleAutonomousDatabaseNationalCharacterSet -Adbsncharsetname <String>
- -LocationInputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -LocationInputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzOracleAutonomousDatabaseNationalCharacterSet -Adbsncharsetname <String> -Location <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzOracleAutonomousDatabaseNationalCharacterSet -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,21 +131,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

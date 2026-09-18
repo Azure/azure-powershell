@@ -64,7 +64,7 @@ $container.BlobContainerProperties.PreventEncryptionScopeOverride
 True
 ```
 
-This command creates a storage container, with default Encryption Scope as myencryptscope, and prevert blob upload with different Encryption Scope to this container.
+This command creates a storage container, with default Encryption Scope as myencryptscope, and prevent blob upload with different Encryption Scope to this container.
 
 ## PARAMETERS
 

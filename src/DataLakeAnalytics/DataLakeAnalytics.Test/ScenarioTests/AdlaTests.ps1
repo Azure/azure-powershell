@@ -491,7 +491,7 @@ function Test-DataLakeAnalyticsJob
 
 		$jobsWithDateOffset = Get-AzDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]($nowTime).AddMinutes(-10))
 
-		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after ten miuntes ago"
+		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after ten minutes ago"
 
 		# We add ten minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
 		$jobsWithDateOffset = Get-AzDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(10)) 

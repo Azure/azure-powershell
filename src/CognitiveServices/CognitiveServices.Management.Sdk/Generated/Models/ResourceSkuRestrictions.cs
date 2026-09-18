@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="type">The type of restrictions.
-        /// Possible values include: 'Location', 'Zone'</param>
+        /// Possible values include: &#39;Location&#39;, &#39;Zone&#39;</param>
 
         /// <param name="values">The value of restrictions. If the restriction type is set to location. This
         /// would be different locations where the SKU is restricted.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="reasonCode">The reason for restriction.
-        /// Possible values include: 'QuotaId', 'NotAvailableForSubscription'</param>
+        /// Possible values include: &#39;QuotaId&#39;, &#39;NotAvailableForSubscription&#39;</param>
         public ResourceSkuRestrictions(ResourceSkuRestrictionsType? type = default(ResourceSkuRestrictionsType?), System.Collections.Generic.IList<string> values = default(System.Collections.Generic.IList<string>), ResourceSkuRestrictionInfo restrictionInfo = default(ResourceSkuRestrictionInfo), string reasonCode = default(string))
 
         {

@@ -26,9 +26,6 @@ Gets the specified maintenance configuration of a managed cluster.
 ### [Get-AzAksManagedClusterCommandResult](Get-AzAksManagedClusterCommandResult.md)
 Gets the results of a command which has been run on the Managed Cluster.
 
-### [Get-AzAksManagedClusterOSOption](Get-AzAksManagedClusterOSOption.md)
-Gets supported OS options in the specified subscription.
-
 ### [Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint](Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint.md)
 Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster.
 The operation returns properties of each egress endpoint.
@@ -79,13 +76,13 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 - POST /servicePrincipals
 
 ### [New-AzAksMaintenanceConfiguration](New-AzAksMaintenanceConfiguration.md)
-Creates or updates a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 
 ### [New-AzAksNodePool](New-AzAksNodePool.md)
 Create a new node pool in specified cluster.
 
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
-Creates or updates a snapshot.
+Create a snapshot.
 
 ### [New-AzAksTimeInWeekObject](New-AzAksTimeInWeekObject.md)
 Create an in-memory object for TimeInWeek.
@@ -118,7 +115,7 @@ See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster
 Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
 ### [Start-AzAksManagedClusterCommand](Start-AzAksManagedClusterCommand.md)
-AKS will create a pod to run the command.
+AKS will run a pod to run the command.
 This is primarily useful for private clusters.
 For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 
@@ -130,6 +127,9 @@ See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster
 
 ### [Stop-AzAksDashboard](Stop-AzAksDashboard.md)
 Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
+
+### [Update-AzAksMaintenanceConfiguration](Update-AzAksMaintenanceConfiguration.md)
+Update a maintenance configuration in the specified managed cluster.
 
 ### [Update-AzAksNodePool](Update-AzAksNodePool.md)
 Update node pool in a managed cluster.

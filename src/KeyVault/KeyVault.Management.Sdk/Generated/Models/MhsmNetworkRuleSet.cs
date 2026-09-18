@@ -26,23 +26,27 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="bypass">Tells what traffic can bypass network rules. This can be &#39;AzureServices&#39; or
         /// &#39;None&#39;.  If not specified the default is &#39;AzureServices&#39;.
-        /// Possible values include: 'AzureServices', 'None'</param>
+        /// Possible values include: &#39;AzureServices&#39;, &#39;None&#39;</param>
 
         /// <param name="defaultAction">The default action when no rule from ipRules and from virtualNetworkRules
         /// match. This is only used after the bypass property has been evaluated.
-        /// Possible values include: 'Allow', 'Deny'</param>
+        /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
 
         /// <param name="ipRules">The list of IP address rules.
         /// </param>
 
+        /// <param name="serviceTags">The list of service tags.
+        /// </param>
+
         /// <param name="virtualNetworkRules">The list of virtual network rules.
         /// </param>
-        public MhsmNetworkRuleSet(string bypass = default(string), string defaultAction = default(string), System.Collections.Generic.IList<MhsmipRule> ipRules = default(System.Collections.Generic.IList<MhsmipRule>), System.Collections.Generic.IList<MhsmVirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<MhsmVirtualNetworkRule>))
+        public MhsmNetworkRuleSet(string bypass = default(string), string defaultAction = default(string), System.Collections.Generic.IList<MhsmipRule> ipRules = default(System.Collections.Generic.IList<MhsmipRule>), System.Collections.Generic.IList<MhsmServiceTagRule> serviceTags = default(System.Collections.Generic.IList<MhsmServiceTagRule>), System.Collections.Generic.IList<MhsmVirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<MhsmVirtualNetworkRule>))
 
         {
             this.Bypass = bypass;
             this.DefaultAction = defaultAction;
             this.IPRules = ipRules;
+            this.ServiceTags = serviceTags;
             this.VirtualNetworkRules = virtualNetworkRules;
             CustomInit();
         }
@@ -74,6 +78,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipRules")]
         public System.Collections.Generic.IList<MhsmipRule> IPRules {get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of service tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceTags")]
+        public System.Collections.Generic.IList<MhsmServiceTagRule> ServiceTags {get; set; }
 
         /// <summary>
         /// Gets or sets the list of virtual network rules.

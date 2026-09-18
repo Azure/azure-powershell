@@ -15,12 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.Azure.Storage.Blob;
-using XTable = Microsoft.Azure.Cosmos.Table;
-using Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Storage.Queue;
 using Microsoft.Azure.Storage.Shared.Protocol;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
@@ -51,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// unit test for new PSSeriviceProperties() functional 
+        /// unit test for new PSServiceProperties() functional 
         /// </summary>
         [TestMethod]
         public void ValidateParseServicePropertiesTest()
@@ -88,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// Comapare PSServiceProperties and ServiceProperties, to make sure they are same content
+        /// Compare PSServiceProperties and ServiceProperties, to make sure they are same content
         /// </summary>
         static private void CompareServiceProperties(PSSeriviceProperties pSSeriviceProperties, ServiceProperties serviceProperties)
         {
@@ -132,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// Comapare PSCorsRule and CorsProperties, to make sure they are same content
+        /// Compare PSCorsRule and CorsProperties, to make sure they are same content
         /// </summary>
         static private void CompareCors(PSCorsRule[] psCorsRules, CorsProperties corsProperties)
         {
@@ -171,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// Comapare String Array and String List, to make sure they are same content
+        /// Compare String Array and String List, to make sure they are same content
         /// </summary>
         static private void CompareStrings(string[] stringArray, IList<String> stringList)
         {

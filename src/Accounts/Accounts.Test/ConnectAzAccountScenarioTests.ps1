@@ -38,7 +38,7 @@ function Test-MaxContextPopulationWithSpecifiedValue
 	} 
 	Else  
 	{
-		# subtract 1 only for test freamwork 
+		# subtract 1 only for test framework 
 		Assert-AreEqual $maxContextPopulation ((Get-AzContext -ListAvailable).count-1)
 	}
 
@@ -69,7 +69,7 @@ function Test-MaxContextPopulationWithDefaultValue
 	} 
 	Else  
 	{
-		# subtract 1 only for test freamwork 
+		# subtract 1 only for test framework 
 		Assert-AreEqual $defaultContextPopulation ((Get-AzContext -ListAvailable).count-1)
 	}
 }

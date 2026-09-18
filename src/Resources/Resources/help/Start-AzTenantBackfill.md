@@ -13,8 +13,8 @@ Starts backfilling subscriptions for the current Tenant
 ## SYNTAX
 
 ```
-Start-AzTenantBackfill [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzTenantBackfill [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,13 +34,13 @@ Type              : c7a87cda-9a66-4920-b0f8-869baa04efe0
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -49,13 +49,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -ChangeReference
+The change reference resource ID for this resource operation.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.String
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

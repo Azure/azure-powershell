@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Search
     public static partial class PrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Updates a Private Endpoint connection to the search service in the given resource group.
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,13 +23,16 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         public static PrivateEndpointConnection Update(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties), SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -36,7 +40,8 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Updates a Private Endpoint connection to the search service in the given resource group.
+        /// Updates a private endpoint connection to the search service in the given
+        /// resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -45,13 +50,16 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -64,7 +72,8 @@ namespace Microsoft.Azure.Management.Search
             }
         }
         /// <summary>
-        /// Gets the details of the private endpoint connection to the search service in the given resource group.
+        /// Gets the details of the private endpoint connection to the search service
+        /// in the given resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,13 +82,16 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -87,7 +99,8 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets the details of the private endpoint connection to the search service in the given resource group.
+        /// Gets the details of the private endpoint connection to the search service
+        /// in the given resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -96,13 +109,16 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -115,7 +131,8 @@ namespace Microsoft.Azure.Management.Search
             }
         }
         /// <summary>
-        /// Disconnects the private endpoint connection and deletes it from the search service.
+        /// Disconnects the private endpoint connection and deletes it from the search
+        /// service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -124,13 +141,16 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         public static PrivateEndpointConnection Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, string privateEndpointConnectionName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -138,7 +158,8 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Disconnects the private endpoint connection and deletes it from the search service.
+        /// Disconnects the private endpoint connection and deletes it from the search
+        /// service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -147,13 +168,16 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+        /// The name of the private endpoint connection to the Azure AI Search service
+        /// with the specified resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -175,10 +199,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<PrivateEndpointConnection> ListByService(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -195,10 +221,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

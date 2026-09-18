@@ -11,22 +11,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+<#
+.Synopsis
+Operation to delete a lab resource.
+.Description
+Operation to delete a lab resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
+#>
 
 function Remove-AzLabServicesLab_LabPlan {
 [OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The object of lab service lab plan to remove lab.
     ${LabPlan},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
+    # The name of the user that uniquely identifies it within containing lab.
     # Used in resource URIs.
     ${Name},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]

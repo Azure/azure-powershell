@@ -1,3 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.StackHCI","New-AzStackHciCluster","New-AzStackHciCluster","0","2000","The cmdlet 'New-AzStackHciCluster' no longer supports the parameter 'SoftwareAssurancePropertySoftwareAssuranceStatus' and no alias was found for the original parameter name.","Add the parameter 'SoftwareAssurancePropertySoftwareAssuranceStatus' back to the cmdlet 'New-AzStackHciCluster', or add an alias to the original parameter name."
-"Az.StackHCI","New-AzStackHciCluster","New-AzStackHciCluster","0","1050","The parameter set '__AllParameterSets' for cmdlet 'New-AzStackHciCluster' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'New-AzStackHciCluster'".

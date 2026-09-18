@@ -1,7 +1,7 @@
 ---
 external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringExchangeConnectionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-azpeeringexchangeconnectionobject
 schema: 2.0.0
 ---
 
@@ -215,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ExchangeConnection
 
 ## NOTES
 

@@ -13,159 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualNetworkTapsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified virtual network tap.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of the virtual network tap.
-        /// </param>
-        public static void Delete(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName)
-        {
-                ((IVirtualNetworkTapsOperations)operations).DeleteAsync(resourceGroupName, tapName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified virtual network tap.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of the virtual network tap.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, tapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets information about the specified virtual network tap.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of virtual network tap.
-        /// </param>
-        public static VirtualNetworkTap Get(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName)
-        {
-                return ((IVirtualNetworkTapsOperations)operations).GetAsync(resourceGroupName, tapName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets information about the specified virtual network tap.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of virtual network tap.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkTap> GetAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, tapName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a Virtual Network Tap.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of the virtual network tap.
-        /// </param>
-        public static VirtualNetworkTap CreateOrUpdate(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, VirtualNetworkTap parameters)
-        {
-                return ((IVirtualNetworkTapsOperations)operations).CreateOrUpdateAsync(resourceGroupName, tapName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a Virtual Network Tap.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of the virtual network tap.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkTap> CreateOrUpdateAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, VirtualNetworkTap parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, tapName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates an VirtualNetworkTap tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of the tap.
-        /// </param>
-        public static VirtualNetworkTap UpdateTags(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, TagsObject tapParameters)
-        {
-                return ((IVirtualNetworkTapsOperations)operations).UpdateTagsAsync(resourceGroupName, tapName, tapParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates an VirtualNetworkTap tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='tapName'>
-        /// The name of the tap.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkTap> UpdateTagsAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, TagsObject tapParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, tapName, tapParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the VirtualNetworkTaps in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -199,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<VirtualNetworkTap> ListByResourceGroup(this IVirtualNetworkTapsOperations operations, string resourceGroupName)
         {
@@ -213,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -226,52 +73,169 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Deletes the specified virtual network tap.
+        /// Get a VirtualNetworkTap
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='tapName'>
-        /// The name of the virtual network tap.
+        /// The name of virtual network tap.
         /// </param>
-        public static void BeginDelete(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName)
+        public static VirtualNetworkTap Get(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName)
         {
-                ((IVirtualNetworkTapsOperations)operations).BeginDeleteAsync(resourceGroupName, tapName).GetAwaiter().GetResult();
+                return ((IVirtualNetworkTapsOperations)operations).GetAsync(resourceGroupName, tapName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified virtual network tap.
+        /// Get a VirtualNetworkTap
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='tapName'>
-        /// The name of the virtual network tap.
+        /// The name of virtual network tap.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkTap> GetAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, tapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, tapName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
-        /// Creates or updates a Virtual Network Tap.
+        /// Create a VirtualNetworkTap
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='tapName'>
-        /// The name of the virtual network tap.
+        /// The name of virtual network tap.
+        /// </param>
+        public static VirtualNetworkTap CreateOrUpdate(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, VirtualNetworkTap parameters)
+        {
+                return ((IVirtualNetworkTapsOperations)operations).CreateOrUpdateAsync(resourceGroupName, tapName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkTap> CreateOrUpdateAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, VirtualNetworkTap parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, tapName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        public static VirtualNetworkTap UpdateTags(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, TagsObject tapParameters)
+        {
+                return ((IVirtualNetworkTapsOperations)operations).UpdateTagsAsync(resourceGroupName, tapName, tapParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkTap> UpdateTagsAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, TagsObject tapParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, tapName, tapParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        public static void Delete(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName)
+        {
+                ((IVirtualNetworkTapsOperations)operations).DeleteAsync(resourceGroupName, tapName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, tapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Create a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
         /// </param>
         public static VirtualNetworkTap BeginCreateOrUpdate(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, VirtualNetworkTap parameters)
         {
@@ -279,16 +243,16 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Creates or updates a Virtual Network Tap.
+        /// Create a VirtualNetworkTap
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='tapName'>
-        /// The name of the virtual network tap.
+        /// The name of virtual network tap.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -299,6 +263,42 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Delete a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        public static void BeginDelete(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName)
+        {
+                ((IVirtualNetworkTapsOperations)operations).BeginDeleteAsync(resourceGroupName, tapName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete a VirtualNetworkTap
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='tapName'>
+        /// The name of virtual network tap.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, tapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the VirtualNetworkTaps in a subscription.

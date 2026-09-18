@@ -55,12 +55,16 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// at the root level.
         /// </param>
 
+        /// <param name="valueType">Type of value copied from source.
+        /// Possible values include: &#39;actual&#39;, &#39;display&#39;</param>
+
         /// <param name="tableName">The table name. Type: string (or Expression with resultType string).
         /// </param>
-        public ServiceNowV2ObjectDataset(LinkedServiceReference linkedServiceName, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), DatasetFolder folder = default(DatasetFolder), object tableName = default(object))
+        public ServiceNowV2ObjectDataset(LinkedServiceReference linkedServiceName, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), DatasetFolder folder = default(DatasetFolder), string valueType = default(string), object tableName = default(object))
 
         : base(linkedServiceName, additionalProperties, description, structure, schema, parameters, annotations, folder)
         {
+            this.ValueType = valueType;
             this.TableName = tableName;
             CustomInit();
         }
@@ -70,6 +74,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets type of value copied from source. Possible values include: &#39;actual&#39;, &#39;display&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.valueType")]
+        public string ValueType {get; set; }
 
         /// <summary>
         /// Gets or sets the table name. Type: string (or Expression with resultType
@@ -86,6 +96,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
+
 
         }
     }

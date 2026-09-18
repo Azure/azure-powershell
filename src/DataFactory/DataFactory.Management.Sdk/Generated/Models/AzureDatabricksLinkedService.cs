@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -128,9 +131,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="credential">The credential reference containing authentication information.
         /// </param>
-        public AzureDatabricksLinkedService(object domain, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), SecretBase accessToken = default(SecretBase), object authentication = default(object), object workspaceResourceId = default(object), object existingClusterId = default(object), object instancePoolId = default(object), object newClusterVersion = default(object), object newClusterNumOfWorker = default(object), object newClusterNodeType = default(object), System.Collections.Generic.IDictionary<string, object> newClusterSparkConf = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterSparkEnvVars = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterCustomTags = default(System.Collections.Generic.IDictionary<string, object>), object newClusterLogDestination = default(object), object newClusterDriverNodeType = default(object), object newClusterInitScripts = default(object), object newClusterEnableElasticDisk = default(object), string encryptedCredential = default(string), object policyId = default(object), CredentialReference credential = default(CredentialReference))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        /// <param name="dataSecurityMode">The data security mode for the Databricks Cluster. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+        public AzureDatabricksLinkedService(object domain, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), SecretBase accessToken = default(SecretBase), object authentication = default(object), object workspaceResourceId = default(object), object existingClusterId = default(object), object instancePoolId = default(object), object newClusterVersion = default(object), object newClusterNumOfWorker = default(object), object newClusterNodeType = default(object), System.Collections.Generic.IDictionary<string, object> newClusterSparkConf = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterSparkEnvVars = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> newClusterCustomTags = default(System.Collections.Generic.IDictionary<string, object>), object newClusterLogDestination = default(object), object newClusterDriverNodeType = default(object), object newClusterInitScripts = default(object), object newClusterEnableElasticDisk = default(object), string encryptedCredential = default(string), object policyId = default(object), CredentialReference credential = default(CredentialReference), object dataSecurityMode = default(object))
+
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Domain = domain;
             this.AccessToken = accessToken;
@@ -151,6 +158,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.EncryptedCredential = encryptedCredential;
             this.PolicyId = policyId;
             this.Credential = credential;
+            this.DataSecurityMode = dataSecurityMode;
             CustomInit();
         }
 
@@ -308,6 +316,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.credential")]
         public CredentialReference Credential {get; set; }
+
+        /// <summary>
+        /// Gets or sets the data security mode for the Databricks Cluster. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.dataSecurityMode")]
+        public object DataSecurityMode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -343,6 +358,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Credential.Validate();
             }
+
         }
     }
 }

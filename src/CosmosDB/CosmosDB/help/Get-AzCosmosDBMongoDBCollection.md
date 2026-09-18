@@ -15,7 +15,8 @@ Gets the CosmosDB MongoDB Collection.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBCollection -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String>
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

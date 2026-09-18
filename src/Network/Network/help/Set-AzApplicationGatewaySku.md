@@ -15,7 +15,8 @@ Modifies the SKU of an application gateway.
 
 ```
 Set-AzApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> -Name <String> -Tier <String>
- [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,21 @@ The first command gets the application gateway named ApplicationGateway01 that b
 The second command updates the SKU of the application gateway.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGateway
 Specifies the application gateway object with which this cmdlet associates the SKU.
@@ -54,6 +70,21 @@ Specifies the instance count of the application gateway.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,5 +169,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzApplicationGatewaySku](./Get-AzApplicationGatewaySku.md)
 
 [New-AzApplicationGatewaySku](./New-AzApplicationGatewaySku.md)
-
-

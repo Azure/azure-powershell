@@ -22,21 +22,21 @@ Update-AzInformaticaServerlessRuntime -Name <String> -OrganizationName <String> 
  [-ServerlessAccountLocation <String>] [-ServerlessRuntimeConfigCdiConfigProp <ICdiConfigProps[]>]
  [-ServerlessRuntimeConfigCdieConfigProp <ICdiConfigProps[]>] [-ServerlessRuntimeTag <IServerlessRuntimeTag[]>]
  [-ServerlessRuntimeUserContextPropertyUserContextToken <String>] [-SupplementaryFileLocation <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzInformaticaServerlessRuntime -Name <String> -OrganizationName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzInformaticaServerlessRuntime -Name <String> -OrganizationName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOrganizationExpanded
@@ -49,7 +49,7 @@ Update-AzInformaticaServerlessRuntime -Name <String> -OrganizationInputObject <I
  [-ServerlessRuntimeConfigCdiConfigProp <ICdiConfigProps[]>]
  [-ServerlessRuntimeConfigCdieConfigProp <ICdiConfigProps[]>] [-ServerlessRuntimeTag <IServerlessRuntimeTag[]>]
  [-ServerlessRuntimeUserContextPropertyUserContextToken <String>] [-SupplementaryFileLocation <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -62,7 +62,7 @@ Update-AzInformaticaServerlessRuntime -InputObject <IInformaticaIdentity>
  [-ServerlessRuntimeConfigCdiConfigProp <ICdiConfigProps[]>]
  [-ServerlessRuntimeConfigCdieConfigProp <ICdiConfigProps[]>] [-ServerlessRuntimeTag <IServerlessRuntimeTag[]>]
  [-ServerlessRuntimeUserContextPropertyUserContextToken <String>] [-SupplementaryFileLocation <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -353,21 +353,6 @@ Platform type of the Serverless Runtime.
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityOrganizationExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

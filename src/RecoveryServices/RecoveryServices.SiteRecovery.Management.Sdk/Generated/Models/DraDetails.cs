@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="health">The health.
-        /// Possible values include: 'None', 'Normal', 'Warning', 'Critical'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Normal&#39;, &#39;Warning&#39;, &#39;Critical&#39;</param>
 
         /// <param name="healthErrors">The health errors.
         /// </param>

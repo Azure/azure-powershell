@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets Resource location
         /// </summary>
         public string Location { get; set; }
-        
+
         /// <summary>
         /// Gets resource Id
         /// </summary>
@@ -105,6 +105,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// false for scheduled backups and true/false for manual backups
         /// </remarks>
         public bool? UseExistingSnapshot { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets SnapshotName
+        /// </summary>
+        /// <remarks>
+        ///  The name of the snapshot
+        /// </remarks>        
+        public string SnapshotName { get; set; }
+
+        /// <summary>
+        /// Gets IsLargeVolume 
+        /// </summary>
+        /// <remarks>
+        /// Specifies if the backup is for a large volume
+        /// </remarks>
+        public bool? IsLargeVolume { get; set; }
     }
 }

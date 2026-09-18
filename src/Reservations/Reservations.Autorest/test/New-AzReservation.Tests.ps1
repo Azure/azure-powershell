@@ -38,21 +38,11 @@ Describe 'New-AzReservation' {
     }
 
     It 'Purchase' {
-        $purchaseRequest = @{
-            AppliedScopeType = "Shared"
-            BillingPlan = "Upfront"
-            billingScopeId = '/subscriptions/40000000-aaaa-bbbb-cccc-200000000006' 
-            DisplayName = "Testvm2"
-            Location = "westus"
-            Quantity = 1
-            ReservedResourceType = "VirtualMachines"
-            Sku = "Standard_b1ls"
-            Term = "P1Y"
-        }
-        $quoteResponse = Get-AzReservationQuote -Body $purchaseRequest
+        $json = "AppliedScopeType=Shared;BillingPlan=Upfront;billingScopeId=/subscriptions/40000000-aaaa-bbbb-cccc-200000000006;DisplayName=Testvm2;Location=westus;Quantity=1;ReservedResourceType=VirtualMachines;Sku=Standard_b1ls;Term=P1Y"
+        $quoteResponse = Get-AzReservationQuote -JsonString $json
         $quoteResponse.ReservationOrderId | Should -Not -Be $null
 
-        $response = New-AzReservation -ReservationOrderId $quoteResponse.ReservationOrderId -Body $purchaseRequest
+        $response = New-AzReservation -ReservationOrderId $quoteResponse.ReservationOrderId -JsonString $json
         ExecuteTestCases($response)
     }
 
@@ -63,27 +53,6 @@ Describe 'New-AzReservation' {
             ReservationOrderId = $quoteResponse.ReservationOrderId
         }
         $response = New-AzReservation -InputObject $param -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/40000000-aaaa-bbbb-cccc-200000000006' -DisplayName 'TestVm3' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
-        ExecuteTestCases($response)
-    }
-
-    It 'PurchaseViaIdentity' {
-        $purchaseRequest = @{
-            AppliedScopeType = "Shared"
-            BillingPlan = "Upfront"
-            billingScopeId = '/subscriptions/40000000-aaaa-bbbb-cccc-200000000006'
-            DisplayName = "Testvm4"
-            Location = "westus"
-            Quantity = 1
-            ReservedResourceType = "VirtualMachines"
-            Sku = "Standard_b1ls"
-            Term = "P1Y"
-        }
-        $quoteResponse = Get-AzReservationQuote -Body $purchaseRequest
-        $quoteResponse.ReservationOrderId | Should -Not -Be $null
-        $param = @{
-            ReservationOrderId = $quoteResponse.ReservationOrderId
-        }
-        $response = New-AzReservation -InputObject $param -Body $purchaseRequest
         ExecuteTestCases($response)
     }
 }

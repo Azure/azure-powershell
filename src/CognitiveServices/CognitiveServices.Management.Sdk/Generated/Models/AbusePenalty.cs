@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="action">The action of AbusePenalty.
-        /// Possible values include: 'Throttle', 'Block'</param>
+        /// Possible values include: &#39;Throttle&#39;, &#39;Block&#39;</param>
 
         /// <param name="rateLimitPercentage">The percentage of rate limit.
         /// </param>

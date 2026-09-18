@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = OperationLevel,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of existing API. If specified will remove API-scope policy. This parameters is requied.")]
+            HelpMessage = "Identifier of existing API. If specified will remove API-scope policy. This parameters is required.")]
         public String ApiId { get; set; }
 
         [Parameter(

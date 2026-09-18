@@ -24,7 +24,7 @@ Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandActiveDire
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListByInstancePoolResourceIdentiferParameterSet
+### ListByInstancePoolResourceIdentifierParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolResourceId] <String> [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -68,6 +68,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 ZoneRedundant            : false
@@ -86,6 +87,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -114,6 +116,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -142,6 +145,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -161,6 +165,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -325,6 +330,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -353,6 +359,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
@@ -372,6 +379,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -383,14 +391,14 @@ AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : Dummy
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 
 AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : Dummy2
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 ```
 
@@ -415,6 +423,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : BasePrice
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 512
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -426,7 +435,7 @@ AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : Dummy
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 ```
 
@@ -499,7 +508,7 @@ The instance pool resource identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByInstancePoolResourceIdentiferParameterSet
+Parameter Sets: ListByInstancePoolResourceIdentifierParameterSet
 Aliases:
 
 Required: True

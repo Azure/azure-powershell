@@ -17,7 +17,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.Cosmos.Table;
-using Microsoft.Azure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
@@ -45,15 +44,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             Assert.AreEqual(tableAccessPolicy.Permissions, SharedAccessTablePermissions.None);
             AccessPolicyHelper.SetupAccessPolicyPermission(tableAccessPolicy, "ar");
             Assert.AreEqual(tableAccessPolicy.Permissions, SharedAccessTablePermissions.Add | SharedAccessTablePermissions.Query);
-
-            SharedAccessFilePolicy fileAccessPolicy = new SharedAccessFilePolicy();
-            AccessPolicyHelper.SetupAccessPolicyPermission(fileAccessPolicy, null);
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.None);
-            AccessPolicyHelper.SetupAccessPolicyPermission(fileAccessPolicy, "");
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.None);
-            AccessPolicyHelper.SetupAccessPolicyPermission(fileAccessPolicy, "lwc");
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.List | SharedAccessFilePermissions.Write | SharedAccessFilePermissions.Create); 
-
         }
 
         [TestMethod]
@@ -86,12 +76,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             Assert.AreEqual(tableAccessPolicy.SharedAccessStartTime, null);
             Assert.AreEqual(tableAccessPolicy.SharedAccessExpiryTime.Value.UtcDateTime.ToString(), end.Value.ToUniversalTime().ToString());
             Assert.AreEqual(tableAccessPolicy.Permissions, SharedAccessTablePermissions.Delete);
-
-            SharedAccessFilePolicy fileAccessPolicy = new SharedAccessFilePolicy();
-            AccessPolicyHelper.SetupAccessPolicy(fileAccessPolicy, null, null, "dl", true, true);
-            Assert.AreEqual(fileAccessPolicy.SharedAccessStartTime, null);
-            Assert.AreEqual(fileAccessPolicy.SharedAccessExpiryTime, null);
-            Assert.AreEqual(fileAccessPolicy.Permissions, SharedAccessFilePermissions.List | SharedAccessFilePermissions.Delete);
         }
     }
 }

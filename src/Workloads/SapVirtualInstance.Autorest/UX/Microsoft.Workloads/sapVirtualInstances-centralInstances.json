@@ -1,0 +1,52 @@
+{
+  "resourceType": "sapVirtualInstances/centralInstances",
+  "apiVersion": "2024-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.workloads"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWorkloadsSapCentralInstance",
+      "description": "Gets the SAP Central Services Instance resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapcentralinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SapVirtualInstanceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the SAP Central Services Instance resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.centralInstanceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SapVirtualInstanceName",
+              "value": "[Path.sapVirtualInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

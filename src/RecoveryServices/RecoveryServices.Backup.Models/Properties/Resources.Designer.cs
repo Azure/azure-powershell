@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. Alteast one is expected..
+        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. At least one is expected..
         /// </summary>
         public static string AllRetentionSchedulesEmptyException
         {
@@ -475,6 +475,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Configuring Source Scan for the item.
+        /// </summary>
+        public static string ConfigureSourceScanMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set Source Scan state to &apos;{0}&apos; for the item &apos;{1}&apos;.
+        /// </summary>
+        public static string ConfigureSourceScanWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Configure Source Scan Operation.
+        /// </summary>
+        public static string ConfigureSourceScanOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanOperation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Source Scan is currently only supported for Azure Virtual Machine backup items.
+        /// </summary>
+        public static string SourceScanNotSupportedForItem
+        {
+            get
+            {
+                return ResourceManager.GetString("SourceScanNotSupportedForItem", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to disable protection for the item &apos;{0}&apos;.
         /// </summary>
         public static string DisableProtectionWarning
@@ -757,6 +801,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("InvalidAzureVMName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine &apos;{0}&apos; was not found in resource group &apos;{1}&apos; under subscription &apos;{2}&apos;. Verify that the VM exists and that -Name, -ResourceGroupName and -ContainerSubscriptionId are correct..
+        /// </summary>
+        public static string CSBVMNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("CSBVMNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine &apos;{0}&apos; (location &apos;{1}&apos;) is not in the same location as the Recovery Services vault (location &apos;{2}&apos;). For Cross Subscription Backup, the VM must reside in the same region as the vault..
+        /// </summary>
+        public static string CSBVMNotInVaultLocation
+        {
+            get
+            {
+                return ResourceManager.GetString("CSBVMNotInVaultLocation", resourceCulture);
             }
         }
 
@@ -1161,7 +1227,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Cannot configure backup for more than 100 VMs per policy
+        ///   Looks up a localized string similar to Cannot configure backup for more than 1000 VMs per policy
         /// </summary>
         public static string ProtectedItemsCountExceededException
         {
@@ -1392,7 +1458,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
+        ///   Looks up a localized string similar to RetentionDuration in {0} should be from {1} - {2}.
         /// </summary>
         public static string RetentionDurationCountInvalidException
         {
@@ -1722,7 +1788,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.
+        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be specified. Please give Only one parameter and retry.
         /// </summary>
         public static string TargetRGUnmanagedRestoreDuplicateParamsException
         {
@@ -1854,13 +1920,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to please provide a vaild target storage account.
+        ///   Looks up a localized string similar to please provide a valid target storage account.
         /// </summary>
         public static string InvalidTargetStorageAccount
         {
             get
             {
                 return ResourceManager.GetString("InvalidTargetStorageAccount", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Cross Region Restore for Azure File Share supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreAlrOnly
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreAlrOnly", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Item-level restore is not supported for Cross Region Restore of Azure File Share. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreItemLevelNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreItemLevelNotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to construct the cross-region restore request: the target or source details were not populated. This indicates an internal error. Please retry; if the issue persists, contact support.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreRequestBuildFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreRequestBuildFailed", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure File Share item &apos;{0}&apos; is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is &apos;ToBeDeleted&apos;.
+        /// </summary>
+        public static string AzureFileShareUndeleteItemNotInSoftDeletedState
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareUndeleteItemNotInSoftDeletedState", resourceCulture);
             }
         }
         /// <summary>
@@ -2751,6 +2857,138 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The target storage account location should be same as the secondary (paired) region when restoring to the secondary region.
+        /// </summary>
+        public static string CrossRegionRestoreIncorrectTargetRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("CrossRegionRestoreIncorrectTargetRegion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Switching the backup tier from vaulted backup to snapshot is not possible. Please create a new policy for snapshot-only backups.
+        /// </summary>
+        public static string AFSPolicyUpdateNotAllowed
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateNotAllowed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.
+        /// </summary>
+        public static string AFSPolicyUpdateWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing Policy to VaultStandard tier.
+        /// </summary>
+        public static string AFSPolicyUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled Operation.
+        /// </summary>
+        public static string AFSPolicyUpdateCanceled
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateCanceled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotRetentionInDays should be from 1 - 30.
+        /// </summary>
+        public static string SnapshotRetentionInDaysInvalidException
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionInDaysInvalidException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UndeleteContainer operation failed with ErrorCode: {0}.
+        /// </summary>
+        public static string UndeleteContainerFailureErrorCode
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerFailureErrorCode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to undelete the container '{0}'.
+        /// </summary>
+        public static string UndeleteContainerWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Undeleting container.
+        /// </summary>
+        public static string UndeleteContainerMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("UndeleteContainerMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Setting SoftDeleteFeatureState to 'AlwaysON' will automatically set HybridBackupSecurityFeature to AlwaysON. Please remove the DisableHybridBackupSecurityFeature parameter or use a different value for the SoftDeleteFeatureState parameter.
+        /// </summary>
+        public static string InvalidSoftDeleteFeatureStateException
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidSoftDeleteFeatureStateException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        public static string BothTokenProvided
+        {
+            get
+            {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        public static string TokenParameterDepricate
+        {
+            get
+            {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
             }
         }
     }

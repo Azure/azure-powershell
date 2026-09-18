@@ -19,7 +19,7 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Publish-AzLabServicesLab' {
     It 'Publish' {
-        $lab = Get-AzLabServicesLab -Name $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName
+        $lab = Get-AzLabServicesLab -Name $env.LabName -ResourceGroupName $env.ResourceGroupName
         Publish-AzLabServicesLab -Lab $lab
     }
 }

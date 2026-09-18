@@ -51,6 +51,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public int Deallocated
+        {
+            get
+            {
+                return this.omObject.Deallocated;
+            }
+        }
+        
+        public int Deallocating
+        {
+            get
+            {
+                return this.omObject.Deallocating;
+            }
+        }
+        
         public int Idle
         {
             get

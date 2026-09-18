@@ -25,149 +25,135 @@ Creates or updates a Network Connections resource
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.INetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <INetworkConnection>: Network related settings
-  Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [DomainJoinType <DomainJoinType?>]: AAD Join type.
-  [DomainName <String>]: Active Directory domain name
-  [DomainPassword <String>]: The password for the account used to join domain
-  [DomainUsername <String>]: The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
-  [NetworkingResourceGroupName <String>]: The name for resource group where NICs will be placed.
-  [OrganizationUnit <String>]: Active Directory domain Organization Unit (OU)
-  [SubnetId <String>]: The subnet to attach Virtual Machines to
-
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
   [VersionName <String>]: The version of the image.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminnetworkconnection
 #>
 function New-AzDevCenterAdminNetworkConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.INetworkConnection])]
+  [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Alias('NetworkConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # Name of the Network Connection that can be applied to a Pool.
     ${Name},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType]
     # AAD Join type.
     ${DomainJoinType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Active Directory domain name
     ${DomainName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The password for the account used to join domain
     ${DomainPassword},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory.
     # Required format: admin@contoso.com.
     ${DomainUsername},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The name for resource group where NICs will be placed.
     ${NetworkingResourceGroupName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Active Directory domain Organization Unit (OU)
     ${OrganizationUnit},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The subnet to attach Virtual Machines to
     ${SubnetId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -231,9 +217,9 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
-
-process {
+  )
+  
+  process {
     Az.DevCenter.internal\New-AzDevCenterAdminNetworkConnection @PSBoundParameters
-}
+  }
 }

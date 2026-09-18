@@ -237,7 +237,7 @@ The public network access type
 Type: Microsoft.Azure.Management.Batch.Models.PublicNetworkAccessType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
+Accepted values: Enabled, Disabled, SecuredByPerimeter
 
 Required: False
 Position: Named

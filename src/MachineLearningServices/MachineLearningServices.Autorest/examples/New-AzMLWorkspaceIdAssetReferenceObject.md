@@ -1,7 +1,7 @@
 ### Example 1: Create model reference
 ```powershell
 $model = Get-AzMLWorkspaceModelVersion -ResourceGroupName group-test -WorkspaceName mlworkspace-test -Version 1 -Name model1
-New-AzMLWorkspaceIdAssetReferenceObject -AssetId $model.Id -ReferenceType 'Id'
+New-AzMLWorkspaceIdAssetReferenceObject -AssetId $model.Id
 ```
 
 ```output

@@ -14,16 +14,36 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FirewallPolicyIdpsSignatureDirection
     {
+        /// <summary>
+        /// 0
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "0")]
         Zero,
+        /// <summary>
+        /// 1
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "1")]
         One,
+        /// <summary>
+        /// 2
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "2")]
         Two,
+        /// <summary>
+        /// 3
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "3")]
         Three,
+        /// <summary>
+        /// 4
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "4")]
-        Four
+        Four,
+        /// <summary>
+        /// 5
+        /// </summary>
+        [System.Runtime.Serialization.EnumMember(Value = "5")]
+        Five
     }
     internal static class FirewallPolicyIdpsSignatureDirectionEnumExtension
     {
@@ -45,6 +65,8 @@ namespace Microsoft.Azure.Management.Network.Models
                     return "3";
                 case FirewallPolicyIdpsSignatureDirection.Four:
                     return "4";
+                case FirewallPolicyIdpsSignatureDirection.Five:
+                    return "5";
             }
             return null;
         }
@@ -62,6 +84,8 @@ namespace Microsoft.Azure.Management.Network.Models
                     return FirewallPolicyIdpsSignatureDirection.Three;
                 case "4":
                     return FirewallPolicyIdpsSignatureDirection.Four;
+                case "5":
+                    return FirewallPolicyIdpsSignatureDirection.Five;
             }
             return null;
         }

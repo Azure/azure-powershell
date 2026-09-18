@@ -49,6 +49,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExtendedLocation ExtendedLocation { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateEndpointVNetPolicies { get; set; }
+
+        public PSResourceId DefaultPublicNatGateway { get; set; }
+
+        public PSAddressSpace SummarizedGatewayPrefixes { get; set; }
+
         [JsonIgnore]
         public string AddressSpaceText
         {
@@ -113,6 +120,26 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ExtendedLocationText
         {
             get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DefaultPublicNatGatewayText
+        {
+            get
+            {
+                if (DefaultPublicNatGateway?.Id != null)
+                {
+                    string resourceName = DefaultPublicNatGateway.Id.Substring(DefaultPublicNatGateway.Id.LastIndexOf('/') + 1);
+                    return resourceName;
+                }
+                return null;
+            }
+        }
+
+        [JsonIgnore]
+        public string SummarizedGatewayPrefixesText
+        {
+            get { return JsonConvert.SerializeObject(SummarizedGatewayPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

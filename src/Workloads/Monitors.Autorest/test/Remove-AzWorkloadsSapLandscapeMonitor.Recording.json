@@ -1,0 +1,90 @@
+{
+  "Remove-AzWorkloadsSapLandscapeMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "38fc3ea4-7f4a-4bc8-ae03-89aa717bb27e" ],
+        "CommandName": [ "Remove-AzWorkloadsSapLandscapeMonitor" ],
+        "FullCommandName": [ "Remove-AzWorkloadsSapLandscapeMonitor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/83f1fb0f-9c63-4659-a720-9327eba96460" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "161cb7a5-54f4-4570-94fd-a49b8be4f043" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T131651Z:161cb7a5-54f4-4570-94fd-a49b8be4f043" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3E28024F6D094D40A7606DA436029F5F Ref B: PNQ231110908029 Ref C: 2025-10-09T13:16:50Z" ],
+        "Date": [ "Thu, 09 Oct 2025 13:16:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWorkloadsSapLandscapeMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ps-create/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "39c2fa8f-3c67-45db-b14e-d61f337814d6" ],
+        "CommandName": [ "Remove-AzWorkloadsSapLandscapeMonitor" ],
+        "FullCommandName": [ "Remove-AzWorkloadsSapLandscapeMonitor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/8eaf81a3-da26-4a52-a780-92b2f56eac57" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "5c349171-6cd3-4c5d-ab43-9082652053a7" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T131652Z:5c349171-6cd3-4c5d-ab43-9082652053a7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 56A983EFEDD0491E9DCD4CC40DB6AECF Ref B: PNQ231110908029 Ref C: 2025-10-09T13:16:51Z" ],
+        "Date": [ "Thu, 09 Oct 2025 13:16:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

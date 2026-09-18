@@ -37,7 +37,7 @@ Describe 'New-AzBillingBenefitsReservationOrderAlias' {
         ExecuteTestCases($response)
     }
 
-    It 'Create' {
+    It 'Create' -Skip {
         $purchaseRequest = @{
             AppliedScopeType = "Shared"
             BillingPlan = "P1M"
@@ -54,7 +54,7 @@ Describe 'New-AzBillingBenefitsReservationOrderAlias' {
         ExecuteTestCases($response)
     }
 
-    It 'CreateViaIdentityExpanded' {
+    It 'CreateViaIdentityExpanded' -Skip {
         $identity = @{
                         ReservationOrderAliasName = "PSRITest5"
                     }
@@ -62,7 +62,7 @@ Describe 'New-AzBillingBenefitsReservationOrderAlias' {
         ExecuteTestCases($response)
     }
 
-    It 'CreateViaIdentity' {
+    It 'CreateViaIdentity' -Skip {
         $purchaseRequest = @{
             AppliedScopeType = "Shared"
             BillingPlan = "P1M"

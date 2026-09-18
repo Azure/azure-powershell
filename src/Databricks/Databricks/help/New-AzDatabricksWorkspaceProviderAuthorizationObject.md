@@ -1,7 +1,7 @@
 ---
 external help file: Az.Databricks-help.xml
 Module Name: Az.Databricks
-online version: https://learn.microsoft.com/powershell/module/Az.Databricks/new-AzDatabricksWorkspaceProviderAuthorizationObject
+online version: https://learn.microsoft.com/powershell/module/Az.Databricks/new-azdatabricksworkspaceproviderauthorizationobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for WorkspaceProviderAuthorization.
 
 ```
 New-AzDatabricksWorkspaceProviderAuthorizationObject -PrincipalId <String> -RoleDefinitionId <String>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,21 +53,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RoleDefinitionId
 The provider's role definition identifier.
 This role will define all the permissions that the provider must have on the workspace's container resource group.
@@ -92,7 +77,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProviderAuthorization
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.WorkspaceProviderAuthorization
 
 ## NOTES
 

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class GroupConnectivity
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// DirectlyConnected
+        /// </summary>
         public const string DirectlyConnected = "DirectlyConnected";
     }
 }

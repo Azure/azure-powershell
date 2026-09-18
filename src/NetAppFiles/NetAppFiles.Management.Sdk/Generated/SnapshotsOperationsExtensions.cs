@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Snapshot> List(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        public static Microsoft.Rest.Azure.IPage<Snapshot> List(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
         {
                 return ((ISnapshotsOperations)operations).ListAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Snapshot>> ListAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Snapshot>> ListAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -255,9 +255,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='snapshotName'>
         /// The name of the snapshot
         /// </param>
-        public static void Delete(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName)
+        public static SnapshotsDeleteHeaders Delete(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName)
         {
-                ((ISnapshotsOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName).GetAwaiter().GetResult();
+                return ((ISnapshotsOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -284,9 +284,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SnapshotsDeleteHeaders> DeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Restore the specified files from the specified snapshot to the active
@@ -310,9 +313,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='snapshotName'>
         /// The name of the snapshot
         /// </param>
-        public static void RestoreFiles(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body)
+        public static SnapshotsRestoreFilesHeaders RestoreFiles(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body)
         {
-                ((ISnapshotsOperations)operations).RestoreFilesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body).GetAwaiter().GetResult();
+                return ((ISnapshotsOperations)operations).RestoreFilesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -340,9 +343,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RestoreFilesAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SnapshotsRestoreFilesHeaders> RestoreFilesAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create the specified snapshot within the given volume
@@ -479,9 +485,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='snapshotName'>
         /// The name of the snapshot
         /// </param>
-        public static void BeginDelete(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName)
+        public static SnapshotsDeleteHeaders BeginDelete(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName)
         {
-                ((ISnapshotsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName).GetAwaiter().GetResult();
+                return ((ISnapshotsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -508,9 +514,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SnapshotsDeleteHeaders> BeginDeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Restore the specified files from the specified snapshot to the active
@@ -534,9 +543,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='snapshotName'>
         /// The name of the snapshot
         /// </param>
-        public static void BeginRestoreFiles(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body)
+        public static SnapshotsRestoreFilesHeaders BeginRestoreFiles(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body)
         {
-                ((ISnapshotsOperations)operations).BeginRestoreFilesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body).GetAwaiter().GetResult();
+                return ((ISnapshotsOperations)operations).BeginRestoreFilesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -564,9 +573,45 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRestoreFilesAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SnapshotsRestoreFilesHeaders> BeginRestoreFilesAsync(this ISnapshotsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, SnapshotRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List all snapshots associated with the volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Snapshot> ListNext(this ISnapshotsOperations operations, string nextPageLink)
+        {
+                return ((ISnapshotsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all snapshots associated with the volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Snapshot>> ListNextAsync(this ISnapshotsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

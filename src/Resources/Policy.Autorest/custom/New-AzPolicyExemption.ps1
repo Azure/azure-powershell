@@ -47,7 +47,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy exemption.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -99,17 +99,17 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
     ${Metadata},
 
     [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -202,54 +202,23 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
 
     # check for $null ExpiresOn and handle accordingly
-    if ($ExpiresOn) {
-        $calledParameters.ExpiresOnInternal = $ExpiresOn
+    if (!$ExpiresOn) {
+        $null = $calledParameters.Remove('ExpiresOn')
     }
 
     $null = $calledParameters.Remove('PolicyAssignment')
-    $null = $calledParameters.Remove('Metadata')
-    $null = $calledParameters.Remove('ExpiresOn')
-    $null = $calledParameters.Remove('BackwardCompatible')
 
-    $calledParameterSet = 'CreateExpanded'
-    $calledCommand = 'Az.Policy.private\New-AzPolicyExemption_CreateExpanded'
-
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $calledCommand'(' $calledParameters ')'
-    }
-
-    $cmdInfo = Get-Command -Name $calledCommand
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($calledCommand, [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $object = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $object = Az.Policy.internal\New-AzPolicyExemption @calledParameters
 
     foreach ($item in $object) {
-        # add property bag for backward compatibility with previous SDK cmdlets
-        if ($BackwardCompatible) {
-            $propertyBag = @{
-                Description = $item.Description;
-                DisplayName = $item.DisplayName;
-                ExpiresOn = $item.ExpiresOn;
-                ExemptionCategory = $item.ExemptionCategory;
-                Metadata = (ConvertObjectToPSObject $item.Metadata);
-                PolicyDefinitionReferenceIds = (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId);
-                PolicyAssignmentId = $item.PolicyAssignmentId
-            }
-
-            $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-        }
-
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionReferenceId' -Value (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId) -Force
         $PSCmdlet.WriteObject($item)

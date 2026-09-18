@@ -21,12 +21,13 @@ Create an in-memory object for MetricSettings.
 Create an in-memory object for MetricSettings.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.MetricSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingMetricSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettingmetricsettingsobject
 #>
 function New-AzDiagnosticSettingMetricSettingsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.MetricSettings')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +49,7 @@ function New-AzDiagnosticSettingMetricSettingsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.MetricSettings]::New()
 
         if ($PSBoundParameters.ContainsKey('Category')) {
             $Object.Category = $Category

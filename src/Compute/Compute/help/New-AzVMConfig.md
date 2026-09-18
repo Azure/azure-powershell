@@ -20,22 +20,24 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
  [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
  [-DiskControllerType <String>] [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>]
- [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
+ [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
+ [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
 ```
 New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-Zone <String[]>]
- [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>] [-MaxPrice <Double>]
- [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD] [-EncryptionAtHost]
- [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>] [-DiskControllerType <String>]
- [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
- [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-EncryptionIdentity <String>]
+ [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
+ [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
+ [-DiskControllerType <String>] [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
+ [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
+ [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +50,7 @@ The following cmdlets are used to set different properties of the virtual machin
 - **[Set-AzVMOSDisk](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmosdisk)** to set the OS disk (storage profile).<br>
 - **[Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
 <br>
+
 See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell) for tutorial. <br>
 
 ## EXAMPLES
@@ -207,7 +210,52 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 
 This example creates a VM using a VMConfig object for the TrustedLaunch Security Type and validates flags VtpmEnabled and SecureBootEnabled are true by default.
 
+### Example 4: Create a VM config with processor mode
+```powershell
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
+
+### Example 5: Create a SpotPlus VM config and deploy it
+```powershell
+$cred = Get-Credential
+$nic = Get-AzNetworkInterface -ResourceGroupName "MyResourceGroup" -Name "MyNic"
+$vmConfig = New-AzVMConfig -VMName "MySpotPlusVM" -VMSize "Standard_D2s_v5" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName "MySpotPlusVM" -Credential $cred
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version "latest"
+$vmConfig = Set-AzVMOSDisk -VM $vmConfig -CreateOption "FromImage" -StorageAccountType "Standard_LRS"
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+New-AzVM -ResourceGroupName "MyResourceGroup" -Location "eastus2" -VM $vmConfig
+(Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM").Priority
+```
+
+This example creates a Spot Plus VM configuration object and deploys it. Spot Plus is the next generation of Azure Spot and provides higher reliability and longer running time than 'Spot' at a discounted price.
+'-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
+### Example 6: Create a virtual machine configuration object that opts out of capacity reservation
+```powershell
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_D2s_v3" -DisableCapacityReservationAssignment;
+New-AzVM -ResourceGroupName "myRG" -Location "eastus" -VM $vmConfig;
+```
+
+This example creates a virtual machine configuration object which is explicitly opted out from any capacity reservation assignment, so the virtual machine consumes publicly available capacity instead of implicitly or explicitly consuming a capacity reservation.
+
 ## PARAMETERS
+
+### -AlignRegionalDisksToVMZone
+Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AvailabilitySetId
 Specifies the ID of an availability set.
@@ -253,6 +301,22 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -340,6 +404,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionIdentity
+Specifies the user identity associated with the virtual machine.That identity will be used for Azure Disk Encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EvictionPolicy
 The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.
 
@@ -352,6 +431,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExcludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -432,6 +526,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LicenseType
 Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises.
 Possible values for Windows Server are:
@@ -485,10 +594,26 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior. Typical values are `Deterministic` and `Opportunistic`.
 
 ```yaml
 Type: System.String
@@ -666,6 +791,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZonePlacementPolicy
+Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

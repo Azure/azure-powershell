@@ -1,0 +1,95 @@
+{
+  "id": null,
+  "name": "powershell",
+  "type": "Microsoft.Web/locations/functionAppStacks?stackOsType=All",
+  "location": "eastasia",
+  "properties": {
+    "displayText": "PowerShell Core",
+    "value": "powershell",
+    "preferredOs": "windows",
+    "majorVersions": [
+      {
+        "displayText": "PowerShell 7",
+        "value": "7",
+        "minorVersions": [
+          {
+            "displayText": "PowerShell 7.4",
+            "value": "7.4",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "PowerShell|7.4",
+                "isDefault": true,
+                "isPreview": false,
+                "isHidden": false,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "PowerShell|7.4"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "powershell",
+                        "version": "7.4"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -15,20 +15,26 @@ Get a new workspace connection
 ### List (Default)
 ```
 Get-AzMLWorkspaceConnection -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
- [-Category <String>] [-Target <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Category <String>] [-Target <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceConnection -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceConnection -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +103,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -116,25 +121,10 @@ Friendly name of the workspace connection
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityWorkspace, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
@@ -211,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2BasicResource
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2BasicResource
 
 ## NOTES
 

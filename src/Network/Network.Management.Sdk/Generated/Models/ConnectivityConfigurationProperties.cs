@@ -36,24 +36,30 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="isGlobal">Flag if global mesh is supported.
         /// Possible values include: &#39;False&#39;, &#39;True&#39;</param>
 
+        /// <param name="connectivityCapabilities">Collection of additional settings to enhance specific topology behaviors of
+        /// the connectivity configuration resource.
+        /// </param>
+
         /// <param name="appliesToGroups">Groups for configuration
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the connectivity configuration resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="deleteExistingPeering">Flag if need to remove current existing peerings.
         /// Possible values include: &#39;False&#39;, &#39;True&#39;</param>
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public ConnectivityConfigurationProperties(string connectivityTopology, System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups, string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), string isGlobal = default(string), string provisioningState = default(string), string deleteExistingPeering = default(string), string resourceGuid = default(string))
+        public ConnectivityConfigurationProperties(string connectivityTopology, System.Collections.Generic.IList<ConnectivityGroupItem> appliesToGroups, string description = default(string), System.Collections.Generic.IList<Hub> hubs = default(System.Collections.Generic.IList<Hub>), string isGlobal = default(string), ConnectivityConfigurationPropertiesConnectivityCapabilities connectivityCapabilities = default(ConnectivityConfigurationPropertiesConnectivityCapabilities), string provisioningState = default(string), string deleteExistingPeering = default(string), string resourceGuid = default(string))
 
         {
             this.Description = description;
             this.ConnectivityTopology = connectivityTopology;
             this.Hubs = hubs;
             this.IsGlobal = isGlobal;
+            this.ConnectivityCapabilities = connectivityCapabilities;
             this.AppliesToGroups = appliesToGroups;
             this.ProvisioningState = provisioningState;
             this.DeleteExistingPeering = deleteExistingPeering;
@@ -92,13 +98,20 @@ namespace Microsoft.Azure.Management.Network.Models
         public string IsGlobal {get; set; }
 
         /// <summary>
+        /// Gets or sets collection of additional settings to enhance specific topology
+        /// behaviors of the connectivity configuration resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectivityCapabilities")]
+        public ConnectivityConfigurationPropertiesConnectivityCapabilities ConnectivityCapabilities {get; set; }
+
+        /// <summary>
         /// Gets or sets groups for configuration
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "appliesToGroups")]
         public System.Collections.Generic.IList<ConnectivityGroupItem> AppliesToGroups {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the connectivity configuration resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the connectivity configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -134,6 +147,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
+            if (this.ConnectivityCapabilities != null)
+            {
+                this.ConnectivityCapabilities.Validate();
+            }
             if (this.AppliesToGroups != null)
             {
                 foreach (var element in this.AppliesToGroups)

@@ -51,18 +51,24 @@ function Add-AzPurviewAccountRootCollectionAdmin {
 [CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [System.String]
     # The name of the account.
     ${AccountName},
 
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [System.String]
     # The resource group name.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='AddExpanded')]
+    [Parameter(ParameterSetName='AddViaJsonFilePath')]
+    [Parameter(ParameterSetName='AddViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -73,21 +79,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='AddExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AddViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # Gets or sets the object identifier of the admin.
     ${ObjectId},
+
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Add operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the BinarySource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -45,9 +48,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="formatSettings">Binary format settings.
         /// </param>
-        public BinarySource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreReadSettings storeSettings = default(StoreReadSettings), BinaryReadSettings formatSettings = default(BinaryReadSettings))
+        public BinarySource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreReadSettings storeSettings = default(StoreReadSettings), BinaryReadSettings formatSettings = default(BinaryReadSettings))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.StoreSettings = storeSettings;
             this.FormatSettings = formatSettings;

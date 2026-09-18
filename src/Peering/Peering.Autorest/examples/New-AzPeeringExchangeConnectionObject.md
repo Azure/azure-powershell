@@ -12,4 +12,3 @@ c111111111111                                     82
 ```
 
 Create a exchange connection object in memory
-

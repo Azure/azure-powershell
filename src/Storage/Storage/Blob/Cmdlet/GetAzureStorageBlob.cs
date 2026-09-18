@@ -259,7 +259,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="taskId">Task id</param>
         /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">container name</param>
-        /// <param name="prefix">blob preifx</param>
+        /// <param name="prefix">blob prefix</param>
         /// <param name="blobFilter"></param>
         /// <param name="includeDeleted"></param>
         /// <param name="includeVersion"></param>

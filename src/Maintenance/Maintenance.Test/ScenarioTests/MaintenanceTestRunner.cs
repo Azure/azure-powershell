@@ -35,7 +35,10 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.Maintenance.psd1")
+                    helper.GetRMModulePath("Az.Maintenance.psd1"),
+                    helper.GetRMModulePath("Az.Compute.psd1"),
+                    helper.GetRMModulePath("Az.Network.psd1"),
+                    helper.GetRMModulePath("Az.ResourceGraph.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
@@ -44,10 +47,13 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                     },
                     resourceProviders: new Dictionary<string, string>
                     {
+                        { "Microsoft.Compute", null },
                         { "Microsoft.Resources", null },
                         { "Microsoft.Features", null },
                         { "Microsoft.Authorization", null },
-                        { "Microsoft.Maintenance", null }
+                        { "Microsoft.Maintenance", null },
+                        { "Microsoft.Network", null },
+                        { "Microsoft.ResourceGraph", null }
                     }
                 )
                 .Build();

@@ -51,7 +51,7 @@ function setupEnv() {
     # 1. Create a resource group
     $rg = $env.AddWithCache("rg", "azps-test-" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
     $location = $env.AddWithCache("location", "eastus", $UsePreviousConfigForRecord)
-    New-AzResourceGroup -Name $rg -Location $location
+    $null = New-AzResourceGroup -Name $rg -Location $location
 
     # 2. Create an user identity
     Write-Host -ForegroundColor Green "Creating an user identity..."
@@ -82,19 +82,19 @@ function setupEnv() {
     # 4. Grant role definition above to the user assigned identity
     Start-Sleep -Seconds 60 # Sleep to allow get-azserviceprincipal work
     Write-Host -ForegroundColor Green "Assigning a role to the user identity..."
-    New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionId $role.Id -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
+    $null = New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionId $role.Id -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
 
     # 5. Create an image gallery
     Write-Host -ForegroundColor Green "Create an image gallery..."
     $testGalleryName = $env.AddWithCache("testGalleryName", "azpsgallery" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
-    New-AzGallery -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location
+    $null = New-AzGallery -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location
 
     # 6. Create a gallery definition
     Write-Host -ForegroundColor Green "Create a gallery definition..."
     $imageDefName = $env.AddWithCache("imageDefName", "azpsvmimage1", $UsePreviousConfigForRecord)
-    $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '18.04-LTS'
+    $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '22.04-LTS' -HyperVGeneration V1
     $env.AddWithCache("image", $image, $UsePreviousConfigForRecord)
-
+    
     # 7. Create a template with shared image
     Write-Host -ForegroundColor Green "Creating a image builder template..."
     $templateName = $env.AddWithCache("templateName", 'azps-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
@@ -108,17 +108,18 @@ function setupEnv() {
     $Content = $Content -replace '<imageDefName>', $imageDefName
     $Content = $Content -replace '<runOutputName>', $runOutputName
     $Content | Out-File -FilePath $JsonTemplatePath -Force
-    New-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -JsonTemplatePath $JsonTemplatePath
+    New-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -JsonFilePath $JsonTemplatePath
 
-    # 9. Add user id to access the template
+    # 8. Add user id to access the template
     Write-Host "Add user id to access the template"
     New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -ResourceGroupName $rg
 
+    # 2025/04/30 Joyer: Added it for Stop test case. Edit Start-AzImageBuilderTemplate case with adding another template.
     # 10. Start the image builder above
-    # Need to record start image builder separetely.
-    # Only below lines are not needed in recording stop test cases
+    # ~Need to record start image builder separately.~
+    # ~Only below lines are not needed in recording stop test cases~
     # Write-Host -ForegroundColor Green "Starting the image builder template..."
-    # Start-Sleep -Seconds 25
+    # Start-TestSleep -Seconds 25
     # Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
 
     # Prepare some variables for test usage
@@ -127,6 +128,7 @@ function setupEnv() {
     $newTemplateName3 = $env.AddWithCache("newTemplateName3", 'azps-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
 
     # 11. Create a new Trigger
+    Write-Host -ForegroundColor Green "Creating a image builder trigger..."
     $newTempTriggerName1 = $env.AddWithCache("newTempTriggerName1", 'azps-trigger-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
     $newTempTriggerName2 = $env.AddWithCache("newTempTriggerName2", 'azps-trigger-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
     New-AzImageBuilderTrigger -ImageTemplateName $templateName -ResourceGroupName $rg -Name $newTempTriggerName1 -Kind "SourceImage"
@@ -141,15 +143,17 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # 0. Restore JsonTemplateFile.json
-    git restore JsonTemplateFile.json
-
+    $JsonTemplatePath = Join-Path $PSScriptRoot JsonTemplateFile.json
+    git restore $JsonTemplatePath
+    
     # 1. Grant role definition above to the user assigned identity
-    Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg" | Remove-AzRoleAssignment -Confirm:$false
-
+    Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.rg)" | Remove-AzRoleAssignment -Confirm:$false
+    
     # 2. Remove role definition
     Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
-
+    
     # 3. remove resource group
-    Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
+    # Clean failed by canceling the image builder template
+    Remove-AzResourceGroup -Name $env.rg
 }
 

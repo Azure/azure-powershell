@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
             keyStore = SetMockedAzKeyStore();
         }
 

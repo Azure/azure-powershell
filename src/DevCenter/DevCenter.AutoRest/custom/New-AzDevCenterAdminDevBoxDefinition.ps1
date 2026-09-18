@@ -25,106 +25,88 @@ Creates or updates a Dev Box definition.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IDevBoxDefinition>: Represents a definition for a Developer Machine.
-  Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [ActiveImageReferenceId <String>]: Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  [HibernateSupport <HibernateSupport?>]: Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
-  [ImageReferenceId <String>]: Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  [ImageValidationErrorDetailCode <String>]: An identifier for the error.
-  [ImageValidationErrorDetailMessage <String>]: A message describing the error.
-  [OSStorageType <String>]: The storage type used for the Operating System disk of Dev Boxes created using this definition.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
   [VersionName <String>]: The version of the image.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevboxdefinition
 #>
 function New-AzDevCenterAdminDevBoxDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition])]
+  [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the devcenter.
     ${DevCenterName},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Alias('DevBoxDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the Dev Box definition.
     ${Name},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport]
@@ -132,66 +114,67 @@ param(
     # Not all images are capable of supporting hibernation.
     # To find out more see https://aka.ms/devbox/hibernate
     ${HibernateSupport},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Image ID, or Image version ID.
     # When Image ID is provided, its latest version will be used.
     ${ImageReferenceId},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The storage type used for the Operating System disk of Dev Boxes created using this definition.
     ${OSStorageType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.Int32]
     # If the SKU supports scale out/in then the capacity integer should be included.
     # If scale out/in is not possible for the resource this may be omitted.
     ${SkuCapacity},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # If the service has different generations of hardware, for the same SKU, then that can be captured here.
     ${SkuFamily},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Ex - P3.
+    # E.g.
+    # P3.
     # It is typically a letter+number code
     ${SkuName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The SKU size.
     # When the name field is the combination of tier and some other value, this would be the standalone code.
     ${SkuSize},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+  
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -255,9 +238,9 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
-process {
+  )
+  process {
     Az.DevCenter.internal\New-AzDevCenterAdminDevBoxDefinition @PSBoundParameters
-}
+  }
 
 }

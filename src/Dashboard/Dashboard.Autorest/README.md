@@ -27,23 +27,15 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
+commit: a6ef905ba314503e8cfac82d63a2e790fae7991b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/grafana.json
+  - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2025-08-01/grafana.json
 
 title: Dashboard
-module-version: 0.1.0
+module-version: 0.3.0
 subject-prefix: Grafana
-
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 
@@ -67,15 +59,22 @@ directive:
           }
       }
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      subject: Grafana
       parameter-name: WorkspaceName
     set:
       parameter-name: Name
       alias: GrafanaName
   - where:
       subject: PrivateEndpointConnection
+    remove: true
+  - where:
+      subject: ManagedPrivateEndpoint
     remove: true
   - where:
       subject: PrivateLinkResource
@@ -88,7 +87,7 @@ directive:
       parameter-name: GrafanaIntegrationAzureMonitorWorkspaceIntegration
     set:
       parameter-name: MonitorWorkspaceIntegration 
-  # The cmdlet's name to long, Re-name it
-  # - model-cmdlet:
-  #     - AzureMonitorWorkspaceIntegration
+  - model-cmdlet:
+      - model-name: AzureMonitorWorkspaceIntegration
+        cmdlet-name: New-AzGrafanaMonitorWorkspaceIntegrationObject
 ```

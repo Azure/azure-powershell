@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 catch (Exception ex)
                 {
-                    // code interanally handled the cloud exception thrown earlier.But still there are changes of other exception.
+                    // code internally handled the cloud exception thrown earlier.But still there are changes of other exception.
                     // suggesting alternate way to user to unblock if this command is failing.
                     Logger.Instance.WriteWarning(ex.Message);
                     throw new Exception(Resources.TryDownloadingVaultFile);

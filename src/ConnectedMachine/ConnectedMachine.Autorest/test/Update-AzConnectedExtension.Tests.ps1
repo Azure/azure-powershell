@@ -28,7 +28,7 @@ Describe 'Update-AzConnectedExtension' {
     }
 
     It 'Upgrade' {
-        $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
+        $target = @{"Microsoft.Azure.NetworkWatcher" = @{"targetVersion"="1.4.3135.1"}}
         Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target
     }
 

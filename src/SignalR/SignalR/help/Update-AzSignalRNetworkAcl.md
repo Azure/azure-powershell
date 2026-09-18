@@ -37,7 +37,7 @@ Update-AzSignalRNetworkAcl -InputObject <PSSignalRResource> [-AsJob] [-DefaultAc
 ```
 
 ## DESCRIPTION
-Update the Network ACL of a SignalR service, including the default action and the network Acls for public and private connection.
+Update the Network ACL of a SignalR service, including the default action, the network ACLs for public and private connection, and IP rules.
 
 ## EXAMPLES
 

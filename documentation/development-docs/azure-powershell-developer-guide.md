@@ -233,7 +233,7 @@ To import modules automatically when debug has started, follow the below steps:
 - Please refer to [Debug Page, Project Designer](https://learn.microsoft.com/visualstudio/ide/reference/debug-page-project-designer?view=vs-2022) for how to access the Debug page
 - Create a **Excutable** new Debug profile
 - For Azure PowerShell, please setup debug profile in the following way
-  - Set **Excutable** to the path of the excutable file of PowerShell core, for example,`C:\Program Files\PowerShell\7\pwsh.exe`
+  - Set **Excutable** to the path of the executable file of PowerShell core, for example,`C:\Program Files\PowerShell\7\pwsh.exe`
   - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
     - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$DebugPreference='Continue'"`
 

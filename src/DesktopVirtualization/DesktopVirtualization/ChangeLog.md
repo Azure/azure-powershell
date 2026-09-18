@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.0
+* Upgraded API version to 2025-10-10
+* Added MultiplePersistent enum value to HostPool property loadBalancerType.
+* Fixed `New-AzWvdRegistrationInfo`, `Remove-AzWvdRegistrationInfo`.
+
+## Version 5.4.7
+* Added preannouncement for breaking changes in Az.DesktopVirtualization 6.0.0
+    - Parameter 'Tag' will be removed from the Update cmdlet of Application and Desktop.
+
+## Version 5.4.1
+* Upgraded nuget package to signed package.
+
+## Version 5.4.0
+* Added top level arm object for app attach packages
+
+## Version 4.3.2
+* Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
+
 ## Version 4.3.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

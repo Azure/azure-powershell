@@ -15,8 +15,8 @@ Downloads a storage blob.
 
 ### ReceiveManual (Default)
 ```
-Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5] [-Force]
- [-AsJob] [-TagCondition <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5]
+ [-Context <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <S
 ### BlobPipeline
 ```
 Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] [-Destination <String>]
- [-CheckMd5] [-Force] [-AsJob] [-TagCondition <String>] [-Context <IStorageContext>]
+ [-CheckMd5] [-Context <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,7 +33,7 @@ Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient
 ### ContainerPipeline
 ```
 Get-AzStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-Destination <String>]
- [-CheckMd5] [-Force] [-AsJob] [-TagCondition <String>] [-Context <IStorageContext>]
+ [-CheckMd5] [-Context <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -42,8 +42,8 @@ Get-AzStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <Strin
 ### UriPipeline
 ```
 Get-AzStorageBlobContent [-Destination <String>] -AbsoluteUri <String> [-Force] [-AsJob]
- [-TagCondition <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-TagCondition <String>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -88,7 +88,7 @@ Get-AzStorageBlobContent -Uri $blobUri -Destination "C:\test" -Force
 ```
 
 This example will download a blob content with Uri, the Uri can be a Uri with Sas token. 
-If the blob is on a managed disk account, and server requires a bearer token besides Sas Uri to download, the cmdlet will try to generate a bearer token with server returned audience and the login AAD user credentail, then download blob with both Sas Uri and bearer token.
+If the blob is on a managed disk account, and server requires a bearer token besides Sas Uri to download, the cmdlet will try to generate a bearer token with server returned audience and the login AAD user credential, then download blob with both Sas Uri and bearer token.
 
 ## PARAMETERS
 
@@ -256,7 +256,7 @@ You can use the New-AzStorageContext cmdlet to create a storage context.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter Sets: (All)
+Parameter Sets: ReceiveManual, BlobPipeline, ContainerPipeline
 Aliases:
 
 Required: False

@@ -14,17 +14,20 @@ Create a new Azure Firewall Policy Rule Collection Group draft.
 
 ### SetByNameParameterSet (Default)
 ```
-New-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -Priority <UInt32>
- [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] -ResourceGroupName <String>
- -FirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -ResourceGroupName <String> -AzureFirewallPolicyName <String> -Priority <UInt32>
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
-### SetByParentInputObjectParameterSet
+### SetByInputObjectParameterSet
 ```
-New-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -Priority <UInt32>
- [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] -FirewallPolicyObject <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -FirewallPolicyObject <PSAzureFirewallPolicy> -Priority <UInt32>
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,13 +55,13 @@ New-AzFirewallPolicyRuleCollectionGroupDraft -FirewallPolicyName <String> -Azure
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -67,27 +70,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallPolicyName
-The name of the firewall policy.
+### -AzureFirewallPolicyName
+The name of the firewall policy
 
 ```yaml
 Type: System.String
 Parameter Sets: SetByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FirewallPolicyObject
-Firewall Policy.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: SetByParentInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -109,6 +97,51 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallPolicyObject
+Firewall Policy.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Parameter Sets: SetByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

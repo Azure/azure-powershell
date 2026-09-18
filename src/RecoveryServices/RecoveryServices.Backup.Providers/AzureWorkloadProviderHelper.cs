@@ -27,6 +27,7 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -103,6 +104,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     registerResponse.Response.StatusCode);
                 Logger.Instance.WriteDebug(errorMessage);
             } */
+        }
+
+        public void UndeleteContainer(string containerName,
+            ProtectionContainerResource protectionContainerResource,
+            string vaultName, string vaultResourceGroupName)
+        {
+            var registerResponse = ServiceClientAdapter.RegisterContainer(
+                            containerName,
+                            protectionContainerResource,
+                            vaultName,
+                            vaultResourceGroupName);
+            
+            if (registerResponse.Body == null || registerResponse.Body.Properties == null)
+            {
+                string errorMessage = string.Format(Resources.UndeleteContainerFailureErrorCode,
+                    registerResponse.Response.StatusCode);
+                Logger.Instance.WriteDebug(errorMessage);
+            }
         }
 
         public List<ProtectedItemResource> ListProtectedItemsByContainer(
@@ -303,7 +322,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     if (protectedItem.Properties.BackupManagementType == "AzureStorage" && protectedItem.Properties.WorkloadType == "AzureFileShare")
                     {
-                        // code should never reach here, as CRR is not supported for azure files yet
                         string protectedItemFriendlyName = (protectedItem.Properties as CrrModel.AzureFileshareProtectedItem).FriendlyName;
                         filteredByUniqueName = filteredByUniqueName || (itemName != null && protectedItemFriendlyName.ToLower() == itemName.ToLower());
                         filteredByFriendlyName = friendlyName != null && protectedItemFriendlyName.ToLower() == friendlyName.ToLower();
@@ -312,7 +330,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     return filteredByUniqueName || filteredByFriendlyName;
                 }).ToList();
 
-                // bug: below API calls should be made to secondary region 
+                // Known limitation (tracked as follow-up): the CRR list response does not include the
+                // extendedInfo block, so it is fetched via a per-item GetProtectedItem call. That GET is
+                // served from the PRIMARY region, which means -UseSecondaryRegion -FriendlyName currently
+                // depends on the primary region being available. The service does not yet expose a
+                // secondary-region GET that returns extendedInfo; until it does, this cross-region fetch is
+                // the only way to populate ExtendedInfo. TODO: link/track the service work item and switch
+                // to a secondary-region call (or leave ExtendedInfo null on the CRR path) once available.
                 ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
                     new ODataQuery<GetProtectedItemQueryObject>(q => q.Expand == "extendedinfo");
 
@@ -333,7 +357,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelListCrr(protectedItems);
-            if (!string.IsNullOrEmpty(itemName))
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
             {
                 for (int i = 0; i < itemModels.Count; i++)
                 {
@@ -422,7 +446,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 DateTime finalBackupTime = new DateTime(windowStartTime.Year, windowStartTime.Month, windowStartTime.Day, 23, 30, 00, 00, DateTimeKind.Utc);
                 TimeSpan diff = finalBackupTime - windowStartTime;
 
-                // If ScheduleWindowDuration is greator than (23:30 - ScheduleWindowStartTime) then throw exception  
+                // If ScheduleWindowDuration is greater than (23:30 - ScheduleWindowStartTime) then throw exception  
                 if (diff.TotalHours < policy.ScheduleWindowDuration)
                 {
                     throw new ArgumentException(String.Format(Resources.InvalidLastBackupTime));
@@ -483,8 +507,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         Resources.InvalidRetentionPolicyException,
                         typeof(CmdletModel.LongTermRetentionPolicy).ToString()));
             }
-
+        
             ((CmdletModel.LongTermRetentionPolicy)policy).Validate(ScheduleRunFrequency);
+        }
+
+        public void ValidateVaultRetentionPolicy(CmdletModel.RetentionPolicyBase policy, string backupManagementType = "", ScheduleRunType ScheduleRunFrequency = 0)
+        {
+            if (policy == null || policy.GetType() != typeof(CmdletModel.VaultRetentionPolicy))
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        Resources.InvalidRetentionPolicyException,
+                        typeof(CmdletModel.VaultRetentionPolicy).ToString()));
+            }
+           
+            ((CmdletModel.VaultRetentionPolicy)policy).Validate(ScheduleRunFrequency);
         }
 
         public void ValidateSQLRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
@@ -674,7 +711,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     // (Interval < ScheduleWindowDuration)
                     // Interval can be { 4, 6, 8, 12 } only and schedule can be 4 to 23.
-                    // First calculate how many RPs will be created in the day. which will be schedule/Interval + 1. Only exception is when Interval == Schdule. there Number of RP in a day == 1.
+                    // First calculate how many RPs will be created in the day. which will be schedule/Interval + 1. Only exception is when Interval == Schedule. there Number of RP in a day == 1.
                     // eg schedule is 5 and interval is 4. then we will have 2 RP one at 00 and another at 04 hours.
                     // Once we have RP count then we can calculate RPO.
                     var hourlySchedule = schedulePolicyAFS.HourlySchedule;
@@ -1011,13 +1048,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             return ((CmdletModel.AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier != RecoveryPointTier.VaultArchive;
                         }
 
+                        if (recoveryPoint.GetType() == typeof(CmdletModel.AzureFileShareRecoveryPoint))
+                        {
+                            //no archive tier currently for AFS, so return true for all RPs
+                            return true;
+                        }
+
                         return false;
                     }).ToList();
             }
 
-            // filter move readness based on target tier
+            // filter move readiness based on target tier
             recoveryPointList = RecoveryPointConversions.CheckRPMoveReadiness(recoveryPointList, targetTier, isReadyForMove);
-
+            
             //filter RPs based on tier
             return RecoveryPointConversions.FilterRPsBasedOnTier(recoveryPointList, tier);
         }

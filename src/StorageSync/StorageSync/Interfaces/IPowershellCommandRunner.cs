@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
         void AddScript(string value);
 
         /// <summary>
-        /// Errorses this instance.
+        /// Errors this instance.
         /// </summary>
         /// <returns>PSDataCollection&lt;ErrorRecord&gt;.</returns>
         PSDataCollection<ErrorRecord> Errors();

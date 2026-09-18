@@ -33,7 +33,7 @@ function Start-TestSleep {
 $env = @{}
 function setupEnv() {
     # NOTE:Need manually steps.
-    # 1. create the domain for use in the test before runing test. Help link:https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain#configure-dns-provider
+    # 1. create the domain for use in the test before running test. Help link:https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain#configure-dns-provider
     # 2. Invite user join static web domian.
 
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -59,8 +59,8 @@ function setupEnv() {
     $env.resourceGroup = 'staticweb-rg-' + (RandomString -allChars $false -len 6)
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    # Deploy app serivce plan for use in the test.
-    Write-Host -ForegroundColor Green "Deploy app serivce plan for use in the test"
+    # Deploy app service plan for use in the test.
+    Write-Host -ForegroundColor Green "Deploy app service plan for use in the test"
     $env.serverfarmsName01 = "serverfarmsName-" + (RandomString -allChars $false -len 6)
     $serverfarmsParam01 = Get-Content .\test\deployment-templates\appservice-plan\parameters.json | ConvertFrom-Json
     $serverfarmsParam01.parameters.serverfarms_name.value = $env.serverfarmsName01
@@ -104,8 +104,8 @@ function setupEnv() {
                        -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
 
 
-    # Register funtion app for static web.
-    Write-Host "Register funtion app for static web."
+    # Register function app for static web.
+    Write-Host "Register function app for static web."
     Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location
 
     # Test for web jobs of the app service.

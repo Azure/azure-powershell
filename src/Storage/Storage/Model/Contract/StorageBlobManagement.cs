@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
-        /// The azure storage context assoicated with this IStorageBlobManagement
+        /// The azure storage context associated with this IStorageBlobManagement
         /// </summary>
         public AzureStorageContext StorageContext
         {
@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
-        /// Get container presssions
+        /// Get container permissions
         /// </summary>
         /// <param name="container">A CloudBlobContainer object</param>
         /// <param name="accessCondition">Access condition</param>
@@ -576,7 +576,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
-        /// Async Get container presssions
+        /// Async Get container permissions
         /// </summary>
         /// <param name="container">A CloudBlobContainer object</param>
         /// <param name="accessCondition">Access condition</param>
@@ -893,7 +893,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
         /// </summary>
-        /// <param name="blob">CloudBlob object whcih is a Block blob</param>
+        /// <param name="blob">CloudBlob object which is a Block blob</param>
         /// <param name="source">Uri to copying source</param>
         /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
         /// <param name="rehydratePriority"></param>
@@ -948,7 +948,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 DateTimeOffset userDelegationKeyStartTime = keyStart == null ? DateTime.Now : keyStart.Value;
                 DateTimeOffset userDelegationKeyEndTime = keyEnd == null ? userDelegationKeyStartTime.AddHours(1) : keyEnd.Value;
 
-                //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
+                //Check the Expire Time and Start Time, should remove this if server can return clear error message
                 Util.ValidateUserDelegationKeyStartEndTime(userDelegationKeyStartTime, userDelegationKeyEndTime);
 
                 return this.BlobClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime, accessCondition, options, operationContext);

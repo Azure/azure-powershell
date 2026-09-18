@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetMetricDefinitionsCommandParametersProcessing()
         {
-            // Testting defaults and required parameters
+            // Testing defaults and required parameters
             cmdlet.ResourceId = Utilities.ResourceUri;
 
             cmdlet.ExecuteCmdlet();

@@ -32,4 +32,3 @@ Global   cdn001 cdn  testps-rg-da16jm
 ```
 
 Update an AzureCDN profile under the resource group via identity
-

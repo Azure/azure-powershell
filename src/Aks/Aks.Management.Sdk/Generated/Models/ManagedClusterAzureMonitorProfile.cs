@@ -29,10 +29,17 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Azure Monitor Workspace and configure additional scraping for custom
         /// targets. See aka.ms/AzureManagedPrometheus for an overview.
         /// </param>
-        public ManagedClusterAzureMonitorProfile(ManagedClusterAzureMonitorProfileMetrics metrics = default(ManagedClusterAzureMonitorProfileMetrics))
+
+        /// <param name="appMonitoring">Application Monitoring Profile for Kubernetes Application Container.
+        /// Collects application logs, metrics and traces through auto-instrumentation
+        /// of the application using Azure Monitor OpenTelemetry based SDKs. See
+        /// aka.ms/AzureMonitorApplicationMonitoring for an overview.
+        /// </param>
+        public ManagedClusterAzureMonitorProfile(ManagedClusterAzureMonitorProfileMetrics metrics = default(ManagedClusterAzureMonitorProfileMetrics), ManagedClusterAzureMonitorProfileAppMonitoring appMonitoring = default(ManagedClusterAzureMonitorProfileAppMonitoring))
 
         {
             this.Metrics = metrics;
+            this.AppMonitoring = appMonitoring;
             CustomInit();
         }
 
@@ -50,6 +57,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "metrics")]
         public ManagedClusterAzureMonitorProfileMetrics Metrics {get; set; }
+
+        /// <summary>
+        /// Gets or sets application Monitoring Profile for Kubernetes Application
+        /// Container. Collects application logs, metrics and traces through
+        /// auto-instrumentation of the application using Azure Monitor OpenTelemetry
+        /// based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "appMonitoring")]
+        public ManagedClusterAzureMonitorProfileAppMonitoring AppMonitoring {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -62,6 +78,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 this.Metrics.Validate();
             }
+
         }
     }
 }

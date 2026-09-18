@@ -19,16 +19,17 @@ API to get lab plans.
 API to get lab plans.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 #>
 function Get-AzLabServicesLabPlan_ResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [System.String]
+    # The resource Id of lab service lab plan.
     ${ResourceId},
 
     [Parameter()]
@@ -87,8 +88,8 @@ param(
 )
 
 process {
-
-    $resourceHash = & $PSScriptRoot\Utilities\HandleLabPlanResourceId.ps1 -ResourceId $ResourceId
+    $HandleLabPlanResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleLabPlanResourceId.ps1'
+    $resourceHash = . $HandleLabPlanResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId") > $null
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {
@@ -97,7 +98,7 @@ process {
   
         $PSBoundParameters.Remove("ResourceId") > $null
 
-        return Az.LabServices\Get-AzLabServicesLabPlan @PSBoundParameters
+        return Az.LabServices.private\Get-AzLabServicesLabPlan_Get @PSBoundParameters
     } else {
         Write-Error -Message "Error: Invalid Lab Plan Resource Id." -ErrorAction Stop
     }

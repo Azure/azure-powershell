@@ -1,0 +1,43 @@
+{
+  "Remove-AzNapsterOrganization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/acctest0001/providers/Napster.CompanionAPI/organizations/napster-test2?api-version=2025-12-24-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/acctest0001/providers/Napster.CompanionAPI/organizations/napster-test2?api-version=2025-12-24-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "9f8d80ec-3874-4560-857f-5b15bc08b2ed" ],
+        "CommandName": [ "Remove-AzNapsterOrganization" ],
+        "FullCommandName": [ "Remove-AzNapsterOrganization_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.Napster/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "8e1bf485-465d-485d-9b70-533c1c81e9ae" ],
+        "x-ms-correlation-request-id": [ "8e1bf485-465d-485d-9b70-533c1c81e9ae" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20260615T110214Z:8e1bf485-465d-485d-9b70-533c1c81e9ae" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BD31619AAB984CCBBCB18E3FFE54A5FC Ref B: SG2AA1070305036 Ref C: 2026-06-15T11:02:13Z" ],
+        "Date": [ "Mon, 15 Jun 2026 11:02:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

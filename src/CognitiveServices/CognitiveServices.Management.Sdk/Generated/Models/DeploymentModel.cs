@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Initializes a new instance of the DeploymentModel class.
         /// </summary>
 
+        /// <param name="publisher">Deployment model publisher.
+        /// </param>
+
         /// <param name="format">Deployment model format.
         /// </param>
 
@@ -39,15 +42,21 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="source">Optional. Deployment model source ARM resource ID.
         /// </param>
 
+        /// <param name="sourceAccount">Optional. Source of the model, another Microsoft.CognitiveServices accounts
+        /// ARM resource ID.
+        /// </param>
+
         /// <param name="callRateLimit">The call rate limit Cognitive Services account.
         /// </param>
-        public DeploymentModel(string format = default(string), string name = default(string), string version = default(string), string source = default(string), CallRateLimit callRateLimit = default(CallRateLimit))
+        public DeploymentModel(string publisher = default(string), string format = default(string), string name = default(string), string version = default(string), string source = default(string), string sourceAccount = default(string), CallRateLimit callRateLimit = default(CallRateLimit))
 
         {
+            this.Publisher = publisher;
             this.Format = format;
             this.Name = name;
             this.Version = version;
             this.Source = source;
+            this.SourceAccount = sourceAccount;
             this.CallRateLimit = callRateLimit;
             CustomInit();
         }
@@ -57,6 +66,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets deployment model publisher.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publisher")]
+        public string Publisher {get; set; }
 
         /// <summary>
         /// Gets or sets deployment model format.
@@ -85,6 +100,13 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "source")]
         public string Source {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Source of the model, another
+        /// Microsoft.CognitiveServices accounts ARM resource ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceAccount")]
+        public string SourceAccount {get; set; }
 
         /// <summary>
         /// Gets the call rate limit Cognitive Services account.

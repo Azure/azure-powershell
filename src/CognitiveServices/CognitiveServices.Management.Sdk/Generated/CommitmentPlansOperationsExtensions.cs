@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified commitmentPlans associated with the Cognitive Services account.
+        /// Gets the specified commitmentPlans associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -64,7 +65,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan Get(this ICommitmentPlansOperations operations, string resourceGroupName, string accountName, string commitmentPlanName)
         {
@@ -72,7 +74,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified commitmentPlans associated with the Cognitive Services account.
+        /// Gets the specified commitmentPlans associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -84,7 +87,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -97,7 +101,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified commitmentPlans associated with the Cognitive Services account.
+        /// Update the state of specified commitmentPlans associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -109,7 +114,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan CreateOrUpdate(this ICommitmentPlansOperations operations, string resourceGroupName, string accountName, string commitmentPlanName, CommitmentPlan commitmentPlan)
         {
@@ -117,7 +123,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified commitmentPlans associated with the Cognitive Services account.
+        /// Update the state of specified commitmentPlans associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -129,7 +136,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -142,7 +150,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified commitmentPlan associated with the Cognitive Services account.
+        /// Deletes the specified commitmentPlan associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -154,7 +163,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static void Delete(this ICommitmentPlansOperations operations, string resourceGroupName, string accountName, string commitmentPlanName)
         {
@@ -162,7 +172,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified commitmentPlan associated with the Cognitive Services account.
+        /// Deletes the specified commitmentPlan associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -174,7 +185,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -193,7 +205,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan CreateOrUpdatePlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, CommitmentPlan commitmentPlan)
         {
@@ -210,7 +223,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -232,7 +246,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan UpdatePlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku))
         {
@@ -249,7 +264,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -262,7 +278,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes a Cognitive Services commitment plan from the resource group. 
+        /// Deletes a Cognitive Services commitment plan from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -271,7 +287,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlansDeletePlanHeaders DeletePlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName)
         {
@@ -279,7 +296,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services commitment plan from the resource group. 
+        /// Deletes a Cognitive Services commitment plan from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -288,7 +305,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -310,7 +328,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan GetPlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName)
         {
@@ -327,7 +346,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -340,7 +360,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -354,7 +375,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -409,7 +431,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static Microsoft.Rest.Azure.IPage<CommitmentPlanAccountAssociation> ListAssociations(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName)
         {
@@ -426,7 +449,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -448,10 +472,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlanAccountAssociation GetAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName)
         {
@@ -468,10 +494,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -493,14 +521,16 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
-        public static CommitmentPlanAccountAssociation CreateOrUpdateAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string))
+        public static CommitmentPlanAccountAssociation CreateOrUpdateAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string))
         {
-                return ((ICommitmentPlansOperations)operations).CreateOrUpdateAssociationAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, accountId).GetAwaiter().GetResult();
+                return ((ICommitmentPlansOperations)operations).CreateOrUpdateAssociationAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, tags, accountId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -513,17 +543,19 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommitmentPlanAccountAssociation> CreateOrUpdateAssociationAsync(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommitmentPlanAccountAssociation> CreateOrUpdateAssociationAsync(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateAssociationWithHttpMessagesAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, accountId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateAssociationWithHttpMessagesAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, tags, accountId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -538,10 +570,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlansDeleteAssociationHeaders DeleteAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName)
         {
@@ -558,10 +592,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -574,7 +610,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified commitmentPlan associated with the Cognitive Services account.
+        /// Deletes the specified commitmentPlan associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -586,7 +623,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static void BeginDelete(this ICommitmentPlansOperations operations, string resourceGroupName, string accountName, string commitmentPlanName)
         {
@@ -594,7 +632,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified commitmentPlan associated with the Cognitive Services account.
+        /// Deletes the specified commitmentPlan associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -606,7 +645,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -625,7 +665,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan BeginCreateOrUpdatePlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, CommitmentPlan commitmentPlan)
         {
@@ -642,7 +683,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -664,7 +706,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlan BeginUpdatePlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku))
         {
@@ -681,7 +724,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -694,7 +738,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes a Cognitive Services commitment plan from the resource group. 
+        /// Deletes a Cognitive Services commitment plan from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -703,7 +747,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlansDeletePlanHeaders BeginDeletePlan(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName)
         {
@@ -711,7 +756,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services commitment plan from the resource group. 
+        /// Deletes a Cognitive Services commitment plan from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -720,7 +765,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -742,14 +788,16 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
-        public static CommitmentPlanAccountAssociation BeginCreateOrUpdateAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string))
+        public static CommitmentPlanAccountAssociation BeginCreateOrUpdateAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string))
         {
-                return ((ICommitmentPlansOperations)operations).BeginCreateOrUpdateAssociationAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, accountId).GetAwaiter().GetResult();
+                return ((ICommitmentPlansOperations)operations).BeginCreateOrUpdateAssociationAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, tags, accountId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -762,17 +810,19 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommitmentPlanAccountAssociation> BeginCreateOrUpdateAssociationAsync(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommitmentPlanAccountAssociation> BeginCreateOrUpdateAssociationAsync(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateAssociationWithHttpMessagesAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, accountId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateAssociationWithHttpMessagesAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, tags, accountId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -787,10 +837,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         public static CommitmentPlansDeleteAssociationHeaders BeginDeleteAssociation(this ICommitmentPlansOperations operations, string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName)
         {
@@ -807,10 +859,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services Account
+        /// The name of the commitmentPlan associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services Account
+        /// The name of the commitment plan association with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -856,7 +910,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -870,7 +925,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

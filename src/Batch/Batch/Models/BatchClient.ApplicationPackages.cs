@@ -110,15 +110,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
                 }
 
-                // Else create Application Package and upload.
-                bool appPackageAlreadyExists;
+                // check to see if the application package already exists
+                bool appPackageAlreadyExists = AppPackageExists(resourceGroupName, accountName, applicationName, version);
 
-                var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationName, version, out appPackageAlreadyExists);
-
+                // if it exists, verify it allows updates
                 if (appPackageAlreadyExists)
                 {
                     CheckApplicationAllowsUpdates(resourceGroupName, accountName, applicationName, version);
                 }
+
+                // Get the storage URL to upload the application package to by calling create/update
+                var storageUrl = CreateUpdateAppPackage(resourceGroupName, accountName, applicationName, version);
 
                 UploadFileToApplicationPackage(resourceGroupName, accountName, applicationName, version, filePath, storageUrl, appPackageAlreadyExists);
 
@@ -189,7 +191,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationName, string version, out bool appPackageAlreadyExists)
+
+        private bool AppPackageExists(string resourceGroupName, string accountName, string applicationName, string version)
         {
             try
             {
@@ -200,8 +203,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     applicationName,
                     version);
 
-                appPackageAlreadyExists = true;
-                return response.StorageUrl;
+                return true;
+
             }
             catch (CloudException exception)
             {
@@ -213,6 +216,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
 
+            return false;
+        }
+
+
+        private string CreateUpdateAppPackage(string resourceGroupName, string accountName, string applicationName, string version)
+        {
             try
             {
                 var addResponse = BatchManagementClient.ApplicationPackage.Create(
@@ -221,8 +230,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     applicationName,
                     version);
 
-                //Package didn't exist before we created it
-                appPackageAlreadyExists = false;
                 return addResponse.StorageUrl;
             }
             catch (Exception exception)

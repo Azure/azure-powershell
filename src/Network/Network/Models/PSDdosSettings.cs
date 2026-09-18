@@ -23,5 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId DdosProtectionPlan { get; set; }
 
+        public PSResourceId DdosCustomPolicy { get; set; }
+
     }
 }

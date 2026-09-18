@@ -307,7 +307,10 @@ namespace Microsoft.Azure.Management.HDInsight.Models
 
 
 
-
+            if (this.NetworkProperties != null)
+            {
+                this.NetworkProperties.Validate();
+            }
 
             if (this.PrivateLinkConfigurations != null)
             {

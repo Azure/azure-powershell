@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         public static PrivateLinkResourceListResult ListByStorageSyncService(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string storageSyncServiceName)
         {
@@ -42,8 +41,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='storageSyncServiceName'>
-        /// The name of the storage sync service name within the specified resource
-        /// group.
+        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

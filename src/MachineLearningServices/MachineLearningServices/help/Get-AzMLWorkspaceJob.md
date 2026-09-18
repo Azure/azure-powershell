@@ -15,20 +15,26 @@ Gets a Job by name/id.
 ### List (Default)
 ```
 Get-AzMLWorkspaceJob -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
- [-Job <String>] [-JobType <String>] [-ListViewType <ListViewType>] [-Skip <String>] [-Tag <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Job <String>] [-JobType <String>] [-ListViewType <String>] [-Skip <String>] [-Tag <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceJob -Name <String> -WorkspaceInputObject <IMachineLearningServicesIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceJob -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +92,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -135,7 +140,7 @@ Accept wildcard characters: False
 View type for including/excluding (for example) archived entities.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ListViewType
+Type: System.String
 Parameter Sets: List
 Aliases:
 
@@ -152,25 +157,10 @@ This is case-sensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityWorkspace, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -223,6 +213,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
@@ -262,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBase
 
 ## NOTES
 

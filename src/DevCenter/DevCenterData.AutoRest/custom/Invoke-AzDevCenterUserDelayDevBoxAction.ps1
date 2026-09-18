@@ -20,37 +20,49 @@ Delays the occurrence of an action.
 .Description
 Delays the occurrence of an action.
 .Example
-{{ Add code here }}
+Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -DelayTime "01:30"
 .Example
-{{ Add code here }}
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
+.Example
+Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default" -DelayTime "00:30"
+.Example
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -Name "schedule-default" -DelayTime "05:15"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxActionDelayResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [Name <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelaydevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxActionDelayResult])]
   [CmdletBinding(DefaultParameterSetName = 'Delay1', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'Delay', Mandatory)]
@@ -67,27 +79,27 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
-
+  
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+  
     [Parameter(ParameterSetName = 'Delay', Mandatory)]
     [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Alias('ActionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of an action that will take place on a Dev Box.
+    # The name of the action.
     ${Name},
-
+  
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of a Dev Box.
-    ${DevBoxName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [System.String]
-    # The DevCenter Project upon which to execute operations.
+    # Name of the project.
     ${ProjectName},
-
+  
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
@@ -150,6 +162,7 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
   )
+  
   process {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
       $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
@@ -182,7 +195,7 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
         -Project $ProjectName -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $User
     }
 
-    $null = $PSBoundParameters.Add("Until", $Until)
+    $null = $PSBoundParameters.Add("DelayUntil", $Until)
     $null = $PSBoundParameters.Remove("DelayTime")
 
     Az.DevCenterdata.internal\Invoke-AzDevCenterUserDelayDevBoxAction @PSBoundParameters

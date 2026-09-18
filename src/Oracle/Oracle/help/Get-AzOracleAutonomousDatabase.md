@@ -15,25 +15,25 @@ Get a AutonomousDatabase
 ### List (Default)
 ```
 Get-AzOracleAutonomousDatabase [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzOracleAutonomousDatabase -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,8 +69,6 @@ ProvisionableCpu                              :
 ProvisioningState                             : Succeeded
 ResourceGroupName                             : PowerShellTestRg
 Role                                          : 
-ScheduledOperationScheduledStartTime          : 
-ScheduledOperationScheduledStopTime           : 
 ServiceConsoleUrl                             : 
 SqlWebDeveloperUrl                            : 
 SubnetId                                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subn
@@ -147,21 +145,6 @@ Parameter Sets: Get
 Aliases: Autonomousdatabasename
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

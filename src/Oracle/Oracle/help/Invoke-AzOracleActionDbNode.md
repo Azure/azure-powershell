@@ -16,34 +16,34 @@ VM actions on DbNode of VM Cluster by the provided filter
 ```
 Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Action <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActionViaJsonString
 ```
 Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActionViaJsonFilePath
 ```
 Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActionViaIdentityCloudVMClusterExpanded
 ```
 Invoke-AzOracleActionDbNode -Dbnodeocid <String> -CloudVMClusterInputObject <IOracleIdentity> -Action <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ActionViaIdentityExpanded
 ```
 Invoke-AzOracleActionDbNode -InputObject <IOracleIdentity> -Action <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ $stopActionName = "Stop"
 $dbNodeList = Get-AzOracleDbNode -Cloudvmclustername $vmClusterName -ResourceGroupName $resourceGroup
 $dbNodeOcid1 = $dbNodeList[0].Name
             
-Invoke-AzOracleActionDbNode -Cloudvmclustername $vmClusterName -Dbnodeocid $dbNodeOcid1 -ResourceGroupName $resourceGroup -Action $stopActionName
+Invoke-AzOracleActionDbNode -ResourceGroupName $resourceGroup -Cloudvmclustername $vmClusterName -Dbnodeocid $dbNodeOcid1  -Action $stopActionName
 ```
 
 ```output
@@ -300,21 +300,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

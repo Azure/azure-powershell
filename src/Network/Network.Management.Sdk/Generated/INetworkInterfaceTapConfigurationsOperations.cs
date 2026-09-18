@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface INetworkInterfaceTapConfigurationsOperations
     {
         /// <summary>
-        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// Get all Tap configurations in a network interface.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// Get all Tap configurations in a network interface.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
-        /// </param>
-        /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get the specified tap configuration on a network interface.
@@ -46,13 +46,14 @@ namespace Microsoft.Azure.Management.Network
         /// Get the specified tap configuration on a network interface.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,13 +76,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a Tap configuration in the specified NetworkInterface.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='tapConfigurationParameters'>
         /// Parameters supplied to the create or update tap configuration operation.
@@ -101,16 +103,20 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkInterfaceTapConfiguration>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get all Tap configurations in a network interface.
+        /// Deletes the specified tap configuration from the NetworkInterface.
         /// </summary>
         /// <remarks>
-        /// Get all Tap configurations in a network interface.
+        /// Deletes the specified tap configuration from the NetworkInterface.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
+        /// </param>
+        /// <param name='tapConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -121,36 +127,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified tap configuration from the NetworkInterface.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified tap configuration from the NetworkInterface.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkInterfaceName'>
-        /// The name of the network interface.
-        /// </param>
-        /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a Tap configuration in the specified NetworkInterface.
@@ -159,13 +136,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a Tap configuration in the specified NetworkInterface.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='tapConfigurationParameters'>
         /// Parameters supplied to the create or update tap configuration operation.
@@ -183,6 +161,33 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkInterfaceTapConfiguration>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkInterfaceName'>
+        /// The name of the network interface.
+        /// </param>
+        /// <param name='tapConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all Tap configurations in a network interface.

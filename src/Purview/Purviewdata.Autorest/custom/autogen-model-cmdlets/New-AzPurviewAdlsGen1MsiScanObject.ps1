@@ -21,12 +21,13 @@ Create an in-memory object for AdlsGen1MsiScan.
 Create an in-memory object for AdlsGen1MsiScan.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1MsiScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1MsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1msiscanobject
 #>
 function New-AzPurviewAdlsGen1MsiScanObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1MsiScan')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,20 +44,16 @@ function New-AzPurviewAdlsGen1MsiScanObject {
         [string]
         $ScanRulesetName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $ScanRulesetType,
         [Parameter()]
         [int]
-        $Worker,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-        $Kind
+        $Worker
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1MsiScan]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -75,9 +72,6 @@ function New-AzPurviewAdlsGen1MsiScanObject {
         }
         if ($PSBoundParameters.ContainsKey('Worker')) {
             $Object.Worker = $Worker
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

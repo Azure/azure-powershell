@@ -915,12 +915,13 @@ function Test-VirtualMachineSizeAndUsage
         Assert-AreEqual $vm.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $vm.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
-        # Test Sizes
-        $s1 = Get-AzVMSize -Location ($loc -replace ' ');
-        Assert-NotNull $s1;
-        Assert-NotNull $s1.RequestId;
-        Assert-NotNull $s1.StatusCode;
-        Validate-VirtualMachineSize $vmsize $s1;
+        # Test Sizes 
+        # CASE 1: List Virtual Machine Sizes parameter set deprecated 
+        # s1 = Get-AzVMSize -Location ($loc -replace ' ');
+        # Assert-NotNull $s1;
+        # Assert-NotNull $s1.RequestId;
+        # Assert-NotNull $s1.StatusCode;
+        # Validate-VirtualMachineSize $vmsize $s1;
 
         $s2 = Get-AzVMSize -ResourceGroupName $rgname -VMName $vmname;
         Assert-NotNull $s2;
@@ -2128,19 +2129,20 @@ function Test-VMImageCmdletOutputFormat
     $sku = $imgRef.Skus;
     $ver = $imgRef.Version;
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr'" @('Id', 'Location', 'PublisherName');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr } @('Id', 'Location', 'PublisherName');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } " @('Id', 'Location', 'PublisherName');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } } @('Id', 'Location', 'PublisherName');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer " @('Id', 'Location', 'PublisherName', 'Offer');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer } @('Id', 'Location', 'PublisherName', 'Offer');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer | Get-AzVMImageSku } @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Skus');
+    # Updated Get-AzVmImage list output. No need to output sku when user inputed that. There are more valuable information to display.
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer | Get-AzVMImageSku | Get-AzVMImage } @('Version', 'Location');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 # Test Image Cmdlet Output Format with EdgeZone
@@ -2157,29 +2159,15 @@ function Test-VMImageEdgeZoneCmdletOutputFormat
     $ver = "14393.4048.2011170655";
     $edgeZone = "microsoftlosangeles1";
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Select EdgeZone, Location " @('microsoftlosangeles1', 'westus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Select EdgeZone, Location } @('microsoftlosangeles1', 'westus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone'| Get-AzVMImageSku " @('Publisher', 'Offer', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Get-AzVMImageSku } @('Publisher', 'Offer', 'Skus');
 
-    Assert-OutputContains " Get-AzVMImagePublisher -Location '$locStr' | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzVMImageOffer -EdgeZone '$edgeZone' | Get-AzVMImageSku | Get-AzVMImage " @('Version', 'Skus');
+    Assert-OutputContains { Get-AzVMImagePublisher -Location $locStr | ? { $_.PublisherName -eq $publisher } | Get-AzVMImageOffer -EdgeZone $edgeZone | Get-AzVMImageSku | Get-AzVMImage } @('Version', 'Location');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -EdgeZone $edgeZone -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzVMImage -Location '$locStr' -EdgeZone '$edgeZone' -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
-}
-
-# Test Get VM Size from All Locations
-function Test-GetVMSizeFromAllLocations
-{
-    $locations = get_all_vm_locations;
-    foreach ($loc in $locations)
-    {
-        $vmsizes = Get-AzVMSize -Location $loc;
-        Assert-True { $vmsizes.Count -gt 0 }
-        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A3' }).Count -eq 1 }
-
-        Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
-    }
+    Assert-OutputContains { Get-AzVMImage -Location $locStr -EdgeZone $edgeZone -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver } @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 function get_all_vm_locations
@@ -4284,6 +4272,129 @@ function Test-VirtualMachineStop
 
 <#
 .SYNOPSIS
+Test Stop-AzVM ForceDeallocate parameter metadata and parameter set behavior.
+#>
+function Test-VirtualMachineStopForceDeallocate
+{
+    # Step 1: Verify the new parameter is exposed on the cmdlet as an optional switch.
+    $stopVmCommand = Get-Command Stop-AzVM -ErrorAction Stop;
+    $forceDeallocateParameter = $stopVmCommand.Parameters["ForceDeallocate"];
+
+    Assert-NotNull $forceDeallocateParameter;
+    Assert-AreEqual ([System.Management.Automation.SwitchParameter].FullName) $forceDeallocateParameter.ParameterType.FullName;
+
+    # ForceDeallocate is offered on the non-hibernate stop sets (like -StayProvisioned / -SkipShutdown),
+    # so it binds with the plain resource-group and id stop scenarios but not with -Hibernate.
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupNameParameterSetName" };
+    Assert-True { $forceDeallocateParameter.ParameterSets.Keys -contains "IdParameterSetName" };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "ResourceGroupHibernateParameterSet") };
+    Assert-True { -not ($forceDeallocateParameter.ParameterSets.Keys -contains "IdHibernateParameterSet") };
+
+    # Step 2: Verify supported combinations bind successfully without issuing live requests.
+    $vmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm";
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Force -WhatIf;
+    Stop-AzVM -Id $vmId -ForceDeallocate -Force -WhatIf;
+
+    # Step 3: Verify existing stop combinations still bind successfully.
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -StayProvisioned -SkipShutdown -Force -WhatIf;
+    Stop-AzVM -ResourceGroupName "rg" -Name "vm" -Hibernate -Force -WhatIf;
+
+    # Step 4: Verify ForceDeallocate cannot be combined with Hibernate, StayProvisioned, or
+    # SkipShutdown. Hibernate lives in a separate parameter set, so the combination fails at
+    # parameter binding; StayProvisioned / SkipShutdown share ForceDeallocate's sets and are
+    # rejected by the cmdlet's runtime validation.
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -Hibernate -Force -WhatIf -ErrorAction Stop; } "Parameter set cannot be resolved";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -StayProvisioned -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+    Assert-ThrowsContains { Stop-AzVM -ResourceGroupName "rg" -Name "vm" -ForceDeallocate -SkipShutdown -Force -WhatIf -ErrorAction Stop; } "cannot be used together";
+}
+
+<#
+.SYNOPSIS
+Test Stop-AzVM -ForceDeallocate end to end against a live virtual machine.
+
+.DESCRIPTION
+This scenario creates a real VM and force deallocates it via Stop-AzVM -ForceDeallocate,
+then asserts the VM reaches the deallocated power state. It must be recorded in Record mode
+against a live subscription (see documentation/testing-docs/using-azure-test-framework.md).
+
+NOTE: -ForceDeallocate is intended for VMs with ZoneMovement enabled. The enablement cmdlet
+(Set-AzVMZoneMovement) is delivered in a separate change; when recording this test, target a
+subscription/VM where the ForceDeallocate operation is accepted by the service.
+#>
+function Test-VirtualMachineStopForceDeallocateExecution
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    # Zone movement (and therefore -ForceDeallocate) is available in the eastus2euap canary region.
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a zone-resilient VM pinned to a specific availability zone.
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_D2s_v4";
+        $domainNameLabel = "d1" + $rgname;
+        $zone = "3";
+        $vmconfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone $zone -SecurityType "Standard";
+
+        # Linux image (the subscription policy disallows non-compliant Windows VMs).
+        $publisherName = "Canonical";
+        $offer = "0001-com-ubuntu-server-jammy";
+        $sku = "22_04-lts-gen2";
+        $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+        # A zone-resilient VM requires a zone-redundant (ZRS) OS disk.
+        $vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name ($vmname + '-osdisk') -StorageAccountType "StandardSSD_ZRS" -CreateOption FromImage -Caching ReadWrite;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -Sku Standard -AllocationMethod Static -Zone $zone -DomainNameLabel $domainNameLabel;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id;
+
+        # OS & credentials
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName $computerName -Credential $cred;
+
+        # Enable zone movement so the VM qualifies for -ForceDeallocate.
+        $vmconfig = Set-AzVMZoneMovement -VM $vmconfig -IsEnabled $true;
+        Assert-AreEqual $true $vmconfig.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+
+        # Confirm zone movement is enabled on the created VM.
+        $createdVm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $true $createdVm.ResiliencyProfile.ZoneMovement.IsEnabled;
+
+        # Force deallocate the running VM.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -ForceDeallocate -Force;
+
+        # Verify the VM reached the deallocated power state.
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        $powerState = ($vmStatus.Statuses | Where-Object { $_.Code -like "PowerState/*" }).Code;
+        Assert-AreEqual "PowerState/deallocated" $powerState;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Managed Disk
 #>
 function Test-VirtualMachineRemoteDesktop
@@ -4863,14 +4974,19 @@ function Test-VirtualMachineImageListTopOrderExpand
         $pubNames = "MicrosoftWindowsServer";
         $pubNameFilter = '*Windows*';
         $offer = "windowsserver";
-        $sku = "2012-R2-Datacenter";
+        $sku = "2025-datacenter";
         $numRecords = 3;
         $orderNameDesc = "name desc";
         $orderNameAsc = "name asc";
 
         # Test -Top
-        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords;
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords -Expand "properties";
         Assert-AreEqual $numRecords $vmImagesTop.Count;
+        Assert-NotNull $vmImagesTop[0].Architecture;
+        Assert-NotNull $vmImagesTop[0].HyperVGeneration;
+
+        $vmImagesTop = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -Top $numRecords -Expand "properties/imageDeprecationStatus"
+        Assert-NotNull $vmImagesTop[0].ImageDeprecationStatus
 
         # Test -OrderBy
         $vmImagesOrderDesc = Get-AzVMImage -Location $loc -PublisherName $pubNames -Offer $offer -Sku $sku -OrderBy $orderNameDesc;
@@ -5295,8 +5411,8 @@ function Test-VirtualMachineEnableAutoUpdate
         $computerName = "v" + $rgname;
 
         # VM Credential
-        $user = "usertest";
-        $password = "Testing1234567";
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -5630,6 +5746,46 @@ function Test-VMNoPublicIPAddress
 
 <#
 .SYNOPSIS
+Test Virtual Machine creation process with a Public IP Address when it is
+provided as a parameter.
+When PublicIpSku is not specified, it should be Standard Sku by default 
+(Since Az 13.0.0 and Az.Compute 9.0.0).
+#>
+function Test-VMWithPublicIPAddressStandardSku
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $pipName = "test-pip-standard";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PublicIPAddressName $pipName;
+
+        # Check that no PublicIPAddress resource was created.
+        $publicIPAddress = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $pipName;
+        Assert-AreEqual $publicIPAddress.Sku.Name "Standard";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Force Delete
 #>
 function Test-ForceDelete
@@ -5947,6 +6103,126 @@ function Test-VMvCPUFeatures
 
 <#
 .SYNOPSIS
+Test processor mode support in New-AzVMConfig, New-AzVM, and Update-AzVM.
+#>
+function Test-VMProcessorModeFeatures
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # Step 1: Verify New-AzVMConfig processor mode values and omission behavior
+        $vmConfigDeterministic = New-AzVMConfig -VMName ("det" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmConfigDeterministic.HardwareProfile.ProcessorMode
+
+        $vmConfigOpportunistic = New-AzVMConfig -VMName ("opp" + $rgname) -VMSize "Standard_E2pds_v8" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmConfigOpportunistic.HardwareProfile.ProcessorMode
+
+        $vmConfigDefault = New-AzVMConfig -VMName ("default" + $rgname) -VMSize "Standard_E2pds_v8"
+        Assert-Null $vmConfigDefault.HardwareProfile.ProcessorMode
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $vmName = "vm" + $rgname
+        $domainNameLabel = "d" + $rgname
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential ("admin01", $securePassword)
+
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmName -Credential $cred -DomainNameLabel $domainNameLabel -Image "Win2019Datacenter" -Size "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "Standard_E2pds_v8"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test SpotPlus priority on a virtual machine.
+
+.DESCRIPTION
+SpotPlus is the next generation of Azure Spot. It is accepted wherever 'Spot' is accepted on the
+-Priority parameter, and -EvictionPolicy / -MaxPrice keep their Spot semantics. Priority is
+create-time only and cannot be changed afterwards.
+Requires the 'Microsoft.Compute/SpotPlus' subscription feature and a region where it is enabled.
+#>
+function Test-VirtualMachineSpotPlusPriority
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = 'eastus2';
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2s_v5';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
+
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'SpotPlus' -EvictionPolicy 'Deallocate' -MaxPrice -1 -SecurityType $stnd;
+
+        # SpotPlus maps onto the virtual machine model before the request is sent.
+        Assert-AreEqual 'SpotPlus' $p.Priority;
+        Assert-AreEqual 'Deallocate' $p.EvictionPolicy;
+        Assert-AreEqual -1 $p.BillingProfile.MaxPrice;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        # Use an explicit image reference. Get-DefaultCRPImage queries 'locations/publishers',
+        # which does not support the 2026-04-01 api-version that SpotPlus requires.
+        $p = Set-AzVMSourceImage -VM $p -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version 'latest';
+
+        # Create a SpotPlus Virtual Machine. This mirrors the documented New-AzVMConfig example:
+        # a config object piped into New-AzVM, which uses the default parameter set and therefore
+        # exercises the best-effort BGInfo extension step on the way through.
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        # The service round-trips SpotPlus and never downgrades it to Spot.
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -DisplayHint Expand;
+        Assert-AreEqual "SpotPlus" $vm.Priority;
+        Assert-AreEqual "Deallocate" $vm.EvictionPolicy;
+        Assert-AreEqual -1 $vm.BillingProfile.MaxPrice;
+
+        $vmstate = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+        Assert-AreEqual "PowerState/running" $vmstate.Statuses[1].Code;
+
+        # Priority is create-time only, so the max price cannot be changed afterwards.
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -MaxPrice 0.2; } `
+            "Max price change is not allowed.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Test GetVirtualMachineById Parameter Set
 #>
 function Test-GetVirtualMachineById
@@ -6255,7 +6531,7 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $secureEncryptGuestState = 'DiskWithVMGuestState';
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
-        $password = "Testing1234567";
+        $password = $PLACEHOLDER;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6445,7 +6721,7 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $KeySize = 3072;
 
         # Creating a VM using simple parameterset
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $securePassword = "*****" | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6583,7 +6859,8 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
         $desName= "des" + $rgname;
 
         # Creating a VM using simple parameterset
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $password = "*****";
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -6664,7 +6941,7 @@ function Test-VirtualMachineSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2";
 
     try
     {
@@ -6779,7 +7056,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 {
     # Setup
         $rgname = Get-ComputeTestResourceName;
-        $loc = Get-ComputeVMLocation;
+        $loc = "eastus2euap";
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -6823,6 +7100,16 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
+        # Update SecurityType to Standard. Errors - Changing property 'securityProfile.securityType' is not allowed.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname2 -Force
+        Update-AzVm -ResourceGroupName $rgname -VM $res -SecurityType "Standard"
+        Start-AzVM -ResourceGroupName $rgname -Name $vmname2
+        $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+
+        Assert-Null $updated_vm.SecurityProfile.SecurityType;
+        Assert-Null $updated_vm.SecurityProfile.UefiSettings;
+        Assert-Null $updated_vm.SecurityProfile.SecurityType;
+
         # validate GA extension
         # We removed this logic as per request fro the feature team.
         # Keeping this code here as this may be added back in the future.
@@ -6854,7 +7141,7 @@ function Test-VirtualMachineSecurityTypeStandard
 {
     # Setup
         $rgname = Get-ComputeTestResourceName;
-        $loc = Get-ComputeVMLocation;
+        $loc = "Westus2"
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -6877,7 +7164,10 @@ function Test-VirtualMachineSecurityTypeStandard
         New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
         # Verify security value
         $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+
+        # VM Gets created with SecurityType: Standard but response has securityProfile null  
         Assert-Null $vm1.SecurityProfile;
+        #Assert-AreEqual $vm1.SecurityProfile.SecurityType "Standard";
 
         # validate GA extension is not installed by default.
         $extDefaultName = "GuestAttestation";
@@ -6969,7 +7259,7 @@ function Test-VMDefaultsToTrustedLaunch
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2"
 
     try
     {
@@ -7226,7 +7516,7 @@ function Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
+    $loc = "westus2"
 
     try
     {
@@ -7448,7 +7738,7 @@ Testing Capacity Reservation Sharing profile parameter
 Setting Sharing profile with multiple subs
 Then unsharing using empty string as value
 #>
-function Test-CapacityReservationSharingProfile
+function Test-CapacityReservationGroupResourceIdsOnly
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -7460,27 +7750,111 @@ function Test-CapacityReservationSharingProfile
 
         # create a CRG
         $CRGName = 'CRG' + $rgname
-        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc -SharingProfile "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c"
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc
 
-        # try Get-CRG with InstanceView
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
-        Assert-AreEqual "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c" $crg.SharingProfile.SubscriptionIds.Id
 
-        # Update CRG with new subscription
-        Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -SharingProfile "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c", "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
-        Assert-AreEqual 2 $crg.SharingProfile.SubscriptionIds.Count
+        # try Get-CRG with ResourceIdsOnly All
+        $CRG = Get-AzCapacityReservationGroup -ResourceIdsOnly All
+        Assert-AreEqual "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/$CRGName" $CRG.Id
 
-        # Clear Sharing Profile for CapacityReservationGroup
-        Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -SharingProfile ""
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
-        Assert-AreEqual $null $crg.SharingProfile
+        # try Get-CRG with ResourceIdsOnly CreatedInSubscription
+        $CRG = Get-AzCapacityReservationGroup -ResourceIdsOnly CreatedInSubscription
+        Assert-AreEqual "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/$CRGName" $CRG.Id
 
-         # remove CRG
-        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName
-        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname
-        Assert-AreEqual $null $CRG.count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
 
+<#
+.SYNOPSIS
+Test Open Capacity Reservation Group parameter mapping and record the service validation
+response while the preview feature is unavailable in the test subscription.
+#>
+function Test-OpenCapacityReservationGroup
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Record the service validation response for the requested preview configuration.
+        $openCRGName = 'openCRG' + $rgname;
+        Assert-ThrowsContains {
+            New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $openCRGName -Location $loc -Zone "1" -ReservationType "Open";
+        } "OpenCapacityReservation";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the -DisableCapacityReservationAssignment parameter on New-AzVMConfig, New-AzVM and Update-AzVM.
+Verifies local parameter mapping and validation, and records the service validation response while
+the preview feature is unavailable in the test subscription.
+#>
+function Test-VMDisableCapacityReservationAssignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmsize = "Standard_DS1_v2";
+        $stnd = "Standard";
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Step 1: the switch sets the property on the virtual machine configuration object
+        $vmConfig = New-AzVMConfig -VMName ('cfg' + $rgname) -VMSize $vmsize -DisableCapacityReservationAssignment;
+        Assert-NotNull $vmConfig.CapacityReservation;
+        Assert-AreEqual $true $vmConfig.CapacityReservation.DisableCapacityReservationAssignment;
+        Assert-Null $vmConfig.CapacityReservation.CapacityReservationGroup;
+
+        # Opting out and explicitly associating a capacity reservation group are opposing intents.
+        $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        Assert-ThrowsContains {
+            New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
+
+        # Record the service validation response when creating an opted-out virtual machine.
+        $vmname1 = '1' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -Size $vmsize -Location $loc -SecurityType $stnd -DisableCapacityReservationAssignment;
+        } "OpenCapacityReservation";
+
+        # Create a regular VM, then record the same service validation response for Update-AzVM.
+        $vmname2 = '2' + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
+        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $vmsize -Location $loc -SecurityType $stnd;
+
+        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+        Assert-Null $vm2.CapacityReservation;
+
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -DisableCapacityReservationAssignment;
+        } "OpenCapacityReservation";
+
+        Assert-ThrowsContains {
+            Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "cannot be used together";
+
+        Remove-AzVm -ResourceGroupName $rgname -Name $vmname2 -Force;
     }
     finally
     {
@@ -7536,9 +7910,9 @@ function Test-VMDefaultsToTrustedLaunchImgWhenStnd
 
 <#
 .SYNOPSIS
-Test Add-AzVMDataDisk
+Test Add-AzVMDataDisk and Remove-AzVMDataDisk
 #>
-function Test-AddVMDataDisk
+function Test-AddRemoveVMDataDisk
 {
     # To have a test recording 
     Get-AzVm 
@@ -7547,8 +7921,789 @@ function Test-AddVMDataDisk
     $vmname = 'vm' + $name;
     $vmConfig = New-AzVmConfig -VMName $vmname -VMSize 'testVMSize'
 
-    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name datadisk0 -VhdUri "testVhdUri" -SourceResourceId "testSourceResourceId" -CreateOption Copy -Lun 1
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk0' -VhdUri "testVhdUri" -SourceResourceId "testSourceResourceId" -CreateOption Copy -Lun 1
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk1' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -CreateOption Empty;
+    $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk2' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -CreateOption Empty;
+
+    $vmConfigOriginal = $vmConfig
+
+    # Validate Add-AzVMDataDisk
+    Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].SourceResource.id "testSourceResourceId"
+
+    # test Remove-AzVMDataDisk
+    $vmConfig = Remove-AzVMDataDisk -VM $vmConfig -DataDiskNames @('datadisk1') -ForceDetach
 
     # Validate
-    Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].SourceResource.id "testSourceResourceId"
+    $dataDisks = $vmConfig.StorageProfile.DataDisks
+    Assert-NotNullOrEmpty $dataDisks
+    Assert-AreEqual $dataDisks.Count 3
+    Assert-AreEqual $dataDisks[1].ToBeDetached $true
+    Assert-AreEqual $dataDisks[1].DetachOption "ForceDetach"
+    Assert-AreNotEqual $dataDisks[2].ToBeDetached $true
+    Assert-AreNotEqual $dataDisks[2].DetachOption "ForceDetach"
+
+
+
+    # test Remove-azVMDataDisk without -DataDiskNames but with -ForceDetach
+    $vmConfig = $vmConfigOriginal
+    $vmConfig = Remove-AzVMDataDisk -VM $vmConfig -ForceDetach
+
+    # Validate
+    $dataDisks = $vmConfig.StorageProfile.DataDisks
+    Assert-AreEqual $dataDisks.Count 3
+    Assert-AreEqual $dataDisks[0].ToBeDetached $true
+    Assert-AreEqual $dataDisks[0].DetachOption "ForceDetach"
+    Assert-AreEqual $dataDisks[1].ToBeDetached $true
+    Assert-AreEqual $dataDisks[1].DetachOption "ForceDetach"
+    Assert-AreEqual $dataDisks[2].ToBeDetached $true
+    Assert-AreEqual $dataDisks[2].DetachOption "ForceDetach"
+
+
+    # test Remove-AzVMDataDisk without -DataDiskNames and -ForceDetach
+    $vmConfig = $vmConfigOriginal
+    $vmConfig = Remove-AzVMDataDisk -VM $vmConfig 
+
+    # Validate 
+    $dataDisks = $vmConfig.StorageProfile.DataDisks
+    Assert-Null $dataDisks
+
+}
+
+<#
+.SYNOPSIS
+Test Set-AzVMOperatingSystem does not have a null ref exception.
+The ComputerName is an expected required parameter. 
+#>
+function Test-VMSetAzOSCredentialNullRef
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus2";#Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # DefaultParameterSet with VMConfig scenario
+        $domainNameLabel = "d2" + $rgname;
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'v' + $rgname;
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "d";
+        $NICName = $vmname+ "n";
+        $NSGName = $vmname + "nsg";
+
+        # Creating a VM using Default parameterset
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        # Verify a VM needs the ComputerName. 
+        Assert-ThrowsContains {New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig; } "Required parameter"
+        
+        # Verify the VM is created successfully. 
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-NotNull $vm;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+function Test-VMwithSSHKeyEd25519
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+
+        # create credential
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation
+        $vmname = '1' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $sshKeyName = "s" + $rgname
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -SshKeyname $sshKeyName -generateSshkey -SshKeyType 'Ed25519'
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        $sshKey = Get-AzSshKey -ResourceGroupName $rgname -Name $sshKeyName
+
+        #assert compare
+        Assert-AreEqual $vm.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].KeyData $sshKey.publickey
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Test-AddEncryptionIdentityInAzureVmConfig add encryptionIdentity for Azure disk encryption using managed Identity.
+#>
+function Test-AddEncryptionIdentityInAzureVmConfig{
+    $rgName = Get-ComputeTestResourceName;
+    try {
+        # create virtual machine
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2S_V3';
+        $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
+        
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        Write-Verbose "Completed one instances";
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+        $p = Set-AzVMBootDiagnostic -VM $p -Disable
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Write-Verbose "The value of the variable is: $vm"
+        Assert-AreEqual $vmname $vm.Name;
+        Assert-AreEqual "UserAssigned" $vm.Identity.Type
+        Assert-NotNull $vm.Identity.UserAssignedIdentities
+        Assert-AreEqual 1 $vm.Identity.UserAssignedIdentities.Count
+        Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
+        Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].PrincipalId
+        Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].ClientId
+        Write-Verbose $vm.SecurityProfile;
+        Assert-NotNull $vm.SecurityProfile.EncryptionIdentity
+        Assert-AreEqual $encIdentity $vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId
+
+    }
+    finally {
+        clean-ResourceGroup $rgName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm Throw Exceptions if the EncryptionIdentity
+is not a part of assignedIdentities in a VM.
+#>
+function Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm{
+    $rgName = Get-ComputeTestResourceName;
+    try {
+        # create virtual machine
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2S_V3';
+        $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";
+        $assignedIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testcliIdentity"
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $assignedIdentity;
+        
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        Write-Verbose "Completed one instances";
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+        $p = Set-AzVMBootDiagnostic -VM $p -Disable
+
+        # Virtual Machine
+        Assert-ThrowsContains {New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p} `
+        "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource";
+
+    }
+    finally {
+        clean-ResourceGroup $rgName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachinePlacement creates a VM with zone placement feature. 
+#>
+function Test-VirtualMachinePlacement
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+
+        # create credential
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # create VM with placement feature
+        $vmname = '1' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -ZonePlacementPolicy "Any" -IncludeZone "1","2" -AlignRegionalDisksToVMZone
+
+        # validate 
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        Assert-AreEqual $vm.placement.zonePlacementPolicy "Any"
+        Assert-AreEqual $vm.placement.includeZones.count 2 
+        Assert-AreEqual $vm.StorageProfile.AlignRegionalDisksToVMZone $true
+
+        # update VM to turn off align 
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -AlignRegionalDisksToVMZone $false
+
+        #Validate
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        Assert-AreEqual $vm.StorageProfile.AlignRegionalDisksToVMZone $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachineAddProxyAgentExtension creates a VM with Enabled ProxyAgent and added ProxyAgentExtension
+#>
+function Test-VirtualMachineAddProxyAgentExtension
+{
+    # Setup
+    $resourceGroupName = Get-ComputeTestResourceName;
+    $adminUsername = Get-ComputeTestResourceName;
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+    $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+    $vmName = 'VM1';
+    $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
+    $domainNameLabel = "d1" + $resourceGroupName;
+
+
+    try
+    {
+        New-AzVM -ResourceGroupName $resourceGroupName -Name $VMName -Credential $cred -image $imageName -DomainNameLabel $domainNameLabel -Location 'eastus2' -EnableProxyAgent -AddProxyAgentExtension
+
+        # Update vm to add proxy agent extension 
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -VMName $vmName
+        $VM = Set-AzVMProxyAgentSetting -VM $VM -EnableProxyAgent $true -AddProxyAgentExtension $false
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+
+        # Validate 
+        Assert-AreEqual $VM.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $VM.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachineProxyAgentUseLocalFileRules validates WireServer and IMDS local file rules settings on a VM.
+#>
+function Test-VirtualMachineProxyAgentUseLocalFileRules
+{
+    $resourceGroupName = Get-ComputeTestResourceName
+    $adminUsername = Get-ComputeTestResourceName
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword)
+    $vmName = Get-ComputeTestResourceName
+    $location = "eastus2"
+    $virtualNetworkName = $vmName + "vnet"
+    $subnetName = $vmName + "subnet"
+    $networkInterfaceName = $vmName + "nic"
+
+    try
+    {
+        # Validate the parameter matrix on an in-memory VM configuration.
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $true
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -ImdsUseLocalFileRules $false
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerUseLocalFileRules $null -ImdsUseLocalFileRules $null
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.WireServer
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules
+        Assert-NotNull $vm.SecurityProfile.ProxyAgentSettings.Imds
+        Assert-Null $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+
+        # Persist both settings and verify create and update behavior through the Compute resource provider.
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
+        $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $networkInterface = New-AzNetworkInterface -Name $networkInterfaceName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $virtualNetwork.Subnets[0].Id
+
+        $vm = New-AzVMConfig -VMName $vmName -VMSize "Standard_D2s_v3"
+        $vm = Set-AzVMOperatingSystem -VM $vm -Linux -ComputerName $vmName -Credential $credential
+        $vm = Set-AzVMSourceImage -VM $vm -PublisherName "Canonical" -Offer "0001-com-ubuntu-server-jammy" -Skus "22_04-lts" -Version "22.04.202510230"
+        $vm = Set-AzVMBootDiagnostic -VM $vm -Disable
+        $vm = Add-AzVMNetworkInterface -VM $vm -Id $networkInterface.Id
+        $vm = Set-AzVMSecurityProfile -VM $vm -SecurityType "Standard"
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -AddProxyAgentExtension $true -WireServerMode "Audit" -WireServerUseLocalFileRules $true -ImdsMode "Enforce" -ImdsUseLocalFileRules $false
+        New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $false
+
+        $vm = Set-AzVMProxyAgentSetting -VM $vm -EnableProxyAgent $true -WireServerMode "Audit" -WireServerUseLocalFileRules $false -ImdsMode "Enforce" -ImdsUseLocalFileRules $true
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $vm
+
+        $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Enabled $true
+    Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension $true
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.Mode "Audit"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.WireServer.UseLocalFileRules $false
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.Mode "Enforce"
+        Assert-AreEqual $vm.SecurityProfile.ProxyAgentSettings.Imds.UseLocalFileRules $true
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Test-VirtualMachineGalleryApplicationFlags tests GalleryApplication Creation and Addition of TreatFailureAsDeploymentFailure and EnableAutomaticUpgrade flags
+#>
+function Test-VirtualMachineGalleryApplicationFlags
+{
+    if ((Get-ComputeTestMode) -eq 'Playback') {
+        Write-Verbose "Skipping Test-VirtualMachineGalleryApplicationFlags in Playback (uses storage & gallery live operations)";
+        Assert-True { $true }
+        return
+    }
+
+    # Setup
+    $resourceGroupName = Get-ComputeTestResourceName;
+    $adminUsername = Get-ComputeTestResourceName;
+    $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+    $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+    $vmName = 'VM1';
+    $imageName = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest";
+    $domainNameLabel = "d1" + $resourceGroupName;
+    $loc = 'eastus2';
+
+    try {
+        # Create VM
+        New-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -Credential $cred -Image $imageName -DomainNameLabel $domainNameLabel -Location $loc -EnableProxyAgent -AddProxyAgentExtension | Out-Null
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+
+        # Names
+        $galleryName        = "gal" + $resourceGroupName
+        $galleryAppName1    = "app"  + $resourceGroupName
+        $galleryAppName2    = "app2" + $resourceGroupName
+        $galleryAppVersion1 = "1.0.0"
+        $galleryAppVersion2 = "1.0.0"   # version string can be same; application name must differ
+
+        # Storage account + package blob (page blob with valid minimal ZIP)
+        $storageName   = ("pkg" + ($resourceGroupName.ToLower()))[0..([Math]::Min(23,("pkg" + ($resourceGroupName.ToLower())).Length-1))] -join ''
+        $containerName = "packages"
+        $blobName      = "apppkg.zip"
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageName -Location $loc -Type Standard_LRS | Out-Null
+        $acctKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageName
+        $ctx = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $acctKeys[0].Value
+        New-AzStorageContainer -Name $containerName -Context $ctx -Permission Blob | Out-Null
+
+        $localPackage = Join-Path $TestOutputRoot $blobName
+        if (Test-Path $localPackage) { Remove-Item $localPackage -Force }
+
+        # Create a minimal valid ZIP (empty directory) then pad to 512-byte multiple for page blob
+        $tmpDir = Join-Path $TestOutputRoot "pkgtmp"
+        if (Test-Path $tmpDir) { Remove-Item $tmpDir -Recurse -Force }
+        New-Item -ItemType Directory -Path $tmpDir | Out-Null
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        [System.IO.Compression.ZipFile]::CreateFromDirectory($tmpDir, $localPackage)
+        Remove-Item $tmpDir -Force
+        $bytes = [IO.File]::ReadAllBytes($localPackage)
+        $pad = 512 - ($bytes.Length % 512)
+        if ($pad -ne 512) {
+            $bytes += (0..($pad-1) | ForEach-Object { 0 })
+            [IO.File]::WriteAllBytes($localPackage, $bytes)
+        }
+
+        Set-AzStorageBlobContent -File $localPackage -Container $containerName -Blob $blobName -Context $ctx -BlobType Page | Out-Null
+        $packageUri = (Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx).ICloudBlob.Uri.AbsoluteUri
+
+        # Gallery + application definitions
+        New-AzGallery -ResourceGroupName $resourceGroupName -Name $galleryName -Location $loc | Out-Null
+        New-AzGalleryApplication -ResourceGroupName $resourceGroupName -GalleryName $galleryName -Name $galleryAppName1 -Location $loc -SupportedOSType Linux -Description "Test gallery app flags - app1" | Out-Null
+        New-AzGalleryApplication -ResourceGroupName $resourceGroupName -GalleryName $galleryName -Name $galleryAppName2 -Location $loc -SupportedOSType Linux -Description "Test gallery app flags - app2" | Out-Null
+
+        $installCmd = "echo install"
+        $removeCmd  = "echo remove"
+
+        function Wait-GalleryAppVersionSucceeded {
+            param(
+                [string] $RG,
+                [string] $Gal,
+                [string] $App,
+                [string] $Ver,
+                [int] $TimeoutSeconds = 300
+            )
+            $start = Get-Date
+            do {
+                try {
+                    $v = Get-AzGalleryApplicationVersion -ResourceGroupName $RG -GalleryName $Gal -GalleryApplicationName $App -Name $Ver -ErrorAction Stop
+                    if ($v.ProvisioningState -eq 'Succeeded') { return $v }
+                }
+                catch {
+                    # transient – ignore during creation
+                }
+                Start-Sleep -Seconds 5
+            } while ((Get-Date) - $start -lt [TimeSpan]::FromSeconds($TimeoutSeconds))
+            throw "Gallery Application Version $App/$Ver did not reach Succeeded within timeout."
+        }
+
+        # Version for app1
+        New-AzGalleryApplicationVersion -ResourceGroupName $resourceGroupName -GalleryName $galleryName -GalleryApplicationName $galleryAppName1 -Name $galleryAppVersion1 -Location $loc -PackageFileLink $packageUri -Install $installCmd -Remove $removeCmd -TargetRegion @(@{ Name = $loc; ReplicaCount = 1 }) | Out-Null
+        $galVerApp1 = Wait-GalleryAppVersionSucceeded -RG $resourceGroupName -Gal $galleryName -App $galleryAppName1 -Ver $galleryAppVersion1
+        $pkgId1 = $galVerApp1.Id
+
+        # Version for app2
+        New-AzGalleryApplicationVersion -ResourceGroupName $resourceGroupName -GalleryName $galleryName -GalleryApplicationName $galleryAppName2 -Name $galleryAppVersion2 -Location $loc -PackageFileLink $packageUri -Install $installCmd -Remove $removeCmd -TargetRegion @(@{ Name = $loc; ReplicaCount = 1 }) | Out-Null
+        $galVerApp2 = Wait-GalleryAppVersionSucceeded -RG $resourceGroupName -Gal $galleryName -App $galleryAppName2 -Ver $galleryAppVersion2
+        $pkgId2 = $galVerApp2.Id
+
+        # Case 0: Add first gallery application with both flags false
+        $vmGalleryApplication0 = New-AzVmGalleryApplication -PackageReferenceId $pkgId1 -EnableAutomaticUpgrade:$false -TreatFailureAsDeploymentFailure:$false
+        $VM = Add-AzVmGalleryApplication -VM $VM -GalleryApplication $vmGalleryApplication0
+        $VM | Update-AzVM
+        $vmAfter0 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $gal0 = $vmAfter0.ApplicationProfile.GalleryApplications[0]
+        Assert-AreEqual $pkgId1 $gal0.PackageReferenceId
+        Assert-AreEqual $false $gal0.EnableAutomaticUpgrade
+        Assert-AreEqual $false $gal0.TreatFailureAsDeploymentFailure
+
+        # Case 1: Update existing application flags to true
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $VM.ApplicationProfile.GalleryApplications[0].EnableAutomaticUpgrade = $true
+        $VM.ApplicationProfile.GalleryApplications[0].TreatFailureAsDeploymentFailure = $true
+        Update-AzVM -ResourceGroupName $resourceGroupName -VM $VM
+        $vmAfter1 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $gal1 = $vmAfter1.ApplicationProfile.GalleryApplications[0]
+        Assert-AreEqual $pkgId1 $gal1.PackageReferenceId
+        Assert-AreEqual $true $gal1.EnableAutomaticUpgrade
+        Assert-AreEqual $true $gal1.TreatFailureAsDeploymentFailure
+
+        # Case 2: Add second (distinct) application with preset true flags
+        $vmGalleryApplication2 = New-AzVmGalleryApplication -PackageReferenceId $pkgId2 -EnableAutomaticUpgrade:$true -TreatFailureAsDeploymentFailure:$true
+        $VM = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $VM = Add-AzVmGalleryApplication -VM $VM -GalleryApplication $vmGalleryApplication2
+        $VM | Update-AzVM
+        $vmAfter2 = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
+        $gal2 = $vmAfter2.ApplicationProfile.GalleryApplications | Where-Object { $_.PackageReferenceId -eq $pkgId2 }
+        Assert-AreEqual $pkgId2 $gal2.PackageReferenceId
+        Assert-AreEqual $true $gal2.EnableAutomaticUpgrade
+        Assert-AreEqual $true $gal2.TreatFailureAsDeploymentFailure
+    }
+    finally {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+<#
+.SYNOPSIS
+Test Virtual Machine Data Disk with IOPS and MBPS parameters
+#>
+function Test-VMDataDiskIOPSMBPS
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # Test adding data disk with DiskIOPSReadWrite and DiskMBpsReadWrite parameters
+        $diskName = 'testdisk1';
+        $diskLun = 0;
+        $diskSize = 10;
+        $diskIOPS = 100;
+        $diskMBPS = 1;
+        
+        # Add data disk with IOPS and MBPS for managed disk (implicit creation scenario)
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name $diskName -Lun $diskLun -CreateOption 'Empty' -DiskSizeInGB $diskSize -StorageAccountType 'UltraSSD_LRS' -Caching 'None' -DiskIOPSReadWrite $diskIOPS -DiskMBpsReadWrite $diskMBPS;
+
+        # Verify the disk was added with correct properties
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 1;
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].DiskIOPSReadWrite $diskIOPS;
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].DiskMBpsReadWrite $diskMBPS;
+
+        # Test adding another data disk without IOPS/MBPS parameters
+        $diskName2 = 'testdisk2';
+        $diskLun2 = 1;
+        $diskSize2 = 20;
+        
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name $diskName2 -Lun $diskLun2 -CreateOption 'Empty' `
+            -DiskSizeInGB $diskSize2 -StorageAccountType 'Premium_LRS' -Caching 'ReadOnly';
+
+        # Verify the second disk was added without IOPS/MBPS
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 2;
+        Assert-Null $vmConfig.StorageProfile.DataDisks[1].DiskIOPSReadWrite;
+        Assert-Null $vmConfig.StorageProfile.DataDisks[1].DiskMBpsReadWrite;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzVMOSDisk and Add-AzVMDataDisk with StorageFaultDomainAlignment parameter
+#>
+function Test-VMStorageFaultDomainAlignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
+
+        # Create VMSS Flex (required for StorageFaultDomainAlignment - CRP rejects it on standalone VMs)
+        $vmssName = "vmss" + $rgname;
+
+        # NRP (needed for both VMSS and VM)
+        $vnetname = "vnet" + $rgname;
+        $subnetname = "subnet" + $rgname;
+        $NICName = "nic" + $rgname;
+        $NSGName = "nsg" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $vnetAddress = "10.0.0.0/16";
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName -SecurityRules $nsgRuleRDP;
+
+        # Credentials
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # VMSS Flex config with full VM profile (storage + OS + network required for Flex)
+        $subnetId = $vnet.Subnets[0].Id;
+        $ipConfig = New-AzVmssIpConfig -Name 'ipconfig1' -SubnetId $subnetId;
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $vmsize -OrchestrationMode 'Flexible' -SecurityType $stnd -Zone "1","2","3" -PlatformFaultDomainCount 2 -ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+        Set-AzVmssStorageProfile $vmssConfig -OsDiskCreateOption "FromImage" -ManagedDisk "Premium_LRS" -ImageReferencePublisher "MicrosoftWindowsServer" -ImageReferenceOffer "WindowsServer" -ImageReferenceSku "2022-Datacenter" -ImageReferenceVersion "latest";
+        Set-AzVmssOsProfile $vmssConfig -AdminUsername $cred.UserName -AdminPassword $cred.Password -ComputerNamePrefix "vm";
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name 'nicconfig1' -Primary $true -IPConfiguration $ipConfig -NetworkApiVersion "2020-11-01";
+
+        $VMSS = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
+
+        # Create a separate NIC for the individual VM
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM Config within VMSS Flex
+        $OSDiskName = $vmname + "-osdisk";
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -VmssId $VMSS.Id -SecurityType $stnd;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version latest;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        # Set OS disk with StorageFaultDomainAlignment
+        Set-AzVMOSDisk -VM $vmConfig -Name $OSDiskName -StorageAccountType "Premium_LRS" -Caching ReadWrite -CreateOption FromImage -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.OsDisk.StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk with BestEffortAligned StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk0' -Lun 0 -CreateOption 'Empty' -DiskSizeInGB 128 -StorageAccountType 'Premium_LRS' -Caching 'ReadOnly' -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk with BestEffortAligned StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk1' -Lun 1 -CreateOption 'Empty' -DiskSizeInGB 64 -StorageAccountType 'Premium_LRS' -Caching 'None' -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[1].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk without StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk2' -Lun 2 -CreateOption 'Empty' -DiskSizeInGB 32 -StorageAccountType 'Premium_LRS' -Caching 'None';
+        Assert-Null $vmConfig.StorageProfile.DataDisks[2].StorageFaultDomainAlignment;
+
+        # Create the VM within the VMSS Flex
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+
+        # Get the VM instance view and verify StorageAlignmentStatus on disk instance views
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+
+        $validAlignmentStatuses = @('Aligned', 'Unaligned');
+
+        # OS disk alignment status from instance view
+        Assert-NotNull $vmStatus.Disks;
+        $osDisk = $vmStatus.Disks | Where-Object { $_.Name -eq $OSDiskName };
+        Assert-NotNull $osDisk;
+        Assert-NotNull $osDisk.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $osDisk.StorageAlignmentStatus };
+
+        # Data disk alignment statuses from instance view
+        $dataDisk0 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk0' };
+        Assert-NotNull $dataDisk0;
+        Assert-NotNull $dataDisk0.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk0.StorageAlignmentStatus };
+
+        $dataDisk1 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk1' };
+        Assert-NotNull $dataDisk1;
+        Assert-NotNull $dataDisk1.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk1.StorageAlignmentStatus };
+
+        $dataDisk2 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk2' };
+        Assert-NotNull $dataDisk2;
+        Assert-NotNull $dataDisk2.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk2.StorageAlignmentStatus };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }

@@ -1,0 +1,23 @@
+{
+  "properties": {
+    "connectionIntent": "Disconnected",
+    "billingModel": "Capacity",
+    "billingConfiguration": {
+      "autoRenew": "Disabled",
+      "current": {
+        "cores": 8,
+        "pricingModel": "Annual"
+      },
+      "upcoming": {
+        "cores": 8,
+        "pricingModel": "Annual"
+      }
+    },
+    "benefitPlans": {
+      "azureHybridWindowsServerBenefit": "Enabled",
+      "windowsServerVmCount": 10
+    }
+  },
+  "tags": {},
+  "location": "eastus2euap"
+}

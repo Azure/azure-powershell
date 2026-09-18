@@ -113,7 +113,7 @@ function Test-NewAzureRmServiceFabricClusterCNCert
 
 function Test-AddAzureRmServiceFabricNodeType
 {
-	$clusterName = "pstestnodetypecluster"
+	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName	
 	$newNodeTypeName = Get-NewNodeTypeName
 

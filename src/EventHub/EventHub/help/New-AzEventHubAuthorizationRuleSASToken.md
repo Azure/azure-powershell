@@ -15,11 +15,12 @@ Generates a SAS token for Azure eventhub authorization rule of namespace/eventhu
 ```
 New-AzEventHubAuthorizationRuleSASToken [-AuthorizationRuleId] <String> [-KeyType] <String>
  [-ExpiryTime] <DateTime> [-StartTime <DateTime>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzEventHubAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namesapce or Azure Eventhub
+The New-AzEventHubAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namespace or Azure Eventhub
 
 ## EXAMPLES
 
@@ -30,7 +31,7 @@ $EndTime = $StartTime.AddHours(2.0)
 $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with start and expiry time..
+Generate SAS token for the given authorization rule for Namespace with start and expiry time..
 
 ### Example 2
 ```powershell
@@ -39,12 +40,27 @@ $EndTime = $StartTime.AddHours(2.0)
 $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with expiry time.
+Generate SAS token for the given authorization rule for Namespace with expiry time.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AuthorizationRuleId
-ARM ResourceId of the Authoraization Rule
+ARM ResourceId of the Authorization Rule
 
 ```yaml
 Type: System.String
@@ -55,6 +71,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

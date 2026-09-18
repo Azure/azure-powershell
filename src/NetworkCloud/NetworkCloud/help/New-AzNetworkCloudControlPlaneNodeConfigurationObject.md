@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudControlPlaneNodeConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudcontrolplanenodeconfigurationobject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Create an in-memory object for ControlPlaneNodeConfiguration.
 New-AzNetworkCloudControlPlaneNodeConfigurationObject -Count <Int64> -VMSkuName <String>
  [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AvailabilityZone <String[]>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,10 +61,9 @@ Accept wildcard characters: False
 ### -AdministratorConfigurationSshPublicKey
 The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
 In some cases, specification of public keys may be required to produce a working environment.
-To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -106,21 +105,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VMSkuName
 The name of the VM SKU supplied during creation.
 
@@ -143,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ControlPlaneNodeConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ControlPlaneNodeConfiguration
 
 ## NOTES
 

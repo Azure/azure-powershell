@@ -14,17 +14,17 @@ Creates a new Azure NetApp Files (ANF) backup.
 
 ### ByFieldsParameterSet (Default)
 ```
-New-AzNetAppFilesBackup -ResourceGroupName <String> [-Location <String>] -AccountName <String>
- [-PoolName <String>] [-VolumeName <String>] -BackupVaultName <String> -Name <String>
- -VolumeResourceId <String> -Label <String> [-UseExistingSnapshot] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -BackupVaultName <String>
+ -Name <String> -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot] [-SnapshotName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> -Label <String> [-UseExistingSnapshot]
- [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot]
+ [-SnapshotName <String>] -BackupVaultObject <PSNetAppFilesBackupVault>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,10 +35,11 @@ The **New-AzNetAppFilesBackup** cmdlet creates a backup for an ANF volume.
 
 ### Example 1
 ```powershell
-New-AzNetAppFilesBackup -ResourceGroupName "MyRG" -Location "westus2" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyVolumeBackup" -Label "ALabel"
+$volumeResourceId = "/subscriptions/D633CC2E-722B-4AE1-B636-BBD9E4C60ED9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/MyAccount/capacityPools/MyPool/volumes/MyVolume"
+New-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault" -Name "MyVolumeBackup" -Label "ALabel" -VolumeResourceId $volumeResourceId
 ```
 
-This command creates the new ANF backup for volume named  account "MyVolume".
+This command creates the new ANF backup in vault MyVault for volume with resource Id $volumeResourceId.
 
 ## PARAMETERS
 
@@ -110,21 +111,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -147,36 +133,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of the ANF pool
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group of the ANF account
 
@@ -186,6 +142,21 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotName
+The name of the snapshot, use with UseExistingSnapshot
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,36 +175,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeName
-The name of the ANF volume
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeObject
-The volume for the new backup object
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -287,8 +228,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 

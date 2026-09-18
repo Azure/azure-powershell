@@ -21,6 +21,7 @@ using System.Xml.Serialization;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -68,13 +69,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
-                    RefreshContextsFromCache();
+                    RefreshContextsFromCache(AzureCmdletContext.CmdletNone);
                 }
 
                 IAzureContext result = null;
                 if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
-                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first available context as default
                     EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
                     TryRemoveContext(Constants.DefaultValue);
                 }
@@ -173,7 +174,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         bool SafeDeserializeObject<T>(string serialization, out T result, JsonConverter converter = null)
         {
-            result = default(T);
+            result = default;
             bool success = false;
             try
             {
@@ -206,8 +207,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     EnvironmentTable[environment.Key] = environment.Value;
                 }
 
-                AzKeyStore keystore = null;
-                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
+                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore);
 
                 foreach (var context in profile.Contexts)
                 {
@@ -248,8 +248,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         public AzureRmProfile RefillCredentialsFromKeyStore()
         {
-            AzKeyStore keystore = null;
-            AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
+            AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keystore);
             AzureRmProfile ret = this.DeepCopy();
             if (keystore != null)
             {
@@ -419,7 +418,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its default state
+        /// Set the container to its default state
         /// </summary>
         public void Clear()
         {
@@ -571,7 +570,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Add the input context with the specified name.
         /// If the context with the same tenant, subscription, accountId does not exist, add the input into context list.
-        /// If the context with the same tenant, subscription, accountId already exist, merge 2 contexes and add the merged context to the context list.
+        /// If the context with the same tenant, subscription, accountId already exist, merge 2 contexts and add the merged context to the context list.
         /// </summary>
         /// <param name="name">The specified new name of the context.</param>
         /// <param name="context">The new context to set as default.</param>
@@ -812,7 +811,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        public void RefreshContextsFromCache()
+        public void RefreshContextsFromCache(ICmdletContext cmdletContext)
         {
             // Authentication factory is already registered in `OnImport()`
             AzureSession.Instance.TryGetComponent(
@@ -901,7 +900,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     List<IAccessToken> tokens = null;
                     try
                     {
-                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
+                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage, cmdletContext);
                     }
                     catch (Exception e)
                     {

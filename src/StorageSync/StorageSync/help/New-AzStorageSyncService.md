@@ -16,7 +16,7 @@ This command creates a new storage sync service in a resource group.
 New-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-IncomingTrafficPolicy] <String>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this paramter without "-IdentityType", will use system assigned identity.
+Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this parameter without "-IdentityType", will use system assigned identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -137,21 +137,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

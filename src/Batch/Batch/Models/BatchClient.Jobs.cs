@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 List<EnvironmentSetting> envSettings = new List<EnvironmentSetting>();
                 foreach (DictionaryEntry d in parameters.CommonEnvironmentSettings)
                 {
-                    EnvironmentSetting envSetting = new EnvironmentSetting(d.Key.ToString(), d.Value.ToString());
+                    EnvironmentSetting envSetting = new EnvironmentSetting(d.Key.ToString(), d.Value?.ToString());
                     envSettings.Add(envSetting);
                 }
                 job.CommonEnvironmentSettings = envSettings;
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.Metadata = new List<MetadataItem>();
                 foreach (DictionaryEntry d in parameters.Metadata)
                 {
-                    MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value.ToString());
+                    MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value?.ToString());
                     job.Metadata.Add(metadata);
                 }
             }

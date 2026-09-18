@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Subvolume Patch Request properties
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SubvolumePatchRequest : Microsoft.Rest.Azure.IResource
+    public partial class SubvolumePatchRequest
     {
         /// <summary>
         /// Initializes a new instance of the SubvolumePatchRequest class.

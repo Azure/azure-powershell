@@ -14,7 +14,7 @@ Gets Azure Resource Management Private Link(s)
 
 ```
 Get-AzResourceManagementPrivateLink [[-ResourceGroupName] <String>] [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ Location                   : centralus
 PrivateEndpointConnections : {}
 ```
 
-Gets all of the resoure management private links at the subscription scope.
+Gets all of the resource management private links at the subscription scope.
 
 ### Example 3
 ```powershell
@@ -82,7 +82,7 @@ Location                   : centralus
 PrivateEndpointConnections : {}
 ```
 
-Gets all of the resoure management private links at the resource group scope.
+Gets all of the resource management private links at the resource group scope.
 
 ## PARAMETERS
 
@@ -111,21 +111,6 @@ Aliases: PrivateLinkName
 
 Required: False
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

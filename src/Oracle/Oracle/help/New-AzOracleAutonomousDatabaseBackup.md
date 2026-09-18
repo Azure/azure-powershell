@@ -16,7 +16,7 @@ Create a AutonomousDatabaseBackup
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-RetentionPeriodInDay <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasena
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,21 +171,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -203,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionPeriodInDay
-Retention period, in days, for long-term backups.
+Retention period, in days
 
 ```yaml
 Type: System.Int32

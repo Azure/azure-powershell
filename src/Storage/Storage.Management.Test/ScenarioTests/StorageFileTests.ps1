@@ -229,7 +229,7 @@ function Test-ShareSoftDelete
 		# restore share and check
 		if ($env:AZURE_TEST_MODE -eq "Record")
 		{
-			# sleep 1 miniute if record. Don't need sleep in replay
+			# sleep 1 minute if record. Don't need sleep in replay
 			sleep 60
 		}
 		Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -DeletedShareVersion $deletedShareVersion	
@@ -382,6 +382,7 @@ function Test-FileServiceProperties
     {
         # Test
         $stoname = 'sto' + $rgname;
+		$stoname2 = 'sto2' + $rgname;
         $stotype = 'Premium_LRS';
         $loc = Get-ProviderLocation_Canary2 ResourceManagement;
         $kind = 'FileStorage'
@@ -403,32 +404,47 @@ function Test-FileServiceProperties
         # $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -Kind $kind 
+
+		# Test Nfs encryption in transit setting 
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2 -NfsEncryptionInTransitRequired $true
+		$serviceProperty = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2
+		Assert-AreEqual $true $serviceProperty.ProtocolSettings.Nfs.EncryptionInTransit.Required
+
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2 -NfsEncryptionInTransitRequired $false
+		$serviceProperty = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2
+		Assert-AreEqual $false $serviceProperty.ProtocolSettings.Nfs.EncryptionInTransit.Required
 		
 		# Enable MC, and set smb setting
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $true `
 					-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1 `
 					-SMBAuthenticationMethod Kerberos,NTLMv2 `
 					-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
-					-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM
+					-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM `
+					-SmbEncryptionInTransitRequired $true
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
 		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.Versions.Count
 		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods.Count
 		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption.Count
 		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.ChannelEncryption.Count
 		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.EncryptionInTransit.Required
 
 		# Disable MC, update smb setting
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $false `
 					-SMBProtocolVersion SMB3.1.1 `
 					-SMBAuthenticationMethod Kerberos `
 					-SMBKerberosTicketEncryption AES-256 `
-					-SMBChannelEncryption AES-128-CCM
+					-SMBChannelEncryption AES-128-CCM `
+					-SmbEncryptionInTransitRequired $false 
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
 		Assert-AreEqual "SMB3.1.1" $servicePropertie.ProtocolSettings.Smb.Versions[0]
 		Assert-AreEqual "Kerberos" $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods[0]
 		Assert-AreEqual "AES-256" $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption[0]
 		Assert-AreEqual "AES-128-CCM" $servicePropertie.ProtocolSettings.Smb.ChannelEncryption[0]
 		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.EncryptionInTransit.Required
 
 		# remove smb setting
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname `
@@ -523,6 +539,123 @@ function Test-AzureStorageShareNFS
 		Assert-AreEqual $shareName $share.Name
 		Assert-AreEqual "NFS" $share.EnabledProtocols
 		Assert-AreEqual "NoRootSquash" $share.RootSquash
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Azure storage ProvisionV2 Account
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-AzureStorageFilePV2
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'PremiumV2_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -ProvisionedBandwidthMibps 129 -ProvisionedIops 3032 -QuotaGiB 32
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual 129 $share.ProvisionedBandwidthMibps
+		Assert-AreEqual 3032 $share.ProvisionedIops
+		Assert-AreEqual 32 $share.QuotaGiB
+		Assert-AreNotEqual $null $share.IncludedBurstIops
+		Assert-AreNotEqual $null $share.MaxBurstCreditsForIops
+		Assert-AreNotEqual $null $share.NextAllowedQuotaDowngradeTime
+		Assert-AreNotEqual $null $share.NextAllowedProvisionedIopsDowngradeTime
+		Assert-AreNotEqual $null $share.NextAllowedProvisionedBandwidthDowngradeTime
+		Assert-AreEqual $null $share.FileSharePaidBursting
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -ProvisionedBandwidthMibps 130 -ProvisionedIops 3033
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual 130 $share.ProvisionedBandwidthMibps
+		Assert-AreEqual 3033 $share.ProvisionedIops
+		Assert-AreEqual 32 $share.QuotaGiB
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Azure storage File Share PaidBursting on V1 account
+Smoke[Broken]Test
+#>
+function Test-AzureStorageFilePaidBursting
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -PaidBurstingEnabled -PaidBurstingMaxBandwidthMibps 129 -PaidBurstingMaxIops 3033
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual $true $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual 3033 $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual 129 $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -PaidBurstingEnabled $false
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $false $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual $null $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual $null $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -PaidBurstingEnabled $true -PaidBurstingMaxBandwidthMibps 128 -PaidBurstingMaxIops 3032
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $true $share.FileSharePaidBursting.PaidBurstingEnabled
+		Assert-AreEqual 3032 $share.FileSharePaidBursting.PaidBurstingMaxIops
+		Assert-AreEqual 128 $share.FileSharePaidBursting.PaidBurstingMaxBandwidthMibps
         
         Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }

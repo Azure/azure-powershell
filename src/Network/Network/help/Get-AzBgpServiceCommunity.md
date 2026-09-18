@@ -13,7 +13,8 @@ Provides a list of all services / regions, BGP communities, and associated prefi
 ## SYNTAX
 
 ```
-Get-AzBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,6 +28,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public void TestAliasRecordSet()
         {
             TestRunner.RunTestScript("Test-AliasRecordSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTrafficManagerProfileRecordSet()
+        {
+            TestRunner.RunTestScript("Test-TrafficManagerProfileRecordSet");
         }
 
         [Fact]
@@ -217,6 +224,20 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public void TestRecordSetPTRNonEmpty()
         {
             TestRunner.RunTestScript("Test-RecordSetPTRNonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNAPTR()
+        {
+            TestRunner.RunTestScript("Test-RecordSetNAPTR");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNAPTRNonEmpty()
+        {
+            TestRunner.RunTestScript("Test-RecordSetNAPTRNonEmpty");
         }
 
         [Fact]

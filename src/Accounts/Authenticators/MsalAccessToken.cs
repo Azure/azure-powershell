@@ -28,6 +28,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
+    /// <summary>
+    /// Represents an access token obtained from Entra ID using MSAL (Microsoft Authentication Library).
+    /// Holds the access token, metadata about the user and tenant, and the context needed to renew the token.
+    /// </summary>
     public class MsalAccessToken : IAccessToken, IClaimsChallengeProcessor
     {
         public string AccessToken { get; private set; }
@@ -121,6 +125,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return timeUntilExpiration < ExpirationThreshold;
         }
 
+        /// <summary>
+        /// Receives a claims challenge from the server and processes it to obtain a new access token.
+        /// Then updates the request with the new access token.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="claimsChallenge"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>A boolean indicated whether the request should be retried. Throws if the reauth fails.</returns>
         public async ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
         {
             TracingAdapter.Information($"{DateTime.Now:T} - [ClaimsChallengeProcessor] Calling {TokenCredential.GetType().Name}.GetTokenAsync- claimsChallenge:'{claimsChallenge}'");

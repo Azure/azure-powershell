@@ -1,0 +1,65 @@
+{
+  "resourceType": "serviceGroups",
+  "apiVersion": "2024-02-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.servicegroups"
+  },
+  "commands": [
+    {
+      "name": "Get-AzServiceGroup",
+      "description": "Get the details of the serviceGroup",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicegroups/get-azservicegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the details of the serviceGroup",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzServiceGroup",
+      "description": "Delete a ServiceGroup",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicegroups/remove-azservicegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ServiceGroup",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

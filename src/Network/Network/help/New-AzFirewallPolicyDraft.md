@@ -14,22 +14,26 @@ Creates a new Azure Firewall Policy draft.
 
 ### SetByNameParameterSet (Default)
 ```
-New-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> -Location <String> [-ThreatIntelMode <String>]
- [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
- [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
- [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String>
+ [-ThreatIntelMode <String>] [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>]
+ [-BasePolicy <String>] [-DnsSetting <PSAzureFirewallPolicyDnsSettings>]
+ [-SqlSetting <PSAzureFirewallPolicySqlSetting>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
 ```
-Set-AzFirewallPolicyDraft [-AzureFirewallPolicyName <String>] -FirewallPolicyObject <PSAzureFirewallPolicy> [-AsJob] [-ThreatIntelMode <String>]
+New-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
- [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-TransportSecurityName <String>]
- [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
+ [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>]
+ [-Snat <PSAzureFirewallPolicySNAT>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +68,7 @@ This example creates an azure firewall policy draft with the same properties as 
 $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "*"
 $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
 $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride -BypassTraffic $bypass
-New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg -IntrusionDetection $intrusionDetection 
+New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg -IntrusionDetection $intrusionDetection
 ```
 
 This example creates an azure firewall policy draft with the same properties as the parent policy except that the intrusion detection in mode is set to alert
@@ -83,7 +87,7 @@ New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg
 ```
 
 ```output
-		BasePolicy	                : null	
+BasePolicy	                : null	
 		DnsSettings  	            : null	
 		Etag	                    : null	
 		ExplicitProxy	
@@ -110,12 +114,27 @@ New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg
 		Tag	                        : null	
 		TagsTable	                : null	
 		ThreatIntelMode	            : "Alert"	
-		ThreatIntelWhitelist	    : null	
+		ThreatIntelWhitelist	    : null
 ```
 
 This example creates a firewall policy with explicit proxy settings
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -132,6 +151,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureFirewallPolicyName
+The resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -BasePolicy
 The base policy to inherit from
 
@@ -144,6 +178,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -192,6 +241,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FirewallPolicyObject
+The AzureFirewall Policy associated with the draft
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Parameter Sets: SetByParentInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation if you want to overwrite a resource
 
@@ -222,36 +286,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFirewallPolicyName
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FirewallPolicyObject
-The AzureFirewall Policy associated with the draft
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: SetByParentInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PrivateRange
 The private IP ranges to which traffic won't be SNAT'ed
 
@@ -272,7 +306,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -405,6 +439,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFirewallPolicyDraftExplicitProxy](./New-AzFirewallPolicyDraftExplicitProxy.md)
-[New-AzFirewallPolicyDraftSnat](./New-AzFirewallPolicyDraftSnat.md)

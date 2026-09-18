@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdgeZones", "EdgeZones\EdgeZones.csproj", "{CCF3DAA6-7F02-4B42-98E3-E4B2DCEC1910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeZones", "EdgeZones.Autorest\Az.EdgeZones.csproj", "{CA1CD558-D322-48AC-9A2C-9CF84E83241A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeZones", "..\..\generated\EdgeZones\EdgeZones.Autorest\Az.EdgeZones.csproj", "{1EB32B86-9A72-4D94-82F4-390A227B3979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{CCF3DAA6-7F02-4B42-98E3-E4B2DCEC1910}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCF3DAA6-7F02-4B42-98E3-E4B2DCEC1910}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCF3DAA6-7F02-4B42-98E3-E4B2DCEC1910}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA1CD558-D322-48AC-9A2C-9CF84E83241A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA1CD558-D322-48AC-9A2C-9CF84E83241A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA1CD558-D322-48AC-9A2C-9CF84E83241A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA1CD558-D322-48AC-9A2C-9CF84E83241A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB32B86-9A72-4D94-82F4-390A227B3979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB32B86-9A72-4D94-82F4-390A227B3979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB32B86-9A72-4D94-82F4-390A227B3979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB32B86-9A72-4D94-82F4-390A227B3979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{595A32CE-0A72-401F-BF89-B7F3566A2D8A} = {143F7A23-33FD-41F7-88AC-0725AA317ECC}

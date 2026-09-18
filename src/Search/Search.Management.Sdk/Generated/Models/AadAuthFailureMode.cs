@@ -15,12 +15,14 @@ namespace Microsoft.Azure.Management.Search.Models
     public enum AadAuthFailureMode
     {
         /// <summary>
-        /// Indicates that requests that failed authentication should be presented with an HTTP status code of 403 (Forbidden).
+        /// Indicates that requests that failed authentication should be presented with
+        /// an HTTP status code of 403 (Forbidden).
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "http403")]
         Http403,
         /// <summary>
-        /// Indicates that requests that failed authentication should be presented with an HTTP status code of 401 (Unauthorized) and present a Bearer Challenge.
+        /// Indicates that requests that failed authentication should be presented with
+        /// an HTTP status code of 401 (Unauthorized) and present a Bearer Challenge.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "http401WithBearerChallenge")]
         Http401WithBearerChallenge

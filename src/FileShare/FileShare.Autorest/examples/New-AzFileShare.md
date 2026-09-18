@@ -1,0 +1,45 @@
+### Example 1: Create a file share
+```powershell
+New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -RootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -AllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" } -EncryptionInTransitRequired Enabled
+```
+
+```output
+AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
+                                            /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2}
+EncryptionInTransitRequired               : Enabled
+HostName                                  : fs-xxxxxxxxxxxxxxxxx.z41.file.storage.azure.net
+Id                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.FileShares/fileShares/testshare
+IncludedBurstIoPerSec                     : 15000
+Location                                  : uaecentral
+MaxBurstIoPerSecCredit                    : 36000000
+MediaTier                                 : SSD
+MountName                                 : testshare
+Name                                      : testshare
+PrivateEndpointConnection                 : {}
+Protocol                                  : NFS
+ProvisionedIoPerSec                       : 5000
+ProvisionedIoPerSecNextAllowedDowngrade   : 2/26/2026 6:56:35 AM
+ProvisionedStorageGiB                     : 100
+ProvisionedStorageNextAllowedDowngrade    : 2/26/2026 6:56:35 AM
+ProvisionedThroughputMiBPerSec            : 125
+ProvisionedThroughputNextAllowedDowngrade : 2/26/2026 6:56:35 AM
+ProvisioningState                         : Succeeded
+PublicNetworkAccess                       : Enabled
+Redundancy                                : Local
+ResourceGroupName                         : myresourcegroup
+RootSquash                                : AllSquash
+SystemDataCreatedAt                       :
+SystemDataCreatedBy                       :
+SystemDataCreatedByType                   :
+SystemDataLastModifiedAt                  : 2/25/2026 6:51:08 AM
+SystemDataLastModifiedBy                  : username@microsoft.com
+SystemDataLastModifiedByType              : User
+Tag                                       : {
+                                              "tag2": "value2",
+                                              "tag1": "value1"
+                                            }
+Type                                      : Microsoft.FileShares/fileShares
+```
+
+This command creates a file share.
+

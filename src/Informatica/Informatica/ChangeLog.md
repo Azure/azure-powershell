@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Fixed module name in module metadata
+
+## Version 0.1.1
+* Upgraded nuget package to signed package.
+
 ## Version 0.1.0
 * First preview release for module Az.Informatica
 

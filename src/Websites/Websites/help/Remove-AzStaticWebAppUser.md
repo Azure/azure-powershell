@@ -19,6 +19,20 @@ Remove-AzStaticWebAppUser -AuthProvider <String> -Name <String> -ResourceGroupNa
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityStaticSite
+```
+Remove-AzStaticWebAppUser -AuthProvider <String> -UserId <String> -StaticSiteInputObject <IWebsitesIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentityAuthprovider
+```
+Remove-AzStaticWebAppUser -UserId <String> -AuthproviderInputObject <IWebsitesIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzStaticWebAppUser -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
@@ -52,13 +66,28 @@ The auth provider for this user.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityStaticSite
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthproviderInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: DeleteViaIdentityAuthprovider
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -80,7 +109,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -139,6 +167,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StaticSiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: DeleteViaIdentityStaticSite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -161,7 +204,7 @@ The user id of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityStaticSite, DeleteViaIdentityAuthprovider
 Aliases:
 
 Required: True

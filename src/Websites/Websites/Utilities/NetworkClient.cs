@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var nicId = new ResourceIdentifier(networkInterfaceId);
             var nic = WrappedNetworkClient.NetworkInterfaces.Get(nicId.ResourceGroupName, nicId.ResourceName);
-            return nic.IpConfigurations[0].PrivateIPAddress;
+            return nic.IPConfigurations[0].PrivateIPAddress;
         }
 
         public string ValidateSubnet(string subnet, string virtualNetworkName, string resourceGroupName, string subscriptionId)

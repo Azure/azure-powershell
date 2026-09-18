@@ -124,37 +124,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.Metadata = new List<MetadataItem>();
                 foreach (DictionaryEntry m in parameters.Metadata)
                 {
-                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value.ToString()));
-                }
-            }
-
-            if (parameters.ResourceTags != null)
-            {
-                pool.ResourceTags = new Dictionary<string, string>();
-
-                foreach (DictionaryEntry m in parameters.ResourceTags)
-                {
-                    pool.ResourceTags.Add(m.Key.ToString(), m.Value.ToString());
-                }
-            }
-
-            if (parameters.CertificateReferences != null)
-            {
-                pool.CertificateReferences = new List<CertificateReference>();
-                foreach (PSCertificateReference c in parameters.CertificateReferences)
-                {
-                    pool.CertificateReferences.Add(c.omObject);
+                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value?.ToString()));
                 }
             }
 
             if (parameters.ApplicationPackageReferences != null)
             {
                 pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
-            }
-
-            if (parameters.CloudServiceConfiguration != null)
-            {
-                pool.CloudServiceConfiguration = parameters.CloudServiceConfiguration.omObject;
             }
 
             if (parameters.VirtualMachineConfiguration != null)
@@ -181,13 +157,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);
             }
-
-            if (parameters.ApplicationLicenses != null)
-            {
-                pool.ApplicationLicenses = parameters.ApplicationLicenses;
-            }
-
-            pool.TargetNodeCommunicationMode = (NodeCommunicationMode)parameters.TargetCommunicationMode;
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);

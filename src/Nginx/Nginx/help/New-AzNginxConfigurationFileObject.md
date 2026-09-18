@@ -1,7 +1,7 @@
 ---
 external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxConfigurationFileObject
+online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-aznginxconfigurationfileobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for NginxConfigurationFile.
 
 ```
 New-AzNginxConfigurationFileObject [-Content <String>] [-VirtualPath <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,21 +51,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VirtualPath
 
 ```yaml
@@ -87,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.NginxConfigurationFile
 
 ## NOTES
 

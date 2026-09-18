@@ -14,20 +14,30 @@ Removes an Azure Firewall Policy
 
 ### RemoveByNameParameterSet (Default)
 ```
-Remove-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveByResourceIdParameterSet
-```
-Remove-AzFirewallPolicyDraft [-Force] [-PassThru] [-AsJob] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> [-Force] [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RemoveByParentInputObjectParameterSet
 ```
-Remove-AzFirewallPolicyDraft [-Force] [-PassThru] [-AsJob] -FirewallPolicyObject <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### RemoveByResourceIdParameterSet
+```
+Remove-AzFirewallPolicyDraft -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### RemoveByInputObjectParameterSet
+```
+Remove-AzFirewallPolicyDraft -InputObject <PSAzureFirewallPolicyDraft> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,11 +68,56 @@ This example removes the firewall policy draft associated with the firewall poli
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFirewallPolicyName
+The name of the firewall policy associated with the draft.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,6 +143,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FirewallPolicyObject
+The AzureFirewall Policy 
+
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Parameter Sets: RemoveByParentInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation.
 
@@ -103,32 +174,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallPolicyObject
-The AzureFirewall Policy 
+### -InputObject
+The AzureFirewall Policy draft
+
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: RemoveByParentInputObjectParameterSet
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyDraft
+Parameter Sets: RemoveByInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AzureFirewallPolicyName
-The name of the firewall policy associated with the draft.
-
-```yaml
-Type: System.String
-Parameter Sets: RemoveByNameParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

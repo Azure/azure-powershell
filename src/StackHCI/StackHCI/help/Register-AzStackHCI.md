@@ -18,7 +18,7 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [-RepairRegistration] [-UseDeviceAuthentication]
  [[-Credential] <PSCredential>] [-IsWAC] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-ProgressAction <ActionPreference>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-useStableAgentVersion]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -245,21 +245,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Region
 Specifies the Region to create the resource.
 Region is a Mandatory parameter.
@@ -374,6 +359,23 @@ Accept wildcard characters: False
 
 ### -UseDeviceAuthentication
 Use device code authentication instead of an interactive browser prompt.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -useStableAgentVersion
+Specifies whether to use the stable HCI Arc agent for server registration.
+When set to true, uses the stable HCI Arc agent.
+When set to false or not specified, uses the default Azure Connected Machine Agent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

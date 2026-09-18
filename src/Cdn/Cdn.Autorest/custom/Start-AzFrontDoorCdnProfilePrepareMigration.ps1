@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofile
 #>
 function Start-AzFrontDoorCdnProfilePrepareMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -67,20 +67,19 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Name of the new AFD Standard/Premium profile that need to be created.
         ${ProfileName},
 
-        [Parameter(Mandatory)]
-        [ValidateNotNull()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
+        [System.String]
         # Name of the pricing tier.
         ${SkuName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrationWebApplicationFirewallMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationWebApplicationFirewallMapping[]]
         # Waf mapping for the migrated profile
-        # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
         ${MigrationWebApplicationFirewallMapping},
 
         [Parameter()]
@@ -90,21 +89,23 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Azure Subscription ID.
         ${SubscriptionId},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        [System.String]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
-
-        [Parameter()]
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The set of user assigned identities associated with the resource.
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
+        ${IdentityUserAssignedIdentity},    
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -165,6 +166,21 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Move-AzCdnProfile_MigrateExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 
     process {
         if (!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
@@ -221,7 +237,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         $allPoliciesWithWAF = New-Object System.Collections.Generic.HashSet[string]
         $allPoliciesWithVault = New-Object System.Collections.Generic.HashSet[string]
         foreach ($info in $frontDoorInfos) {
-            $wafInfo = $info.WebApplicationFirewallPolicyLink
+            $wafInfo = $info.WebApplicationFirewallPolicyLinkId
             if ($wafInfo) {
                 $allPoliciesWithWAF.Add($wafInfo.ToLower())  | Out-Null
             }
@@ -238,12 +254,16 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile."
         }
 
-        if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
-            throw "MSIIdentity should be associated if the front door has Customer Certificates. If not, remove MSIIdentity parameter."
+        # We should raise a complaint if the customer did not enable managed identity when they have BYOC enabled. 
+        # However, if the customer does not have BYOC but has specified a managed identity, we could ignore the validation for BYOC, no need to keep consistence with Portal behavior.
+        if (($allPoliciesWithVault.count -gt 0) -and !($PSBoundParameters.ContainsKey('IdentityType')))
+        {
+            throw "IdentityType parameter should be provided when the front door has Customer Certificates."
         }
-        Write-Host("The parameters have been successfully validated.")
 
-        # Deal with Waf policy
+        Write-Host("The parameters have been validated successfully.")
+
+        # Step1: Deal with Waf policy
         if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
             Write-Host("Starting to configure WAF policy upgrades.")
 
@@ -264,7 +284,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 }
             }
            
-            # Validate whether MigratedToId policy already exists in the subsrciption; 
+            # Validate whether MigratedToId policy already exists in the subscription; 
             foreach ($policy in $wafPolicies) {
                 $migrateToWafId = $policy.MigratedToId
                 $migrateToWafArray = $policy.MigratedToId.split("/")
@@ -287,7 +307,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             Write-Host("WAF policy upgrades have been configured successfully.")
         }
 
-        # Create AFDx Profile
+        # Step2: Create AFDx Profile
         # If create AfdX profile firstly, then an error ("Invalid migrated to waf reference.") will be thrown if the migrated-To-WAF is supposed to created. (not exists in current subscription)
         Write-Host("Your new Front Door profile is being created. Please wait until the process has finished completely. This may take several minutes.")
         $null = $PSBoundParameters.Remove('IdentityType')
@@ -296,15 +316,14 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # No need to add this parameters here, cx may add this parameter when using this command.
         # $PSBoundParameters.Add('ErrorAction', 'Stop')
 
-        # Upgrade subcriptionId
+        # Upgrade subscriptionId
         $PSBoundParameters['SubscriptionId'] =  $subId
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
 
         Write-Host("Your new Front Door profile with the configuration has been successfully created.")
         
-        # Deal with MSI parameter
-        # if ($PSBoundParameters.ContainsKey('IdentityType')) {
-        if ($allPoliciesWithVault.count -gt 0) {
+        # Step 3: Deal with MSI parameter
+        if (${IdentityType}) {
             Write-Host("Starting to enable managed identity.")
 
             # Waiting for results of profile created return
@@ -312,13 +331,13 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
             # 1. Enable MSI: get "principalId" from RP
             $commandArgs = @{ ResourceGroupName = ${ResourceGroupName}; Name = ${ProfileName}; IdentityType = ${IdentityType}; ErrorAction = 'Stop'}
-            if ($indentityType -ne "systemassigned") {
+            if ($IdentityType -ne "systemassigned") {
                 $commandArgs.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
             }
             
             $enableMSISuccessMessage = 'Enabling managed identity succeeded.'
             $enableMSIRetryMessage = 'Retrying to enable managed identity...'
-            $enableMSIErrorMessage = "Enableing managed identity failed."
+            $enableMSIErrorMessage = "Enabling managed identity failed."
             $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $enableMSISuccessMessage -RetryMessage $enableMSIRetryMessage -ErrorMessage $enableMSIErrorMessage
             $identity = [System.Collections.ArrayList]@()
             foreach ($id in $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId) {
@@ -331,24 +350,31 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
             }
 
-            # Waiting for MSI granted access...
+            # Waiting for Enabling managed identity...
             Start-Sleep(20)
-            Write-Host("Starting to grant managed identity to key vault.")
-            foreach ($vault in $allPoliciesWithVault) {
-                foreach ($principal in $identity) {
-                    $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
-                    $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
-                    $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'
 
-                    $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'; BypassObjectIdValidation = $true}
+            # When the classic front door has BYOC, need to grant managed identity to the key vault.
+            if ($allPoliciesWithVault.count -gt 0)
+            {
+                Write-Host("Starting to grant managed identity to key vault.")
+                foreach ($vault in $allPoliciesWithVault) {
+                    foreach ($principal in $identity) {
+                        $grantAccessSuccessMessage = 'Granting managed identity to key vault succeeded.'
+                        $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
+                        $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'
 
-                    # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
-                    # Adding the parameter `-BypassObjectIdValidation` to bypass the validation when using pipeline to do migration, the type of `-BypassObjectIdValidation` is 'SwitchParameter'.
-                    RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
+                        $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'; BypassObjectIdValidation = $true}
+
+                        # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                        # Adding the parameter `-BypassObjectIdValidation` to bypass the validation when using pipeline to do migration, the type of `-BypassObjectIdValidation` is 'SwitchParameter'.
+                        RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
+                    }
                 }
-            }
 
-            Write-Host("Your have successfully granted managed identity to key vault.")
+                Write-Host("Your have successfully granted managed identity to key vault.")
+            }
+        } else {
+            Write-Debug("IdentityType parameter not provided and no BYOC for the current front door, skip Managed Identity step.")
         }
 
         Write-Host("The change need to be committed after this.")
@@ -491,7 +517,7 @@ function CreateNewWafPolicy {
     # Remove the null/empty property
     $validatedWafProperty = ValidateMigrationWafPolicyProperty -WafProperty $WafProperty
 
-    # New a waf policy, copied from the Migrtae
+    # New a waf policy, copied from the Migrate
     New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $sku @validatedWafProperty  | Out-Null
 }
 

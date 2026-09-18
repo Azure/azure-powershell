@@ -15,25 +15,25 @@ Get the CommunicationService and its properties.
 ### List (Default)
 ```
 Get-AzCommunicationService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzCommunicationService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzCommunicationService -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzCommunicationService -InputObject <ICommunicationIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Global   ContosoAcsResource5 6/09/2024 4:41:40 AM contosouser5@microsoft.com  Us
 
 Returns a list of all ACS resources under that subscription.
 
-### Example 2: Get infomation on specified Azure Communication resource
+### Example 2: Get information on specified Azure Communication resource
 ```powershell
 Get-AzCommunicationService -Name ContosoAcsResource34 -ResourceGroupName ContosoResourceProvider1
 ```
@@ -91,7 +91,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
@@ -114,21 +113,6 @@ Parameter Sets: Get
 Aliases: CommunicationServiceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceResource
 
 ## NOTES
 

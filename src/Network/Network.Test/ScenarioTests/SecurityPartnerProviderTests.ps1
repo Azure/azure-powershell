@@ -34,7 +34,7 @@ function Test-SecurityPartnerProviderWithoutHubCRUD {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create SecurityPartnerProvider
-        New-AzSecurityPartnerProvider –Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName
+        New-AzSecurityPartnerProvider -Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName
 
         # Get SecurityPartnerProvider
         $getSecurityPartnerProvider = Get-AzSecurityPartnerProvider -name $securityPartnerProviderName -ResourceGroupName $rgname
@@ -96,7 +96,7 @@ function Test-SecurityPartnerProviderWithHubCRUD {
         Write-Debug "Retrieved VpnGateway $VirtualNetworkGatewayName successfully"
 
         # Create SecurityPartnerProvider with Virtual Hub Object
-        New-AzSecurityPartnerProvider –Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHub $virtualHub
+        New-AzSecurityPartnerProvider -Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHub $virtualHub
 
         # Get SecurityPartnerProvider
         $getSecurityPartnerProvider = Get-AzSecurityPartnerProvider -name $securityPartnerProviderName -ResourceGroupName $rgname
@@ -109,7 +109,7 @@ function Test-SecurityPartnerProviderWithHubCRUD {
         Assert-AreEqual true $delete
 
         # Create SecurityPartnerProvider with Virtual Hub Id
-        New-AzSecurityPartnerProvider –Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHubId $virtualHub.Id
+        New-AzSecurityPartnerProvider -Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHubId $virtualHub.Id
 
         # Get SecurityPartnerProvider
         $getSecurityPartnerProvider = Get-AzSecurityPartnerProvider -name $securityPartnerProviderName -ResourceGroupName $rgname
@@ -122,7 +122,7 @@ function Test-SecurityPartnerProviderWithHubCRUD {
         Assert-AreEqual true $delete
 
         # Create SecurityPartnerProvider with Virtual Hub name
-        New-AzSecurityPartnerProvider –Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHubName $virtualHubName
+        New-AzSecurityPartnerProvider -Name $securityPartnerProviderName -ResourceGroupName $rgname -Location $rglocation -SecurityProviderName $securityProviderName -VirtualHubName $virtualHubName
 
         # Get SecurityPartnerProvider
         $getSecurityPartnerProvider = Get-AzSecurityPartnerProvider -name $securityPartnerProviderName -ResourceGroupName $rgname

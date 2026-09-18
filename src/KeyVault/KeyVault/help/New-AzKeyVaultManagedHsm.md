@@ -15,9 +15,9 @@ Creates a managed HSM.
 ```
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
  [-Administrator] <String[]> [-Sku <String>] -SoftDeleteRetentionInDays <Int32> [-PublicNetworkAccess <String>]
- [-EnablePurgeProtection] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-EnablePurgeProtection] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>]
+ [-NetworkRuleSet <PSManagedHsmNetworkRuleSet>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,7 @@ Location                                : eastus2euap
 Resource ID                             : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/pro
                                           viders/Microsoft.KeyVault/managedHSMs/bezmhsm
 HSM Pool URI                            :
-Tenant ID                               : 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a
+Tenant ID                               : 00001111-aaaa-2222-bbbb-3333cccc4444
 Initial Admin Object Ids                : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 SKU                                     : StandardB1
 Soft Delete Enabled?                    : True
@@ -89,6 +89,33 @@ Tags
 ```
 
 This command creates a managed HSM with an user assigned identity.
+
+### Example 4: Create a managed HSM with an initial network rule set (firewall enabled)
+```powershell
+$ruleSet = New-AzKeyVaultManagedHsmNetworkRuleSetObject -DefaultAction Deny -Bypass AzureServices -IpAddressRange 203.0.113.0/24,198.51.100.10/32
+New-AzKeyVaultManagedHsm -Name 'securehsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -SoftDeleteRetentionInDays 30 -NetworkRuleSet $ruleSet
+```
+
+```output
+DefaultAction        Bypass IpAddressRanges                    VirtualNetworkResourceIds
+-------------        ------ ---------------                    -------------------------
+         Deny AzureServices {203.0.113.0/24, 198.51.100.10/32}
+
+
+
+Name           Resource Group Name Location SKU        ProvisioningState Security Domain ActivationStatus
+----           ------------------- -------- ---        ----------------- --------------------------------
+mhsm1814428918 kv-mhsm-rg          eastus   StandardB1 Succeeded         NotActivated
+
+$h.OriginalManagedHsm.Properties.NetworkAcls
+Bypass              : AzureServices
+DefaultAction       : Deny
+IPRules             : {203.0.113.0/24, 198.51.100.10/32}
+ServiceTags         : {}
+VirtualNetworkRules : {}
+```
+
+This pattern enables the firewall at creation time (`DefaultAction Deny`) while allowing two specific IP ranges plus trusted Azure services. Additional IPs can later be appended with `Add-AzKeyVaultManagedHsmNetworkRule`.
 
 ## PARAMETERS
 
@@ -183,6 +210,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSet
+Specifies a Managed HSM network rule set object (from New-AzKeyVaultManagedHsmNetworkRuleSetObject) to configure default action, bypass, IP rules, and virtual network rules at creation time.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsmNetworkRuleSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

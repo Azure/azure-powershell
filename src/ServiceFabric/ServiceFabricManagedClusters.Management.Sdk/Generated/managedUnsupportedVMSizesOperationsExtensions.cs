@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<ManagedVMSize> List(this IManagedUnsupportedVMSizesOperations operations, string location)
         {
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='vmSize'>
         /// VM Size name.
@@ -69,7 +72,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='vmSize'>
         /// VM Size name.

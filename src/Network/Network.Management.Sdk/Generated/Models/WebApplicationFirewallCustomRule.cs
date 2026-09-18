@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="action">Type of Actions.
-        /// Possible values include: &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;, &#39;JSChallenge&#39;</param>
+        /// Possible values include: &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;, &#39;JSChallenge&#39;, &#39;CAPTCHA&#39;</param>
         public WebApplicationFirewallCustomRule(int priority, string ruleType, System.Collections.Generic.IList<MatchCondition> matchConditions, string action, string name = default(string), string etag = default(string), string state = default(string), string rateLimitDuration = default(string), int? rateLimitThreshold = default(int?), System.Collections.Generic.IList<GroupByUserSession> groupByUserSession = default(System.Collections.Generic.IList<GroupByUserSession>))
 
         {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<GroupByUserSession> GroupByUserSession {get; set; }
 
         /// <summary>
-        /// Gets or sets type of Actions. Possible values include: &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;, &#39;JSChallenge&#39;
+        /// Gets or sets type of Actions. Possible values include: &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;, &#39;JSChallenge&#39;, &#39;CAPTCHA&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "action")]
         public string Action {get; set; }

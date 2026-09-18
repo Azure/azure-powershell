@@ -1,0 +1,49 @@
+{
+  "Get-AzElasticVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/Microsoft.Elastic/elasticVersions?api-version=2025-06-01\u0026region=westus2+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/Microsoft.Elastic/elasticVersions?api-version=2025-06-01\u0026region=westus2",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "3c62b1c5-fe3f-4661-a6bf-b126c7663a49" ],
+        "CommandName": [ "Get-AzElasticVersion" ],
+        "FullCommandName": [ "Get-AzElasticVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/2797315f-fce9-4bc0-abec-4bb09a8dc853" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "838d1ec1-a309-4509-871d-15a739a93316" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "759ea65a-74c6-4489-8731-244ebc1b46d2" ],
+        "x-ms-correlation-request-id": [ "4fa5c764-02a6-493e-a076-6bcf95b9d80e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T031007Z:4fa5c764-02a6-493e-a076-6bcf95b9d80e" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 63E03F7DE92C4BF8A8F91D302D8DAEE7 Ref B: PNQ231110908052 Ref C: 2025-10-17T03:10:06Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:10:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "117" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"version\":\"9.1.5\"}},{\"properties\":{\"version\":\"8.19.5\"}},{\"properties\":{\"version\":\"9.0.8\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

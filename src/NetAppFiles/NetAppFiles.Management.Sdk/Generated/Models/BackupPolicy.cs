@@ -46,10 +46,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="etag">&#34;If etag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.&#34;)
         /// </param>
 
-        /// <param name="backupPolicyId">Backup Policy Resource ID
+        /// <param name="backupPolicyId">Backup Policy GUID ID
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -95,14 +99,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
+        /// Gets &#34;If etag is provided in the response body, it may also be provided as
+        /// a header per the normal etag convention.  Entity tags are used for
+        /// comparing two or more entities from the same requested resource. HTTP/1.1
+        /// uses entity tags in the etag (section 14.19), If-Match (section 14.24),
+        /// If-None-Match (section 14.26), and If-Range (section 14.27) header
+        /// fields.&#34;)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets backup Policy Resource ID
+        /// Gets backup Policy GUID ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupPolicyId")]
         public string BackupPolicyId {get; private set; }

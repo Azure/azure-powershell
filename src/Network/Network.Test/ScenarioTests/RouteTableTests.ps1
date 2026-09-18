@@ -443,3 +443,63 @@ function Test-RouteTableWithDisableBgpRoutePropagation
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests RouteTableWithDisablePeeringRoute.
+#>
+function Test-RouteTableWithDisablePeeringRoute
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $routeTableName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/routeTables"
+    # Currently only the Central US EUAP canary region has the DisablePeeringRoute feature enabled, so hardcoding it to this region. This can be removed once it is enabled on production regions.
+    $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create RouteTable with DisablePeeringRoute set to "All"
+        $rt = New-AzRouteTable -name $routeTableName -DisablePeeringRoute "All" -ResourceGroupName $rgname -Location $location
+
+        # Get RouteTable
+        $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgName
+        
+        #verification
+        Assert-AreEqual $rgName $getRT.ResourceGroupName
+        Assert-AreEqual $routeTableName $getRT.Name
+        Assert-AreEqual "All" $getRT.DisablePeeringRoute
+        Assert-NotNull $getRT.Etag
+        Assert-AreEqual 0 @($getRT.Routes).Count        
+
+        # list
+        $list = Get-AzRouteTable -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
+        Assert-AreEqual $list[0].Name $getRT.Name
+        # Note: the route tables list endpoint (GET .../routeTables) does not project the DisablePeeringRoute property; it is only returned by the single-resource GET (.../routeTables/{name}). So DisablePeeringRoute is intentionally not asserted on the list result.
+        Assert-AreEqual $list[0].Etag $getRT.Etag
+        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count
+
+        # Update to "None"
+        $getRT.DisablePeeringRoute = "None"
+        $updatedRT = Set-AzRouteTable -RouteTable $getRT
+        Assert-AreEqual "None" $updatedRT.DisablePeeringRoute
+		
+        # Delete RouteTable
+        $delete = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzRouteTable -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

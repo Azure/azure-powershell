@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VirtualNetworkGatewayNatRule Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayNatRule : SubResource
+    public partial class VirtualNetworkGatewayNatRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkGatewayNatRule class.
@@ -28,18 +28,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
         /// </param>
 
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the NAT Rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="propertiesType">The type of NAT rule for VPN NAT.
         /// Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;</param>
@@ -55,13 +55,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ipConfigurationId">The IP Configuration ID this NAT rule applies to.
         /// </param>
-        public VirtualNetworkGatewayNatRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string propertiesType = default(string), string mode = default(string), System.Collections.Generic.IList<VpnNatRuleMapping> internalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), System.Collections.Generic.IList<VpnNatRuleMapping> externalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), string ipConfigurationId = default(string))
+        public VirtualNetworkGatewayNatRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string propertiesType = default(string), string mode = default(string), System.Collections.Generic.IList<VpnNatRuleMapping> internalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), System.Collections.Generic.IList<VpnNatRuleMapping> externalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), string ipConfigurationId = default(string))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.PropertiesType = propertiesType;
             this.Mode = mode;
@@ -78,13 +76,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
@@ -92,13 +83,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the NAT Rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the NAT Rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

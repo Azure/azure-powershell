@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.Partner
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridpartnerobject
 #>
 function New-AzEventGridPartnerObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.Partner')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

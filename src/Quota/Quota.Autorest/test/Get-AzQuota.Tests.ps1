@@ -16,16 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuota'))
 
 Describe 'Get-AzQuota' {
     It 'List' {
-        { Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" } | Should -Not -Throw
+        { Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -ResourceName "MinPublicIpInterNetworkPrefixLength" } | Should -Not -Throw
+        { Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" } | Should -Not -Throw
     }
 
     It 'Get' {
         { 
-            $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -ResourceName "MinPublicIpInterNetworkPrefixLength" 
+            $quota = Get-AzQuota -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -ResourceName "standardFSv2Family" 
             Get-AzQuota -InputObject $quota.Id
         } | Should -Not -Throw
     }

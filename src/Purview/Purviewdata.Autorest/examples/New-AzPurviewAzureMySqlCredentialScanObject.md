@@ -1,6 +1,6 @@
 ### Example 1: Create Azure MySql Credential scan object
 ```powershell
-New-AzPurviewAzureMySqlCredentialScanObject -Kind 'AzureMySqlCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AzureMySql' -ScanRulesetType 'System' -ServerEndpoint 'tzn.mysql.database.azure.com'
+New-AzPurviewAzureMySqlCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth' -DatabaseName 'db' -Port 5432 -ScanRulesetName 'AzureMySql' -ScanRulesetType 'System' -ServerEndpoint 'tzn.mysql.database.azure.com'
 ```
 
 ```output

@@ -61,9 +61,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Expression with resultType string).
         /// </param>
 
-        /// <param name="sncMode">SNC activation indicator to access the SAP server where the table is
-        /// located. Must be either 0 (off) or 1 (on). Type: string (or Expression with
-        /// resultType string).
+        /// <param name="sncMode">SNC activation flag (Boolean) to access the SAP server where the table is
+        /// located. Type: boolean (or Expression with resultType boolean).
         /// </param>
 
         /// <param name="sncMyName">Initiator&#39;s SNC name to access the SAP server where the table is located.
@@ -191,9 +190,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object MessageServerService {get; set; }
 
         /// <summary>
-        /// Gets or sets sNC activation indicator to access the SAP server where the
-        /// table is located. Must be either 0 (off) or 1 (on). Type: string (or
-        /// Expression with resultType string).
+        /// Gets or sets sNC activation flag (Boolean) to access the SAP server where
+        /// the table is located. Type: boolean (or Expression with resultType
+        /// boolean).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sncMode")]
         public object SncMode {get; set; }

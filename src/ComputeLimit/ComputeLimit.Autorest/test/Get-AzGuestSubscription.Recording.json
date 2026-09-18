@@ -1,0 +1,72 @@
+{
+  "Get-AzGuestSubscription+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "11111111-1111-1111-1111-111111111111" ],
+        "CommandName": [ "Get-AzGuestSubscription" ],
+        "FullCommandName": [ "Get-AzGuestSubscription_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "22222222-2222-2222-2222-222222222222" ],
+        "x-ms-correlation-request-id": [ "33333333-3333-3333-3333-333333333333" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001\",\"name\":\"00000000-0000-0000-0000-000000000001\",\"type\":\"Microsoft.ComputeLimit/locations/guestSubscriptions\",\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-12T12:00:00.0000000Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-12T12:00:00.0000000Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzGuestSubscription+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "44444444-4444-4444-4444-444444444444" ],
+        "CommandName": [ "Get-AzGuestSubscription" ],
+        "FullCommandName": [ "Get-AzGuestSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "55555555-5555-5555-5555-555555555555" ],
+        "x-ms-correlation-request-id": [ "66666666-6666-6666-6666-666666666666" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001\",\"name\":\"00000000-0000-0000-0000-000000000001\",\"type\":\"Microsoft.ComputeLimit/locations/guestSubscriptions\",\"properties\":{\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-12T12:00:00.0000000Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-12T12:00:00.0000000Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

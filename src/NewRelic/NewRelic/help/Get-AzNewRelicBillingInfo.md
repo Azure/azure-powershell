@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicBillingInfo
 
 ## SYNOPSIS
-Get marketplace info mapped to the given monitor.
+Retrieves marketplace and organization information mapped to the given New Relic monitor resource
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzNewRelicBillingInfo -InputObject <INewRelicIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Get marketplace info mapped to the given monitor.
+Retrieves marketplace and organization information mapped to the given New Relic monitor resource
 
 ## EXAMPLES
 

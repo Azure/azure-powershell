@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// Creates or updates an Azure Sql Database FailoverGroup.
         /// </summary>
         /// <param name="model">The input parameters for the create/update operation</param>
-        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy functaion and model</param>
+        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy function and model</param>
         /// <returns>The upserted Azure Sql Database FailoverGroup</returns>
         internal AzureSqlFailoverGroupModel UpsertFailoverGroup(AzureSqlFailoverGroupModel model, bool useV2 = false)
         {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// Patch updates an Azure Sql Database FailoverGroup.
         /// </summary>
         /// <param name="model">The input parameters for the create/update operation</param>
-        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy functaion and model</param>
+        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy function and model</param>
         /// <returns>The upserted Azure Sql Database FailoverGroup</returns>
         internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model, bool useV2 = false)
         {

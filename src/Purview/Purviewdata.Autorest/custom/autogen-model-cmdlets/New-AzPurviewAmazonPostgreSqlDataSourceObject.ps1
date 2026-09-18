@@ -21,12 +21,13 @@ Create an in-memory object for AmazonPostgreSqlDataSource.
 Create an in-memory object for AmazonPostgreSqlDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonpostgresqldatasourceobject
 #>
 function New-AzPurviewAmazonPostgreSqlDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,15 +45,11 @@ function New-AzPurviewAmazonPostgreSqlDataSourceObject {
         $ServerEndpoint,
         [Parameter()]
         [string]
-        $VpcEndpointServiceName,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $VpcEndpointServiceName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AmazonPostgreSqlDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -68,9 +65,6 @@ function New-AzPurviewAmazonPostgreSqlDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('VpcEndpointServiceName')) {
             $Object.VpcEndpointServiceName = $VpcEndpointServiceName
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

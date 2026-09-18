@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                     } while (!popQueueSuccess && retryCount-- > 0);
                     if (!popQueueSuccess)
                     {
-                        throw new Exception("Conncrrent issue. Please try again.");
+                        throw new Exception("Concurrent issue. Please try again.");
                     }
                     subscriptionClientAction(subscriptionclient);
                     return;
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                     } while (!popQueueSuccess && retryCount-- > 0);
                     if (!popQueueSuccess)
                     {
-                        throw new Exception("Conncrrent issue. Please try again.");
+                        throw new Exception("Concurrent issue. Please try again.");
                     }
                 }
             }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network
         /// Post to List of Network Manager Deployment Status.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -95,12 +95,28 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (networkManagerName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "networkManagerName");
             }
-
+            if (networkManagerName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
+                }
+            }
             if (top != null)
             {
                 if (top > 20)
@@ -112,7 +128,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2024-01-01";
+            string apiVersion = "2025-09-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -120,9 +136,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("top", top);
 
                 tracingParameters.Add("parameters", parameters);

@@ -39,6 +39,12 @@ Gets a description for the specified namespace.
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
+### [Get-AzServiceBusNetworkSecurityPerimeterConfiguration](Get-AzServiceBusNetworkSecurityPerimeterConfiguration.md)
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
+
+### [Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation.md)
+Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+
 ### [Get-AzServiceBusPrivateEndpointConnection](Get-AzServiceBusPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection.
 
@@ -75,6 +81,9 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 ### [New-AzServiceBusKeyVaultPropertiesObject](New-AzServiceBusKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
 
+### [New-AzServiceBusLocationsNameObject](New-AzServiceBusLocationsNameObject.md)
+Create an in-memory object for NamespaceReplicaLocation.
+
 ### [New-AzServiceBusNamespace](New-AzServiceBusNamespace.md)
 Creates a new ServiceBus namespace.
 
@@ -83,7 +92,7 @@ Create a Service Bus queue.
 This operation is idempotent.
 
 ### [New-AzServiceBusRule](New-AzServiceBusRule.md)
-Create a new rule and updates an existing rule
+Create a new rule and create an existing rule
 
 ### [New-AzServiceBusSubscription](New-AzServiceBusSubscription.md)
 Create a topic subscription.
@@ -151,6 +160,9 @@ Updates a ServiceBus Topic
 
 ### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
 Create Migration configuration and starts migration of entities from Standard to Premium namespace
+
+### [Start-AzServiceBusNamespaceFailOver](Start-AzServiceBusNamespaceFailOver.md)
+Triggers ServiceBus Namespace Failover
 
 ### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
 This operation reverts Migration

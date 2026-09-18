@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BaremetalTenantId = volumeGroupVolumeProperties.BaremetalTenantId,
                 SubnetId = volumeGroupVolumeProperties.SubnetId,
                 NetworkFeatures = volumeGroupVolumeProperties.NetworkFeatures,
+                EffectiveNetworkFeatures = volumeGroupVolumeProperties.EffectiveNetworkFeatures,
                 NetworkSiblingSetId = volumeGroupVolumeProperties.NetworkSiblingSetId,
                 StorageToNetworkProximity = volumeGroupVolumeProperties.StorageToNetworkProximity,
                 MountTargets = volumeGroupVolumeProperties.MountTargets,
@@ -125,6 +126,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 VolumeSpecName = volumeGroupVolumeProperties.VolumeSpecName,
                 PlacementRules = volumeGroupVolumeProperties.PlacementRules.ToPPSKeyValuePairs(),
                 EnableSubvolumes = volumeGroupVolumeProperties.EnableSubvolumes,
+                BreakthroughMode = volumeGroupVolumeProperties.BreakthroughMode,
                 Encrypted = volumeGroupVolumeProperties.Encrypted,                
                 KeyVaultPrivateEndpointResourceId = volumeGroupVolumeProperties.KeyVaultPrivateEndpointResourceId
             };

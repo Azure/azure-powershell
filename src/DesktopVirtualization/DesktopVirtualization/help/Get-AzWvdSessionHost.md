@@ -26,6 +26,12 @@ Get-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <S
  [<CommonParameters>]
 ```
 
+### GetViaIdentityHostPool
+```
+Get-AzWvdSessionHost -Name <String> -HostPoolInputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
@@ -82,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HostPoolInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: GetViaIdentityHostPool
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -HostPoolName
 The name of the host pool within the specified resource group
 
@@ -114,7 +135,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -148,7 +168,7 @@ The name of the session host within the specified host pool
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityHostPool
 Aliases: SessionHostName
 
 Required: True
@@ -191,6 +211,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -213,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHost
 
 ## NOTES
 

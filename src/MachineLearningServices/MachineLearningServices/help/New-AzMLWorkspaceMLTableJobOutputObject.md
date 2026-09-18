@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLTableJobOutputObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacemltablejoboutputobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for MLTableJobOutput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceMLTableJobOutputObject -Type <JobOutputType> [-Mode <OutputDeliveryMode>] [-Uri <String>]
- [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzMLWorkspaceMLTableJobOutputObject -Type <String> [-Mode <String>] [-Uri <String>] [-Description <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,24 +50,9 @@ Accept wildcard characters: False
 Output Asset Delivery Mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -80,7 +65,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobOutputType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.MlTableJobOutput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.MlTableJobOutput
 
 ## NOTES
 

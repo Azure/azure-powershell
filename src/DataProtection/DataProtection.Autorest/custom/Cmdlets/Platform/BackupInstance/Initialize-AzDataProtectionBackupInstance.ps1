@@ -1,13 +1,11 @@
-﻿
-
-
 function Initialize-AzDataProtectionBackupInstance {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Backup instance Request object for configuring backup')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Policy Id to be assiciated to Datasource')]
+        [Parameter(Mandatory=$false, HelpMessage='Policy Id to be associated to Datasource')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)/providers/(?<provider>.+)/backupVaults/(?<vault>.+)/backupPolicies/(?<name>.+)")]
         ${PolicyId},
@@ -34,7 +32,7 @@ function Initialize-AzDataProtectionBackupInstance {
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
         ${SecretStoreType},
 
-        [Parameter(Mandatory=$false, HelpMessage='Sanpshot Resource Group')]
+        [Parameter(Mandatory=$false, HelpMessage='Snapshot Resource Group')]
         [System.String]
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/(?<rg>.+)")]
         ${SnapshotResourceGroupId},
@@ -43,15 +41,24 @@ function Initialize-AzDataProtectionBackupInstance {
         [System.String]
         ${FriendlyName},
                 
-        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService,AzureBlob.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupDatasourceParameters]
-        ${BackupConfiguration}
+        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage, AzureElasticSAN.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupDatasourceParameters]
+        ${BackupConfiguration},
+
+        [Parameter(Mandatory=$false, HelpMessage='Use system assigned identity')]
+        [System.Nullable[System.Boolean]]
+        ${UseSystemAssignedIdentity},
+
+        [Parameter(Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
+        [Alias('AssignUserIdentity')]
+        [System.String]
+        ${UserAssignedIdentityArmId}
     )
 
     process {
 
         $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstance]::new()
+        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupInstance]::new()
         $backupInstance.ObjectType = "BackupInstance"
 
         if($manifest.snapshotRGPermissions.Length -eq 0 -and $SnapshotResourceGroupId -ne "")
@@ -99,6 +106,22 @@ function Initialize-AzDataProtectionBackupInstance {
             $backupInstance.PolicyInfo.PolicyId = $PolicyId
         }
 
+        $hasUseSystemAssignedIdentity = $PSBoundParameters.Remove("UseSystemAssignedIdentity")
+        $hasUserAssignedIdentityArmId = $PSBoundParameters.Remove("UserAssignedIdentityArmId")
+        if ($hasUseSystemAssignedIdentity -or $hasUserAssignedIdentityArmId) {
+            
+            if ($hasUserAssignedIdentityArmId -and (!$hasUseSystemAssignedIdentity -or $UseSystemAssignedIdentity)) {
+                throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
+            }
+            
+            $backupInstance.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IdentityDetails]::new()
+            $backupInstance.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
+
+            if ($hasUserAssignedIdentityArmId) {
+                $backupInstance.IdentityDetail.UserAssignedIdentityArmUrl = $UserAssignedIdentityArmId
+            }
+        }
+
         # secret store authentication
         if($PSBoundParameters.ContainsKey("SecretStoreURI"))
         {            
@@ -109,9 +132,9 @@ function Initialize-AzDataProtectionBackupInstance {
                     $errormsg = "Please input SecretStoreType"
         		    throw $errormsg                    
                 }
-                $backupInstance.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.SecretStoreBasedAuthCredentials]::new()
+                $backupInstance.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.SecretStoreBasedAuthCredentials]::new()
                 $backupInstance.DatasourceAuthCredentials.ObjectType = "SecretStoreBasedAuthCredentials"
-                $backupInstance.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.SecretStoreResource]::new()
+                $backupInstance.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.SecretStoreResource]::new()
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource.SecretStoreType = $SecretStoreType
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource.Uri = $SecretStoreURI
             }
@@ -121,7 +144,7 @@ function Initialize-AzDataProtectionBackupInstance {
             }
         }
 
-        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource]::new()
+        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupInstanceResource]::new()
         $backupInstanceResource.Property = $backupInstance
 
         if($PSBoundParameters.ContainsKey("DatasourceId"))
@@ -139,7 +162,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
         if($manifest.addDataStoreParametersList -eq $true)
         {
-            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.AzureOperationalStoreParameters]::new()
+            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureOperationalStoreParameters]::new()
             $operationalParam.DataStoreType = "OperationalStore"
             $operationalParam.ObjectType = "AzureOperationalStoreParameters"
             $operationalParam.ResourceGroupId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -156,7 +179,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
             if($BackupConfiguration -ne $null){
                 $backupInstanceResource.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList += @($BackupConfiguration)
-            }            
+            }
         }
         elseif($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $SnapshotVolume -ne $null -or $IncludeClusterScopeResource -ne $null){
             $errormsg = "ExcludedResourceType, IncludedResourceType, ExcludedNamespace, IncludedNamespace, LabelSelector, SnapshotVolume, IncludeClusterScopeResource parameters are not applicable for given DatasourceType. Please ensure to remove them"

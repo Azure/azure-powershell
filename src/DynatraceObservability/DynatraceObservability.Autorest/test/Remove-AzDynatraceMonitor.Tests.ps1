@@ -21,7 +21,7 @@ Describe 'Remove-AzDynatraceMonitor' {
 
     It 'DeleteViaIdentity' {
         { 
-            $obj = New-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName03 -Location $env.location -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'v-diya@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" 
+            $obj = New-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName03 -Location $env.location -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'agarwalshiv@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDgmz7xq9ge3py" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" 
             Remove-AzDynatraceMonitor -InputObject $obj
         } | Should -Not -Throw
     }

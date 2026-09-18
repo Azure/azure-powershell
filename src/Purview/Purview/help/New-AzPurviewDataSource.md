@@ -8,23 +8,36 @@ schema: 2.0.0
 # New-AzPurviewDataSource
 
 ## SYNOPSIS
-Creates or Updates a data source
+Create a data source
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzPurviewDataSource -Endpoint <String> -Name <String> -Body <IDataSource> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPurviewDataSource -Endpoint <String> -Name <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewDataSource -Endpoint <String> -Name <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or Updates a data source
+Create a data source
 
 ## EXAMPLES
 
 ### Example 1: Create a data source
 ```powershell
-$obj = New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
+$obj = New-AzPurviewAzureStorageDataSourceObject -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
 New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'NewDataSource' -Body $obj
 ```
 
@@ -51,11 +64,10 @@ Create a data source named 'NewDataSource'
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -88,6 +100,36 @@ Example: https://{accountName}.purview.azure.com
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -148,11 +190,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 
 ## NOTES
 

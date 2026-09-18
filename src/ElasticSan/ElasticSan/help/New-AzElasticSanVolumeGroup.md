@@ -15,29 +15,31 @@ Create a Volume Group.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-SubscriptionId <String>] [-Encryption <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
+ [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityElasticSanExpanded
+```
+New-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity> [-Encryption <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-EncryptionUserAssignedIdentity <String>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
  [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
  [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentityElasticSanExpanded
-```
-New-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-EncryptionUserAssignedIdentity <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,19 +56,20 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 ```
 
 ```output
-Encryption                    : EncryptionAtRestWithPlatformKey
-Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
-Name                          : myvolumegroup
-NetworkAclsVirtualNetworkRule : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
-ProtocolType                  : iSCSI
-ProvisioningState             : Succeeded
-SystemDataCreatedAt           : 9/19/2022 7:05:47 AM
-SystemDataCreatedBy           : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType       : Application
-SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
-SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType  : Application
-Type                          : Microsoft.ElasticSan/ElasticSans
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EnforceDataIntegrityCheckForIscsi                      : True
+Id                                                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+SystemDataCreatedAt                                    : 9/19/2022 7:05:47 AM
+SystemDataCreatedBy                                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType                                : Application
+SystemDataLastModifiedAt                               : 9/19/2022 7:05:47 AM
+SystemDataLastModifiedBy                               : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType                           : Application
+Type                                                   : Microsoft.ElasticSan/ElasticSans
 ```
 
 This example creates two VirtualNetworkRule objects and then input the objects and other variables to create a volume group.
@@ -82,19 +85,20 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 ```
 
 ```output
-Encryption                    : EncryptionAtRestWithPlatformKey
-Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
-Name                          : myvolumegroup
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EnforceDataIntegrityCheckForIscsi                      : True
+Id                                                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup
+Name                                                   : myvolumegroup
 NetworkAclsVirtualNetworkRule : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2}
-ProtocolType                  : iSCSI
-ProvisioningState             : Succeeded
-SystemDataCreatedAt           : 9/19/2022 7:05:47 AM
-SystemDataCreatedBy           : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataCreatedByType       : Application
-SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
-SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SystemDataLastModifiedByType  : Application
-Type                          : Microsoft.ElasticSan/ElasticSans
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+SystemDataCreatedAt                                    : 9/19/2022 7:05:47 AM
+SystemDataCreatedBy                                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataCreatedByType                                : Application
+SystemDataLastModifiedAt                               : 9/19/2022 7:05:47 AM
+SystemDataLastModifiedBy                               : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SystemDataLastModifiedByType                           : Application
+Type                                                   : Microsoft.ElasticSan/ElasticSans
 ```
 
 This command creates a volume group with the NetworkAclsVirtualNetworkRule input in json format.
@@ -107,6 +111,7 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 ```output
 Encryption                                             : EncryptionAtRestWithPlatformKey
 EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : True
 Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
 IdentityPrincipalId                                    : 00000000-0000-0000-0000-000000000000
 IdentityTenantId                                       : 00000000-0000-0000-0000-000000000000
@@ -146,6 +151,7 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName my
 ```output
 Encryption                                             : EncryptionAtRestWithCustomerManagedKey
 EncryptionIdentityEncryptionUserAssignedIdentity       : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai
+EnforceDataIntegrityCheckForIscsi                      : True
 Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
 IdentityPrincipalId                                    :
 IdentityTenantId                                       :
@@ -167,15 +173,53 @@ ProtocolType                                           : iSCSI
 ProvisioningState                                      : Succeeded
 ResourceGroupName                                      : myresourcegroup
 SystemDataCreatedAt                                    : 10/7/2023 6:32:27 AM
-SystemDataCreatedBy                                    : a000255f-5f09-45e0-a970-9d9ed9cc6453
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
 SystemDataCreatedByType                                : Application
 SystemDataLastModifiedAt                               : 10/7/2023 6:32:27 AM
-SystemDataLastModifiedBy                               : a000255f-5f09-45e0-a970-9d9ed9cc6453
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
 SystemDataLastModifiedByType                           : Application
 Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
 ```
 
 This command creates a volume group with identity type "SystemAssigned" and encryption type "platform-managed key".
+
+### Example 5: Create a volume group with EnforceDataIntegrityCheckForIscsi disabled
+```powershell
+New-AzElasticSanVolumeGroup -ResourceGroupName myresoucegroup -ElasticSanName myelasticsan -Name myvolumegroup -EnforceDataIntegrityCheckForIscsi $false
+```
+
+```output
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+EnforceDataIntegrityCheckForIscsi                      : False
+Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           :
+IdentityUserAssignedIdentity                           : {
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 9/18/2024 3:45:01 AM
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType                                : User
+SystemDataLastModifiedAt                               : 9/18/2024 4:58:14 AM
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType                           : User
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command creates a volume group with EnforceDataIntegrityCheckForIscsi disabled.
 
 ## PARAMETERS
 
@@ -261,6 +305,21 @@ Resource identifier of the UserAssigned identity to be associated with server-si
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnforceDataIntegrityCheckForIscsi
+A boolean indicating whether or not Data Integrity Check is enabled
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
@@ -37,6 +39,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PublicKey { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.")]
+        [ValidateSet("Ed25519", "RSA")]
+        public string SshKeyType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Compute/SshPublicKeys")]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -44,12 +63,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 string resourceGroupName = this.ResourceGroupName;
                 string sshKeyName = this.Name;
+                string sshKeyType = this.IsParameterBound(c => c.SshKeyType) ? this.SshKeyType : "RSA";
                 SshPublicKeyResource result;
                 SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
-                sshkey.Location = rg.Location;
+                
+                if (this.IsParameterBound(c => c.Location))
+                {
+                    sshkey.Location = this.Location;
+                }
+                else
+                {
+                    ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
+                    sshkey.Location = rg.Location;
+                }
 
-
+                if (this.IsParameterBound(c => c.Tag))
+                {
+                    sshkey.Tags = this.Tag == null
+                        ? null
+                        : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                }
                 if (this.IsParameterBound(c => c.PublicKey))
                 {
 
@@ -61,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     WriteDebug("No public key is provided. A key pair is being generated for you.");
                     
                     result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
+                    SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName, sshKeyType);
                     result.PublicKey = keypair.PublicKey;
 
                     string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );

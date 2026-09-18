@@ -22,18 +22,30 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public static class ClusterCreateHelper
     {
-        public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations)
+        public static void AddClusterCredentialToGatewayConfig(PSCredential httpCredential, IDictionary<string, Dictionary<string, string>> configurations, IList<EntraUserInfo> restAuthEntraUsers)
         {
             Dictionary<string, string> gatewayConfig = GetExistingConfigurationsForType(configurations, Constants.ConfigurationKey.Gateway);
-            if (!string.IsNullOrEmpty(httpCredential?.UserName))
+            bool isHttpCredentialBound = !string.IsNullOrEmpty(httpCredential?.UserName);
+            bool isRestAuthEntraUsersBound = restAuthEntraUsers?.Any() == true;
+            
+            if (isHttpCredentialBound && isRestAuthEntraUsersBound)
+            {
+                throw new ArgumentException("Only one of HttpCredential, EntraUserIdentity, or EntraUserFullInfo can be provided.");
+            }
+            else if (!isHttpCredentialBound && !isRestAuthEntraUsersBound)
+            {
+                throw new ArgumentException("One of HttpCredential, EntraUserIdentity, or EntraUserFullInfo must be provided.");
+            }
+            if (isHttpCredentialBound)
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "true";
                 gatewayConfig[Constants.GatewayConfigurations.UserNameKey] = httpCredential?.UserName;
                 gatewayConfig[Constants.GatewayConfigurations.PasswordKey] = httpCredential?.Password?.ConvertToString();
             }
-            else
+            else if (isRestAuthEntraUsersBound)
             {
                 gatewayConfig[Constants.GatewayConfigurations.CredentialIsEnabledKey] = "false";
+                gatewayConfig[Constants.GatewayConfigurations.EntraUsers] = System.Text.Json.JsonSerializer.Serialize(restAuthEntraUsers);
             }
 
             configurations[Constants.ConfigurationKey.Gateway] = gatewayConfig;
@@ -97,7 +109,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             configurations[Constants.ConfigurationKey.ClusterIdentity] = datalakeConfig;
         }
 
-        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, bool? enableSecureChannel, string defaultStorageSuffix)
+        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, bool? enableSecureChannel, string msiResourceId, string defaultStorageSuffix)
         {
             storageContainer = storageContainer ?? clusterName.ToLower();
             string storageAccountName = Utils.GetResourceNameFromResourceId(storageResourceId);
@@ -109,6 +121,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 IsDefault = true,
                 Container = storageContainer,
                 Key = storageAccountkey,
+                MsiResourceId = msiResourceId,
                 ResourceId = storageResourceId,
                 EnableSecureChannel = enableSecureChannel
             };
@@ -455,7 +468,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 if (!clusterTypeAndVmSizeDict.TryGetValue(clusterType, out vmSize))
                 {
-                    // backend will use the string "*" to stand for it is applicable for all clsuter type.
+                    // backend will use the string "*" to stand for it is applicable for all cluster type.
                     clusterTypeAndVmSizeDict.TryGetValue(Constants.ClusterType.AllClusterType, out vmSize);
                 }
             }

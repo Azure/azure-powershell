@@ -15,7 +15,7 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 ```
 Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ProfileUpgradeParameter <IProfileUpgradeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ Global   profileName       frontdoor rgName
 When a CDN profile associated with WAF and copy to a new WAF policy, the subscription and resource group of the new WAF policy should be same with the profile's.
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
-### Example 2: When the CDN profile associated with WAF and select an exsting WAF policy...
+### Example 2: When the CDN profile associated with WAF and select an existing WAF policy...
 ```powershell
 $waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
 $waf2 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
@@ -70,10 +70,10 @@ Location Name              Kind      ResourceGroupName
 Global   profileName       frontdoor rgName
 ```
 
-When the CDN profile associated with WAF and select an exsting WAF policy, you could only select the WAF policy located in the same subscription with the profile's.
+When the CDN profile associated with WAF and select an existing WAF policy, you could only select the WAF policy located in the same subscription with the profile's.
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
-### Example 4: A CDN profile associated with WAF, when the subscription of the profile is different from the local subscrition
+### Example 4: A CDN profile associated with WAF, when the subscription of the profile is different from the local subscription
 ```powershell
 $waf = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/testSubId01/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ExistingPremiumWAFName
 $upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf
@@ -87,7 +87,7 @@ Location Name              Kind      ResourceGroupName
 Global   profileName       frontdoor rgName
 ```
 
-A CDN profile associated with WAF, when the subscription of the profile is different from the local subscrition.
+A CDN profile associated with WAF, when the subscription of the profile is different from the local subscription.
 
 ## PARAMETERS
 
@@ -156,7 +156,7 @@ Parameters required for profile upgrade.
 To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfileUpgradeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -164,21 +164,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -248,11 +233,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfileUpgradeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 
 ## NOTES
 

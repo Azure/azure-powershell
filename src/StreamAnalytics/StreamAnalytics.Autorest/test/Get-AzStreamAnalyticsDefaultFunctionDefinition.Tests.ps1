@@ -15,6 +15,7 @@ Describe 'Get-AzStreamAnalyticsDefaultFunctionDefinition' {
     # Please add function of the stream analytics job in portal that type is Microsoft.MachineLearningServices. Then get endpoint of the machine learning services
     # Create machine learning services doc link:https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
     It 'RetrieveExpanded' {
+      # Failed to create new endpoint, use old record content.
       Get-AzStreamAnalyticsDefaultFunctionDefinition -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.mlsfunction -BindingType Microsoft.MachineLearningServices -Endpoint "http://875da830-4d5f-44f1-b221-718a5f26a21d.eastus.azurecontainer.io/score" -UdfType Scalar
     }
 }

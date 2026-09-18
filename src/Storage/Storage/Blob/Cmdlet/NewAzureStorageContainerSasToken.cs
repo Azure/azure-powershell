@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string SasPermissionParameterSet = "SasPermission";
 
         /// <summary>
-        /// Sas policy paremeter set name
+        /// Sas policy parameter set name
         /// </summary>
         private const string SasPolicyParmeterSet = "SasPolicy";
 
@@ -143,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobContainer container_Track1 = Channel.GetContainerReference(Name);
             BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(container_Track1, Channel.StorageContext, ClientOptions);
 
-            // Get contaienr saved policy if any
+            // Get container saved policy if any
             Track2Models.BlobSignedIdentifier identifier = null;
             if (ParameterSetName == SasPolicyParmeterSet)
             {

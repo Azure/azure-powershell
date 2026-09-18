@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
 
         /// <param name="name">Name of Nat Gateway SKU.
-        /// Possible values include: &#39;Standard&#39;</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;StandardV2&#39;</param>
         public NatGatewaySku(string name = default(string))
 
         {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of Nat Gateway SKU. Possible values include: &#39;Standard&#39;
+        /// Gets or sets name of Nat Gateway SKU. Possible values include: &#39;Standard&#39;, &#39;StandardV2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }

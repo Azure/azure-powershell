@@ -18,27 +18,27 @@ Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-S
  [-AdminPassword <SecureString>] [-AutonomousMaintenanceScheduleType <String>]
  [-BackupRetentionPeriodInDay <Int32>] [-ComputeCount <Single>] [-CpuCoreCount <Int32>]
  [-CustomerContact <ICustomerContact[]>] [-DataStorageSizeInGb <Int32>] [-DataStorageSizeInTb <Int32>]
- [-DatabaseEdition <String>] [-DayOfWeekName <String>] [-DisplayName <String>] [-IsAutoScalingEnabled]
- [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired]
- [-LicenseModel <String>] [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
+ [-DatabaseEdition <String>] [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled]
+ [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired] [-LicenseModel <String>]
+ [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
  [-LongTermBackupScheduleRepeatCadence <String>] [-LongTermBackupScheduleRetentionPeriodInDay <Int32>]
  [-LongTermBackupScheduleTimeOfBackup <DateTime>] [-OpenMode <String>] [-PeerDbId <String>]
- [-PermissionLevel <String>] [-Role <String>] [-ScheduledStartTime <String>] [-ScheduledStopTime <String>]
+ [-PermissionLevel <String>] [-Role <String>] [-ScheduledOperationsList <IScheduledOperationsTypeUpdate[]>]
  [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,15 +47,14 @@ Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-S
 Update-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> [-AdminPassword <SecureString>]
  [-AutonomousMaintenanceScheduleType <String>] [-BackupRetentionPeriodInDay <Int32>] [-ComputeCount <Single>]
  [-CpuCoreCount <Int32>] [-CustomerContact <ICustomerContact[]>] [-DataStorageSizeInGb <Int32>]
- [-DataStorageSizeInTb <Int32>] [-DatabaseEdition <String>] [-DayOfWeekName <String>] [-DisplayName <String>]
- [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
- [-IsMtlsConnectionRequired] [-LicenseModel <String>] [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>]
- [-LongTermBackupScheduleIsDisabled] [-LongTermBackupScheduleRepeatCadence <String>]
- [-LongTermBackupScheduleRetentionPeriodInDay <Int32>] [-LongTermBackupScheduleTimeOfBackup <DateTime>]
- [-OpenMode <String>] [-PeerDbId <String>] [-PermissionLevel <String>] [-Role <String>]
- [-ScheduledStartTime <String>] [-ScheduledStopTime <String>] [-Tag <Hashtable>] [-WhitelistedIP <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DataStorageSizeInTb <Int32>] [-DatabaseEdition <String>] [-DisplayName <String>] [-IsAutoScalingEnabled]
+ [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired]
+ [-LicenseModel <String>] [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
+ [-LongTermBackupScheduleRepeatCadence <String>] [-LongTermBackupScheduleRetentionPeriodInDay <Int32>]
+ [-LongTermBackupScheduleTimeOfBackup <DateTime>] [-OpenMode <String>] [-PeerDbId <String>]
+ [-PermissionLevel <String>] [-Role <String>] [-ScheduledOperationsList <IScheduledOperationsTypeUpdate[]>]
+ [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -270,21 +269,6 @@ The quantity of data in the database, in terabytes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DayOfWeekName
-Name of the day of the week.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -570,7 +554,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerDbId
-The database OCID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
+The Azure resource ID of the Disaster Recovery peer database, which is located in a different region from the current peer database.
 
 ```yaml
 Type: System.String
@@ -591,21 +575,6 @@ The Autonomous Database permission level.
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -645,28 +614,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledStartTime
-auto start time.
-value must be of ISO-8601 format HH:mm
+### -ScheduledOperationsList
+The list of scheduled operations.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduledStopTime
-auto stop time.
-value must be of ISO-8601 format HH:mm
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

@@ -20,18 +20,18 @@ Create a new Kubernetes Cluster Extension.
 .Description
 Create a new Kubernetes Cluster Extension.
 .Example
-{{ Add code here }}
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ExtensionType azuremonitor-containers
 .Example
-{{ Add code here }}
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -EnableSystemAssignedIdentity
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
     [Alias('New-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtension])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -70,9 +70,9 @@ function New-AzKubernetesExtension {
         ${SubscriptionId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType]
+        [System.String]
         # The identity type.
         ${AkAssignedIdentityType},
 
@@ -91,17 +91,23 @@ function New-AzKubernetesExtension {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtensionPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtensionPropertiesConfigurationSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtensionPropertiesConfigurationSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings, as name-value pairs for configuring this extension.
         ${ConfigurationSetting},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Determines whether to enable a system-assigned identity for the resource.
+        ${EnableSystemAssignedIdentity},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -109,13 +115,6 @@ function New-AzKubernetesExtension {
         # Type of the Extension, of which this resource is an instance of.
         # It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
         ${ExtensionType},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType]
-        # The identity type.
-        ${IdentityType},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]

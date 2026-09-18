@@ -270,6 +270,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string CoolAccessRetrievalPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets CoolAccessTieringPolicy
+        /// </summary>
+        /// <value>
+        /// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. 
+        /// The possible values for this field are: Auto - Moves cold user data blocks in both 
+        /// the Snapshot copies and the active file system to the cool tier tier. This policy 
+        /// is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies 
+        /// that are not associated with the active file system to the cool tier.
+        /// Possible values include: 'Auto', 'SnapshotOnly'
+        /// </value>
+        public string CoolAccessTieringPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets UnixPermission
         /// </summary>
         /// <value>
@@ -327,6 +340,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Basic network, or Standard features available to the volume (Basic, Standard).
         /// </value>
         public string NetworkFeatures { get; set; }
+
+        /// <summary>
+        /// Gets or sets effectiveNetworkFeatures
+        /// </summary>
+        /// <value>
+        /// The effective value of the network features type available to the volume,
+        /// or current effective state of update. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
+        /// </value>
+        public string EffectiveNetworkFeatures { get; set; }
 
         /// <summary>
         /// Gets or sets NetworkSiblingSetId
@@ -420,6 +442,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string EnableSubvolumes { get; set; }
 
         /// <summary>
+        /// Gets or sets BreakthroughMode.
+        /// </summary>
+        /// <value>
+        /// Specifies whether the volume operates in Breakthrough Mode.
+        /// Possible values include: 'Enabled', 'Disabled'
+        /// </value>
+        public string BreakthroughMode { get; set; }
+
+        /// <summary>
         /// Gets or sets Encrypted
         /// </summary>
         /// <value>
@@ -510,5 +541,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Id of the snapshot or backup that the volume is restored from.
         /// </remarks>
         public string OriginatingResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets while auto splitting the short term clone volume, if the
+        /// parent pool does not have enough space to accommodate the volume after
+        /// split, it will be automatically resized, which will lead to increased
+        /// billing. To accept capacity pool size auto grow and create a short term
+        /// clone volume, set the property as accepted. Possible values include: &#39;Accepted&#39;, &#39;Declined&#39;
+        /// </summary>        
+        public string AcceptGrowCapacityPoolForShortTermCloneSplit { get; set; }
+
+        /// <summary>
+        /// Gets space shared by short term clone volume with parent volume in bytes.
+        /// </summary>        
+        public long? InheritedSize { get; set; }
+
     }
 }

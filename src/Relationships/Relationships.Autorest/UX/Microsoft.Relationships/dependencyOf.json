@@ -1,0 +1,75 @@
+{
+  "resourceType": "dependencyOf",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.relationships"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRelationshipsDependencyOfRelationship",
+      "description": "Get a DependencyOfRelationship",
+      "path": "/{resourceUri}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsdependencyofrelationship"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DependencyOfRelationship",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzRelationshipsDependencyOfRelationship",
+      "description": "Delete a DependencyOfRelationship",
+      "path": "/{resourceUri}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsdependencyofrelationship"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DependencyOfRelationship",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

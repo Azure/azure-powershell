@@ -1,0 +1,95 @@
+{
+  "resourceType": "instances/brokers",
+  "apiVersion": "2024-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzIoTOperationsServiceBroker",
+      "description": "Get a BrokerResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/get-aziotoperationsservicebroker"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a BrokerResource",
+          "parameters": [
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.brokerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzIoTOperationsServiceBroker",
+      "description": "Delete a BrokerResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/remove-aziotoperationsservicebroker"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a BrokerResource",
+          "parameters": [
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.brokerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

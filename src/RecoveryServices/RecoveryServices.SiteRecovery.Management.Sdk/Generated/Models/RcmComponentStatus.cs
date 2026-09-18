@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class RcmComponentStatus
     {
+        /// <summary>
+        /// Healthy
+        /// </summary>
         public const string Healthy = "Healthy";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
+        /// <summary>
+        /// Critical
+        /// </summary>
         public const string Critical = "Critical";
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
     }
 }

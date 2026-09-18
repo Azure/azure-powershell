@@ -1,4 +1,4 @@
-### Example 1: Get all Storage movers in a subcription
+### Example 1: Get all Storage movers in a subscription
 ```powershell
  Get-AzStorageMover
 ```
@@ -67,7 +67,7 @@ Type                         : microsoft.storagemover/storagemovers
 
 This command gets all the Storage movers in a resource group. 
 
-### Example 2: Get a specific Storage mover
+### Example 3: Get a specific Storage mover
 ```powershell
 Get-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover1
 ```

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppConfigurationDeletedStore
 
 ## SYNOPSIS
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ## SYNTAX
 
@@ -31,11 +31,11 @@ Get-AzAppConfigurationDeletedStore -InputObject <IAppConfigurationIdentity> [-De
 ```
 
 ## DESCRIPTION
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ## EXAMPLES
 
-### Example 1: Gets a deleted Azure app configuration store.
+### Example 1: Gets a deleted Azure App Configuration store.
 ```powershell
 Remove-AzAppConfigurationStore -Name azpstestappstore -ResourceGroupName azpstest-gp
 Get-AzAppConfigurationDeletedStore
@@ -47,9 +47,9 @@ Name             ResourceGroupName
 azpstestappstore
 ```
 
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
-### Example 2: Gets a deleted Azure app configuration store.
+### Example 2: Gets a deleted Azure App Configuration store.
 ```powershell
 Remove-AzAppConfigurationStore -Name azpstestappstore -ResourceGroupName azpstest-gp
 Get-AzAppConfigurationDeletedStore -Location eastus -Name azpstestappstore
@@ -61,7 +61,7 @@ Name             ResourceGroupName
 azpstestappstore
 ```
 
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ## PARAMETERS
 
@@ -83,7 +83,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
@@ -151,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IDeletedConfigurationStore
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IDeletedConfigurationStore
 
 ## NOTES
 

@@ -19,17 +19,30 @@ Get-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <S
  [<CommonParameters>]
 ```
 
+### GetViaIdentityGallery
+```
+Get-AzGalleryApplicationVersion -GalleryApplicationName <String> -Name <String>
+ -GalleryInputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <ReplicationStatusTypes>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityApplication
+```
+Get-AzGalleryApplicationVersion -Name <String> -ApplicationInputObject <IComputeIdentity> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-Expand <ReplicationStatusTypes>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +66,21 @@ Retrieve all the Gallery Application Version resources in the provided Resource 
 
 ## PARAMETERS
 
+### -ApplicationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: GetViaIdentityApplication
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -73,8 +101,8 @@ Accept wildcard characters: False
 The expand expression to apply on the operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes
-Parameter Sets: Get, GetViaIdentity
+Type: System.String
+Parameter Sets: GetViaIdentityGallery, Get, GetViaIdentityApplication, GetViaIdentity
 Aliases:
 
 Required: False
@@ -89,13 +117,28 @@ The name of the gallery Application Definition in which the Application Version 
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, GetViaIdentityGallery, Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: GetViaIdentityGallery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -116,7 +159,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -135,7 +177,7 @@ The name of the gallery Application Version to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityGallery, Get, GetViaIdentityApplication
 Aliases: GalleryApplicationVersionName
 
 Required: True
@@ -185,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 
 ## NOTES
 

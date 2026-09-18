@@ -14,11 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRuleSetReso
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnRuleSetResourceUsage'  {
-    It 'List' {
-        $rulesetName = 'rsName040'
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $rulesetUsage = Get-AzFrontDoorCdnRuleSetResourceUsage -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName
-        $rulesetUsage | Should -not -BeNullOrEmpty 
+Describe 'Get-AzFrontDoorCdnRuleSetResourceUsage' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

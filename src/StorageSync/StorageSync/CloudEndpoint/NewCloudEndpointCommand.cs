@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
@@ -159,6 +159,16 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         public string StorageAccountTenantId { get; set; }
 
         /// <summary>
+        /// Gets or sets the change enumeration interval day.
+        /// </summary>
+        /// <value>The change enumeration interval day.</value>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = false,
+                   HelpMessage = HelpMessages.ChangeEnumerationIntervalDayParameter)]
+        [ValidateRange(1, 20)]
+        public int? ChangeEnumerationIntervalDay { get; set; }
+
+        /// <summary>
         /// Gets or sets as job.
         /// </summary>
         /// <value>As job.</value>
@@ -218,7 +228,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     throw new PSArgumentException(StorageSyncResources.MissingServicePrincipalResourceIdErrorMessage);
                 }
-                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
+                StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
@@ -236,7 +246,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
                     AzureFileShareName = AzureFileShareName,
-                    StorageAccountTenantId = (StorageAccountTenantId ?? AzureContext.Tenant.Id)
+                    StorageAccountTenantId = (StorageAccountTenantId ?? AzureContext.Tenant.Id),
+                    ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDay
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
@@ -256,17 +267,17 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     // Identity , RoleDef, Scope
                     var scope = StorageAccountResourceId;
-                    var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                    StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                         storageSyncService.Identity.PrincipalId.Value,
                         Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
                         scope);
 
                     scope = $"{StorageAccountResourceId}/fileServices/default/fileshares/{AzureFileShareName}";
-                    var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                    (var identityRoleAssignmentForFilsShareScope , bool alreadyExists) = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
                        storageSyncService.Identity.PrincipalId.Value,
                        Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                        scope);
-                    shouldSleep = true;
+                    shouldSleep = !alreadyExists;
                 }
 
                     Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);

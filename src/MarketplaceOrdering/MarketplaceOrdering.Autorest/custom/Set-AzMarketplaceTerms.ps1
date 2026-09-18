@@ -53,7 +53,7 @@ PARAMETER <IAgreementTerms>: Terms properties for provided Publisher/Offer/Plan 
 https://learn.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 #>
 function Set-AzMarketplaceTerms {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms])]
 [CmdletBinding(DefaultParameterSetName='TermsAccept', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory,ParameterSetName='TermsAccept')]
@@ -102,7 +102,7 @@ param(
     [Parameter(ParameterSetName='TermsAcceptViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='TermsRejectViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms]
+    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IAgreementTerms]
     # Terms properties for provided Publisher/Offer/Plan tuple
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Terms},

@@ -131,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
                     }
                 }
             }
-            Program.SyncOutput.WriteVerboseWithTimestamp("Blob downloaded successfullty: {0}", parameters.BlobUri.BlobName);
+            Program.SyncOutput.WriteVerboseWithTimestamp("Blob downloaded successfully: {0}", parameters.BlobUri.BlobName);
         }
 
         private void TryValidateFreeDiskSpace(string destination, long blobLength)

@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Indicates that either the API key or an access token from Azure Active
-    /// Directory can be used for authentication.
+    /// Indicates that either the API key or an access token from a Microsoft Entra
+    /// ID tenant can be used for authentication.
     /// </summary>
     public partial class DataPlaneAadOrApiKeyAuthOption
     {
@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the DataPlaneAadOrApiKeyAuthOption class.
         /// </summary>
 
-        /// <param name="aadAuthFailureMode">Describes what response the data plane API of a Search service would send
+        /// <param name="aadAuthFailureMode">Describes what response the data plane API of a search service would send
         /// for requests that failed authentication.
-        /// Possible values include: 'http403', 'http401WithBearerChallenge'</param>
+        /// Possible values include: &#39;http403&#39;, &#39;http401WithBearerChallenge&#39;</param>
         public DataPlaneAadOrApiKeyAuthOption(AadAuthFailureMode? aadAuthFailureMode = default(AadAuthFailureMode?))
 
         {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets describes what response the data plane API of a Search service
+        /// Gets or sets describes what response the data plane API of a search service
         /// would send for requests that failed authentication. Possible values include: &#39;http403&#39;, &#39;http401WithBearerChallenge&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "aadAuthFailureMode")]

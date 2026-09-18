@@ -32,11 +32,15 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// of the following: &#39;IncludeParameterDefaultValue&#39;, &#39;IncludeComments&#39;,
         /// &#39;SkipResourceNameParameterization&#39;, &#39;SkipAllParameterization&#39;
         /// </param>
-        public ExportTemplateRequest(System.Collections.Generic.IList<string> resources = default(System.Collections.Generic.IList<string>), string options = default(string))
+
+        /// <param name="outputFormat">The output format for the exported resources.
+        /// Possible values include: &#39;Json&#39;, &#39;Bicep&#39;</param>
+        public ExportTemplateRequest(System.Collections.Generic.IList<string> resources = default(System.Collections.Generic.IList<string>), string options = default(string), string outputFormat = default(string))
 
         {
             this.Resources = resources;
             this.Options = options;
+            this.OutputFormat = outputFormat;
             CustomInit();
         }
 
@@ -61,5 +65,11 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "options")]
         public string Options {get; set; }
+
+        /// <summary>
+        /// Gets or sets the output format for the exported resources. Possible values include: &#39;Json&#39;, &#39;Bicep&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "outputFormat")]
+        public string OutputFormat {get; set; }
     }
 }

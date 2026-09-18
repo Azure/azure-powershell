@@ -19,16 +19,17 @@ API to redeploy a VM.
 API to redeploy a VM.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 #>
 function Start-AzLabServicesVMRedeployment_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service virtual machine.
         ${ResourceId},
   
         [Parameter()]
@@ -104,7 +105,8 @@ function Start-AzLabServicesVMRedeployment_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $HandleVMResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleVMResourceId.ps1'
+        $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {

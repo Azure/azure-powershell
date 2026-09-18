@@ -15,22 +15,20 @@ The scope of a policy exemption is the part of its ID preceding '/providers/Micr
 
 ### Name (Default)
 ```
-Remove-AzPolicyExemption -Name <String> [-Scope <String>] [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzPolicyExemption -Name <String> [-Scope <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyExemption -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyExemption -Id <String> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyExemption -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzPolicyExemption -InputObject <IPolicyIdentity> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,20 +52,7 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Confirm
-```
-
-The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
-The second command gets the policy exemption at a resource group level, and then stores it in the $PolicyExemption variable.
-The **ResourceId** property of $ResourceGroup identifies the resource group.
-The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.
-
-### Example 3: [Backcompat] Remove policy exemption by ID
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
-True
+Remove-AzPolicyExemption -Id $PolicyExemption.Id -Confirm
 ```
 
 The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
@@ -76,21 +61,6 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -185,24 +155,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Scope
 The scope of the policy exemption.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

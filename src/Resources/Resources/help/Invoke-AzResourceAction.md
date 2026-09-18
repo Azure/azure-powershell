@@ -17,7 +17,8 @@ Invokes an action on a resource.
 ```
 Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceId <String> [-ODataQuery <String>]
  [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### BySubscriptionLevel
@@ -25,8 +26,8 @@ Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceId <
 Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceName <String>
  -ResourceType <String> [-ExtensionResourceName <String>] [-ExtensionResourceType <String>]
  [-ODataQuery <String>] [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByTenantLevel
@@ -34,8 +35,8 @@ Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceName
 Invoke-AzResourceAction [-Parameters <Hashtable>] -Action <String> -ResourceName <String>
  -ResourceType <String> [-ExtensionResourceName <String>] [-ExtensionResourceType <String>]
  [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +90,21 @@ The command specifies the *Force* parameter, therefore, it does not prompt you f
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Action
 Specifies the name of the action to invoke.
 
@@ -107,6 +123,21 @@ Accept wildcard characters: False
 ### -ApiVersion
 Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
 
 ```yaml
 Type: System.String
@@ -222,21 +253,6 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

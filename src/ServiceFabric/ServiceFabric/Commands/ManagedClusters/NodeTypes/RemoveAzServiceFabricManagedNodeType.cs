@@ -20,72 +20,72 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = DeleteNodeTypeByObj, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNodeType", DefaultParameterSetName = RemoveNodeTypeByObj, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzServiceFabricManagedNodeType : ServiceFabricManagedCmdletBase
     {
-        protected const string DeleteNodeTypeByName = "DeleteNodeTypeByName";
-        protected const string DeleteNodeTypeByObj = "DeleteNodeTypeByObj";
-        protected const string DeleteNodeTypeById = "DeleteNodeTypeById";
+        protected const string RemoveNodeTypeByName = "RemoveNodeTypeByName";
+        protected const string RemoveNodeTypeByObj = "RemoveNodeTypeByObj";
+        protected const string RemoveNodeTypeById = "RemoveNodeTypeById";
 
-        protected const string DeleteNodeByName = "DeleteNodeByName";
-        protected const string DeleteNodeByObj = "DeleteNodeByObj";
-        protected const string DeleteNodeById = "DeleteNodeById";
+        protected const string RemoveNodeByName = "RemoveNodeByName";
+        protected const string RemoveNodeByObj = "RemoveNodeByObj";
+        protected const string RemoveNodeById = "RemoveNodeById";
 
         #region Params
 
         #region Common params
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteNodeTypeByName,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveNodeTypeByName,
             HelpMessage = "Specify the name of the resource group.")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteNodeByName,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveNodeByName,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteNodeTypeByName,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveNodeTypeByName,
             HelpMessage = "Specify the name of the cluster.")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteNodeByName,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveNodeByName,
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteNodeTypeByName,
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveNodeTypeByName,
             HelpMessage = "Specify the name of the node type.")]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteNodeByName,
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveNodeByName,
             HelpMessage = "Specify the name of the node type.")]
         [ValidateNotNullOrEmpty()]
         [Alias("NodeTypeName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = DeleteNodeTypeByObj,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = RemoveNodeTypeByObj,
             HelpMessage = "Node type resource")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = DeleteNodeByObj,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = RemoveNodeByObj,
             HelpMessage = "Node type resource")]
         [ValidateNotNull]
         public PSManagedNodeType InputObject { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = DeleteNodeTypeById,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = RemoveNodeTypeById,
             HelpMessage = "Node type resource id")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = DeleteNodeById,
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ParameterSetName = RemoveNodeById,
             HelpMessage = "Node type resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         #endregion
 
-        [Parameter(Mandatory = true, ParameterSetName = DeleteNodeByName, HelpMessage = "List of node names for the operation.")]
-        [Parameter(Mandatory = true, ParameterSetName = DeleteNodeByObj, HelpMessage = "List of node names for the operation.")]
-        [Parameter(Mandatory = true, ParameterSetName = DeleteNodeById, HelpMessage = "List of node names for the operation.")]
+        [Parameter(Mandatory = true, ParameterSetName = RemoveNodeByName, HelpMessage = "List of node names for the operation.")]
+        [Parameter(Mandatory = true, ParameterSetName = RemoveNodeByObj, HelpMessage = "List of node names for the operation.")]
+        [Parameter(Mandatory = true, ParameterSetName = RemoveNodeById, HelpMessage = "List of node names for the operation.")]
         [ValidateNotNullOrEmpty()]
         public string[] NodeName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = DeleteNodeByName,
+        [Parameter(Mandatory = false, ParameterSetName = RemoveNodeByName,
             HelpMessage = "Using this flag will force the removal even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.")]
-        [Parameter(Mandatory = false, ParameterSetName = DeleteNodeByObj,
+        [Parameter(Mandatory = false, ParameterSetName = RemoveNodeByObj,
             HelpMessage = "Using this flag will force the removal even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.")]
-        [Parameter(Mandatory = false, ParameterSetName = DeleteNodeById,
+        [Parameter(Mandatory = false, ParameterSetName = RemoveNodeById,
             HelpMessage = "Using this flag will force the removal even if service fabric is unable to disable the nodes. Use with caution as this might cause data loss if stateful workloads are running on the nodes, or might bring the cluster down if there are not enough seed nodes after the opearion.")]
         public SwitchParameter ForceRemoveNode { get; set; }
 
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.SetParams();
                 switch (ParameterSetName)
                 {
-                    case DeleteNodeByName:
-                    case DeleteNodeByObj:
-                    case DeleteNodeById:
-                        if (ShouldProcess(target: this.Name, action: string.Format("Delete node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
+                    case RemoveNodeByName:
+                    case RemoveNodeByObj:
+                    case RemoveNodeById:
+                        if (ShouldProcess(target: this.Name, action: string.Format("Remove node(s) {0}, from node type {1} on cluster {2}", string.Join(", ", this.NodeName), this.Name, this.ClusterName)))
                         {
 
                             var actionParams = new NodeTypeActionParameters(nodes: this.NodeName, force: this.ForceRemoveNode.IsPresent);
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                         break;
 
-                    case DeleteNodeTypeByName:
-                    case DeleteNodeTypeByObj:
-                    case DeleteNodeTypeById:
+                    case RemoveNodeTypeByName:
+                    case RemoveNodeTypeByObj:
+                    case RemoveNodeTypeById:
                         if (ShouldProcess(target: this.Name, action: string.Format("Remove node type: {0} on cluster {1}, resource group {2}", this.Name, this.ClusterName, this.ResourceGroupName)))
                         {
                             var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginDeleteWithHttpMessagesAsync(
@@ -155,8 +155,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             switch (ParameterSetName)
             {
-                case DeleteNodeByObj:
-                case DeleteNodeTypeByObj:
+                case RemoveNodeByObj:
+                case RemoveNodeTypeByObj:
                     if (string.IsNullOrEmpty(this.InputObject?.Id))
                     {
                         throw new ArgumentException("ResourceId is null.");
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     SetParametersByResourceId(this.InputObject.Id);
                     break;
-                case DeleteNodeById:
-                case DeleteNodeTypeById:
+                case RemoveNodeById:
+                case RemoveNodeTypeById:
                     SetParametersByResourceId(this.ResourceId);
                     break;
             }

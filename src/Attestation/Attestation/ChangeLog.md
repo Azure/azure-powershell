@@ -21,6 +21,23 @@
 
 ## Upcoming Release
 
+## Version 3.1.0
+* Added ChangeSafety Support
+
+## Version 3.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 2.1.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.1.0
+* Upgraded nuget package to signed package.
+
+## Version 2.0.3
+* Migrated Attestation SDK to generated SDK
+    - Removed "Microsoft.Azure.Management.Attestation" Version "0.12.0-preview" PackageReference
+    - Added Attestation.Management.Sdk ProjectReference
+
 ## Version 2.0.2
 * Introduced secrets detection feature to safeguard sensitive data.
 

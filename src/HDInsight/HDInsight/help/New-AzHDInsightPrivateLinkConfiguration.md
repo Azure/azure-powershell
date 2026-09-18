@@ -19,7 +19,7 @@ New-AzHDInsightPrivateLinkConfiguration [-Name <String>] [-GroupId <String>]
 ```
 
 ## DESCRIPTION
-This cmdlet **New-AzHDInsightPrivateLinkConfiguration** creates the private link configuration in memeory
+This cmdlet **New-AzHDInsightPrivateLinkConfiguration** creates the private link configuration in memory
 
 ## EXAMPLES
 

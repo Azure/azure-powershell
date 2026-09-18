@@ -19,9 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Aligned Qumulo documentation and UX metadata with the shipped 2022-10-12-preview API surface
+    - Updated reference help to match the parameters and output types exposed by shipped cmdlets
+    - Pinned the swagger tag to package-2022-10-12-preview to keep future regenerations on the shipped API version
+
+## Version 0.1.3
+* Upgraded nuget package to signed package.
+
+## Version 0.1.2
+* Fixed secrets exposure in example documentation.
+
 ## Version 0.1.1
 * Introduced secrets detection feature to safeguard sensitive data.
-
 
 ## Version 0.1.0
 * First preview release for module Az.Qumulo

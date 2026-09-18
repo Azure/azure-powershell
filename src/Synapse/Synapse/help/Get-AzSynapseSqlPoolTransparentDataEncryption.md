@@ -15,8 +15,7 @@ Gets the TDE state for a SQL pool.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseSqlPoolTransparentDataEncryption [-ResourceGroupName <String>] -WorkspaceName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet

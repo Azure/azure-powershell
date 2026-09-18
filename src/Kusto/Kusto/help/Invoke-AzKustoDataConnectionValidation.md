@@ -15,19 +15,19 @@ Checks that the data connection parameters are valid.
 ### DataExpandedEventHub (Default)
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Kind <Kind> -DataConnectionName <String> -ConsumerGroup <String>
+ [-SubscriptionId <String>] -Kind <String> -DataConnectionName <String> -ConsumerGroup <String>
  -Location <String> -EventHubResourceId <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-Compression <Compression>]
- [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>]
+ [-MappingRuleName <String>] [-TableName <String>] [-Compression <String>]
+ [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DataExpandedEventGrid
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Kind <Kind> -DataConnectionName <String> -ConsumerGroup <String>
+ [-SubscriptionId <String>] -Kind <String> -DataConnectionName <String> -ConsumerGroup <String>
  -Location <String> -EventHubResourceId <String> [-DataFormat <String>] [-MappingRuleName <String>]
- [-TableName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>]
+ [-TableName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>]
  -StorageAccountResourceId <String> [-EventGridResourceId <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,54 +35,55 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 ### DataExpandedIotHub
 ```
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Kind <Kind> -DataConnectionName <String> -ConsumerGroup <String>
+ [-SubscriptionId <String>] -Kind <String> -DataConnectionName <String> -ConsumerGroup <String>
  -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>]
- -IotHubResourceId <String> -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TableName <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
+ -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedEventHub
 ```
-Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Kind <Kind> -DataConnectionName <String>
- -ConsumerGroup <String> -Location <String> -EventHubResourceId <String> [-DataFormat <String>]
- [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
- [-Compression <Compression>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>]
+Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Kind <String>
+ -DataConnectionName <String> -ConsumerGroup <String> -Location <String> -EventHubResourceId <String>
+ [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-Compression <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>]
  [-RetrievalStartDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedEventGrid
 ```
-Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Kind <Kind> -DataConnectionName <String>
- -ConsumerGroup <String> -Location <String> -EventHubResourceId <String> [-DataFormat <String>]
- [-MappingRuleName <String>] [-TableName <String>] [-ManagedIdentityResourceId <String>]
- [-DatabaseRouting <DatabaseRouting>] -StorageAccountResourceId <String> [-EventGridResourceId <String>]
+Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Kind <String>
+ -DataConnectionName <String> -ConsumerGroup <String> -Location <String> -EventHubResourceId <String>
+ [-DataFormat <String>] [-MappingRuleName <String>] [-TableName <String>] [-ManagedIdentityResourceId <String>]
+ [-DatabaseRouting <String>] -StorageAccountResourceId <String> [-EventGridResourceId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DataViaIdentityExpandedIotHub
 ```
-Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Kind <Kind> -DataConnectionName <String>
- -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DatabaseRouting <DatabaseRouting>]
- [-RetrievalStartDate <DateTime>] -IotHubResourceId <String> -SharedAccessPolicyName <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -Kind <String>
+ -DataConnectionName <String> -ConsumerGroup <String> -Location <String> [-DataFormat <String>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>]
+ [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
+ -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
 ```
-Invoke-AzKustoDataConnectionValidation -Kind <Kind> -DataConnectionName <String> -ConsumerGroup <String>
+Invoke-AzKustoDataConnectionValidation -Kind <String> -DataConnectionName <String> -ConsumerGroup <String>
  -Location <String> [-DataFormat <String>] [-MappingRuleName <String>] [-TableName <String>]
- [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-DefaultProfile <PSObject>]
+ [-BlobStorageEventType <String>] [-IgnoreFirstRecord] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventGrid
 ```
-Invoke-AzKustoDataConnectionValidation -Kind <Kind> -DataConnectionName <String> -ConsumerGroup <String>
+Invoke-AzKustoDataConnectionValidation -Kind <String> -DataConnectionName <String> -ConsumerGroup <String>
  -Location <String> [-DataFormat <String>] [-MappingRuleName <String>] [-TableName <String>]
- [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-DefaultProfile <PSObject>]
+ [-BlobStorageEventType <String>] [-IgnoreFirstRecord] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,7 +94,7 @@ Checks that the data connection parameters are valid.
 
 ### Example 1: Validate EventHub data connection parameters
 ```powershell
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -106,7 +107,7 @@ The above command validates EventHub data connection named "myeventhubdc" for th
 
 ### Example 2: Validate EventGrid data connection parameters
 ```powershell
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -119,7 +120,7 @@ The above command validates EventGrid data connection named "myeventgriddc" for 
 
 ### Example 3: Validate IotHub data connection parameters
 ```powershell
-Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -133,7 +134,7 @@ The above command validates IotHub data connection named "myiothubdc" for the da
 ### Example 4: Validate EventHub data connection parameters via identity
 ```powershell
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" 
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -147,7 +148,7 @@ The above command validates EventHub data connection named "myeventhubdc" for th
 ### Example 5: Validate EventGrid data connection parameters via identity
 ```powershell
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase"
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -161,7 +162,7 @@ The above command validates EventGrid data connection named "myeventgriddc" for 
 ### Example 6: Validate IotHub data connection parameters via identity
 ```powershell
 $database = Get-AzKustoDatabase -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" 
-Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup 'Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -178,7 +179,7 @@ The above command validates IotHub data connection named "myiothubdc" for the da
 The name of blob storage event type to process.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
+Type: System.String
 Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
 Aliases:
 
@@ -208,7 +209,7 @@ Accept wildcard characters: False
 The event hub messages compression type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression
+Type: System.String
 Parameter Sets: DataExpandedEventHub, DataViaIdentityExpandedEventHub
 Aliases:
 
@@ -253,7 +254,7 @@ Accept wildcard characters: False
 Indication for database routing information from the data connection, by default only database routing information is allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting
+Type: System.String
 Parameter Sets: DataExpandedEventHub, DataExpandedEventGrid, DataExpandedIotHub, DataViaIdentityExpandedEventHub, DataViaIdentityExpandedEventGrid, DataViaIdentityExpandedIotHub
 Aliases:
 
@@ -405,7 +406,7 @@ Accept wildcard characters: False
 Kind of the endpoint for the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -595,7 +596,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidationResult
 
 ## NOTES
 

@@ -44,10 +44,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// string).
         /// </param>
 
+        /// <param name="timeFormat">The format for Time values. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
+        /// <param name="dateFormat">The format for Date values. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
         /// <param name="culture">The culture used to convert data from/to string. Type: string (or
         /// Expression with resultType string).
         /// </param>
-        public TypeConversionSettings(object allowDataTruncation = default(object), object treatBooleanAsNumber = default(object), object dateTimeFormat = default(object), object dateTimeOffsetFormat = default(object), object timeSpanFormat = default(object), object culture = default(object))
+        public TypeConversionSettings(object allowDataTruncation = default(object), object treatBooleanAsNumber = default(object), object dateTimeFormat = default(object), object dateTimeOffsetFormat = default(object), object timeSpanFormat = default(object), object timeFormat = default(object), object dateFormat = default(object), object culture = default(object))
 
         {
             this.AllowDataTruncation = allowDataTruncation;
@@ -55,6 +63,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.DateTimeFormat = dateTimeFormat;
             this.DateTimeOffsetFormat = dateTimeOffsetFormat;
             this.TimeSpanFormat = timeSpanFormat;
+            this.TimeFormat = timeFormat;
+            this.DateFormat = dateFormat;
             this.Culture = culture;
             CustomInit();
         }
@@ -99,6 +109,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeSpanFormat")]
         public object TimeSpanFormat {get; set; }
+
+        /// <summary>
+        /// Gets or sets the format for Time values. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeFormat")]
+        public object TimeFormat {get; set; }
+
+        /// <summary>
+        /// Gets or sets the format for Date values. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dateFormat")]
+        public object DateFormat {get; set; }
 
         /// <summary>
         /// Gets or sets the culture used to convert data from/to string. Type: string

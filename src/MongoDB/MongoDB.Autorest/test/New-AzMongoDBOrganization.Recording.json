@@ -1,0 +1,228 @@
+{
+  "New-AzMongoDBOrganization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew?api-version=2026-03-01-preview",
+      "Content": "{\r\n  \"location\": \"East US 2\",\r\n  \"properties\": {\r\n    \"marketplace\": {\r\n      \"offerDetails\": {\r\n        \"publisherId\": \"mongodb\",\r\n        \"offerId\": \"mongodb_atlas_azure_native_prod\",\r\n        \"planId\": \"private_plan\",\r\n        \"planName\": \"Pay as You Go (Free) (Private)\",\r\n        \"termUnit\": \"P1M\",\r\n        \"termId\": \"n7ja87drquhy\"\r\n      },\r\n      \"subscriptionId\": \"5df31f9f-6fde-4989-c709-46edf91ec655\"\r\n    },\r\n    \"user\": {\r\n      \"firstName\": \"Anuj\",\r\n      \"lastName\": \"Sharma\",\r\n      \"emailAddress\": \"sharmaanu@microsoft.com\",\r\n      \"upn\": \"sharmaanu@microsoft.com\"\r\n    },\r\n    \"partnerProperties\": {\r\n      \"organizationId\": \"\",\r\n      \"organizationName\": \"MongoDBPortalTest\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "708" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0301acc3-0000-0200-0000-6a4f99e30000\"" ],
+        "Location": [ "https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2euap/09394c50-b289-435a-8241-85cde2a0a364" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "6f1e7786-f221-4e5a-8d2a-a3db9822c5f4" ],
+        "x-ms-correlation-request-id": [ "648bdf57-1827-4100-8fcf-bb58b2c3bfd4" ],
+        "x-ms-client-request-id": [ "2f094be4-5e86-4725-a4ea-123d10857d51" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-request-id": [ "6e719f4e-e65a-4618-85b4-f6d9b146456d" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260709T125355Z:648bdf57-1827-4100-8fcf-bb58b2c3bfd4" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6C89AC2F149A49BBB736EBC4A6C96977 Ref B: PNQ231110907054 Ref C: 2026-07-09T12:53:48Z" ],
+        "Date": [ "Thu, 09 Jul 2026 12:53:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1000" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew\",\"name\":\"MongoDBV2-09Jul-PesterNew\",\"type\":\"mongodb.atlas/organizations\",\"location\":\"East US 2\",\"systemData\":{\"createdBy\":\"sharmaanu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-09T12:53:50.8186899Z\",\"lastModifiedBy\":\"sharmaanu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-09T12:53:50.8186899Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"5df31f9f-6fde-4989-c709-46edf91ec655\",\"offerDetails\":{\"publisherId\":\"mongodb\",\"offerId\":\"mongodb_atlas_azure_native_prod\",\"planId\":\"private_plan\",\"planName\":\"Pay as You Go (Free) (Private)\",\"termUnit\":\"P1M\",\"termId\":\"n7ja87drquhy\"}},\"user\":{\"firstName\":\"Anuj\",\"lastName\":\"Sharma\",\"emailAddress\":\"sharmaanu@microsoft.com\",\"upn\":\"sharmaanu@microsoft.com\"},\"provisioningState\":\"Accepted\",\"partnerProperties\":{\"organizationId\":\"\",\"organizationName\":\"MongoDBPortalTest\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMongoDBOrganization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "2f094be4-5e86-4725-a4ea-123d10857d51" ],
+        "CommandName": [ "New-AzMongoDBOrganization" ],
+        "FullCommandName": [ "New-AzMongoDBOrganization_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.3", "Az.MongoDB/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"98016ecd-0000-0200-0000-6a4f99e20000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "2ba2fa86-c671-49b5-a4f6-e7210c1e89b5" ],
+        "x-ms-correlation-request-id": [ "3708d8de-7056-46ce-bd35-29cac237cf2f" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20260709T125426Z:3708d8de-7056-46ce-bd35-29cac237cf2f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AB4F6570AABE4F1A89A76D46D32C3750 Ref B: PNQ231110907054 Ref C: 2026-07-09T12:54:25Z" ],
+        "Date": [ "Thu, 09 Jul 2026 12:54:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "505" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4\",\"name\":\"6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4\",\"resourceId\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew\",\"status\":\"Accepted\",\"startTime\":\"2026-07-09T12:53:54.3208334Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMongoDBOrganization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "2f094be4-5e86-4725-a4ea-123d10857d51" ],
+        "CommandName": [ "New-AzMongoDBOrganization" ],
+        "FullCommandName": [ "New-AzMongoDBOrganization_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.3", "Az.MongoDB/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"98016ecd-0000-0200-0000-6a4f99e20000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "330a2e1b-a044-4229-b93c-03c5626e93f5" ],
+        "x-ms-correlation-request-id": [ "8a2b1311-3c20-486d-b6d8-75c443dbeac5" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20260709T125457Z:8a2b1311-3c20-486d-b6d8-75c443dbeac5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 192E206693EE49D6A9F63495593A42A4 Ref B: PNQ231110907054 Ref C: 2026-07-09T12:54:56Z" ],
+        "Date": [ "Thu, 09 Jul 2026 12:54:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "505" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4\",\"name\":\"6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4\",\"resourceId\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew\",\"status\":\"Accepted\",\"startTime\":\"2026-07-09T12:53:54.3208334Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMongoDBOrganization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4?api-version=2026-03-01-preview\u0026t=639191984353812667\u0026c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w\u0026s=TLrOogCemmGXcs6jjo2S7pYWBShX9zeZZwfVST6oAEUoxQ1Z0h7E6_42BdO0nBspr-aBg0WUH2CqV2RKJ_lQLnUjeb6vISqeRpcC9UfocJOJk0U-3zC-446Dn4gh5DlfBF4aA3F3t33sSGqYOlvdPm8ZMuhHDSaifjF_msTpwHs7hKfB3TN5BOcyzgcmyhCDxYehl0keqyY5c1pLQA7iLfnRS_aaSm0uU8BHyPw_rFMhevzISb3gSQlPF2AKLaMjIVd06YdnblsVGmnBVTPBp1v6E4MVsSHu3f2w_o8SuJaRb2gFXXV3F1KBJ5_N2iJbEilmGk0nZ3HPHSDp6Ko4gw\u0026h=jFVAXCGN6wPaqTDPTMfuNGuxDQBctaHdrc-kFCjk1Rs",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "2f094be4-5e86-4725-a4ea-123d10857d51" ],
+        "CommandName": [ "New-AzMongoDBOrganization" ],
+        "FullCommandName": [ "New-AzMongoDBOrganization_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.3", "Az.MongoDB/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"980130d8-0000-0200-0000-6a4f9a2c0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "8256f294-bc1f-41f8-bd2e-2f1a91c63901" ],
+        "x-ms-correlation-request-id": [ "463490ba-7799-4164-b724-6a0e95970273" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20260709T125528Z:463490ba-7799-4164-b724-6a0e95970273" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AC9DA4D6F7714C25AA57219D3D1626D5 Ref B: PNQ231110907054 Ref C: 2026-07-09T12:55:27Z" ],
+        "Date": [ "Thu, 09 Jul 2026 12:55:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/MongoDB.Atlas/locations/EASTUS2/operationStatuses/6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4\",\"name\":\"6e719f4e-e65a-4618-85b4-f6d9b146456d*F1E159F85D12A05CE7992482DA975095EAD1523C3381A4B3F21FF45CEA6348C4\",\"resourceId\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew\",\"status\":\"Succeeded\",\"startTime\":\"2026-07-09T12:53:54.3208334Z\",\"endTime\":\"2026-07-09T12:55:08.7208743Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMongoDBOrganization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew?api-version=2026-03-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "2f094be4-5e86-4725-a4ea-123d10857d51" ],
+        "CommandName": [ "New-AzMongoDBOrganization" ],
+        "FullCommandName": [ "New-AzMongoDBOrganization_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.3", "Az.MongoDB/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0301acc6-0000-0200-0000-6a4f9a2d0000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f2da163e-8529-4b3f-b84c-e23ca1cfda66" ],
+        "x-ms-correlation-request-id": [ "ffcaf208-d982-4eb6-89a1-83c39345f462" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260709T125528Z:ffcaf208-d982-4eb6-89a1-83c39345f462" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3EE3011749D8497EAB6418A1EEED6EAD Ref B: PNQ231110907054 Ref C: 2026-07-09T12:55:28Z" ],
+        "Date": [ "Thu, 09 Jul 2026 12:55:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1229" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/MongoDBV2-09Jul-PesterNew\",\"name\":\"MongoDBV2-09Jul-PesterNew\",\"type\":\"mongodb.atlas/organizations\",\"location\":\"East US 2\",\"systemData\":{\"createdBy\":\"sharmaanu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-09T12:53:50.8186899Z\",\"lastModifiedBy\":\"b059abce-70fd-4c8f-a117-96d2192e90e1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2026-07-09T12:55:09.1082157Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"48fb125e-bb92-45ca-d2e8-588f800357f1\",\"offerDetails\":{\"publisherId\":\"mongodb\",\"offerId\":\"mongodb_atlas_azure_native_prod\",\"planId\":\"private_plan\",\"planName\":\"Pay as You Go (Free) (Private)\",\"termUnit\":\"P1M\",\"termId\":\"n7ja87drquhy\"},\"subscriptionStatus\":\"Subscribed\"},\"user\":{\"firstName\":\"Anuj\",\"lastName\":\"Sharma\",\"emailAddress\":\"sharmaanu@microsoft.com\",\"upn\":\"sharmaanu@microsoft.com\"},\"provisioningState\":\"Succeeded\",\"partnerProperties\":{\"organizationId\":\"6a4f9a1325906cf24c1dbe97\",\"organizationName\":\"MongoDBPortalTest\",\"redirectUrl\":\"https://account.mongodb.com/account/reset/password?email=sharmaanu%40microsoft.com\u0026orgId=6a4f9a1325906cf24c1dbe97\u0026shouldRedirect=true\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

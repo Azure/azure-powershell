@@ -115,7 +115,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayGlobalConfig -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
@@ -248,6 +248,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensitivity()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideWithSensitivity -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestApplicationGatewayFirewallPolicyDefaultRuleSet()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyDefaultRuleSet -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -259,6 +267,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestTopLevelWafPolicyPerRuleExclusions()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayWafPolicyExceptions()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyWithException -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
@@ -360,9 +376,57 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithCaptcha()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCaptcha");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyComputedDisabledRules()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyComputedDisabledRules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithRateLimitRuleClientAddrXFFHeader()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleClientAddrXFFHeader");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithRateLimitRuleGeoLocationXFFHeader()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleGeoLocationXFFHeader");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyCustomRuleClientAddrXFFHeaderRemoval()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyCustomRuleClientAddrXFFHeaderRemoval");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval");
         }
     }
 }

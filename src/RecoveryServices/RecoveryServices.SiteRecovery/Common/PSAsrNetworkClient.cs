@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationNetworks.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     networkName,
                     this.GetRequestHeaders(true))
@@ -49,7 +51,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<Network> GetAzureSiteRecoveryNetworks()
         {
             var firstPage = this.GetSiteRecoveryClient()
-                .ReplicationNetworks.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ReplicationNetworks.ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -75,6 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationNetworks.ListByReplicationFabricsWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()

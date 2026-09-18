@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;,
+        /// &#39;Flexible&#39;</param>
 
         /// <param name="provisioningState">Azure lifecycle management
         /// </param>
@@ -41,6 +42,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="utilizedThroughputMibps">Utilized throughput of pool in MiB/s
+        /// </param>
+
+        /// <param name="customThroughputMibps">Maximum throughput in MiB/s that can be achieved by this pool and this will
+        /// be accepted as input only for manual qosType pool with Flexible service
+        /// level
         /// </param>
 
         /// <param name="qosType">The qos type of the pool
@@ -53,7 +59,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// for this pool and all volumes in it. This value can only be set when
         /// creating new pool.
         /// Possible values include: &#39;Single&#39;, &#39;Double&#39;</param>
-        public PoolProperties(long size, string serviceLevel, string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), string qosType = default(string), bool? coolAccess = default(bool?), string encryptionType = default(string))
+        public PoolProperties(long size, string serviceLevel, string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), int? customThroughputMibps = default(int?), string qosType = default(string), bool? coolAccess = default(bool?), string encryptionType = default(string))
 
         {
             this.PoolId = poolId;
@@ -62,6 +68,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.ProvisioningState = provisioningState;
             this.TotalThroughputMibps = totalThroughputMibps;
             this.UtilizedThroughputMibps = utilizedThroughputMibps;
+            this.CustomThroughputMibps = customThroughputMibps;
             this.QosType = qosType;
             this.CoolAccess = coolAccess;
             this.EncryptionType = encryptionType;
@@ -88,7 +95,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public long Size {get; set; }
 
         /// <summary>
-        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;
+        /// Gets or sets the service level of the file system Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;, &#39;Flexible&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serviceLevel")]
         public string ServiceLevel {get; set; }
@@ -110,6 +117,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "utilizedThroughputMibps")]
         public double? UtilizedThroughputMibps {get; private set; }
+
+        /// <summary>
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by this pool
+        /// and this will be accepted as input only for manual qosType pool with
+        /// Flexible service level
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customThroughputMibps")]
+        public int? CustomThroughputMibps {get; set; }
 
         /// <summary>
         /// Gets or sets the qos type of the pool Possible values include: &#39;Auto&#39;, &#39;Manual&#39;

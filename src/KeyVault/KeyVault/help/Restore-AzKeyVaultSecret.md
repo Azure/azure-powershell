@@ -19,6 +19,12 @@ Restore-AzKeyVaultSecret [-VaultName] <String> [-InputFile] <String> [-DefaultPr
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### BySecretUri
+```
+Restore-AzKeyVaultSecret [-Id] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByInputObject
 ```
 Restore-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
@@ -26,9 +32,9 @@ Restore-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
  [<CommonParameters>]
 ```
 
-### ByResourceId
+### ByParentResourceId
 ```
-Restore-AzKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
+Restore-AzKeyVaultSecret [-ParentResourceId] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -65,6 +71,27 @@ Tags         :
 
 This command restores a secret, including all of its versions, from the backup file named Backup.blob into the key vault named contoso.
 
+### Example 2: Restore a backed-up secret (using Uri)
+```powershell
+Restore-AzKeyVaultSecret -Id "https://contoso.vault.azure.net:443/secrets/" -InputFile "C:\Backup.blob"
+```
+
+```output
+Vault Name   : contoso
+Name         : secret1
+Version      : 7128133570f84a71b48d7d0550deb74c
+Id           : https://contoso.vault.azure.net:443/secrets/secret1/7128133570f84a71b48d7d0550deb74c
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+```
+
+This command restores a secret, including all of its versions, from the backup file named Backup.blob into the key vault named contoso.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -77,6 +104,22 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The URI of the KeyVault Secret.
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
+
+```yaml
+Type: System.String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,13 +155,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
+### -ParentResourceId
 KeyVault Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
+Parameter Sets: ByParentResourceId
+Aliases: ResourceId
 
 Required: True
 Position: 0

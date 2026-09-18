@@ -42,7 +42,6 @@ AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
 AutoScaleFormula                     :
 AutoScaleRun                         :
-CertificateReferences                :
 CreationTime                         : 7/25/2015 9:30:28 PM
 CurrentDedicated                     : 0
 CurrentOSVersion                     : *
@@ -80,7 +79,6 @@ AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
 AutoScaleFormula                     :
 AutoScaleRun                         :
-CertificateReferences                :
 CreationTime                         : 7/25/2015 9:30:28 PM
 CurrentDedicated                     : 0
 CurrentOSVersion                     : *

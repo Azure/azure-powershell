@@ -6,7 +6,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</RootNamespace>
   </PropertyGroup>

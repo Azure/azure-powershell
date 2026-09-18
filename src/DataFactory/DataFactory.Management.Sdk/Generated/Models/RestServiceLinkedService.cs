@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -113,9 +116,25 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="scope">The scope of the access required. It describes what kind of access will be
         /// requested. Type: string (or Expression with resultType string).
         /// </param>
-        public RestServiceLinkedService(object url, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object enableServerCertificateValidation = default(object), object userName = default(object), SecretBase password = default(SecretBase), object authHeaders = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), object aadResourceId = default(object), string encryptedCredential = default(string), CredentialReference credential = default(CredentialReference), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tokenEndpoint = default(object), object resource = default(object), object scope = default(object))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        /// <param name="servicePrincipalCredentialType">The service principal credential type to use in Server-To-Server
+        /// authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCert">Specify the base64 encoded certificate of your application registered in
+        /// Azure Active Directory. Type: string (or Expression with resultType
+        /// string).
+        /// </param>
+
+        /// <param name="servicePrincipalEmbeddedCertPassword">Specify the password of your certificate if your certificate has a password
+        /// and you are using AadServicePrincipal authentication. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+        public RestServiceLinkedService(object url, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object enableServerCertificateValidation = default(object), object userName = default(object), SecretBase password = default(SecretBase), object authHeaders = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), object aadResourceId = default(object), string encryptedCredential = default(string), CredentialReference credential = default(CredentialReference), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object tokenEndpoint = default(object), object resource = default(object), object scope = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalEmbeddedCert = default(SecretBase), SecretBase servicePrincipalEmbeddedCertPassword = default(SecretBase))
+
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Url = url;
             this.EnableServerCertificateValidation = enableServerCertificateValidation;
@@ -135,6 +154,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.TokenEndpoint = tokenEndpoint;
             this.Resource = resource;
             this.Scope = scope;
+            this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
+            this.ServicePrincipalEmbeddedCert = servicePrincipalEmbeddedCert;
+            this.ServicePrincipalEmbeddedCertPassword = servicePrincipalEmbeddedCertPassword;
             CustomInit();
         }
 
@@ -272,6 +294,31 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.scope")]
         public object Scope {get; set; }
+
+        /// <summary>
+        /// Gets or sets the service principal credential type to use in
+        /// Server-To-Server authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalCredentialType")]
+        public object ServicePrincipalCredentialType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the base64 encoded certificate of your application
+        /// registered in Azure Active Directory. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalEmbeddedCert")]
+        public SecretBase ServicePrincipalEmbeddedCert {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the password of your certificate if your certificate
+        /// has a password and you are using AadServicePrincipal authentication. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalEmbeddedCertPassword")]
+        public SecretBase ServicePrincipalEmbeddedCertPassword {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -305,6 +352,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.Credential.Validate();
             }
+
+
+
 
 
 

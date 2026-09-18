@@ -14,7 +14,8 @@ Lists NetworkManager Active Connectivity Configurations in network manager.
 
 ```
 Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <String[]>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Region <String[]>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

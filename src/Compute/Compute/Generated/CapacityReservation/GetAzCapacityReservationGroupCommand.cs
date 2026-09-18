@@ -24,6 +24,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Azure.Core;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         private const string DefaultParameterSet = "DefaultParameterSet";
         private const string ResourceIDParameterSet = "ResourceIDParameterSet";
+        private const string ResourceIdsOnlyParameterSet = "ResourceIdsOnlyParameterSet";
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -62,6 +64,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            HelpMessage = "Resource ID for your capacity reservation group.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string ResourceId { get; set; }
+
+        [Parameter(
+           ParameterSetName = ResourceIdsOnlyParameterSet,
+           ValueFromPipeline = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The option to fetch Capacity Reservation Group Resource Ids. Possible values" +
+            "'CreatedInSubscription' enables fetching Resource Ids for all capacity reservation group resources created in the subscription." +
+            "'SharedWithSubscription' enables fetching Resource Ids for all capacity reservation group resources shared with the subscription." +
+            "'All' enables fetching Resource Ids for all capacity reservation group resources shared with the subscription and created in the subscription")]
+        [PSArgumentCompleter("CreatedInSubscription", "SharedWithSubscription", "All")]
+        public string ResourceIdsOnly { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -110,6 +123,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     while (!string.IsNullOrEmpty(nextPageLink))
                     {
                         var pageResult = CapacityReservationGroupClient.ListByResourceGroupNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSCapacityReservationGroupList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<CapacityReservationGroup, PSCapacityReservationGroupList>(r));
+                    }
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, capacityReservationGroupName, psObject), true);
+                }
+                else if (this.ParameterSetName == ResourceIdsOnlyParameterSet)
+                {
+                    var result = CapacityReservationGroupClient.ListBySubscription(resourceIdsOnly: this.ResourceIdsOnly);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = CapacityReservationGroupClient.ListBySubscriptionNext(nextPageLink);
                         foreach (var pageItem in pageResult)
                         {
                             resultList.Add(pageItem);

@@ -141,6 +141,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the memory size in GB for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much memory in GB to associate with instance")]
+        public int? MemorySizeInGB { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not the public data endpoint is enabled.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -299,6 +306,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? StorageIOps { get; set; }
 
         /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
+
+        /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
@@ -371,6 +387,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].LicenseType = this.LicenseType ?? updateData[0].LicenseType;
             updateData[0].StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB;
             updateData[0].VCores = this.VCore ?? updateData[0].VCores;
+            updateData[0].MemorySizeInGB = this.MemorySizeInGB ?? updateData[0].MemorySizeInGB;
             updateData[0].PublicDataEndpointEnabled = this.PublicDataEndpointEnabled ?? updateData[0].PublicDataEndpointEnabled;
             updateData[0].ProxyOverride = this.ProxyOverride ?? this.ProxyOverride;
             updateData[0].Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
@@ -394,6 +411,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             // This is due to the fact that this update might have a target edition that does not use this parameter.
             // If the target edition uses the parameter, the current value will get picked up later in the update process.
             updateData[0].StorageIOps = this.StorageIOps;
+            updateData[0].AuthenticationMetadata = this.AuthenticationMetadata ?? updateData[0].AuthenticationMetadata;
 
             return updateData;
         }

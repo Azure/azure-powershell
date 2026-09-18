@@ -58,7 +58,6 @@ TotalTasksRun         : 1
 StartTaskInformation  :
 RecentTasks           : {}
 StartTask             :
-CertificateReferences :
 Errors                :
 ```
 
@@ -84,7 +83,6 @@ TotalTasksRun         : 1
 StartTaskInformation  :
 RecentTasks           : {}
 StartTask             :
-CertificateReferences :
 Errors                :
 
 Id                    : tvm-2316545714_2-20150726t172920z
@@ -100,7 +98,6 @@ TotalTasksRun         : 0
 StartTaskInformation  :
 RecentTasks           :
 StartTask             :
-CertificateReferences :
 Errors                :
 ```
 
@@ -126,7 +123,6 @@ TotalTasksRun         : 1
 StartTaskInformation  :
 RecentTasks           : {}
 StartTask             :
-CertificateReferences :
 Errors                :
 
 
@@ -144,7 +140,6 @@ TotalTasksRun         : 0
 StartTaskInformation  :
 RecentTasks           :
 StartTask             :
-CertificateReferences :
 Errors                :
 ```
 

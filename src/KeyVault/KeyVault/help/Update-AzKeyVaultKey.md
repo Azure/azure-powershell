@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -Enable
-Value of true enables the key and a value of false disabless the key.
+Value of true enables the key and a value of false disables the key.
 If not specified, the existing enabled/disabled state remains unchanged.
 
 ```yaml
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ### -Expires
 The expiration time of a key in UTC time.
 If not specified, the existing expiration time of the key remains unchanged.
-Please notice that expirys is ignored for Key Exchange Key used in BYOK process.
+Please notice that expires is ignored for Key Exchange Key used in BYOK process.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -268,7 +268,7 @@ Accept wildcard characters: False
 
 ### -Tag
 A hashtable represents key tags.
-If not specified, the existings tags of the key remain unchanged.
+If not specified, the existing tags of the key remain unchanged.
 
 ```yaml
 Type: System.Collections.Hashtable

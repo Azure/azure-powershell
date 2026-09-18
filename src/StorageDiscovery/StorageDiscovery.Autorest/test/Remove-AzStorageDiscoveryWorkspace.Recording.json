@@ -1,0 +1,48 @@
+{
+  "Remove-AzStorageDiscoveryWorkspace+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/d0fe5891-b68c-45a0-8d80-4d66d57f3859/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace2?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/d0fe5891-b68c-45a0-8d80-4d66d57f3859/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace2?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "03742093-18dd-4b86-9b15-9d3b9ee9ed01" ],
+        "CommandName": [ "Remove-AzStorageDiscoveryWorkspace" ],
+        "FullCommandName": [ "Remove-AzStorageDiscoveryWorkspace_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.3.0", "PSVersion/v7.5.3", "Az.StorageDiscovery/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "7bfcd235-5f97-45f1-9a55-d6843d57e933" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2968a26f-a796-4124-8684-894f8a239db2/eastus2/5fddd338-16ab-44d3-8561-e01ecf93a772" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "06456346-77d4-49b5-94f5-0163c6e7e243" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250917T144820Z:06456346-77d4-49b5-94f5-0163c6e7e243" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C50C310E294A4F20B06CD5D616E1C49B Ref B: CO6AA3150219011 Ref C: 2025-09-17T14:48:20Z" ],
+        "Date": [ "Wed, 17 Sep 2025 14:48:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

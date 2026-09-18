@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridDomainTopic
 
 ## SYNOPSIS
-Asynchronously creates or updates a new domain topic with the specified parameters.
+Asynchronously create a new domain topic with the specified parameters.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzEventGridDomainTopic -DomainName <String> -Name <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new domain topic with the specified parameters.
+Asynchronously create a new domain topic with the specified parameters.
 
 ## EXAMPLES
 

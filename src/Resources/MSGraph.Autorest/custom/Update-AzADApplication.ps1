@@ -353,6 +353,11 @@ function Update-AzADApplication {
     ${PublicClientRedirectUri},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Int32]
+    ${RequestedAccessTokenVersion},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[]]
@@ -549,6 +554,14 @@ function Update-AzADApplication {
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
     
+    if ($PSBoundParameters['RequestedAccessTokenVersion'] -and $PSBoundParameters['Api']) {
+      $PSBoundParameters['Api'].RequestedAccessTokenVersion = $PSBoundParameters['RequestedAccessTokenVersion']
+    }
+    elseif ($PSBoundParameters['RequestedAccessTokenVersion']) {
+      $PSBoundParameters['Api'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApiApplication" -Property @{'RequestedAccessTokenVersion' = $PSBoundParameters['RequestedAccessTokenVersion'] }
+    }
+    $null = $PSBoundParameters.Remove('RequestedAccessTokenVersion')
+
     Az.MSGraph.internal\Update-AzADApplication @PSBoundParameters
   }
 }

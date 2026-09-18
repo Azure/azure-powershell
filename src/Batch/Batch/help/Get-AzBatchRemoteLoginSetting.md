@@ -166,6 +166,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzBatchComputeNode](./Get-AzBatchComputeNode.md)
 
-[Get-AzBatchRemoteDesktopProtocolFile](./Get-AzBatchRemoteDesktopProtocolFile.md)
-
 [Azure Batch Cmdlets](/powershell/module/Az.Batch/)

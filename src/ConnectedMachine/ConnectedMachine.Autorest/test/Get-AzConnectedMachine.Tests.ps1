@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedMachine'))
 }
 
 Describe 'Get-AzConnectedMachine' {
-    It 'List'  {
+    It 'List' {
         $machine = Get-AzConnectedMachine
         $machine | Should -Not -Be $null
     }
 
-    It 'Get'  {
+    It 'Get' {
         $machine = Get-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName
         $machine | Should -Not -Be $null
     }

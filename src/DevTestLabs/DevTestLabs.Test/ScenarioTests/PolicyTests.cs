@@ -59,5 +59,40 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureRmDtlAutoStartPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzDtlAutoStartPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzDtlAutoStartPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzDtlAutoShutdownPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzDtlAutoShutdownPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzDtlAllowedVMSizesPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzDtlAllowedVMSizesPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzDtlVMsPerUserPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzDtlVMsPerUserPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzDtlVMsPerLabPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzDtlVMsPerLabPolicy");
+        }
     }
 }

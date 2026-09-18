@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// The storage account blob inventory policy.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BlobInventoryPolicy : Resource
+    public partial class BlobInventoryPolicy : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the BlobInventoryPolicy class.
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the BlobInventoryPolicy class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="lastModifiedTime">Returns the last modified date and time of the blob inventory policy.
@@ -47,9 +48,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
         public BlobInventoryPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? lastModifiedTime = default(System.DateTime?), BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.LastModifiedTime = lastModifiedTime;
             this.Policy = policy;
             CustomInit();
@@ -60,12 +60,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets returns the last modified date and time of the blob inventory policy.
@@ -87,7 +81,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </exception>
         public virtual void Validate()
         {
-
             if (this.Policy != null)
             {
                 this.Policy.Validate();

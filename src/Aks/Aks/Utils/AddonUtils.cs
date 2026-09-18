@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.Aks.Utils
             string addonServiceName = Constants.AddOnUserReadNameToServiceNameMapper.GetValueOrDefault(Constants.AddOnNameMonitoring, null);
             Dictionary<string, string> config = new Dictionary<string, string>
             {
-                { "logAnalyticsWorkspaceResourceID", TrimWorkspaceResourceId(workspaceResourceIdValue) }
+                { "logAnalyticsWorkspaceResourceID", TrimWorkspaceResourceId(workspaceResourceIdValue) },
+                { "useAADAuth", "true" }
             };
             ManagedClusterAddonProfile addonProfile = new ManagedClusterAddonProfile(true, config);
             addonProfiles = EnableAddonsProfile(addonProfiles, addonServiceName, addonProfile);

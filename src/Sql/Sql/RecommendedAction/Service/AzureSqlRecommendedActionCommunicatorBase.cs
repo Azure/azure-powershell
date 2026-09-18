@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Base class contructor for RecommendedAction REST API Communicators.
+        /// Base class constructor for RecommendedAction REST API Communicators.
         /// </summary>
         public AzureSqlRecommendedActionCommunicatorBase(IAzureContext context)
         {

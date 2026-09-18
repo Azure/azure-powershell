@@ -14,7 +14,7 @@ Create an in-memory object for ManagedDiskDetails.
 
 ```
 New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId <String> -StagingStorageAccountId <String>
- -DataAccountType <DataAccountType> [-SharePassword <String>] [-ProgressAction <ActionPreference>]
+ -DataAccountType <DataAccountType> [-SharePassword <String>]
  [<CommonParameters>]
 ```
 
@@ -47,21 +47,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ManagedDiskDetails
 
 ## NOTES
 

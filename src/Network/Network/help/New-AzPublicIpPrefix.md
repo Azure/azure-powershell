@@ -16,7 +16,8 @@ Creates a Public IP Prefix
 New-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> [-Sku <String>]
  [-Tier <String>] -PrefixLength <UInt16> [-IpAddressVersion <String>] [-IpTag <PSPublicIpPrefixTag[]>]
  [-Zone <String[]>] [-CustomIpPrefix <PSCustomIpPrefix>] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,11 +52,41 @@ New-AzPublicIpPrefix -CustomIpPrefix <PSCustomIpPrefix> -Location 'West US' -Nam
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +255,7 @@ The public IP Prefix Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard
+Accepted values: Standard, StandardV2
 
 Required: False
 Position: Named

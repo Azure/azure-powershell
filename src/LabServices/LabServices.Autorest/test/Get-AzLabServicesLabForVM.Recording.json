@@ -1,0 +1,95 @@
+{
+  "Get-AzLabServicesLabForVM+[NoContext]+Get Lab from VM+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/virtualMachines/0?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/virtualMachines/0?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "4e739c4d-4f98-4c28-85c1-2866502616a8" ],
+        "CommandName": [ "Get-AzLabServicesVM" ],
+        "FullCommandName": [ "Get-AzLabServicesVM_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.LabServices/0.1.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6205f759-1234-453c-9712-34d7671bceff/southindia/16b8f804-b674-49b0-82c3-bf68d6c471d5" ],
+        "Request-Context": [ "appId=cid-v1:3c29314f-2b9f-4fd1-b8fc-13cc225f1416" ],
+        "x-ms-request-id": [ "0HNDPHPGHR99Q:00000002" ],
+        "x-ms-correlation-request-id": [ "ec6267f9-ce18-40c2-8ef0-27aa1c7a32e3" ],
+        "traceparent": [ "00-816d98e7024136d1c3f1edb56d760ff0-0f207f6373258961-00" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview, 2021-11-15-preview, 2022-05-01-preview, 2022-08-01, 2023-06-07" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250707T021638Z:ec6267f9-ce18-40c2-8ef0-27aa1c7a32e3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3CA2E0E554024DDBBFE022B5C8294D25 Ref B: MAA201060514017 Ref C: 2025-07-07T02:16:37Z" ],
+        "Date": [ "Mon, 07 Jul 2025 02:16:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "498" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.4\",\"rdpAuthority\":\"lab-f9c53ea3-4ada-4e8f-bae0-02f4bd68eab1.westcentralus.cloudapp.azure.com:7000\",\"adminUsername\":\"testuser\"},\"vmType\":\"Template\"},\"id\":\"/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/virtualMachines/0\",\"name\":\"0\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesLabForVM+[NoContext]+Get Lab from VM+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell?api-version=2021-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "db5616ca-a508-4658-81cc-8e084beac0f2" ],
+        "CommandName": [ "Az.LabServices.private\\Get-AzLabServicesLab_Get" ],
+        "FullCommandName": [ "Get-AzLabServicesLab_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.LabServices/0.1.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "Request-Context": [ "appId=cid-v1:3c29314f-2b9f-4fd1-b8fc-13cc225f1416" ],
+        "x-ms-request-id": [ "0HNDPHPCODL0L:00000003" ],
+        "x-ms-correlation-request-id": [ "84806f8b-f779-4dea-8383-69b37aab8b88" ],
+        "traceparent": [ "00-3d50b5bad9ac704c2650a4043cf761a5-2b26c97bd2470b88-00" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview, 2021-11-15-preview, 2022-05-01-preview, 2022-08-01, 2023-06-07" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250707T021639Z:84806f8b-f779-4dea-8383-69b37aab8b88" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2ED408B307AE4290BDEB959E41F01B76 Ref B: MAA201060514017 Ref C: 2025-07-07T02:16:38Z" ],
+        "Date": [ "Mon, 07 Jul 2025 02:16:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1515" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-04T10:18:06.2108742Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-04T10:18:06.2108742Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"windows-11\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"win11-23h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Classic_Fsv2_2_4GB_128_S_SSD\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"kb6w6wtju\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-record-powershell\",\"title\":\"LAB lab-record-powershell\",\"description\":\"DESCRIPTION lab-record-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell\",\"name\":\"lab-record-powershell\",\"type\":\"Microsoft.LabServices/labs\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "resourceType": "namespaces/discoveredDevices",
+  "apiVersion": "2025-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDeviceRegistryNamespaceDiscoveredDevice",
+      "description": "Get a NamespaceDiscoveredDevice",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrynamespacediscovereddevice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DiscoveredDeviceName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a NamespaceDiscoveredDevice",
+          "parameters": [
+            {
+              "name": "-DiscoveredDeviceName",
+              "value": "[Path.discoveredDeviceName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDeviceRegistryNamespaceDiscoveredDevice",
+      "description": "Delete a NamespaceDiscoveredDevice",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrynamespacediscovereddevice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DiscoveredDeviceName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a NamespaceDiscoveredDevice",
+          "parameters": [
+            {
+              "name": "-DiscoveredDeviceName",
+              "value": "[Path.discoveredDeviceName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

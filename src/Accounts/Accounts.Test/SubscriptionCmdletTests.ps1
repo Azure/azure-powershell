@@ -86,7 +86,7 @@ Tests each of the major parts of retrieving subscriptions in ARM mode
 #>
 function Test-SetAzureRmContextEndToEnd
 {
-    # This test requires that the tenant contains atleast two subscriptions
+    # This test requires that the tenant contains at least two subscriptions
 	$allSubscriptions = Get-AzSubscription
     $secondSubscription = $allSubscriptions[1]
     Assert-True { $allSubscriptions[0] -ne $null }
@@ -123,7 +123,7 @@ function Test-SetAzureRmContextWithoutSubscription
 
 <#
 .SYNOPSIS
-Check whether tags works with subscripiton 
+Check whether tags works with subscription 
 .DESCRIPTION
 SmokeTest
 #>
@@ -135,7 +135,7 @@ function Test-GetSubscriptionsWithTags
 
 <#
 .SYNOPSIS
-Tests whether subscripitions before and after context rename and set are equal.
+Tests whether subscriptions before and after context rename and set are equal.
 .DESCRIPTION
 SmokeTest
 #>
@@ -156,7 +156,7 @@ function Test-GetSubscriptionsAfterContextRenameAndSet
 
 <#
 .SYNOPSIS
-Tests whether subscripitions is successfully when default profile is set to the context without a ServicePrincipalSecret.
+Tests whether subscriptions is successfully when default profile is set to the context without a ServicePrincipalSecret.
 .DESCRIPTION
 SmokeTest
 #>

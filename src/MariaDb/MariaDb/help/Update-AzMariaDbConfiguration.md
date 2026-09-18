@@ -29,7 +29,7 @@ Update-AzMariaDbConfiguration -InputObject <IMariaDbIdentity> [-Source <String>]
 
 ## DESCRIPTION
 Updates a configuration of a server.
-Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
+Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ## EXAMPLES
 

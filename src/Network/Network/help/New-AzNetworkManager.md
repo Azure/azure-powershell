@@ -15,8 +15,9 @@ Creates a network manager.
 ```
 New-AzNetworkManager -Name <String> -ResourceGroupName <String> -Location <String> [-Description <String>]
  [-Tag <Hashtable>] -NetworkManagerScope <PSNetworkManagerScopes>
- -NetworkManagerScopeAccess <NetworkManagerScopeAccessType[]> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkManagerScopeAccess <NetworkManagerScopeAccessType[]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,11 +116,41 @@ Creates a network manager with security administrator access in West US, with a 
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,9 +258,9 @@ Network Manager Scope Access.
 Type: Microsoft.Azure.Commands.Network.NewAzNetworkManagerCommand+NetworkManagerScopeAccessType[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: SecurityAdmin, Connectivity
+Accepted values: SecurityAdmin, Connectivity, Routing, SecurityUser
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

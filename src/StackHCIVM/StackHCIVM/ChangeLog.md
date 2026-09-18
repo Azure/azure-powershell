@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Fixed missing export of `Save-AzStackHCIVMVirtualMachine`, `Suspend-AzStackHCIVMVirtualMachine`
+
+## Version 1.1.1
+* Added breaking change announcements for upcoming SecureString parameter type changes in `New-AzStackHCIVMImage` and `New-AzStackHCIVMVirtualMachine`
+
+## Version 1.1.0
+* Upgraded nuget package to signed package.
+
+## Version 1.0.5
+* Fixed the update issue
+
 ## Version 1.0.4
 * Fixed the placeholder in psd1 file.
 

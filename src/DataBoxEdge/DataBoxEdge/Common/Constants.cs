@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
         internal const string AzurePrefix = "Az";
         internal const string ServiceName = "DataBoxEdge";
 
-        //Device Comands
+        //Device Commands
         internal const string Device = AzurePrefix + ServiceName + "Device";
         internal const string Alert = AzurePrefix + ServiceName + "Alert";
         internal const string Order = AzurePrefix + ServiceName + "Order";
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
         internal const string ResourceAlreadyExists = " already exists with name ";
 
 
-        //Job Comands
+        //Job Commands
         internal const string Job = AzurePrefix + ServiceName + "Job";
 
         //Arm providers

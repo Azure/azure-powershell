@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.CapabilitiesHelpMessage)]
+        public string[] Capabilities { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
@@ -86,6 +89,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
             }
+            if (DisableLocalAuth != null)
+            {
+                databaseAccountUpdateParameters.DisableLocalAuth = DisableLocalAuth;
+            }
             if (PublicNetworkAccess != null)
             {
                 databaseAccountUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
@@ -106,6 +113,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             }
+            if (EnablePriorityBasedExecution != null)
+            {
+                databaseAccountUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            }
+            if (DefaultPriorityLevel != null)
+            {
+                databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =
@@ -114,6 +129,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if(MinimalTlsVersion != null)
             {
                 databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            }
+            if (EnablePerRegionPerPartitionAutoscale != null)
+            {
+                databaseAccountUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
@@ -160,6 +179,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
 
                 databaseAccountUpdateParameters.ApiProperties.ServerVersion = ServerVersion;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(Capabilities)))
+            {
+                List<Capability> capabilitiesList = new List<Capability>();
+                if (Capabilities != null)
+                {
+                    foreach (string capability in Capabilities)
+                    {
+                        capabilitiesList.Add(new Capability { Name = capability });
+                    }
+                }
+                databaseAccountUpdateParameters.Capabilities = capabilitiesList;
             }
 
             if (NetworkAclBypassResourceId != null)

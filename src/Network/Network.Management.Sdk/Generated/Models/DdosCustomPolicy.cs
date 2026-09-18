@@ -44,19 +44,33 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the DDoS custom policy resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="resourceGuid">The resource GUID property of the DDoS custom policy resource. It uniquely
         /// identifies the resource, even if the user changes its name or migrate the
         /// resource across subscriptions or resource groups.
         /// </param>
-        public DdosCustomPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string))
+
+        /// <param name="detectionRules">The list of DDoS detection rules associated with the custom policy.
+        /// </param>
+
+        /// <param name="frontEndIPConfiguration">The list of frontend IP configurations associated with the custom policy.
+        /// </param>
+
+        /// <param name="publicIPAddresses">The list of public IP addresses associated with the custom policy. This
+        /// list is read-only.
+        /// </param>
+        public DdosCustomPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<SubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id, name, type, location, tags)
         {
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
+            this.DetectionRules = detectionRules;
+            this.FrontEndIPConfiguration = frontEndIPConfiguration;
+            this.PublicIPAddresses = publicIPAddresses;
             CustomInit();
         }
 
@@ -74,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the DDoS custom policy resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the DDoS custom policy resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -86,5 +100,26 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the list of DDoS detection rules associated with the custom
+        /// policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.detectionRules")]
+        public System.Collections.Generic.IList<DdosDetectionRule> DetectionRules {get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of frontend IP configurations associated with the
+        /// custom policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontEndIpConfiguration")]
+        public System.Collections.Generic.IList<SubResource> FrontEndIPConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets the list of public IP addresses associated with the custom policy.
+        /// This list is read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddresses")]
+        public System.Collections.Generic.IList<SubResource> PublicIPAddresses {get; private set; }
     }
 }

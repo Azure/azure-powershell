@@ -16,6 +16,76 @@ $containerName = "psbvtsqlvm"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pscloudtestrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
+$sqlRegTestVlt = "utkvlt"
+$sqlRegTestVm = "utkvm"
+$sqlRegTestRg1 = "rg1"
+$sqlRegTestRg2 = "rg2"
+$sqlRegTestVM2Id = "/subscriptions/af95aa3c-30fd-41c6-a938-4b3676fc36fb/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/utkvm"
+
+function Test-SQLContainerRegError
+{
+    $vault1 = Get-AzRecoveryServicesVault -ResourceGroupName $sqlRegTestRg1 -Name $sqlRegTestVlt
+    $vault2 = Get-AzRecoveryServicesVault -ResourceGroupName $sqlRegTestRg2 -Name $sqlRegTestVlt
+
+   #$Unregister containers if already registered
+   Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault1.ID `
+         -ContainerType AzureVMAppContainer `
+         -FriendlyName $sqlRegTestVm | Unregister-AzRecoveryServicesBackupContainer -VaultId $vault1.ID -Force
+
+   Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault2.ID `
+         -ContainerType AzureVMAppContainer `
+         -FriendlyName $sqlRegTestVm | Unregister-AzRecoveryServicesBackupContainer -VaultId $vault2.ID -Force
+
+    $v = get-azrecoveryservicesvault -ResourceGroupName $sqlRegTestRg2 -Name $sqlRegTestVlt    
+    Set-AzRecoveryServicesVaultContext -Vault $v
+
+    Register-AzRecoveryServicesBackupContainer -ResourceId $sqlRegTestVM2Id -VaultId $v.Id -WorkloadType "MSSQL" -BackupManagementType "AzureWorkload" -Force
+
+    $container = Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault2.ID `
+         -ContainerType AzureVMAppContainer `
+         -FriendlyName $sqlRegTestVm
+
+    Assert-True { $container.FriendlyName -eq $sqlRegTestVm }
+}
+
+function Test-AzureVmWorkloadUnDeleteContainer
+{
+	$subscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault2"
+	$containerName = "sql-clicloudtest-vm" # "sql-migration-vm2"
+
+	try
+	{   
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# get soft deleted container 
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | Where-Object { $_.Name -match $containerName}
+
+		# verify isDeferredDelete - currently not supported
+
+		# undelete 
+		$undeletedContainer = Undo-AzRecoveryServicesBackupContainerDeletion -Container $container[0] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Force -Confirm:$false
+
+		# verify isDeferredDelete false - currently not supported
+
+		# Reregister  
+		$reregisteredContainer = Register-AzRecoveryServicesBackupContainer -Container $container -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Force
+		
+		Assert-True {$reregisteredContainer.Status -eq "Registered"}
+	}
+	finally	
+	{						
+		# soft delete container
+		Unregister-AzRecoveryServicesBackupContainer -Container $reregisteredContainer -VaultId $vault.ID -Force -Confirm:$false
+		$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultId $vault.ID -BackupManagementType AzureWorkload -ContainerType AzureVMAppContainer | Where-Object { $_.Name -match $containerName}
+
+		Assert-True {$container.Status -eq "SoftDeleted"}
+	}
+}
 
 function Get-AzureVmWorkloadContainer
 {
@@ -42,7 +112,7 @@ function Get-AzureVmWorkloadContainer
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer;
-      Assert-True { $containers[0].FriendlyName -contains $containerName }
+      Assert-True { $containers.FriendlyName -contains $containerName }
 
       # VARIATION-2: Get Containers with friendly name filter
       $containers = Get-AzRecoveryServicesBackupContainer `
@@ -56,7 +126,7 @@ function Get-AzureVmWorkloadContainer
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
          -ResourceGroupName $resourceGroupName;
-      Assert-True { $containers[0].FriendlyName -contains $containerName }
+      Assert-True { $containers.FriendlyName -contains $containerName }
    
       # VARIATION-4: Get Containers with friendly name and resource group filters
       $containers = Get-AzRecoveryServicesBackupContainer `

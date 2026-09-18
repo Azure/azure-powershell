@@ -9,4 +9,4 @@ AttachedDatabaseConfigurationName ClusterResourceId                             
 myfollowerconfiguration             /subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/testnewkustoclusterf mykustodatabase
 ```
 
-The above command lists all the databases that are owned by this cluster and were followed by another cluster.
+The above command lists all the databases that are owned by this cluster and are followed by another cluster.

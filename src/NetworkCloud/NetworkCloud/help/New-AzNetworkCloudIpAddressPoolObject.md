@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudIpAddressPoolObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudipaddresspoolobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for IpAddressPool.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudIpAddressPoolObject -Address <String[]> -Name <String> [-AutoAssign <BfdEnabled>]
- [-OnlyUseHostIP <BfdEnabled>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzNetworkCloudIpAddressPoolObject -Name <String> [-Address <String[]>] [-AutoAssign <String>]
+ [-OnlyUseHostIP <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,13 +40,14 @@ Create an in-memory object for IpAddressPool.
 ### -Address
 The list of IP address ranges.
 Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses.
+For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -57,7 +58,7 @@ Accept wildcard characters: False
 The indicator to determine if automatic allocation from the pool should occur.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,24 +89,9 @@ The indicator to prevent the use of IP addresses ending with .0 and .255 for thi
 Enabling this option will only use IP addresses between .1 and .254 inclusive.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -121,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.IPAddressPool
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IPAddressPool
 
 ## NOTES
 

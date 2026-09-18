@@ -15,15 +15,15 @@ Grants required permissions to the backup vault and other resources for configur
 ### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>]
+ -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>] [-UserAssignedIdentityARMId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetPermissionsForRestore
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>] [-DatasourceType <DatasourceTypes>]
- [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
+ [-UserAssignedIdentityARMId <String>] -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
+ [-DatasourceType <DatasourceTypes>] [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,14 +99,29 @@ Waiting for 60 seconds for roles to propagate
 
 The above command is used to assign permissions to the backup vault "VaultName" under resource group "resourceGroupName" at the "ResourceGroup" scope.
 
+### Example 5: Grant Permissions using Vault UAMI for Configure Backup
+```powershell
+$backupinstance = Get-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -SubscriptionId "SubscriptionId"
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -BackupInstance $backupinstance[0] -UserAssignedIdentityARMId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RGName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName"
+```
+
+```output
+Using Vault UAMI with ARMId: /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedIdentityName with Principal ID: PrincipalId 
+Assigned Disk Snapshot Contributor permission to the backup vault over snapshot resource group with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName 
+Assigned Disk Backup Reader permission to the backup vault over DataSource with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.Compute/disks/DiskName
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command is used to assign permissions to the backup vault "VaultName" under resource group "ResourceGroupName" at the "ResourceGroup" scope using a User Assigned Managed Identity (UAMI).
+
 ## PARAMETERS
 
 ### -BackupInstance
 Backup instance request object which will be used to configure backup
-To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
@@ -124,7 +139,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: SetPermissionsForRestore
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: False
 Position: Named
@@ -165,10 +180,9 @@ Accept wildcard characters: False
 
 ### -RestoreRequest
 Restore request object which will be used for restore
-To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
@@ -180,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotResourceGroupId
-Sanpshot Resource Group
+Snapshot Resource Group
 
 ```yaml
 Type: System.String
@@ -217,6 +231,21 @@ Subscription Id of the backup vault
 Type: System.String
 Parameter Sets: SetPermissionsForRestore
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityARMId
+User Assigned Identity ARM ID of the backup vault to be used for assigning permissions
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
 
 Required: False
 Position: Named

@@ -21,9 +21,10 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
  [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
- [-UserAssignedIdentityId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentityId <String>] [-DiskAccessOption <TargetDiskNetworkAccessOption>]
+ [-TargetDiskAccessId <String>] [-CVMOsDiskEncryptionSetId <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileShareParameterSet
@@ -32,8 +33,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
  [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
  [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-RestoreToSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMRestoreManagedAsUnmanaged
@@ -42,8 +43,8 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-RestoreOnlyOSDisk]
  [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-RestoreToSecondaryRegion]
  [-RehydratePriority <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RehydrateDuration <String>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureManagedVMCreateNewParameterSet
@@ -54,9 +55,10 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
  [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
  [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
- [-RestoreToEdgeZone] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RehydrateDuration <String>] [-Token <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RestoreToEdgeZone] [-DiskAccessOption <TargetDiskNetworkAccessOption>] [-TargetDiskAccessId <String>]
+ [-CVMOsDiskEncryptionSetId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RehydrateDuration <String>] [-Token <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet
@@ -65,7 +67,7 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount]
  [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-RestoreToSecondaryRegion] [-RehydratePriority <String>]
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMRestoreUnmanagedAsManaged
@@ -75,7 +77,7 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-UseOriginalStorageAccount] [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-RestoreToSecondaryRegion]
  [-RestoreAsManagedDisk] [-RehydratePriority <String>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadParameterSet
@@ -83,7 +85,7 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-WLRecoveryConfig] <RecoveryConfigBase>
  [-RestoreToSecondaryRegion] [-RehydratePriority <String>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-Token <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +109,8 @@ Please refer to different possible parameter sets and parameter text for more in
 **For Azure File share backup**
 
 You can restore an entire file share or specific/multiple files/folders on the share. You can restore to the original location or to an alternate location.
+
+For Cross Region Restore (`-RestoreToSecondaryRegion`), Azure File Share supports only full-share restore to an alternate location. Item-level restore (`-SourceFilePath`/`-MultipleSourceFilePath`) and restore to the original location are not supported from the secondary region.
 
 **For Azure Workloads**
 
@@ -146,7 +150,7 @@ $BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -
 $StartDate = (Get-Date).AddDays(-7)
 $EndDate = Get-Date
 $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $StartDate.ToUniversalTime() -EndDate $EndDate.ToUniversalTime() -VaultId $vault.ID
-$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
+$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "Target_VNet_RG" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location 
 $OriginalLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
@@ -316,9 +320,20 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-2
 $restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName "saName" -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName "targetVMName" -TargetVNetName "targetVNet" -TargetVNetResourceGroup $vault.ResourceGroupName -TargetSubnetName "default" -TargetZoneNumber 2
 ```
 
-Here we filter the recovery points present in the VaultStandard tier and trigger a cross zonal restore for non-ZonePinned VM in a ZRS vault. For CZR we pass -TargetZoneNumber parameter. For Non-ZonedPinned VM, CZR is supported only for ZRS vaults. For ZonePinned VMs CZR is supported for ZRS vaults and cross region restore to secondary region for CRR enabled vaults. We can use Snapshot or vaulted tier enabled recovery points for CZR with a limitation that snapshot recovery point should be more than 4 hrs old.
+Here we filter the recovery points present in the VaultStandard tier and trigger a cross zonal restore for non-ZonePinned VM in a ZRS vault. For CZR we pass -TargetZoneNumber parameter. For Non-ZonedPinned VM, CZR is supported only for ZRS vaults. For ZonePinned VMs CZR is supported for ZRS vaults and cross region restore to secondary region for CRR enabled vaults.
 
-### Example 11: Edge zone restore for a managed AzureVM to alternate location
+### Example 11: Cross zonal restore for non-ZonePinned VM to NoZone
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-29).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $item[3] -Tier VaultStandard
+$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName "saName" -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName "targetVMName" -TargetVNetName "targetVNet" -TargetVNetResourceGroup $vault.ResourceGroupName -TargetSubnetName "default" -TargetZoneNumber 0
+```
+
+In order to restore a non-ZonePinned VM to NoZone, we pass -TargetZoneNumber as 0.
+
+### Example 12: Edge zone restore for a managed AzureVM to alternate location
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
@@ -329,7 +344,67 @@ $restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLoca
 
 In this example, we use RestoreToEdgeZone parameter to trigger a restore to new edge zone vm in alternate location. For Original location restore (OLR), restore will implicitly be an edge zone restore if the source VM is an edge zone VM.
 
+### Example 13: Restore a Managed AzureVM using DiskAccessOption
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $item
+$AlternateLocationRestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetResourceGroupName "Target_RG" -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -TargetVMName "TagetVirtualMachineName" -TargetVNetName "Target_VNet" -TargetVNetResourceGroup "Target_VNet_RG" -TargetSubnetName "subnetName" -VaultId $vault.ID -VaultLocation $vault.Location -DiskAccessOption EnablePrivateAccessForAllDisks -TargetDiskAccessId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.Compute/diskAccesses/target-diskaccess"
+```
+
+```output
+WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    V2VM            Restore         InProgress      26-Jul-24 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+In this example, we use DiskAccessOption parameter to trigger a restore to new VM with private access enabled for all disks. DiskAccessOption parameter can be used to specify the disk access option for target disks. The acceptable values for this parameter are: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks. TargetDiskAccessId parameter is used to specify the disk access id for the target disks. This parameter is required when DiskAccessOption is set to EnablePrivateAccessForAllDisks.
+
+### Example 14: Restore disks of a Cross Subscription Backup protected VM to its original location
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $BackupItem
+$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+In this example, the backed up VM resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). Original Location Recovery (OLR) is triggered by omitting the target location parameters (**-TargetResourceGroupName**, **-TargetVMName**, **-TargetVNetName**, **-TargetVNetResourceGroup**, **-TargetSubnetName**, **-TargetSubscriptionId**). The VM's subscription is derived automatically from the recovery point, and the target storage account is resolved in that subscription.
+
+### Example 15: Cross Region Restore of an Azure File share to an alternate location
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "fileShareName" -UseSecondaryRegion
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID -UseSecondaryRegion
+$RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+```output
+WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    fileshareitem   CrossRegionRestore  InProgress  26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+This example triggers a Cross Region Restore for an Azure File share. The first command gets the vault. The second command gets the backup item from the secondary region using `-UseSecondaryRegion`. The third command gets the secondary region recovery points. The last command restores the entire file share to an alternate location in the secondary region using `-RestoreToSecondaryRegion`. Cross Region Restore for Azure File shares supports only full-share restore to an alternate location; item-level restore and original-location restore are not supported.
+
 ## PARAMETERS
+
+### -CVMOsDiskEncryptionSetId
+Specify the Disk Encryption Set ID to use for OS disk encryption during restore of a Confidential VM. This is applicable only for Confidential VMs with managed disks. Please ensure that Disk Encryption Set has access to the Key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 
@@ -339,6 +414,22 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskAccessOption
+Specifies the disk access option for target disks
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.RecoveryServices.Backup.Models.TargetDiskNetworkAccessOption]
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+Accepted values: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks
 
 Required: False
 Position: Named
@@ -510,7 +601,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestoreToEdgeZone
-Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and corss subscription restore scenario
+Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and cross subscription restore scenario
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -536,6 +627,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -606,6 +712,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetDiskAccessId
+Specifies the target disk access ID when DiskAccessOption set to EnablePrivateAccessForAllDisks
+
+```yaml
+Type: System.String
+Parameter Sets: AzureManagedVMReplaceExistingParameterSet, AzureManagedVMCreateNewParameterSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

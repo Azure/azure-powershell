@@ -1,0 +1,105 @@
+{
+  "resourceType": "instances/dataflowProfiles/dataflows",
+  "apiVersion": "2024-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzIoTOperationsServiceDataflow",
+      "description": "Get a DataflowResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/get-aziotoperationsservicedataflow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceName <String>",
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DataflowResource",
+          "parameters": [
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.dataflowName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.dataflowProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzIoTOperationsServiceDataflow",
+      "description": "Delete a DataflowResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.iotoperationsservice/remove-aziotoperationsservicedataflow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-InstanceName <String>",
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DataflowResource",
+          "parameters": [
+            {
+              "name": "-InstanceName",
+              "value": "[Path.instanceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.dataflowName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.dataflowProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

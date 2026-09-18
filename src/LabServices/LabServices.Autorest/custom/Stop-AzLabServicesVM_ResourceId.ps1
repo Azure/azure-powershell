@@ -12,12 +12,25 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Action to stop a lab virtual machine.
+.Description
+Action to stop a lab virtual machine.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
+#>
 function Stop-AzLabServicesVM_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory)]
         [System.String]
+        # The resource Id of lab service virtual machine.
         ${ResourceId},
   
         [Parameter()]
@@ -87,7 +100,8 @@ function Stop-AzLabServicesVM_ResourceId {
     )
     
     process {
-        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $HandleVMResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleVMResourceId.ps1'
+        $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
         $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {

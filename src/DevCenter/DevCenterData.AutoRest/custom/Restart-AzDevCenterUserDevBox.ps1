@@ -16,39 +16,53 @@
 
 <#
 .Synopsis
-Restarts a Dev Box
+Restarts a Dev Box.
 .Description
-Restarts a Dev Box
+Restarts a Dev Box.
 .Example
-{{ Add code here }}
+Restart-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -Name myDevBox
 .Example
-{{ Add code here }}
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+.Example
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
+Restart-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+.Example
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [Name <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/restart-azdevcenteruserdevbox
 #>
 function Restart-AzDevCenterUserDevBox {
-  [OutputType([System.Boolean])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
   [CmdletBinding(DefaultParameterSetName = 'Restart', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'Restart', Mandatory)]
@@ -65,22 +79,22 @@ function Restart-AzDevCenterUserDevBox {
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
-
+  
     [Parameter(ParameterSetName = 'Restart', Mandatory)]
     [Parameter(ParameterSetName = 'RestartByDevCenter', Mandatory)]
     [Alias('DevBoxName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of a Dev Box.
+    # Display name for the Dev Box.
     ${Name},
-
+  
     [Parameter(ParameterSetName = 'Restart', Mandatory)]
     [Parameter(ParameterSetName = 'RestartByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The DevCenter Project upon which to execute operations.
+    # Name of the project.
     ${ProjectName},
-
+  
     [Parameter(ParameterSetName = 'Restart')]
     [Parameter(ParameterSetName = 'RestartByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -89,7 +103,7 @@ function Restart-AzDevCenterUserDevBox {
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
-
+  
     [Parameter(ParameterSetName = 'RestartViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'RestartViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -97,7 +111,7 @@ function Restart-AzDevCenterUserDevBox {
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
+  
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

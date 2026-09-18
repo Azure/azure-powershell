@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
         [Parameter(Mandatory = false, HelpMessage = "Documentation uri of the Bicep module.")]
         public string DocumentationUri { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage="[Experimental] Publish source code with the module.")]
+        [Parameter(Mandatory = false, HelpMessage="Publish source code with the module.")]
         public SwitchParameter WithSource { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage="Overwrite existing published module.")]

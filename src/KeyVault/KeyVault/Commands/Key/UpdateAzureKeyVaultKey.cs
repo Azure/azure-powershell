@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// If not present, no change on current key enabled/disabled state.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Value of true enables the key and a value of false disabless the key. If not specified, the existing enabled/disabled state remains unchanged.")]
+            HelpMessage = "Value of true enables the key and a value of false disables the key. If not specified, the existing enabled/disabled state remains unchanged.")]
         public bool? Enable { get; set; }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
 
         [Parameter(Mandatory = false,
-            HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
+            HelpMessage = "A hashtable represents key tags. If not specified, the existing tags of the key remain unchanged.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 

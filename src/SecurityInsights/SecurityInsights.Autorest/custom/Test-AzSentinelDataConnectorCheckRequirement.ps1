@@ -23,7 +23,7 @@ Get requirements state for a data connector type.
 https://learn.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
 #>
 function Test-AzSentinelDataConnectorCheckRequirement {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnectorsCheckRequirements])]
     [CmdletBinding(DefaultParameterSetName = 'AADTenant', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
@@ -48,9 +48,9 @@ function Test-AzSentinelDataConnectorCheckRequirement {
         ${WorkspaceName},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("AzureActiveDirectory", "AzureSecurityCenter", "MicrosoftCloudAppSecurity", "ThreatIntelligence", "ThreatIntelligenceTaxii", "Office365", "OfficeATP", "OfficeIRM", "AmazonWebServicesCloudTrail", "AmazonWebServicesS3", "AzureAdvancedThreatProtection", "MicrosoftDefenderAdvancedThreatProtection", "Dynamics365", "MicrosoftThreatProtection", "MicrosoftThreatIntelligence", "GenericUI", "APIPolling")]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind]
+        [System.String]
         # Kind of the the data connection
         ${Kind},
 
@@ -136,68 +136,68 @@ function Test-AzSentinelDataConnectorCheckRequirement {
         try {
 
             if ($PSBoundParameters['Kind'] -eq 'AzureActiveDirectory'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AadCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AadCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'AzureAdvancedThreatProtection'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AatpCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AatpCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'Dynamics365'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.Dynamics365CheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Dynamics365CheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftCloudAppSecurity'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MCASCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MCASCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftDefenderAdvancedThreatProtection'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MDATPCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MDATPCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftThreatIntelligence'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MSTICheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MSTICheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftThreatProtection'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.MtpCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.MtpCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             #if($PSBoundParameters['Kind'] -eq 'Office365'){
-            #    $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.Office365CheckRequirements]::new()
+            #    $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Office365CheckRequirements]::new()
             #    $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
             #    $null = $PSBoundParameters.Remove('TenantId')
             #}
             if($PSBoundParameters['Kind'] -eq 'OfficeATP'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeATPCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.OfficeATPCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'OfficeIRM'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.OfficeIrmCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.OfficeIrmCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'ThreatIntelligence'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.TICheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.TICheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
             if($PSBoundParameters['Kind'] -eq 'ThreatIntelligenceTaxii'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.TiTaxiiCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.TiTaxiiCheckRequirements]::new()
                 $DataConnectorCheckRequirement.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
             }
 
             if($PSBoundParameters['Kind'] -eq 'AzureSecurityCenter'){
-                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ASCCheckRequirements]::new()
+                $DataConnectorCheckRequirement = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ASCCheckRequirements]::new()
                 $DataConnectorCheckRequirement.SubscriptionId = $PSBoundParameters['ASCSubscriptionId']
                 $null = $PSBoundParameters.Remove('ASCSubscriptionId')
             }

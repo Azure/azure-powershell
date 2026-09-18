@@ -1,17 +1,16 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkCloudCluster'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzNetworkCloudCluster.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkCloudCluster')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzNetworkCloudCluster.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Get-AzNetworkCloudCluster' {
@@ -27,7 +26,7 @@ Describe 'Get-AzNetworkCloudCluster' {
         { Get-AzNetworkCloudCluster -ResourceGroupName $global:config.AzNetworkCloudCluster.clusterRg -SubscriptionId $global:config.AzNetworkCloudCluster.subscriptionId } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityExpanded' {
+        { Get-AzNetworkCloudCluster -Name $global:config.AzNetworkCloudCluster.miClusterName -ResourceGroupName $global:config.AzNetworkCloudCluster.miClusterRg -SubscriptionId $global:config.AzNetworkCloudCluster.subscriptionId } | Should -Not -Throw
     }
 }

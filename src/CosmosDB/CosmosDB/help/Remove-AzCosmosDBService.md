@@ -15,13 +15,15 @@ Deletes the CosmosDB Service.
 ### ByNameParameterSet (Default)
 ```
 Remove-AzCosmosDBService -ResourceGroupName <String> -AccountName <String> -ServiceName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Remove-AzCosmosDBService -ServiceName <String> -InputObject <PSServiceGetResults> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

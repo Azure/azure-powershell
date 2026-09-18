@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -26,6 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
     {
         private AzureHdInsightManagementClient _hdInsightManagementClient;
         private AzureHdInsightJobManagementClient _hdInsightJobClient;
+        private IMicrosoftGraphClient _graphClient;
         protected BasicAuthenticationCloudCredentials _credential;
         protected string _clusterName;
 
@@ -52,6 +56,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             set { _hdInsightJobClient = value; }
         }
 
+        public IMicrosoftGraphClient GraphClient
+        {
+            get
+            {
+                if (_graphClient != null) return _graphClient;
+                try
+                {
+                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
+                    (_graphClient as MicrosoftGraphClient).TenantID = DefaultContext.Tenant.Id.ToString();
+                }
+                catch
+                {
+                    _graphClient = null;
+                }
+                return _graphClient;
+            }
+            set { _graphClient = value; }
+        }
+
         protected string GetClusterConnection(string resourceGroupName, string clusterName)
         {
             if (clusterName.Contains("."))
@@ -71,7 +94,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
                   state.Equals("Operational", StringComparison.OrdinalIgnoreCase)))
             {
                 throw new NotSupportedException(
-                    string.Format("The cluster {0} is in the {1} state and canot be used at this time.", clusterName,
+                    string.Format("The cluster {0} is in the {1} state and cannot be used at this time.", clusterName,
                         state));
             }
 
@@ -135,7 +158,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             {
                 BillingResponseListResult billingResponseListResult = HDInsightManagementClient.ListBillingSpecs(location);
 
-                /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValulePair<SPARK, STANDARD_A2_V2>> */
+                /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValuePair<SPARK, STANDARD_A2_V2>> */
                 var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VMSizeFilters.Where(filter => filter.FilterMode.Equals(FilterMode.Default)).SelectMany(x =>
                 {
                     var clusterTypeAndVmSizePairs = x.ClusterFlavors.SelectMany(clusterType => x.VMSizes, (clusterType, vmSize) =>

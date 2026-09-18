@@ -18,6 +18,35 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 1.11.1
+* Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
+
+## Version 1.11.1
+* Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
+
+## Version 1.11.0
+* Upgraded API version to 2026-01-01
+    - Added ComputeMode parameter to New-AzDatabricksWorkspace cmdlet supporting 'Hybrid' and 'Serverless' compute modes
+    - Changed ComplianceStandard parameter type from enum to String[] for greater flexibility
+
+## Version 1.10.2
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+## Version 1.10.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.10.0
+* Upgraded nuget package to signed package.
+* Updated Az.Databricks to use more intuitive parameter names for the ESC feature.
+
+## Version 1.9.0
+* Fixed an issue that `Update-AzDatabricksWorkspace` doesn't work.[#25743]
+
+## Version 1.8.1
 * Fixed Access Connector Resource update for `Update-AzDatabricksWorkspace`
 
 ## Version 1.8.0

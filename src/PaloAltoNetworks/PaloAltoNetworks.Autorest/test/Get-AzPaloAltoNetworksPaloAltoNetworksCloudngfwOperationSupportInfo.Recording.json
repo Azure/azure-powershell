@@ -1,0 +1,49 @@
+{
+  "Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo+[NoContext]+List+$POST+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/providers/PaloAltoNetworks.Cloudngfw/listSupportInfo?api-version=2025-10-08+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/providers/PaloAltoNetworks.Cloudngfw/listSupportInfo?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "50234d4b-b3b7-40cf-8d81-aa33b65a2be4" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/southindia/75adeee8-8f7c-4364-a9ea-aa987b6c93dc" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "3f609412-689b-4521-b045-d00021496bc8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "3cb74239-3717-430c-ab2e-18c4fd5047c4" ],
+        "x-ms-correlation-request-id": [ "dd8b1f79-20cb-4a52-aa38-4e5db6364841" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251112T113144Z:dd8b1f79-20cb-4a52-aa38-4e5db6364841" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8BC3A39740C14DEFB6D22F9367CEFD19 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:31:42Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:31:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "675" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"productSku\":\"PAN-CLOUD-NGFW-AZURE-PAYG\",\"productSerial\":\"001990770730\",\"accountRegistrationStatus\":\"Registered\",\"accountId\":\"1768331\",\"freeTrial\":\"Disabled\",\"freeTrialDaysLeft\":0,\"freeTrialCreditLeft\":0,\"helpURL\":\"https://live.paloaltonetworks.com?productSku=PAN-CLOUD-NGFW-AZURE-PAYG\",\"supportURL\":\"https://support.paloaltonetworks.com?productSku=PAN-CLOUD-NGFW-AZURE-PAYG\u0026cspAccount=1768331\u0026userEmail=prakgupta@microsoft.com\",\"registerURL\":\"https://support.paloaltonetworks.com/Home/Register?tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7\u0026productSku=PAN-CLOUD-NGFW-AZURE-PAYG\u0026productSerial=001990770730\u0026userEmail=prakgupta@microsoft.com\",\"credits\":0,\"monthlyCreditLeft\":0}",
+      "isContentBase64": false
+    }
+  }
+}

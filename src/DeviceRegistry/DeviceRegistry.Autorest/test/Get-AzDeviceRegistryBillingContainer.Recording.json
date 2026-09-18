@@ -1,0 +1,139 @@
+{
+  "Get-AzDeviceRegistryBillingContainer+[NoContext]+List+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "62d2e661-70d8-4b16-bac6-fb640db297b7" ],
+        "CommandName": [ "Get-AzDeviceRegistryBillingContainer" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryBillingContainer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/3b544358-d71b-426c-8da8-4cf7ea356ffb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1acf00a0-a242-48df-8cc6-fa94ea9d6a15" ],
+        "x-ms-correlation-request-id": [ "4c0a5e2a-3651-46b8-86b8-2f4db8cdf63f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250723T063600Z:4c0a5e2a-3651-46b8-86b8-2f4db8cdf63f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B74FBE3C6FBB4DA79F8D65998F1BC81A Ref B: MWH011020808025 Ref C: 2025-07-23T06:36:00Z" ],
+        "Date": [ "Wed, 23 Jul 2025 06:36:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "585" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing\",\"name\":\"adr-billing\",\"type\":\"microsoft.deviceregistry/billingcontainers\",\"etag\":\"\\\"1f00ec86-0000-0500-0000-66e9d6ab0000\\\"\",\"systemData\":{\"createdBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-06T00:31:24.1917379Z\",\"lastModifiedBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-09-17T19:21:14.9370788Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDeviceRegistryBillingContainer+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "a3b90971-29dd-4a01-bf9c-1a221cdc9767" ],
+        "CommandName": [ "Get-AzDeviceRegistryBillingContainer" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryBillingContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00ec86-0000-0500-0000-66e9d6ab0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/e36e618b-eb10-493e-9c19-414ca4ee6bf5" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1fb78861-dd60-4a8a-b862-1c384d8a3a2b" ],
+        "x-ms-correlation-request-id": [ "58e800b7-d7d0-49bc-948a-9060a8627c05" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250723T063601Z:58e800b7-d7d0-49bc-948a-9060a8627c05" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FDD25E0E34B94E06973D1A19F31E8A08 Ref B: MWH011020808025 Ref C: 2025-07-23T06:36:00Z" ],
+        "Date": [ "Wed, 23 Jul 2025 06:36:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing\",\"name\":\"adr-billing\",\"type\":\"microsoft.deviceregistry/billingcontainers\",\"etag\":\"\\\"1f00ec86-0000-0500-0000-66e9d6ab0000\\\"\",\"systemData\":{\"createdBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-06T00:31:24.1917379Z\",\"lastModifiedBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-09-17T19:21:14.9370788Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDeviceRegistryBillingContainer+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "8d9864a9-9aef-4bd3-9e90-bcf1429c7959" ],
+        "CommandName": [ "Get-AzDeviceRegistryBillingContainer" ],
+        "FullCommandName": [ "Get-AzDeviceRegistryBillingContainer_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1f00ec86-0000-0500-0000-66e9d6ab0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/8d416770-8648-4f5a-a921-724b09e25bbe" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8fb92fcf-ca4d-420d-9e13-ffc6b79a4ae1" ],
+        "x-ms-correlation-request-id": [ "f18c0139-85b2-4794-9dc5-3578d33ab921" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250723T063601Z:f18c0139-85b2-4794-9dc5-3578d33ab921" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BB0B26CC4FE64F1AAAD24A3A0A106253 Ref B: MWH011020808025 Ref C: 2025-07-23T06:36:01Z" ],
+        "Date": [ "Wed, 23 Jul 2025 06:36:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/providers/Microsoft.DeviceRegistry/billingContainers/adr-billing\",\"name\":\"adr-billing\",\"type\":\"microsoft.deviceregistry/billingcontainers\",\"etag\":\"\\\"1f00ec86-0000-0500-0000-66e9d6ab0000\\\"\",\"systemData\":{\"createdBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"createdByType\":\"Application\",\"createdAt\":\"2024-09-06T00:31:24.1917379Z\",\"lastModifiedBy\":\"6ce3f5ab-5f16-4633-a660-21ceb8d74c01\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-09-17T19:21:14.9370788Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AzureQueueSink class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity sink.
+        /// </param>
+
         /// <param name="writeBatchSize">Write batch size. Type: integer (or Expression with resultType integer),
         /// minimum: 0.
         /// </param>
@@ -47,9 +50,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="disableMetricsCollection">If true, disable data store metrics collection. Default is false. Type:
         /// boolean (or Expression with resultType boolean).
         /// </param>
-        public AzureQueueSink(object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object))
+        public AzureQueueSink(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object))
 
-        : base(writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             CustomInit();
         }

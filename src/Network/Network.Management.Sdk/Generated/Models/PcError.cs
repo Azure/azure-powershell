@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PcError
     {
+        /// <summary>
+        /// InternalError
+        /// </summary>
         public const string InternalError = "InternalError";
+        /// <summary>
+        /// AgentStopped
+        /// </summary>
         public const string AgentStopped = "AgentStopped";
+        /// <summary>
+        /// CaptureFailed
+        /// </summary>
         public const string CaptureFailed = "CaptureFailed";
+        /// <summary>
+        /// LocalFileFailed
+        /// </summary>
         public const string LocalFileFailed = "LocalFileFailed";
+        /// <summary>
+        /// StorageFailed
+        /// </summary>
         public const string StorageFailed = "StorageFailed";
     }
 }

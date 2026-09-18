@@ -19,6 +19,29 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Added `-DynamicSizingEnabled` parameter to `New-AzStandbyVMPool`, `Update-AzStandbyVMPool`, `New-AzStandbyContainerGroupPool`, and `Update-AzStandbyContainerGroupPool`
+* Added `-PostProvisioningDelay` parameter to `New-AzStandbyVMPool` and `Update-AzStandbyVMPool`
+* Removed upper limit of 2000 on `-MaxReadyCapacity` and `-MinReadyCapacity`
+
+## Version 0.3.0
+* Updated existing Cmdlets
+  - Get-AzStandbyVMPoolStatus added StandbyPool Health and StandbyPool Prediction information in the response.
+  - Get-AzStandbyContainerGroupPoolStatus added StandbyPool Health and StandbyPool Prediction information in the response.
+  - New-AzStandbyContainerGroupPool added the new parameter -Zone.
+
+## Version 0.2.1
+* Upgraded nuget package to signed package.
+
+## Version 0.2.0
+* Added new Cmdlets:
+  - Get-AzStandbyContainerGroupPoolStatus
+  - Get-AzStandbyVMPoolStatus
+* Updated existing Cmdlets
+  - New-AzStandbyVMPool by add new parameter -MinReadyCapacity to support new added properties in put call.
+* Deprecated Cmdlets
+  - Get-StandbyVMPoolVM
+
 ## Version 0.1.1
 * Fixed the placeholder in psd1 file.
 

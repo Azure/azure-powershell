@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         /// <summary>
         /// Wrapper method which executes the cmdlet processing blocks. 
-        /// Catches and logs any exception occuring during the execution.
+        /// Catches and logs any exception occurring during the execution.
         /// </summary>
         /// <param name="action">Delegate representing the cmdlet processing block</param>
         /// <param name="shouldProcess"></param>
@@ -148,6 +148,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         WriteDebug(string.Format(Resources.CloudException, cloudEx.Body.Code, cloudEx.Body.Message));
 
                         targetErrorId = cloudEx.Body.Code;
+                        targetErrorCategory = ErrorCategory.InvalidOperation;
+                    }
+                }
+                else if (exception is ErrorResponseException)
+                {
+                    var responseEx = exception as ErrorResponseException;
+                    if (responseEx.Response != null && responseEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                    {
+                        WriteDebug(string.Format(Resources.CloudExceptionCodeNotFound, responseEx.Response.StatusCode));
+
+                        targetEx = new Exception(Resources.ResourceNotFoundMessage);
+                        targetErrorCategory = ErrorCategory.InvalidArgument;
+                    }
+                    else if (responseEx.Body != null && responseEx.Body.Error != null)
+                    {
+                        string serviceError = string.Format(
+                            Resources.CloudException,
+                            responseEx.Body.Error.Code,
+                            responseEx.Body.Error.Message);
+                        WriteDebug(serviceError);
+
+                        targetEx = new Exception(serviceError, responseEx);
+                        targetErrorId = responseEx.Body.Error.Code;
                         targetErrorCategory = ErrorCategory.InvalidOperation;
                     }
                 }

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotCentral", "IotCentral\Io
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{A83C23A5-6DBC-4759-AE4E-1335AD14D81F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IotCentral.Management.Sdk", "IotCentral.Management.Sdk\IotCentral.Management.Sdk.csproj", "{D2719474-30C6-4A93-A778-C8620F4CA342}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{A83C23A5-6DBC-4759-AE4E-1335AD14D81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83C23A5-6DBC-4759-AE4E-1335AD14D81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83C23A5-6DBC-4759-AE4E-1335AD14D81F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2719474-30C6-4A93-A778-C8620F4CA342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2719474-30C6-4A93-A778-C8620F4CA342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2719474-30C6-4A93-A778-C8620F4CA342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2719474-30C6-4A93-A778-C8620F4CA342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{387D0F20-890E-47DE-8801-5BDF5764AFD2} = {9288CF53-8E70-45E4-8D98-FE76B2131578}

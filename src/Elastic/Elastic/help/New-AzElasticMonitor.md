@@ -8,22 +8,41 @@ schema: 2.0.0
 # New-AzElasticMonitor
 
 ## SYNOPSIS
-Create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CompanyInfoBusiness <String>] [-CompanyInfoCountry <String>] [-CompanyInfoDomain <String>]
- [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-IdentityType <ManagedIdentityTypes>]
- [-MonitoringStatus <MonitoringStatus>] [-Sku <String>] [-Tag <Hashtable>] [-UserInfoCompanyName <String>]
- [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>] [-UserInfoLastName <String>]
+ [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-EnableSystemAssignedIdentity]
+ [-GenerateApiKey] [-HostingType <String>] [-Kind <String>] [-Location <String>] [-MonitoringStatus <String>]
+ [-PlanDetailOfferId <String>] [-PlanDetailPlanId <String>] [-PlanDetailPlanName <String>]
+ [-PlanDetailPublisherId <String>] [-PlanDetailTermId <String>] [-ProjectDetailConfigurationType <String>]
+ [-ProjectDetailProjectType <String>] [-SaaSAzureSubscriptionStatus <String>] [-Sku <String>]
+ [-SourceCampaignId <String>] [-SourceCampaignName <String>] [-SubscriptionState <String>] [-Tag <Hashtable>]
+ [-UserInfoCompanyName <String>] [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>]
+ [-UserInfoLastName <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 
 ## EXAMPLES
 
@@ -62,7 +81,7 @@ Business of the company
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -77,7 +96,7 @@ Country of the company location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -92,7 +111,7 @@ Domain of the company
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -107,7 +126,7 @@ Number of employees in the company
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -122,7 +141,7 @@ State of the company location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -148,12 +167,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Managed identity type.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GenerateApiKey
+Flag to determine if User API Key has to be generated and shared.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostingType
+Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+The kind of the Elastic resource - observability, security, search etc.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -168,10 +262,10 @@ The location of the monitor resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,8 +276,8 @@ Accept wildcard characters: False
 Flag specifying if the resource monitoring is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -223,8 +317,114 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PlanDetailOfferId
+Offer ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailPlanId
+Plan ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailPlanName
+Plan Name
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailPublisherId
+Publisher ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailTermId
+Term ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectDetailConfigurationType
+Configuration type of the Elasticsearch project
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectDetailProjectType
+Project type; ex: Elasticsearch / Observability / Security
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group to which the Elastic resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -232,6 +432,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SaaSAzureSubscriptionStatus
+Status of Azure Subscription where Marketplace SaaS is located.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -247,7 +462,37 @@ You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceCampaignId
+A unique identifier associated with the campaign.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceCampaignName
+Name of the marketing campaign.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -258,9 +503,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -274,12 +518,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionState
+State of the Azure Subscription containing the monitor resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 The tags of the monitor resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -294,7 +553,7 @@ Company name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -309,7 +568,7 @@ Email of the user used by Elastic for contacting them if needed
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -324,7 +583,7 @@ First name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -339,7 +598,22 @@ Last name of the user
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of elastic of the monitor resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -387,7 +661,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource
 
 ## NOTES
 

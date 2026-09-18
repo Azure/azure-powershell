@@ -44,7 +44,8 @@ Triggers a webhook ping event.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -122,10 +123,9 @@ Accept wildcard characters: False
 
 ### -Webhook
 The webhook object.
-To construct, see NOTES section for WEBHOOK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 Parameter Sets: PingByWebhook
 Aliases:
 
@@ -174,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEventInfo
 
 ## NOTES
 

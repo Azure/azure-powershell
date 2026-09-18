@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzNewRelicHostMonitor
 
 ## SYNOPSIS
-Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing the necessary configuration details
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Invoke-AzNewRelicHostMonitor -InputObject <INewRelicIdentity> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing the necessary configuration details
 
 ## EXAMPLES
 

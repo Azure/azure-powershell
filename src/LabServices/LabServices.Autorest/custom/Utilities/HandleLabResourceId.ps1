@@ -19,7 +19,9 @@ param(
     [System.String]
     $ResourceId
 )
-& $PSScriptRoot\VerificationRegex.ps1
+$VerificationRegex = Join-Path $PSScriptRoot 'VerificationRegex.ps1'
+
+. $VerificationRegex
 
 if ($ResourceId -match $labRegex){
     return @{

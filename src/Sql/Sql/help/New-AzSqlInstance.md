@@ -15,7 +15,7 @@ Creates an Azure SQL Managed Instance.
 ### NewByEditionAndComputeGenerationParameterSet (Default)
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorCredential <PSCredential>]
- -Location <String> -SubnetId <String> [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]
+ -Location <String> -SubnetId <String> [-MemorySizeInGB <Int32>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]
  -VCore <Int32> -Edition <String> -ComputeGeneration <String> [-IsGeneralPurposeV2 <Boolean>] [-Collation <String>]
  [-PublicDataEndpointEnabled] [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-DnsZonePartner <String>] [-InstancePoolName <String>] [-MinimalTlsVersion <String>]
@@ -24,8 +24,8 @@ New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewByInstancePoolParentObjectParameterSet
@@ -38,8 +38,8 @@ New-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-Name] <String>
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewByInstancePoolResourceIdParameterSet
@@ -52,14 +52,14 @@ New-AzSqlInstance [-InstancePoolResourceId] <String> [-Name] <String> [-Administ
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NewBySkuNameParameterSetParameter
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorCredential <PSCredential>]
- -Location <String> -SubnetId <String> [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]
+ -Location <String> -SubnetId <String> [-MemorySizeInGB <Int32>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-StorageIOps <Int32>]
  -VCore <Int32> -SkuName <String> [-IsGeneralPurposeV2 <Boolean>] [-Collation <String>] [-PublicDataEndpointEnabled]
  [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity] [-DnsZonePartner <String>]
  [-InstancePoolName <String>] [-MinimalTlsVersion <String>] [-BackupStorageRedundancy <String>]
@@ -67,8 +67,8 @@ New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>] [-AsJob]
  [-Force] [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>]
  [-ZoneRedundant] [-ServicePrincipalType <String>] [-DatabaseFormat <String>] [-PricingModel <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AuthenticationMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +96,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -124,6 +125,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -152,6 +154,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              : 4000
 DnsZone                  : ad35cna0mw
@@ -180,6 +183,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 8
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              : 4000
 StorageIOps              :
@@ -213,6 +217,7 @@ StorageSizeInGB          : 1024
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancepool0
 ```
+
 
 This command creates a new instance in an instance pool using an instance pool object.
 
@@ -288,6 +293,7 @@ AdministratorPassword				:
 SubnetId							: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType							: LicenseIncluded
 VCores								: 8
+MemorySizeInGB						:
 StorageSizeInGB						: 256
 StorageIOps							:
 Collation							: SQL_Latin1_General_CP1_CI_AS
@@ -324,6 +330,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -345,6 +352,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -356,11 +364,11 @@ AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : DummyLogin
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 ```
 
-This command creates a new zone - redundant instance
+This command creates a new instance with external administrator properties and Microsoft Entra-only authentication enabled.
 
 ### Example 10: Create a new zone - redundant instance
 ```powershell
@@ -382,6 +390,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -389,7 +398,7 @@ InstancePoolName         :
 ZoneRedundant            : true
 ```
 
-This command creates a new instance with external administrator properties and Microsoft Entra-only authentication enabled.
+This command creates a new zone - redundant instance.
 
 ### Example 11: Create a new instance with TDE CMK
 ```powershell
@@ -411,6 +420,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -441,6 +451,7 @@ AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
 VCores                   : 16
+MemorySizeInGB           :
 StorageSizeInGB          : 1024
 StorageIOps              :
 DnsZone                  : ad35cna0mw
@@ -448,7 +459,85 @@ DatabaseFormat           : AlwaysUpToDate
 PricingModel             : Regular
 ```
 
-This command creates a new instance with external administrator properties and Microsoft Entra-only authentication enabled.
+This command creates a new instance with database format and pricing model specified.
+
+### Example 13: Create a new managed instance which uses Windows authentication metadata mode
+```powershell
+New-AzSqlInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -SkuName GP_Gen5 -AuthenticationMetadata Windows
+```
+
+```output
+Location                         : westcentralus
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName                : resourcegroup01
+ManagedInstanceName              : managedInstance1
+Tags                             :
+Identity                         :
+Sku                              : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2               : false
+FullyQualifiedDomainName         : managedInstance1.xxxxxxxxxxxx.database.windows.net
+AdministratorLogin               : adminLogin1
+AdministratorPassword            :
+SubnetId                         : subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType                      : LicenseIncluded
+VCores                           : 16
+MemorySizeInGB                   :
+StorageSizeInGB                  : 1024
+StorageIOps                      :
+Collation                        : SQL_Latin1_General_CP1_CI_AS
+PublicDataEndpointEnabled        : False
+ProxyOverride                    : Default
+TimezoneId                       : UTC
+DnsZonePartner                   :
+DnsZone                          : ad35cna0mw
+InstancePoolName                 :
+MinimalTlsVersion                : None
+BackupStorageRedundancy          : Geo
+RequestedBackupStorageRedundancy : Geo
+CurrentBackupStorageRedundancy   : Geo
+MaintenanceConfigurationId       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/
+                                   publicMaintenanceConfigurations/SQL_Default
+Administrators                   :
+PrimaryUserAssignedIdentityId    :
+KeyId                            :
+ZoneRedundant                    : False
+ServicePrincipal                 :
+DatabaseFormat                   : SQLServer2022
+PricingModel                     : Regular
+ExternalGovernanceStatus         : Disabled
+AuthenticationMetadata           : Windows
+```
+
+This command creates a new managed instance which uses Windows metadata for authentication of synced users.
+
+### Example 14: Create a new GPv2 instance with MemorySizeInGB parameter
+```powershell
+New-AzSqlInstance -Name "managedInstance3" -ResourceGroupName "ResourceGroup01" -Location "westcentralus" -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType "LicenseIncluded" -StorageSizeInGB 1024 -StorageIOps 4000 -VCore 8 -SkuName "GP_Gen8IM" -IsGeneralPurposeV2 $true -MemorySizeInGB 64
+```
+
+```output
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance3
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       : true
+FullyQualifiedDomainName : managedInstance3.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : LicenseIncluded
+VCores                   : 8
+MemorySizeInGB           : 64
+StorageSizeInGB          : 1024
+StorageIOps              : 4000
+DnsZone                  : ad35cna0mw
+InstancePoolName         :
+```
+
+This command creates a new GPv2 instance with MemorySizeInGB parameter.
 
 ## PARAMETERS
 
@@ -489,6 +578,22 @@ Generate and assign a Microsoft Entra identity for this Managed instance for use
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthenticationMetadata
+Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureAD, Paired, Windows
 
 Required: False
 Position: Named
@@ -649,7 +754,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
+Type of identity to be assigned to the server. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
 
 ```yaml
 Type: System.String
@@ -1013,6 +1118,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MemorySizeInGB
+Determines how much memory in GB to associate with instance
+
+```yaml
+Type: System.Int32
+Parameter Sets: NewByEditionAndComputeGenerationParameterSet, NewBySkuNameParameterSetParameter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ZoneRedundant
 Use zone redundant storage
 
@@ -1103,7 +1223,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS

@@ -110,7 +110,7 @@ Get latest invoice by billing account name and billing profile name and include 
 Get-AzBillingInvoice -BillingAccountName 00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_0000-00-00 -BillingProfileName 0000-0000-000-000 -PeriodStartDate 0000-00-00 -PeriodEndDate 0000-00-00
 ```
 
-Get invoices by billing account name and billing profile name for a billing period specified by perioStart date and periodEnd date.
+Get invoices by billing account name and billing profile name for a billing period specified by periodStart date and periodEnd date.
 
 
 ## PARAMETERS

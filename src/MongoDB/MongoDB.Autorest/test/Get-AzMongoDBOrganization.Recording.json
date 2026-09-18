@@ -1,0 +1,47 @@
+{
+  "Get-AzMongoDBOrganization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/ajaykumar-rg/providers/MongoDB.Atlas/organizations/MongoDBV2-11July-5?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/ajaykumar-rg/providers/MongoDB.Atlas/organizations/MongoDBV2-11July-5?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "21d56d70-fdba-43b0-860d-25cb36ec2670" ],
+        "CommandName": [ "Get-AzMongoDBOrganization" ],
+        "FullCommandName": [ "Get-AzMongoDBOrganization_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.3", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"28012325-0000-0200-0000-6870af0a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ea5165ba-50f2-485f-a0e5-d8024320a00f" ],
+        "x-ms-correlation-request-id": [ "af34182d-5bd9-464a-a510-338ca57855c4" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260709T085402Z:af34182d-5bd9-464a-a510-338ca57855c4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E55149FAC2514D32BCF72C35B6F1691D Ref B: PNQ231110908042 Ref C: 2026-07-09T08:54:01Z" ],
+        "Date": [ "Thu, 09 Jul 2026 08:54:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1213" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/ajaykumar-rg/providers/MongoDB.Atlas/organizations/MongoDBV2-11July-5\",\"name\":\"MongoDBV2-11July-5\",\"type\":\"mongodb.atlas/organizations\",\"location\":\"East US 2\",\"systemData\":{\"createdBy\":\"ajaykumar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-11T06:26:59.3569359Z\",\"lastModifiedBy\":\"b059abce-70fd-4c8f-a117-96d2192e90e1\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-07-11T06:28:26.6775428Z\"},\"properties\":{\"marketplace\":{\"subscriptionId\":\"4aa85669-6516-4964-cc9e-758d047a47b5\",\"subscriptionStatus\":\"Subscribed\",\"offerDetails\":{\"publisherId\":\"mongodb\",\"offerId\":\"mongodb_atlas_azure_native_prod\",\"planId\":\"private_plan\",\"planName\":\"Pay as You Go (Free) (Private)\",\"termUnit\":\"P1M\",\"termId\":\"gmz7xq9ge3py\"}},\"user\":{\"firstName\":\"Ajay\",\"lastName\":\"Kumar\",\"emailAddress\":\"ajaykumar@microsoft.com\",\"upn\":\"ajaykumar@microsoft.com\"},\"provisioningState\":\"Succeeded\",\"partnerProperties\":{\"organizationId\":\"6870aee2c10e78749fbe5353\",\"organizationName\":\"MongoDBPortalTest\",\"redirectUrl\":\"https://account.mongodb.com/account/reset/password?email=ajaykumar%40microsoft.com\u0026orgId=6870aee2c10e78749fbe5353\u0026shouldRedirect=true\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -15,8 +15,10 @@ Creates a security admin configuration.
 ```
 New-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Description <String>]
- [-ApplyOnNetworkIntentPolicyBasedService <NetworkIntentPolicyBasedServiceType[]>] [-DeleteExistingNSG]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplyOnNetworkIntentPolicyBasedService <NetworkIntentPolicyBasedServiceType[]>]
+ [-NetworkGroupAddressSpaceAggregationOption <String>] [-DeleteExistingNSG] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +29,7 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 ### Example 1
 ```powershell
 $ApplyOnNetworkIntentPolicyBasedService = @("None")
-New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
+New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService -NetworkGroupAddressSpaceAggregationOption $NetworkGroupAddressSpaceAggregationOption
 ```
 
 ```output
@@ -92,6 +94,21 @@ Creates a security admin configuration that will apply on NIP based services.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplyOnNetworkIntentPolicyBasedService
 ApplyOnNetworkIntentPolicyBasedServices.
 
@@ -113,6 +130,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,6 +228,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -NetworkGroupAddressSpaceAggregationOption
+How security admin rules are applied using network group address space aggregation. Valid values include 'None' and 'Manual'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### -NetworkManagerName

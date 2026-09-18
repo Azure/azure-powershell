@@ -21,12 +21,13 @@ Create an in-memory object for AdlsGen1DataSource.
 Create an in-memory object for AdlsGen1DataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1DataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1datasourceobject
 #>
 function New-AzPurviewAdlsGen1DataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,15 +51,11 @@ function New-AzPurviewAdlsGen1DataSourceObject {
         $ResourceName,
         [Parameter()]
         [string]
-        $SubscriptionId,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SubscriptionId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -80,9 +77,6 @@ function New-AzPurviewAdlsGen1DataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $Object.SubscriptionId = $SubscriptionId
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

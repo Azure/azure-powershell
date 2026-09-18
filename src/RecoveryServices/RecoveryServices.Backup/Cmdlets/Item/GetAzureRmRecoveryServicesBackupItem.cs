@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Fetches the VM Bakup Items from Secondary Region.
+        /// Fetches the VM Backup Items from Secondary Region.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
         public SwitchParameter UseSecondaryRegion;

@@ -43,12 +43,12 @@ The **Enable-AzStorageBlobRestorePolicy** cmdlet enables Blob Restore Policy for
 
 
 ```powershell
-Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -RetentionDays 5
+Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -RetentionDays 5
 
-Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -EnableChangeFeed $true
+Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -EnableChangeFeed $true
 
 StorageAccountName            : mystorageaccount
-ResourceGroupName             : myresourcegoup
+ResourceGroupName             : myresourcegroup
 DefaultServiceVersion         : 
 DeleteRetentionPolicy.Enabled : True
 DeleteRetentionPolicy.Days    : 5
@@ -58,9 +58,9 @@ RestorePolicy.MinRestoreTime  :
 ChangeFeed                    : True
 IsVersioningEnabled           : True
 
-Enable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -RestoreDays 4
+Enable-AzStorageBlobRestorePolicy -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -RestoreDays 4
 
-Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount"
+Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 
 StorageAccountName            : mystorageaccount
 ResourceGroupName             : myresourcegoup

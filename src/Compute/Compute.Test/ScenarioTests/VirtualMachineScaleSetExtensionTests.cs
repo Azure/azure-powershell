@@ -58,5 +58,32 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInAzVmssConfig()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmssConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInSetADEVMssCmdlet()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInSetADEVMssCmdlet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithIdentityNotSetInVirtualMachineScaleSet()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachineScaleSet");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureVmssDiskEncryptionWithIdentityNotAckledInKeyVault()
+        {
+            TestRunner.RunTestScript("Test-AzureVmssDiskEncryptionWithIdentityNotAckledInKeyVault");
+        }
     }
 }

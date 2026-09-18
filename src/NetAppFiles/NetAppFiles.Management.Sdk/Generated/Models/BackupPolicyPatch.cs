@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Backup policy Details for create and update
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BackupPolicyPatch : Microsoft.Rest.Azure.IResource
+    public partial class BackupPolicyPatch
     {
         /// <summary>
         /// Initializes a new instance of the BackupPolicyPatch class.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="tags">Resource tags
         /// </param>
 
-        /// <param name="backupPolicyId">Backup Policy Resource ID
+        /// <param name="backupPolicyId">Backup Policy GUID ID
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
-        /// Gets backup Policy Resource ID
+        /// Gets backup Policy GUID ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupPolicyId")]
         public string BackupPolicyId {get; private set; }

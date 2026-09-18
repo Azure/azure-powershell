@@ -16,40 +16,65 @@ Lists all Azure RBAC roles that are available for assignment.
 ### RoleDefinitionNameParameterSet (Default)
 ```
 Get-AzRoleDefinition [[-Name] <String>] [-Scope <String>] [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
 ```
 Get-AzRoleDefinition -Id <Guid> [-Scope <String>] [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionCustomParameterSet
 ```
 Get-AzRoleDefinition [-Scope <String>] [-Custom] [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Use the Get-AzRoleDefinition command with a particular role name to view its details.
-To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.
+To inspect individual operations that a role grants access to, review the Permissions property of the role.
+Each permission entry contains Actions, NotActions, DataActions, NotDataActions, and optionally Condition and ConditionVersion properties.
+Roles with Attribute-Based Access Control (ABAC) conditions will have the Condition and ConditionVersion set on the appropriate permission entry.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a role definition by name
 ```powershell
 Get-AzRoleDefinition -Name Reader
 ```
 
-Get the Reader role definition
+Retrieves the Reader role definition with all its permissions.
 
-### Example 2
+### Example 2: List all RBAC role definitions
 ```powershell
 Get-AzRoleDefinition
 ```
 
-Lists all RBAC role definitions
+Lists all Azure RBAC role definitions available in the current scope.
+
+### Example 3: Access Actions from a role definition
+```powershell
+$roleDef = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
+$roleDef.Permissions[0].Actions
+```
+
+Retrieves the actions from the first permission entry of a role definition.
+
+### Example 4: Get all permissions including conditions
+```powershell
+$roleDef = Get-AzRoleDefinition -Name "Key Vault Data Access Administrator"
+foreach ($permission in $roleDef.Permissions) {
+    Write-Host "Actions: $($permission.Actions -join ', ')"
+    Write-Host "DataActions: $($permission.DataActions -join ', ')"
+    if ($permission.Condition) {
+        Write-Host "Condition: $($permission.Condition)"
+        Write-Host "ConditionVersion: $($permission.ConditionVersion)"
+    }
+}
+```
+
+Iterates through all permission entries and displays actions and any ABAC conditions. `Key Vault Data Access Administrator` is a built-in role that carries a real ABAC condition on one of its permission entries, so the `if ($permission.Condition)` branch actually fires.
 
 ## PARAMETERS
 
@@ -112,21 +137,6 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -168,3 +168,194 @@ function Test-GetRSVaultSettingsFile
 		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
+
+<#
+.SYNOPSIS
+Recovery Services Soft Deleted Vault Tests
+#>
+function Test-RecoveryServicesSoftDeletedVaultOperations
+{
+    $location = "westus"
+    $resourceGroupName = "hiagawus-rg"
+    $softDeletedVaultNamePattern = "hiagawus-rg_*"  # Pattern to match the vault name
+    $expectedBackupItems = @("hiagaCRRRVM23", "hiagawusCRR-vm")
+    $subscriptionId = "f879818f-5b29-4a43-8961-34169783144f" # use this subscription for this test
+    $originalRSVname = "hiagawusCRR-vault"
+
+    try
+    {
+        # 1. Get-AzRecoveryServicesSoftDeletedVault - Get all soft deleted vaults in location
+        $softDeletedVaults = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        
+        Assert-NotNull($softDeletedVaults)
+        Assert-True { $softDeletedVaults.Count -gt 0 }
+        
+        # Find the target soft deleted vault by resource group and name pattern
+        $targetSoftDeletedVault = $softDeletedVaults | Where-Object { 
+            $_.ResourceGroupName -eq $resourceGroupName -and $_.Name -like $softDeletedVaultNamePattern 
+        }
+        Assert-NotNull($targetSoftDeletedVault)
+        Assert-AreEqual $resourceGroupName $targetSoftDeletedVault.ResourceGroupName
+        Assert-AreEqual $location $targetSoftDeletedVault.Location
+        Assert-NotNull($targetSoftDeletedVault.Properties)
+
+        # Get the actual vault name for subsequent operations
+        $vaultName = $targetSoftDeletedVault.Name
+        Write-Host "Found soft-deleted vault: $vaultName"
+
+        # 2. Get-AzRecoveryServicesSoftDeletedVault - Get specific soft deleted vault by name
+        $specificSoftDeletedVault = Get-AzRecoveryServicesSoftDeletedVault -Location $location -Name $vaultName -ResourceGroupName $resourceGroupName
+        
+        Assert-NotNull($specificSoftDeletedVault)
+        Assert-AreEqual $vaultName $specificSoftDeletedVault.Name
+        Assert-AreEqual $resourceGroupName $specificSoftDeletedVault.ResourceGroupName
+
+        # 3. Get-AzRecoveryServicesSoftDeletedVaultBackupItem - Using VaultId
+        $backupItemsUsingVaultId = Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultId $targetSoftDeletedVault.ID
+        
+        Assert-NotNull($backupItemsUsingVaultId)
+        Assert-True { $backupItemsUsingVaultId.Count -ge 2 }
+        
+        # Verify expected backup items exist
+        $foundBackupItems = @()
+        foreach ($item in $backupItemsUsingVaultId)
+        {
+            foreach ($expectedItem in $expectedBackupItems)
+            {
+                if ($item.Name -like "*$expectedItem*" -or $item.SourceResourceId -like "*$expectedItem*")
+                {
+                    $foundBackupItems += $expectedItem
+                    break
+                }
+            }
+        }
+        Assert-True { $foundBackupItems.Count -eq $expectedBackupItems.Count }
+
+        # 4. Get-AzRecoveryServicesSoftDeletedVaultBackupItem - Using VaultName and ResourceGroupName
+        $backupItemsUsingVaultName = Get-AzRecoveryServicesSoftDeletedVaultBackupItem -VaultName $vaultName -ResourceGroupName $resourceGroupName
+        
+        Assert-NotNull($backupItemsUsingVaultName)
+        Assert-True { $backupItemsUsingVaultName.Count -ge 2 }
+        Assert-AreEqual $backupItemsUsingVaultId.Count $backupItemsUsingVaultName.Count
+
+        # 5. Undo-AzRecoveryServicesVaultDeletion - Restore the soft deleted vault
+        $undeleteResult = Undo-AzRecoveryServicesVaultDeletion -ResourceGroupName $resourceGroupName -Name $vaultName -Location $location -Force
+        
+        Assert-NotNull($undeleteResult)
+
+        # Wait a bit for the restoration to complete
+        Start-Sleep -Seconds 30
+
+        # 6. Get-AzRecoveryServicesVault - Verify vault is now active again
+        $activeVault = Get-AzRecoveryServicesVault -Name $originalRSVname -ResourceGroupName $resourceGroupName
+        
+        Assert-NotNull($activeVault)
+        Assert-AreEqual $originalRSVname $activeVault.Name
+        Assert-AreEqual $resourceGroupName $activeVault.ResourceGroupName
+        Assert-AreEqual $location $activeVault.Location
+        Assert-NotNull($activeVault.ID)
+        Assert-NotNull($activeVault.Type)
+
+        # 7. Verify the vault is no longer in soft deleted state
+        $softDeletedVaultsAfterRestore = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        $softDeletedVaultAfterRestore = $softDeletedVaultsAfterRestore | Where-Object { $_.Properties.VaultId -match $originalRSVname }
+        Assert-Null($softDeletedVaultAfterRestore)
+
+        # 8. Remove-AzRecoveryServicesVault - Delete the vault again to maintain original test state
+        Remove-AzRecoveryServicesVault -Vault $activeVault
+
+        # Wait a bit for the deletion to complete
+        Start-Sleep -Seconds 30
+
+        # 9. Verify vault is back to soft deleted state (note: name may have changed due to new GUID)
+        $softDeletedVaultsFinal = Get-AzRecoveryServicesSoftDeletedVault -Location $location
+        $finalSoftDeletedVault = $softDeletedVaultsFinal | Where-Object { 
+            $_.ResourceGroupName -eq $resourceGroupName -and $_.Name -like $softDeletedVaultNamePattern 
+        }
+        Assert-NotNull($finalSoftDeletedVault)
+        Write-Host "Vault back in soft-deleted state with name: $($finalSoftDeletedVault.Name)"
+
+        # 10. Verify active vault no longer exists (check by resource group and original pattern)
+        $activeVaultsCheck = Get-AzRecoveryServicesVault -Name $originalRSVname -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+        Assert-Null($activeVaultCheck)
+    }
+    finally
+    {
+        # If test fails, attempt to clean up by ensuring vault is in soft deleted state                
+        $activeVaultsCleanup = Get-AzRecoveryServicesVault -Name $originalRSVname -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+        if ($activeVaultCleanup -ne $null)
+        {
+            Remove-AzRecoveryServicesVault -Vault $activeVaultCleanup
+        }        
+    }
+}
+
+<#
+.SYNOPSIS
+Recovery Services Cost Management Settings CRUD Tests
+#>
+function Test-RecoveryServicesCostManagementSettings
+{
+    $location = "westus"
+    $resourceGroupName = "hiagarg"
+    $name = "vijamivault"
+
+    # 1. Create a new Recovery Services Vault
+        $vault = New-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName -Location $location
+
+        Assert-NotNull($vault.Name)
+        Assert-NotNull($vault.ID)
+        Assert-NotNull($vault.Type)
+
+        # 2. Get the vault and verify initial CostManagementSettings (should be null or default)
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault)
+        Write-Host "Initial CostManagementSettings: $($vault.Properties.CostManagementSettings)"
+
+        # # 3. Update vault with CostManagementSettings - VaultLevel
+        $vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name -CostManagementGranularity "VaultLevel"
+
+        Assert-NotNull($vault)
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "VaultLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+        Write-Host "CostManagementSettings updated to VaultLevel"
+
+        # # 4. Verify the settings persisted by getting the vault again
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "VaultLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+
+        # # 5. Update vault with CostManagementSettings - ProtectedItemLevel
+        $vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name -CostManagementGranularity "ProtectedItemLevel"
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+        Write-Host "CostManagementSettings updated to ProtectedItemLevel"
+
+        # # 6. Verify the updated settings
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemLevel" $vault.Properties.CostManagementSettings.GranularityLevel
+
+        # # 7. Update vault with CostManagementSettings - ProtectedItemWithParentTag
+        $vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name -CostManagementGranularity "ProtectedItemWithParentTag"
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemWithParentTag" $vault.Properties.CostManagementSettings.GranularityLevel
+        Write-Host "CostManagementSettings updated to ProtectedItemWithParentTag"
+
+        # # 8. Final verification
+        $vault = Get-AzRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
+
+        Assert-NotNull($vault.Properties.CostManagementSettings)
+        Assert-AreEqual "ProtectedItemWithParentTag" $vault.Properties.CostManagementSettings.GranularityLevel
+
+        # # 9. Clean up - Remove the vault
+        Remove-AzRecoveryServicesVault -Vault $vault
+
+        $vaults = Get-AzRecoveryServicesVault -Name $name -ErrorAction SilentlyContinue
+        Assert-True { $vaults.Count -eq 0 }
+}

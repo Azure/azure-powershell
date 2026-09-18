@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the partner managed resource.
+    /// Properties of the partner managed resource. Only appliable for SaaS NVA.
     /// </summary>
     public partial class PartnerManagedResourceProperties
     {

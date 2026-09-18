@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         public const string Default = "Default";
         /// <summary>
-        /// The operation will proceed one upgrade domain at a time, checking the health in between each to continue.
+        /// The operation will proceed one upgrade domain at a time, checking the
+        /// health in between each to continue.
         /// </summary>
         public const string ByUpgradeDomain = "ByUpgradeDomain";
     }

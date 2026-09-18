@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewaySslPolicyName
     {
+        /// <summary>
+        /// AppGwSslPolicy20150501
+        /// </summary>
         public const string AppGwSslPolicy20150501 = "AppGwSslPolicy20150501";
+        /// <summary>
+        /// AppGwSslPolicy20170401
+        /// </summary>
         public const string AppGwSslPolicy20170401 = "AppGwSslPolicy20170401";
+        /// <summary>
+        /// AppGwSslPolicy20170401S
+        /// </summary>
         public const string AppGwSslPolicy20170401S = "AppGwSslPolicy20170401S";
+        /// <summary>
+        /// AppGwSslPolicy20220101
+        /// </summary>
         public const string AppGwSslPolicy20220101 = "AppGwSslPolicy20220101";
+        /// <summary>
+        /// AppGwSslPolicy20220101S
+        /// </summary>
         public const string AppGwSslPolicy20220101S = "AppGwSslPolicy20220101S";
     }
 }

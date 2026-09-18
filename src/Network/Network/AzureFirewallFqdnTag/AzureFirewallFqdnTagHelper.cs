@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var allowedFqdnTags = GetAzureFirewallAllowedFqdnTags(azureFirewallFqdnTagClient);
 
-            // Accept user input case insensistive
+            // Accept user input case insensitive
             var userAcceptedFqdnTags = allowedFqdnTags.Aggregate(
                 new Dictionary<string, string>(),
                 (userAcceptedVersions, allowedFqdnTag) =>

@@ -45,7 +45,7 @@ regularly (a minimum of twice a year).
 2.  Run your first command. For example, create a resource group in the
     east US region.
     ```powershell
-    New-AzResourceGroup -Name "MyResoureGroup" -location "eastus"
+    New-AzResourceGroup -Name "MyResourceGroup" -location "eastus"
     ```
 ## SEE ALSO
 Azure PowerShell documentation:

@@ -8,20 +8,21 @@ schema: 2.0.0
 # Get-AzSearchPrivateLinkResource
 
 ## SYNOPSIS
-Gets private link resource details for the Azure Cognitive Search service.
+Gets private link resource details for the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Get-AzSearchPrivateLinkResource [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzSearchPrivateLinkResource [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzSearchPrivateLinkResource [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -31,7 +32,7 @@ Get-AzSearchPrivateLinkResource [-InputObject] <PSSearchService> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchPrivateLinkResource** cmdlet gets private link resource details for the Azure Cognitive Search service.
+The **Get-AzSearchPrivateLinkResource** cmdlet gets private link resource details for the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -53,31 +54,31 @@ Get-AzSearchPrivateLinkResource -ResourceGroupName arjagann -Name arjagann-test-
   "ShareablePrivateLinkResourceTypes": [
     {
       "Name": "blob",
-      "Description": "Azure Cognitive Search indexers can connect to blobs in Azure Storage for reading data (data source), for writing intermediate results of indexer execution (annotation cache, preview) or for storing any knowledge store projections (preview)",
+      "Description": "Azure AI Search indexers can connect to blobs in Azure Storage for reading data (data source), for writing intermediate results of indexer execution (annotation cache, preview) or for storing any knowledge store projections (preview)",
       "Type": "Microsoft.Storage/storageAccounts",
       "GroupId": "blob"
     },
     {
       "Name": "table",
-      "Description": "Azure Cognitive Search indexers can connect to tables in Azure Storage for reading data (data source), for writing book-keeping information about intermediate results of indexer execution (annotation cache, preview) or for storing any knowledge store projections (preview)",
+      "Description": "Azure AI Search indexers can connect to tables in Azure Storage for reading data (data source), for writing book-keeping information about intermediate results of indexer execution (annotation cache, preview) or for storing any knowledge store projections (preview)",
       "Type": "Microsoft.Storage/storageAccounts",
       "GroupId": "table"
     },
     {
       "Name": "Sql",
-      "Description": "Azure Cognitive Search indexers can connect to CosmosDB using the SQL head for reading data (data source).",
+      "Description": "Azure AI Search indexers can connect to CosmosDB using the SQL head for reading data (data source).",
       "Type": "Microsoft.DocumentDB/databaseAccounts",
       "GroupId": "Sql"
     },
     {
       "Name": "plr",
-      "Description": "Azure Cognitive Search indexers can connect to AzureSQL databases in a SQL server for reading data (data source).",
+      "Description": "Azure AI Search indexers can connect to AzureSQL databases in a SQL server for reading data (data source).",
       "Type": "Microsoft.Sql/servers",
       "GroupId": "sqlServer"
     },
     {
       "Name": "vault",
-      "Description": "Azure Cognitive Search can access keys in Azure Key Vault to encrypt search index and synonym map data",
+      "Description": "Azure AI Search can access keys in Azure Key Vault to encrypt search index and synonym map data",
       "Type": "Microsoft.KeyVault/vaults",
       "GroupId": "vault"
     }
@@ -85,7 +86,7 @@ Get-AzSearchPrivateLinkResource -ResourceGroupName arjagann -Name arjagann-test-
 }
 ```
 
-The example shows how to get the private link resource details (in JSON form for convenience) for the Azure Cognitive Search service.
+The example shows how to get the private link resource details (in JSON form for convenience) for the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -120,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure Cognitive Search Service Resource Id.
+Azure AI Search Service Resource Id.
 
 ```yaml
 Type: System.String

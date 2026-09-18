@@ -1,8 +1,8 @@
 {
-  "New-AzDatadogTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default?api-version=2021-03-01+1": {
+  "New-AzDatadogTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default?api-version=2025-12-26-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"filteringTags\": [\r\n        {\r\n          \"name\": \"Environment\",\r\n          \"value\": \"Prod\",\r\n          \"action\": \"Include\"\r\n        },\r\n        {\r\n          \"name\": \"Environment\",\r\n          \"value\": \"Dev\",\r\n          \"action\": \"Exclude\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,39 +17,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0100c13c-0000-3400-0000-60b48db00000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "ETag": [ "\"07009c0b-0000-3300-0000-6a61e4b20000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/84daf25f-27b5-49ad-a0b4-f9e4d8610582" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "mise-correlation-id": [ "8acabb2d-b0a5-4055-94cf-7c966e3ff415" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e2333e7c-149a-46e9-9ebc-7e556bc96745" ],
-        "x-ms-correlation-request-id": [ "3eddb198-1a4d-42f5-a086-386d4a47f2d1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071808Z:3eddb198-1a4d-42f5-a086-386d4a47f2d1" ],
-        "Date": [ "Mon, 31 May 2021 07:18:08 GMT" ]
+        "x-ms-request-id": [ "5e653417-0eb1-429f-8835-59857dfa7a7e" ],
+        "x-ms-correlation-request-id": [ "ad4ff46b-6675-43d9-80da-800704568bc2" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095354Z:ad4ff46b-6675-43d9-80da-800704568bc2" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B807879E5DA9441FA866062578A043DA Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:53:52Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:53:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "762" ],
+        "Content-Length": [ "875" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:11:12.5867037Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:11:12.5867037Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendResourceLogs\":false,\"filteringTags\":[{\"name\":\"Environment\",\"value\":\"Prod\",\"action\":\"Include\"},{\"name\":\"Environment\",\"value\":\"Dev\",\"action\":\"Exclude\"}]},\"metricRules\":{\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:50:33.6468781Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:53:52.4243832Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendResourceLogs\":false,\"filteringTags\":[{\"name\":\"Environment\",\"value\":\"Prod\",\"action\":\"Include\"},{\"name\":\"Environment\",\"value\":\"Dev\",\"action\":\"Exclude\"}]},\"metricRules\":{\"filteringTags\":[]},\"agentRules\":{\"enableAgentMonitoring\":false,\"filteringTags\":[]},\"automuting\":true,\"customMetrics\":null}}",
       "isContentBase64": false
     }
   },
-  "New-AzDatadogTagRule+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default?api-version=2021-03-01+1": {
+  "New-AzDatadogTagRule+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default?api-version=2025-12-26-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "440ae6a3-3c92-4d38-a8e1-f582a33e7f90" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "64c00415-2dea-44a3-a7f7-1ebfa2c13cfe" ],
         "CommandName": [ "Get-AzDatadogTagRule" ],
         "FullCommandName": [ "Get-AzDatadogTagRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -60,29 +65,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0100c13c-0000-3400-0000-60b48db00000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "ETag": [ "\"07009c0b-0000-3300-0000-6a61e4b20000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/d124d5ae-3559-4bca-8fec-035c82d5dee5" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "3d6d18ae-b1c4-4008-adb0-383149f51b92" ],
-        "x-ms-correlation-request-id": [ "9050d99d-6f88-454b-bd1f-ae47c5e8be1d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071809Z:9050d99d-6f88-454b-bd1f-ae47c5e8be1d" ],
+        "x-ms-request-id": [ "e54aee58-97be-4273-8403-b124f9b521f7" ],
+        "x-ms-correlation-request-id": [ "b4b9eb85-e665-4448-af20-e114eed6aab9" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095354Z:b4b9eb85-e665-4448-af20-e114eed6aab9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 31 May 2021 07:18:09 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3977852568A8417CAC401646304A0152 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:53:54Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:53:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "762" ],
+        "Content-Length": [ "875" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:11:12.5867037Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:11:12.5867037Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendResourceLogs\":false,\"filteringTags\":[{\"name\":\"Environment\",\"value\":\"Prod\",\"action\":\"Include\"},{\"name\":\"Environment\",\"value\":\"Dev\",\"action\":\"Exclude\"}]},\"metricRules\":{\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:50:33.6468781Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:53:52.4243832Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendResourceLogs\":false,\"filteringTags\":[{\"name\":\"Environment\",\"value\":\"Prod\",\"action\":\"Include\"},{\"name\":\"Environment\",\"value\":\"Dev\",\"action\":\"Exclude\"}]},\"metricRules\":{\"filteringTags\":[]},\"agentRules\":{\"enableAgentMonitoring\":false,\"filteringTags\":[]},\"automuting\":true,\"customMetrics\":null}}",
       "isContentBase64": false
     }
   },
-  "New-AzDatadogTagRule+[NoContext]+CreateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default?api-version=2021-03-01+2": {
+  "New-AzDatadogTagRule+[NoContext]+CreateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default?api-version=2025-12-26-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default?api-version=2025-12-26-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"filteringTags\": [\r\n        {\r\n          \"name\": \"Environment\",\r\n          \"value\": \"Prod\",\r\n          \"action\": \"Include\"\r\n        },\r\n        {\r\n          \"name\": \"Environment\",\r\n          \"value\": \"Dev\",\r\n          \"action\": \"Exclude\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -97,23 +106,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0100c23c-0000-3400-0000-60b48db20000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "ETag": [ "\"07009d0b-0000-3300-0000-6a61e4b40000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/99632504-4b20-4677-96c1-563922f2290f" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "mise-correlation-id": [ "83140630-7f47-4c62-9f9f-eacbdd58ca4e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0523f3ef-cb1e-4684-b5f7-5e1ce9dee74b" ],
-        "x-ms-correlation-request-id": [ "0a93acae-df60-493a-9207-25aa19845d8b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071810Z:0a93acae-df60-493a-9207-25aa19845d8b" ],
-        "Date": [ "Mon, 31 May 2021 07:18:10 GMT" ]
+        "x-ms-request-id": [ "f31ce38a-ea49-464f-b44b-946b37a92d85" ],
+        "x-ms-correlation-request-id": [ "b645bebf-cd75-4ec4-947b-57cf5b7f3d8c" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095356Z:b645bebf-cd75-4ec4-947b-57cf5b7f3d8c" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9582CF6E90F044F7A9F65B25E3F1A940 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:53:54Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:53:55 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "762" ],
+        "Content-Length": [ "875" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:11:12.5867037Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:11:12.5867037Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendResourceLogs\":false,\"filteringTags\":[{\"name\":\"Environment\",\"value\":\"Prod\",\"action\":\"Include\"},{\"name\":\"Environment\",\"value\":\"Dev\",\"action\":\"Exclude\"}]},\"metricRules\":{\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-07-23T09:50:33.6468781Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-07-23T09:53:55.0808055Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendResourceLogs\":false,\"filteringTags\":[{\"name\":\"Environment\",\"value\":\"Prod\",\"action\":\"Include\"},{\"name\":\"Environment\",\"value\":\"Dev\",\"action\":\"Exclude\"}]},\"metricRules\":{\"filteringTags\":[]},\"agentRules\":{\"enableAgentMonitoring\":false,\"filteringTags\":[]},\"automuting\":true,\"customMetrics\":null}}",
       "isContentBase64": false
     }
   }

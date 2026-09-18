@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayFirewallMode
     {
+        /// <summary>
+        /// Detection
+        /// </summary>
         public const string Detection = "Detection";
+        /// <summary>
+        /// Prevention
+        /// </summary>
         public const string Prevention = "Prevention";
     }
 }

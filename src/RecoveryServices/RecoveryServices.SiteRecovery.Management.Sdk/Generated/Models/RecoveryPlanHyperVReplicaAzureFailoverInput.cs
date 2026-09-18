@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="recoveryPointType">The recovery point type.
-        /// Possible values include: 'Latest', 'LatestApplicationConsistent',
-        /// 'LatestProcessed'</param>
+        /// Possible values include: &#39;Latest&#39;, &#39;LatestApplicationConsistent&#39;,
+        /// &#39;LatestProcessed&#39;</param>
         public RecoveryPlanHyperVReplicaAzureFailoverInput(string primaryKekCertificatePfx = default(string), string secondaryKekCertificatePfx = default(string), string recoveryPointType = default(string))
 
         {

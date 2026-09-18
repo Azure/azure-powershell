@@ -14,10 +14,12 @@ Creates a private link service
 
 ```
 New-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -Location <String>
- -LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>
- -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Visibility <String[]>] [-AutoApproval <String[]>]
- [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]>
+ [-LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>] [-Visibility <String[]>]
+ [-AutoApproval <String[]>] [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DestinationIPAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +29,7 @@ The **New-AzPrivateLinkService** cmdlet creates a private link service
 
 ### Example 1
 
-The following example creates a private link service.
+The following example creates a private link service with a load balancer.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -ResourceName 'myvnet' -ResourceGroupName 'myresourcegroup'
@@ -40,7 +42,37 @@ $lb = New-AzLoadBalancer -Name 'MyLoadBalancer' -ResourceGroupName 'myresourcegr
 New-AzPrivateLinkService -Name 'mypls' -ResourceGroupName myresourcegroup -Location "West US" -LoadBalancerFrontendIpConfiguration $frontend -IpConfiguration $IPConfig
 ```
 
+### Example 2
+
+The following example creates a private link service with destinationIPAddress.
+
+```powershell
+$vnet = Get-AzVirtualNetwork -ResourceName 'myvnet' -ResourceGroupName 'myresourcegroup'
+# View the results of $vnet and change 'mysubnet' in the following line to the appropriate subnet name.
+$subnet = $vnet | Select-Object -ExpandProperty subnets | Where-Object Name -eq 'mysubnet'
+$IPConfig1 = New-AzPrivateLinkServiceIpConfig -Name 'IP-Config1' -Subnet $subnet -PrivateIpAddress '10.0.0.5' -Primary
+$IPConfig2 = New-AzPrivateLinkServiceIpConfig -Name 'IP-Config2' -Subnet $subnet -PrivateIpAddress '10.0.0.6'
+$IPConfig3 = New-AzPrivateLinkServiceIpConfig -Name 'IP-Config3' -Subnet $subnet -PrivateIpAddress '10.0.0.7'
+$IPConfigs = @($IPConfig1, $IPConfig2, $IPConfig3)
+New-AzPrivateLinkService -Name 'mypls' -ResourceGroupName myresourcegroup -Location "West US" -IpConfiguration $IPConfigs -DestinationIPAddress '192.168.0.5'
+```
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -72,6 +104,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -84,6 +131,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationIPAddress
+The destination IP address of the private link service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -155,7 +217,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

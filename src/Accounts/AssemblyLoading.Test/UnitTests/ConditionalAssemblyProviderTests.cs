@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
 {
     public class ConditionalAssemblyProviderTests
     {
-        private const string NetFx = "netfx";
+        private const string Net45 = "net45";
         private const string NetStandard20 = "netstandard2.0";
         private const string RootPath = "root";
 
@@ -44,10 +44,17 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             Assert.True(assemblies.TryGetValue("Azure.Core", out var azureCore));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Core"), azureCore.Path);
             Assert.True(assemblies.TryGetValue("Newtonsoft.Json", out var newtonsoftJson));
-            Assert.Equal(GetExpectedAssemblyPath(NetFx, "Newtonsoft.Json"), newtonsoftJson.Path);
+            Assert.Equal(GetExpectedAssemblyPath(Net45, "Newtonsoft.Json"), newtonsoftJson.Path);
 
             Assert.True(assemblies.TryGetValue("Azure.Identity", out var azureIdentity));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Identity"), azureIdentity.Path);
+
+            Assert.True(assemblies.TryGetValue("System.Text.Encodings.Web", out var encodingsWeb));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Encodings.Web"), encodingsWeb.Path);
+            Assert.True(assemblies.TryGetValue("System.Text.Json", out var textJson));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Json"), textJson.Path);
+            Assert.True(assemblies.TryGetValue("System.Diagnostics.DiagnosticSource", out var diagnosticSource));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Diagnostics.DiagnosticSource"), diagnosticSource.Path);
         }
 
         [Fact]
@@ -71,6 +78,13 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
 
             Assert.True(assemblies.TryGetValue("Azure.Identity", out var azureIdentity));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Identity"), azureIdentity.Path);
+
+            Assert.True(assemblies.TryGetValue("System.Text.Encodings.Web", out var encodingsWeb));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Encodings.Web"), encodingsWeb.Path);
+            Assert.True(assemblies.TryGetValue("System.Text.Json", out var textJson));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Json"), textJson.Path);
+            Assert.True(assemblies.TryGetValue("System.Diagnostics.DiagnosticSource", out var diagnosticSource));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Diagnostics.DiagnosticSource"), diagnosticSource.Path);
         }
 
         private string GetExpectedAssemblyPath(string framework, string assemblyName)

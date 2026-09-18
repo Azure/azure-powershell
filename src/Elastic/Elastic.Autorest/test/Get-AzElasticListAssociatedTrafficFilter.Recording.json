@@ -1,0 +1,49 @@
+{
+  "Get-AzElasticListAssociatedTrafficFilter+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listAssociatedTrafficFilters?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listAssociatedTrafficFilters?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "5da4920b-9c4c-4e61-8286-2323cf66a390" ],
+        "CommandName": [ "Get-AzElasticListAssociatedTrafficFilter" ],
+        "FullCommandName": [ "Get-AzElasticListAssociatedTrafficFilter_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/d0013dbb-18f9-484f-a3a0-e052bda8f79f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "ee157415-9712-4f5c-ae71-f893178c6ce9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "db640625-e3c2-4319-980d-cfe35383ea38" ],
+        "x-ms-correlation-request-id": [ "79c57d92-123d-4109-b784-4d50dc3370d9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T030946Z:79c57d92-123d-4109-b784-4d50dc3370d9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1CADAF00863743159671C4EF7E18603A Ref B: PNQ231110908052 Ref C: 2025-10-17T03:09:45Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:09:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "15" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"rulesets\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

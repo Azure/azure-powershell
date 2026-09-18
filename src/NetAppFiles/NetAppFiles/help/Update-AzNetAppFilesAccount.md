@@ -17,8 +17,9 @@ Updates an Azure NetApp Files (ANF) account according to the optional modifiers 
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
  [-EncryptionKeySource <String>] [-KeyVaultKeyName <String>] [-KeyVaultResourceId <String>]
- [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-KeyVaultUri <String>] [-IdentityType <String>] [-UserAssignedIdentity <String>]
+ [-FederatedClientId <String>] [-NfsV4IdDomain <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,7 +28,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  -ResourceId <String> [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>]
  [-Encryption <PSNetAppFilesAccountEncryption>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -35,7 +36,7 @@ Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Na
 Update-AzNetAppFilesAccount -ResourceGroupName <String> [-Location <String>] -Name <String>
  [-ActiveDirectory <PSNetAppFilesActiveDirectory[]>] [-Encryption <PSNetAppFilesAccountEncryption>]
  -InputObject <PSNetAppFilesAccount> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +111,21 @@ Accept wildcard characters: False
 
 ### -EncryptionKeySource
 The encryption keySource (provider). Possible values: Microsoft.NetApp, Microsoft.KeyVault
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FederatedClientId
+ClientId of the multi-tenant AAD Application. Used to access cross-tenant KeyVaults.
 
 ```yaml
 Type: System.String
@@ -228,13 +244,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -NfsV4IdDomain
+Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: False
 Position: Named

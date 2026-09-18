@@ -13,16 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
+using System.Collections;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Management.Automation.Remoting;
-using System.Text;
+using Microsoft.Azure.Management.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -67,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource Id of the Virtual Hub.")]
         [ValidateNotNullOrEmpty]
@@ -151,10 +148,23 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
 
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Interface configurations for NVA deployed in VNet.")]
+        public PSNetworkVirtualApplianceInterfaceConfigProperties[] NvaInterfaceConfiguration { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            if (ParameterSetName.Equals(ResourceIdParameterSet))
+
+			      if (!string.IsNullOrEmpty(VirtualHubId) && NvaInterfaceConfiguration != null)
+			      {
+				      throw new PSArgumentException("Specify either VirtualHubId or NvaInterfaceConfigurations, but not both.");
+			      }
+
+			      if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
                 this.ResourceGroupName = GetResourceGroup(this.ResourceId);
                 this.Name = GetResourceName(this.ResourceId, "Microsoft.Network/networkVirtualAppliances");
@@ -204,6 +214,11 @@ namespace Microsoft.Azure.Commands.Network
             if (NetworkProfile != null)
             {
                 networkVirtualAppliance.NetworkProfile = NetworkProfile;
+            }
+            
+            if (this.NvaInterfaceConfiguration != null)
+            {
+                networkVirtualAppliance.NvaInterfaceConfigurations = this.NvaInterfaceConfiguration;
             }
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);

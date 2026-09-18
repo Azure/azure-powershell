@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
 
             CloudFile file = item as CloudFile;
-            if(file != null)
+            if (file != null)
             {
                 return shareUri.Uri.MakeRelativeUri(file.SnapshotQualifiedUri).ToString();
             }

@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
         #region Private methods
         /// <summary>
-        /// Shoulds the update progress.
+        /// Should the update progress.
         /// </summary>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool ShouldUpdateProgress()

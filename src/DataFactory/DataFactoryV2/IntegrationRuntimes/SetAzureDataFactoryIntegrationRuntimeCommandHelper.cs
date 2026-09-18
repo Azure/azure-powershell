@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             if (string.IsNullOrWhiteSpace(vnetId) ^ string.IsNullOrWhiteSpace(subnetName))
             {
-                // Only one of the two paramaters is set
+                // Only one of the two parameters is set
                 throw new PSArgumentException(string.Format(
                         CultureInfo.InvariantCulture,
                         Resources.IntegrationRuntimeInvalidVnet),

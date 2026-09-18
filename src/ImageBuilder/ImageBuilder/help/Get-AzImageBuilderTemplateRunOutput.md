@@ -26,6 +26,12 @@ Get-AzImageBuilderTemplateRunOutput -ImageTemplateName <String> -Name <String> -
  [<CommonParameters>]
 ```
 
+### GetViaIdentityImageTemplate
+```
+Get-AzImageBuilderTemplateRunOutput -Name <String> -ImageTemplateInputObject <IImageBuilderIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzImageBuilderTemplateRunOutput -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>]
@@ -81,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ImageTemplateInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
+Parameter Sets: GetViaIdentityImageTemplate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ImageTemplateName
 The name of the image Template
 
@@ -98,7 +119,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
@@ -117,7 +137,7 @@ The name of the run output
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityImageTemplate
 Aliases: RunOutputName
 
 Required: True
@@ -167,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IRunOutput
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IRunOutput
 
 ## NOTES
 

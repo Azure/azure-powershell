@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location where resource usage is queried.
+        /// The name of the Azure region.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<Usage> List(this IUsagesOperations operations, string location)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location where resource usage is queried.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

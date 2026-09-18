@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridClient
 
 ## SYNOPSIS
-Create a client with the specified parameters.
+create a client with the specified parameters.
 
 ## SYNTAX
 
@@ -64,7 +64,7 @@ New-AzEventGridClient -InputObject <IEventGridIdentity> [-Attribute <Hashtable>]
 ```
 
 ## DESCRIPTION
-Create a client with the specified parameters.
+create a client with the specified parameters.
 
 ## EXAMPLES
 

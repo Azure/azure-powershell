@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class MobilityAgentUpgradeState
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Started
+        /// </summary>
         public const string Started = "Started";
+        /// <summary>
+        /// Completed
+        /// </summary>
         public const string Completed = "Completed";
+        /// <summary>
+        /// Commit
+        /// </summary>
         public const string Commit = "Commit";
     }
 }

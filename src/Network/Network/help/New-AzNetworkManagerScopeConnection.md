@@ -15,7 +15,8 @@ Creates a scope connection.
 ```
 New-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
  -TenantId <String> -ResourceId <String> [-Description <String>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,11 +26,11 @@ The **New-AzNetworkManagerScopeConnection** cmdlet creates a scope connection.
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerScopeConnection -ResourceGroupName psResourceGroup -NetworkManagerName psNetworkManager -Name "subConnection" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884" -Description "SampleDescription"
+New-AzNetworkManagerScopeConnection -ResourceGroupName psResourceGroup -NetworkManagerName psNetworkManager -Name "subConnection" -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444" -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884" -Description "SampleDescription"
 ```
 
 ```output
-TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 ResourceId        : /subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884
 ConnectionState   : Pending
 DisplayName       :
@@ -54,11 +55,11 @@ Creates a scope connection to a cross-tenant subscription.
 
 ### Example 2
 ```powershell
-New-AzNetworkManagerScopeConnection -ResourceGroupName psResourceGroup -NetworkManagerName psNetworkManager -Name "mgConnection" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId "/providers/Microsoft.Management/managementGroups/newMG" -Description "SampleDescription"
+New-AzNetworkManagerScopeConnection -ResourceGroupName psResourceGroup -NetworkManagerName psNetworkManager -Name "mgConnection" -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444" -ResourceId "/providers/Microsoft.Management/managementGroups/newMG" -Description "SampleDescription"
 ```
 
 ```output
-TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
 ConnectionState   : Pending
 DisplayName       :
@@ -83,11 +84,41 @@ Creates a scope connection to a cross-tenant management group.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

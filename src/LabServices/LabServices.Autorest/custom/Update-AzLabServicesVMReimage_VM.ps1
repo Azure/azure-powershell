@@ -12,12 +12,27 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Re-image a lab virtual machine.
+The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+.Description
+Re-image a lab virtual machine.
+The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesvmreimage
+#>
 function Update-AzLabServicesVMReimage_VM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+    # The object of lab service virtual machine.
     ${VM},
 
     [Parameter()]

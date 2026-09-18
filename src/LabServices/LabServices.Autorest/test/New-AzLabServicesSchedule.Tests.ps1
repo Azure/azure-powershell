@@ -19,11 +19,11 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'New-AzLabServicesSchedule' {
     It 'Create' {
-        $lab = Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:LabName
+        $lab = Get-AzLabServicesLab -ResourceGroupName $env.ResourceGroupName -Name $env.LabName
         
         New-AzLabServicesSchedule `
             -Lab $lab `
-            -Name $ENV:ScheduleNameSecond `
+            -Name $env.ScheduleNameSecond `
             -StartAt "$((Get-Date).AddHours(5))" `
             -StopAt "$((Get-Date).AddHours(6))" `
             -RecurrencePatternFrequency 'Weekly' `
@@ -32,6 +32,6 @@ Describe 'New-AzLabServicesSchedule' {
             -RecurrencePatternExpirationDate $((Get-Date).AddDays(20)) `
             -TimeZoneId 'America/Los_Angeles' | Should -Not -BeNullOrEmpty
 
-        Get-AzLabServicesSchedule -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:ScheduleNameSecond | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesSchedule -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.ScheduleNameSecond | Should -Not -BeNullOrEmpty
     }
 }

@@ -2,6 +2,17 @@
 
 _Note_: for the below examples, the string "TopLevelResource" would be replaced with the name of your top-level resource (_e.g._, "VirtualMachine", "VirtualNetwork", "SqlServer"), and the string "ChildResource" would be replaced with the name of your child resource (_e.g._, "VirtualMachineExtension", "VirtualNetworkPeering", "SqlDatabase")
 
+- [Piping in PowerShell](#piping-in-powershell)
+  - [Understanding Piping](#understanding-piping)
+- [Piping in Azure PowerShell](#piping-in-azure-powershell)
+  - [Using the `-InputObject` Parameter](#using-the--inputobject-parameter)
+    - [Short explanation](#short-explanation)
+    - [Long explanation](#long-explanation)
+  - [Using the `-ResourceId` Parameter](#using-the--resourceid-parameter)
+    - [Short explanation](#short-explanation-1)
+    - [Long explanation](#long-explanation-1)
+  - [Full examples](#full-examples)
+
 ## Piping in PowerShell
 
 ### Understanding Piping

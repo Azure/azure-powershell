@@ -80,7 +80,7 @@ This command gets only the Enhanced protection policies in RS vault, and then st
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM  -IsArchiveSmartTieringEnabled $true
 ```
 
-This command gets only the policies in RS vault for which archive smart tiering is enabled. To fetch the policies for which smart tiering is disabled, set IsArchiveSmartTieringEnabled parameter to $false. To fetch all the polcies, skip this parameter.
+This command gets only the policies in RS vault for which archive smart tiering is enabled. To fetch the policies for which smart tiering is disabled, set IsArchiveSmartTieringEnabled parameter to $false. To fetch all the policies, skip this parameter.
 
 ## PARAMETERS
 

@@ -1,0 +1,343 @@
+{
+  "AzVMwareLicense+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-12-31T23:59:59Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "dc802d72-f6d9-4a36-8c0f-91dcc5e7dc49" ],
+        "CommandName": [ "New-AzVMwareLicense" ],
+        "FullCommandName": [ "New-AzVMwareLicense_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-06-01T00:00:00Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "dc802d72-f6d9-4a36-8c0f-91dcc5e7dc49" ],
+        "CommandName": [ "New-AzVMwareLicense" ],
+        "FullCommandName": [ "New-AzVMwareLicense_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-06-01T00:00:00Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "9be5df2c-1b0d-40ba-935d-e39386c580b6" ],
+        "CommandName": [ "Get-AzVMwareLicense" ],
+        "FullCommandName": [ "Get-AzVMwareLicense_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-06-01T00:00:00Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Get VCF License+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/getVcfLicense?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/getVcfLicense?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "123f69c2-11c7-4717-8b86-fbae416f0bfe" ],
+        "CommandName": [ "Get-AzVMwarePrivateCloudVcfLicense" ],
+        "FullCommandName": [ "Get-AzVMwarePrivateCloudVcfLicense_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "196" ]
+      },
+      "Content": "{\"kind\":\"vcf5\",\"provisioningState\":\"Succeeded\",\"licenseKey\":\"12345-12345-12345-12345-12345\",\"cores\":16,\"endDate\":\"2025-12-31T23:59:59Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Get Property+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall/getProperties?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall/getProperties?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "ebf01801-2c86-41ce-81b4-6faefc3ef1f2" ],
+        "CommandName": [ "Get-AzVMwareLicenseProperty" ],
+        "FullCommandName": [ "Get-AzVMwareLicenseProperty_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "206" ]
+      },
+      "Content": "{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"licenseKey\":\"12345-12345-12345-12345-12345\",\"cores\":16,\"endDate\":\"2025-12-31T23:59:59Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "9d27fe34-3657-43bf-8038-e01643843b18" ],
+        "CommandName": [ "Update-AzVMwareLicense" ],
+        "FullCommandName": [ "Update-AzVMwareLicense_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-06-01T00:00:00Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"kind\": \"VmwareFirewall\",\r\n    \"cores\": 16,\r\n    \"endDate\": \"2025-06-01T00:00:00.0000000Z\",\r\n    \"broadcomSiteId\": \"123456\",\r\n    \"broadcomContractNumber\": \"123456\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "198" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:57:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-12-31T23:59:59Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "9d27fe34-3657-43bf-8038-e01643843b18" ],
+        "CommandName": [ "Update-AzVMwareLicense" ],
+        "FullCommandName": [ "Update-AzVMwareLicense_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-06-01T00:00:00Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "9d27fe34-3657-43bf-8038-e01643843b18" ],
+        "CommandName": [ "Update-AzVMwareLicense" ],
+        "FullCommandName": [ "Update-AzVMwareLicense_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "396" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/licenses/VmwareFirewall\",\"name\":\"VmwareFirewall\",\"type\":\"Microsoft.AVS/privateClouds/licenses\",\"properties\":{\"kind\":\"VmwareFirewall\",\"provisioningState\":\"Succeeded\",\"cores\":16,\"endDate\":\"2025-06-01T00:00:00Z\",\"broadcomSiteId\":\"123456\",\"broadcomContractNumber\":\"123456\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareLicense+[NoContext]+Remove+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup1dnmz6/providers/Microsoft.AVS/privateClouds/azps_test_cloudwrok/licenses/VmwareFirewall?api-version=2025-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "732a4f08-ea30-4d03-b6be-2c9f1de0c8b5" ],
+        "CommandName": [ "Remove-AzVMwareLicense" ],
+        "FullCommandName": [ "Remove-AzVMwareLicense_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.4", "Az.VMware/0.8.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Wed, 21 Jan 2026 22:58:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

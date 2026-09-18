@@ -14,8 +14,9 @@ Deploys a network manager commit.
 
 ```
 Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String> -TargetLocation <String[]>
- [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +31,7 @@ $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGrou
 Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity"
 ```
 
-This example is used to commit connecitivity confguration in East US and West US regions.
+This example is used to commit connectivity configuration in East US and West US regions.
 
 ### Example 2
 ```powershell
@@ -38,18 +39,66 @@ $regions = @( "westus")
 Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity"
 ```
 
-This example is used to uncommit all connecitivity confgurations in West US region.
+This example is used to uncommit all connectivity configurations in West US region.
 
 ### Example 3
 ```powershell
 $regions = @( "westus")
 $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig")
-Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" -ConfigurationId $configids
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "SecurityAdmin" -ConfigurationId $configids
 ```
 
 This example is used to commit a security admin config in West US region.
 
+### Example 3
+```powershell
+$regions = @( "westus")
+$configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/routingConfigurations/psRoutingConfig")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Routing" -ConfigurationId $configids
+```
+
+This example is used to commit a routing config in West US region.
+
+### Example 3
+```powershell
+$regions = @( "westus")
+$configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityUserConfigurations/psSecurityUserConfig")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "SecurityUser" -ConfigurationId $configids
+```
+
+This example is used to commit a security user config in West US region.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CommitType
 Commit Type.
@@ -58,7 +107,7 @@ Commit Type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SecurityAdmin, Connectivity
+Accepted values: SecurityAdmin, Connectivity, Routing, SecurityUser
 
 Required: True
 Position: Named

@@ -13,7 +13,8 @@ Lists all of the available skus of the Microsoft.AppPlatform provider.
 ## SYNTAX
 
 ```
-Get-AzSpringCloudSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,7 +203,8 @@ Lists all of the available skus of the Microsoft.AppPlatform provider.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -239,11 +241,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IResourceSku
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IResourceSku
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

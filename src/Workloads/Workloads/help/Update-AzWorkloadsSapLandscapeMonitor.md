@@ -18,16 +18,30 @@ Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <
  [-SubscriptionId <String>] [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
  [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity>
+Update-AzWorkloadsSapLandscapeMonitor -InputObject <IMonitorsIdentity>
  [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
  [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,11 +113,10 @@ Accept wildcard characters: False
 
 ### -GroupingLandscape
 Gets or sets the list of landscape to SID mappings.
-To construct, see NOTES section for GROUPINGLANDSCAPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorSidMapping[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -115,11 +128,10 @@ Accept wildcard characters: False
 
 ### -GroupingSapApplication
 Gets or sets the list of Sap Applications to SID mappings.
-To construct, see NOTES section for GROUPINGSAPAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorSidMapping[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,10 +143,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -145,12 +156,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
-Name of the SAP monitor resource.
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -160,15 +171,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -JsonString
+Json string supplied to the Update operation
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
+Name of the SAP monitor resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +207,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -196,7 +222,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -208,11 +234,10 @@ Accept wildcard characters: False
 
 ### -TopMetricsThreshold
 Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-To construct, see NOTES section for TOPMETRICSTHRESHOLD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitorMetricThresholds[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorMetricThresholds[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -258,11 +283,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor
 
 ## NOTES
 

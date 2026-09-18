@@ -11,4 +11,3 @@ ContentPath
 ```
 
 Create an in-memory object for PurgeParameters
-

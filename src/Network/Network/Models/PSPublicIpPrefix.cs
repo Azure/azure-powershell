@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public bool? UpgradedToV2 { get; set; }
+
         public ushort PrefixLength { get; set; }
 
         public string IPPrefix { get; set; }
@@ -60,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string SkuText
         {
-            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return Sku != null ? JsonConvert.SerializeObject(Sku.Name, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }) : null; }
         }
 
         [JsonIgnore]

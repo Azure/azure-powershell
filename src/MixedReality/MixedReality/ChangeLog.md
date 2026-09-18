@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Added deprecated announcement.
+
+## Version 0.2.2
+* Upgraded nuget package to signed package.
+
 ## Version 0.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

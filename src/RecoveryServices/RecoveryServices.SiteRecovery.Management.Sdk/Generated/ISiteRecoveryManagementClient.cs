@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     using Models;
 
     /// <summary>
-    /// 
+    /// Open API for RecoveryServicesSiteRecovery
     /// </summary>
     public partial interface ISiteRecoveryManagementClient :  System.IDisposable
     {
@@ -42,21 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
 
         /// <summary>
-        /// The subscription Id.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
-
-
-        /// <summary>
-        /// The name of the resource group where the recovery services vault is present.
-        /// </summary>
-        string ResourceGroupName { get; set;}
-
-
-        /// <summary>
-        /// The name of the recovery services vault.
-        /// </summary>
-        string ResourceName { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -67,15 +55,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -94,11 +82,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationAppliancesOperations
         /// </summary>
         IReplicationAppliancesOperations ReplicationAppliances { get; }
-
-        /// <summary>
-        /// Gets the IReplicationEligibilityResultsOperations
-        /// </summary>
-        IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; }
 
         /// <summary>
         /// Gets the IReplicationEventsOperations
@@ -161,6 +144,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         ITargetComputeSizesOperations TargetComputeSizes { get; }
 
         /// <summary>
+        /// Gets the IReplicationProtectionClustersOperations
+        /// </summary>
+        IReplicationProtectionClustersOperations ReplicationProtectionClusters { get; }
+
+        /// <summary>
+        /// Gets the IClusterRecoveryPointsOperations
+        /// </summary>
+        IClusterRecoveryPointsOperations ClusterRecoveryPoints { get; }
+
+        /// <summary>
+        /// Gets the IClusterRecoveryPointOperations
+        /// </summary>
+        IClusterRecoveryPointOperations ClusterRecoveryPoint { get; }
+
+        /// <summary>
         /// Gets the IReplicationProtectionContainerMappingsOperations
         /// </summary>
         IReplicationProtectionContainerMappingsOperations ReplicationProtectionContainerMappings { get; }
@@ -219,6 +217,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationVaultSettingOperations
         /// </summary>
         IReplicationVaultSettingOperations ReplicationVaultSetting { get; }
+
+        /// <summary>
+        /// Gets the IReplicationEligibilityResultsOperations
+        /// </summary>
+        IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; }
 
     }
 }

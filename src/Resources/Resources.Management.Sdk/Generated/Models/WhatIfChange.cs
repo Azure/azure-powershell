@@ -27,6 +27,16 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <param name="resourceId">Resource ID
         /// </param>
 
+        /// <param name="deploymentId">The resource id of the Deployment responsible for this change.
+        /// </param>
+
+        /// <param name="symbolicName">The symbolic name of the resource responsible for this change.
+        /// </param>
+
+        /// <param name="identifiers">A subset of properties that uniquely identify a Bicep extensible resource
+        /// because it lacks a resource id like an Azure resource has.
+        /// </param>
+
         /// <param name="changeType">Type of change that will be made to the resource when the deployment is
         /// executed.
         /// Possible values include: &#39;Create&#39;, &#39;Delete&#39;, &#39;Ignore&#39;, &#39;Deploy&#39;,
@@ -43,10 +53,13 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="delta">The predicted changes to resource properties.
         /// </param>
-        public WhatIfChange(string resourceId, ChangeType changeType, string unsupportedReason = default(string), object before = default(object), object after = default(object), System.Collections.Generic.IList<WhatIfPropertyChange> delta = default(System.Collections.Generic.IList<WhatIfPropertyChange>))
+        public WhatIfChange(string resourceId, ChangeType changeType, string deploymentId = default(string), string symbolicName = default(string), object identifiers = default(object), string unsupportedReason = default(string), object before = default(object), object after = default(object), System.Collections.Generic.IList<WhatIfPropertyChange> delta = default(System.Collections.Generic.IList<WhatIfPropertyChange>))
 
         {
             this.ResourceId = resourceId;
+            this.DeploymentId = deploymentId;
+            this.SymbolicName = symbolicName;
+            this.Identifiers = identifiers;
             this.ChangeType = changeType;
             this.UnsupportedReason = unsupportedReason;
             this.Before = before;
@@ -66,6 +79,26 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceId")]
         public string ResourceId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the Deployment responsible for this change.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deploymentId")]
+        public string DeploymentId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the symbolic name of the resource responsible for this change.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "symbolicName")]
+        public string SymbolicName {get; set; }
+
+        /// <summary>
+        /// Gets or sets a subset of properties that uniquely identify a Bicep
+        /// extensible resource because it lacks a resource id like an Azure resource
+        /// has.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identifiers")]
+        public object Identifiers {get; set; }
 
         /// <summary>
         /// Gets or sets type of change that will be made to the resource when the
@@ -112,6 +145,9 @@ namespace Microsoft.Azure.Management.Resources.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ResourceId");
             }
+
+
+
 
 
 

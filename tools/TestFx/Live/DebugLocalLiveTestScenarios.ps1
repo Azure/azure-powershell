@@ -40,7 +40,7 @@ function InvokeLocalLiveTestScenarios {
     )
 
     $srcDir = Join-Path -Path $RepoLocation -ChildPath "src"
-    $liveScenarios = Get-ChildItem -Path $srcDir -Recurse -Directory -Filter "LiveTests" | Get-ChildItem -Filter "TestLiveScenarios.ps1" -File | Select-Object -ExpandProperty FullName
+    $liveScenarios = Get-ChildItem -Path $srcDir -Recurse -Directory -Filter "LiveTests" | Get-ChildItem -Recurse -Filter "TestLiveScenarios.ps1" -File | Select-Object -ExpandProperty FullName
     $liveScenarios | ForEach-Object {
         $moduleName = [regex]::match($_, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
         if (!$PSBoundParameters.ContainsKey("TargetModule") -or $moduleName -in $TargetModule) {

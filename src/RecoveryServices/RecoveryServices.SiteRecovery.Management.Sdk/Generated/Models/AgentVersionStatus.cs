@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AgentVersionStatus
     {
+        /// <summary>
+        /// Supported
+        /// </summary>
         public const string Supported = "Supported";
+        /// <summary>
+        /// NotSupported
+        /// </summary>
         public const string NotSupported = "NotSupported";
+        /// <summary>
+        /// Deprecated
+        /// </summary>
         public const string Deprecated = "Deprecated";
+        /// <summary>
+        /// UpdateRequired
+        /// </summary>
         public const string UpdateRequired = "UpdateRequired";
+        /// <summary>
+        /// SecurityUpdateRequired
+        /// </summary>
         public const string SecurityUpdateRequired = "SecurityUpdateRequired";
     }
 }

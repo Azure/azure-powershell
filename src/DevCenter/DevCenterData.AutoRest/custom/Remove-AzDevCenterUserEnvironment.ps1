@@ -20,35 +20,49 @@ Deletes an environment and all its associated resources
 .Description
 Deletes an environment and all its associated resources
 .Example
-{{ Add code here }}
+Remove-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId "me"  -Name myEnv
 .Example
-{{ Add code here }}
+Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
+.Example
+$envInput = @{"UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
+Remove-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput
+.Example
+$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
+Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [Name <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserenvironment
 #>
 function Remove-AzDevCenterUserEnvironment {
-  [OutputType([System.Boolean])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
   [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'Delete', Mandatory)]
@@ -65,7 +79,7 @@ function Remove-AzDevCenterUserEnvironment {
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
-
+  
     [Parameter(ParameterSetName = 'Delete', Mandatory)]
     [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
     [Alias('EnvironmentName')]
@@ -73,14 +87,14 @@ function Remove-AzDevCenterUserEnvironment {
     [System.String]
     # The name of the environment.
     ${Name},
-
+  
     [Parameter(ParameterSetName = 'Delete', Mandatory)]
     [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
-
+  
     [Parameter(ParameterSetName = 'Delete')]
     [Parameter(ParameterSetName = 'DeleteByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -89,7 +103,7 @@ function Remove-AzDevCenterUserEnvironment {
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
-
+  
     [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'DeleteViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -97,6 +111,13 @@ function Remove-AzDevCenterUserEnvironment {
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # The query option to force environment deletion even if the environment definition does not exist.
+    # This is a best-effort delete, and anything custom that forces resource creation beyond the associated resource group may not be deleted.
+    ${Force},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

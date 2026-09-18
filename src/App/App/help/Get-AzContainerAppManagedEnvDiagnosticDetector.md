@@ -15,13 +15,15 @@ Get the diagnostics data for a Managed Environment used to host container apps.
 ### List (Default)
 ```
 Get-AzContainerAppManagedEnvDiagnosticDetector -EnvName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzContainerAppManagedEnvDiagnosticDetector -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityManagedEnvironment
@@ -90,7 +92,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -106,7 +107,6 @@ Accept wildcard characters: False
 
 ### -ManagedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

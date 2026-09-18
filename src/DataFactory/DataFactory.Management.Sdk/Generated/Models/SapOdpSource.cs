@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SapOdpSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -64,9 +67,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="projection">Specifies the columns to be selected from source data. Type: array of
         /// objects(projection) (or Expression with resultType array of objects).
         /// </param>
-        public SapOdpSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object extractionMode = default(object), object subscriberProcess = default(object), object selection = default(object), object projection = default(object))
+        public SapOdpSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object extractionMode = default(object), object subscriberProcess = default(object), object selection = default(object), object projection = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.ExtractionMode = extractionMode;
             this.SubscriberProcess = subscriberProcess;

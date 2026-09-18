@@ -1,12 +1,9 @@
 ﻿using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Storage.RetryPolicies;
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading.Tasks;
 using Azure.Storage.Files.Shares;
-using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Azure.Storage.Files.Shares.Models;
 
@@ -33,16 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(
             Position = 0,
-            HelpMessage = "Target file instance", Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.FileParameterSetName)]
-        [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
-
-        [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.FileParameterSetName,
@@ -79,11 +67,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (this.ShareFileClient != null)
             {
+                CheckContextForObjectInput((AzureStorageContext)this.Context);
                 file = this.ShareFileClient;
-            }
-            else if (null != this.File)
-            {
-                file = AzureStorageFile.GetTrack2FileClient(this.File);
             }
             else
             {

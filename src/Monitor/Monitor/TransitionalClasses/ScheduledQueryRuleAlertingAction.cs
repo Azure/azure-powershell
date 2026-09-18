@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// <summary>
         /// Initializes a new instance of the ScheduledQueryRuleAlertingAction class.
         /// </summary>
-        /// <param name="alertingAction">Specifiy action need to be taken when rule type is Alert</param>
+        /// <param name="alertingAction">Specify action need to be taken when rule type is Alert</param>
         public ScheduledQueryRuleAlertingAction(Monitor.Models.AlertingAction alertingAction) :
             base(
                 severity: alertingAction.Severity,

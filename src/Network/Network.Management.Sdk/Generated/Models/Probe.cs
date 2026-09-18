@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A load balancer probe.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Probe : SubResource
+    public partial class Probe : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the Probe class.
@@ -28,18 +28,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of probes used by
-        /// the load balancer. This name can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="type">Type of the resource.
-        /// </param>
-
         /// <param name="provisioningState">The provisioning state of the probe resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="loadBalancingRules">The load balancer rules that use this probe.
         /// </param>
@@ -82,13 +82,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// a protocol is set to http. Otherwise, it is not allowed. There is no
         /// default value.
         /// </param>
-        public Probe(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string protocol = default(string), int? port = default(int?), int? intervalInSeconds = default(int?), string noHealthyBackendsBehavior = default(string), int? numberOfProbes = default(int?), int? probeThreshold = default(int?), string requestPath = default(string))
+        public Probe(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string protocol = default(string), int? port = default(int?), int? intervalInSeconds = default(int?), string noHealthyBackendsBehavior = default(string), int? numberOfProbes = default(int?), int? probeThreshold = default(int?), string requestPath = default(string))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.LoadBalancingRules = loadBalancingRules;
             this.Protocol = protocol;
@@ -108,14 +106,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of
-        /// probes used by the load balancer. This name can be used to access the
-        /// resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
@@ -123,13 +113,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the probe resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the probe resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

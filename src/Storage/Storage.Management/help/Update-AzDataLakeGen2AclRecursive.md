@@ -25,7 +25,7 @@ The input ACL will merge the the original ACL: If ACL entry with same AccessCont
 
 ## EXAMPLES
 
-### Example 1: Update ACL recursively on a root directiry of filesystem
+### Example 1: Update ACL recursively on a root directory of filesystem
 ```powershell
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -77,7 +77,7 @@ TotalFailureCount               : 0
 ContinuationToken               :
 ```
 
-This command first updateds ACL recursively to a directory and failed, then resume with ContinuationToken after user fix the failed file.
+This command first updates ACL recursively to a directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Update ACL recursively chunk by chunk
 <!-- Skip: Output cannot be splitted from code -->
@@ -118,7 +118,7 @@ echo "ContinuationToken: `t`t`t`t`t$($token)"
 echo "FailedEntries:"$($FailedEntries | ft)
 ```
 
-This script will update ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 5000 in this script.
+This script will update ACL recursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 5000 in this script.
 
 ### Example 4: Update ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
@@ -153,7 +153,7 @@ foreach ($path in $result.FailedEntries.Name)
         }
 ```
 
-This command first updateds ACL recursively to a directory with ContinueOnFailure, and some items failed, then resume the failed items one by one.
+This command first updates ACL recursively to a directory with ContinueOnFailure, and some items failed, then resume the failed items one by one.
 
 ## PARAMETERS
 
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContinueOnFailure
-Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
+Set this parameter to ignore failures and continue processing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

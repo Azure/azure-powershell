@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVirtualNetworkGatewaySupportedVpnDevice
 
 ## SYNOPSIS
-This commandlet returns a list of supported VPN device brands, models, and firmware versions.
+This cmdlet returns a list of supported VPN device brands, models, and firmware versions.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzVirtualNetworkGatewaySupportedVpnDevice -Name <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-This commandlet returns a list of supported VPN device brands, models, and firmware versions.
+This cmdlet returns a list of supported VPN device brands, models, and firmware versions.
 
 ## EXAMPLES
 

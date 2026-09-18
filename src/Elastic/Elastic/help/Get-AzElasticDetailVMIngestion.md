@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticDetailVMIngestion
 
 ## SYNOPSIS
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticDetailVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## EXAMPLES
 
@@ -75,7 +75,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -105,7 +104,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Elastic resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -120,9 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -176,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMIngestionDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse
 
 ## NOTES
 

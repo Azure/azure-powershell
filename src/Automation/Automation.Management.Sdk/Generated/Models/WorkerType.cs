@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class WorkerType
     {
+        /// <summary>
+        /// HybridV1
+        /// </summary>
         public const string HybridV1 = "HybridV1";
+        /// <summary>
+        /// HybridV2
+        /// </summary>
         public const string HybridV2 = "HybridV2";
     }
 }

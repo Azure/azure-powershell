@@ -52,6 +52,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = upParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+#pragma warning disable CS0618 // SharedTokenCacheCredentialOptions is obsolete; TODO: migrate to replacement API
             UsernamePasswordCredential passwordCredential;
 
             var credentialOptions = new UsernamePasswordCredentialOptions()
@@ -63,6 +64,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             if (upParameters.Password != null)
             {
                 passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);
+#pragma warning restore CS0618
+
+                CheckTokenCachePersistanceEnabled = () =>
+                {
+                    return credentialOptions.TokenCachePersistenceOptions != null && !(credentialOptions.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+                };
+                CollectTelemetry(passwordCredential, credentialOptions);
+
                 TracingAdapter.Information($"{DateTime.Now:T} - [UsernamePasswordAuthenticator] Calling UsernamePasswordCredential.AuthenticateAsync - TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{authority}', UserId:'{upParameters.UserId}'");
                 var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
                 return MsalAccessToken.GetAccessTokenAsync(

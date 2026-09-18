@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridNamespace
 
 ## SYNOPSIS
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzEventGridNamespace -InputObject <IEventGridIdentity> -Location <String>
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 
 ## EXAMPLES
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -418,7 +418,7 @@ Accept wildcard characters: False
 ### -SkuCapacity
 Specifies the number of Throughput Units that defines the capacity for the namespace.
 The property default value is1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace.
-Min capacity is 1 andmax allowed capacity is 20.
+Min capacity is 1 and max allowed capacity is 20.
 
 ```yaml
 Type: System.Int32

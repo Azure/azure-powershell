@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceusernamepasswordauthtypeworkspaceconnectionpropertiesobject
 schema: 2.0.0
 ---
 
@@ -14,10 +14,10 @@ Create an in-memory object for UsernamePasswordAuthTypeWorkspaceConnectionProper
 
 ```
 New-AzMLWorkspaceUsernamePasswordAuthTypeWorkspaceConnectionPropertiesObject [-CredentialsPassword <String>]
- [-CredentialsSecurityToken <String>] [-CredentialsUsername <String>] [-Category <ConnectionCategory>]
+ [-CredentialsSecurityToken <String>] [-CredentialsUsername <String>] [-Category <String>]
  [-ExpiryTime <DateTime>] [-IsSharedToAll <Boolean>] [-Metadata <IWorkspaceConnectionPropertiesV2Metadata>]
- [-SharedUserList <String[]>] [-Target <String>] [-Value <String>] [-ValueFormat <ValueFormat>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SharedUserList <String[]>] [-Target <String>] [-Value <String>] [-ValueFormat <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ This command creates an in-memory object for UsernamePasswordAuthTypeWorkspaceCo
 Category of the connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,27 +122,11 @@ Accept wildcard characters: False
 
 ### -Metadata
 Store user metadata for this connection.
-To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2Metadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2Metadata
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -198,7 +182,7 @@ Accept wildcard characters: False
 format for the workspace connection value.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UsernamePasswordAuthTypeWorkspaceConnectionProperties
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.UsernamePasswordAuthTypeWorkspaceConnectionProperties
 
 ## NOTES
 

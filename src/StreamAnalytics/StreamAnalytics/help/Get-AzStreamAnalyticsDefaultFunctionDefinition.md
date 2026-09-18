@@ -198,13 +198,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionRetrieveDefaultDefinitionParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunctionRetrieveDefaultDefinitionParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 
 ## NOTES
 

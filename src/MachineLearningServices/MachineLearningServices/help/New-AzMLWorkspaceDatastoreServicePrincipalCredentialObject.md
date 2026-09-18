@@ -14,7 +14,7 @@ Create an in-memory object for ServicePrincipalDatastoreCredentials.
 
 ```
 New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject -ClientId <String> -TenantId <String>
- -ClientSecret <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [-ProgressAction <ActionPreference>]
+ -ClientSecret <String> [-AuthorityUrl <String>] [-ResourceUrl <String>]
  [<CommonParameters>]
 ```
 
@@ -77,21 +77,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceUrl
 Resource the service principal has access to.
 
@@ -129,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ServicePrincipalDatastoreCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ServicePrincipalDatastoreCredentials
 
 ## NOTES
 

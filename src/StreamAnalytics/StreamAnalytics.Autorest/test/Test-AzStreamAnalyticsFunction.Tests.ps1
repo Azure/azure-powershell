@@ -13,6 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Test-AzStreamAnalyticsFunction' {
     It 'TestExpanded' {
+      # Failed to create function, use old record content.
       $result = Test-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.mlsfunction
       $result.Status | Should -Be "TestSucceeded"
     }

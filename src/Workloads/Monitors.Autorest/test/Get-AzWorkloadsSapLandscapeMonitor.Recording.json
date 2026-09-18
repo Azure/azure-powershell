@@ -1,0 +1,94 @@
+{
+  "Get-AzWorkloadsSapLandscapeMonitor+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "515c9c4c-978d-4fe5-b19f-113f918d1ab0" ],
+        "CommandName": [ "Get-AzWorkloadsSapLandscapeMonitor" ],
+        "FullCommandName": [ "Get-AzWorkloadsSapLandscapeMonitor_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"45027d85-0000-0100-0000-68e7656c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/d07279e0-3cc9-447b-9001-ab280e60dfda" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6de3b6a9-2fee-41b6-9314-a6e47c7e2c80" ],
+        "x-ms-correlation-request-id": [ "1350044e-0371-4b85-b570-838b75ff8aef" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T073442Z:1350044e-0371-4b85-b570-838b75ff8aef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D28031DB28E74C4FB0A359A96F8F7190 Ref B: PNQ231110907042 Ref C: 2025-10-09T07:34:42Z" ],
+        "Date": [ "Thu, 09 Oct 2025 07:34:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "581" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T07:34:03.6880234Z\",\"lastModifiedBy\":\"tpounjula@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T07:34:03.6880234Z\"},\"properties\":{\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"CHA\"]}]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWorkloadsSapLandscapeMonitor+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "9cf9c009-df93-4239-8d64-81e6de0ebbec" ],
+        "CommandName": [ "Get-AzWorkloadsSapLandscapeMonitor" ],
+        "FullCommandName": [ "Get-AzWorkloadsSapLandscapeMonitor_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"45027d85-0000-0100-0000-68e7656c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/5ed7881b-b40b-49a6-bd9c-b0b5de961052" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "169f2a12-6297-40f9-b269-88aeb71fe2bd" ],
+        "x-ms-correlation-request-id": [ "d8059322-f94f-41b0-8d06-54eebf45a817" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T073443Z:d8059322-f94f-41b0-8d06-54eebf45a817" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 93C6831E615B4809B037E48B091F73FB Ref B: PNQ231110907042 Ref C: 2025-10-09T07:34:42Z" ],
+        "Date": [ "Thu, 09 Oct 2025 07:34:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "581" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T07:34:03.6880234Z\",\"lastModifiedBy\":\"tpounjula@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T07:34:03.6880234Z\"},\"properties\":{\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"CHA\"]}]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

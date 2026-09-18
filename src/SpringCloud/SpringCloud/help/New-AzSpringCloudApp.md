@@ -8,22 +8,22 @@ schema: 2.0.0
 # New-AzSpringCloudApp
 
 ## SYNOPSIS
-Create a new App or update an exiting App.
+create a new App or update an exiting App.
 
 ## SYNTAX
 
 ```
 New-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-Fqdn <String>] [-HttpsOnly]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ManagedIdentityType>]
+ [-SubscriptionId <String>] [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-EnableSystemAssignedIdentity]
+ [-Fqdn <String>] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
  [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
  [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
- [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new App or update an exiting App.
+create a new App or update an exiting App.
 
 ## EXAMPLES
 
@@ -73,7 +73,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -89,6 +90,21 @@ Accept wildcard characters: False
 
 ### -EnableEndToEndTl
 Indicate if end to end TLS is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -162,27 +178,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of the managed identity
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LoadedCertificate
 Collection of loaded certificates
-To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -398,19 +398,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LOADEDCERTIFICATE <ILoadedCertificate[]>`: Collection of loaded certificates
-  - `ResourceId <String>`: Resource Id of loaded certificate
-  - `[LoadTrustStore <Boolean?>]`: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
 
 ## RELATED LINKS

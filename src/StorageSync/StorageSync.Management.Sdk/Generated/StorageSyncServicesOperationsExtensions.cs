@@ -46,40 +46,61 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Create a new StorageSyncService.
+        /// Get a StorageSyncService list by subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        public static StorageSyncService Create(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, StorageSyncServiceCreateParameters parameters)
+        public static Microsoft.Rest.Azure.IPage<StorageSyncService> ListBySubscription(this IStorageSyncServicesOperations operations)
         {
-                return ((IStorageSyncServicesOperations)operations).CreateAsync(resourceGroupName, storageSyncServiceName, parameters).GetAwaiter().GetResult();
+                return ((IStorageSyncServicesOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create a new StorageSyncService.
+        /// Get a StorageSyncService list by subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageSyncService> CreateAsync(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, StorageSyncServiceCreateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageSyncService>> ListBySubscriptionAsync(this IStorageSyncServicesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get a StorageSyncService list by Resource group name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StorageSyncService> ListByResourceGroup(this IStorageSyncServicesOperations operations, string resourceGroupName)
+        {
+                return ((IStorageSyncServicesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a StorageSyncService list by Resource group name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageSyncService>> ListByResourceGroupAsync(this IStorageSyncServicesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -119,6 +140,45 @@ namespace Microsoft.Azure.Management.StorageSync
         public static async System.Threading.Tasks.Task<StorageSyncService> GetAsync(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create a new StorageSyncService.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        public static StorageSyncService Create(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, StorageSyncServiceCreateParameters parameters)
+        {
+                return ((IStorageSyncServicesOperations)operations).CreateAsync(resourceGroupName, storageSyncServiceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create a new StorageSyncService.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StorageSyncService> CreateAsync(this IStorageSyncServicesOperations operations, string resourceGroupName, string storageSyncServiceName, StorageSyncServiceCreateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -199,66 +259,6 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Get a StorageSyncService list by Resource group name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<StorageSyncService> ListByResourceGroup(this IStorageSyncServicesOperations operations, string resourceGroupName)
-        {
-                return ((IStorageSyncServicesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a StorageSyncService list by Resource group name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<StorageSyncService>> ListByResourceGroupAsync(this IStorageSyncServicesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Get a StorageSyncService list by subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<StorageSyncService> ListBySubscription(this IStorageSyncServicesOperations operations)
-        {
-                return ((IStorageSyncServicesOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a StorageSyncService list by subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<StorageSyncService>> ListBySubscriptionAsync(this IStorageSyncServicesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
             }
         }
         /// <summary>
@@ -376,6 +376,72 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Get a StorageSyncService list by subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StorageSyncService> ListBySubscriptionNext(this IStorageSyncServicesOperations operations, string nextPageLink)
+        {
+                return ((IStorageSyncServicesOperations)operations).ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a StorageSyncService list by subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageSyncService>> ListBySubscriptionNextAsync(this IStorageSyncServicesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get a StorageSyncService list by Resource group name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StorageSyncService> ListByResourceGroupNext(this IStorageSyncServicesOperations operations, string nextPageLink)
+        {
+                return ((IStorageSyncServicesOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a StorageSyncService list by Resource group name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageSyncService>> ListByResourceGroupNextAsync(this IStorageSyncServicesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

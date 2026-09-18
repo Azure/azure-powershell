@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAadAuthenticationParameters AadAuthenticationParameters { get; set; }
 
         [Ps1Xml(Label = "P2SVpnGateway ids", Target = ViewControl.Table)]
-        public List<PSResourceId> P2SVpnGateways { get; set; }
+        public List<PSP2SVpnGateway> P2SVpnGateways { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }

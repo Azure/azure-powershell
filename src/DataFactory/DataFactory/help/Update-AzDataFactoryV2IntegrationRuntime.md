@@ -58,7 +58,7 @@ ScheduledUpdateDate       :
 UpdateDelayOffset         : 
 LocalTimeZoneOffset       : 
 AutoUpdate                : Off
-ServiceUrls               : {wu.frontend.int.clouddatahub-int.net, *.servicebus.windows.net}
+ServiceUrls               : {*.servicebus.windows.net}
 State                     : Online
 Id                        : /subscriptions/41fcbc45-c594-4152-a8f1-fcbcd6452aea/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
 Type                      : SelfHosted
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -242,6 +242,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2IntegrationRuntime]()
-[Get-AzDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime](Set-AzDataFactoryV2IntegrationRuntime.md)
+[Get-AzDataFactoryV2IntegrationRuntime](Get-AzDataFactoryV2IntegrationRuntime.md)
 

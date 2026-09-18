@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common
     using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
 
     /// <summary>
-    /// Internal helpers and extensaions for EventData manipulation
+    /// Internal helpers and extensions for EventData manipulation
     /// </summary>
     internal static class EventHelper
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common
         /// Create a tracing event containing a string message
         /// </summary>
         /// <param name="message">The string message to include in event data</param>
-        /// <returns>Valid EventData containign the message</returns>
+        /// <returns>Valid EventData containing the message</returns>
         public static EventData CreateLogEvent(string message)
         {
             return new EventData
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common
         /// Create a new debug message event
         /// </summary>
         /// <param name="message">The message</param>
-        /// <returns>An event cotnainng the debug message</returns>
+        /// <returns>An event containing the debug message</returns>
         public static EventData CreateDebugEvent(string message)
         {
             return new EventData
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Common
         /// Create a new debug message event
         /// </summary>
         /// <param name="message">The message</param>
-        /// <returns>An event cotnainng the debug message</returns>
+        /// <returns>An event containing the debug message</returns>
         public static EventData CreateWarningEvent(string message)
         {
             return new EventData

@@ -36,9 +36,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Action of the Rule.")]
-        [ValidateSet("AnomalyScoring", "Allow", "Block", "Log", IgnoreCase = true)]
+        [ValidateSet("AnomalyScoring", "Allow", "Block", "Log", "CAPTCHA", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Action { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sensitivity of the Rule.")]
+        [ValidateSet("Low", "Medium", "High", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string Sensitivity { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,7 +58,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 RuleId = this.RuleId,
                 State = string.IsNullOrEmpty(State) ? "Disabled" : this.State,
-                Action = this.Action
+                Action = this.Action,
+                Sensitivity = this.Sensitivity
             };
         }
     }

@@ -1,0 +1,335 @@
+---
+external help file:
+Module Name: Az.DataProtection
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionrestoreconfigurationclientobject
+schema: 2.0.0
+---
+
+# New-AzDataProtectionRestoreConfigurationClientObject
+
+## SYNOPSIS
+Creates new restore configuration object
+
+## SYNTAX
+
+```
+New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <DatasourceTypes>
+ [-ConflictPolicy <String>] [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>]
+ [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
+ [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
+ [-PersistentVolumeRestoreMode <String>] [-ResourceModifierReference <NamespacedNameResource>]
+ [-RestoreHookReference <NamespacedNameResource[]>] [-StagingResourceGroupId <String>]
+ [-StagingStorageAccountId <String>] [-ResourceIdentifier <String[]>] [-ResourceNameOverride <Hashtable>]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+Creates new restore configuration object
+
+## EXAMPLES
+
+### Example 1: Create a RestoreConfiguration for restoring with AzureKubernetesService
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -NamespaceMapping  @{"sourcenamespace1"="targetnamespace1";"sourcenamespace2"="targetnamespace2"} -ExcludedNamespace "excludeNS1","excludeNS2" -RestoreHookReference @(@{name='restorehookname';namespace='default'},@{name='restorehookname1';namespace='hrweb'})
+```
+
+```output
+ObjectType                       ConflictPolicy ExcludedNamespace        ExcludedResourceType IncludeClusterScopeResource IncludedNamespace IncludedResourceType LabelSelector PersistentVolumeRestoreMode
+----------                       -------------- -----------------        -------------------- --------------------------- ----------------- -------------------- ------------- ---------------------------
+KubernetesClusterRestoreCriteria Skip           {excludeNS1, excludeNS2}                      True                                                                             RestoreWithVolumeData
+```
+
+This command can be used to create a restore configuration client object used for Kubernetes cluster restore.
+RestoreHookReferences is a list of references to RestoreHooks that should be executed during restore.
+
+### Example 2: Create a RestoreConfiguration for restoring with AzureElasticSAN
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1")
+```
+
+```output
+ObjectType                         ResourceSelector
+----------                         ----------------
+GenericRestoreDatasourceCriteria   Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria
+```
+
+This command creates a restore configuration client object for restoring an Azure Elastic SAN volume to an alternate volume group.
+The service currently supports restoring exactly one volume per restore request, so ResourceIdentifier must contain a single source volume name.
+
+### Example 3: Create a RestoreConfiguration for AzureElasticSAN with a target volume name override
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
+```
+
+```output
+ObjectType                         ResourceSelector
+----------                         ----------------
+GenericRestoreDatasourceCriteria   Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria
+```
+
+This command creates a restore configuration client object that restores the source volume into a renamed target volume using ResourceNameOverride.
+
+## PARAMETERS
+
+### -ConflictPolicy
+Conflict policy for restore.
+Allowed values are Skip, Patch.
+Default value is Skip
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatasourceType
+Datasource Type
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedNamespace
+List of namespaces to be excluded for restore
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExcludedResourceType
+List of resource types to be excluded for restore
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeClusterScopeResource
+Boolean parameter to decide whether cluster scope resources are included for restore.
+By default this is taken as true.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludedNamespace
+List of namespaces to be included for restore
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludedResourceType
+List of resource types to be included for restore
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LabelSelector
+List of labels for internal filtering for restore
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceMapping
+Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.KubernetesClusterRestoreCriteriaNamespaceMappings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PersistentVolumeRestoreMode
+Restore mode for persistent volumes.
+Allowed values are RestoreWithVolumeData, RestoreWithoutVolumeData.
+Default value is RestoreWithVolumeData
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceModifierReference
+Resource modifier reference to be executed during restore.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreHookReference
+Hook reference to be executed during restore.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingResourceGroupId
+Staging resource group Id for restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingStorageAccountId
+Staging storage account Id for restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceIdentifier
+List of source Azure Elastic SAN volume names to restore.
+Use this parameter for DatasourceType AzureElasticSAN.
+The service currently supports exactly one volume per restore request.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceNameOverride
+Map of source Azure Elastic SAN volume names to target volume names.
+Use this parameter for DatasourceType AzureElasticSAN.
+Any source volume not included in the map is restored using the default naming format.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### System.Management.Automation.PSObject
+
+## NOTES
+
+## RELATED LINKS
+

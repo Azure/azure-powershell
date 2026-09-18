@@ -23,10 +23,8 @@ if ($null -ne $ltResults) {
                 RetryException = $errors.Retry3Exception
             }
         }
-    }
+    } | Sort-Object OSVersion, PSVersion, Module, Name
 }
-
-$errorsArr
 
 $emailSvcUtil = Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "EmailServiceUtility.psd1"
 Import-Module $emailSvcUtil -ArgumentList $EmailServiceConnectionString, $EmailFrom -Force
@@ -86,10 +84,15 @@ $summarySection = @"
 "@
 
 if ($errorsArr.Count -gt 0) {
-    $emailContent = $errorsArr | Sort-Object OSVersion, PSVersion, Module, Name | ConvertTo-Html -Property OSVersion, PSVersion, Module, Name, Exception, RetryException -Head $css -Title "Azure PowerShell Live Test Report" -PreContent "$summarySection<h1>Live Test Error Details</h1>"
+    Write-Host "##[error]Found $($errorsArr.Count) live test error(s)."
+    $errorsArr
+
+    $emailContent = $errorsArr | ConvertTo-Html -Property OSVersion, PSVersion, Module, Name, Exception, RetryException -Head $css -Title "Azure PowerShell Live Test Report" -PreContent "$summarySection<h1>Live Test Error Details</h1>"
+
+    Send-EmailServiceMail -To "${env:EMAILTO}" -Subject $emailSubject -Content $emailContent -IsHtml
+
+    Write-Host "##[section]Live test error report email sent successfully."
 }
 else {
-    $emailContent = "<html><head>$css</head><body>$summarySection<div>No live test errors reported. Please check the overall status from Azure pipeline.</div></body></html>"
+    Write-Host "##[section]All live tests passed. No errors found."
 }
-
-Send-EmailServiceMail -To "${env:EMAILTO}" -Subject $emailSubject -Content $emailContent -IsHtml

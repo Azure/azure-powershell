@@ -38,18 +38,20 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'ytongtest'
-    $env.Location = 'centraluseuap'
+    $env.ResourceGroupNameProfile = 'PayGo_cmdlet'
+    $env.Location = 'eastus'
     $env.MachineName = 'testmachine'
-    $env.PrivateLinkScopeName = 'myScope'
-    $env.RunCommandName = 'myRunCommand'
+    $env.MachineNameSA = 'WIN-A3C7NS0B144'
+    $env.MachineNamePaygo = 'WIN-IAH3TLSP7A8'
+    $env.PrivateLinkScopeName = 'myScope3'
+    $env.RunCommandName = 'myRunCommand3'
     $env.Script = 'Write-Host Hello World!'
-    $env.EsuLicenseName = 'myEsuLicense'
-    $env.ResourceUri = 'subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine'
-    $env.PrivateLinkScopeUri = '/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/myPrivateLinkScope'
-    $env.ExtensionName = 'customScript'
-    $env.ResourceGroupNameNSP = 'adrielk_test'
-    $env.PrivateLinkScopeNameNSP = 'adrielScope'
-    $env.PerimeterName = 'fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94'
+    $env.EsuLicenseName = 'myEsuLicense2'
+    $env.PrivateLinkScopeUri = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3'
+    $env.ExtensionName = 'networkWatcher'
+    $env.PerimeterName = 'a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation'
+    $env.LicenseResourceId = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myLicense'
+    $env.LicenseResourceIdProfile = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/edyoung/providers/Microsoft.HybridCompute/licenses/myLicense' 
 
     #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 

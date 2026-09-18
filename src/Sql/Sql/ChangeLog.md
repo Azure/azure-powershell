@@ -18,6 +18,99 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
+* Added selective-fields support to Azure SQL auditing
+    - Added the optional `RequiredFields` parameter to `Set-AzSqlServerAudit` and `Set-AzSqlDatabaseAudit`
+    - Added `RequiredFields` to the output of `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+    - Updated blob auditing operations to API version `2026-08-01-preview`
+
+## Version 7.1.0
+* Added multi-database Managed Instance links through `LinkMode` on `New-AzSqlInstanceLink` and database membership updates on `Update-AzSqlInstanceLink`.
+* Enhanced `Get-AzSqlDeletedServer` subscription-level queries by making location optional and adding `ScheduledPurgeTime` and `Location` output.
+
+## Version 7.0.0
+* Added ChangeSafety Support
+* Removed `EnableSoftDelete` from `New-AzSqlServer`, `Set-AzSqlServer`. Used `SoftDeleteRetentionDays` instead: setting `SoftDeleteRetentionDays`.
+* Reverted "the support for UAMI authentication in Data Sync cmdlets"
+
+## Version 6.5.0
+* Added support for User Assigned Managed Identity (UAMI) authentication in Data Sync cmdlets (`New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember`, `Update-AzSqlSyncMember`)
+* Removed legacy usage of 2014 APIs in Firewall Rule cmdlets
+
+## Version 6.4.2
+* Fixed error handling in Az.Sql cmdlets that inherit from `AzureSqlCmdletBase` to surface descriptive error messages instead of generic 'Operation returned an invalid status code' when API calls fail. This restores meaningful error details such as Azure Policy violation messages.
+
+## Version 6.4.1
+* Add support for the versionless AKV keys.
+    - The cmdlets supported are `Add-AzSqlServerKeyVaultKey`, `Get-AzSqlServerKeyVaultKey`, `Set-AzSqlServerTransparentDataEncryptionProtector`, `Get-AzSqlServerTransparentDataEncryptionProtector`, `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase`
+* Added public preview tag for `EnableSoftDelete` and `SoftDeleteRetentionDays` properties in `New-AzSqlServer` and `Set-AzSqlServer` cmdlets
+* Added public preview tag for `Get-AzSqlDeletedServer` and `Restore-AzSqlServer` cmdlets
+
+
+## Version 6.4.0
+* Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
+    - Supports retrieving deleted servers by location or specific deleted server by name
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* The EnableSoftDelete parameter is deprecated from `New-AzSqlServer` and `Set-AzSqlServer` cmdlets and will be removed by May 2026.
+
+## Version 6.3.0
+* Updated with support for Immutable Long-Term Retention Backups
+    - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.
+    - Updated `AzureSqlDatabaseBackupLongTermRetentionPolicyModel` to add `TimeBasedImmutability` and `TimeBasedImmutabilityMode` properties.
+    - Updated `AzureSqlDatabaseLongTermRetentionBackupModel` to add `TimeBasedImmutability`, `TimeBasedImmutabilityMode`, and `LegalHoldImmutability` properties.
+    - Added new cmdlets `Lock-AzSqlDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlDatabaseLongTermRetentionBackupImmutability` for managing time-based immutability on LTR backups.
+    - Added new cmdlets `Set-AzSqlDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold` for managing legal hold immutability on LTR backups.
+
+## Version 6.2.0
+* Improved parameter validation for the EnableSoftDelete and SoftDeleteRetentionDays parameters.
+* Added `EnableSoftDelete` and `SoftDeleteRetentionDays` to `New-AzSqlServer` to support soft-delete retention
+* Added `EnableSoftDelete` and `SoftDeleteRetentionDays` to `Set-AzSqlServer` to support soft-delete retention
+* Added `Restore-AzSqlServer` cmdlet to restore a deleted Azure SQL server within the retention period
+
+## Version 6.1.0
+* Fixed `New-AzSqlDatabaseExport` and `New-AzSqlDatabaseImport` to use SQL Authentication with ManagedIdentity without any mandatory password
+* Added `MemorySizeInGB` parameter to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of instances with flexible memory
+* Added `MemorySizeInGB` field to the model of the managed instance so that it displays information about flexible memory instances that are returned by `Get-AzSqlInstance`.
+
+## Version 6.0.5
+* Updated `DatabaseOperations` Api to version `2024-11-01-preview` for .Net Sdk
+
+## Version 6.0.4
+* Added server level action groups in enum of action groups to be able to be configured via auditing.
+
+## Version 6.0.3
+* Added Information message to `Set-AzSqlInstance` for migrating Azure Sql database with GeoDr links to Azure Sql Hyperscale Edition
+
+## Version 6.0.2
+* Fixed GitHub issue #12417 "Get-AzSqlElasticPoolDatabase doesn't enumerate output."
+    - fixed the output to enumerate the results.
+
+## Version 6.0.1
+* Upgraded nuget package to signed package.
+* Updated `New-AzSqlDatabaseExport` with support for Managed Identity
+ 	- Added `ManagedIdentity` to `StorageKeyType` auth list
+   	- Added `ManagedIdentity` to `AuthenticationType` auth list
+* Updated `New-AzSqlDatabaseImport` with support for Managed Identity
+  	- Added `ManagedIdentity` to `StorageKeyType` auth list
+	- Added `ManagedIdentity` to `AuthenticationType` auth list
+
+## Version 6.0.0
+* Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
+* Updated `New-AzSqlInstanceLink` with new input parameters
+	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
+	- Renamed `SecondaryAvailabilityGroupName` -> `InstanceAvailabilityGroupName`
+			  `SourceEndpoint` -> `PartnerEndpoint`
+			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
+	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
+* Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+* Added new optional parameter for `New-AzSqlDatabaseSecondary` to support cross-subscription geo-replication.
+
+## Version 5.3.0
+* Fixed secrets exposure in example documentation.
+* Fixed issues regarding Active Directory Administrator in `Set-AzSqlInstanceActiveDirectoryAdministrator` and `Set-AzSqlInstance` cmdlets.
+* Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`
+
+## Version 5.2.0
 * Added breaking change announcement for cmdlets: `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Remove-AzSqlInstanceLink`, `Update-AzSqlInstanceLink`.
 * Added `IsGeneralPurposeV2` and `StorageIOps` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of GPv2 instances
 * Added IsGeneralPurposeV2 and StorageIOps fields to the model of the managed instance so that it displays information about GPv2 instances that are returned by `Get-AzSqlInstance`.

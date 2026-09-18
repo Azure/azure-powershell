@@ -1,0 +1,72 @@
+{
+  "Invoke-AzNetworkFabricDeviceConfiguration+[NoContext]+View+$POST+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/viewDeviceConfiguration?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/viewDeviceConfiguration?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "1"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Invoke-AzNetworkFabricDeviceConfiguration"
+        ],
+        "FullCommandName": [
+          "Invoke-AzNetworkFabricDeviceConfiguration_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "28"
+        ]
+      },
+      "Content": "{\"deviceConfigurations\": []}",
+      "isContentBase64": false
+    }
+  }
+}

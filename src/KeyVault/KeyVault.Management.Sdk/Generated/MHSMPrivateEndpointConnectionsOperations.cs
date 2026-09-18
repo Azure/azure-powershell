@@ -39,13 +39,14 @@ namespace Microsoft.Azure.Management.KeyVault
         public KeyVaultManagementClient Client { get; private set; }
 
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -74,22 +75,32 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
  
-            if (this.Client.SubscriptionId == null)
+            if (this.Client.ApiVersion == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (name == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "name");
             }
 
-            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -97,7 +108,6 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("name", name);
 
@@ -109,14 +119,14 @@ namespace Microsoft.Azure.Management.KeyVault
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -244,16 +254,18 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the managed HSM Pool.
+        /// Gets the specified private endpoint connection associated with the managed
+        /// HSM Pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -282,16 +294,27 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
  
-            if (this.Client.SubscriptionId == null)
+            if (this.Client.ApiVersion == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (name == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "name");
@@ -302,7 +325,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
-            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -313,7 +335,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -323,15 +344,15 @@ namespace Microsoft.Azure.Management.KeyVault
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -459,16 +480,18 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Updates the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='properties'>
         /// The intended state of private endpoint connection.
@@ -504,17 +527,31 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "properties");
             }
-
-            if (this.Client.SubscriptionId == null)
+            if (properties != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                properties.Validate();
             }
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
 
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (name == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "name");
@@ -525,7 +562,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
-            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -536,7 +572,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("properties", properties);
 
@@ -547,15 +582,15 @@ namespace Microsoft.Azure.Management.KeyVault
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -707,16 +742,18 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -732,16 +769,18 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the managed hsm pool.
+        /// Deletes the specified private endpoint connection associated with the
+        /// managed hsm pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection associated with the managed hsm pool.
+        /// Name of the private endpoint connection associated with the managed hsm
+        /// pool.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -770,16 +809,27 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
  
-            if (this.Client.SubscriptionId == null)
+            if (this.Client.ApiVersion == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (name == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "name");
@@ -790,7 +840,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
-            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -801,7 +850,6 @@ namespace Microsoft.Azure.Management.KeyVault
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -811,15 +859,15 @@ namespace Microsoft.Azure.Management.KeyVault
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
+            if (this.Client.ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -965,7 +1013,8 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// The List operation gets information about the private endpoint connections associated with the managed HSM Pool.
+        /// The List operation gets information about the private endpoint connections
+        /// associated with the managed HSM Pool.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1006,6 +1055,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByResourceNext", tracingParameters);

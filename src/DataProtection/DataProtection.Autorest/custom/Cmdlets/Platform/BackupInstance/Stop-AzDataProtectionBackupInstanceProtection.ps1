@@ -1,10 +1,15 @@
-﻿
+
 
 function Stop-AzDataProtectionBackupInstanceProtection
 {   
 	[OutputType('System.Boolean')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('This operation will stop protection of a backup instance and data will be held forever')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(        
         [Parameter(ParameterSetName="Stop", Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
@@ -31,9 +36,13 @@ function Stop-AzDataProtectionBackupInstanceProtection
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.')]
+        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
         [System.String]        
         ${Token},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [System.Security.SecureString]
+        ${SecureToken},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -94,7 +103,7 @@ function Stop-AzDataProtectionBackupInstanceProtection
     {
         $parameterSetName = $PsCmdlet.ParameterSetName
         if($parameterSetName -eq "StopViaIdentity"){
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.StopProtectionRequest]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.StopProtectionRequest]::new()
 
             $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
             if($hasResourceGuardOperationRequest){
@@ -104,10 +113,21 @@ function Stop-AzDataProtectionBackupInstanceProtection
             $null = $PSBoundParameters.Add("Parameter", $Parameter)
         }
 
-        if($PSBoundParameters.ContainsKey("Token"))
-        {            
-            $null = $PSBoundParameters.Remove("Token")
-            $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+        $hasToken = $PSBoundParameters.Remove("Token")
+        $hasSecureToken = $PSBoundParameters.Remove("SecureToken")
+        if($hasToken -or $hasSecureToken)
+        {   
+            if($hasSecureToken -and $hasToken){
+                throw "Both Token and SecureToken parameters cannot be provided together"
+            }
+            elseif($hasToken){
+                Write-Warning -Message 'The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.'
+                $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+            }
+            else{
+                $plainToken = UnprotectSecureString -SecureString $SecureToken
+                $null = $PSBoundParameters.Add("Token", "Bearer $plainToken")
+            }
         }
         
         Az.DataProtection.Internal\Stop-AzDataProtectionBackupInstanceProtection @PSBoundParameters

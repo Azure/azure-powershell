@@ -15,14 +15,21 @@ Get version.
 ### Get (Default)
 ```
 Get-AzMLWorkspaceCodeVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Version <String> -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Version <String> -WorkspaceName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzMLWorkspaceCodeVersion -Name <String> -Version <String>
+ -WorkspaceInputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceCodeVersion -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,16 +39,34 @@ Get version.
 
 ### Example 1: Gets code version
 ```powershell
-Get-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name 'codepwsh01' -Version 1
+Get-AzMLWorkspaceCodeVersion -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name cli-hello-example -Version 1
 ```
 
 ```output
-Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
----- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/24/2022 7:14:05 AM UserName (Example)         User                    5/24/2022 7:14:05 AM     UserName (Example)         User                         ml-rg-test
+CodeUri                      : https://mltestaccount03.blob.core.windows.net/azureml-blobstore-11111111-2222-3333-4444-123456789103/code
+Description                  : 
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/codes/cli-hello-e 
+                               xample/versions/1
+IsAnonymou                   : False
+IsArchived                   : False
+Name                         : 1
+ProvisioningState            : Succeeded
+ResourceBaseProperty         : {
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 3:14:04 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 3:14:04 AM
+SystemDataLastModifiedBy     : User Name (Example)
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.MachineLearningServices/workspaces/codes/versions
+XmsAsyncOperationTimeout     :
 ```
 
-Gets code version.
+This command gets code version.
 
 ## PARAMETERS
 
@@ -63,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -83,25 +107,10 @@ This is case-sensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,13 +154,28 @@ This is case-sensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -179,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICodeVersion
 
 ## NOTES
 

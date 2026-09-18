@@ -1,0 +1,96 @@
+{
+  "Get-AzDatadogMonitoredSubscription+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/monitoredSubscriptions?api-version=2025-12-26-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/monitoredSubscriptions?api-version=2025-12-26-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "0931a3df-872a-4c6a-8815-42f759104463" ],
+        "CommandName": [ "Get-AzDatadogMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDatadogMonitoredSubscription_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/0f81d3ed-67c8-4733-b0dd-4bb9d0384416" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "mise-correlation-id": [ "08b89d84-f8c4-4ef5-a6be-a1df1fec9494" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "fa91d35a-9ce9-4b7b-abb7-7a7ccd8feb71" ],
+        "x-ms-correlation-request-id": [ "8a8bcf97-6b1a-4ede-a914-9057aa615df6" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095104Z:8a8bcf97-6b1a-4ede-a914-9057aa615df6" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CE1A2E3D24A148CEBCCFD505BB8B7AE3 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:51:03Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:51:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "339" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Microsoft.Datadog/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDatadogMonitoredSubscription+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/monitoredSubscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c?api-version=2025-12-26-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/monitoredSubscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c?api-version=2025-12-26-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "73dff320-2b78-4296-a585-792e4982fe92" ],
+        "CommandName": [ "Get-AzDatadogMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDatadogMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/ab0a78b1-4c57-4c9a-8ae7-567931b56d52" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "mise-correlation-id": [ "ca4c3042-dbd9-40e8-99e0-b821cabed095" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "dbf64a11-d27e-48c1-9240-bcb6fff077e8" ],
+        "x-ms-correlation-request-id": [ "9d714b59-aebd-415c-812c-3a4b63acb563" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095105Z:9d714b59-aebd-415c-812c-3a4b63acb563" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 402A21DAF34A4076B91930B842FE63AF Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:51:04Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:51:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "385" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/monitoredSubscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\",\"name\":\"b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c\",\"type\":\"Microsoft.Datadog/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

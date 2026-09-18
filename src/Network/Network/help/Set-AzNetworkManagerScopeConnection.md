@@ -14,7 +14,8 @@ Update a network manager scope connection.
 
 ```
 Set-AzNetworkManagerScopeConnection -InputObject <PSNetworkManagerScopeConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +31,7 @@ Set-AzNetworkManagerScopeConnection -InputObject $scopeConnection
 ```
 
 ```output
-TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
 ConnectionState   : Pending
 DisplayName       :
@@ -55,11 +56,41 @@ Updates a scope connection description.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

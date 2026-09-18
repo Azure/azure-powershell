@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IApplicationGatewayPrivateEndpointConnectionsOperations
     {
         /// <summary>
-        /// Deletes the specified private endpoint connection on application gateway.
+        /// Lists all private endpoint connections on an application gateway.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection on application gateway.
+        /// Lists all private endpoint connections on an application gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,39 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplicationGatewayPrivateEndpointConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <remarks>
+        /// Gets the specified private endpoint connection on application gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationGatewayPrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates the specified private endpoint connection on application gateway.
@@ -46,13 +75,13 @@ namespace Microsoft.Azure.Management.Network
         /// Updates the specified private endpoint connection on application gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to update application gateway private endpoint
@@ -73,74 +102,19 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationGatewayPrivateEndpointConnection>> UpdateWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <remarks>
-        /// Gets the specified private endpoint connection on application gateway.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationGatewayPrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all private endpoint connections on an application gateway.
-        /// </summary>
-        /// <remarks>
-        /// Lists all private endpoint connections on an application gateway.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplicationGatewayPrivateEndpointConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Deletes the specified private endpoint connection on application gateway.
         /// </summary>
         /// <remarks>
         /// Deletes the specified private endpoint connection on application gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -151,7 +125,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates the specified private endpoint connection on application gateway.
@@ -160,13 +134,13 @@ namespace Microsoft.Azure.Management.Network
         /// Updates the specified private endpoint connection on application gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to update application gateway private endpoint
@@ -185,6 +159,32 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationGatewayPrivateEndpointConnection>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified private endpoint connection on application gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all private endpoint connections on an application gateway.

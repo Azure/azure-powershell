@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Commands.Network
         public int Port { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to send Proxy Protocol header along with the Health Probe over TCP or TLS protocol. Default value is false.")]
+        public bool? EnableProbeProxyProtocolHeader { get; set; }
+
+        [Parameter(
            Mandatory = false,
            HelpMessage = "Body that must be contained in the health response. Default value is empty")]
         [ValidateNotNullOrEmpty]
@@ -105,6 +110,16 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Port != 0)
             {
                 probe.Port = this.Port;
+            }
+
+            if (this.EnableProbeProxyProtocolHeader.HasValue)
+            {
+                probe.EnableProbeProxyProtocolHeader = this.EnableProbeProxyProtocolHeader.Value;
+            }
+            else
+            {
+                // Default value is false according to the API specification
+                probe.EnableProbeProxyProtocolHeader = false;
             }
 
             probe.Id =

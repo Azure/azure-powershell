@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 
@@ -342,12 +343,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             PSKeyVaultKey keyBundle = null;
             if (!string.IsNullOrEmpty(Version))
             {
-                keyBundle = DataServiceClient.GetKey(VaultName, Name, Version);
+                keyBundle = Track2DataClient.GetKey(VaultName, Name, Version);
                 WriteObject(keyBundle);
             }
             else if (IncludeVersions)
             {
-                keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
+                keyBundle = Track2DataClient.GetKey(VaultName, Name, string.Empty);
                 if (keyBundle != null)
                 {
                     WriteObject(new PSKeyVaultKeyIdentityItem(keyBundle));
@@ -362,7 +363,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
-                    PSDeletedKeyVaultKey deletedKeyBundle = DataServiceClient.GetDeletedKey(VaultName, Name);
+                    PSDeletedKeyVaultKey deletedKeyBundle = Track2DataClient.GetDeletedKey(VaultName, Name);
                     WriteObject(deletedKeyBundle);
                 }
             }
@@ -374,7 +375,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
-                    keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
+                    keyBundle = Track2DataClient.GetKey(VaultName, Name, string.Empty);
                     WriteObject(keyBundle);
                 }
             }
@@ -414,7 +415,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = vaultName,
                 NextLink = null
             },
-                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetKeys(options)));
+                (options) => KVSubResourceWildcardFilter(name, Track2DataClient.GetKeys(options)));
 
         private void GetAndWriteDeletedKeys(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
@@ -422,7 +423,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = vaultName,
                 NextLink = null
             },
-                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedKeys(options)));
+                (options) => KVSubResourceWildcardFilter(name, Track2DataClient.GetDeletedKeys(options)));
 
         private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
@@ -431,7 +432,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 NextLink = null,
                 Name = name
             },
-                (options) => DataServiceClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion));
+                (options) => Track2DataClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion));
 
         private void DownloadKey(JsonWebKey jwk, string path)
         {

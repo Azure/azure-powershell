@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDataFactoryObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacedatafactoryobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for DataFactory.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDataFactoryObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-ResourceId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzMLWorkspaceDataFactoryObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-Location <String>]
+ [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,13 +61,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -Location
+Location for the underlying compute.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.String
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.DataFactory
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.DataFactory
 
 ## NOTES
 

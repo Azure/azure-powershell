@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     catch
                     {
-                        // ignroe any exception
+                        // ignore any exception
                     }
                 }
             }

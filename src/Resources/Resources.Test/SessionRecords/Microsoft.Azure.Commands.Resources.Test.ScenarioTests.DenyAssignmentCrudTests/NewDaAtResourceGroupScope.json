@@ -1,0 +1,419 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourcegroups/PowershellTest?api-version=2024-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQ1NjBlMmMtODk1NC00ODQ4LWE4ZDItZGM0MTkzMDFiOWZjL3Jlc291cmNlZ3JvdXBzL1Bvd2Vyc2hlbGxUZXN0P2FwaS12ZXJzaW9uPTIwMjQtMTEtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "baaf4079-6b04-4e1f-a123-e1b35405b70c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/9.0.3"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-request-id": [
+          "2aed7c15-f764-47c9-b3b7-7d296c6379dc"
+        ],
+        "x-ms-correlation-request-id": [
+          "2aed7c15-f764-47c9-b3b7-7d296c6379dc"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20260331T213834Z:2aed7c15-f764-47c9-b3b7-7d296c6379dc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3800EE71F0F24BA2BCC7B02A8859244B Ref B: AMS231032608037 Ref C: 2026-03-31T21:38:34Z"
+        ],
+        "Date": [
+          "Tue, 31 Mar 2026 21:38:34 GMT"
+        ],
+        "Content-Length": [
+          "226"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest\",\r\n  \"name\": \"PowershellTest\",\r\n  \"type\": \"Microsoft.Resources/resourceGroups\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest/providers/Microsoft.Authorization/denyAssignments/14665c70-2d1a-4052-bee0-3a88fdb902d2?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9yZXNvdXJjZUdyb3Vwcy9Qb3dlcnNoZWxsVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzE0NjY1YzcwLTJkMWEtNDA1Mi1iZWUwLTNhODhmZGI5MDJkMj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "5beaa51b-f027-45ca-9b9b-6608ec5b0453"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.3"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "677"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RGScope-fedfa5ac\",\r\n    \"description\": \"Test deny assignment at resource group scope\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b14bfb0c-c80d-4dd3-8bdd-7d65c0bcd243"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/eastus2/af69d421-efcf-4e55-8028-506a9a76d83e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "2999"
+        ],
+        "x-ms-correlation-request-id": [
+          "b6c044a0-3efb-4b13-beee-5a1c5736b307"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20260331T213837Z:b6c044a0-3efb-4b13-beee-5a1c5736b307"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 59182BC243BB443E95EAE6B5F8617DD4 Ref B: AMS231020615009 Ref C: 2026-03-31T21:38:35Z"
+        ],
+        "Date": [
+          "Tue, 31 Mar 2026 21:38:37 GMT"
+        ],
+        "Content-Length": [
+          "1032"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RGScope-fedfa5ac\",\r\n    \"description\": \"Test deny assignment at resource group scope\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-31T21:38:36.3671103Z\",\r\n    \"updatedOn\": \"2026-03-31T21:38:36.3671103Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest/providers/Microsoft.Authorization/denyAssignments/14665c70-2d1a-4052-bee0-3a88fdb902d2\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"14665c70-2d1a-4052-bee0-3a88fdb902d2\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/v1.0/directoryObjects/1840cc0e-55b5-442d-bbf6-52c0c7e27302",
+      "EncodedRequestUri": "L3YxLjAvZGlyZWN0b3J5T2JqZWN0cy8xODQwY2MwZS01NWI1LTQ0MmQtYmJmNi01MmMwYzdlMjczMDI=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "5beaa51b-f027-45ca-9b9b-6608ec5b0453"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.110"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000"
+        ],
+        "request-id": [
+          "11ac83a4-8f0f-401a-a0b9-5fdcf7784fdc"
+        ],
+        "client-request-id": [
+          "11ac83a4-8f0f-401a-a0b9-5fdcf7784fdc"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West Europe\",\"Slice\":\"E\",\"Ring\":\"5\",\"ScaleUnit\":\"007\",\"RoleInstance\":\"AM4PEPF000278EA\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "Date": [
+          "Tue, 31 Mar 2026 21:38:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Authorization_RequestDenied\",\r\n    \"message\": \"Insufficient privileges to complete the operation.\",\r\n    \"innerError\": {\r\n      \"date\": \"2026-03-31T21:38:38\",\r\n      \"request-id\": \"11ac83a4-8f0f-401a-a0b9-5fdcf7784fdc\",\r\n      \"client-request-id\": \"11ac83a4-8f0f-401a-a0b9-5fdcf7784fdc\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 403
+    },
+    {
+      "RequestUri": "/v1.0/directoryObjects/1840cc0e-55b5-442d-bbf6-52c0c7e27302",
+      "EncodedRequestUri": "L3YxLjAvZGlyZWN0b3J5T2JqZWN0cy8xODQwY2MwZS01NWI1LTQ0MmQtYmJmNi01MmMwYzdlMjczMDI=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a6bcfa5b-10da-430e-9ec0-6e8cc3f492ae"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.110"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000"
+        ],
+        "request-id": [
+          "a9ec823c-938f-400f-b955-b36aeed7cd3d"
+        ],
+        "client-request-id": [
+          "a9ec823c-938f-400f-b955-b36aeed7cd3d"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West Europe\",\"Slice\":\"E\",\"Ring\":\"5\",\"ScaleUnit\":\"006\",\"RoleInstance\":\"AM1PEPF0009BB4B\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "Date": [
+          "Tue, 31 Mar 2026 21:38:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Authorization_RequestDenied\",\r\n    \"message\": \"Insufficient privileges to complete the operation.\",\r\n    \"innerError\": {\r\n      \"date\": \"2026-03-31T21:38:39\",\r\n      \"request-id\": \"a9ec823c-938f-400f-b955-b36aeed7cd3d\",\r\n      \"client-request-id\": \"a9ec823c-938f-400f-b955-b36aeed7cd3d\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 403
+    },
+    {
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest/providers/Microsoft.Authorization/denyAssignments/14665c70-2d1a-4052-bee0-3a88fdb902d2?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9yZXNvdXJjZUdyb3Vwcy9Qb3dlcnNoZWxsVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzE0NjY1YzcwLTJkMWEtNDA1Mi1iZWUwLTNhODhmZGI5MDJkMj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a6bcfa5b-10da-430e-9ec0-6e8cc3f492ae"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.3"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "77ae7234-91e3-4a55-849f-a2a015d1d0f6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/eastus2/6c1af7fc-009c-4fe2-a12c-54f04d72a3e0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "34168544-4f0a-4c14-bf12-6c5b103e2fd5"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20260331T213838Z:34168544-4f0a-4c14-bf12-6c5b103e2fd5"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9E6800F4A02345F69AD4327A0AB59C76 Ref B: AMS231020512031 Ref C: 2026-03-31T21:38:38Z"
+        ],
+        "Date": [
+          "Tue, 31 Mar 2026 21:38:38 GMT"
+        ],
+        "Content-Length": [
+          "1066"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RGScope-fedfa5ac\",\r\n    \"description\": \"Test deny assignment at resource group scope\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-31T21:38:37.2364362Z\",\r\n    \"updatedOn\": \"2026-03-31T21:38:37.2364362Z\",\r\n    \"createdBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\",\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest/providers/Microsoft.Authorization/denyAssignments/14665c70-2d1a-4052-bee0-3a88fdb902d2\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"14665c70-2d1a-4052-bee0-3a88fdb902d2\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest/providers/Microsoft.Authorization/denyAssignments/14665c70-2d1a-4052-bee0-3a88fdb902d2?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9yZXNvdXJjZUdyb3Vwcy9Qb3dlcnNoZWxsVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzE0NjY1YzcwLTJkMWEtNDA1Mi1iZWUwLTNhODhmZGI5MDJkMj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a6bcfa5b-10da-430e-9ec0-6e8cc3f492ae"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.3"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6eac662f-c675-44dc-b898-3a701803335d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/eastus2/94f83197-dd40-40c6-8e71-d45f0c0c8a82"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [
+          "2999"
+        ],
+        "x-ms-correlation-request-id": [
+          "7ab3351c-f10a-40d8-a184-223579491dff"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20260331T213840Z:7ab3351c-f10a-40d8-a184-223579491dff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1BB6CA478B264404B24F2E3E245318F2 Ref B: AMS231020512031 Ref C: 2026-03-31T21:38:39Z"
+        ],
+        "Date": [
+          "Tue, 31 Mar 2026 21:38:40 GMT"
+        ],
+        "Content-Length": [
+          "1066"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RGScope-fedfa5ac\",\r\n    \"description\": \"Test deny assignment at resource group scope\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-31T21:38:37.2364362Z\",\r\n    \"updatedOn\": \"2026-03-31T21:38:39.7675174Z\",\r\n    \"createdBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\",\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/resourceGroups/PowershellTest/providers/Microsoft.Authorization/denyAssignments/14665c70-2d1a-4052-bee0-3a88fdb902d2\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"14665c70-2d1a-4052-bee0-3a88fdb902d2\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "34560e2c-8954-4848-a8d2-dc419301b9fc"
+  }
+}

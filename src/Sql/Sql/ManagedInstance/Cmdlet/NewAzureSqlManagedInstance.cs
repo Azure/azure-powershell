@@ -179,6 +179,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the memory size in GB for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much memory in GB to associate with instance.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much memory in GB to associate with instance.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
+        public int? MemorySizeInGB { get; set; }
+
+        /// <summary>
         /// Gets or sets the instance SKU name
         /// </summary>
         [Parameter(ParameterSetName = NewBySkuNameParameterSet,
@@ -437,6 +448,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "Determines how much Storage IOps to associate with instance.",
             ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         public int StorageIOps { get; set; }
+        
+        /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -530,7 +550,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             {
                 ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -587,6 +607,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 StorageSizeInGB = SqlSkuUtils.ValueIfNonZero(this.StorageSizeInGB),
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
+                MemorySizeInGB = this.MemorySizeInGB,
                 Sku = Sku,
                 Collation = this.Collation,
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
@@ -614,7 +635,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.
                 // However this is (currently) not the case for MI. We need to convert the 0 to null
                 // here in client before sending to the server.
-                StorageIOps = SqlSkuUtils.ValueIfNonZero(this.StorageIOps)
+                StorageIOps = SqlSkuUtils.ValueIfNonZero(this.StorageIOps),
+                AuthenticationMetadata = this.AuthenticationMetadata
             });
             return newEntity;
         }

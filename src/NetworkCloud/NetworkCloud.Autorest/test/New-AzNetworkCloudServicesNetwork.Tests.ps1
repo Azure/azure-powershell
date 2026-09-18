@@ -1,17 +1,16 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkCloudServicesNetwork'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzNetworkCloudServicesNetwork.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkCloudServicesNetwork')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzNetworkCloudServicesNetwork.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'New-AzNetworkCloudServicesNetwork' {
@@ -26,15 +25,15 @@ Describe 'New-AzNetworkCloudServicesNetwork' {
             $endpoint = New-AzNetworkCloudEndpointDependencyObject `
                 -DomainName $cnsconfig.domainName `
                 -Port $cnsconfig.port
-            $endpointList+= $endpoint
+            $endpointList += $endpoint
             $additionalEgressEndpoint = New-AzNetworkCloudEgressEndpointObject `
                 -Category $cnsconfig.category `
                 -Endpoint $endpointList
-            $endpointEgressList+= $additionalEgressEndpoint
+            $endpointEgressList += $additionalEgressEndpoint
             New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName $cnsconfig.cnsName `
                 -ResourceGroupName $cnsconfig.resourceGroup `
-                -ExtendedLocationName $common.extendedLocation `
-                -ExtendedLocationType $common.customLocationType `
+                -ExtendedLocationName $cnsconfig.extendedLocation `
+                -ExtendedLocationType $cnsconfig.customLocationType `
                 -Location $common.Location -Tag $tagHash `
                 -AdditionalEgressEndpoint $endpointEgressList `
                 -EnableDefaultEgressEndpoint $cnsconfig.enableDefaultEgressEndpoint `

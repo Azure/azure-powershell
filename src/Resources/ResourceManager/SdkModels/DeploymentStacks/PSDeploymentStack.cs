@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
-using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string resourceGroupsCleanupAction { get; set; }
 
         public string managementGroupsCleanupAction { get; set; }
+
+        public string resourcesWithoutDeleteSupport { get; set; }
+
+        public string validationLevel { get; set; }
 
         public SystemData systemData { get; set; }
 
@@ -91,6 +95,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.resourcesCleanupAction = deploymentStack.ActionOnUnmanage.Resources;
             this.resourceGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ResourceGroups;
             this.managementGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ManagementGroups;
+            this.resourcesWithoutDeleteSupport = deploymentStack.ActionOnUnmanage.ResourcesWithoutDeleteSupport;
+            this.validationLevel = deploymentStack.ValidationLevel;
             this.location = deploymentStack.Location;
             this.parametersLink = deploymentStack.ParametersLink;
             this.debugSetting = deploymentStack.DebugSetting;
@@ -227,8 +233,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         {
             var outputsPS = new Dictionary<string, DeploymentVariable>();
 
+            if (outputs == null)
+            {
+                return outputsPS;
+            }
+
             // Extract DeploymentVariables from the passed in json object.
-            var jObject = JObject.Parse(outputs.ToString());
+            var jToken = outputs as JToken ?? JToken.FromObject(outputs);
+            var jObject = jToken as JObject;
+            if (jObject == null)
+            {
+                var jArray = jToken as JArray;
+                if (jArray != null && !jArray.Any())
+                {
+                    return outputsPS;
+                }
+
+                throw new InvalidOperationException(string.Format("Deployment stack outputs must serialize to a JSON object. Actual token type: {0}.", jToken.Type));
+            }
+
             foreach (var props in jObject.Properties())
             {
                 outputsPS[props.Name] = ExtractDeploymentVariableFromJObject(props.Value as JObject);
@@ -261,22 +284,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 PSDeploymentStackParameter parameter;
                 if (parameters[key].Reference != null)
                 {
-                    parameter = new PSDeploymentStackParameter { KeyVaultReference = parameters[key].Reference };
-
-                    if (parameters[key].Type != null)
-                    {
-                        parameter.Type = parameters[key].Type;
-                    }
-                    else
-                    {
-                        // If type does not exist, secret value is unknown and the type cannot be inferred:
-                        parameter.Type = "unknown";
-                    }
+                    parameter = new PSDeploymentStackParameter { KeyVaultReference = parameters[key].Reference, Type = ExtractDeploymentStackParameterValueType(parameters[key].Value) };
                 }
                 else
                 {
                     // If the type is not present, attempt to infer:
-                    parameter = new PSDeploymentStackParameter { Value = parameters[key].Value, Type = parameters[key].Type != null ? parameters[key].Type : ExtractDeploymentStackParameterValueType(parameters[key].Value) };
+                    parameter = new PSDeploymentStackParameter { Value = parameters[key].Value, Type = ExtractDeploymentStackParameterValueType(parameters[key].Value) };
                     if (parameter.Value != null && "Array".Equals(parameter.Type))
                     {
                         parameter.Value = JsonConvert.DeserializeObject<object[]>(parameter.Value.ToString());

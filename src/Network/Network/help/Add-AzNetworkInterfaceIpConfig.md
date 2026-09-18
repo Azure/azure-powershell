@@ -16,21 +16,23 @@ Adds a network interface IP configuration to a network interface.
 ### SetByResource (Default)
 ```
 Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
- [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-Subnet <PSSubnet>]
- [-PublicIpAddress <PSPublicIpAddress>] [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>]
- [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
+ [-PrivateIPAddressPrefixLength <Int32>] [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
+ [-Primary] [-Subnet <PSSubnet>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
- [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
- [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
+ [-PrivateIPAddressPrefixLength <Int32>] [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>]
+ [-Primary] [-SubnetId <String>] [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
- [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +57,21 @@ $nic | Add-AzNetworkInterfaceIpConfig -Name MyNewIpConfig -Subnet $vnet.Subnets[
 In this example, we create a new network interface MyNetworkInterface that belongs to a subnet in the new virtual network MyVNET. We also create an empty application security group MyASG to associate with the IP configurations in the network interface. Once both objects are created, we link the default IP configuration to the MyASG object. At last, we create a new IP configuration in the network interface also linked to the application security group object.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGatewayBackendAddressPool
 Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
@@ -113,6 +130,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -255,6 +287,21 @@ Specifies the static IP address of the network interface IP configuration.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateIPAddressPrefixLength
+Specifies the static IP address prefix length of the network interface IP configuration.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

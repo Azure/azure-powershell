@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VirtualApplianceNicProperties class.
         /// </summary>
 
-        /// <param name="nicType">NIC type - PublicNic, PrivateNic, or AdditionalNic.
+        /// <param name="nicType">NIC type - PublicNic, PrivateNic, or AdditionalNic; AdditionalPrivateNic
+        /// and AdditionalPublicNic are only supported for NVAs deployed in VNets.
         /// Possible values include: &#39;PublicNic&#39;, &#39;PrivateNic&#39;, &#39;AdditionalNic&#39;</param>
 
         /// <param name="name">NIC name.
@@ -36,15 +37,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateIPAddress">Private IP address.
         /// </param>
 
+        /// <param name="publicIPAddressV6">Public IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </param>
+
+        /// <param name="privateIPAddressV6">Private IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </param>
+
         /// <param name="instanceName">Instance on which nic is attached.
         /// </param>
-        public VirtualApplianceNicProperties(string nicType = default(string), string name = default(string), string publicIPAddress = default(string), string privateIPAddress = default(string), string instanceName = default(string))
+        public VirtualApplianceNicProperties(string nicType = default(string), string name = default(string), string publicIPAddress = default(string), string privateIPAddress = default(string), string publicIPAddressV6 = default(string), string privateIPAddressV6 = default(string), string instanceName = default(string))
 
         {
             this.NicType = nicType;
             this.Name = name;
             this.PublicIPAddress = publicIPAddress;
             this.PrivateIPAddress = privateIPAddress;
+            this.PublicIPAddressV6 = publicIPAddressV6;
+            this.PrivateIPAddressV6 = privateIPAddressV6;
             this.InstanceName = instanceName;
             CustomInit();
         }
@@ -56,7 +67,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets nIC type - PublicNic, PrivateNic, or AdditionalNic. Possible values include: &#39;PublicNic&#39;, &#39;PrivateNic&#39;, &#39;AdditionalNic&#39;
+        /// Gets nIC type - PublicNic, PrivateNic, or AdditionalNic;
+        /// AdditionalPrivateNic and AdditionalPublicNic are only supported for NVAs
+        /// deployed in VNets. Possible values include: &#39;PublicNic&#39;, &#39;PrivateNic&#39;, &#39;AdditionalNic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nicType")]
         public string NicType {get; private set; }
@@ -78,6 +91,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddress")]
         public string PrivateIPAddress {get; private set; }
+
+        /// <summary>
+        /// Gets public IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicIpAddressV6")]
+        public string PublicIPAddressV6 {get; private set; }
+
+        /// <summary>
+        /// Gets private IPv6 address. Populated for dual-stack NVAs, including on
+        /// additional-NIC configurations when the NVA is dual-stack.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddressV6")]
+        public string PrivateIPAddressV6 {get; private set; }
 
         /// <summary>
         /// Gets instance on which nic is attached.

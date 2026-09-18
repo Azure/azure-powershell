@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: AppConfiguration cmdlets
 Permanently deletes the specified configuration store.
 
 ### [Get-AzAppConfigurationDeletedStore](Get-AzAppConfigurationDeletedStore.md)
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ### [Get-AzAppConfigurationKey](Get-AzAppConfigurationKey.md)
 Gets a list of keys.
@@ -26,8 +26,17 @@ Gets a list of key-values.
 ### [Get-AzAppConfigurationLabel](Get-AzAppConfigurationLabel.md)
 Gets a list of labels.
 
+### [Get-AzAppConfigurationOperationDetail](Get-AzAppConfigurationOperationDetail.md)
+Gets the state of a long running operation.
+
+### [Get-AzAppConfigurationReplica](Get-AzAppConfigurationReplica.md)
+Gets the properties of the specified replica.
+
 ### [Get-AzAppConfigurationRevision](Get-AzAppConfigurationRevision.md)
 Gets a list of key-value revisions.
+
+### [Get-AzAppConfigurationSnapshot](Get-AzAppConfigurationSnapshot.md)
+Gets a single key-value snapshot or lists key-value snapshots.
 
 ### [Get-AzAppConfigurationStore](Get-AzAppConfigurationStore.md)
 Get or list app configuration stores.
@@ -35,8 +44,14 @@ Get or list app configuration stores.
 ### [Get-AzAppConfigurationStoreKey](Get-AzAppConfigurationStoreKey.md)
 Lists the access key for the specified configuration store.
 
+### [New-AzAppConfigurationReplica](New-AzAppConfigurationReplica.md)
+Create a replica with the specified parameters.
+
+### [New-AzAppConfigurationSnapshot](New-AzAppConfigurationSnapshot.md)
+Create a key-value snapshot.
+
 ### [New-AzAppConfigurationStore](New-AzAppConfigurationStore.md)
-Creates a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ### [New-AzAppConfigurationStoreKey](New-AzAppConfigurationStoreKey.md)
 Regenerates an access key for the specified configuration store.
@@ -46,6 +61,9 @@ Deletes a key-value.
 
 ### [Remove-AzAppConfigurationLock](Remove-AzAppConfigurationLock.md)
 Unlocks a key-value.
+
+### [Remove-AzAppConfigurationReplica](Remove-AzAppConfigurationReplica.md)
+Deletes a replica.
 
 ### [Remove-AzAppConfigurationStore](Remove-AzAppConfigurationStore.md)
 Deletes a configuration store.
@@ -59,9 +77,15 @@ Locks a key-value.
 ### [Test-AzAppConfigurationKeyValue](Test-AzAppConfigurationKeyValue.md)
 Requests the headers and status of the given resource.
 
+### [Test-AzAppConfigurationSnapshot](Test-AzAppConfigurationSnapshot.md)
+Requests the headers and status of the given resource.
+
 ### [Test-AzAppConfigurationStoreNameAvailability](Test-AzAppConfigurationStoreNameAvailability.md)
 Checks whether the configuration store name is available for use.
 
+### [Update-AzAppConfigurationSnapshot](Update-AzAppConfigurationSnapshot.md)
+Update the state of a key-value snapshot.
+
 ### [Update-AzAppConfigurationStore](Update-AzAppConfigurationStore.md)
-Updates a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 

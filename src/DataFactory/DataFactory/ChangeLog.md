@@ -18,6 +18,63 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the `Update-AzDataFactoryV2IntegrationRuntime` example output to use a public service URL.
+
+## Version 1.20.1
+* Updated `System.IO.FileSystem.AccessControl` dependency from `4.5.0` to `5.0.0`.
+
+## Version 1.20.0
+* Added ChangeSafety Support
+* Added 'Microsoft.DataTransfer.Gateway.Encryption.dll' to the Authenticode signing target in the release pipeline
+
+## Version 1.19.7
+* Added more support for Jira V2 (Jira Version 2) and Netezza V2 (Netezza Version 2) connection properties.
+
+## Version 1.19.6
+* Added support for clusterResourceGroupAuthType property in HDInsightOnDemand linked services properties.
+
+## Version 1.19.5
+* Added support for Salesforce V2 partitionOption feature.
+* Added support MI In Lakehouse And Warehouse connection.
+
+## Version 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
+
+## Version 1.19.3
+* Added more support for SparkV2 and HiveV2 connection properties.
+
+## Version 1.19.2
+* Added more support for M365 connection properties.
+* Added more support for SnowfalkeV2 connection properties.
+* Added more support for AzureDatabricks connection properties.
+
+## Version 1.19.1
+* Added more support for Oracle connection properties.
+* Added more support for Teradata connection properties.
+* Added more support for AzurePostgreSql connection properties.
+
+## Version 1.19.0
+* Upgraded nuget package to signed package.
+* Added support for additional MySQL connection properties.
+* Added support for Azure PostgreSQL v2, updated connection strings, and corrected Linked JSON configurations.
+
+## Version 1.18.9
+* Added pageSize support to Salesforce V2 Source.
+* Added pageSize support to ServiceNow V2 Source.
+* Added host property to Snowflake linked service.
+* Fixed missing authenticationType in PostgreSQL V2 linked service.
+
+## Version 1.18.8
+* Added support for Iceberg format as a sink.
+* Enabled sslMode and useSystemTrustStore options for MariaDB.
+
+## Version 1.18.7
+* Supported managed identity for Data Factory Azure File connector.
+* Supported ServicePrincipalCert Auth for Data Factory Rest connector.
+* Supported ServicePrincipalCert Auth for Data Factory SharePointOnlineList connector.
+
+## Version 1.18.6
 * Added security enhancement feature snowflake support storage integration.
 * Supported 'domain' Property In Dynamics Family.
 * Enabled UAMI auth for Data Factory Sql Server connector.

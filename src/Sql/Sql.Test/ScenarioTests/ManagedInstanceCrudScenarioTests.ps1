@@ -38,6 +38,8 @@ function Test-CreateManagedInstance
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
 	$backupStorageRedundancy = "Local"
+	$authenticationMetadata = "Paired"
+	$defaultAuthenticationMetadata = "AzureAD"
 
  	try
  	{
@@ -45,7 +47,7 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -BackupStorageRedundancy $backupStorageRedundancy -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -BackupStorageRedundancy $backupStorageRedundancy -AuthenticationMetadata $authenticationMetadata  -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -66,7 +68,8 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $backupStorageRedundancy
 		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
-        Assert-NotNull $managedInstance1.DnsZone
+		Assert-NotNull $managedInstance1.DnsZone
+		Assert-AreEqual $managedInstance1.AuthenticationMetadata $authenticationMetadata
 
 		$edition = "GeneralPurpose"
 		$computeGeneration = "Gen5"
@@ -90,8 +93,8 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
- 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
-        Assert-AreEqual $managedInstance1.DnsZone $originalDnsZone
+		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance1.DnsZone $originalDnsZone
 
 		## Get-AzSqlInstance test ##
 		############################
@@ -106,6 +109,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		Assert-AreEqual $false $managedInstance1.ZoneRedundant
+		Assert-AreEqual $managedInstance1.AuthenticationMetadata $defaultAuthenticationMetadata
 
 		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 2 $all.Count
@@ -191,6 +195,65 @@ function Test-CreateManagedInstance-HermesTesting
 
 <#
 	.SYNOPSIS
+	Tests that creates a mananged instance with MemorySizeInGB
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateManagedInstance-FlexibleMemoryTesting
+{
+	try
+	{
+		$defaultParams = Get-DefaultManagedInstanceParametersMemorySizeInGBTesting
+		$credentials = Get-ServerCredential
+		$vCore = 8
+		$storageSizeInGB = 32
+
+		# Test with memory size in GB specified
+		$managedInstanceName1 = "az-powershell-flexmem-testing-new"
+		$skuName = "GP_G8IM"
+		$isGeneralPurposeV2 = $true
+		$storageIOps = 2000
+		$memorySizeInGB = 64
+
+		$managedInstance = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName1 `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -MemorySizeInGB $memorySizeInGB
+
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName1
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+
+		# Test with memory size in GB not specified
+		$managedInstanceName2 = "az-powershell-no-flexmem-testing-new"
+		$memorySizeInGB = $null
+
+		$managedInstance = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName2 `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps
+
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName2
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+	}
+	finally
+	{
+		Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName1 -Force
+		Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName2 -Force
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests setting a Managed Instance while using Hermes related parameters
 	.DESCRIPTION
 	SmokeTest
@@ -260,6 +323,62 @@ function Test-SetManagedInstance-HermesTesting
 
 <#
 	.SYNOPSIS
+	Tests that creates and updates a mananged instance with MemorySizeInGB
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-SetManagedInstance-FlexibleMemoryTesting
+{
+	try
+	{
+		$defaultParams = Get-DefaultManagedInstanceParametersMemorySizeInGBTesting
+		$credentials = Get-ServerCredential
+		$managedInstanceName = "az-powershell-flexmem-testing-set"
+		$vCore = 8
+
+		# Create Next Gen GP without memory specified
+		$skuName = "GP_G8IM"
+		$isGeneralPurposeV2 = $true
+		$storageSizeInGB = 32
+		$storageIOps = 2000
+
+		$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+			-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+			-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -AsJob
+		$job | Wait-Job
+		$managedInstance = $job.Output
+
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $null
+
+		# Update memory value
+		$memorySizeInGB = 64
+
+		$managedInstance = Set-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+			-Vcore $vCore -MemorySizeInGB $memorySizeInGB -IsGeneralPurposeV2 $isGeneralPurposeV2 -Force
+
+		Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+		Assert-AreEqual $managedInstance.Sku.Name $skuName
+		Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+		Assert-AreEqual $managedInstance.VCores $vCore
+		Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+		Assert-AreEqual $managedInstance.MemorySizeInGB $memorySizeInGB
+	}
+	finally
+	{
+		Remove-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName -Force
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests setting a Managed Instance
 	.DESCRIPTION
 	SmokeTest
@@ -281,16 +400,18 @@ function Test-SetManagedInstance
 		$targetSubnetResourceId = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-mi-tooling/subnets/ManagedInstance2"
 		$generalPurpose = "GeneralPurpose"
 		$businessCritical = "BusinessCritical"
+		$authenticationMetadata = "Windows"
 
 		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force -AuthenticationMetadata $authenticationMetadata
 
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $managedInstance.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
-		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName]
+		Assert-AreEqual $managedInstance1.AuthenticationMetadata $authenticationMetadata
 
 		# Test using piping
 		$credentials = Get-ServerCredential
@@ -605,20 +726,16 @@ function Test-CreateManagedInstanceWithMaintenanceConfigurationId
 function Test-CreateManagedInstanceWithMultiAzEnabled
 {
 # Setup
-	$rg = Create-ResourceGroupForTest
-	$vnetName = "vnet-portal-testing"
-	$subnetName = "ManagedInstance"
-	$vnetRgName = "portalrg"
 	$vCore = 4
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
 	$skuName = "GP_Gen5"
-	$defaultParams = Get-DefaultManagedInstanceParameters
+	$defaultParams = Get-DefaultManagedInstanceParametersV3
 
 	try
 	{
-		$managedInstance1 = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
-			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		$managedInstance1 = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+			-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
 			-Vcore $vCore -SkuName $skuName -ZoneRedundant -AssignIdentity
 	}
 	catch

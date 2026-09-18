@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             try
             {
                 this.cmdlet.ExecuteCmdlet();
-                Assert.False(true, "The cmdlet succeeded when it should have failed.");
+                Assert.Fail("The cmdlet succeeded when it should have failed.");
             }
             catch (KeyNotFoundException)
             {
@@ -182,8 +182,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.providerOperationsMock.Verify(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ProviderRegistrationRequest>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
-            this.providerOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            this.providerOperationsMock.Invocations.Clear();
+            this.commandRuntimeMock.Invocations.Clear();
         }
     }
 }

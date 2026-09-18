@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the properties of an existing Private Endpoint connection to the
-    /// Azure Cognitive Search service.
+    /// Describes the properties of an existing private endpoint connection to the
+    /// search service.
     /// </summary>
     public partial class PrivateEndpointConnectionProperties
     {
@@ -28,18 +28,18 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="privateEndpoint">The private endpoint resource from Microsoft.Network provider.
         /// </param>
 
-        /// <param name="privateLinkServiceConnectionState">Describes the current state of an existing Private Link Service connection
-        /// to the Azure Private Endpoint.
+        /// <param name="privateLinkServiceConnectionState">Describes the current state of an existing Azure Private Link service
+        /// connection to the private endpoint.
         /// </param>
 
-        /// <param name="groupId">The group id from the provider of resource the private link service
-        /// connection is for.
+        /// <param name="groupId">The group ID of the Azure resource for which the private link service is
+        /// for.
         /// </param>
 
-        /// <param name="provisioningState">The provisioning state of the private link service connection. Can be
-        /// Updating, Deleting, Failed, Succeeded, or Incomplete
-        /// Possible values include: 'Updating', 'Deleting', 'Failed', 'Succeeded',
-        /// 'Incomplete', 'Canceled'</param>
+        /// <param name="provisioningState">The provisioning state of the private link service connection. Valid values
+        /// are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
+        /// Possible values include: &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;,
+        /// &#39;Incomplete&#39;, &#39;Canceled&#39;</param>
         public PrivateEndpointConnectionProperties(PrivateEndpointConnectionPropertiesPrivateEndpoint privateEndpoint = default(PrivateEndpointConnectionPropertiesPrivateEndpoint), PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState), string groupId = default(string), string provisioningState = default(string))
 
         {
@@ -63,22 +63,23 @@ namespace Microsoft.Azure.Management.Search.Models
         public PrivateEndpointConnectionPropertiesPrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
-        /// Gets or sets describes the current state of an existing Private Link
-        /// Service connection to the Azure Private Endpoint.
+        /// Gets or sets describes the current state of an existing Azure Private Link
+        /// service connection to the private endpoint.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
-        /// Gets or sets the group id from the provider of resource the private link
-        /// service connection is for.
+        /// Gets or sets the group ID of the Azure resource for which the private link
+        /// service is for.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; set; }
 
         /// <summary>
         /// Gets or sets the provisioning state of the private link service connection.
-        /// Can be Updating, Deleting, Failed, Succeeded, or Incomplete Possible values include: &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Incomplete&#39;, &#39;Canceled&#39;
+        /// Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or
+        /// Canceled. Possible values include: &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Incomplete&#39;, &#39;Canceled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; set; }

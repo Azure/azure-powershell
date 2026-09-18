@@ -49,7 +49,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy exemption.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
@@ -73,12 +73,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # When $true, skip confirmation prompts
     ${Force},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -142,11 +136,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    $mapping = @{
-        Delete = 'Az.Policy.private\Remove-AzPolicyExemption_Delete';
-        DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyExemption_DeleteViaIdentity';
-    }
 }
 
 process {
@@ -157,7 +146,8 @@ process {
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
+    }
+    elseif (!$Scope) {
         $thisId = $_.Id
     }
 
@@ -179,47 +169,20 @@ process {
         $null = $PSBoundParameters.Remove('Force')
     }
 
-    # use passthru for backward compatibility with previous SDK cmdlets: remove cmdlet always returned a value
-    if ($PSBoundParameters.ContainsKey('PassThru')) {
-        $BackwardCompatible = $PassThru
-        $PSBoundParameters.PassThru = $PassThru
-    }
-    elseif ($BackwardCompatible) {
-        $PSBoundParameters.PassThru = $BackwardCompatible
-    }
-
-    # remove non-generated parameters
-    $null = $PSBoundParameters.Remove('BackwardCompatible')
-
     # remove the exemption if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
 
         $PSBoundParameters.Name = $resolved.Name
         $PSBoundParameters.Scope = $resolved.Scope
-        $calledParameterSet = 'Delete'
 
         $null = $PSBoundParameters.Remove('Id')
 
-        if ($writeln) {
-            Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $PSBoundParameters ')'
-        }
-
-        $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $result = Invoke-Command -ScriptBlock $scriptCmd
+        # call the internal cmdlet with the parsed parameters
+        $result = Az.Policy.internal\Remove-AzPolicyExemption @PSBoundParameters
     }
 
-    # return result of remove
-    if ($BackwardCompatible) {
-        if ($result -is [boolean]) {
-            $PSCmdlet.WriteObject($result)
-        }
-        else {
-            # $result is not a boolean for some reason, so return constant $true
-            $PSCmdlet.WriteObject($true)
-        }
+    if ($PassThru) {
+        $PSCmdlet.WriteObject($result)
     }
 }
 

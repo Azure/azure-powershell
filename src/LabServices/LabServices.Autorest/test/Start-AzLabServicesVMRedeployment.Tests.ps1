@@ -18,8 +18,8 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 . ($loadVarsPath)
 Describe 'Start-AzLabServicesVMRedeployment' {
     It 'Redeploy' {
-        Start-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0
-        {Start-AzLabServicesVMRedeployment  -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -VirtualMachineName 0} | Should -Not -Throw
-        Stop-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0
+        Start-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 0
+        {Start-AzLabServicesVMRedeployment  -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -VirtualMachineName 0} | Should -Not -Throw
+        Stop-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 0
     }
 }

@@ -275,9 +275,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void Delete(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabasesDeleteHeaders Delete(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabasesOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -299,9 +299,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabasesDeleteHeaders> DeleteAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates an existing database.
@@ -416,9 +419,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='replicaType'>
         /// The type of replica to be failed over.
         /// </param>
-        public static void Failover(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string))
+        public static DatabasesFailoverHeaders Failover(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string))
         {
-                ((IDatabasesOperations)operations).FailoverAsync(resourceGroupName, serverName, databaseName, replicaType).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).FailoverAsync(resourceGroupName, serverName, databaseName, replicaType).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -443,9 +446,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task FailoverAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabasesFailoverHeaders> FailoverAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.FailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.FailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, replicaType, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Imports a bacpac into a new database.
@@ -648,9 +654,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database to be upgraded.
         /// </param>
-        public static void UpgradeDataWarehouse(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabasesUpgradeDataWarehouseHeaders UpgradeDataWarehouse(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabasesOperations)operations).UpgradeDataWarehouseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).UpgradeDataWarehouseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -672,9 +678,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task UpgradeDataWarehouseAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabasesUpgradeDataWarehouseHeaders> UpgradeDataWarehouseAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.UpgradeDataWarehouseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.UpgradeDataWarehouseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of databases in an elastic pool.
@@ -827,9 +836,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginDelete(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabasesDeleteHeaders BeginDelete(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabasesOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -851,9 +860,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabasesDeleteHeaders> BeginDeleteAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates an existing database.
@@ -968,9 +980,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='replicaType'>
         /// The type of replica to be failed over.
         /// </param>
-        public static void BeginFailover(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string))
+        public static DatabasesFailoverHeaders BeginFailover(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string))
         {
-                ((IDatabasesOperations)operations).BeginFailoverAsync(resourceGroupName, serverName, databaseName, replicaType).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).BeginFailoverAsync(resourceGroupName, serverName, databaseName, replicaType).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -995,9 +1007,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginFailoverAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabasesFailoverHeaders> BeginFailoverAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string replicaType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, replicaType, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Imports a bacpac into a new database.
@@ -1156,9 +1171,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database to be upgraded.
         /// </param>
-        public static void BeginUpgradeDataWarehouse(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabasesUpgradeDataWarehouseHeaders BeginUpgradeDataWarehouse(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabasesOperations)operations).BeginUpgradeDataWarehouseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabasesOperations)operations).BeginUpgradeDataWarehouseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1180,9 +1195,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginUpgradeDataWarehouseAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabasesUpgradeDataWarehouseHeaders> BeginUpgradeDataWarehouseAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginUpgradeDataWarehouseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginUpgradeDataWarehouseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of databases.

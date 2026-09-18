@@ -16,7 +16,8 @@ Updates back-end TCP\TLS settings for an application gateway.
 Set-AzApplicationGatewayBackendSetting -ApplicationGateway <PSApplicationGateway> -Name <String> -Port <Int32>
  -Protocol <String> [-Timeout <Int32>] [-ProbeId <String>] [-Probe <PSApplicationGatewayProbe>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
- [-HostName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-HostName <String>] [-EnableL4ClientIpPreservation <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,21 @@ The second command updates the Backend settings of the application gateway in th
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationGateway
 The applicationGateway
 
@@ -51,6 +67,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -62,6 +93,21 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableL4ClientIpPreservation
+Whether to send Proxy Protocol header to backend servers over TCP or TLS protocols. Default value is false.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -45,7 +45,7 @@ Calculate price for returning `Reservations` if there are no policy errors.\n
 Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.\n
 
 ### [Invoke-AzReservationReturn](Invoke-AzReservationReturn.md)
-Return a Reservation.
+Return a reservation and get refund information.
 
 ### [Invoke-AzReservationUnarchiveReservation](Invoke-AzReservationUnarchiveReservation.md)
 Restores a `Reservation` to the state it was before archiving.\n
@@ -57,11 +57,11 @@ Merge two reservations into one reservation within the same reservation order.
 Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
 
 ### [New-AzReservation](New-AzReservation.md)
-Purchase `ReservationOrder` and create resource under the specified URI.
+Purchase `ReservationOrder` and purchase resource under the specified URI.
 
 ### [Split-AzReservation](Split-AzReservation.md)
 Split a Reservation order.
 
 ### [Update-AzReservation](Update-AzReservation.md)
-Updates the applied scopes of the `Reservation`.
+update the applied scopes of the `Reservation`.
 

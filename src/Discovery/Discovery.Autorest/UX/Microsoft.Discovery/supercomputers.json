@@ -1,0 +1,85 @@
+{
+  "resourceType": "supercomputers",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.discovery"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDiscoverySupercomputer",
+      "description": "Get a Supercomputer",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/get-azdiscoverysupercomputer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Supercomputer",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.supercomputerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDiscoverySupercomputer",
+      "description": "Delete a Supercomputer",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/remove-azdiscoverysupercomputer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Supercomputer",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.supercomputerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

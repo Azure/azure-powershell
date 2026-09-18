@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceHDInsightObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacehdinsightobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,11 @@ Create an in-memory object for HDInsight.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceHDInsightObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-ResourceId <String>]
- [-Address <String>] [-AdministratorAccountPassword <String>] [-AdministratorAccountPrivateKeyData <String>]
- [-AdministratorAccountPublicKeyData <String>] [-AdministratorAccountUsername <String>] [-SshPort <Int32>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzMLWorkspaceHDInsightObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-Location <String>]
+ [-ResourceId <String>] [-Address <String>] [-AdministratorAccountPassword <String>]
+ [-AdministratorAccountPrivateKeyData <String>] [-AdministratorAccountPublicKeyData <String>]
+ [-AdministratorAccountUsername <String>] [-SshPort <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,13 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -Location
+Location for the underlying compute.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.String
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named
@@ -190,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.HdInsight
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.HdInsight
 
 ## NOTES
 

@@ -20,6 +20,36 @@
 
 ## Upcoming Release
 
+## Version 6.5.0
+* Added ChangeSafety Support
+
+## Version 6.4.0
+* Supported create cluster with entra user as gateway credential to replace use username and password.
+  - Added parameter `-EntraUserIdentity` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using one or more ObjectId or Upn.
+  - Added parameter `-EntraUserFullInfo` to cmdlet `New-AzHDInsightCluster` to support creating Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
+* Supported update Entra user information for an existing Entra user cluster.
+  - Added parameter `-EntraUserIdentity` to cmdlet `Set-AzHDInsightGatewayCredential` to support update Entra user clusters using one or more ObjectId or Upn.
+  - Added parameter `-EntraUserFullInfo` to cmdlet `Set-AzHDInsightGatewayCredential` to support update Entra user clusters using an array of hashtables that include ObjectId, Upn, and DisplayName.
+* Added support for using WASB storage with Managed Identity (MSI) in the `New-AzHDInsightCluster` cmdlet.
+  -Users can specify the `StorageAccountManagedIdentity` parameter to use MSI as a wasb storage credential when creating a cluster, as an alternative to using `StorageAccountKey`.
+
+## Version 6.3.1
+* Upgraded nuget package to signed package.
+
+## Version 6.3.0
+* Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
+
+## Version 6.2.1
+* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
+
+## Version 6.2.0
+* Added new feature: Enable adding public IP tags to clusters. 
+* Added commands for manage Azure Monitor Agent
+    - Command `Get-AzHDInsightAzureMonitorAgent` to get the Azure Monitor Agent status of HDInsight cluster.
+    - Command `Enable-AzHDInsightAzureMonitorAgent` to enable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Disable-AzHDInsightAzureMonitorAgent` to disable the Azure Monitor Agent in HDInsight cluster.
+    - Command `Update-AzHDInsightCluster` to update tags or identity for HDInsight cluster.
+
 ## Version 6.1.0
 * Added new feature: Enable secure channels while creating a new cluster.
 * Fixed a bug: When creating a cluster without passing the version, the default version cannot be set to 'default'.

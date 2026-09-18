@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
-        public static void Revalidate(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName)
+        public static EncryptionProtectorsRevalidateHeaders Revalidate(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName)
         {
-                ((IEncryptionProtectorsOperations)operations).RevalidateAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+                return ((IEncryptionProtectorsOperations)operations).RevalidateAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -169,9 +169,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RevalidateAsync(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<EncryptionProtectorsRevalidateHeaders> RevalidateAsync(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RevalidateWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RevalidateWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates an existing encryption protector.
@@ -227,9 +230,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
-        public static void BeginRevalidate(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName)
+        public static EncryptionProtectorsRevalidateHeaders BeginRevalidate(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName)
         {
-                ((IEncryptionProtectorsOperations)operations).BeginRevalidateAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+                return ((IEncryptionProtectorsOperations)operations).BeginRevalidateAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -248,9 +251,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRevalidateAsync(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<EncryptionProtectorsRevalidateHeaders> BeginRevalidateAsync(this IEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of server encryption protectors

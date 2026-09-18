@@ -17,10 +17,123 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
+* Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
+    - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.
+    - Added support in `Set-AzRecoveryServicesBackupItemSourceScanConfiguration`, or its `Set-AzRecoveryServicesBISourceScanConfiguration` alias, to enable or disable Source Scan for a protected item.
+    - Updated `Set-AzRecoveryServicesBackupItemSourceScanConfiguration` to wait for the Source Scan operation to complete, return no output by default, and return the updated backup item when `-PassThru` is specified.
+    - Added Source Scan and threat details to backup item and recovery point output.
+
+## Version 7.14.1
+* Added Cross Region Restore for Azure File Share backups through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.
+* Refined soft delete behavior for Azure File Share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now errors unless the item is soft-deleted (`ToBeDeleted`), avoiding an invalid undelete request.
+    - Corrected `DateOfPurge` to use the remaining deferred-delete window returned by the service instead of a fixed 14 days.
+
+## Version 7.14.0
+* Added Cross Subscription Backup (CSB) support for Azure VM:
+    - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
+    - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).
+    - Added `ContainerSubscriptionId` property to the backup item response of `Get-AzRecoveryServicesBackupItem`.
+    - Added `ContainerSubscriptionId` property to the detailed job response of `Get-AzRecoveryServicesBackupJobDetail`.
+    - Added client-side validation when `-ContainerSubscriptionId` is supplied so a non-existent VM/resource group/subscription or a VM in a different region than the vault fails with a clear, VM-specific error message.
+* Fixed Private Disk Access parameters being silently dropped when adding disks to, reprotecting, or cluster-reprotecting an Azure-to-Azure managed-disk replication
+    - `Add-AzRecoveryServicesAsrReplicationProtectedItemDisk` now honors `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` supplied on the disk replication configuration
+    - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) forwards the same three fields on the switch-protection call
+    - `Update-AzRecoveryServicesAsrClusterProtectionDirection` (cluster reprotect) forwards the same three fields on the cluster switch-protection call
+* Added support for configuring Cost Management Settings (granularity level) on Recovery Services vaults via `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault`.
+
+## Version 7.13.0
+* Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
+* Added Cross region restore support for Delos cloud regions
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-02-01.
+* Added Private Disk Access support for Azure-to-Azure managed disk replication: new `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` parameters on `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig`; values are honored by `New-AzRecoveryServicesAsrReplicationProtectedItem` and surfaced on `ASRAzureToAzureProtectedDiskDetails`.
+
+## Version 7.12.0
+* Added ChangeSafety Support
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState ToBeDeleted`)
+
+## Version 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
+
+## Version 7.11.1
+* Added Cross region restore support for upcoming regions IndiaSouthCentral
+
+
+## Version 7.11.0
+* Added Cross region restore support for Bleu cloud regions
+* Added Availability Zone support in Update Protection
+* Added Platform Fault Domain support in Enable, Update, and Switch Protection workflows
+
+## Version 7.10.0
+* Added Cross region restore support for new region - northeastus5.
+* Added support for vault soft delete feature - Get soft deleted vault, Undelete softdeleted vault, Get deleted backup items in a soft deleted vault using ARG.
+
+## Version 7.9.0
+* Added Cross region restore support for new region - eastus3.
+* Added support for reregistration of a backup item to another vault.
+
+## Version 7.8.0
+* Added new optional parameter CVMOsDiskEncryptionSetId in Restore-AzRecoveryServicesBackupItem.
+
+## Version 7.7.2
+* Added fix for resume protection with AzureFileshare.
+* Added fix for Get backup item for MSSQL soft deleted items.
+* Added check to compare the VM resource group in the list of VMs returned for registration.
+* Added RetainRecoveryPointsAsPerPolicy as MUA protected operation in Disable-AzRecoveryServicesBackupProtection cmdlet.
+
+## Version 7.7.1
+* Updated `GetAzureRmRecoveryServicesBackupSchedulePolicyObject` to default the `PolicySubType` to `Enhanced` for AzureVM.
+* Updated Azure Backup SDK version to support protecting TVM with standard policy.
+
+## Version 7.7.0
+* Fix for reprotect cmdlet in Azure Site Recovery for Azure to Azure provider.
+* Deprecated the `Token` parameter for cross-tenant authentication in MUA scenarios for handling breaking change in Get-AzAccessToken cmdlet, use parameter `SecureToken` going forward.
+
+## Version 7.6.0
+* Azure Site Recovery support for shared disk scenario for Azure to Azure provider.
+* Removed warning about ensuring Enhanced Policy for Trusted Launch VMs when configuring protection for Azure VMs.
+* Added warning "Starting in May 2025, Trusted Launch virtual machines can be protected with both standard and enhanced policies via PS and CLI" in Enable-AzRecoveryServicesBackupProtection.
+* Added breaking change announcement for Get-AzRecoveryServicesBackupSchedulePolicyObject that this command will return a Enhanced policy object by default for IaaSVM workload.
+* Added support for PremiumV2_LRS and UltraSSD_LRS target disk types for Azure to Azure replication.
+* Added logs to enable better debugging for Modify protection with MSSQL workload.
+* Added Cross region restore support for new regions - israelnorthwest, southwestus, southcentralus2, southeastus3, southeastus5.
+
+## Version 7.5.1
+* Updated Restore-AzRecoveryServicesBackupItem to support 0 as a TargetZoneNumber to restore to NoZone.
+* Updated Restore-AzRecoveryServicesBackupItem to block cross zonal restore from snapshot RP.
+
+## Version 7.5.0
+* Added support for updating SoftDeleteRetentionPeriodInDays in Set-AzRecoveryServicesVaultProperty cmdlet.
+* Added new cmdlet Undo-AzRecoveryServicesBackupContainerDeletion for undeleting soft deleted backup container.
+* Resolved bug in Restore-AzRecoveryServicesBackupItem cmdlet.
+* Updated cmdlet Set-AzRecoveryServicesBackupProperty to use vault PATCH API while setting CRR, Redundancy settings.
+* Updated cmdlets Get-AzRecoveryServicesBackupItem and Get-AzRecoveryServicesVaultProperty to expose more properties in the output.
+* Updated the configure backup per policy protection limit for VMs from 100 to 1000.
+
+## Version 7.4.0
+* Upgraded nuget package to signed package.
+* Updated the policy, protection commands to support AFS Vault Tier.
+
+## Version 7.3.0
+* Added CRR support for southeastus, westus3 regions.
+* Added support for enabling Disk access settings for managed VM restores.
+
+## Version 7.2.1
+* Fixed bug in `Set-ASRReplicationProtectedItem` cmdlet of H2A for replication to MD scenario.
+
+## Version 7.2.0
+* Fixed bug for making RecoveryAzureStorageAccountId parameter optional in `New-ASRReplicationProtectedItem` cmdlet of H2A.
+
+## Version 7.1.0
+* Added MUA support for CMK Encryption properties of Recovery Services Vault. Updated the  VaultProperty command to use underlying Vault APIs.
+* Added additional properties to the output of Get-AzRecoveryServicesVault cmdlet - MoveDetails, MoveState, RedundancySettings, SecureScore, BcdrSecurityLevel, EncryptionProperty.
 
 ## Version 7.0.0
-* [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`. 
+* [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`.
 
 ## Version 6.9.0
 * Added support for MUA for disabling vault Immutability, increasing RPO for policy schedule, restore, stop protection with retain data.
@@ -28,13 +141,13 @@
 
 ## Version 6.8.0
 * Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
-* Fixed an issue while setting soft delete vault property. 
+* Fixed an issue while setting soft delete vault property.
 
 ## Version 6.7.1
 * Added CRR support for taiwannorth, taiwannorthwest region.
 * Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
 * Added warning for Standard to Enhanced policy migration for AzureVMs.
-* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to output Job object if PassThru not given.
 * Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
 
 ## Version 6.7.0
@@ -199,13 +312,13 @@
 
 ## Version 3.4.0
 * modified policy validation limits as per backup service.
-* Added Zone Redundancy for Recovery Service Vaults. 
+* Added Zone Redundancy for Recovery Service Vaults.
 * Azure Site Recovery support for Proximity placement group for VMware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for Availability zone for VMware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for UseManagedDisk for HyperV to Azure provider
 
 ## Version 3.3.0
-* Added Cross Region Restore feature.  
+* Added Cross Region Restore feature.
 * Blocked getting workload config when target item is an availability group.
 
 ## Version 3.2.0
@@ -277,7 +390,7 @@
 ## Version 2.6.0
 * Azure Backup Added filtering of backup item based on friendly name.
 * Fixed Vault credential file download for backup and site recovery service
-* Fixes for few properties for update policy of H2A 
+* Fixes for few properties for update policy of H2A
 
 ## Version 2.5.0
 * Azure Site Recovery support for removing a replicated disk.
@@ -290,7 +403,7 @@
 * Azure Site Recovery support to update replication protected item with disk encryption set Map for HyperV to Azure.
 
 * Azure Site Recovery support to update failover and test failover disk names.
-* Azure Site Recovery support to update failover and test failover virtual machine names. 
+* Azure Site Recovery support to update failover and test failover virtual machine names.
 * Azure Site Recovery support for new test failover networking configurations.
 * Azure Site Recovery support to update failover and test failover configurations of multiple NICs through powershell.
 
@@ -361,12 +474,12 @@
 * Updated table format for SQL in azure VM
 * Added alternate method to fetch location in AzureFileShare
 * Updated ScheduleRunDays in SchedulePolicy object according to timezone
-* Made some attibutes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig 
+* Made some attributes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
 * Added pipe support for unregister container
- 
+
 ## Version 1.1.0
 * Added Sql server in Azure VM support
 * SDK Update

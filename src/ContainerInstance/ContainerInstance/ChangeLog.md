@@ -19,6 +19,29 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support.
+
+## Version 5.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 4.1.3
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+## Version 4.1.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 4.1.1
+* Upgraded nuget package to signed package.
+* Added breaking change warning for removing default value for OsType `New-AzContainerGroup`
+
+## Version 4.1.0
+* Added ContainerGroupProfileId ContainerGroupProfileRevision StandbyPoolProfileFailContainerGroupCreateOnReuseFailure StandbyPoolProfileId to Container Group properties.
+* Added ConfigMapKeyValuePair to Container object properties.
+* Added new cmdlet to define container without using the preset default properties New-AzContainerInstanceNoDefaultObject
+* Added new cmdlets for Container Group Profile - Get-AzContainerInstanceContainerGroupProfile, New-AzContainerInstanceContainerGroupProfile, Remove-AzContainerInstanceContainerGroupProfile, Update-AzContainerInstanceContainerGroupProfile, Get-AzContainerInstanceContainerGroupProfileRevision
+
+## Version 4.0.2
+* Fixed secrets exposure in example documentation.
 
 ## Version 4.0.1
 * Introduced secrets detection feature to safeguard sensitive data.

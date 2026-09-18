@@ -14,13 +14,43 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public partial interface IApplicationsOperations
     {
         /// <summary>
-        /// Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all managed application resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <remarks>
-        /// Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all managed application resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplicationResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a Service Fabric managed application resource created or in the process
+        /// of being created in the Service Fabric cluster resource.
+        /// </summary>
+        /// <remarks>
+        /// Get a Service Fabric managed application resource created or in the process
+        /// of being created in the Service Fabric cluster resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -43,13 +73,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric managed application resource with the specified name.
+        /// Create or update a Service Fabric managed application resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric managed application resource with the specified name.
+        /// Create or update a Service Fabric managed application resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -72,16 +104,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, ApplicationResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource,ApplicationsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, ApplicationResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Updates the tags of an application resource of a given managed cluster.
+        /// Updates an application resource of a given managed cluster.
         /// </summary>
         /// <remarks>
-        /// Updates the tags of an application resource of a given managed cluster.
+        /// Updates an application resource of a given managed cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -92,6 +124,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='tags'>
         /// Application update parameters
         /// </param>
+        /// <param name='properties'>
+        /// Application update parameters properties.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -104,16 +139,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource,ApplicationsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete a Service Fabric managed application resource with the specified name.
+        /// Delete a Service Fabric managed application resource with the specified
+        /// name.
         /// </summary>
         /// <remarks>
-        /// Delete a Service Fabric managed application resource with the specified name.
+        /// Delete a Service Fabric managed application resource with the specified
+        /// name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -130,19 +167,27 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all managed application resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
         /// </summary>
         /// <remarks>
-        /// Gets all managed application resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for fetching the health of a deployed application.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -153,19 +198,166 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ApplicationResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsFetchHealthHeaders>> FetchHealthWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, ApplicationFetchHealthRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric managed application resource with the specified name.
+        /// Get the status of the latest application upgrade. It will query the cluster
+        /// to find the status of the latest application upgrade.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric managed application resource with the specified name.
+        /// Get the status of the latest application upgrade. It will query the cluster
+        /// to find the status of the latest application upgrade.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsReadUpgradeHeaders>> ReadUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </summary>
+        /// <remarks>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for restarting a deployed code package.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsRestartDeployedCodePackageHeaders>> RestartDeployedCodePackageWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, RestartDeployedCodePackageRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a request to resume the current application upgrade. This will resume
+        /// the application upgrade from where it was paused.
+        /// </summary>
+        /// <remarks>
+        /// Send a request to resume the current application upgrade. This will resume
+        /// the application upgrade from where it was paused.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='upgradeDomainName'>
+        /// The upgrade domain name. Expected to be the next upgrade domain if the
+        /// application is upgrading.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsResumeUpgradeHeaders>> ResumeUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string upgradeDomainName = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a request to start a rollback of the current application upgrade. This
+        /// will start rolling back the application to the previous version.
+        /// </summary>
+        /// <remarks>
+        /// Send a request to start a rollback of the current application upgrade. This
+        /// will start rolling back the application to the previous version.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsStartRollbackHeaders>> StartRollbackWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a request to update the current application upgrade.
+        /// </summary>
+        /// <remarks>
+        /// Send a request to update the current application upgrade.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for updating an application upgrade.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsUpdateUpgradeHeaders>> UpdateUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, RuntimeUpdateApplicationUpgradeParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create or update a Service Fabric managed application resource with the
+        /// specified name.
+        /// </summary>
+        /// <remarks>
+        /// Create or update a Service Fabric managed application resource with the
+        /// specified name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -188,16 +380,53 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, ApplicationResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource,ApplicationsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, ApplicationResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete a Service Fabric managed application resource with the specified name.
+        /// Updates an application resource of a given managed cluster.
         /// </summary>
         /// <remarks>
-        /// Delete a Service Fabric managed application resource with the specified name.
+        /// Updates an application resource of a given managed cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='tags'>
+        /// Application update parameters
+        /// </param>
+        /// <param name='properties'>
+        /// Application update parameters properties.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationResource,ApplicationsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a Service Fabric managed application resource with the specified
+        /// name.
+        /// </summary>
+        /// <remarks>
+        /// Delete a Service Fabric managed application resource with the specified
+        /// name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -214,13 +443,194 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all managed application resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
         /// </summary>
         /// <remarks>
-        /// Gets all managed application resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for fetching the health of a deployed application.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsFetchHealthHeaders>> BeginFetchHealthWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, ApplicationFetchHealthRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get the status of the latest application upgrade. It will query the cluster
+        /// to find the status of the latest application upgrade.
+        /// </summary>
+        /// <remarks>
+        /// Get the status of the latest application upgrade. It will query the cluster
+        /// to find the status of the latest application upgrade.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsReadUpgradeHeaders>> BeginReadUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </summary>
+        /// <remarks>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for restarting a deployed code package.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsRestartDeployedCodePackageHeaders>> BeginRestartDeployedCodePackageWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, RestartDeployedCodePackageRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a request to resume the current application upgrade. This will resume
+        /// the application upgrade from where it was paused.
+        /// </summary>
+        /// <remarks>
+        /// Send a request to resume the current application upgrade. This will resume
+        /// the application upgrade from where it was paused.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='upgradeDomainName'>
+        /// The upgrade domain name. Expected to be the next upgrade domain if the
+        /// application is upgrading.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsResumeUpgradeHeaders>> BeginResumeUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string upgradeDomainName = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a request to start a rollback of the current application upgrade. This
+        /// will start rolling back the application to the previous version.
+        /// </summary>
+        /// <remarks>
+        /// Send a request to start a rollback of the current application upgrade. This
+        /// will start rolling back the application to the previous version.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsStartRollbackHeaders>> BeginStartRollbackWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a request to update the current application upgrade.
+        /// </summary>
+        /// <remarks>
+        /// Send a request to update the current application upgrade.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters for updating an application upgrade.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ApplicationsUpdateUpgradeHeaders>> BeginUpdateUpgradeWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, RuntimeUpdateApplicationUpgradeParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets all managed application resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
+        /// </summary>
+        /// <remarks>
+        /// Gets all managed application resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

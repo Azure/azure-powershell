@@ -45,21 +45,16 @@ title: EdgeOrder
 subject-prefix: $(service-name)
 inlining-threshold: 50
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   #^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$|^Update$|^UpdateViaIdentity$|^CancelViaIdentity$|^Cancel$|^Return$|^ReturnViaIdentity$
+      variant: ^(Create|Update|Cance|Return)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -104,12 +99,18 @@ directive:
       subject: OrderItemCancellation
     
   - model-cmdlet:
-    - OrderItemDetails
-    - ShippingAddress
-    - ContactDetails
-    - Preferences
-    - HierarchyInformation
-    - FilterableProperty
+      - model-name: OrderItemDetails
+        cmdlet-name: New-AzEdgeOrderOrderItemDetailsObject
+      - model-name: ShippingAddress
+        cmdlet-name: New-AzEdgeOrderShippingAddressObject
+      - model-name: ContactDetails
+        cmdlet-name: New-AzEdgeOrderContactDetailsObject
+      - model-name: Preferences
+        cmdlet-name: New-AzEdgeOrderPreferencesObject
+      - model-name: HierarchyInformation
+        cmdlet-name: New-AzEdgeOrderHierarchyInformationObject
+      - model-name: FilterableProperty
+        cmdlet-name: New-AzEdgeOrderFilterablePropertyObject
 ```
 ``` yaml
 directive:

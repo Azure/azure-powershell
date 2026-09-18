@@ -63,11 +63,57 @@ subject-prefix: $(service-name)
 
 inlining-threshold: 50
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+
+  - where:
+      verb: (.*)
+    set:
+      breaking-change:
+        deprecated-by-version: '-'
+        deprecated-by-azversion: 18.2.0
+        change-effective-date: 2027/06/28
+        change-description: Azure Lab Services will be retired on June 28, 2027, please see details on https://azure.microsoft.com/en-us/updates?id=azure-lab-services-is-being-retired.
+
+  # reset vm password / New Lab / Update lab to set securestring passwords
+  - from: swagger-document
+    where: $.definitions.ResetPasswordBody.properties.password
+    transform: >-
+      return {
+          "description": "The password",
+          "type": "string",
+          "x-ms-secret": true,
+          "x-ms-mutability": [
+            "create"
+          ],
+          "format": "password"
+        }
+  - from: swagger-document
+    where: $.definitions.Credentials.properties.password
+    transform: >-
+      return {
+          "description": "The password for the user. This is required for the TemplateVM createOption.",
+          "type": "string",
+          "x-ms-secret": true,
+          "x-ms-mutability": [
+            "create",
+            "update"
+          ],
+          "format": "password"
+        }
+  # Fix update
+  - from: swagger-document
+    where: $.definitions.Credentials.properties.username
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachineAdditionalCapabilities.properties.installGpuDrivers
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.VirtualMachineProfile.properties.imageReference
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  # Fix bug that the words of create or update will be replaced
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/"Publish or re-publish a lab. This will publish all lab resources, such as virtual machines."/g, '"Publish or re-publish a lab. This will create or update all lab resources, such as virtual machines."');
   # change VirtualMachine to VM
   - where:
       subject: ^(.*)(VirtualMachine)(.*)$
@@ -136,10 +182,6 @@ directive:
   - where:
       verb: Set
     remove: true
-  # remove the Identity variants
-  - where:
-      variant: ^(.*)ViaIdentity(.*)$
-    remove: true
   # Change LabImage to LabPlanImage
   - where:
       verb: Get
@@ -170,20 +212,12 @@ directive:
       verb: Update
       subject: $1VMReimage
   - where:
-      variant: ^Create$|^Update$|^Reset$|^Save$|^Invite$
+      variant: ^(Create|Update|Reset|Save|Invite)(?!.*?(Expanded|JsonFilePath|JsonString)) 
     remove: true
-  # Hide reset vm password / New Lab / Update lab to set securestring passwords
   - where:
-      verb: Reset
-    hide: true
-  - where:
-      verb: New
-      subject: Lab
-    hide: true
-  - where:
-      verb: Update
-      subject: Lab
-    hide: true
+      variant: ^CreateViaIdentityExpanded$
+    remove: true
+  # Custom new variant (rename parameter)
   - where:
       verb: Get
       subject: Lab

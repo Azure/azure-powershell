@@ -44,23 +44,15 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: ac6324d13863e8157f4b392ef0ceef1e86eea935
+commit: b67274cc1916170502f17ffabac0b46c4620918e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-10-01-preview/connectedClusters.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2024-07-15-preview/connectedClusters.json
 
 title: ConnectedKubernetes
 module-version: 0.1.0
 subject-prefix: $(service-name)
-
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -68,7 +60,11 @@ directive:
     set:
       subject: $1
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded))
+      subject-prefix: ConnectedKubernetes
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
       subject-prefix: ConnectedKubernetes
     remove: true
   - where:
@@ -82,8 +78,7 @@ directive:
       parameter-name: Property
     hide: true
   - where:
-      verb: New|Update|Remove
+      verb: New|Update|Remove|Set
       subject-prefix: ConnectedKubernetes
     hide: true
-
 ```

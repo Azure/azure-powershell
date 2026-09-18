@@ -8,22 +8,35 @@ schema: 2.0.0
 # New-AzRoleEligibilityScheduleRequest
 
 ## SYNOPSIS
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> [-Condition <String>]
  [-ConditionVersion <String>] [-ExpirationDuration <String>] [-ExpirationEndDateTime <DateTime>]
- [-ExpirationType <Type>] [-Justification <String>] [-PrincipalId <String>] [-RequestType <RequestType>]
+ [-ExpirationType <String>] [-Justification <String>] [-PrincipalId <String>] [-RequestType <String>]
  [-RoleDefinitionId <String>] [-ScheduleInfoStartDateTime <DateTime>]
  [-TargetRoleEligibilityScheduleId <String>] [-TargetRoleEligibilityScheduleInstanceId <String>]
  [-TicketNumber <String>] [-TicketSystem <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzRoleEligibilityScheduleRequest -Name <String> -Scope <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 
 ## EXAMPLES
 
@@ -68,7 +81,7 @@ e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Contai
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -84,7 +97,7 @@ Currently accepted value is '2.0'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -115,7 +128,7 @@ Duration of the role eligibility schedule in TimeSpan.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -130,7 +143,7 @@ End DateTime of the role eligibility schedule.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -144,11 +157,41 @@ Accept wildcard characters: False
 Type of the role eligibility schedule expiration
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.Type
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -160,7 +203,7 @@ Justification for the role eligibility
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -191,23 +234,8 @@ The principal ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -221,8 +249,8 @@ The type of the role assignment schedule request.
 Eg: SelfActivate, AdminAssign etc
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RequestType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -237,7 +265,7 @@ The role definition ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -252,7 +280,7 @@ Start DateTime of the role eligibility schedule.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -284,7 +312,7 @@ The resultant role eligibility schedule id or the role eligibility schedule id b
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -299,7 +327,7 @@ The role eligibility schedule instance id being updated
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -314,7 +342,7 @@ Ticket number for the role eligibility
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -329,7 +357,7 @@ Ticket system name for the role eligibility
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -377,7 +405,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleEligibilityScheduleRequest
 
 ## NOTES
 

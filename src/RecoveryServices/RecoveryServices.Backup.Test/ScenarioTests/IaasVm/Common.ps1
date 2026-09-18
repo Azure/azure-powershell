@@ -231,7 +231,19 @@ function Delete-Vault($vault)
 		}
 	}
 
-	Remove-AzRecoveryServicesVault -Vault $vault
+	try {
+		$remove = Remove-AzRecoveryServicesVault -Vault $vault
+	}
+	catch {
+		if ($_.Exception.Message -like "*NotFound*" -or $_.Exception.Message -like "*not found*") {
+			# Vault not found - continue silently as it's already deleted
+			Write-Verbose "Vault $($vault.Name) not found - already deleted or doesn't exist"
+		}
+		else {
+			# Re-throw other errors
+			throw
+		}
+	}
 }
 
 function Delete-VM(
@@ -274,6 +286,19 @@ function Enable-Protection(
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name "DefaultPolicy";
+
+		if($container -ne $null -and $container.Status -eq "SoftDeleted"){
+			$item = Get-AzRecoveryServicesBackupItem `
+			  -VaultId $vault.ID `
+			  -Container $container `
+			  -WorkloadType AzureVM `
+			  -Name $vm.Name
+
+			if ($item.ProtectionState -eq "ProtectionStopped")
+			{
+				Undo-AzRecoveryServicesBackupItemDeletion -Item $item -VaultId $vault.ID -Force
+			}
+		}
 	
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
@@ -293,8 +318,13 @@ function Enable-Protection(
 		-WorkloadType AzureVM `
 		-Name $vm.Name
 
-	if ($item -eq $null)
+	if ($item -eq $null -or $item.ProtectionState -eq "ProtectionStopped")
 	{
+		if ($item.ProtectionState -eq "ProtectionStopped")
+		{
+			Undo-AzRecoveryServicesBackupItemDeletion -Item $item -VaultId $vault.ID -Force
+		}
+
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name "DefaultPolicy";

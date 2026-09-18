@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
+        public List<PSIpamPoolPrefixAllocation> IpamPoolPrefixAllocations { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -42,7 +45,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
-        [Ps1Xml(Label = "NatGateway Name", Target = ViewControl.Table, ScriptBlock = "$_.NatGateway.Name")]
         public PSResourceId NatGateway { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -107,7 +109,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string NatGatewayText
         {
-            get { return JsonConvert.SerializeObject(NatGateway, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get
+            {
+                if (NatGateway?.Id != null)
+                {
+                    string resourceName = NatGateway.Id.Substring(NatGateway.Id.LastIndexOf('/') + 1);
+                    return resourceName;
+                }
+                return null;
+            }
         }
 
         public bool ShouldSerializeIpConfigurations()
@@ -179,6 +189,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DefaultOutboundAccessText
         {
             get { return JsonConvert.SerializeObject(DefaultOutboundAccess, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string IpamPoolPrefixAllocationsText
+        {
+            get { return JsonConvert.SerializeObject(IpamPoolPrefixAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

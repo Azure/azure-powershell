@@ -13,13 +13,72 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkGroupsOperationsExtensions
     {
         /// <summary>
+        /// Lists the specified network group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='top'>
+        /// An optional query parameter which specifies the maximum number of records
+        /// to be returned by the server.
+        /// </param>
+        /// <param name='skipToken'>
+        /// SkipToken is only used if a previous operation returned a partial result.
+        /// If a previous response contains a nextLink element, the value of the
+        /// nextLink element will include a skipToken parameter that specifies a
+        /// starting point to use for subsequent calls.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<NetworkGroup> List(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, int? top = default(int?), string skipToken = default(string))
+        {
+                return ((INetworkGroupsOperations)operations).ListAsync(resourceGroupName, networkManagerName, top, skipToken).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the specified network group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='top'>
+        /// An optional query parameter which specifies the maximum number of records
+        /// to be returned by the server.
+        /// </param>
+        /// <param name='skipToken'>
+        /// SkipToken is only used if a previous operation returned a partial result.
+        /// If a previous response contains a nextLink element, the value of the
+        /// nextLink element will include a skipToken parameter that specifies a
+        /// starting point to use for subsequent calls.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkGroup>> ListAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, int? top = default(int?), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkManagerName, top, skipToken, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the specified network group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -39,7 +98,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -64,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -89,7 +148,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -119,7 +178,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -132,9 +191,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkGroupsDeleteHeaders Delete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
+        public static void Delete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
         {
-                return ((INetworkGroupsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
+                ((INetworkGroupsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -144,7 +203,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -160,71 +219,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkGroupsDeleteHeaders> DeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Lists the specified network group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='top'>
-        /// An optional query parameter which specifies the maximum number of records
-        /// to be returned by the server.
-        /// </param>
-        /// <param name='skipToken'>
-        /// SkipToken is only used if a previous operation returned a partial result.
-        /// If a previous response contains a nextLink element, the value of the
-        /// nextLink element will include a skipToken parameter that specifies a
-        /// starting point to use for subsequent calls.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkGroup> List(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, int? top = default(int?), string skipToken = default(string))
-        {
-                return ((INetworkGroupsOperations)operations).ListAsync(resourceGroupName, networkManagerName, top, skipToken).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists the specified network group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='top'>
-        /// An optional query parameter which specifies the maximum number of records
-        /// to be returned by the server.
-        /// </param>
-        /// <param name='skipToken'>
-        /// SkipToken is only used if a previous operation returned a partial result.
-        /// If a previous response contains a nextLink element, the value of the
-        /// nextLink element will include a skipToken parameter that specifies a
-        /// starting point to use for subsequent calls.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkGroup>> ListAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, int? top = default(int?), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkManagerName, top, skipToken, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a network group.
@@ -233,7 +230,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkGroupsDeleteHeaders BeginDelete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
+        public static void BeginDelete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
         {
-                return ((INetworkGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
+                ((INetworkGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -258,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -274,12 +271,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkGroupsDeleteHeaders> BeginDeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists the specified network group.

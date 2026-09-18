@@ -18,10 +18,10 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 . ($loadVarsPath)
 Describe 'Update-AzLabServicesLab' {
     It 'Update AutoShutdown Disconnect Delay'  {
-        Update-AzLabServicesLab -Name $ENV:LabName `
-            -ResourceGroupName $ENV:ResourceGroupName `
+        Update-AzLabServicesLab -Name $env.LabName `
+            -ResourceGroupName $env.ResourceGroupName `
             -AutoShutdownProfileShutdownOnDisconnect Enabled `
             -AutoShutdownProfileDisconnectDelay "00:25:00"
-        Get-AzLabServicesLab -Name $ENV:LabName -ResourceGroupname $ENV:ResourceGroupName | Select -ExpandProperty AutoShutdownProfileDisconnectDelay | Should -BeExactly '00:25:00'
+        Get-AzLabServicesLab -Name $env.LabName -ResourceGroupname $env.ResourceGroupName | Select -ExpandProperty AutoShutdownProfileDisconnectDelay | Should -BeExactly '00:25:00'
     }
 }

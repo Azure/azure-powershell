@@ -34,7 +34,7 @@ Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-datab
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,64 +53,65 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
 function Update-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", "16.0.0", "2.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace", DeprecatedOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization"), NewOutputProperties = ("PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List'"))]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Alias('WorkspaceName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [System.String]
         # The name of the workspace.
         ${Name},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName='UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
+        # The value must be an UUID.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(HelpMessage = "Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
         ${PrepareEncryption},
 
-        [Parameter(HelpMessage = "The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource])]
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Default", "Microsoft.Keyvault")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]
+        [System.String]
         # The encryption keySource (provider).
         # Possible values (case-insensitive): Default, Microsoft.Keyvault
         ${EncryptionKeySource},
 
-        [Parameter(HelpMessage = "The URI (DNS name) of the Key Vault.")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The Uri of KeyVault.
         ${EncryptionKeyVaultUri},
 
-        [Parameter(HelpMessage = "The name of Key Vault key.")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
         ${EncryptionKeyName},
 
-        [Parameter(HelpMessage = "The version of KeyVault key.")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The version of KeyVault key.
@@ -149,10 +150,25 @@ function Update-AzDatabricksWorkspace {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspaceProviderAuthorization[]]
         # The workspace provider authorizations.
-        # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
         ${Authorization},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("HiveMetastore", "UnityCatalog")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # Defines the initial type of the default catalog.
+        # Possible values (case-insensitive): HiveMetastore, UnityCatalog
+        ${DefaultCatalogInitialType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Microsoft.Keyvault")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The encryption keySource (provider).
+        # Possible values (case-insensitive): Microsoft.Keyvault
+        ${ManagedDiskKeySource},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -179,6 +195,14 @@ function Update-AzDatabricksWorkspace {
         ${ManagedDiskRotationToLatestKeyVersionEnabled},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Microsoft.Keyvault")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.String]
+        # The encryption keySource (provider).
+        # Possible values (case-insensitive): Microsoft.Keyvault
+        ${ManagedServiceKeySource},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
         # The name of KeyVault key.
@@ -202,26 +226,26 @@ function Update-AzDatabricksWorkspace {
         # The blob URI where the UI definition file is located.
         ${UiDefinitionUri},
 
-        [Parameter(HelpMessage = "Resource tags.")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceUpdateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("AllRules", "NoAzureDatabricksRules", "NoAzureServiceRules")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
+        [System.String]
         # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
         # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
         # 'NoAzureServiceRules' value is for internal use only.
         ${RequiredNsgRule},
 
-        [Parameter(HelpMessage="The network access type for accessing workspace. Set value to disabled to access workspace only via private link.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
+        [System.String]
         # The network access type for accessing workspace.
         # Set value to disabled to access workspace only via private link.
         ${PublicNetworkAccess},
@@ -233,33 +257,37 @@ function Update-AzDatabricksWorkspace {
         ${EnableNoPublicIP},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
+        [Alias('EnhancedSecurityMonitoringValue')]        
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
-        # Status of Enhanced Security Monitoring feature.
-        ${EnhancedSecurityMonitoringValue},
+        [System.String]
+        # Status of the Enhanced Security Monitoring feature. Allowed values: 'Enabled', 'Disabled'.
+        ${EnhancedSecurityMonitoring},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
+        [Alias('AutomaticClusterUpdateValue')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
-        # Status of automated cluster updates feature.
-        ${AutomaticClusterUpdateValue},
+        [System.String]
+        # Status of the Automatic Cluster Update feature. Allowed values: 'Enabled', 'Disabled'.
+        ${AutomaticClusterUpdate},
 
         [Parameter()]
+        [Alias('ComplianceSecurityProfileComplianceStandard')]
         [AllowEmptyCollection()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("NONE", "HIPAA", "PCI_DSS")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
+        [System.String[]]
         # Compliance standards associated with the workspace.
-        ${ComplianceSecurityProfileComplianceStandard},
+        ${ComplianceStandard},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
+        [Alias('ComplianceSecurityProfileValue')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
-        # Status of Compliance Security Profile feature.
-        ${ComplianceSecurityProfileValue},
+        [System.String]
+        # Status of the Compliance Security Profile feature. Allowed values: 'Enabled', 'Disabled'.
+        ${EnhancedSecurityCompliance},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -268,9 +296,9 @@ function Update-AzDatabricksWorkspace {
         ${AccessConnectorId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]
+        [System.String]
         # The identity type of the Access Connector Resource.
         ${AccessConnectorIdentityType},
 
@@ -282,9 +310,9 @@ function Update-AzDatabricksWorkspace {
         ${AccessConnectorUserAssignedIdentityId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]
+        [System.String]
         # Gets or Sets Default Storage Firewall configuration information
         ${DefaultStorageFirewall},
         
@@ -297,7 +325,7 @@ function Update-AzDatabricksWorkspace {
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
-        [Parameter(HelpMessage = "Run the command as a job")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
@@ -323,7 +351,7 @@ function Update-AzDatabricksWorkspace {
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
 
-        [Parameter(HelpMessage = "Run the command asynchronously")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
@@ -363,11 +391,14 @@ function Update-AzDatabricksWorkspace {
             $hasAmlWorkspaceId = $PSBoundParameters.Remove('AmlWorkspaceId')
             $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasAuthorization = $PSBoundParameters.Remove('Authorization')
+            $hasDefaultCatalogInitialType = $PSBoundParameters.Remove('DefaultCatalogInitialType')
+            $hasManagedDiskKeySource = $PSBoundParameters.Remove('ManagedDiskKeySource')
             $hasManagedDiskKeyVaultPropertiesKeyName = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyName')
             $hasManagedDiskKeyVaultPropertiesKeyVaultUri = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyVaultUri')
             $hasManagedDiskKeyVaultPropertiesKeyVersion = $PSBoundParameters.Remove('ManagedDiskKeyVaultPropertiesKeyVersion')
             $hasManagedDiskRotationToLatestKeyVersionEnabled = $PSBoundParameters.Remove('ManagedDiskRotationToLatestKeyVersionEnabled')
             $hasManagedServicesKeyVaultPropertiesKeyName = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyName')
+            $hasManagedServiceKeySource = $PSBoundParameters.Remove('ManagedServiceKeySource')
             $hasManagedServicesKeyVaultPropertiesKeyVaultUri = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyVaultUri')
             $hasManagedServicesKeyVaultPropertiesKeyVersion = $PSBoundParameters.Remove('ManagedServicesKeyVaultPropertiesKeyVersion')
             $hasUiDefinitionUri = $PSBoundParameters.Remove('UiDefinitionUri')
@@ -379,10 +410,10 @@ function Update-AzDatabricksWorkspace {
             $hasAccessConnectorIdentityType = $PSBoundParameters.Remove('AccessConnectorIdentityType')
             $hasAccessConnectorUserAssignedIdentityId = $PSBoundParameters.Remove('AccessConnectorUserAssignedIdentityId')
             $hasDefaultStorageFirewall = $PSBoundParameters.Remove('DefaultStorageFirewall')
-            $hasEnhancedSecurityMonitoringValue = $PSBoundParameters.Remove('EnhancedSecurityMonitoringValue')
-            $hasAutomaticClusterUpdateValue = $PSBoundParameters.Remove('AutomaticClusterUpdateValue')
-            $hasComplianceSecurityProfileComplianceStandard = $PSBoundParameters.Remove('ComplianceSecurityProfileComplianceStandard')
-            $hasComplianceSecurityProfileValue = $PSBoundParameters.Remove('ComplianceSecurityProfileValue')
+            $hasEnhancedSecurityMonitoringValue = $PSBoundParameters.Remove('EnhancedSecurityMonitoring')
+            $hasAutomaticClusterUpdateValue = $PSBoundParameters.Remove('AutomaticClusterUpdate')
+            $hasComplianceSecurityProfileComplianceStandard = $PSBoundParameters.Remove('ComplianceStandard')
+            $hasComplianceSecurityProfileValue = $PSBoundParameters.Remove('EnhancedSecurityCompliance')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -436,6 +467,12 @@ function Update-AzDatabricksWorkspace {
             if ($hasAuthorization) {
                 $workspace.Authorization = $Authorization
             }
+            if ($hasDefaultCatalogInitialType) {
+                $workspace.DefaultCatalogInitialType = $DefaultCatalogInitialType
+            }
+            if ($hasManagedDiskKeySource) {
+                $workspace.ManagedDiskKeySource = $ManagedDiskKeySource
+            }
             if ($hasManagedDiskKeyVaultPropertiesKeyName) {
                 $workspace.ManagedDiskKeyVaultPropertiesKeyName = $ManagedDiskKeyVaultPropertiesKeyName
             }
@@ -450,6 +487,9 @@ function Update-AzDatabricksWorkspace {
             }
             if ($hasManagedServicesKeyVaultPropertiesKeyName) {
                 $workspace.ManagedServicesKeyVaultPropertiesKeyName = $ManagedServicesKeyVaultPropertiesKeyName
+            }
+            if ($hasManagedServiceKeySource) {
+                $workspace.ManagedServiceKeySource = $ManagedServiceKeySource
             }
             if ($hasManagedServicesKeyVaultPropertiesKeyVaultUri) {
                 $workspace.ManagedServicesKeyVaultPropertiesKeyVaultUri = $ManagedServicesKeyVaultPropertiesKeyVaultUri
@@ -472,19 +512,19 @@ function Update-AzDatabricksWorkspace {
             }
             if ($hasEnhancedSecurityMonitoringValue)
             {
-                $workspace.EnhancedSecurityMonitoringValue = $EnhancedSecurityMonitoringValue
+                $workspace.EnhancedSecurityMonitoringValue = $EnhancedSecurityMonitoring
             }
             if ($hasAutomaticClusterUpdateValue)
             {
-                $workspace.AutomaticClusterUpdateValue = $AutomaticClusterUpdateValue
+                $workspace.AutomaticClusterUpdateValue = $AutomaticClusterUpdate
             }
             if ($hasComplianceSecurityProfileComplianceStandard)
             {
-                $workspace.ComplianceSecurityProfileComplianceStandard = $ComplianceSecurityProfileComplianceStandard
+                $workspace.ComplianceSecurityProfileComplianceStandard = $ComplianceStandard
             }
             if ($hasComplianceSecurityProfileValue)
             {
-                $workspace.ComplianceSecurityProfileValue = $ComplianceSecurityProfileValue
+                $workspace.ComplianceSecurityProfileValue = $EnhancedSecurityCompliance
             }
             if ($hasDefaultStorageFirewall)
             {

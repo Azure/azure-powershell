@@ -10,9 +10,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Set of export policy rules
     /// </summary>
-    /// <remarks>
-    /// Set of export policy rules
-    /// </remarks>
     public partial class VolumePatchPropertiesExportPolicy
     {
         /// <summary>

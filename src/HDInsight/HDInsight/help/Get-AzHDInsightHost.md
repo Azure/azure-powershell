@@ -20,7 +20,8 @@ Get-AzHDInsightHost [[-ResourceGroupName] <String>] [-ClusterName] <String>
 
 ### SetByResourceIdParameterSet
 ```
-Get-AzHDInsightHost [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzHDInsightHost [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGcpOffering
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgcpofferingobject
 #>
 function New-AzSecurityCspmMonitorGcpOfferingObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGcpOffering')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

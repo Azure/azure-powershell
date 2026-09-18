@@ -1,0 +1,139 @@
+{
+  "Get-AzWorkloadsProviderInstance+[NoContext]+List+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "9e76cf3d-77ab-4f22-ad7c-1af2b632b8c3" ],
+        "CommandName": [ "Get-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "Get-AzWorkloadsProviderInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/westindia/da14319c-ebba-4dfa-8cf2-3d5ab1d8cc66" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "81a05efa-8ecb-48eb-b9d2-0c09185efe11" ],
+        "x-ms-correlation-request-id": [ "03c59357-6387-4f04-ab7f-035f2c87002f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T073259Z:03c59357-6387-4f04-ab7f-035f2c87002f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4BCEE3CDF0F541C9AF75FF0E48C15FD0 Ref B: PNQ231110906060 Ref C: 2025-10-09T07:32:58Z" ],
+        "Date": [ "Thu, 09 Oct 2025 07:32:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "993" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWorkloadsProviderInstance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "859d3170-1f94-4e8c-b257-95e4fe73bdaf" ],
+        "CommandName": [ "Get-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "Get-AzWorkloadsProviderInstance_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00007fc6-0000-0100-0000-68e75b7f0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/fa1950ea-91d3-45ce-b0d3-c8d0e3a44df9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b78a8a4e-3d35-4466-8389-57cdfd47238a" ],
+        "x-ms-correlation-request-id": [ "32f5b795-4b51-4032-b421-12f6e66be7a9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T073259Z:32f5b795-4b51-4032-b421-12f6e66be7a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 814C1C269D0D43528856231EF5721183 Ref B: PNQ231110906060 Ref C: 2025-10-09T07:32:59Z" ],
+        "Date": [ "Thu, 09 Oct 2025 07:32:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "981" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzWorkloadsProviderInstance+[NoContext]+GetViaId+$GET+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "9d014d34-c73d-40c5-a90f-49f823072001" ],
+        "CommandName": [ "Get-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "Get-AzWorkloadsProviderInstance_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.Monitors/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00007fc6-0000-0100-0000-68e75b7f0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/01faa918-3e70-485f-96f2-7806f3de810a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3781005c-1caf-46f5-93fd-02cdb8a3923b" ],
+        "x-ms-correlation-request-id": [ "cacfe208-ddfe-4127-9d38-ddeb738c3519" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T073300Z:cacfe208-ddfe-4127-9d38-ddeb738c3519" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A9F836F2A8B143F0ABAE1ECDDA56AF30 Ref B: PNQ231110906060 Ref C: 2025-10-09T07:33:00Z" ],
+        "Date": [ "Thu, 09 Oct 2025 07:32:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "981" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/providerInstances/nw\",\"name\":\"nw\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T03:03:30.1226742Z\",\"lastModifiedBy\":\"39495caf-cc21-4d03-b6b0-8c4a973cf213\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-09T06:51:43.4795304Z\"},\"properties\":{\"providerSettings\":{\"sapSid\":\"CHA\",\"sapHostname\":\"10.8.1.9\",\"sapInstanceNr\":\"00\",\"sapHostFileEntries\":[\"[\\\"10.8.1.35 chascs00cl1.sap.contoso.com chascs00cl1\\\",\\\"10.8.1.36 chaers01cl2.sap.contoso.com chaers01cl2\\\",\\\"10.8.1.9 vchaa02l0c.sap.contoso.com vchaa02l0c\\\",\\\"10.8.1.38 vchaa01l0c.sap.contoso.com vchaa01l0c\\\"]\"],\"sapUsername\":\"AMS_USER\",\"sapClientId\":\"400\",\"sapPortNumber\":\"8000\",\"sslPreference\":\"Disabled\",\"providerType\":\"SapNetWeaver\"},\"provisioningState\":\"Succeeded\",\"errors\":{}}}",
+      "isContentBase64": false
+    }
+  }
+}

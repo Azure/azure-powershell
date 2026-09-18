@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        public static System.Collections.Generic.IEnumerable<BackupPolicy> List(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<BackupPolicy> List(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IBackupPoliciesOperations)operations).ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<BackupPolicy>> ListAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackupPolicy>> ListAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='backupPolicyName'>
         /// Backup policy Name which uniquely identify backup policy.
         /// </param>
-        public static void Delete(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName)
+        public static BackupPoliciesDeleteHeaders Delete(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName)
         {
-                ((IBackupPoliciesOperations)operations).DeleteAsync(resourceGroupName, accountName, backupPolicyName).GetAwaiter().GetResult();
+                return ((IBackupPoliciesOperations)operations).DeleteAsync(resourceGroupName, accountName, backupPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -224,9 +224,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupPoliciesDeleteHeaders> DeleteAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, backupPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, backupPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create a backup policy for Netapp Account
@@ -333,9 +336,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='backupPolicyName'>
         /// Backup policy Name which uniquely identify backup policy.
         /// </param>
-        public static void BeginDelete(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName)
+        public static BackupPoliciesDeleteHeaders BeginDelete(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName)
         {
-                ((IBackupPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, backupPolicyName).GetAwaiter().GetResult();
+                return ((IBackupPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, backupPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -356,9 +359,45 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupPoliciesDeleteHeaders> BeginDeleteAsync(this IBackupPoliciesOperations operations, string resourceGroupName, string accountName, string backupPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, backupPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, backupPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// List backup policies for Netapp Account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BackupPolicy> ListNext(this IBackupPoliciesOperations operations, string nextPageLink)
+        {
+                return ((IBackupPoliciesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List backup policies for Netapp Account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackupPolicy>> ListNextAsync(this IBackupPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

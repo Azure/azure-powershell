@@ -62,7 +62,7 @@ Lock-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -Cont
 
 This command locks ImmutabilityPolicy of a Storage blob container, with Storage account object. 
 
-### Example 3: Lock ImmutabilityPolicyof a Storage blob container, with container object
+### Example 3: Lock ImmutabilityPolicy of a Storage blob container, with container object
 ```powershell
 $containerObject = Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 $policy = Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject

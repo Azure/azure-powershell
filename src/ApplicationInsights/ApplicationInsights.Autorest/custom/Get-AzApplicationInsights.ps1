@@ -22,7 +22,7 @@ Returns an Application Insights component.
 https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 #>
 function Get-AzApplicationInsights {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
     [CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
