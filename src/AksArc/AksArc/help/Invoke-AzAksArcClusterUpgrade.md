@@ -15,13 +15,13 @@ Update the provisioned cluster instance
 ### UpdateExpanded (Default)
 ```
 Invoke-AzAksArcClusterUpgrade -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
 Invoke-AzAksArcClusterUpgrade -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -KubernetesVersion <String> [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -KubernetesVersion <String> [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -KubernetesVersion
-The version of Kubernetes in use by the provisioned cluster.
+Kubernetes version to upgrade to.
+If not provided, the cluster will be upgraded to the latest supported version.
 
 ```yaml
 Type: System.String
@@ -98,21 +99,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

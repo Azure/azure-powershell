@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -95,9 +98,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="sasToken">The Azure key vault secret reference of sasToken in sas uri.
         /// </param>
-        public AzureBlobFSLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object url = default(object), object accountKey = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), string encryptedCredential = default(string), CredentialReference credential = default(CredentialReference), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), object sasUri = default(object), SecretBase sasToken = default(SecretBase))
+        public AzureBlobFSLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object url = default(object), object accountKey = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), string encryptedCredential = default(string), CredentialReference credential = default(CredentialReference), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), object sasUri = default(object), SecretBase sasToken = default(SecretBase))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Url = url;
             this.AccountKey = accountKey;

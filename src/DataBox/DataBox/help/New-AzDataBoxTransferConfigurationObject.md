@@ -15,7 +15,7 @@ Create an in-memory object for TransferConfiguration.
 ```
 New-AzDataBoxTransferConfigurationObject -Type <TransferConfigurationType>
  [-TransferAllDetail <ITransferConfigurationTransferAllDetails>]
- [-TransferFilterDetail <ITransferConfigurationTransferFilterDetails>] [-ProgressAction <ActionPreference>]
+ [-TransferFilterDetail <ITransferConfigurationTransferFilterDetails>]
  [<CommonParameters>]
 ```
 
@@ -33,28 +33,13 @@ Create a in-memory object for export jobs TransferConfiguration
 
 ## PARAMETERS
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TransferAllDetail
 Map of filter type and the details to transfer all data.
 This field is required only if the TransferConfigurationType is given as TransferAll.
 To construct, see NOTES section for TRANSFERALLDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferAllDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +56,7 @@ This field is required only if the TransferConfigurationType is given as Transfe
 To construct, see NOTES section for TRANSFERFILTERDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferFilterDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
 
 ## NOTES
 

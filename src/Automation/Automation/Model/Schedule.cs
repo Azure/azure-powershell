@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = schedule.Name;
             this.Description = schedule.Description;
-            this.StartTime = AdjustOffset(schedule.StartTime, schedule.StartTimeOffsetMinutes);
+            this.StartTime = AdjustOffset(schedule.StartTime, schedule.StartTimeOffsetMinutes).GetValueOrDefault();
             var expiryTime = AdjustOffset(schedule.ExpiryTime, schedule.ExpiryTimeOffsetMinutes);
             this.ExpiryTime = expiryTime.HasValue ? expiryTime.Value : DateTimeOffset.MaxValue;
-            this.CreationTime = schedule.CreationTime.ToLocalTime();
-            this.LastModifiedTime = schedule.LastModifiedTime.ToLocalTime();
+            this.CreationTime = schedule.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = schedule.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.IsEnabled = schedule.IsEnabled ?? false;
             this.NextRun = AdjustOffset(schedule.NextRun, schedule.NextRunOffsetMinutes);
             this.Interval = (byte?)(long?)schedule.Interval ?? this.Interval;
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             var advancedSchedule = new AdvancedSchedule()
             {
                 WeekDays = this.WeeklyScheduleOptions == null ? null : this.WeeklyScheduleOptions.DaysOfWeek,
-                MonthDays = (this.MonthlyScheduleOptions == null || this.MonthlyScheduleOptions.DaysOfMonth == null) ? null : this.MonthlyScheduleOptions.DaysOfMonth.Select(v => Convert.ToInt32(v)).ToList(),
+                MonthDays = (this.MonthlyScheduleOptions == null || this.MonthlyScheduleOptions.DaysOfMonth == null) ? null : this.MonthlyScheduleOptions.DaysOfMonth.Select(v => (int?)Convert.ToInt32(v)).ToList(),
                 MonthlyOccurrences = (this.MonthlyScheduleOptions == null || this.MonthlyScheduleOptions.DayOfWeek == null)
                     ? null
                     : new AdvancedScheduleMonthlyOccurrence[]
@@ -300,21 +300,21 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <returns>
         /// The <see cref="IList"/>.
         /// </returns>
-        private static IList<DaysOfMonth> GetDaysOfMonth(IList<int> daysOfMonth)
+        private static IList<DaysOfMonth> GetDaysOfMonth(IList<int?> daysOfMonth)
         {
             if (daysOfMonth != null)
             {
-                return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
+                return daysOfMonth.Where(value => value.HasValue).Select(value => (DaysOfMonth)value.Value).ToList();
             }
 
             return null;
         }
 
-        private static DateTimeOffset? AdjustOffset(DateTimeOffset? dateTimeOffset, double offsetMinutes)
+        private static DateTimeOffset? AdjustOffset(DateTimeOffset? dateTimeOffset, double? offsetMinutes)
         {
             if (dateTimeOffset.HasValue)
             {
-                return AdjustOffset(dateTimeOffset.Value, offsetMinutes);
+                return AdjustOffset(dateTimeOffset.Value, offsetMinutes.GetValueOrDefault());
             }
 
             return null;

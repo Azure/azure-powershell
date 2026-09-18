@@ -23,7 +23,7 @@ list source configurations for a linker in spring cloud.
 https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforspringcloud
 #>
 function Get-AzServiceLinkerConfigurationForSpringCloud {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ISourceConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

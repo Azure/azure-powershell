@@ -17,7 +17,7 @@ Describe 'Send-AzWvdUserSessionMessage' {
                                      -ResourceGroupName $env.ResourceGroupPersistent `
                                      -HostPoolName $env.HostPoolPersistent `
                                      -SessionHostName $env.SessionHostName `
-                                     -UserSessionId 3 `
+                                     -UserSessionId 2 `
                                      -MessageBody 'apple' `
                                      -MessageTitle 'title'
     }

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AmazonRedshiftSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -57,9 +60,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// will be unloaded into S3 first and then copied into the targeted sink from
         /// the interim S3.
         /// </param>
-        public AmazonRedshiftSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object), RedshiftUnloadSettings redshiftUnloadSettings = default(RedshiftUnloadSettings))
+        public AmazonRedshiftSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object), RedshiftUnloadSettings redshiftUnloadSettings = default(RedshiftUnloadSettings))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.Query = query;
             this.RedshiftUnloadSettings = redshiftUnloadSettings;

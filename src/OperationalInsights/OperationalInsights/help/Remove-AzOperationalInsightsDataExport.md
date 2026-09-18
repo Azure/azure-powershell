@@ -32,7 +32,7 @@ Remove-AzOperationalInsightsDataExport -ResourceId <String> [-DefaultProfile <IA
 ```
 
 ## DESCRIPTION
-Deletes a data export for a given worksace
+Deletes a data export for a given workspace
 
 ## EXAMPLES
 

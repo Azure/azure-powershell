@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
 
         /// <summary>
-        /// IpRule in String paremeter set name
+        /// IpRule in String parameter set name
         /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         /// <param name="ruleList">The IpRule List</param>
         /// <param name="ruleToRemove">The IP Rule to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <returns>true if remove success</returns>
         public bool RemoveIpRule(IList<IPRule> ruleList, IPRule ruleToRemove)
         {
             foreach (IPRule rule in ruleList)
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         /// <param name="ruleList">The ResourceAccessRule List</param>
         /// <param name="ruleToRemove">The ResourceAccessRule to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <returns>true if remove success</returns>
         public bool RemoveResourceAccessRule(IList<ResourceAccessRule> ruleList, ResourceAccessRule ruleToRemove)
         {
             foreach (ResourceAccessRule rule in ruleList)
@@ -276,8 +276,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Remove one NetworkRule from NetworkRule List
         /// </summary>
         /// <param name="ruleList">The NetworkRule List</param>
-        /// <param name="ruleToRemove">The NetworkRulee to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <param name="ruleToRemove">The NetworkRule to remove</param>
+        /// <returns>true if remove success</returns>
         public bool RemoveNetworkRule(IList<VirtualNetworkRule> ruleList, VirtualNetworkRule ruleToRemove)
         {
             foreach (VirtualNetworkRule rule in ruleList)

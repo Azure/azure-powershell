@@ -1,0 +1,181 @@
+{
+  "id": null,
+  "name": "java",
+  "type": "Microsoft.Web/locations/functionAppStacks?stackOsType=All",
+  "location": "eastasia",
+  "properties": {
+    "displayText": "Java",
+    "value": "java",
+    "preferredOs": "windows",
+    "majorVersions": [
+      {
+        "displayText": "Java 21",
+        "value": "21",
+        "minorVersions": [
+          {
+            "displayText": "Java 21",
+            "value": "21.0",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Java|21",
+                "isPreview": false,
+                "isHidden": false,
+                "isAutoUpdate": true,
+                "isDefault": false,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "21"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "java"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Java|21"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "java",
+                        "version": "21"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Fri Sep 01 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "displayText": "Java 17",
+        "value": "17",
+        "minorVersions": [
+          {
+            "displayText": "Java 17",
+            "value": "17.0",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "Java|17",
+                "isPreview": false,
+                "isHidden": false,
+                "isAutoUpdate": true,
+                "isDefault": true,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "17"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "java"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "Java|17"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "java",
+                        "version": "17"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Wed Sep 01 2027 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

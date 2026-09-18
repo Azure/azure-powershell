@@ -26,10 +26,15 @@ namespace Microsoft.Azure.Management.HDInsight.Models
 
         /// <param name="tags">The resource tags.
         /// </param>
-        public ClusterPatchParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="identity">The identity of the cluster, if configured. Setting this property will
+        /// override the existing identity configuration of the cluster.
+        /// </param>
+        public ClusterPatchParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ClusterIdentity identity = default(ClusterIdentity))
 
         {
             this.Tags = tags;
+            this.Identity = identity;
             CustomInit();
         }
 
@@ -44,5 +49,12 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the cluster, if configured. Setting this
+        /// property will override the existing identity configuration of the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ClusterIdentity Identity {get; set; }
     }
 }

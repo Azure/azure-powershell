@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDigitalTwinsTimeSeriesD
 }
 
 Describe 'New-AzDigitalTwinsTimeSeriesDatabaseConnection' {
-    It 'Create' -skip {
+    It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentity' -skip {
+    It 'CreateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

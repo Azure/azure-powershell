@@ -16,14 +16,18 @@ Update an Azure RouteServer.
 ```
 Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String>
  [-AllowBranchToBranchTraffic <Boolean>] [-HubRoutingPreference <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
 ```
 Update-AzRouteServer [-AllowBranchToBranchTraffic <Boolean>] -ResourceId <String>
- [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-HubRoutingPreference <String>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,13 +56,51 @@ Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerNam
 
 To change routing preference for route server.
 
+### Example 4
+```powershell
+$autoscale = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity 3
+Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -VirtualRouterAutoScaleConfiguration $autoscale
+```
+
+To update the Routing Infrastructure Units to 3.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AllowBranchToBranchTraffic
 Flag to allow branch to branch traffic for route server.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,6 +185,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -VirtualRouterAutoScaleConfiguration
+Autoscale configuration for route server.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterAutoScaleConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Confirm

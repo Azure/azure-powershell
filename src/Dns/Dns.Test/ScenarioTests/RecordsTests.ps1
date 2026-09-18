@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -125,6 +125,75 @@ function Test-AliasRecordSet
 	$aliasRecord | Remove-AzDnsRecordSet
 
 	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Test Traffic Manager Profile (TMLink) Record Set
+#>
+function Test-TrafficManagerProfileRecordSet
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+	$subscription = getSubscription
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$recordType = "A"
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	# Synthetic Traffic Manager profile resource Id. Azure DNS does not validate that the
+	# referenced TM profile exists at create time, so we avoid taking a runtime dependency on
+	# the Az.TrafficManager module (which is not referenced by Dns.Test).
+	$tmProfileName = "tmprofile" + $(getAssetname)
+	$tmProfileId = "/subscriptions/$($subscription)/resourceGroups/$($resourceGroup.ResourceGroupName)/providers/Microsoft.Network/trafficManagerProfiles/$tmProfileName"
+
+	# TMLink record set (TTL is required for TMLink - service does not auto-derive it like alias)
+	$createdRecord = New-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -Ttl 3600 -TrafficManagerProfileId $tmProfileId
+
+	Assert-NotNull $createdRecord
+	Assert-AreEqual $zoneName $createdRecord.ZoneName
+	Assert-AreEqual $recordName $createdRecord.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
+	Assert-AreEqual $tmProfileId $createdRecord.TrafficManagerProfileId
+
+	$tmRecord = $zone | Get-AzDnsRecordSet -Name $recordName -RecordType $recordType
+	Assert-AreEqual $tmProfileId $tmRecord.TrafficManagerProfileId
+
+	# Round-trip via Set-AzDnsRecordSet: change the TMLink target to a different profile and Ttl.
+	# Validates that DnsRecordSet.TrafficManagerProfileId flows through Clone() and UpdateDnsRecordSet.
+	$tmProfileName2 = "tmprofile" + $(getAssetname)
+	$tmProfileId2 = "/subscriptions/$($subscription)/resourceGroups/$($resourceGroup.ResourceGroupName)/providers/Microsoft.Network/trafficManagerProfiles/$tmProfileName2"
+	$tmRecord.TrafficManagerProfileId = $tmProfileId2
+	$tmRecord.Ttl = 7200
+	$updatedRecord = $tmRecord | Set-AzDnsRecordSet
+
+	Assert-AreEqual $tmProfileId2 $updatedRecord.TrafficManagerProfileId
+	Assert-AreEqual 7200 $updatedRecord.Ttl
+
+	$tmRecord = $zone | Get-AzDnsRecordSet -Name $recordName -RecordType $recordType
+	Assert-AreEqual $tmProfileId2 $tmRecord.TrafficManagerProfileId
+	Assert-AreEqual 7200 $tmRecord.Ttl
+
+	# Negative cases: TMLink mutual-exclusivity constraints are enforced client-side (no service round-trip).
+
+	# A record set cannot contain DNS records and also link to a Traffic Manager profile.
+	$dnsRecords = @()
+	$dnsRecords += New-AzDnsRecordConfig -Ipv4Address 1.1.1.1
+	Assert-ThrowsLike { New-AzDnsRecordSet -Name "negtmrecords" -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -Ttl 3600 -TrafficManagerProfileId $tmProfileId -DnsRecords $dnsRecords } "*cannot contain DNS records*"
+
+	# New-AzDnsRecordSet cannot accept both -TargetResourceId (alias) and -TrafficManagerProfileId (TMLink): they live in mutually exclusive parameter sets.
+	Assert-Throws { New-AzDnsRecordSet -Name "negtmboth" -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -Ttl 3600 -TargetResourceId $tmProfileId -TrafficManagerProfileId $tmProfileId }
+
+	# A DnsRecordSet object cannot specify both an alias target and a Traffic Manager profile link on update.
+	$tmRecord.TargetResourceId = "/subscriptions/$($subscription)/resourceGroups/$($resourceGroup.ResourceGroupName)/providers/Microsoft.Network/dnszones/$zoneName/A/$recordName"
+	Assert-ThrowsLike { $tmRecord | Set-AzDnsRecordSet } "*cannot specify both*"
+	$tmRecord.TargetResourceId = $null
+
+	$tmRecord | Remove-AzDnsRecordSet
+
+	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
 
 	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
@@ -525,6 +594,87 @@ function Test-RecordSetMXNonEmpty
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual "mail2.theg.com" $getResult.Records[0].Exchange
 	Assert-AreEqual 0 $getResult.Records[0].Preference
+
+	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
+function Test-RecordSetNAPTR
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NAPTR
+
+	# add two records, remove one, remove another no-op
+	$record = $record | Add-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $record | Add-AzDnsRecordConfig -Order 20 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^.*$!mailto:info@example.com!" -Replacement "."
+	$record = $record | Remove-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $record | Remove-AzDnsRecordConfig -Order 30 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^.*$!mailto:info@example.com!" -Replacement "."
+
+	$record | Set-AzDnsRecordSet
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 20 $getResult.Records[0].Order
+	Assert-AreEqual 30 $getResult.Records[0].Preference
+	Assert-AreEqual "A" $getResult.Records[0].Flags
+	Assert-AreEqual "EAU+SIP" $getResult.Records[0].Services
+	Assert-AreEqual "!^.*$!mailto:info@example.com!" $getResult.Records[0].Regexp
+	Assert-AreEqual "." $getResult.Records[0].Replacement
+
+	$listResult = Get-AzDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
+
+	Assert-AreEqual 1 $listResult[0].Records.Count
+	Assert-AreEqual 20 $getResult.Records[0].Order
+	Assert-AreEqual 30 $getResult.Records[0].Preference
+	Assert-AreEqual "A" $getResult.Records[0].Flags
+	Assert-AreEqual "EAU+SIP" $getResult.Records[0].Services
+	Assert-AreEqual "!^.*$!mailto:info@example.com!" $getResult.Records[0].Regexp
+	Assert-AreEqual "." $getResult.Records[0].Replacement
+
+	$removed = $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
+function Test-RecordSetNAPTRNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	$records = @();
+	$records += New-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NAPTR -DnsRecords $records
+
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 10 $getResult.Records[0].Order
+	Assert-AreEqual 20 $getResult.Records[0].Preference
+	Assert-AreEqual "U" $getResult.Records[0].Flags
+	Assert-AreEqual "SIP+D2U" $getResult.Records[0].Services
+	Assert-AreEqual "" $getResult.Records[0].Regexp
+	Assert-AreEqual "_sip._udp.example.com." $getResult.Records[0].Replacement
 
 	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
 

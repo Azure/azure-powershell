@@ -15,8 +15,8 @@ Checks if resource connectedEnvironmentName is available.
 ### CheckExpanded (Default)
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
@@ -29,15 +29,15 @@ Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <Strin
 ### CheckViaJsonFilePath
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,6 @@ Checks if resource connectedEnvironmentName is available.
 
 ### -CheckNameAvailabilityRequest
 The check availability request body.
-To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest

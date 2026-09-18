@@ -247,7 +247,8 @@ namespace Microsoft.Azure.Management.HDInsight
 
         }
         /// <summary>
-        /// Configures the HTTP settings on the specified cluster. This API is deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
+        /// Configures the HTTP settings on the specified cluster. This API is
+        /// deprecated, please use UpdateGatewaySettings in cluster endpoint instead.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

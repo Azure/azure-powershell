@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
     public interface INamespaceEnumeratorListener
     {
         /// <summary>
-        /// Nexts the file.
+        /// Next the file.
         /// </summary>
         /// <param name="node">The node.</param>
         void NextFile(IFileInfo node);

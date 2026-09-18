@@ -16,25 +16,28 @@ Update or Change a Network Virtual Appliance Connection resource.
 ```
 Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RoutingConfiguration <PSRoutingConfiguration>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
 Update-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
- [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> -Name <String>
- [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzNetworkVirtualApplianceConnectiuon modifies a Network Virtual Appliance Connection resource.
+The Update-AzNetworkVirtualApplianceConnection modifies a Network Virtual Appliance Connection resource.
 
 ## EXAMPLES
 
@@ -73,9 +76,37 @@ RoutingConfiguration   : {
                          }
 ```
 
-
-
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -244,9 +275,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)
 
 [Get-AzNetworkVirtualAppliance](./Get-AzNetworkVirtualAppliance.md)
 
 [Get-AzNetworkVirtualApplianceConnection](./Get-AzNetworkVirtualApplianceConnection.md)
-

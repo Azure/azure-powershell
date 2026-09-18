@@ -74,12 +74,6 @@ param(
     # Parameter for the name of the agent pool in the provisioned cluster.
     ${Name},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity]
-    # Identity Parameter
-    ${InputObject},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -121,11 +115,14 @@ param(
 )
 
 process {
-    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+    $scope = GetConnectedClusterResourceURI `
+      -SubscriptionId $SubscriptionId `
+      -ResourceGroupName $ResourceGroupName `
+      -ClusterName $ClusterName
     $null = $PSBoundParameters.Remove("SubscriptionId")
     $null = $PSBoundParameters.Remove("ResourceGroupName")
     $null = $PSBoundParameters.Remove("ClusterName")
-    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
+    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $scope)
     Az.AksArc.internal\Get-AzAksArcNodepool @PSBoundParameters
-} 
+}
 }

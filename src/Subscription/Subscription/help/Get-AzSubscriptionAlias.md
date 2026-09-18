@@ -97,7 +97,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
@@ -120,9 +119,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasListResult
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasListResult
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionAliasResponse
 
 ## NOTES
 

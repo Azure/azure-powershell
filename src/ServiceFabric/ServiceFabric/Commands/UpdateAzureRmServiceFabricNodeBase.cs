@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             cluster = GetCurrentCluster();
             nodeType = GetNodeType(cluster, this.NodeType);
-            nodeType.VmInstanceCount = Convert.ToInt32(vmss.Sku.Capacity);
+            nodeType.VMInstanceCount = Convert.ToInt32(vmss.Sku.Capacity);
             cluster = SendPatchRequest(new ClusterUpdateParameters()
             {
                 NodeTypes = cluster.NodeTypes

@@ -194,6 +194,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
 
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Gateway connection authentication type.")]
+        [ValidateSet(
+            MNM.ConnectionAuthenticationType.PSK,
+            MNM.ConnectionAuthenticationType.Certificate,
+            IgnoreCase = true)]
+        public string AuthenticationType { get; set; }
+        
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Certificate Authentication information for certificate based authentication connection.")]
+        public PSCertificateAuthentication CertificateAuthentication { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -209,6 +225,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Bypass the ExpressRoute gateway when accessing private-links. " +
                           "ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.")]
         public SwitchParameter EnablePrivateLinkFastPath { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The routing configuration for this connection.")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
         public override void Execute()
         {
@@ -229,13 +251,32 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkGatewayConnection CreateVirtualNetworkGatewayConnection()
         {
+            Dictionary<string, List<string>> auxAuthHeader = null;
+            List<string> resourceIds = new List<string>();
             var vnetGatewayConnection = new PSVirtualNetworkGatewayConnection();
             vnetGatewayConnection.Name = this.Name;
             vnetGatewayConnection.ResourceGroupName = this.ResourceGroupName;
             vnetGatewayConnection.Location = this.Location;
             vnetGatewayConnection.VirtualNetworkGateway1 = this.VirtualNetworkGateway1;
-            vnetGatewayConnection.VirtualNetworkGateway2 = this.VirtualNetworkGateway2;
-            vnetGatewayConnection.LocalNetworkGateway2 = this.LocalNetworkGateway2;
+
+            // Get the aux header for the LNG2/VNG2
+            if (this.VirtualNetworkGateway2 != null)
+            {
+                vnetGatewayConnection.VirtualNetworkGateway2 = this.VirtualNetworkGateway2;
+                resourceIds.Add(this.VirtualNetworkGateway2.Id);
+            }
+
+            if (this.LocalNetworkGateway2 != null)
+            {
+                vnetGatewayConnection.LocalNetworkGateway2 = this.LocalNetworkGateway2;
+                resourceIds.Add(this.LocalNetworkGateway2.Id);
+            }
+            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+            {
+                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+            }
+
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.DpdTimeoutSeconds = this.DpdTimeoutInSeconds;
@@ -255,6 +296,16 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.AuthenticationType))
+            {
+                vnetGatewayConnection.AuthenticationType = this.AuthenticationType;
+            }
+            
+            if (this.CertificateAuthentication != null)
+            {
+                vnetGatewayConnection.CertificateAuthentication = this.CertificateAuthentication;
             }
             
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
@@ -317,12 +368,17 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (this.RoutingConfiguration != null)
+            {
+                vnetGatewayConnection.RoutingConfiguration = this.RoutingConfiguration;
+            }
+
             // Map to the sdk object
             var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(vnetGatewayConnection);
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetworkConnection call
-            this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayConnectionModel);
+            this.VirtualNetworkGatewayConnectionClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, vnetGatewayConnectionModel, auxAuthHeader).GetAwaiter().GetResult();
 
             var getVirtualNetworkGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
 

@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -27,9 +28,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string DeleteAzureResourceGuardMapping = "DeleteAzureResourceGuardMapping";
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = DeleteAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = DeleteAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated)]
         [ValidateNotNullOrEmpty]
         public string Token;
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = DeleteAzureResourceGuardMapping, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
+        [ValidateNotNullOrEmpty]
+        public System.Security.SecureString SecureToken;
 
         public override void ExecuteCmdlet()
         {
@@ -42,7 +47,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                     string resourceGuardMappingName = "VaultProxy";
-                    Rest.Azure.AzureOperationResponse result = ServiceClientAdapter.DeleteResourceGuardMapping(vaultName, resourceGroupName, resourceGuardMappingName, Token);
+
+                    string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+
+                    Rest.Azure.AzureOperationResponse result = ServiceClientAdapter.DeleteResourceGuardMapping(vaultName, resourceGroupName, resourceGuardMappingName, plainToken);
                     WriteObject(result);
                 }
                 catch (Exception exception)

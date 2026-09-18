@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Certificate
-{{Fill Certificate Description}}
+Specifies the certificate file path to use for vault registration.
 
 ```yaml
 Type: System.String

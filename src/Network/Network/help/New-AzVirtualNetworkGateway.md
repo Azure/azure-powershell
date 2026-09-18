@@ -18,9 +18,9 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>]
  [-ExtendedLocation <String>] [-VNetExtendedLocationResourceId <String>] [-VpnType <String>]
  [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature]
- [-EnablePrivateIpAddress] [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
- [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>]
- [-VpnClientAddressPool <String[]>] [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
+ [-EnableAdvancedConnectivityFeature] [-EnablePrivateIpAddress] [-GatewaySku <String>]
+ [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
+ [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
@@ -29,8 +29,11 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
  [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob] [-AdminState <String>]
+ [-ResiliencyModel <String>] [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>] [-UserAssignedIdentityId <String>]
+ [-Identity <PSManagedServiceIdentity>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,6 +235,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdminState
+Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -262,8 +295,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClientConnectionConfiguration
-P2S Client Connection Configuration that assiociate between address and policy group
+P2S Client Connection Configuration that associate between address and policy group
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
@@ -324,6 +372,21 @@ Accept wildcard characters: False
 
 ### -EnableActiveActiveFeature
 Flag to enable Active Active feature on virtual network gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAdvancedConnectivityFeature
+Flag to enable Advanced Connectivity feature on virtual network gateway
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -434,7 +497,7 @@ The Gateway Sku Tier
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ, ErGwScale
 
 Required: False
 Position: Named
@@ -451,6 +514,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Vpn, ExpressRoute, LocalGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Identity
+The managed identity configuration for the virtual network gateway.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -501,6 +579,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxScaleUnit
+Set max scale units for scalable gateways
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinScaleUnit
+Set min scale units for scalable gateways
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -594,6 +702,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResiliencyModel
+Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed/MultiHomed
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -616,6 +739,21 @@ A hashtable which represents resource tags.
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ResourceId of the user assigned identity to be assigned to virtual network gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: UserAssignedIdentity
 
 Required: False
 Position: Named

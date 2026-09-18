@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         [System.Runtime.Serialization.EnumMember(Value = "UserAssigned")]
         UserAssigned,
         /// <summary>
-        /// Indicates that both system assigned and user assigned identity are associated with the resource.
+        /// Indicates that both system assigned and user assigned identity are
+        /// associated with the resource.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "SystemAssigned, UserAssigned")]
         SystemAssignedUserAssigned,

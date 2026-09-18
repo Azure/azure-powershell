@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     /// <summary>
-    /// Class to enable automatic retry of TaskCanceledExsceptions.
+    /// Class to enable automatic retry of TaskCanceledExceptions.
     /// Note that this follows the calling pattern in PowerShell, which does not pass cancellation tokens from
     /// the base cmdlet
     /// </summary>

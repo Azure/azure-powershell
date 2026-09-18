@@ -10,7 +10,8 @@ namespace Microsoft.Azure.Management.KeyVault
     using Models;
 
     /// <summary>
-    /// The Azure management API provides a RESTful set of web services that interact with Azure Key Vault.
+    /// The Azure management API provides a RESTful set of web services that
+        /// interact with Azure Key Vault.
     /// </summary>
     public partial interface IKeyVaultManagementClient :  System.IDisposable
     {
@@ -36,9 +37,15 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+        /// The API version to use for this operation.
         /// </summary>
-        string SubscriptionId { get; set;}
+        string ApiVersion { get;}
+
+
+        /// <summary>
+        /// The ID of the target subscription. The value must be an UUID.
+        /// </summary>
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -49,38 +56,28 @@ namespace Microsoft.Azure.Management.KeyVault
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
 
         /// <summary>
-        /// Gets the IVaultsOperations
-        /// </summary>
-        IVaultsOperations Vaults { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
         /// Gets the IManagedHsmsOperations
         /// </summary>
         IManagedHsmsOperations ManagedHsms { get; }
+
+        /// <summary>
+        /// Gets the IVaultsOperations
+        /// </summary>
+        IVaultsOperations Vaults { get; }
 
         /// <summary>
         /// Gets the IMhsmPrivateEndpointConnectionsOperations
@@ -96,6 +93,16 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the IMhsmRegionsOperations
         /// </summary>
         IMhsmRegionsOperations MhsmRegions { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
     }
 }

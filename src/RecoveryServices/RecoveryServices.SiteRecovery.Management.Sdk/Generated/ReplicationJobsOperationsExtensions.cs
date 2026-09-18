@@ -18,12 +18,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Job> List(this IReplicationJobsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryParameter>))
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Job> List(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string filter = default(string))
         {
-                return ((IReplicationJobsOperations)operations).ListAsync(odataQuery).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).ListAsync(resourceGroupName, resourceName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -32,15 +38,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Job>> ListAsync(this IReplicationJobsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryParameter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Job>> ListAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -51,12 +63,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job Get(this IReplicationJobsOperations operations, string jobName)
+        public static Job Get(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName)
         {
-                return ((IReplicationJobsOperations)operations).GetAsync(jobName).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).GetAsync(resourceGroupName, resourceName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -65,15 +83,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> GetAsync(this IReplicationJobsOperations operations, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> GetAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -84,12 +108,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job Cancel(this IReplicationJobsOperations operations, string jobName)
+        public static Job Cancel(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName)
         {
-                return ((IReplicationJobsOperations)operations).CancelAsync(jobName).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).CancelAsync(resourceGroupName, resourceName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -98,15 +128,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> CancelAsync(this IReplicationJobsOperations operations, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> CancelAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CancelWithHttpMessagesAsync(jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CancelWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -117,12 +153,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job Restart(this IReplicationJobsOperations operations, string jobName)
+        public static Job Restart(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName)
         {
-                return ((IReplicationJobsOperations)operations).RestartAsync(jobName).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).RestartAsync(resourceGroupName, resourceName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -131,15 +173,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> RestartAsync(this IReplicationJobsOperations operations, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> RestartAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RestartWithHttpMessagesAsync(jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.RestartWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -150,12 +198,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job Resume(this IReplicationJobsOperations operations, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties))
+        public static Job Resume(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties))
         {
-                return ((IReplicationJobsOperations)operations).ResumeAsync(jobName, properties).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).ResumeAsync(resourceGroupName, resourceName, jobName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -164,42 +218,62 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> ResumeAsync(this IReplicationJobsOperations operations, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> ResumeAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResumeWithHttpMessagesAsync(jobName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ResumeWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to export the details of the Azure Site Recovery jobs of the vault.
+        /// The operation to export the details of the Azure Site Recovery jobs of the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Job Export(this IReplicationJobsOperations operations, JobQueryParameter jobQueryParameter)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Job Export(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, JobQueryParameter jobQueryParameter)
         {
-                return ((IReplicationJobsOperations)operations).ExportAsync(jobQueryParameter).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).ExportAsync(resourceGroupName, resourceName, jobQueryParameter).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to export the details of the Azure Site Recovery jobs of the vault.
+        /// The operation to export the details of the Azure Site Recovery jobs of the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> ExportAsync(this IReplicationJobsOperations operations, JobQueryParameter jobQueryParameter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> ExportAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, JobQueryParameter jobQueryParameter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ExportWithHttpMessagesAsync(jobQueryParameter, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ExportWithHttpMessagesAsync(resourceGroupName, resourceName, jobQueryParameter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -210,12 +284,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job BeginCancel(this IReplicationJobsOperations operations, string jobName)
+        public static Job BeginCancel(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName)
         {
-                return ((IReplicationJobsOperations)operations).BeginCancelAsync(jobName).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).BeginCancelAsync(resourceGroupName, resourceName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -224,15 +304,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> BeginCancelAsync(this IReplicationJobsOperations operations, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> BeginCancelAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCancelWithHttpMessagesAsync(jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCancelWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -243,12 +329,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job BeginRestart(this IReplicationJobsOperations operations, string jobName)
+        public static Job BeginRestart(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName)
         {
-                return ((IReplicationJobsOperations)operations).BeginRestartAsync(jobName).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).BeginRestartAsync(resourceGroupName, resourceName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -257,15 +349,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> BeginRestartAsync(this IReplicationJobsOperations operations, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> BeginRestartAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRestartWithHttpMessagesAsync(jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -276,12 +374,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
-        public static Job BeginResume(this IReplicationJobsOperations operations, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties))
+        public static Job BeginResume(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties))
         {
-                return ((IReplicationJobsOperations)operations).BeginResumeAsync(jobName, properties).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).BeginResumeAsync(resourceGroupName, resourceName, jobName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -290,42 +394,62 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='jobName'>
         /// Job identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> BeginResumeAsync(this IReplicationJobsOperations operations, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> BeginResumeAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, string jobName, ResumeJobParamsProperties properties = default(ResumeJobParamsProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResumeWithHttpMessagesAsync(jobName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginResumeWithHttpMessagesAsync(resourceGroupName, resourceName, jobName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// The operation to export the details of the Azure Site Recovery jobs of the vault.
+        /// The operation to export the details of the Azure Site Recovery jobs of the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Job BeginExport(this IReplicationJobsOperations operations, JobQueryParameter jobQueryParameter)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Job BeginExport(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, JobQueryParameter jobQueryParameter)
         {
-                return ((IReplicationJobsOperations)operations).BeginExportAsync(jobQueryParameter).GetAwaiter().GetResult();
+                return ((IReplicationJobsOperations)operations).BeginExportAsync(resourceGroupName, resourceName, jobQueryParameter).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// The operation to export the details of the Azure Site Recovery jobs of the vault.
+        /// The operation to export the details of the Azure Site Recovery jobs of the
+        /// vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Job> BeginExportAsync(this IReplicationJobsOperations operations, JobQueryParameter jobQueryParameter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Job> BeginExportAsync(this IReplicationJobsOperations operations, string resourceGroupName, string resourceName, JobQueryParameter jobQueryParameter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginExportWithHttpMessagesAsync(jobQueryParameter, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginExportWithHttpMessagesAsync(resourceGroupName, resourceName, jobQueryParameter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

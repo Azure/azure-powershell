@@ -8,27 +8,30 @@ schema: 2.0.0
 # Update-AzDigitalTwinsInstance
 
 ## SYNOPSIS
-Update metadata of DigitalTwinsInstance.
+Update the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-IdentityType <DigitalTwinsIdentityType>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-IdentityType <DigitalTwinsIdentityType>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-EnableSystemAssignedIdentity <Boolean>]
+ [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update metadata of DigitalTwinsInstance.
+Update the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
 
 ## EXAMPLES
 
@@ -38,9 +41,29 @@ Update-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName a
 ```
 
 ```output
-Name                       Location ResourceGroupName
-----                       -------- -----------------
-azps-digitaltwins-instance eastus   azps_test_group
+CreatedTime                  : 2025-06-06 09:44:17 AM
+HostName                     : azps-digitaltwins-instance.api.eus.digitaltwins.azure.net
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.DigitalTwins/digitalTwinsInstances/azps-digitaltwins-instance
+IdentityPrincipalId          : 6463ae74-a748-4f95-acf9-7d76e1d343b3
+IdentityTenantId             : 213e87ed-8e08-4eb4-a63c-c073058f7b00
+IdentityType                 : SystemAssigned
+LastUpdatedTime              : 2025-06-06 11:27:24 AM
+Location                     : eastus
+Name                         : azps-digitaltwins-instance
+PrivateEndpointConnection    : {}
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : azps_test_group
+SystemDataCreatedAt          : 2025-06-06 09:44:15 AM
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2025-06-06 11:27:22 AM
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "abc": "123"
+                               }
+Type                         : Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
 Update metadata of DigitalTwinsInstance.
@@ -51,9 +74,29 @@ Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps
 ```
 
 ```output
-Name                       Location ResourceGroupName
-----                       -------- -----------------
-azps-digitaltwins-instance eastus   azps_test_group
+CreatedTime                  : 2025-06-06 09:44:17 AM
+HostName                     : azps-digitaltwins-instance.api.eus.digitaltwins.azure.net
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.DigitalTwins/digitalTwinsInstances/azps-digitaltwins-instance
+IdentityPrincipalId          : 6463ae74-a748-4f95-acf9-7d76e1d343b3
+IdentityTenantId             : 213e87ed-8e08-4eb4-a63c-c073058f7b00
+IdentityType                 : SystemAssigned
+LastUpdatedTime              : 2025-06-06 11:29:03 AM
+Location                     : eastus
+Name                         : azps-digitaltwins-instance
+PrivateEndpointConnection    : {}
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : azps_test_group
+SystemDataCreatedAt          : 2025-06-06 09:44:15 AM
+SystemDataCreatedBy          : xxxxx.xxxxx@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2025-06-06 11:29:01 AM
+SystemDataLastModifiedBy     : xxxxx.xxxxx@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "1234": "abcd"
+                               }
+Type                         : Microsoft.DigitalTwins/digitalTwinsInstances
 ```
 
 Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.
@@ -91,12 +134,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of Managed Identity used by the DigitalTwinsInstance.
-Only SystemAssigned is supported.
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.DigitalTwinsIdentityType
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +151,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
@@ -138,11 +179,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateEndpointConnection
+The private endpoint connections.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IPrivateEndpointConnection[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Public network access for the DigitalTwinsInstance.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Instance patch properties
+The resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -253,7 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsDescription
 
 ## NOTES
 

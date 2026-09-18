@@ -37,7 +37,7 @@ westeurope c615c897-aaaa-4123-8527-c42cc0da41e0/1bdfaf4a-159d-46ec-be3a-f4aa527d
 
 Split one reservation order into two reservations, given the quantity of each reservation.
 The quantity sum up should be equal to the original reservation before splitting.
-ReservationId can be either GUID form or fully qulified reservation id form "providers/Microsoft.Capacity/reservationOrders/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/reservations/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ReservationId can be either GUID form or fully qualified reservation id form "providers/Microsoft.Capacity/reservationOrders/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/reservations/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## PARAMETERS
 
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

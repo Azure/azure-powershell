@@ -13,16 +13,17 @@ namespace Microsoft.Azure.Management.KeyVault
     public static partial class MhsmRegionsOperationsExtensions
     {
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<MhsmGeoReplicatedRegion> ListByResource(this IMhsmRegionsOperations operations, string resourceGroupName, string name)
         {
@@ -30,16 +31,17 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the managed HSM pool.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the managed HSM Pool
+        /// The name of the managed HSM Pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -66,7 +69,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

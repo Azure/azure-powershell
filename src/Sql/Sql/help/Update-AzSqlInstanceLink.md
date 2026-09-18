@@ -15,26 +15,27 @@ Updates the properties of an instance link.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- [-ReplicationMode] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-ReplicationMode] <String>] [-Database <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByParentObjectParameterSet
 ```
-Update-AzSqlInstanceLink [-Name] <String> [-ReplicationMode] <String>
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzSqlInstanceLink [-Name] <String> [[-ReplicationMode] <String>] [-Database <String[]>]
+ [-InstanceObject] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-InputObject] <AzureSqlManagedInstanceLinkModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-Database <String[]>]
+ [-InputObject] <AzureSqlManagedInstanceLinkModel> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzSqlInstanceLink [-ReplicationMode] <String> [-ResourceId] <String>
+Update-AzSqlInstanceLink [[-ReplicationMode] <String>] [-Database <String[]>] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,21 +50,22 @@ Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "Mana
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Sync
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Sync
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command sets the replication mode of an instance link to "Sync".
@@ -74,24 +76,25 @@ Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup1" -InstanceName "Mana
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
-This command sets the replication mode of an instance link to "Aync".
+This command sets the replication mode of an instance link to "Async".
 
 ### Example 3: Set replication mode of an instance link by its resource identifier
 ```powershell
@@ -99,21 +102,22 @@ Update-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxx
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command sets the replication mode of an instance link to "Sync" by its resource identifier.
@@ -125,21 +129,22 @@ Update-AzSqlInstanceLink -InputObject $managedInstanceLink -ReplicationMode "Asy
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command sets the replication mode of an instance link to "Async" using the input object.
@@ -152,21 +157,22 @@ Update-AzSqlInstanceLink -InputObject $managedInstanceLink
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command sets the instance link using input object.
@@ -178,26 +184,69 @@ Update-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -ReplicationMo
 ```
 
 ```output
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   :
-SecondaryAvailabilityGroupName :
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command sets the replication mode of a instance link to "Async" using parent instance object.
 
+### Example 7: Replace the database membership of a multi-database instance link
+```powershell
+Update-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "multilink01" -Database "Database01"
+```
+
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/multilink01
+Name                             : multilink01
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_MultiLink01_MI
+PartnerAvailabilityGroupName     : AG_MultiLink01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : None
+SeedingMode                      : Automatic
+LinkMode                         : MultiDatabase
+```
+
+This command replaces the database membership of a multi-database instance link. Because only `Database01` is supplied, other databases are removed from the link.
+
 ## PARAMETERS
+
+### -Database
+Database names that should remain in the distributed availability group.
+This property can be updated only for links in `MultiDatabase` mode.
+The supplied list replaces the current database membership.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: Databases
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -230,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -260,7 +309,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the instance link.
+Managed Instance link name.
 
 ```yaml
 Type: System.String
@@ -275,15 +324,15 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationMode
-Replication mode value.
-Possible values include 'Sync' and 'Async'.
+Replication mode of a Managed Instance link.
+Parameter will be ignored during link creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet, UpdateByResourceIdParameterSet
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -292,11 +341,23 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByInputObjectParameterSet
+Parameter Sets: UpdateByParentObjectParameterSet
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByInputObjectParameterSet, UpdateByResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -387,3 +448,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzSqlInstanceLink](./New-AzSqlInstanceLink.md)
 
 [Remove-AzSqlInstanceLink](./Remove-AzSqlInstanceLink.md)
+
+[Start-AzSqlInstanceLinkFailover](./Start-AzSqlInstanceLinkFailover.md)

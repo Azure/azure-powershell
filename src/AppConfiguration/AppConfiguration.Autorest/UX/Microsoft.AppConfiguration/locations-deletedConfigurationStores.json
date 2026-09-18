@@ -1,6 +1,6 @@
 {
   "resourceType": "locations/deletedConfigurationStores",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2024-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration"
   },
@@ -45,7 +45,7 @@
     },
     {
       "name": "Get-AzAppConfigurationDeletedStore",
-      "description": "Gets a deleted Azure app configuration store.",
+      "description": "Gets a deleted Azure App Configuration store.",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/locations/{location}/deletedConfigurationStores/{configStoreName}",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Gets a deleted Azure app configuration store.",
+          "description": "Gets a deleted Azure App Configuration store.",
           "parameters": [
             {
               "name": "-Location",

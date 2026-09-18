@@ -23,14 +23,19 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 72f52bc8847a889488da885f40d6871a89e0470b
+# Lock to the merged Swagger PR commit so SDK generation remains reproducible.
+commit: 53fc184a55bd2214e3bec2f1d9098501072e7d1e
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2024-04-01/registeredidentities.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2024-04-01/replicationusages.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2024-04-01/vaults.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2024-04-01/vaultusages.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/RecoveryServices/stable/2026-07-01/openapi.json
 
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.RecoveryServices
+
+directive:
+  # Use a service-specific name to avoid conflicts with CloudError models from other SDKs.
+  - from: swagger-document
+    where: $.definitions["CloudError"]
+    transform: >
+      $["x-ms-client-name"] = "CloudErrorRecoveryService";
 ```

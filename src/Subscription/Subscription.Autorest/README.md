@@ -42,13 +42,6 @@ module-version: 0.3.0
 title: Subscription
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document 
     where: $.paths["/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Subscription/policies/default"].get.responses
@@ -102,7 +95,7 @@ directive:
       variant: AcceptViaIdentityExpanded
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Rename$|^RenameViaIdentity$|^Add$|^Accept$|^AcceptViaIdentity$
+      variant: ^(Create|Update|Rename|Add|Accept)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: BillingAccountPolicy
@@ -212,7 +205,10 @@ directive:
     transform: $ = $.replace('Description =@"",', '');
   - from: NewAzSubscriptionAlias_CreateExpanded.cs
     where: $
-    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id",', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('SetCondition = @"")]', '');
 
   - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
     where: $
@@ -225,7 +221,10 @@ directive:
     transform: $ = $.replace('Description =@"",', '');
   - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
     where: $
-    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id",', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('SetCondition = @"")]', '');
   - where:
       verb: Get
       subject: AcceptOwnershipStatus
@@ -243,7 +242,10 @@ directive:
     transform: $ = $.replace('Description =@"",', '');
   - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
     where: $
-    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id",', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('SetCondition = @"")]', '');
   - where:
       verb: Invoke
       subject: AcceptOwnership

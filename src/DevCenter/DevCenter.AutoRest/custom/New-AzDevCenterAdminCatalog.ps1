@@ -25,151 +25,153 @@ Creates or updates a catalog.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <ICatalog>: Represents a catalog.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [AdoGitBranch <String>]: Git branch.
-  [AdoGitPath <String>]: The folder where the catalog items can be found inside the repository.
-  [AdoGitSecretIdentifier <String>]: A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
-  [AdoGitUri <String>]: Git URI.
-  [GitHubBranch <String>]: Git branch.
-  [GitHubPath <String>]: The folder where the catalog items can be found inside the repository.
-  [GitHubSecretIdentifier <String>]: A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
-  [GitHubUri <String>]: Git URI.
-
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
   [VersionName <String>]: The version of the image.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmincatalog
 #>
 function New-AzDevCenterAdminCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ICatalog])]
-[CmdletBinding(DefaultParameterSetName='CreateExpandedAdo', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog])]
+  [CmdletBinding(DefaultParameterSetName = 'CreateExpandedAdo', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the devcenter.
     ${DevCenterName},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub', Mandatory)]
     [Alias('CatalogName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the Catalog.
     ${Name},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory, ValueFromPipeline)]
+  
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedAdo', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedGitHub', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo')]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedAdo')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Git branch.
     ${AdoGitBranch},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo')]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedAdo')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The folder where the catalog items can be found inside the repository.
     ${AdoGitPath},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedAdo', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
     ${AdoGitSecretIdentifier},
-
-    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory)]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedAdo', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Git URI.
     ${AdoGitUri},
-
-    [Parameter(ParameterSetName='CreateExpandedGitHub')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub')]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedGitHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Git branch.
     ${GitHubBranch},
-
-    [Parameter(ParameterSetName='CreateExpandedGitHub')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub')]
+  
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedGitHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The folder where the catalog items can be found inside the repository.
     ${GitHubPath},
 
-    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
     ${GitHubSecretIdentifier},
 
-    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Git URI.
     ${GitHubUri},
+      
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogSyncType]
+    # Indicates the type of sync that is configured for the catalog.
+    ${SyncType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalogUpdatePropertiesTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -230,11 +232,11 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
+  )
 
 
-process {
+  process {
     Az.DevCenter.internal\New-AzDevCenterAdminCatalog @PSBoundParameters
-}
+  }
 
 }

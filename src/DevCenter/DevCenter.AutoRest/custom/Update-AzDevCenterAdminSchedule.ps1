@@ -25,49 +25,43 @@ Partially updates a Scheduled.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IScheduleUpdate
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IScheduleUpdate>: The schedule properties for partial update. Properties not provided in the update request will not be changed.
-  [Location <String>]: The geo-location where the resource lives
-  [Tag <ITags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [Frequency <ScheduledFrequency?>]: The frequency of this scheduled task.
-  [State <ScheduleEnableStatus?>]: Indicates whether or not this scheduled task is enabled.
-  [Time <String>]: The target time to trigger the action. The format is HH:MM.
-  [TimeZone <String>]: The IANA timezone id at which the schedule should execute.
-  [Type <ScheduledType?>]: Supported type this scheduled task represents.
-
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
   [VersionName <String>]: The version of the image.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminschedule
 #>
 function Update-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule])]
   [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
@@ -114,7 +108,7 @@ function Update-AzDevCenterAdminSchedule {
     [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -133,7 +127,7 @@ function Update-AzDevCenterAdminSchedule {
     [System.String]
     # The IANA timezone id at which the schedule should execute.
     ${TimeZone},
-
+  
     [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType])]

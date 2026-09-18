@@ -16,25 +16,28 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 ```
 Invoke-AzCosmosDBMongoDBCollectionThroughputMigration -DatabaseName <String> [-Name <String>]
  -ResourceGroupName <String> -AccountName <String> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Invoke-AzCosmosDBMongoDBCollectionThroughputMigration [-Name <String>]
  -ParentObject <PSMongoDBDatabaseGetResults> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Invoke-AzCosmosDBMongoDBCollectionThroughputMigration [-Name <String>]
  -InputObject <PSMongoDBCollectionGetResults> -ThroughputType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-ThroughpyteType paramter defines the throughput to which you want to migrate to.
+ThroughputType parameter defines the throughput to which you want to migrate to.
 
 ## EXAMPLES
 

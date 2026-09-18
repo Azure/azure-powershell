@@ -21,12 +21,13 @@ Create an in-memory object for Filter.
 Create an in-memory object for Filter.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewFilterObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewfilterobject
 #>
 function New-AzPurviewFilterObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzPurviewFilterObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Filter]::New()
 
         if ($PSBoundParameters.ContainsKey('ExcludeUriPrefix')) {
             $Object.ExcludeUriPrefix = $ExcludeUriPrefix

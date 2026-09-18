@@ -1,10 +1,16 @@
-﻿
+
 
 function Start-AzDataProtectionBackupInstanceRestore
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Triggers restore for a BackupInstance')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         # Trigger, TriggerExpanded
@@ -25,27 +31,31 @@ function Start-AzDataProtectionBackupInstanceRestore
         ${VaultName},
 
         [Parameter(ParameterSetName="Trigger", Mandatory, HelpMessage='Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet', ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest]
         ${Parameter},
 
         [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <resourceguard-ARMID>/dppTriggerRestoreRequests/default. Use this parameter when the operation is MUA protected.')]
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.')]
-        [System.String]        
+        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
+        [System.String]
         ${Token},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [System.Security.SecureString]
+        ${SecureToken},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory, HelpMessage='Object type of the restore request')]
         [System.String]
         ${ObjectType},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory, HelpMessage='Gets or sets the restore target information')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IRestoreTargetInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IRestoreTargetInfoBase]
         ${RestoreTargetInfo},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory, HelpMessage='Type of the source data store')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType]
+        [System.String]
         ${SourceDataStoreType},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory=$false, HelpMessage='ARM URL for User Assigned Identity')]
@@ -125,10 +135,21 @@ function Start-AzDataProtectionBackupInstanceRestore
             $Parameter.ResourceGuardOperationRequest = $ResourceGuardOperationRequest            
         }
 
-        if($PSBoundParameters.ContainsKey("Token"))
-        {            
-            $null = $PSBoundParameters.Remove("Token")
-            $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+        $hasToken = $PSBoundParameters.Remove("Token")
+        $hasSecureToken = $PSBoundParameters.Remove("SecureToken")
+        if($hasToken -or $hasSecureToken)
+        {   
+            if($hasSecureToken -and $hasToken){
+                throw "Both Token and SecureToken parameters cannot be provided together"
+            }
+            elseif($hasToken){
+                Write-Warning -Message 'The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.'
+                $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+            }
+            else{
+                $plainToken = UnprotectSecureString -SecureString $SecureToken
+                $null = $PSBoundParameters.Add("Token", "Bearer $plainToken")
+            }
         }
                 
         if($hasRestoreToSecondaryRegion){
@@ -161,7 +182,7 @@ function Start-AzDataProtectionBackupInstanceRestore
             
             $backupInstanceId = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.DataProtection/backupVaults/" + $VaultName + "/backupInstances/" + $BackupInstanceName
 
-            $crossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CrossRegionRestoreDetails]::new()
+            $crossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CrossRegionRestoreDetails]::new()
             $crossRegionRestoreDetail.SourceBackupInstanceId = $backupInstanceId
             $crossRegionRestoreDetail.SourceRegion = $vault.Location
             
@@ -172,7 +193,7 @@ function Start-AzDataProtectionBackupInstanceRestore
                 $PSBoundParameters.Add("RestoreRequestObject", $Parameter)
             }
             else{
-                $restoreRequestObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.AzureBackupRestoreRequest]::new()
+                $restoreRequestObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureBackupRestoreRequest]::new()
                 if($hasObjectType) { $restoreRequestObject.ObjectType = $ObjectType }
                 if($hasRestoreTargetInfo) { $restoreRequestObject.RestoreTargetInfo = $RestoreTargetInfo }
                 if($hasSourceDataStoreType) { $restoreRequestObject.SourceDataStoreType = $SourceDataStoreType }

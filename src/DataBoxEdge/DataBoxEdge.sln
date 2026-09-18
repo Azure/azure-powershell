@@ -5,33 +5,32 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{ECF18588-E00C-4408-A66B-7801B48FCF3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{548332F6-D09D-4DA7-989C-002639569EE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{548332F6-D09D-4DA7-989C-002639569EE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{6C01B904-843D-4532-B408-C92D997A0E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{6C01B904-843D-4532-B408-C92D997A0E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{DACBD548-8F85-4896-8A3B-DC599F4E0253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{DACBD548-8F85-4896-8A3B-DC599F4E0253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{EF65A76E-5323-4B49-BFB3-C7F9E970728E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{EF65A76E-5323-4B49-BFB3-C7F9E970728E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{597C1DCA-8096-4627-86C6-7ADF396462BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{597C1DCA-8096-4627-86C6-7ADF396462BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{D62AD9EB-1ABC-47ED-8906-8A26A046234C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{D62AD9EB-1ABC-47ED-8906-8A26A046234C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{32BF1862-8D56-4B46-AB63-B97C939C47E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBoxEdge.Test", "DataBoxEdge.Test\DataBoxEdge.Test.csproj", "{84088187-7FF7-40AC-82E9-B73B2DF7BCA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBoxEdge.Test", "DataBoxEdge.Test\DataBoxEdge.Test.csproj", "{84088187-7FF7-40AC-82E9-B73B2DF7BCA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBoxEdge", "DataBoxEdge\DataBoxEdge.csproj", "{147EC57E-622B-4B6D-8C3C-606DEE170D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBoxEdge", "DataBoxEdge\DataBoxEdge.csproj", "{147EC57E-622B-4B6D-8C3C-606DEE170D87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{ADBD73B8-B569-47A2-87B8-AE9553E738BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{ADBD73B8-B569-47A2-87B8-AE9553E738BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBoxEdge.Management.Sdk", "DataBoxEdge.Management.Sdk\DataBoxEdge.Management.Sdk.csproj", "{257A7E50-4635-4270-A671-6C6676271F47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{548332F6-D09D-4DA7-989C-002639569EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -70,6 +69,13 @@ Global
 		{ADBD73B8-B569-47A2-87B8-AE9553E738BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADBD73B8-B569-47A2-87B8-AE9553E738BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADBD73B8-B569-47A2-87B8-AE9553E738BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{257A7E50-4635-4270-A671-6C6676271F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257A7E50-4635-4270-A671-6C6676271F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257A7E50-4635-4270-A671-6C6676271F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257A7E50-4635-4270-A671-6C6676271F47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{548332F6-D09D-4DA7-989C-002639569EE5} = {ECF18588-E00C-4408-A66B-7801B48FCF3C}

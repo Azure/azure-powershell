@@ -12,9 +12,22 @@ Checks that the CommunicationService name is valid and is not already in use.
 
 ## SYNTAX
 
+### CheckExpanded (Default)
 ```
 Test-AzCommunicationServiceNameAvailability [-SubscriptionId <String>] -Name <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzCommunicationServiceNameAvailability [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzCommunicationServiceNameAvailability [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,12 +79,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the resource for which availability needs to be checked.
+### -JsonFilePath
+Path of Json file supplied to the Check operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckViaJsonFilePath
 Aliases:
 
 Required: True
@@ -81,15 +94,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -JsonString
+Json string supplied to the Check operation
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the resource for which availability needs to be checked.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

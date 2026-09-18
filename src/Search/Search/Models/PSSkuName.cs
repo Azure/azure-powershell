@@ -24,4 +24,29 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         Storage_Optimized_L1 = 5,
         Storage_Optimized_L2 = 6
     }
+
+    internal static class PSSkuNameEnumExtension
+    {
+        internal static PSSkuName? ParsePSSkuName(this string value)
+        {
+            switch (value)
+            {
+                case "free":
+                    return PSSkuName.Free;
+                case "basic":
+                    return PSSkuName.Basic;
+                case "standard":
+                    return PSSkuName.Standard;
+                case "standard2":
+                    return PSSkuName.Standard2;
+                case "standard3":
+                    return PSSkuName.Standard3;
+                case "storage_optimized_l1":
+                    return PSSkuName.Storage_Optimized_L1;
+                case "storage_optimized_l2":
+                    return PSSkuName.Storage_Optimized_L2;
+            }
+            return null;
+        }
+    }
 }

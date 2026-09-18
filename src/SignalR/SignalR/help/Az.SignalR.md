@@ -1,7 +1,7 @@
 ---
 Module Name: Az.SignalR
 Module Guid: a97e0c3e-e389-46a6-b73d-2b9bd6909bdb
-Download Help Link: {{Please enter FwLink manually}}
+Download Help Link: https://learn.microsoft.com/powershell/module/az.signalr
 Help Version: 0.1.0
 Locale: en-US
 ---
@@ -11,11 +11,23 @@ Locale: en-US
 Cmdlets to interact with the Azure SignalR service or Web PubSub service.
 
 ## Az.SignalR Cmdlets
+### [Add-AzSignalRNetworkIpRule](Add-AzSignalRNetworkIpRule.md)
+Add one or more IP rules to the Network ACLs of an Azure SignalR Service instance.
+
 ### [Get-AzSignalR](Get-AzSignalR.md)
 Get a specific SignalR service or all the SignalR services in a resource group or a subscription.
 
+### [Get-AzSignalRCustomCertificate](Get-AzSignalRCustomCertificate.md)
+Get custom certificate(s) for a SignalR service.
+
+### [Get-AzSignalRCustomDomain](Get-AzSignalRCustomDomain.md)
+Get custom domain(s) for a SignalR service.
+
 ### [Get-AzSignalRKey](Get-AzSignalRKey.md)
 Get the access keys of a SignalR service.
+
+### [Get-AzSignalRReplica](Get-AzSignalRReplica.md)
+Get SignalR replica resources for a SignalR service or a specific replica by name or resource ID.
 
 ### [Get-AzSignalRUsage](Get-AzSignalRUsage.md)
 Get the usage quota of a subscription.
@@ -44,14 +56,26 @@ List resource usage quotas by location.
 ### [New-AzSignalR](New-AzSignalR.md)
 Create a SignalR service.
 
+### [New-AzSignalRCustomCertificate](New-AzSignalRCustomCertificate.md)
+Create a custom certificate reference for a SignalR service.
+
+### [New-AzSignalRCustomDomain](New-AzSignalRCustomDomain.md)
+Create or replace a custom domain for a SignalR service.
+
 ### [New-AzSignalRKey](New-AzSignalRKey.md)
 Regenerate an access key for a SignalR service.
+
+### [New-AzSignalRNetworkIpRuleObject](New-AzSignalRNetworkIpRuleObject.md)
+Create an in-memory IP rule object for use with SignalR Network ACL Ip rule cmdlets.
+
+### [New-AzSignalRReplica](New-AzSignalRReplica.md)
+Create a new replica for an existing SignalR service.
 
 ### [New-AzWebPubSub](New-AzWebPubSub.md)
 Create or update a resource.
 
 ### [New-AzWebPubSubCustomCertificate](New-AzWebPubSubCustomCertificate.md)
-Create or update a custom certificate.
+Create a custom certificate.
 
 ### [New-AzWebPubSubCustomDomain](New-AzWebPubSubCustomDomain.md)
 Create or update a custom domain.
@@ -63,7 +87,7 @@ Create an in-memory object for EventHubEndpoint.
 Create an in-memory object for EventNameFilter.
 
 ### [New-AzWebPubSubHub](New-AzWebPubSubHub.md)
-Create or update a hub setting.
+Create a hub setting.
 
 ### [New-AzWebPubSubKey](New-AzWebPubSubKey.md)
 Regenerate the access key for the resource.
@@ -71,6 +95,18 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### [Remove-AzSignalR](Remove-AzSignalR.md)
 Remove a SignalR service.
+
+### [Remove-AzSignalRCustomCertificate](Remove-AzSignalRCustomCertificate.md)
+Remove a custom certificate from a SignalR service.
+
+### [Remove-AzSignalRCustomDomain](Remove-AzSignalRCustomDomain.md)
+Remove a custom domain from a SignalR service.
+
+### [Remove-AzSignalRNetworkIpRule](Remove-AzSignalRNetworkIpRule.md)
+Remove one or more IP rules from the Network ACLs of an Azure SignalR Service instance.
+
+### [Remove-AzSignalRReplica](Remove-AzSignalRReplica.md)
+Delete a SignalR replica resource.
 
 ### [Remove-AzWebPubSub](Remove-AzWebPubSub.md)
 Operation to delete a resource.
@@ -87,14 +123,23 @@ Delete a hub setting.
 ### [Restart-AzSignalR](Restart-AzSignalR.md)
 Restart a SignalR service.
 
+### [Restart-AzSignalRReplica](Restart-AzSignalRReplica.md)
+Restart a SignalR replica.
+
 ### [Restart-AzWebPubSub](Restart-AzWebPubSub.md)
 Operation to restart a resource.
 
 ### [Set-AzSignalRUpstream](Set-AzSignalRUpstream.md)
 Set the upstream settings of a SignalR service.
 
+### [Start-AzSignalRReplica](Start-AzSignalRReplica.md)
+Start a stopped SignalR replica.
+
+### [Stop-AzSignalRReplica](Stop-AzSignalRReplica.md)
+Stop (disable) a running SignalR replica.
+
 ### [Test-AzSignalRName](Test-AzSignalRName.md)
-Check the availability of a name. Alias: Test-AzSignal.
+Check whether a name is available. Alias: Test-AzSignal.
 
 ### [Test-AzWebPubSubNameAvailability](Test-AzWebPubSubNameAvailability.md)
 Checks that the resource name is valid and is not already in use.
@@ -102,9 +147,21 @@ Checks that the resource name is valid and is not already in use.
 ### [Update-AzSignalR](Update-AzSignalR.md)
 Update a SignalR service.
 
+### [Update-AzSignalRCustomDomain](Update-AzSignalRCustomDomain.md)
+Update a custom domain for a SignalR service.
+
 ### [Update-AzSignalRNetworkAcl](Update-AzSignalRNetworkAcl.md)
 Update the Network ACL of a SignalR service.
 
+### [Update-AzSignalRReplica](Update-AzSignalRReplica.md)
+Update properties of a SignalR replica.
+
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
-Operation to update an exiting resource.
+Update a resource.
+
+### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
+Update a custom domain.
+
+### [Update-AzWebPubSubHub](Update-AzWebPubSubHub.md)
+Update a hub setting.
 

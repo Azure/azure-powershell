@@ -170,7 +170,7 @@ function Cleanup-LogFiles([string]$rootfolder)
 {
     Write-Host "Cleaning up log files from $rootfolder..."
     
-    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse |
+    Get-ChildItem -Path $rootfolder -Include *.debug_log -Recurse |
         where {$_.mode -match "a"} |
         Remove-Item -Force     
 }
@@ -191,7 +191,7 @@ function Move-Log([string]$rootfolder)
         New-Item $logfolder -type directory -force
     }
 
-    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse | Move-Item -Destination $logfolder
+    Get-ChildItem -Path $rootfolder -Include *.debug_log -Recurse | Move-Item -Destination $logfolder
 }
 
 

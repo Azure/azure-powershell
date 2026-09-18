@@ -1,5 +1,6 @@
 ﻿
 function New-AzDataProtectionPolicyTriggerScheduleClientObject{
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('System.String[]')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new Schedule object')]
@@ -9,7 +10,7 @@ function New-AzDataProtectionPolicyTriggerScheduleClientObject{
         [System.DateTime[]]
         ${ScheduleDays},
 
-        [Parameter(Mandatory, HelpMessage='Freuquency of the backup.')]
+        [Parameter(Mandatory, HelpMessage='Frequency of the backup.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
         ${IntervalType},
 

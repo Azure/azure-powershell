@@ -20,6 +20,13 @@ Backup-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile] <S
  [<CommonParameters>]
 ```
 
+### BySecretUri
+```
+Backup-AzKeyVaultSecret [-Id] <String> [[-OutputFile] <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### BySecret
 ```
 Backup-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
@@ -72,6 +79,11 @@ C:\Backup.blob
 
 This command uses the $secret object's vault name and name to retrieves the secret and saves its backup to a file named Backup.blob.
 
+### Example 4: Back up a secret with an automatically generated file name (using Uri)
+```powershell
+Backup-AzKeyVaultSecret -Id 'https://MyKeyVault.vault.azure.net:443/secrets/MySecret'
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -100,6 +112,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The URI of the KeyVault Secret.
+Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
+
+```yaml
+Type: System.String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

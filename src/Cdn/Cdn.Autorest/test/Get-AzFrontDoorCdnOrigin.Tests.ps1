@@ -14,42 +14,42 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnOrigin'  {
+Describe 'Get-AzFrontDoorCdnOrigin' {
     BeforeAll {
-        $originGroupName = 'org-pstest010'
-        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-        -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-        -SampleSize 5 -SuccessfulSamplesRequired 4
-        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+        $script:ogName = 'org-pstest-orig-get'
+        $script:originName = 'ori-psName-get'
+        $hp = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath '/' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
+        $lb = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 4
+        New-AzFrontDoorCdnOriginGroup -OriginGroupName $script:ogName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LoadBalancingSetting $lb -HealthProbeSetting $hp | Out-Null
+        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -OriginName $script:originName -OriginHostHeader 'en.wikipedia.org' -HostName 'en.wikipedia.org' -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000 | Out-Null
+    }
 
-        Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
-
-        $hostName = "en.wikipedia.org"
-        $originName = 'ori-psName010'
-
-        Write-Host -ForegroundColor Green "Start to create origin."    
-        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+    AfterAll {
+        Remove-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -OriginName $script:originName -ErrorAction SilentlyContinue
+        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -ErrorAction SilentlyContinue
     }
 
     It 'List' {
-        Write-Host -ForegroundColor Green "Get origin."   
-        $origins = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
-        $origins.Count | Should -BeGreaterOrEqual 1
+        $os = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName
+        $os.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-        $origin.Name | Should -Be $originName
+        $o = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -OriginName $script:originName
+        $o.Name | Should -Be $script:originName
     }
 
     It 'GetViaIdentity' {
-        $originObject = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-        $origin = Get-AzFrontDoorCdnOrigin -InputObject $originObject
-        
-        $origin.Name | Should -Be $originName
+        $o = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -OriginName $script:originName
+        $o2 = Get-AzFrontDoorCdnOrigin -InputObject $o
+        $o2.Name | Should -Be $script:originName
+    }
+
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityOriginGroup' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

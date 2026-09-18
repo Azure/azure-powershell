@@ -124,7 +124,7 @@ Accept wildcard characters: False
 
 ### -Filter
 The filter to apply to the recommendations.
-Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#-category)'] with operators ['eq', 'and', 'or'].
+Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#category)'] with operators ['eq', 'and', 'or'].
 Example:
 - $filter=Category eq 'Cost' and ResourceGroup eq 'MyResourceGroup'
 
@@ -240,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 
 ## NOTES
 

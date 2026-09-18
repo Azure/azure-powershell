@@ -18,7 +18,21 @@ Invoke-AzMLWorkspaceDiagnose -Name <String> -ResourceGroupName <String> [-Subscr
  [-ApplicationInsightId <Hashtable>] [-ContainerRegistryId <Hashtable>] [-DnsResolution <Hashtable>]
  [-KeyVaultId <Hashtable>] [-Nsg <Hashtable>] [-Other <Hashtable>] [-ResourceLock <Hashtable>]
  [-StorageAccount <Hashtable>] [-Udr <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DiagnoseViaJsonString
+```
+Invoke-AzMLWorkspaceDiagnose -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DiagnoseViaJsonFilePath
+```
+Invoke-AzMLWorkspaceDiagnose -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiagnoseViaIdentityExpanded
@@ -27,7 +41,7 @@ Invoke-AzMLWorkspaceDiagnose -InputObject <IMachineLearningServicesIdentity>
  [-ApplicationInsightId <Hashtable>] [-ContainerRegistryId <Hashtable>] [-DnsResolution <Hashtable>]
  [-KeyVaultId <Hashtable>] [-Nsg <Hashtable>] [-Other <Hashtable>] [-ResourceLock <Hashtable>]
  [-StorageAccount <Hashtable>] [-Udr <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +95,7 @@ Setting for diagnosing dependent application insights
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -111,7 +125,7 @@ Setting for diagnosing dependent container registry
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -142,7 +156,7 @@ Setting for diagnosing dns resolution
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +168,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
@@ -168,12 +181,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Diagnose operation
+
+```yaml
+Type: System.String
+Parameter Sets: DiagnoseViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Diagnose operation
+
+```yaml
+Type: System.String
+Parameter Sets: DiagnoseViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyVaultId
 Setting for diagnosing dependent key vault
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -188,7 +231,7 @@ Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiagnoseExpanded
+Parameter Sets: DiagnoseExpanded, DiagnoseViaJsonString, DiagnoseViaJsonFilePath
 Aliases:
 
 Required: True
@@ -218,7 +261,7 @@ Setting for diagnosing network security group
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -233,23 +276,8 @@ Setting for diagnosing unclassified category of problems
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -264,7 +292,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiagnoseExpanded
+Parameter Sets: DiagnoseExpanded, DiagnoseViaJsonString, DiagnoseViaJsonFilePath
 Aliases:
 
 Required: True
@@ -279,7 +307,7 @@ Setting for diagnosing resource lock
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -294,7 +322,7 @@ Setting for diagnosing dependent storage account
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -309,7 +337,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiagnoseExpanded
+Parameter Sets: DiagnoseExpanded, DiagnoseViaJsonString, DiagnoseViaJsonFilePath
 Aliases:
 
 Required: False
@@ -324,7 +352,7 @@ Setting for diagnosing user defined routing
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: DiagnoseExpanded, DiagnoseViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -374,7 +402,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDiagnoseResponseResultValue
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDiagnoseResponseResult
 
 ## NOTES
 

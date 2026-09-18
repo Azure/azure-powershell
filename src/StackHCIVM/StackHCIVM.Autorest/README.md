@@ -54,7 +54,6 @@ In this directory, run AutoRest:
 commit: 812f964651d5f1f7148b54ed2cc35cb97be12523
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-repo: azure-rest-api-specs
 
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/common.json
@@ -71,10 +70,45 @@ module-version: 0.1.0
 title: StackHCIVM
 service-name: StackHCIVM
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 inlining-threshold: 50
 resourcegroup-append: true
 directive:  
+ # Breaking change pre-announcements for parameter type changes
+ -  where:
+      verb: New
+      subject: StackHCIVMImage
+      parameter-name: ImagePath
+    set:
+      breaking-change:
+        old-parameter-type: String
+        new-parameter-type: SecureString
+        change-description: The type of parameter ImagePath will be changed from String to SecureString to protect sensitive file path information.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+ -  where:
+      verb: New
+      subject: StackHCIVMVirtualMachine
+      parameter-name: AdminPassword
+    set:
+      breaking-change:
+        old-parameter-type: String
+        new-parameter-type: SecureString
+        change-description: The type of parameter AdminPassword will be changed from String to SecureString to protect sensitive credential information.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+ # Mark imagePath as a password format so AutoRest generates SecureString for the parameter
+ -  from: swagger-document
+    where: $.definitions.GalleryImageProperties.properties.imagePath
+    transform: $.format = "password"
+ # Mark adminPassword as a password format so AutoRest generates SecureString for the parameter
+ -  from: swagger-document
+    where: $.definitions.VirtualMachineInstanceProperties.properties.osProfile.properties.adminPassword
+    transform: $.format = "password"
  -  from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete.responses
     transform: >-

@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization;
+using Microsoft.Azure.PowerShell.Cmdlets.StorageSync.Helper.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.StorageSync;
 using System;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <param name="roleDefinitionId">Role definition id</param>
         /// <param name="scope">Scope</param>
         /// <returns>Role Assignment</returns>
-        RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope);
+        (RoleAssignment, bool) EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope);
 
         /// <summary>
         /// This function will try to delete role assignment if it exists.

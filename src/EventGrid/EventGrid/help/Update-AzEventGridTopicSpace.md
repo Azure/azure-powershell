@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridTopicSpace
 
 ## SYNOPSIS
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzEventGridTopicSpace -InputObject <IEventGridIdentity> [-Description <St
 ```
 
 ## DESCRIPTION
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 
 ## EXAMPLES
 

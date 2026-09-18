@@ -15,7 +15,7 @@ This includes keys for the storage account, app insights and password for contai
 
 ```
 Get-AzMLWorkspaceKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ This includes keys for the storage account, app insights and password for contai
 
 ## EXAMPLES
 
-### Example 1: Lists all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container regist
+### Example 1: Lists all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container registry
 ```powershell
 Get-AzMLWorkspaceKey  -ResourceGroupName ml-rg-test -Name mlworkspace-cli01
 ```
@@ -35,7 +35,7 @@ AppInsightsInstrumentationKey        UserStorageKey                             
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Lists all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container regist
+Lists all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container registry.
 
 ## PARAMETERS
 
@@ -64,21 +64,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IListWorkspaceKeysResult
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IListWorkspaceKeysResult
 
 ## NOTES
 

@@ -38,10 +38,6 @@ title: WindowsIotServices
 module-version: 0.1.0
 subject-prefix: WindowsIotServices
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Changed schema ref of the patch and put request.
   - from: swagger-document
@@ -85,14 +81,12 @@ directive:
     remove: true
   # Remove parameter set name
   - where:
-      verb: New
       subject: Service$
-      variant: Create$|CreateViaIdentity$|CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      verb: Update
       subject: Service$
-      variant: Update$|UpdateViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Rename parameter name
   - where:
@@ -111,4 +105,13 @@ directive:
       subject: Service$
     set:
       subject: Device
+  # if update Location parameter available, please uncommit this
+  # - from: swagger-document
+  #   where: $.definitions.TrackedResource.properties.location.x-ms-mutability
+  #   transform: >-
+  #     return [
+  #       "read",
+  #       "update",
+  #       "create"
+  #     ]
 ```

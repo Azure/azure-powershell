@@ -28,7 +28,7 @@
       - But it's excluding content files to reduce the size of the module. The content files are not needed since they're in the runtime (PowerShell)
       - The content files are needed to set up the runspace to parse the command line. So we need to include them when we run the unit tests.
       -->
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.3" />
   </ItemGroup>
 
   <ItemGroup>

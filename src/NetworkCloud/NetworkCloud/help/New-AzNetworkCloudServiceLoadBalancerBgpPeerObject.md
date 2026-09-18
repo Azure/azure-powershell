@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudServiceLoadBalancerBgpPeerObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudserviceloadbalancerbgppeerobject
 schema: 2.0.0
 ---
 
@@ -14,9 +14,8 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ```
 New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
- [-BfdEnabled <BfdEnabled>] [-BgpMultiHop <BgpMultiHop>] [-HoldTime <String>] [-KeepAliveTime <String>]
- [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-BfdEnabled <String>] [-BgpMultiHop <String>] [-HoldTime <String>] [-KeepAliveTime <String>] [-MyAsn <Int64>]
+ [-Password <String>] [-PeerPort <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,13 +25,13 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ### Example 1: Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ```powershell
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
+New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password REDACTED -PeerPort 1234
 ```
 
 ```output
 BfdEnabled BgpMultiHop HoldTime KeepAliveTime MyAsn Name Password  PeerAddress   PeerAsn PeerPort
 ---------- ----------- -------- ------------- ----- ---- --------  -----------   ------- --------
-False      False       P300s    P300s         64512 name passsword 203.0.113.254 64497   1234
+False      False       P300s    P300s         64512 name REDACTED 203.0.113.254 64497   1234
 ```
 
 Create an in-memory object for ServiceLoadBalancerBgpPeer.
@@ -43,7 +42,7 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 The indicator of BFD enablement for this BgpPeer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BfdEnabled
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +57,7 @@ Accept wildcard characters: False
 The indicator to enable multi-hop peering support.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.BgpMultiHop
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,6 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -HoldTime
+Field Deprecated.
+The field was previously optional, now it will have no defined behavior and will be ignored.
 The requested BGP hold time value.
 This field uses ISO 8601 duration format, for example P1H.
 
@@ -86,6 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -KeepAliveTime
+Field Deprecated.
+The field was previously optional, now it will have no defined behavior and will be ignored.
 The requested BGP keepalive time value.
 This field uses ISO 8601 duration format, for example P1H.
 
@@ -191,21 +194,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -213,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.ServiceLoadBalancerBgpPeer
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ServiceLoadBalancerBgpPeer
 
 ## NOTES
 

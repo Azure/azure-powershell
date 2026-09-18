@@ -13,8 +13,9 @@ Define a Network Virtual Appliance Internet Ingress IPs Property for the resourc
 ## SYNTAX
 
 ```
-New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId <String> 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,36 @@ Creates a list of Internet Ingress Property object which has 2 Public IPs which 
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -57,7 +88,7 @@ Accept wildcard characters: False
 The IDs of the Public IPs which can be given as comma separated input.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

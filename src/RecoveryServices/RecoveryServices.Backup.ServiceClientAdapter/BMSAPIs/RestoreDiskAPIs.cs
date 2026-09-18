@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
-            //validtion block
+            //validation block
             if (!triggerRestoreRequest.Properties.GetType().IsSubclassOf(typeof(AzureWorkloadRestoreRequest)))
             {
                 if (storageAccountLocation != vaultLocation && rp.BackupManagementType != Models.BackupManagementType.AzureStorage)
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             #endregion
 
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 containerUri,
                 protectedItemUri,
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
-            return response;
+            return ToAzureOperationResponse(response);
         }
 
 
@@ -173,9 +173,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             //validation block
             if (!triggerCRRRestoreRequest.RestoreRequest.GetType().IsSubclassOf(typeof(CrrModel.AzureWorkloadRestoreRequest)))
             {
-                if (storageAccountLocation != secondaryRegion && rp.BackupManagementType != Models.BackupManagementType.AzureStorage)
+                if (storageAccountLocation != secondaryRegion)
                 {
-                    throw new Exception(Resources.TriggerRestoreIncorrectRegion);
+                    throw new Exception(Resources.CrossRegionRestoreIncorrectTargetRegion);
                 }
             }
             

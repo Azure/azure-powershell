@@ -122,12 +122,12 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         /// <summary>
-        /// Custom propeties for the storage context
+        /// Custom properties for the storage context
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
-        /// Create a storage context usign cloud storage account
+        /// Create a storage context using cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
         public AzureStorageContext(CloudStorageAccount account)
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         /// <summary>
-        /// Proivides a private constructor for building empty instance which
+        /// Provides a private constructor for building empty instance which
         /// contains no account information.
         /// </summary>
         protected AzureStorageContext()

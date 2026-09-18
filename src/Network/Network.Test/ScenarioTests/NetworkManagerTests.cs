@@ -70,6 +70,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerRoutingRuleCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerRoutingRuleCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerSecurityUserRuleCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerSecurityUserRuleCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerScopeConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerScopeConnectionCRUD");
@@ -97,6 +113,38 @@ namespace Commands.Network.Test.ScenarioTests
         public void NetworkManagerResourceMinimumParameterCreate()
         {
             TestRunner.RunTestScript("Test-NetworkManagerResourceMinimumParameterCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerIpamPoolCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerIpamPoolCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerIpamPoolStaticCidrCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerIpamPoolStaticCidrCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerSecurityAdminRuleManualAggregationCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD");
         }
     }
 }

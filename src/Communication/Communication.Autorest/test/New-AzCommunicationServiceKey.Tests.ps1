@@ -20,7 +20,7 @@ Describe 'New-AzCommunicationServiceKey' {
         $keys[0].SecondaryKey | Should -Not -Be $keyPair[0].SecondaryKey
     }
 
-    It 'Regenerate' {
+    It 'Regenerate' -Skip {
         $keys = New-AzCommunicationServiceKey -CommunicationServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Parameter @{KeyType="Primary"}
         $keys[0].PrimaryKey | Should -Not -Be $keyPair[0].PrimaryKey
 

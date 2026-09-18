@@ -121,6 +121,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public string GatewayLoadBalancerId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The DDoS custom policy resource ID to associate with the frontend IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string DdosCustomPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables UDP flow tracking for traffic associated with the frontend IP configuration. When enabled, packets belonging to the same UDP flow are consistently directed to the same backend instance. This setting applies to all associated load balancing rules and takes precedence over rule-level connection tracking settings.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableConnectionTracking { get; set; }
+
         public override void Execute()
         {
             if (ShouldProcess(this.LoadBalancer.Name, "Adding Front-End IP Configuration"))
@@ -216,6 +229,18 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
                 }
+
+                if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
+                {
+                    if (vFrontendIpConfigurations.DdosSettings == null)
+                    {
+                        vFrontendIpConfigurations.DdosSettings = new PSDdosSettings();
+                    }
+
+                    vFrontendIpConfigurations.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
+                }
+
+                vFrontendIpConfigurations.EnableConnectionTracking = this.EnableConnectionTracking.IsPresent ? true : (bool?)null;
 
                 var generatedId = string.Format(
                     "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",

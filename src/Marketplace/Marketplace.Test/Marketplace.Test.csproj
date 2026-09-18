@@ -6,13 +6,13 @@
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Marketplace" Version="1.1.0" />
-  </ItemGroup>
-
   <PropertyGroup>
     <RootNamespace>Microsoft.Azure.Commands.Marketplace.Test</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Marketplace.Management.Sdk\Marketplace.Management.Sdk.csproj" />
+    <ProjectReference Include="..\Marketplace\Marketplace.csproj" />
+  </ItemGroup>
 
 </Project>

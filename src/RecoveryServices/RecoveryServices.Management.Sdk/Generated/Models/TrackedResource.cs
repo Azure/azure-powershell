@@ -8,8 +8,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
     using System.Linq;
 
     /// <summary>
-    /// Tracked resource with location.
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
     /// </summary>
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
+    /// </remarks>
     public partial class TrackedResource : Resource
     {
         /// <summary>
@@ -24,30 +29,32 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the TrackedResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id represents the complete path to the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name associated with the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">Optional ETag.
-        /// </param>
-
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
-        public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
-        : base(id, name, type, etag)
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+        public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        : base(id, name, type, systemData)
         {
-            this.Location = location;
             this.Tags = tags;
+            this.Location = location;
             CustomInit();
         }
 
@@ -58,16 +65,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
 
         /// <summary>
-        /// Gets or sets resource location.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
         /// Gets or sets resource tags.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

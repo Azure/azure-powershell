@@ -15,17 +15,19 @@ Command to sync the address space on the peering link if the remote virtual netw
 ### Fields (Default)
 ```
 Sync-AzVirtualNetworkPeering -VirtualNetworkName <String> -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### Object
 ```
 Sync-AzVirtualNetworkPeering -VirtualNetworkPeering <PSVirtualNetworkPeering>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updating the address space on peered virtual networks is now supported. However, to sync the latest address space on the peering link, this commandlet needs to be called on the (peered) remote virtual network. When invoked, it would sync the address space on the peering link with the latest address space of the (peered) remote virtual network.
+Updating the address space on peered virtual networks is now supported. However, to sync the latest address space on the peering link, this cmdlet needs to be called on the (peered) remote virtual network. When invoked, it would sync the address space on the peering link with the latest address space of the (peered) remote virtual network.
 
 ## EXAMPLES
 
@@ -42,9 +44,39 @@ $s1h1 = Get-AzVirtualNetworkPeering -Name 'spoke1-hub1' -VirtualNetworkName 'spo
 $s1h1 | Sync-AzVirtualNetworkPeering
 ```
 
-The first commandlet gets the virtual network peering. The second piped commandlet applies the sync operation on the peering.
+The first cmdlet gets the virtual network peering. The second piped cmdlet applies the sync operation on the peering.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

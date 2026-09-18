@@ -102,6 +102,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string DiskEncryptionSetId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the storage fault domain alignment type for a data disk in the VMSS template. Valid values are 'Aligned' and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "BestEffortAligned")]
+        public string StorageFaultDomainAlignment { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Add"))
@@ -176,6 +183,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // DiskEncryptionSet
                 vDataDisks.ManagedDisk.DiskEncryptionSet = new DiskEncryptionSetParameters();
                 vDataDisks.ManagedDisk.DiskEncryptionSet.Id = this.DiskEncryptionSetId;
+            }
+            if (this.IsParameterBound(c => c.StorageFaultDomainAlignment))
+            {
+                vDataDisks.StorageFaultDomainAlignment = this.StorageFaultDomainAlignment;
             }
             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Add(vDataDisks);
             WriteObject(this.VirtualMachineScaleSet);

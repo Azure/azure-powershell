@@ -342,6 +342,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual IRecommendedSensitivityLabelsOperations RecommendedSensitivityLabels { get; private set; }
         /// <summary>
+        /// Gets the IFirewallRulesOperations
+        /// </summary>
+        public virtual IFirewallRulesOperations FirewallRules { get; private set; }
+        /// <summary>
         /// Gets the IIPv6FirewallRulesOperations
         /// </summary>
         public virtual IIPv6FirewallRulesOperations IPv6FirewallRules { get; private set; }
@@ -402,6 +406,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual IServersOperations Servers { get; private set; }
         /// <summary>
+        /// Gets the IDeletedServersOperations
+        /// </summary>
+        public virtual IDeletedServersOperations DeletedServers { get; private set; }
+        /// <summary>
         /// Gets the IServerConfigurationOptionsOperations
         /// </summary>
         public virtual IServerConfigurationOptionsOperations ServerConfigurationOptions { get; private set; }
@@ -429,6 +437,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IStartStopManagedInstanceSchedulesOperations
         /// </summary>
         public virtual IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; private set; }
+        /// <summary>
+        /// Gets the IDatabaseSchemasOperations
+        /// </summary>
+        public virtual IDatabaseSchemasOperations DatabaseSchemas { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
@@ -633,6 +645,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -735,6 +750,7 @@ namespace Microsoft.Azure.Management.Sql
             this.ManagedDatabaseRecommendedSensitivityLabels = new ManagedDatabaseRecommendedSensitivityLabelsOperations(this);
             this.SensitivityLabels = new SensitivityLabelsOperations(this);
             this.RecommendedSensitivityLabels = new RecommendedSensitivityLabelsOperations(this);
+            this.FirewallRules = new FirewallRulesOperations(this);
             this.IPv6FirewallRules = new IPv6FirewallRulesOperations(this);
             this.ReplicationLinks = new ReplicationLinksOperations(this);
             this.VirtualClusters = new VirtualClustersOperations(this);
@@ -750,6 +766,7 @@ namespace Microsoft.Azure.Management.Sql
             this.RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
             this.InstanceFailoverGroups = new InstanceFailoverGroupsOperations(this);
             this.Servers = new ServersOperations(this);
+            this.DeletedServers = new DeletedServersOperations(this);
             this.ServerConfigurationOptions = new ServerConfigurationOptionsOperations(this);
             this.ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
             this.ManagedDatabases = new ManagedDatabasesOperations(this);
@@ -757,6 +774,7 @@ namespace Microsoft.Azure.Management.Sql
             this.ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
             this.ManagedInstances = new ManagedInstancesOperations(this);
             this.StartStopManagedInstanceSchedules = new StartStopManagedInstanceSchedulesOperations(this);
+            this.DatabaseSchemas = new DatabaseSchemasOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;

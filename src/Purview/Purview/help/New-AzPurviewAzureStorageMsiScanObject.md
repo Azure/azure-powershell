@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragemsiscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,9 @@ Create an in-memory object for AzureStorageMsiScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureStorageMsiScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>]
- [<CommonParameters>]
+New-AzPurviewAzureStorageMsiScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-ScanRulesetName <String>] [-ScanRulesetType <String>]
+ [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +25,7 @@ Create an in-memory object for AzureStorageMsiScan.
 
 ### Example 1: Create Azure Storage Msi scan object
 ```powershell
-New-AzPurviewAzureStorageMsiScanObject -Kind 'AzureStorageMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 ```
 
 ```output
@@ -91,20 +90,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScanRulesetName
 
 ```yaml
@@ -122,7 +107,7 @@ Accept wildcard characters: False
 ### -ScanRulesetType
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageMsiScan
 
 ## NOTES
 

@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public SharingProfile SharingProfile { get; set; }
+        public GalleryIdentity Identity { get; set; }
 
     }
 }

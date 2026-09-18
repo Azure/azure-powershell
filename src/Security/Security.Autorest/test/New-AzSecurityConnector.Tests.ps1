@@ -50,7 +50,7 @@ Describe 'New-AzSecurityConnector' {
         
         $environment = New-AzSecurityAwsEnvironmentObject -ScanInterval 24
 
-        # Tests require complecated environment setup. For now, validating that resource provider is accepting payload and trying to access AWS
+        # Tests require complicated environment setup. For now, validating that resource provider is accepting payload and trying to access AWS
         try {
             New-AzSecurityConnector -Name "aws-sdktest01" -ResourceGroupName "securityConnectors-tests" -EnvironmentData $environment -EnvironmentName AWS -HierarchyIdentifier "$account" `
                 -Offering @($cspmMonitorOffering, $dcspmOffering, $defenderForContainersOffering) -Location "CentralUS"
@@ -90,7 +90,7 @@ Describe 'New-AzSecurityConnector' {
 
         $environment = New-AzSecurityGcpProjectEnvironmentObject -ScanInterval 24 -ProjectDetailProjectId "asc-sdk-samples" -ProjectDetailProjectNumber "$account"
 
-        # Tests require complecated environment setup. For now, validating that resource provider is accepting payload and trying to access GCP
+        # Tests require complicated environment setup. For now, validating that resource provider is accepting payload and trying to access GCP
         try {
             New-AzSecurityConnector -Name "gcp-sdktest01" -ResourceGroupName "securityConnectors-tests" -EnvironmentData $environment -EnvironmentName GCP -HierarchyIdentifier "$account" `
                 -Offering @($cspmMonitorOffering, $dcspmOffering, $defenderForContainersOffering) -Location "CentralUS"

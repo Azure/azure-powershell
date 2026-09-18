@@ -1,0 +1,44 @@
+{
+  "Get-AzSecurityDefenderForStorage+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourcegroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "dee0fc80-aa0c-4480-bda7-7cd5b279e78e" ],
+        "CommandName": [ "Get-AzSecurityDefenderForStorage" ],
+        "FullCommandName": [ "Get-AzSecurityDefenderForStorage_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2eef6e3f-92a0-4a3a-aa8b-118b98c13d6d" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "749" ],
+        "x-ms-correlation-request-id": [ "23e48a9d-9deb-4f6a-bae7-b39b899071ae" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240801T091227Z:23e48a9d-9deb-4f6a-bae7-b39b899071ae" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 488B4BC833D34BD793922757D3115D95 Ref B: MRS211050619035 Ref C: 2024-08-01T09:12:26Z" ],
+        "Date": [ "Thu, 01 Aug 2024 09:12:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "467" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"isEnabled\":false,\"malwareScanning\":{\"onUpload\":{\"isEnabled\":false,\"capGBPerMonth\":-1}},\"sensitiveDataDiscovery\":{\"isEnabled\":false},\"overrideSubscriptionLevelSettings\":false},\"id\":\"/subscriptions/f5f18ed8-74de-4917-9f69-d5f7e877104c/resourceGroups/d4s-v2lgk0vz/providers/Microsoft.Storage/storageAccounts/d4sv2sa0/providers/Microsoft.Security/defenderForStorageSettings/current\",\"type\":\"Microsoft.Security/defenderForStorageSettings\",\"name\":\"current\"}",
+      "isContentBase64": false
+    }
+  }
+}

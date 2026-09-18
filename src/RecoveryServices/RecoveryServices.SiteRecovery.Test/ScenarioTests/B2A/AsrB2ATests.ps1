@@ -222,7 +222,7 @@ function Test-CreatePCMap
     $currentJob
     WaitForJobCompletion -JobId $currentJob.Name 
    
-    # Get protection conatiner mapping
+    # Get protection container mapping
     $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
     Assert-NotNull($ProtectionContainerMapping)
 }
@@ -457,10 +457,10 @@ function Test-RemovePCMap
     # Get the primary container
     $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName| Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
-    # Get protection conatiner mapping
+    # Get protection container mapping
     $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -ProtectionContainer $PrimaryProtectionContainer
 
-    # Remove protection conatiner mapping
+    # Remove protection container mapping
     $Job = Remove-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
     #WaitForJobCompletion -JobId $Job.Name
 }
@@ -708,7 +708,7 @@ function Test-SiteRecoveryNewModelE2ETest
     Assert-NotNull($Policy)
     Assert-NotNull($Policy.Name)
 
-    # Get conatiners
+    # Get containers
     $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
     Assert-NotNull($PrimaryProtectionContainer)
     Assert-NotNull($PrimaryProtectionContainer.Name)
@@ -716,7 +716,7 @@ function Test-SiteRecoveryNewModelE2ETest
     Assert-NotNull($RecoveryProtectionContainer)
     Assert-NotNull($RecoveryProtectionContainer.Name)
 
-    # Create new Conatiner mapping 
+    # Create new Container mapping 
     $Job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $ProtectionContainerMappingName -Policy $Policy -PrimaryProtectionContainer $PrimaryProtectionContainer -RecoveryProtectionContainer $RecoveryProtectionContainer
     #WaitForJobCompletion -JobId $Job.Name
 
@@ -762,7 +762,7 @@ function Test-SiteRecoveryNewModelE2ETest
     $Job = Remove-AzRecoveryServicesAsrNetworkMapping -NetworkMapping $NetworkMapping
     #WaitForJobCompletion -JobId $Job.Name
 
-    # Remove conatiner mapping
+    # Remove container mapping
     $Job = Remove-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
     #WaitForJobCompletion -JobId $Job.Name
     $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtectionContainer | Where-Object {$_.Name -eq $ProtectionContainerMappingName}
@@ -927,10 +927,52 @@ function Test-CreateRPIWithMangedDisksForReplication
     param([string] $vaultSettingsFilePath)
 
     Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "ToPowershell"
     $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
     $pc =  Get-ASRProtectionContainer -Fabric $fabric
     $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
     $policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
     $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMName
-    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping[0] -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $VMName -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId -UseManagedDisksForReplication True
+
+    Assert-ThrowsContains { New-AzRecoveryServicesAsrReplicationProtectedItem `
+    -ProtectableItem $VM[0] `
+    -Name $VM[0].Name `
+    -ProtectionContainerMapping $ProtectionContainerMapping[0] `
+    -RecoveryAzureStorageAccountId $StorageAccountID `
+    -OSDiskName $VMName `
+    -OS Windows `
+    -RecoveryResourceGroupId $RecoveryResourceGroupId `
+    -UseManagedDisksForReplication True } `
+    "Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication"
+
+    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM[0] -Name $VM[0].Name -ProtectionContainerMapping $ProtectionContainerMapping[0] -LogStorageAccountId $StorageAccountID -OSDiskName $VMName -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId -UseManagedDisksForReplication True
+    WaitForJobCompletion -JobId $EnableDRjob.Name
+    $Job = Get-AzRecoveryServicesAsrJob -Name $EnableDRjob.Name
+    Assert-True { $Job.State -eq "Succeeded" }
+}
+
+<#
+.SYNOPSIS
+Site Recovery Update RPI with managed disks for replication
+#>
+function Test-UpdateRPIWithMangedDisksForReplication
+{
+    param([string] $vaultSettingsFilePath)
+
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "powershelltest"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $VMName = "powershellvm2"
+
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMName
+    $Updatejob = Set-AzRecoveryServicesAsrReplicationProtectedItem `
+    -InputObject $rpi `
+    -SqlServerLicenseType AHUB
+
+    WaitForJobCompletion -JobId $Updatejob.Name
+    $Job = Get-AzRecoveryServicesAsrJob -Name $Updatejob.Name
+    Assert-True { $Job.State -eq "Succeeded" }
 }

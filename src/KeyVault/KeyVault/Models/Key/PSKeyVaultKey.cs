@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             // Key properties
             Key = key.Key.ToTrack1JsonWebKey();
 
-            // Quick access for key properties
-            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
+            KeySize = key.Properties.KeySize;
 
             // Key additional properties
             Attributes = new PSKeyVaultKeyAttributes(key);
@@ -89,11 +88,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             get { return Key.CurveName; }
         }
-
-        // Quick access for additional property KeySize
-        public int? KeySize;
-
-        // Quick access for additional property KeySize
         public PSKeyReleasePolicy ReleasePolicy 
         {
             get

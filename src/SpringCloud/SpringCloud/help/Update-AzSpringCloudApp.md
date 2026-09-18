@@ -15,22 +15,46 @@ Operation to update an exiting App.
 ### UpdateExpanded (Default)
 ```
 Update-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-Fqdn <String>] [-HttpsOnly]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ManagedIdentityType>]
+ [-SubscriptionId <String>] [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-HttpsOnly]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
  [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
  [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
- [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringCloudApp -Name <String> -SpringInputObject <ISpringCloudIdentity> [-AddonConfig <Hashtable>]
+ [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-IdentityType <String>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
+ [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
+ [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSpringCloudApp -InputObject <ISpringCloudIdentity> [-AddonConfig <Hashtable>] [-EnableEndToEndTl]
- [-Fqdn <String>] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
- [-IdentityType <ManagedIdentityType>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
- [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
- [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
+ [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
+ [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
+ [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +135,7 @@ Collection of addons
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -156,22 +181,7 @@ Indicate if end to end TLS is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Fqdn
-Fully qualified dns Name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -186,7 +196,7 @@ Indicate if only https is allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,7 +211,7 @@ Principal Id of system-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -216,7 +226,7 @@ Tenant Id of system-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -230,8 +240,8 @@ Accept wildcard characters: False
 Type of the managed identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,7 +253,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -257,13 +266,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LoadedCertificate
-Collection of loaded certificates
-To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoadedCertificate
+Collection of loaded certificates
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -278,7 +316,7 @@ The GEO location of the application, always the same with its parent resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -293,7 +331,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentitySpringExpanded
 Aliases: AppName
 
 Required: True
@@ -323,7 +361,7 @@ Mount path of the persistent disk
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -338,7 +376,7 @@ Size of the persistent disk in GB
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -353,7 +391,7 @@ Indicates whether the App exposes public endpoint
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -369,7 +407,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -384,7 +422,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -394,13 +432,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -415,7 +468,7 @@ Mount path of the temporary disk
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -430,7 +483,7 @@ Size of the temporary disk in GB
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -480,41 +533,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISpringCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the build service agent pool resource.
-  - `[AppName <String>]`: The name of the App resource.
-  - `[BindingName <String>]`: The name of the Binding resource.
-  - `[BuildName <String>]`: The name of the build resource.
-  - `[BuildResultName <String>]`: The name of the build result resource.
-  - `[BuildServiceName <String>]`: The name of the build service resource.
-  - `[BuilderName <String>]`: The name of the builder resource.
-  - `[BuildpackBindingName <String>]`: The name of the Buildpack Binding Name
-  - `[BuildpackName <String>]`: The name of the buildpack resource.
-  - `[CertificateName <String>]`: The name of the certificate resource.
-  - `[ConfigurationServiceName <String>]`: The name of Application Configuration Service.
-  - `[DeploymentName <String>]`: The name of the Deployment resource.
-  - `[DomainName <String>]`: The name of the custom domain resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ServiceName <String>]`: The name of the Service resource.
-  - `[ServiceRegistryName <String>]`: The name of Service Registry.
-  - `[StackName <String>]`: The name of the stack resource.
-  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`LOADEDCERTIFICATE <ILoadedCertificate[]>`: Collection of loaded certificates
-  - `ResourceId <String>`: Resource Id of loaded certificate
-  - `[LoadTrustStore <Boolean?>]`: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
 
 ## RELATED LINKS

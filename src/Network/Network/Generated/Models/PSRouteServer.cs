@@ -47,13 +47,16 @@ namespace Microsoft.Azure.Commands.Network.Models
                     Name = connection.Name,
                     PeerIp = connection.PeerIp,
                     PeerAsn = connection.PeerAsn,
-                    ProvisioningState = connection.ProvisioningState
+                    ProvisioningState = connection.ProvisioningState,
+                    RoutingConfiguration = connection.RoutingConfiguration,
+                    HubVirtualNetworkConnection = connection.HubVirtualNetworkConnection
                 };
                 this.Peerings.Add(peering);
             }
             this.AllowBranchToBranchTraffic = virtualHub.AllowBranchToBranchTraffic;
             this.PublicIpAddress = ipconfig.PublicIPAddress.Id;
             this.HubRoutingPreference = virtualHub.HubRoutingPreference;
+            this.VirtualRouterAutoScaleConfiguration = virtualHub.VirtualRouterAutoScaleConfiguration;
         }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -68,6 +71,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PublicIpAddress { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string HubRoutingPreference { get; set; }
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
 
         [JsonIgnore]
         public string PeeringsText

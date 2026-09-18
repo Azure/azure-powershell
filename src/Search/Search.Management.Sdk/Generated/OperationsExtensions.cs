@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Search
     public static partial class OperationsExtensions
     {
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Search provider.
+        /// Lists all of the available REST API operations of the Microsoft.Search
+        /// provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Search provider.
+        /// Lists all of the available REST API operations of the Microsoft.Search
+        /// provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

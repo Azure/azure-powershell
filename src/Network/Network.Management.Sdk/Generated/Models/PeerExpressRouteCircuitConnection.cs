@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PeerExpressRouteCircuitConnection : SubResource
+    public partial class PeerExpressRouteCircuitConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the PeerExpressRouteCircuitConnection class.
@@ -29,19 +29,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="type">Type of the resource.
-        /// </param>
-
         /// <param name="provisioningState">The provisioning state of the peer express route circuit connection
         /// resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="expressRouteCircuitPeering">Reference to Express Route Circuit Private Peering Resource of the circuit.
         /// </param>
@@ -62,13 +62,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="authResourceGuid">The resource guid of the authorization used for the express route circuit
         /// connection.
         /// </param>
-        public PeerExpressRouteCircuitConnection(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), SubResource expressRouteCircuitPeering = default(SubResource), SubResource peerExpressRouteCircuitPeering = default(SubResource), string addressPrefix = default(string), string circuitConnectionStatus = default(string), string connectionName = default(string), string authResourceGuid = default(string))
+        public PeerExpressRouteCircuitConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), SubResource expressRouteCircuitPeering = default(SubResource), SubResource peerExpressRouteCircuitPeering = default(SubResource), string addressPrefix = default(string), string circuitConnectionStatus = default(string), string connectionName = default(string), string authResourceGuid = default(string))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.ExpressRouteCircuitPeering = expressRouteCircuitPeering;
             this.PeerExpressRouteCircuitPeering = peerExpressRouteCircuitPeering;
@@ -86,13 +84,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
@@ -100,14 +91,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
         /// Gets the provisioning state of the peer express route circuit connection
-        /// resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

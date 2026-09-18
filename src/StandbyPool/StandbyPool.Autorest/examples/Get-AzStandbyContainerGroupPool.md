@@ -1,4 +1,4 @@
-### Example 1: Get a standby container pool
+### Example 1: Get a standby container group pool
 ```powershell
 Get-AzStandbyContainerGroupPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
@@ -28,6 +28,7 @@ SystemDataLastModifiedByType      : User
 Tag                               : {
                                     }
 Type                              : microsoft.standbypool/standbycontainergrouppools
+Zone                              : {1}
 ```
 
-Above command is getting a standby container pool.
+Above command is getting a standby container group pool.

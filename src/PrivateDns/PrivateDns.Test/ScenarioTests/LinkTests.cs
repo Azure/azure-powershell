@@ -65,11 +65,32 @@ namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateLinkWithNxDomainRedirectPolicy()
+        {
+            TestRunner.RunTestScript("Test-CreateLinkWithNxDomainRedirectPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateLinkWithNoPolicy()
+        {
+            TestRunner.RunTestScript("Test-CreateLinkWithNoPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkRegistrationStatusWithPiping()
         {
             TestRunner.RunTestScript("Test-UpdateLinkRegistrationStatusWithPiping");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateLinkResolutionPolicyWithPiping()
+        {
+            TestRunner.RunTestScript("Test-UpdateLinkResolutionPolicyWithPiping");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkRegistrationStatusWithPipingResourceId()

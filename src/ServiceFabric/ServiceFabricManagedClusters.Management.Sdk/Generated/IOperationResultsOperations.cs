@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Get long running operation result.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='operationId'>
         /// operation identifier.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> GetWithHttpMessagesAsync(string location, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<OperationResultsGetHeaders>> GetWithHttpMessagesAsync(string location, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

@@ -18,7 +18,8 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-IncludeClusterScopeResource <Boolean>]
  [-ConflictPolicy <String>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
- [<CommonParameters>]
+ [-ResourceModifierReference <NamespacedNameResource>] [-StagingResourceGroupId <String>]
+ [-StagingStorageAccountId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +67,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: True
 Position: Named
@@ -168,10 +169,9 @@ Accept wildcard characters: False
 
 ### -NamespaceMapping
 Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
-To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteriaNamespaceMappings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.KubernetesClusterRestoreCriteriaNamespaceMappings
 Parameter Sets: (All)
 Aliases:
 
@@ -199,12 +199,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestoreHookReference
-Hook reference to be executed during restore.
-To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
+### -ResourceModifierReference
+Resource modifier reference to be executed during restore.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreHookReference
+Hook reference to be executed during restore.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingResourceGroupId
+Staging resource group Id for restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingStorageAccountId
+Staging storage account Id for restore.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

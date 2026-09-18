@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class InboundSecurityRuleType
     {
+        /// <summary>
+        /// AutoExpire
+        /// </summary>
         public const string AutoExpire = "AutoExpire";
+        /// <summary>
+        /// Permanent
+        /// </summary>
         public const string Permanent = "Permanent";
     }
 }

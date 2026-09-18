@@ -127,7 +127,7 @@ function Test-TriggerRun
         
         if($triggerRuns.Count -lt 1)
         {
-            throw "Expected atleast 1 trigger run"
+            throw "Expected at least 1 trigger run"
         }
          
         Stop-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
@@ -374,7 +374,7 @@ function Test-TriggerInvokeAndStop
         
         if($triggerRuns.Count -lt 1)
         {
-            throw "Expected atleast 1 trigger run"
+            throw "Expected at least 1 trigger run"
         }
 
 		$triggerRunId = $triggerRuns[0].TriggerRunId

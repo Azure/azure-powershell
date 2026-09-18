@@ -119,14 +119,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
                 this.DataBoxEdgeManagementClient.StorageAccountCredentials.CreateOrUpdate(
                     this.DeviceName,
                     this.Name,
+                    this.ResourceGroupName,
                     new Management.DataBoxEdge.Models.StorageAccountCredential(
-                        storageAccountCredential.Name,
                         storageAccountCredential.SslStatus,
                         storageAccountCredential.AccountType,
+                        storageAccountCredential.Name,
                         userName: storageAccountCredential.Name,
                         accountKey: encryptedSecret
-                    ),
-                    this.ResourceGroupName
+                    )
                 ));
         }
 

@@ -105,6 +105,21 @@ function Set-AzEventHub{
         # Enumerates the possible values for the status of the Event Hub.
         ${Status},
 
+        [Parameter(HelpMessage = "Gets and Sets Metadata of User.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${UserMetadata},
+
+        [Parameter(HelpMessage = "The minimum time a message will remain ineligible for compaction in the log.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+		[System.Int64]
+        ${MinCompactionLagInMin},
+
+        [Parameter(HelpMessage = "Denotes the type of timestamp the message will hold.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${TimestampType},
+
         [Parameter(HelpMessage = "Name for capture destination")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -203,6 +218,21 @@ function Set-AzEventHub{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 	)
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.EventHub.private\New-AzEventHub_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 	process{
 		try{
             $hasCaptureEnabled = $PSBoundParameters.Remove('CaptureEnabled')
@@ -221,6 +251,9 @@ function Set-AzEventHub{
             $hasBlobContainer = $PSBoundParameters.Remove('BlobContainer')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
+            $hasUserMetadata = $PSBoundParameters.Remove('UserMetadata')
+            $hasMinCompactionLagInMin = $PSBoundParameters.Remove('MinCompactionLagInMin')
+            $hasTimestampType = $PSBoundParameters.Remove('TimestampType')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
@@ -291,6 +324,21 @@ function Set-AzEventHub{
 
             if ($hasUserAssignedIdentityId) {
                 $eventHub.UserAssignedIdentityId = $UserAssignedIdentityId
+            }
+
+            if($hasUserMetadata) {
+                $eventHub.UserMetadata = $UserMetadata
+                $hasProperty = $true
+            }
+
+            if($hasMinCompactionLagInMin) {
+                $eventHub.MinCompactionLagInMin = $MinCompactionLagInMin
+                $hasProperty = $true
+            }
+
+            if($hasTimestampType) {
+                $eventHub.TimestampType = $TimestampType
+                $hasProperty = $true
             }
 
             if ($hasStorageAccountResourceId) {

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public override string AgentName { get; set; }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The Azure Elastic Job adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()

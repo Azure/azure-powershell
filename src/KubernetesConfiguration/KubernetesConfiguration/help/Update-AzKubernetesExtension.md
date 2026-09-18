@@ -305,7 +305,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IExtension
 
 ## NOTES
 

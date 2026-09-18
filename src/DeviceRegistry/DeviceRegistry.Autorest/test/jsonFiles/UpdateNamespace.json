@@ -1,0 +1,13 @@
+{
+  "properties": {        
+    "messaging": {
+      "endpoints": {
+        "myendpoint1": {
+          "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
+          "endpointType": "Microsoft.Devices/IotHubs",
+          "resourceId": "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+        }
+      }
+    }
+  }
+}

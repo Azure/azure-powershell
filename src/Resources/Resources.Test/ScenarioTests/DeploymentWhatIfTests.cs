@@ -152,6 +152,34 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-WhatIfExcludeChangeTypesAtTenantScope");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantLevelWhatIf_ProviderNoRbacAtTenantScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtTenantScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MGLevelWhatIf_ProviderNoRbacAtManagementGroupScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtManagementGroupScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubLevelWhatIf_ProviderNoRbacAtSubscriptionScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtSubscriptionScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RGLevelWhatIf_ProviderNoRbacAtResourceGroupScope()
+        {
+            TestRunner.RunTestScript("Test-WhatIfProviderNoRbacAtResourceGroupScope");
+        }
     }
 }
 

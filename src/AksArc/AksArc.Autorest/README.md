@@ -89,6 +89,20 @@ directive:
     transform: >-
       $["operationId"] = "KubernetesVersions_Create"
 
+# Fix fields in Get-KubernetesVersion
+  - from: swagger-document
+    where: $.definitions.KubernetesVersionReadiness.properties.osType
+    transform: >-
+      delete $.readOnly
+  - from: swagger-document
+    where: $.definitions.KubernetesVersionReadiness.properties.ready
+    transform: >-
+      delete $.readOnly
+  - from: swagger-document
+    where: $.definitions.KubernetesVersionReadiness.properties.errorMessage
+    transform: >-
+      delete $.readOnly
+
 # Rename Subjects
   - where:
       subject: AgentPool
@@ -161,19 +175,6 @@ directive:
       verb: Update
       subject: KubernetesVersion
     remove: true
-
-# Rename parameters
-  - where:
-      subject: VirtualNetwork
-      parameter-name: ExtendedLocationName
-    set: 
-      parameter-name: CustomLocationID
-  
-  - where:
-      subject: VirtualNetwork
-      parameter-name: ExtendedLocationName
-    set: 
-      parameter-name: CustomLocationID
 
 # Clusters
   - where: 

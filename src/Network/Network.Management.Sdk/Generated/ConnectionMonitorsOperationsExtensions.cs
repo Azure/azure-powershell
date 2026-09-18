@@ -13,16 +13,100 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ConnectionMonitorsOperationsExtensions
     {
         /// <summary>
+        /// Lists all connection monitors for the specified Network Watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConnectionMonitorResult> List(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName)
+        {
+                return ((IConnectionMonitorsOperations)operations).ListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all connection monitors for the specified Network Watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionMonitorResult>> ListAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets a connection monitor by name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionMonitorName'>
+        /// The name of the connection monitor.
+        /// </param>
+        public static ConnectionMonitorResult Get(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        {
+                return ((IConnectionMonitorsOperations)operations).GetAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a connection monitor by name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionMonitorName'>
+        /// The name of the connection monitor.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionMonitorResult> GetAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Create or update a connection monitor.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -43,10 +127,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -66,100 +150,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets a connection monitor by name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        public static ConnectionMonitorResult Get(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
-        {
-                return ((IConnectionMonitorsOperations)operations).GetAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a connection monitor by name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorResult> GetAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the specified connection monitor.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        public static void Delete(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
-        {
-                ((IConnectionMonitorsOperations)operations).DeleteAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified connection monitor.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Update tags of the specified connection monitor.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -179,7 +176,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -198,16 +195,58 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Deletes the specified connection monitor.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionMonitorName'>
+        /// The name of the connection monitor.
+        /// </param>
+        public static void Delete(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        {
+                ((IConnectionMonitorsOperations)operations).DeleteAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified connection monitor.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='connectionMonitorName'>
+        /// The name of the connection monitor.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Stops the specified connection monitor.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -224,10 +263,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -240,142 +279,16 @@ namespace Microsoft.Azure.Management.Network
             (await operations.StopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Starts the specified connection monitor.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        public static void Start(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
-        {
-                ((IConnectionMonitorsOperations)operations).StartAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Starts the specified connection monitor.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task StartAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.StartWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Query a snapshot of the most recent connection states.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name given to the connection monitor.
-        /// </param>
-        public static ConnectionMonitorQueryResult Query(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
-        {
-                return ((IConnectionMonitorsOperations)operations).QueryAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Query a snapshot of the most recent connection states.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name given to the connection monitor.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorQueryResult> QueryAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.QueryWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all connection monitors for the specified Network Watcher.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<ConnectionMonitorResult> List(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName)
-        {
-                return ((IConnectionMonitorsOperations)operations).ListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all connection monitors for the specified Network Watcher.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ConnectionMonitorResult>> ListAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Create or update a connection monitor.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -396,10 +309,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -425,10 +338,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -445,10 +358,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -467,10 +380,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -487,10 +400,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
+        /// The name of the network watcher.
         /// </param>
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
@@ -503,88 +416,34 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Starts the specified connection monitor.
+        /// Lists all connection monitors for the specified Network Watcher.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
-        /// </param>
-        public static void BeginStart(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        public static Microsoft.Rest.Azure.IPage<ConnectionMonitorResult> ListNext(this IConnectionMonitorsOperations operations, string nextPageLink)
         {
-                ((IConnectionMonitorsOperations)operations).BeginStartAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+                return ((IConnectionMonitorsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Starts the specified connection monitor.
+        /// Lists all connection monitors for the specified Network Watcher.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name of the connection monitor.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginStartAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionMonitorResult>> ListNextAsync(this IConnectionMonitorsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Query a snapshot of the most recent connection states.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name given to the connection monitor.
-        /// </param>
-        public static ConnectionMonitorQueryResult BeginQuery(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
-        {
-                return ((IConnectionMonitorsOperations)operations).BeginQueryAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Query a snapshot of the most recent connection states.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='connectionMonitorName'>
-        /// The name given to the connection monitor.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorQueryResult> BeginQueryAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginQueryWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

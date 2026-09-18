@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
     public partial interface IServicesOperations
     {
         /// <summary>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric application resource.
         /// </summary>
         /// <remarks>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric application resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -29,7 +31,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -61,7 +64,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource.
@@ -96,7 +100,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource for patch operations.
@@ -131,7 +136,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -145,10 +151,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <remarks>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -189,7 +197,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource.
@@ -224,7 +233,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource for patch operations.
@@ -259,7 +269,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -273,10 +284,12 @@ namespace Microsoft.Azure.Management.ServiceFabric
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <remarks>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -1,0 +1,44 @@
+#!/bin/bash
+# Purpose: Clean up Azure Identity Keys from the MacOS Keychain
+
+cleanup_service_from_keychain() {
+  local service_name="$1"
+  echo "Processing keychain entry: $service_name"
+
+  if security find-generic-password -s "$service_name" &> /dev/null; then
+    echo "##[section]Found keychain entry for '$service_name'. Attempting to delete..."
+
+    if security delete-generic-password -s "$service_name" &> /dev/null; then
+      echo "##[section]Successfully deleted '$service_name' from keychain."
+      return 0
+    else
+      echo "##[warning]Failed to delete '$service_name' from keychain."
+      return 1
+    fi
+  else
+    echo "##[warning]No keychain entry found for '$service_name'."
+    return 0
+  fi
+}
+
+if [ -n "$KEYCHAIN_SERVICES" ]; then
+  IFS=',' read -ra SERVICES_TO_CLEAN <<< "$KEYCHAIN_SERVICES"
+  echo "Keychain services to be cleaned up: $KEYCHAIN_SERVICES"
+  echo
+
+  CLEANUP_FAILED=0
+  for service in "${SERVICES_TO_CLEAN[@]}"; do
+    if ! cleanup_service_from_keychain "$service"; then
+      CLEANUP_FAILED=1
+    fi
+    echo
+  done
+
+  if [ $CLEANUP_FAILED -eq 1 ]; then
+    echo "##[warning]Some keychain entries could not be removed"
+  else
+    echo "##[section]All keychain services cleaned up successfully"
+  fi
+else
+  echo "##[warning]No keychain services specified for cleanup."
+fi

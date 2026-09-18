@@ -13,6 +13,51 @@ namespace Microsoft.Azure.Management.RecoveryServices
     public static partial class RecoveryServicesClientExtensions
     {
         /// <summary>
+        /// Gets the operation result for a resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='operationId'>
+        /// The name of the Vault
+        /// </param>
+        public static Vault GetOperationResult(this IRecoveryServicesClient operations, string resourceGroupName, string vaultName, string operationId)
+        {
+                return ((IRecoveryServicesClient)operations).GetOperationResultAsync(resourceGroupName, vaultName, operationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the operation result for a resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='operationId'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Vault> GetOperationResultAsync(this IRecoveryServicesClient operations, string resourceGroupName, string vaultName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetOperationResultWithHttpMessagesAsync(resourceGroupName, vaultName, operationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the operation status for a resource.
         /// </summary>
         /// <param name='operations'>
@@ -53,51 +98,6 @@ namespace Microsoft.Azure.Management.RecoveryServices
         public static async System.Threading.Tasks.Task<OperationResource> GetOperationStatusAsync(this IRecoveryServicesClient operations, string resourceGroupName, string vaultName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetOperationStatusWithHttpMessagesAsync(resourceGroupName, vaultName, operationId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the operation result for a resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='operationId'>
-        /// 
-        /// </param>
-        public static Vault GetOperationResult(this IRecoveryServicesClient operations, string resourceGroupName, string vaultName, string operationId)
-        {
-                return ((IRecoveryServicesClient)operations).GetOperationResultAsync(resourceGroupName, vaultName, operationId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the operation result for a resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='operationId'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Vault> GetOperationResultAsync(this IRecoveryServicesClient operations, string resourceGroupName, string vaultName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetOperationResultWithHttpMessagesAsync(resourceGroupName, vaultName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

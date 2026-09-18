@@ -1,4 +1,4 @@
-### Example 1: Enable the diagnotics support for a NGINX deployment
+### Example 1: Enable the diagnostics support for a NGINX deployment
 ```powershell
 Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport
 ```
@@ -9,9 +9,9 @@ Location      Name
 westcentralus nginx-test
 ```
 
-This command enables the diagnotics support for a NGINX deployment.
+This command enables the diagnostics support for a NGINX deployment.
 
-### Example 2: Disable the diagnotics support for a NGINX deployment
+### Example 2: Disable the diagnostics support for a NGINX deployment
 ```powershell
 Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport:$false
 ```
@@ -22,4 +22,4 @@ Location      Name
 westcentralus nginx-test
 ```
 
-This command disables the diagnotics support for a NGINX deployment.
+This command disables the diagnostics support for a NGINX deployment.

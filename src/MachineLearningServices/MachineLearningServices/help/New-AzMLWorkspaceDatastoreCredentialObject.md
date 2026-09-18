@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreCredentialObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacedatastorecredentialobject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for CertificateDatastoreCredentials.
 
 ```
 New-AzMLWorkspaceDatastoreCredentialObject -ClientId <String> -TenantId <String> -Thumbprint <String>
- -Certificate <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [-ProgressAction <ActionPreference>]
+ -Certificate <String> [-AuthorityUrl <String>] [-ResourceUrl <String>]
  [<CommonParameters>]
 ```
 
@@ -77,21 +77,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceUrl
 Resource the service principal has access to.
 
@@ -144,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CertificateDatastoreCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CertificateDatastoreCredentials
 
 ## NOTES
 

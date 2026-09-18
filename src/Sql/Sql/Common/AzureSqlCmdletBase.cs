@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -118,28 +119,35 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter();
-            M model = GetEntity();
-            M updatedModel = ApplyUserInputToModel(model);
-            M responseModel = default(M);
-            ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
+            try
             {
-                responseModel = PersistChanges(updatedModel);
-            });
-
-            if (responseModel != null)
-            {
-                if (WriteResult())
+                ModelAdapter = InitModelAdapter();
+                M model = GetEntity();
+                M updatedModel = ApplyUserInputToModel(model);
+                M responseModel = default(M);
+                ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
                 {
-                    WriteObject(TransformModelToOutputObject(responseModel), true);
+                    responseModel = PersistChanges(updatedModel);
+                });
+
+                if (responseModel != null)
+                {
+                    if (WriteResult())
+                    {
+                        WriteObject(TransformModelToOutputObject(responseModel), true);
+                    }
+                }
+                else
+                {
+                    if (WriteResult())
+                    {
+                        WriteObject(TransformModelToOutputObject(updatedModel));
+                    }
                 }
             }
-            else
+            catch (ErrorResponseException ex)
             {
-                if (WriteResult())
-                {
-                    WriteObject(TransformModelToOutputObject(updatedModel));
-                }
+                throw ErrorResponseExceptionHelper.CreateFrom(ex);
             }
         }
     }

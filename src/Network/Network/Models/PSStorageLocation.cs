@@ -30,5 +30,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string FilePath { get; set; }
+
+        [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string LocalPath { get; set; }
     }
 }

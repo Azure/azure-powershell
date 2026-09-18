@@ -8,18 +8,19 @@ schema: 2.0.0
 # New-AzSearchSharedPrivateLinkResource
 
 ## SYNOPSIS
-Creates a shared private link resource for the Azure Cognitive Search service.
+Creates a shared private link resource for the Azure AI Search service.
 
 ## SYNTAX
 
 ```
 New-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  -PrivateLinkResourceId <String> -GroupId <String> -RequestMessage <String> [-ResourceRegion <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSearchSharedPrivateLinkResource** creates a shared private link resource for the Azure Cognitive Search service.
+The **New-AzSearchSharedPrivateLinkResource** creates a shared private link resource for the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -40,7 +41,7 @@ RequestMessage        : Please approve
 ResourceRegion        :
 ```
 
-This example creates a shared private link resource to the blob service of a storage account for the Azure Cognitive Search service.
+This example creates a shared private link resource to the blob service of a storage account for the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -90,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Shared private link resource
+Azure AI Search Shared private link resource
 
 ```yaml
 Type: System.String
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

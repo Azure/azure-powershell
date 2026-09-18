@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressId
-Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments.
+Standard SKU PublicIpAddress ResourceId for integration into stv2 Virtual Network Deployments.
 
 ```yaml
 Type: System.String

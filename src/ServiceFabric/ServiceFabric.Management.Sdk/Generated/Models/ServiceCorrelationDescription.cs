@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="scheme">The ServiceCorrelationScheme which describes the relationship between this
         /// service and the service specified via ServiceName.
-        /// Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
-        /// 'NonAlignedAffinity'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Affinity&#39;, &#39;AlignedAffinity&#39;,
+        /// &#39;NonAlignedAffinity&#39;</param>
 
         /// <param name="serviceName">The name of the service that the correlation relationship is established
         /// with.

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicymetadata
 schema: 2.0.0
@@ -8,17 +8,24 @@ schema: 2.0.0
 # Get-AzPolicyMetadata
 
 ## SYNOPSIS
-Gets Policy Metadata resources
+Gets Policy Metadata resources.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzPolicyMetadata [-Name <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPolicyMetadata [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByName
+```
+Get-AzPolicyMetadata -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzPolicyRemediation** cmdlet gets all policy metadata resources or a particular policy metadata resource.
+The **Get-AzPolicyMetadata** cmdlet gets all policy metadata resources or a particular policy metadata resource.
 
 ## EXAMPLES
 
@@ -27,31 +34,34 @@ The **Get-AzPolicyRemediation** cmdlet gets all policy metadata resources or a p
 Get-AzPolicyMetadata
 ```
 
-This command gets all policy metadata resources
+This command gets all policy metadata resources.
 
 ### Example 2: Get a collection of 10 policy metadata resources
 ```powershell
 Get-AzPolicyMetadata -Top 10
 ```
 
-This command gets a collection of 10 policy metadata resources
+This command gets a collection of 10 policy metadata resources.
 
 ### Example 3: Get a single policy metadata resource with the name 'ACF1348'
 ```powershell
 Get-AzPolicyMetadata -Name ACF1348
 ```
 
-This command gets a single policy metadata resource with the name 'ACF1348'
+This command gets a single policy metadata resource with the name 'ACF1348'.
+
+It will include a bit more info about the resource than collection calls.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -61,26 +71,27 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource name.
+The name of the policy metadata resource.
+Returns additional information about the specified policy metadata resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: GetByName
+Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-Maximum number of policy metadata resources to return.
+Maximum number of records to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -95,11 +106,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyMetadata
 
 ## NOTES
 

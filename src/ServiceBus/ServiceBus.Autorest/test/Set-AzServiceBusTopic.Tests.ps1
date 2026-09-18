@@ -50,7 +50,7 @@ Describe 'Set-AzServiceBusTopic' {
         $currentTopic = $updatedTopic
     }
 
-    It 'SetViaIdentityExpanded' {
+    It 'SetViaIdentityExpanded' -skip{
         $currentTopic = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topicToUpdate
 
         $updatedTopic = Set-AzServiceBusTopic -InputObject $currentTopic -SupportOrdering

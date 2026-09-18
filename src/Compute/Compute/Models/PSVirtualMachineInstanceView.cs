@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string OsVersion { get; set; }
         public string HyperVGeneration { get; set; }
         public string AssignedHost {get; set; }
+        public bool? IsVMInStandbyPool { get; set; }
+        public string CapacityReservationType { get; set; }
 
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
@@ -75,7 +77,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 HyperVGeneration = virtualMachineInstanceView.HyperVGeneration,
                 PatchStatus = virtualMachineInstanceView.PatchStatus,
                 VMHealth = virtualMachineInstanceView.VmHealth,
-                AssignedHost = virtualMachineInstanceView.AssignedHost
+                AssignedHost = virtualMachineInstanceView.AssignedHost,
+                IsVMInStandbyPool = virtualMachineInstanceView.IsVMInStandbyPool,
+                CapacityReservationType = virtualMachineInstanceView.CapacityReservationType
             };
 
             return result;

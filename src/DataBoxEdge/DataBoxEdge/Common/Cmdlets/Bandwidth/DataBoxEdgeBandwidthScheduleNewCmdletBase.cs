@@ -141,8 +141,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
                     this.DataBoxEdgeManagementClient.BandwidthSchedules,
                     this.DeviceName,
                     this.Name,
-                    resourceModel,
-                    this.ResourceGroupName));
+                    this.ResourceGroupName,
+                    resourceModel));
         }
 
         public override void ExecuteCmdlet()

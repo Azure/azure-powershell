@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<RegisteredServer>,RegisteredServersListByStorageSyncServiceHeaders>> ListByStorageSyncServiceWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RegisteredServer>,RegisteredServersListByStorageSyncServiceHeaders>> ListByStorageSyncServiceWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a given registered server.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersGetHeaders>> GetWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add a new registered server.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, RegisteredServerCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update registered server.
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        /// <param name='identity'>
-        /// Apply server with newly discovered ApplicationId if available.
+        /// <param name='parameters'>
+        /// Body of Registered Server object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, RegisteredServerUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the given registered server.
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Triggers Server certificate rollover.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='serverId'>
-        /// Server Id
+        /// GUID identifying the on-premises server.
         /// </param>
         /// <param name='serverCertificate'>
         /// Certificate Data
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersTriggerRolloverHeaders>> TriggerRolloverWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, string serverCertificate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersTriggerRolloverHeaders>> TriggerRolloverWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, string serverCertificate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add a new registered server.
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, RegisteredServerCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update registered server.
@@ -234,8 +234,8 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='serverId'>
         /// GUID identifying the on-premises server.
         /// </param>
-        /// <param name='identity'>
-        /// Apply server with newly discovered ApplicationId if available.
+        /// <param name='parameters'>
+        /// Body of Registered Server object.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, RegisteredServerUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the given registered server.
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Triggers Server certificate rollover.
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Name of Storage Sync Service resource.
         /// </param>
         /// <param name='serverId'>
-        /// Server Id
+        /// GUID identifying the on-premises server.
         /// </param>
         /// <param name='serverCertificate'>
         /// Certificate Data
@@ -304,7 +304,30 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersTriggerRolloverHeaders>> BeginTriggerRolloverWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, string serverCertificate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RegisteredServersTriggerRolloverHeaders>> BeginTriggerRolloverWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, System.Guid serverId, string serverCertificate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a given registered server list.
+        /// </summary>
+        /// <remarks>
+        /// Get a given registered server list.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RegisteredServer>,RegisteredServersListByStorageSyncServiceHeaders>> ListByStorageSyncServiceNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

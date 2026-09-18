@@ -25,7 +25,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
-    [Alias("Resolve-Error")]
     [Cmdlet("Resolve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Error", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]

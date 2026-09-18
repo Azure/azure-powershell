@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Upgrading API version to 2025-07-15 GA
+
+## Version 0.1.3
+* Upgraded nuget package to signed package.
+
 ## Version 0.1.2
 * Fixed the placeholder in psd1 file.
 

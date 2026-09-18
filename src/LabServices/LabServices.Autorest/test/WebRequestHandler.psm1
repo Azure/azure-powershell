@@ -120,12 +120,12 @@ function Get-CallerPreference {
 
 function GetHeaderWithAuthToken {
 
-    $authToken = Get-AzAccessToken
-    #Write-Host $authToken
+    $token = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
+    #Write-Host $token
 
     $header = @{
         'Content-Type'  = 'application/json'
-        "Authorization" = "Bearer " + $authToken.Token
+        "Authorization" = "Bearer " + $token
         "Accept"        = "application/json;odata=fullmetadata"
     }
 

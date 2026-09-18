@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     /// <summary>
     /// OperationStatusOperations operations.
     /// </summary>
-    internal partial class OperationStatusOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagementClient>, IOperationStatusOperations
+    internal partial class OperationStatusOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagedClustersManagementClient>, IOperationStatusOperations
     {
         /// <summary>
         /// Initializes a new instance of the OperationStatusOperations class.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal OperationStatusOperations (ServiceFabricManagementClient client)
+        internal OperationStatusOperations (ServiceFabricManagedClustersManagementClient client)
         {
             if (client == null) 
             {
@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets a reference to the ServiceFabricManagementClient
+        /// Gets a reference to the ServiceFabricManagedClustersManagementClient
         /// </summary>
-        public ServiceFabricManagementClient Client { get; private set; }
+        public ServiceFabricManagedClustersManagementClient Client { get; private set; }
 
         /// <summary>
         /// Get long running operation status.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='operationId'>
         /// operation identifier.
@@ -74,24 +74,36 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
             }
-
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
+                }
+            }
             if (operationId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "operationId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
             // Tracing
@@ -181,11 +193,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

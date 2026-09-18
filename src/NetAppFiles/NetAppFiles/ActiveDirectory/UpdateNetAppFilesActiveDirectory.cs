@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.")]
+            HelpMessage = "kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.")]
         [ValidateNotNullOrEmpty]
         public string KdcIP { get; set; }
 
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
             else if (ParameterSetName == ObjectParameterSet)

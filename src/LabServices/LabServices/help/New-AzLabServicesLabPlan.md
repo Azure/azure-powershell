@@ -8,29 +8,42 @@ schema: 2.0.0
 # New-AzLabServicesLabPlan
 
 ## SYNOPSIS
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-AllowedRegion <String[]>] [-DefaultAutoShutdownProfileDisconnectDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileIdleDelay <TimeSpan>] [-DefaultAutoShutdownProfileNoConnectDelay <TimeSpan>]
- [-DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState>]
- [-DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode>]
- [-DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState>]
- [-DefaultConnectionProfileClientRdpAccess <ConnectionType>]
- [-DefaultConnectionProfileClientSshAccess <ConnectionType>]
- [-DefaultConnectionProfileWebRdpAccess <ConnectionType>]
- [-DefaultConnectionProfileWebSshAccess <ConnectionType>] [-DefaultNetworkProfileSubnetId <String>]
- [-LinkedLmsInstance <String>] [-SharedGalleryId <String>] [-SupportInfoEmail <String>]
- [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>] [-SupportInfoUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultAutoShutdownProfileShutdownOnDisconnect <String>]
+ [-DefaultAutoShutdownProfileShutdownOnIdle <String>]
+ [-DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]
+ [-DefaultConnectionProfileClientRdpAccess <String>] [-DefaultConnectionProfileClientSshAccess <String>]
+ [-DefaultConnectionProfileWebRdpAccess <String>] [-DefaultConnectionProfileWebSshAccess <String>]
+ [-DefaultNetworkProfileSubnetId <String>] [-LinkedLmsInstance <String>] [-SharedGalleryId <String>]
+ [-SupportInfoEmail <String>] [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>]
+ [-SupportInfoUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 
 ## EXAMPLES
 
@@ -69,7 +82,7 @@ The allowed regions for the lab creator to use when creating labs using this lab
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -99,7 +112,7 @@ The amount of time a VM will stay running after a user disconnects if this behav
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -114,7 +127,7 @@ The amount of time a VM will idle before it is shutdown if this behavior is enab
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -129,7 +142,7 @@ The amount of time a VM will stay running before it is shutdown if no connection
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -143,8 +156,8 @@ Accept wildcard characters: False
 Whether shutdown on disconnect is enabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -158,8 +171,8 @@ Accept wildcard characters: False
 Whether a VM will get shutdown when it has idled for a period of time.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -173,8 +186,8 @@ Accept wildcard characters: False
 Whether a VM will get shutdown when it hasn't been connected to after a period of time.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -188,8 +201,8 @@ Accept wildcard characters: False
 The enabled access level for Client Access over RDP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -203,8 +216,8 @@ Accept wildcard characters: False
 The enabled access level for Client Access over SSH.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -218,8 +231,8 @@ Accept wildcard characters: False
 The enabled access level for Web Access over RDP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -233,8 +246,8 @@ Accept wildcard characters: False
 The enabled access level for Web Access over SSH.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -249,7 +262,7 @@ The external subnet resource id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -275,12 +288,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LinkedLmsInstance
 Base Url of the lms instance this lab plan can link lab rosters against.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -295,7 +338,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -359,7 +402,7 @@ Shared images from the gallery can be made available to use when creating new la
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -389,7 +432,7 @@ Support contact email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -404,7 +447,7 @@ Support instructions.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -419,7 +462,7 @@ Support contact phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -434,7 +477,7 @@ Support web address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -449,7 +492,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -497,7 +540,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 
 ## NOTES
 

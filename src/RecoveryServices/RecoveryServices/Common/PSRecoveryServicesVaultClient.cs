@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to list Azure Recovery Services Vaults
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <returns>vault list response object.</returns>
         public List<Vault> GetVaultsInResouceGroup(string resouceGroupName)
         {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to get Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="resourceName">Name of the resource</param>
         /// <returns>vault response object.</returns>
         public Vault GetVault(string resouceGroupName, string resourceName)
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to create Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="vault">Vault creation input object</param>
         /// <returns>Create response object.</returns>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to create or update Recovery Services Vault.
         /// </summary>
-        /// <param name="resourceGroupName">Name of the resouce group</param>
+        /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="vault">patch vault object to patch the recovery services Vault</param>
         /// <param name="auxiliaryAccessToken">cross tenant access token for MUA</param>
@@ -114,14 +114,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
             }
 
-            var response = GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, default(string), customHeaders).Result;
-            return response.Body;
+            GetRecoveryServicesClient.Vaults.UpdateWithHttpMessagesAsync(
+                resourceGroupName, vaultName, vault, default(string), customHeaders).GetAwaiter().GetResult();
+
+            return GetVault(resourceGroupName, vaultName);
         }
 
         /// <summary>
         /// Method to delete Azure Recovery Services Vault
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         public Rest.Azure.AzureOperationHeaderResponse<VaultsDeleteHeaders> DeleteVault(string resouceGroupName, string vaultName)
         {
@@ -150,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to Update Azure Recovery Services Vault Backup Properties
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="backupStorageConfig">Backup Properties Update</param>
         /// <returns>Azure Operation response object.</returns>
@@ -158,13 +160,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             BackupResourceConfigResource backupStorageConfig)
         {
             GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.UpdateWithHttpMessagesAsync(
-                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
         }
 
         /// <summary>
         /// Method to Patch Azure Recovery Services Vault Backup Properties
         /// </summary>
-        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resouceGroupName">Name of the resource group</param>
         /// <param name="vaultName">Name of the vault</param>
         /// <param name="backupStorageConfig">Backup Properties Update</param>
         /// <returns>Azure Operation response object.</returns>
@@ -172,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             BackupResourceConfigResource backupStorageConfig)
         {
             GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.PatchWithHttpMessagesAsync(
-                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
         }
 
         /// <summary>
@@ -184,7 +186,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public BackupResourceConfigResource GetVaultStorageConfig(string resouceGroupName, string vaultName)
         {
             return GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.GetWithHttpMessagesAsync(
-                vaultName, resouceGroupName, GetRequestHeaders()).Result.Body;
+                resouceGroupName,vaultName,GetRequestHeaders()).Result.Body;
         }
 
         /// <summary>
@@ -195,7 +197,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns></returns>
         public List<ResourceGuardProxyBaseResource> ListResourceGuardMapping(string vaultName, string resourceGroupName)
         {
-            Func<IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetWithHttpMessagesAsync(vaultName, resourceGroupName).Result.Body;
+            Func<IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetWithHttpMessagesAsync(resourceGroupName, vaultName).Result.Body;
 
             Func<string, IPage<ResourceGuardProxyBaseResource>> proxyPagedListNext = nextLink => GetRecoveryServicesBackupClient.ResourceGuardProxies.GetNextWithHttpMessagesAsync(
                     nextLink).Result.Body;
@@ -203,6 +205,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             var proxyList = Utilities.GetPagedList(proxyPagedList, proxyPagedListNext);
 
             return proxyList;
+        }
+
+        /// <summary>
+        /// Method to list soft deleted Azure Recovery Services Vaults by location
+        /// </summary>
+        /// <param name="location">Name of the Azure region</param>
+        /// <returns>list of soft deleted vaults.</returns>
+        public List<DeletedVault> GetSoftDeletedVaultsByLocation(string location)
+        {
+            return GetRecoveryServicesClient.DeletedVaults.ListBySubscriptionIdWithHttpMessagesAsync(
+                location, GetRequestHeaders()).Result.Body.ToList();
+        }
+
+        /// <summary>
+        /// Method to get a specific soft deleted Azure Recovery Services Vault
+        /// </summary>
+        /// <param name="location">Name of the Azure region</param>
+        /// <param name="deletedVaultName">Name of the deleted vault</param>
+        /// <returns>soft deleted vault object.</returns>
+        public DeletedVault GetSoftDeletedVault(string location, string deletedVaultName)
+        {
+            return GetRecoveryServicesClient.DeletedVaults.GetWithHttpMessagesAsync(
+                location, deletedVaultName, GetRequestHeaders()).Result.Body;
+        }
+
+        /// <summary>
+        /// Method to undelete a soft deleted Azure Recovery Services Vault
+        /// </summary>
+        /// <param name="location">Name of the Azure region</param>
+        /// <param name="deletedVaultName">Name of the deleted vault</param>
+        /// <param name="recoveryResourceGroupId">Recovery resource group ID</param>
+        /// <returns>undeleted vault object.</returns>
+        public DeletedVault UndeleteSoftDeletedVault(string location, string deletedVaultName, string recoveryResourceGroupId)
+        {
+            var properties = new DeletedVaultUndeleteInputProperties(recoveryResourceGroupId);
+            return GetRecoveryServicesClient.DeletedVaults.UndeleteWithHttpMessagesAsync(
+                location, deletedVaultName, properties, GetRequestHeaders()).Result.Body;
         }
     }
 }

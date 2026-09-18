@@ -15,26 +15,23 @@ Subscribe the event trigger to external service events.
 ### AddByName (Default)
 ```
 Add-AzSynapseTriggerSubscription -WorkspaceName <String> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddByObject
 ```
 Add-AzSynapseTriggerSubscription -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddByInputObject
 ```
 Add-AzSynapseTriggerSubscription -InputObject <PSTriggerResource> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzSynapseTriggerSubscription** cmdlet subscribes the event trigger to the specified external service events from the trigger defintion.
+The **Add-AzSynapseTriggerSubscription** cmdlet subscribes the event trigger to the specified external service events from the trigger definition.
 
 ## EXAMPLES
 
@@ -43,7 +40,7 @@ The **Add-AzSynapseTriggerSubscription** cmdlet subscribes the event trigger to 
 Add-AzSynapseTriggerSubscription -WorkspaceName ContosoWorkspace -Name ContosoTrigger
 ```
 
-This command will subscribe trigger called ContosoTrigger to the specified events from the trigger defintion.
+This command will subscribe trigger called ContosoTrigger to the specified events from the trigger definition.
 
 ### Example 2
 ```powershell
@@ -51,7 +48,7 @@ $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | Add-AzSynapseTriggerSubscription -Name ContosoTrigger
 ```
 
-This command will subscribe trigger called ContosoTrigger to the specified events from the trigger defintion through pipeline.
+This command will subscribe trigger called ContosoTrigger to the specified events from the trigger definition through pipeline.
 
 ### Example 3
 ```powershell
@@ -59,7 +56,7 @@ $trigger = Get-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTri
 $trigger | Add-AzSynapseTriggerSubscription
 ```
 
-This command will subscribe trigger called ContosoTrigger to the specified events from the trigger defintion through pipeline.
+This command will subscribe trigger called ContosoTrigger to the specified events from the trigger definition through pipeline.
 
 ## PARAMETERS
 

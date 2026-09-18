@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public new object GetDynamicParameters()
         {
-            RuntimeDefinedParameterDictionary dynamicParams = null;
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary ?? new RuntimeDefinedParameterDictionary();
 
             if (taskTypeSet)
             {
@@ -202,10 +202,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         throw new PSArgumentException();
                 }
 
-                dynamicParams = taskCmdlet.RuntimeDefinedParams;
+                foreach (var pair in taskCmdlet.RuntimeDefinedParams)
+                {
+                    parameters.Add(pair.Key, pair.Value);
+                }
             }
 
-            return dynamicParams;
+            return parameters;
         }
 
         public override void ExecuteCmdlet()
@@ -245,7 +248,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                             Properties = properties
                         };
 
-                        response = DataMigrationClient.Tasks.CreateOrUpdate(taskInput, ResourceGroupName, ServiceName, ProjectName, Name);
+                        response = DataMigrationClient.Tasks.CreateOrUpdate(ResourceGroupName, ServiceName, ProjectName, Name, taskInput);
 
                         // wait for the task to finish: not queued or running state:
                         while (this.Wait.IsPresent && response !=null && response.Properties != null &&

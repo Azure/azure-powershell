@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudStorageApplianceConfigurationDataObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudstorageapplianceconfigurationdataobject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Create an in-memory object for StorageApplianceConfigurationData.
 ```
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword <SecureString>
  -AdminCredentialsUsername <String> -RackSlot <Int64> -SerialNumber <String> [-StorageApplianceName <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for StorageApplianceConfigurationData.
 
 ### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
 ```
@@ -64,21 +64,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceConfigurationData
 
 ## NOTES
 

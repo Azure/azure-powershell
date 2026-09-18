@@ -76,11 +76,7 @@ input-file:
   - $(repo)/specification/botservice/resource-manager/Microsoft.BotService/preview/2022-06-15-preview/botservice.json
 title: BotService
 module-version: 0.1.0
-identity-correction-for-post: true
 subject-prefix: 'BotService'
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: botservice.json
@@ -98,7 +94,10 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.BotService/operationresults/{operationResultId}"]
     transform: delete $["get"]
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+      variant: ^(Create|Update|Regenerate)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpdateViaIdentity$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$|^RegenerateViaIdentityBotServiceExpanded$
     remove: true
   - where:
       subject: Bot

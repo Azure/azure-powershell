@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> Zones { get; set; }
         public List<PSResourceId> PublicIpAddresses { get; set; }
         public List<PSResourceId> PublicIpPrefixes { get; set; }
+        public List<PSResourceId> PublicIpAddressesV6 { get; set; }
+        public List<PSResourceId> PublicIpPrefixesV6 { get; set; }
+        public PSResourceId SourceVirtualNetwork { get; set; }
+        public string Nat64 { get; set; }
 
         [JsonIgnore]
         public string SkuText
@@ -47,6 +51,33 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PublicIpPrefixesText
         {
             get { return JsonConvert.SerializeObject(PublicIpPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PublicIpAddressesV6Text
+        {
+            get { return JsonConvert.SerializeObject(PublicIpAddressesV6, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PublicIpPrefixesV6Text
+        {
+            get { return JsonConvert.SerializeObject(PublicIpPrefixesV6, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+
+        [JsonIgnore]
+        public string SourceVirtualNetworkText
+        {
+            get
+            {
+                if (SourceVirtualNetwork?.Id != null)
+                {
+                    string resourceName = SourceVirtualNetwork.Id.Substring(SourceVirtualNetwork.Id.LastIndexOf('/') + 1);
+                    return resourceName;
+                }
+                return null;
+            }
         }
     }
 }

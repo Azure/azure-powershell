@@ -58,9 +58,9 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
 
     Write-Debug "Create purview account for test"
-    New-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
-    New-AzPurviewAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
-    New-AzPurviewAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+    New-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName -Location $env.location -EnableSystemAssignedIdentity:$true -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+    New-AzPurviewAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroupName -Location $env.location -EnableSystemAssignedIdentity:$true -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+    New-AzPurviewAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroupName -Location $env.location -EnableSystemAssignedIdentity:$true -SkuCapacity $env.skuCapacity -SkuName $env.skuName
     Set-AzPurviewDefaultAccount -AccountName $env.accountName -ResourceGroupName $env.resourceGroupName -ScopeTenantId $env.Tenant
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

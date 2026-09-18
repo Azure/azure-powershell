@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+
         /// <param name="sourceResourceId">ARM ID of the virtual machine represented by this Azure Workload Container
         /// </param>
 
@@ -59,10 +62,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
         /// <param name="operationType">Re-Do Operation
-        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;</param>
-        public AzureWorkloadContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), AzureWorkloadContainerExtendedInfo extendedInfo = default(AzureWorkloadContainerExtendedInfo), string workloadType = default(string), string operationType = default(string))
+        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;</param>
+        public AzureWorkloadContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string), string sourceResourceId = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), AzureWorkloadContainerExtendedInfo extendedInfo = default(AzureWorkloadContainerExtendedInfo), string workloadType = default(string), string operationType = default(string))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation)
         {
             this.SourceResourceId = sourceResourceId;
             this.LastUpdatedTime = lastUpdatedTime;
@@ -104,7 +107,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string WorkloadType {get; set; }
 
         /// <summary>
-        /// Gets or sets re-Do Operation Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;
+        /// Gets or sets re-Do Operation Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "operationType")]
         public string OperationType {get; set; }

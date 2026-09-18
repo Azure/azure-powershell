@@ -4,7 +4,7 @@ Get-AzSpringCloudAppDeploymentLogFileUrl -ResourceGroupName SpringCloud-gp-junxi
 ```
 
 ```output
-url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/*****/logs/?sv=2018-03-28&sr=b&sig=******%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
 Get deployment log file URL.
@@ -15,7 +15,7 @@ Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceN
 ```
 
 ```output
-url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/*****/logs/?sv=2018-03-28&sr=b&sig=******%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
 Get deployment log file URL by pipeline.

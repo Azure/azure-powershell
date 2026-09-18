@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-Create (or updates) a Azure Arc PrivateLinkScope.
+create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## SYNTAX
@@ -56,7 +56,7 @@ New-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity>
 ```
 
 ## DESCRIPTION
-Create (or updates) a Azure Arc PrivateLinkScope.
+create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## EXAMPLES

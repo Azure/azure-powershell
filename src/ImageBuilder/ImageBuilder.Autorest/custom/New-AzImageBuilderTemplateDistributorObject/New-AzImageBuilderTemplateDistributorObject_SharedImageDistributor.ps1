@@ -21,12 +21,13 @@ Create an in-memory object for ImageTemplateDistributor.
 Create an in-memory object for ImageTemplateDistributor.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageDistributor
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageDistributor')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,32 +41,28 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
         [string[]]
         $ReplicationRegion,
         [Parameter(HelpMessage="[Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PSArgumentCompleterAttribute("Standard_LRS", "Standard_ZRS", "Premium_LRS")]
+        [string]
         $StorageAccountType,
         [Parameter(HelpMessage="The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITargetRegion[]]
         $TargetRegion,
         [Parameter(HelpMessage="Describes how to generate new x.y.z version number for distribution.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IDistributeVersioner]
         $Versioning,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
         [Parameter(Mandatory, HelpMessage="The name to be used for the associated RunOutput.")]
         [string]
         $RunOutputName,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="Type of distribution.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Distribute via Shared Image Gallery.")]
         [Switch]
         $SharedImageDistributor
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageDistributor]::New()
 
         if ($PSBoundParameters.ContainsKey('ExcludeFromLatest')) {
             $Object.ExcludeFromLatest = $ExcludeFromLatest
@@ -90,9 +87,6 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
         }
         if ($PSBoundParameters.ContainsKey('RunOutputName')) {
             $Object.RunOutputName = $RunOutputName
-        }
-        if ($SharedImageDistributor.IsPresent) {
-            $Object.Type = "SharedImage"
         }
         return $Object
     }

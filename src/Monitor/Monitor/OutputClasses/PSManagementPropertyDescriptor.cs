@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the AlertRuleProperties or AutoscaleSetting
+    /// Wraps around the AlertRuleProperties or AutoscaleSetting
     /// <para>Allows for different types of outputs for the cmdlets, i.e. all the specific output types will implement this interface and the base cmdlet always returns lists of this type.</para>
     /// </summary>
     public abstract class PSManagementPropertyDescriptor

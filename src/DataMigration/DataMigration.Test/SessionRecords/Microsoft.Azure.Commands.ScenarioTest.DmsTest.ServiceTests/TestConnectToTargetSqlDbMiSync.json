@@ -1420,7 +1420,7 @@
       "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?api-version=2018-07-15-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyP2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"ConnectToTarget.AzureSqlDbMI.Sync.LRS\",\r\n    \"input\": {\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"MiSqlConnectionInfo\",\r\n        \"managedInstanceResourceId\": \"/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/demomiRG/providers/Microsoft.Sql/managedInstances/demomi\",\r\n        \"userName\": \"demouser\",\r\n        \"password\": \"Test123Test123Test123\"\r\n      },\r\n      \"azureApp\": {\r\n        \"applicationId\": \"3d0ecd52-ca9a-4fbe-b0ed-68f1594b3dfe\",\r\n        \"appKey\": \"kv8fDwICsnTJcvsTM8fp2WMSDh6yeSaDalHfbiffBP4=\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"ConnectToTarget.AzureSqlDbMI.Sync.LRS\",\r\n    \"input\": {\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"MiSqlConnectionInfo\",\r\n        \"managedInstanceResourceId\": \"/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/demomiRG/providers/Microsoft.Sql/managedInstances/demomi\",\r\n        \"userName\": \"demouser\",\r\n        \"password\": \"******\"\r\n      },\r\n      \"azureApp\": {\r\n        \"applicationId\": \"3d0ecd52-ca9a-4fbe-b0ed-68f1594b3dfe\",\r\n        \"appKey\": \"kv8fDwICsnTJcvsTM8fp2WMSDh6yeSaDalHfbiffBP4=\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "475183cb-cf21-45a9-b5a6-c8fa24f29abc"
@@ -1489,8 +1489,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyPyRleHBhbmQ9b3V0cHV0JmFwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyP2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1552,8 +1552,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyPyRleHBhbmQ9b3V0cHV0JmFwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyP2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1615,8 +1615,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyPyRleHBhbmQ9b3V0cHV0JmFwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9d32140c-78d4-49a9-a95f-65c77c16be83/resourceGroups/DmResource-PsTestRun4971/providers/Microsoft.DataMigration/services/DmService-PsTestRun9301/projects/DmProject-PsTestRun734/tasks/DmTask-PsTestRun572?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOWQzMjE0MGMtNzhkNC00OWE5LWE5NWYtNjVjNzdjMTZiZTgzL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuNDk3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjkzMDEvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjczNC90YXNrcy9EbVRhc2stUHNUZXN0UnVuNTcyP2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

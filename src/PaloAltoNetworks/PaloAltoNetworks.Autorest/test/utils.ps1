@@ -68,7 +68,7 @@ function setupEnv() {
     $managedIdentityId = "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.resourceGroup)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami0524"
     $env.Add("managedIdentityId", $managedIdentityId)
 
-    # Use mock environment, so we donnot run this cmdlet.
+    # Use mock environment, so we do not run this cmdlet.
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     # For any resources you created for test, you should add it to $env here.

@@ -1,0 +1,72 @@
+{
+  "Get-AzSharedLimit+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "77777777-7777-7777-7777-777777777777" ],
+        "CommandName": [ "Get-AzSharedLimit" ],
+        "FullCommandName": [ "Get-AzSharedLimit_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "88888888-8888-8888-8888-888888888888" ],
+        "x-ms-correlation-request-id": [ "99999999-9999-9999-9999-999999999999" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family\",\"name\":\"standardDSv3Family\",\"type\":\"Microsoft.ComputeLimit/locations/sharedLimits\",\"properties\":{\"provisioningState\":\"Succeeded\",\"limitName\":{\"value\":\"standardDSv3Family\",\"localizedValue\":\"Standard DSv3 Family vCPUs\"}},\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-12T12:00:01.0000000Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-12T12:00:01.0000000Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSharedLimit+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" ],
+        "CommandName": [ "Get-AzSharedLimit" ],
+        "FullCommandName": [ "Get-AzSharedLimit_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" ],
+        "x-ms-correlation-request-id": [ "cccccccc-cccc-cccc-cccc-cccccccccccc" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family\",\"name\":\"standardDSv3Family\",\"type\":\"Microsoft.ComputeLimit/locations/sharedLimits\",\"properties\":{\"provisioningState\":\"Succeeded\",\"limitName\":{\"value\":\"standardDSv3Family\",\"localizedValue\":\"Standard DSv3 Family vCPUs\"}},\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-12T12:00:01.0000000Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-12T12:00:01.0000000Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

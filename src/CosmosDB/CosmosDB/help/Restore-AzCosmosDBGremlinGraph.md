@@ -14,8 +14,8 @@ Restore a deleted gremlin graph in a database to a given timestamp in the same a
 
 ```
 Restore-AzCosmosDBGremlinGraph -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- -Name <String> -RestoreTimestampInUtc <DateTime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Name <String> [-RestoreTimestampInUtc <DateTime>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +123,7 @@ Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

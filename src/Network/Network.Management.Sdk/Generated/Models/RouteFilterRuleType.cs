@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RouteFilterRuleType
     {
+        /// <summary>
+        /// Community
+        /// </summary>
         public const string Community = "Community";
     }
 }

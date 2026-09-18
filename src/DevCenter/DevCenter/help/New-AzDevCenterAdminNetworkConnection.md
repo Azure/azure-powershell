@@ -18,7 +18,7 @@ New-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String>
  -Location <String> -DomainJoinType <DomainJoinType> -SubnetId <String> [-DomainName <String>]
  [-DomainPassword <String>] [-DomainUsername <String>] [-NetworkingResourceGroupName <String>]
  [-OrganizationUnit <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -26,7 +26,7 @@ New-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String>
 New-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> -Location <String>
  -DomainJoinType <DomainJoinType> -SubnetId <String> [-DomainName <String>] [-DomainPassword <String>]
  [-DomainUsername <String>] [-NetworkingResourceGroupName <String>] [-OrganizationUnit <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,12 +42,12 @@ New-AzDevCenterAdminNetworkConnection -Name eastusNetwork -ResourceGroupName tes
 
 This command creates an Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
-### Example 2: Create a hybid Azure AD joined network connection
+### Example 2: Create a hybrid Azure AD joined network connection
 ```powershell
 New-AzDevCenterAdminNetworkConnection -Name eastusNetwork -ResourceGroupName testRg -Location westus3 -DomainJoinType HybridAzureADJoin -DomainName mydomaincontroller.local -DomainPassword $password -DomainUsername testuser@mydomaincontroller.local -NetworkingResourceGroupName NetworkInterfaces -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
 ```
 
-This command creates a hybid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
+This command creates a hybrid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
 ### Example 3: Create an Azure AD joined network connection using InputObject
 ```powershell
@@ -57,13 +57,13 @@ New-AzDevCenterAdminNetworkConnection -InputObject $networkConnection -Location 
 
 This command creates an Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
-### Example 4: Create a hybid Azure AD joined network connection using InputObject
+### Example 4: Create a hybrid Azure AD joined network connection using InputObject
 ```powershell
 $networkConnection = @{"ResourceGroupName" = "testRg"; "NetworkConnectionName" = "eastusNetwork"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
 New-AzDevCenterAdminNetworkConnection -InputObject $networkConnection -Location westus3 -DomainJoinType HybridAzureADJoin -DomainName mydomaincontroller.local -DomainPassword $password -DomainUsername testuser@mydomaincontroller.local -NetworkingResourceGroupName NetworkInterfaces -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
 ```
 
-This command creates a hybid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
+This command creates a hybrid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
 ## PARAMETERS
 
@@ -250,21 +250,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -366,7 +351,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.INetworkConnection
 
 ## NOTES
 

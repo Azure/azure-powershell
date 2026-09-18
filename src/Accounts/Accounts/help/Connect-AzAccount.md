@@ -16,8 +16,9 @@ Connect to Azure with an authenticated account for use with cmdlets from the Az 
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Subscription <String>]
  [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-UseDeviceAuthentication] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UseDeviceAuthentication] [-Force] [-ClaimsChallenge <String>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
@@ -25,7 +26,8 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
  [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
  [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UserWithCredential
@@ -33,7 +35,8 @@ Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePr
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <String>]
  [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
  [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
@@ -41,8 +44,8 @@ Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <S
 Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
  [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>]
  [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-SendCertificateChain]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientAssertionParameterSet
@@ -50,7 +53,8 @@ Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -Appli
 Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
  [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
  [-Force] -FederatedToken <String> [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateFileWithSubscriptionId
@@ -58,8 +62,8 @@ Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrinc
 Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
  [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
  [-Force] [-SendCertificateChain] -CertificatePath <String> [-CertificatePassword <SecureString>]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
@@ -68,7 +72,8 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <Strin
  [-MicrosoftGraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String>
  [-Subscription <String>] [-ContextName <String>] [-SkipValidation] [-SkipContextPopulation]
  [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ManagedServiceLogin
@@ -76,7 +81,8 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <Strin
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Identity]
  [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
  [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -262,13 +268,13 @@ yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ### Example 9: Connect using certificate file
 
 This example connects to an Azure account using certificate-based service principal authentication.
-The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
+The certificate file, which is specified by `CertificatePath`, should contains both certificate and private key as the input.
 
 ```powershell
 $SecurePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
-Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword
+Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $SecurePassword
 ```
 
 ```Output
@@ -284,6 +290,21 @@ This example demonstrates how to enable the config for WAM (Web Account Manager)
 ```powershell
 Update-AzConfig -EnableLoginByWam $true
 Connect-AzAccount
+```
+
+```Output
+Account                     SubscriptionName TenantId                        Environment
+-------                     ---------------- --------                        -----------
+xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
+```
+
+### Example 11: Connect with claims challenge
+
+This example demonstrates how to connect using a claims challenge token.
+This is useful when you receive a claims challenge during authentication, typically when additional authentication factors are required due to conditional access policies.
+
+```powershell
+Connect-AzAccount -Tenant yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy -Subscription zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz -ClaimsChallenge eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlcyI6WyJwMSJdfX19
 ```
 
 ```Output
@@ -317,9 +338,8 @@ Accept wildcard characters: False
 
 ### -AccountId
 
-Account Id / User Id / User Name to login with in **Default (UserWithSubscriptionId)** parameter set; Account ID for access token in **AccessToken** parameter set; Account ID for managed service in
-**ManagedService** parameter set. Can be a managed service resource ID, or the associated client ID.
-To use the system assigned identity, leave this field blank.
+Id for Account, associated with your access token.
+In **User** authentication flows, the AccountId is user name / user id; In **AccessToken** flow, it is the AccountId for the access token; In **ManagedService** flow, it is the associated client Id of UserAssigned identity. To use the SystemAssigned identity, leave this field blank.
 
 ```yaml
 Type: System.String
@@ -392,7 +412,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePath
-The path of certficate file in pkcs#12 format.
+The path of certificate file in pkcs#12 format.
 
 ```yaml
 Type: System.String
@@ -416,6 +436,21 @@ Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClaimsChallenge
+Specifies the claims challenge with base64 encoding.
+
+```yaml
+Type: System.String
+Parameter Sets: UserWithSubscriptionId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

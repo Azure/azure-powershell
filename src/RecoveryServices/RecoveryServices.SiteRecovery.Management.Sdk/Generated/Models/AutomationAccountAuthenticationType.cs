@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AutomationAccountAuthenticationType
     {
+        /// <summary>
+        /// RunAsAccount
+        /// </summary>
         public const string RunAsAccount = "RunAsAccount";
+        /// <summary>
+        /// SystemAssignedIdentity
+        /// </summary>
         public const string SystemAssignedIdentity = "SystemAssignedIdentity";
     }
 }

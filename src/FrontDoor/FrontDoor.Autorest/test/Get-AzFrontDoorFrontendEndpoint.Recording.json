@@ -1,0 +1,47 @@
+{
+  "Get-AzFrontDoorFrontendEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-lywv/providers/Microsoft.Network/frontDoors/testps-fd-cjoi/frontendEndpoints?api-version=2025-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-lywv/providers/Microsoft.Network/frontDoors/testps-fd-cjoi/frontendEndpoints?api-version=2025-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "114b4b5d-8a32-430d-9f85-c1ca067d74f7" ],
+        "CommandName": [ "Az.FrontDoor.internal\\Get-AzFrontDoorFrontendEndpoint" ],
+        "FullCommandName": [ "Get-AzFrontDoorFrontendEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.5", "Az.FrontDoor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "92a8fc69-4b91-41e3-ad13-80a35f6fbc77" ],
+        "x-ms-client-request-id": [ "114b4b5d-8a32-430d-9f85-c1ca067d74f7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/1153eeed-0ad4-4dbb-b231-3c82288a534a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "5f7931ae-9b98-4d91-bba3-260d533d05e0" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260424T045151Z:5f7931ae-9b98-4d91-bba3-260d533d05e0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EEB0F338903D4DCDB7CD9ACB2AF1E79F Ref B: SYD03EDGE0916 Ref C: 2026-04-24T04:51:50Z" ],
+        "Date": [ "Fri, 24 Apr 2026 04:51:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "581" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-lywv/providers/Microsoft.Network/frontdoors/testps-fd-cjoi/frontendendpoints/frontendendpoint1\",\"type\":\"Microsoft.Network/frontdoors/frontendendpoints\",\"name\":\"frontendendpoint1\",\"properties\":{\"resourceState\":\"Enabled\",\"hostName\":\"testps-fd-cjoi.azurefd.net\",\"sessionAffinityEnabledState\":\"Enabled\",\"sessionAffinityTtlSeconds\":0,\"webApplicationFirewallPolicyLink\":null,\"customHttpsProvisioningState\":\"Disabled\",\"customHttpsProvisioningSubstate\":\"None\",\"customHttpsConfiguration\":null}}]}",
+      "isContentBase64": false
+    }
+  }
+}

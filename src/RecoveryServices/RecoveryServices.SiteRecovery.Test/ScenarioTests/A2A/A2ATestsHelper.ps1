@@ -37,7 +37,7 @@ function getVaultLocation{
 
 function getPrimaryLocation
 {
-    return "EastUS"
+    return "EastUS2"
 }
 
 function getLocationForEZScenario
@@ -52,7 +52,22 @@ function getLocationForEZAzScenario
 
 function getPrimaryZoneLocation
 {
-    return "EastUS"
+    return "EastUS2"
+}
+
+function getLocationWus2
+{
+    return "westus2"
+}
+
+function getLocationEcy
+{
+    return "eastus2euap"
+}
+
+function getLocationCcy
+{
+    return "centraluseuap"
 }
 
 function getPrimaryExtendedLocation
@@ -155,12 +170,36 @@ function getRecoveryCacheStorageAccountName{
      return "rlog"+ $seed;
 }
 
+function getPrimaryResourceGroupName{
+       return "priRG"+ $seed;
+}
+
 function getRecoveryResourceGroupName{
        return "recRG"+ $seed;
 }
 
 function getRecoveryNicName{
        return "A2ArecNICName"+ $seed;
+}
+
+function getClusterPrimaryContainerName{
+    return "asr-a2a-default-eastus2-container";
+}
+
+function getClusterPrimaryFabricName{
+    return "asr-a2a-default-eastus2";
+}
+
+function getClusterRecoveryResourceGroupName{
+    return "ClusterRG-Shashank-1903224559-asr";
+}
+
+function getClusterVaultName{
+    return "powershell-cluster-vault";
+}
+
+function getClusterName{
+    return "powershell-cluster";
 }
 
 function Get-RandomSuffix(
@@ -201,7 +240,7 @@ function createAzureVm{
         $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -SecurityType $stnd
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image 'MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest' -DomainNameLabel $domain -SecurityType $stnd
         return $vm.Id
 }
 
@@ -255,7 +294,7 @@ function createAzureVmInAvailabilityZone{
         $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -Zone $VMZone -SecurityType $stnd
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image 'MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest' -DomainNameLabel $domain -Zone $VMZone -SecurityType $stnd
     return $vm.Id
 }
 
@@ -329,6 +368,31 @@ function createRecoveryNetworkId{
     return $virtualNetwork.Id
 }
 
+function createRecoveryNetworkIdForced{
+    param([string] $location , [switch] $force)
+
+	$NetworkName = getRecoveryNetworkName
+	$NetworkLocation = if ($location) { $location } else { getRecoveryLocation }
+	$ResourceGroupName = getRecoveryResourceGroupName
+	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    if ($force) {
+        $virtualNetwork = New-AzVirtualNetwork `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $NetworkLocation `
+            -Name $NetworkName `
+            -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet `
+            -Force
+        return $virtualNetwork.Id
+    } else {
+        $virtualNetwork = New-AzVirtualNetwork `
+            -ResourceGroupName $ResourceGroupName `
+            -Location $NetworkLocation `
+            -Name $NetworkName `
+            -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet
+        return $virtualNetwork.Id
+    }
+}
+
 function createRecoveryNetworkIdForZone{
     param([string] $location , [string] $resourceGroup)
 
@@ -374,9 +438,23 @@ function createCacheStorageAccount{
     return $storageAccount.Id
 }
 
-function createCacheStorageAccountForZone{
-    param([string] $location , [string] $resourceGroup)
+function createCacheStorageAccountWithPrimaryRg{
+    param([string] $location , [string] $primaryRg)
 
+	$StorageAccountName = getCacheStorageAccountName
+	$cacheLocation = if ($location) { $location } else { getPrimaryLocation }
+    $storageAccount = New-AzStorageAccount `
+          -ResourceGroupName $primaryRg `
+          -Location $cacheLocation `
+          -Name $StorageAccountName `
+          -Type 'Standard_LRS'
+    return $storageAccount.Id
+}
+
+function createCacheStorageAccountForZone{
+    param([string] $location , [string] $resourceGroup, [string] $type)
+
+    $type = if ($type) { $type } else { 'Standard_LRS' }
 	$StorageAccountName = getCacheStorageAccountName
 	$cacheLocation = getPrimaryZoneLocation
 	$storageRes = getAzureVmName
@@ -384,7 +462,7 @@ function createCacheStorageAccountForZone{
           -ResourceGroupName $storageRes `
           -Location $cacheLocation `
           -Name $StorageAccountName `
-          -Type 'Standard_LRS'
+          -Type $type
     return $storageAccount.Id
 }
 

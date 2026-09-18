@@ -1,0 +1,50 @@
+{
+  "Get-AzMongoDBProjectClusterTierRegion+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusterTierRegions?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/clusterTierRegions?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "89bbd471-549e-4e42-a885-3f4b12ce4cf6" ],
+        "CommandName": [ "Get-AzMongoDBProjectClusterTierRegion" ],
+        "FullCommandName": [ "Get-AzMongoDBProjectClusterTierRegion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2/8d59cce5-ae9f-4ec0-895a-a85f6729e539" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "e75d3aad-d522-49db-a5fd-450af724eb81" ],
+        "x-ms-correlation-request-id": [ "32adf8b1-e6d4-4c3b-b63b-f7564cbb7b3f" ],
+        "x-ms-client-request-id": [ "89bbd471-549e-4e42-a885-3f4b12ce4cf6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "2879e819-abb4-44ea-8f87-e7a0ba5fa833" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260625T150624Z:32adf8b1-e6d4-4c3b-b63b-f7564cbb7b3f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B90DA636D75E4E1B88C5551FC118AC58 Ref B: PNQ231110907031 Ref C: 2026-06-25T15:06:23Z" ],
+        "Date": [ "Thu, 25 Jun 2026 15:06:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1968" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"organizationId\":\"6a2b114e620de528f66a43eb\",\"projectId\":\"6a3d3a7fee32a7a117663313\",\"regionsByTier\":[{\"tier\":\"FLEX\",\"regions\":[\"centralindia\",\"canadacentral\",\"westeurope\",\"eastus2\",\"westus\",\"eastasia\",\"northeurope\"]},{\"tier\":\"FREE\",\"regions\":[\"westus\",\"eastasia\",\"northeurope\",\"centralindia\",\"westeurope\",\"eastus2\",\"canadacentral\"]},{\"tier\":\"M10\",\"regions\":[\"swedensouth\",\"chilecentral\",\"australiacentral2\",\"japanwest\",\"southindia\",\"polandcentral\",\"japaneast\",\"newzealandnorth\",\"eastus2\",\"uaecentral\",\"brazilsoutheast\",\"qatarcentral\",\"indonesiacentral\",\"southeastasia\",\"westus\",\"francecentral\",\"koreacentral\",\"norwayeast\",\"malaysiawest\",\"uaenorth\",\"germanynorth\",\"northeurope\",\"westus2\",\"australiaeast\",\"italynorth\",\"norwaywest\",\"brazilsouth\",\"westcentralus\",\"westus3\",\"israelcentral\",\"uksouth\",\"spaincentral\",\"westeurope\",\"centralindia\",\"canadacentral\",\"southcentralus\",\"australiacentral\",\"westindia\",\"eastasia\",\"switzerlandwest\",\"germanywestcentral\",\"centralus\",\"eastus\",\"southafricanorth\",\"northcentralus\",\"mexicocentral\",\"swedencentral\",\"southafricawest\",\"canadaeast\",\"australiasoutheast\",\"francesouth\",\"switzerlandnorth\",\"ukwest\",\"koreasouth\"]},{\"tier\":\"M30\",\"regions\":[\"swedensouth\",\"chilecentral\",\"australiacentral2\",\"japanwest\",\"southindia\",\"polandcentral\",\"japaneast\",\"newzealandnorth\",\"eastus2\",\"uaecentral\",\"brazilsoutheast\",\"qatarcentral\",\"indonesiacentral\",\"southeastasia\",\"westus\",\"francecentral\",\"koreacentral\",\"norwayeast\",\"malaysiawest\",\"uaenorth\",\"germanynorth\",\"northeurope\",\"westus2\",\"australiaeast\",\"italynorth\",\"norwaywest\",\"brazilsouth\",\"westcentralus\",\"westus3\",\"israelcentral\",\"uksouth\",\"spaincentral\",\"westeurope\",\"centralindia\",\"canadacentral\",\"southcentralus\",\"australiacentral\",\"westindia\",\"eastasia\",\"switzerlandwest\",\"germanywestcentral\",\"centralus\",\"eastus\",\"southafricanorth\",\"northcentralus\",\"mexicocentral\",\"swedencentral\",\"southafricawest\",\"canadaeast\",\"australiasoutheast\",\"francesouth\",\"switzerlandnorth\",\"ukwest\",\"koreasouth\"]}]}",
+      "isContentBase64": false
+    }
+  }
+}

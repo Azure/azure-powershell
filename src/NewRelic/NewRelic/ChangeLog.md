@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Corrected the `Invoke-AzNewRelicResubscribeMonitor` command description wording (`underline` corrected to `underlying`).
+
+## Version 0.3.0
+* Added AutoRest-generated NewRelic PowerShell module using API version 2025-05-01-preview
+    - Generated 30 cmdlets covering complete NewRelic Observability service functionality
+    - Added support for all NewRelic monitor management operations
+    - Implemented comprehensive test coverage with record/playback capabilities
+    - Added complete help documentation and usage examples
+    - Updated test configuration for live Azure resource integration
+* Enhanced module capabilities:
+    - Initialize-AzNewRelicSaaSResource for SaaS resource activation
+    - Invoke-AzNewRelicLatestMonitorLinkedSaaS for linked SaaS operations
+    - Invoke-AzNewRelicLinkMonitorSaaS for SaaS linking
+    - Invoke-AzNewRelicResubscribeMonitor for subscription management
+    - Update-AzNewRelicMonitorIngestionKey for key refresh operations
+    - Comprehensive tag rule, billing, and monitoring functionality
+
+## Version 0.2.1
+* Upgraded nuget package to signed package.
 
 ## Version 0.2.0
 * Updated API version from 2022-07-01 to 2024-01-01.

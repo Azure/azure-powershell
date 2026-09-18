@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ReplicationUsage> List(this IReplicationUsagesOperations operations, string resourceGroupName, string vaultName)
+        public static Microsoft.Rest.Azure.IPage<ReplicationUsage> List(this IReplicationUsagesOperations operations, string resourceGroupName, string vaultName)
         {
                 return ((IReplicationUsagesOperations)operations).ListAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
         }
@@ -39,14 +39,47 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ReplicationUsage>> ListAsync(this IReplicationUsagesOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ReplicationUsage>> ListAsync(this IReplicationUsagesOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Fetches the replication usages of the vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ReplicationUsage> ListNext(this IReplicationUsagesOperations operations, string nextPageLink)
+        {
+                return ((IReplicationUsagesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Fetches the replication usages of the vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ReplicationUsage>> ListNextAsync(this IReplicationUsagesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

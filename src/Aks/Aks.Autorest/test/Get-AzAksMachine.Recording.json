@@ -1,0 +1,222 @@
+{
+  "Get-AzAksMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "7cc22f49-95d1-428c-9376-86c2d50010e1" ],
+        "CommandName": [ "Get-AzAksMachine" ],
+        "FullCommandName": [ "Get-AzAksMachine_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/9273e7be-a6c1-4987-97eb-63bde96bdcba" ],
+        "x-ms-correlation-request-id": [ "5f2a6d34-9a9a-443f-a983-fc803982fea9" ],
+        "x-ms-request-id": [ "0aed19b8-3a6a-45bc-8585-b8bd4ed1cb70" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T022732Z:5f2a6d34-9a9a-443f-a983-fc803982fea9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 160372DF4B5A4C9EAF454F7BB9620E02 Ref B: JKT201051407034 Ref C: 2025-11-07T02:27:31Z" ],
+        "Date": [ "Fri, 07 Nov 2025 02:27:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"value\": [\n  {\n   \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000\",\n   \"name\": \"aks-default-12988240-vmss000000\",\n   \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/machines\",\n   \"properties\": {\n    \"network\": {\n     \"ipAddresses\": [\n      {\n       \"ip\": \"10.224.0.4\",\n       \"family\": \"IPv4\"\n      }\n     ]\n    },\n    \"resourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MC_AKS_TEST_RG_AKS_Test_Cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-default-12988240-vmss/virtualMachines/0\"\n   }\n  }\n ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksMachine+[NoContext]+GetViaIdentityManagedCluster+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "ee6a261d-c891-430a-9698-91039df0ddec" ],
+        "CommandName": [ "Get-AzAksMachine" ],
+        "FullCommandName": [ "Get-AzAksMachine_GetViaIdentityManagedCluster" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/ef7e406d-6f94-405c-a899-034185eae58d" ],
+        "x-ms-correlation-request-id": [ "5519c857-5171-4da9-87a4-1a6339975ebe" ],
+        "x-ms-request-id": [ "160a51f0-7fd2-4c88-9f2d-284dafeb3d2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T022733Z:5519c857-5171-4da9-87a4-1a6339975ebe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 213CC356E02348F685ED934809EAD73A Ref B: JKT201051407034 Ref C: 2025-11-07T02:27:33Z" ],
+        "Date": [ "Fri, 07 Nov 2025 02:27:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "717" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000/aks-default-12988240-vmss000000\",\n \"name\": \"aks-default-12988240-vmss000000\",\n \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/machines\",\n \"properties\": {\n  \"network\": {\n   \"ipAddresses\": [\n    {\n     \"ip\": \"10.224.0.4\",\n     \"family\": \"IPv4\"\n    }\n   ]\n  },\n  \"resourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MC_AKS_TEST_RG_AKS_Test_Cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-default-12988240-vmss/virtualMachines/0\"\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "7b7c4881-cdb9-4d92-bdda-6e4a1f177737" ],
+        "CommandName": [ "Get-AzAksMachine" ],
+        "FullCommandName": [ "Get-AzAksMachine_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/6e5fa0a3-a76f-41ef-a981-5a09921846ad" ],
+        "x-ms-correlation-request-id": [ "67e05a40-b538-4d83-95de-2f62bb01540f" ],
+        "x-ms-request-id": [ "ff74f939-8fe0-4e52-99c1-6ac0b522fafb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T022735Z:67e05a40-b538-4d83-95de-2f62bb01540f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9BF0ACF445B9428FA4BCF51D01FD02D3 Ref B: JKT201051407034 Ref C: 2025-11-07T02:27:33Z" ],
+        "Date": [ "Fri, 07 Nov 2025 02:27:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "717" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000/aks-default-12988240-vmss000000\",\n \"name\": \"aks-default-12988240-vmss000000\",\n \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/machines\",\n \"properties\": {\n  \"network\": {\n   \"ipAddresses\": [\n    {\n     \"ip\": \"10.224.0.4\",\n     \"family\": \"IPv4\"\n    }\n   ]\n  },\n  \"resourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MC_AKS_TEST_RG_AKS_Test_Cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-default-12988240-vmss/virtualMachines/0\"\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksMachine+[NoContext]+GetViaIdentityAgentPool+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "1eeb2d43-ff91-4efb-9b6e-6de05322743c" ],
+        "CommandName": [ "Get-AzAksMachine" ],
+        "FullCommandName": [ "Get-AzAksMachine_GetViaIdentityAgentPool" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/7af2f27b-fb3b-41ff-a4da-3be00a660080" ],
+        "x-ms-correlation-request-id": [ "c4b119c3-085b-4bfe-bece-6ca282b1c332" ],
+        "x-ms-request-id": [ "9bbd45d6-e99e-42c6-9ce7-3973f7b52100" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T022736Z:c4b119c3-085b-4bfe-bece-6ca282b1c332" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CBA740BA5C76498FA51D32EAF3F89152 Ref B: JKT201051407034 Ref C: 2025-11-07T02:27:35Z" ],
+        "Date": [ "Fri, 07 Nov 2025 02:27:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "717" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000/aks-default-12988240-vmss000000\",\n \"name\": \"aks-default-12988240-vmss000000\",\n \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/machines\",\n \"properties\": {\n  \"network\": {\n   \"ipAddresses\": [\n    {\n     \"ip\": \"10.224.0.4\",\n     \"family\": \"IPv4\"\n    }\n   ]\n  },\n  \"resourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MC_AKS_TEST_RG_AKS_Test_Cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-default-12988240-vmss/virtualMachines/0\"\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksMachine+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "986f5639-34b3-4ea1-8771-32b569a13fca" ],
+        "CommandName": [ "Get-AzAksMachine" ],
+        "FullCommandName": [ "Get-AzAksMachine_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/3de78ec7-4487-46b4-92ea-bcf3ccff1b11" ],
+        "x-ms-correlation-request-id": [ "db4164e1-f927-4feb-bac0-887f62e59df5" ],
+        "x-ms-request-id": [ "c6285e83-876b-4f60-9a23-39deb5820f7d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251107T022737Z:db4164e1-f927-4feb-bac0-887f62e59df5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D7B8E9F5DDF94E70AA05C14C8E42CCA8 Ref B: JKT201051407034 Ref C: 2025-11-07T02:27:36Z" ],
+        "Date": [ "Fri, 07 Nov 2025 02:27:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "717" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/machines/aks-default-12988240-vmss000000/aks-default-12988240-vmss000000\",\n \"name\": \"aks-default-12988240-vmss000000\",\n \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/machines\",\n \"properties\": {\n  \"network\": {\n   \"ipAddresses\": [\n    {\n     \"ip\": \"10.224.0.4\",\n     \"family\": \"IPv4\"\n    }\n   ]\n  },\n  \"resourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/MC_AKS_TEST_RG_AKS_Test_Cluster_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-default-12988240-vmss/virtualMachines/0\"\n }\n}",
+      "isContentBase64": false
+    }
+  }
+}

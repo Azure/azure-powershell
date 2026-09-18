@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Maintenance.Management.Sdk\Maintenance.Management.Sdk.csproj" />
+    <ProjectReference Include="..\Maintenance\Maintenance.csproj" />
   </ItemGroup>
 
 </Project>

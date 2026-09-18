@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzStorageCacheAmlFileSystemSubnet
 
 ## SYNOPSIS
-Check that subnets will be valid for AML file system create calls.
+Check that subnets will be valid for AML file system check calls.
 
 ## SYNTAX
 
@@ -19,15 +19,22 @@ Test-AzStorageCacheAmlFileSystemSubnet [-SubscriptionId <String>] [-Location <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CheckViaIdentityExpanded
+### CheckViaJsonFilePath
 ```
-Test-AzStorageCacheAmlFileSystemSubnet -InputObject <IStorageCacheIdentity> [-Location <String>]
- [-Name <String>] [-SkuName <String>] [-StorageCapacityTiB <Single>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzStorageCacheAmlFileSystemSubnet [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzStorageCacheAmlFileSystemSubnet [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Check that subnets will be valid for AML file system create calls.
+Check that subnets will be valid for AML file system check calls.
 
 ## EXAMPLES
 
@@ -60,19 +67,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Check operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-Parameter Sets: CheckViaIdentityExpanded
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,7 +102,7 @@ Region that the AML file system will be created in.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -97,7 +118,7 @@ This subnet should have at least a /24 subnet mask within the VNET's address spa
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -127,7 +148,7 @@ SKU name for this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -142,7 +163,7 @@ The size of the AML file system, in TiB.
 
 ```yaml
 Type: System.Single
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -157,7 +178,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,8 +223,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 
 ## OUTPUTS
 

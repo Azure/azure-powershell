@@ -90,7 +90,11 @@ function New-ResourceGroup
         [string] $Name,
 
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [string]$Location
+        [string]$Location,
+
+        [string]$TagName,
+
+        [string]$TagValue
     )
 
     begin {
@@ -106,7 +110,14 @@ function New-ResourceGroup
     }
 
     process {
-        $response = Invoke-AzRestMethod -Uri $uri -Method PUT -Payload "{ ""location"": ""$Location"" }"
+        if ($tagName) {
+            $payload = "{ ""location"": ""$Location"", ""tags"": ""[{""$TagName"": ""$TagValue""}]"" }"
+        }
+        else {
+            $payload = "{ ""location"": ""$Location"" }"
+        }
+
+        $response = Invoke-AzRestMethod -Uri $uri -Method PUT -Payload $payload
         if ($response.StatusCode -eq 201 -or ($response.StatusCode -eq 200)) {
             $result = Get-ResourceGroup -Name $Name
             while ($result.ProvisioningState -ne 'Succeeded' -and $result.ProvisioningState -ne 'Failed' -and $result.ProvisioningState -ne 'Canceled') {
@@ -261,17 +272,8 @@ function setupEnv() {
     # ----------------------------------------------------+
     # set up common variables used in policy legacy tests |
     # ----------------------------------------------------+
-    $env['rgName'] = Get-ResourceGroupName
-    $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
-    $env['rgScope'] = $rg.ResourceId
-    $env['location'] = $rg.Location
-
-    $env['userAssignedIdentityName'] = "test-user-msi"
-    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
-    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
-
-    $env['managementGroup'] = 'AzGovPerfTest'
-    $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
+    $env['managementGroup'] = 'PowershellTesting'
+    $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/PowershellTesting'
     $env['description'] = 'Unit test junk: sorry for littering. Please delete me!'
     $env['updatedDescription'] = "Updated $description"
     $env['metadataName'] = 'testName'
@@ -279,6 +281,7 @@ function setupEnv() {
     $env['metadata'] = "{'$($env.metadataName)':'$($env.metadataValue)'}"
     $env['enforcementModeDefault'] = 'Default'
     $env['enforcementModeDoNotEnforce'] = 'DoNotEnforce'
+    $env['enforcementModeEnroll'] = 'Enroll'
 
     $env['updatedMetadataName'] = 'newTestName'
     $env['updatedMetadataValue'] = 'newTestValue'
@@ -302,10 +305,13 @@ function setupEnv() {
     $env['somePolicyParameter'] = 'somePolicyParameter'
     $env['someParameterObject'] = "{'parm1': 'a', 'parm2': 'b' }"
     $env['someDisplayName'] = 'Some display name'
+    $env['someNewVersion'] = '2.0.1'
+    $env['somePreviewVersion'] = '1.3.0-preview'
+    $env['someOldVersion'] = '1.3.1'
+    $env['defaultVersion'] = '1.0.0'
 
     # exception strings
     $env['parameterSetError'] = 'Parameter set cannot be resolved using the specified named parameters.'
-    $env['parameterNullError'] = '. The argument is null. Provide a valid value for the argument, and then try running the command again.'
     $env['missingParameters'] = 'Cannot process command because of one or more missing mandatory parameters:'
     $env['missingAnArgument'] = 'Missing an argument for parameter '
     $env['onlyManagementGroupOrSubscription'] = 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
@@ -316,6 +322,8 @@ function setupEnv() {
     $env['policyAssignmentMissingLocation']  = 'Location needs to be specified if a managed identity is to be assigned to the policy assignment.'
     $env['policyAssignmentMissingIdentityId']  = 'A user assigned identity id needs to be specified if the identity type is ''UserAssigned''.'
     $env['policyExemptionNotFound'] = '[PolicyExemptionNotFound] : '
+    $env['policyEnrollmentNotFound'] = '[PolicyEnrollmentNotFound] : '
+    $env['unableToUpdateEnrollment'] = 'Unable to update due to error retrieving existing policy enrollment'
     $env['invalidRequestContent'] = '[InvalidRequestContent] : The request content was invalid and could not be deserialized: '
     $env['policyDefinitionParameter'] = 'One of PolicyDefinition or PolicySetDefinition must be provided.'
     $env['missingSubscription'] = '[MissingSubscription] : The request did not have a subscription or a valid tenant level resource provider.'
@@ -330,14 +338,35 @@ function setupEnv() {
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
-    $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
-    $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
+    $env['versionRequiresNameOrId'] = 'Version is only allowed when exactly one of Name or Id is provided.'
+    $env['versionRequiresPolicy'] = 'Version is only allowed if Policy is provided.'
+    $env['versionRequiresPolicyDefinition'] = 'Version is only allowed if PolicyDefinition is provided.'
+    $env['listVersionRequiresNameOrId'] = 'ListVersion is only allowed when exactly one of Name or Id is provided.'
+    $env['expandRequiresNameOrId'] = 'Expand is only allowed when exactly one of Name or Id is provided.'
+    $env['oldVersionsImmutable'] = 'Old versions are immutable.'
+    $env['disallowedByPolicy'] = "was disallowed by policy."
+    $env['invalidLatestDefVersionDeletion'] = "[InvalidDeletePolicyDefinitionRequest] : Deleting the latest version"
+    $env['invalidLatestSetDefVersionDeletion'] = "[InvalidDeletePolicySetDefinitionRequest] : Deleting the latest version"
+    $env['unsupportedFilterValue'] = "[UnsupportedFilterValue] : "
+
+    $env['rgName'] = Get-ResourceGroupName
+    $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
+    $env['rgScope'] = $rg.ResourceId
+    $env['location'] = $rg.Location
+
+    $env['userAssignedIdentityName'] = "test-user-msi"
+    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
+    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
+
+    $env['builtInDefName'] = '36fd7371-8eb7-4321-9c30-a7100022d048'
+    $env['builtInSetName'] = '1bb84455-9e6e-434c-8db6-fa6d03a67e87'
 
     # create a couple of test objects
     $env['customSubDefName'] = Get-ResourceName
     $env['customSubDefinition'] = New-AzPolicyDefinition -Name $env.customSubDefName -Policy '{ "if": { "field": "location", "equals": "westus" }, "then": { "effect": "audit" } }'
     $env['customSubSetDefName'] = Get-ResourceName
     $env['customSubSetDefinition'] = New-AzPolicySetDefinition -Name $env.customSubSetDefName -PolicyDefinition ("[{""policyDefinitionId"":""" + $($env.customSubDefinition).Id + """}]")
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

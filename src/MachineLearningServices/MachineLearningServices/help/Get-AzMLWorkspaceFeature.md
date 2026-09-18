@@ -14,7 +14,7 @@ Lists all enabled features for a workspace
 
 ```
 Get-AzMLWorkspaceFeature -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Get-AzMLWorkspaceFeature  -ResourceGroupName ml-rg-test -Name mlworkspace-portal
 ```output
 Description                                                                            DisplayName
 -----------                                                                            -----------
-Raw feature explanation for AutoML models                                              Model Explanability
+Raw feature explanation for AutoML models                                              Model Explainability
 Create, edit or delete AutoML experiments in the SDK                                   Create edit experiments SDK
 Create, edit or delete HyperDrive experiments in the SDK                               Create edit hyperdrive SDK
 Select or upload a dataset to train on from datasets in the SDK                        Dataset integration from SDK
@@ -76,21 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -129,7 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IAmlUserFeature
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAmlUserFeature
 
 ## NOTES
 

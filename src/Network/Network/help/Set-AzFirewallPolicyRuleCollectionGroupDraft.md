@@ -14,30 +14,37 @@ Sets a modified Azure Firewall Policy Rule Collection Group draft.
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -ResourceGroupName <String> -AzureFirewallPolicyName <String>
- -Priority <UInt32> [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -ResourceGroupName <String> -AzureFirewallPolicyName <String> -Priority <UInt32>
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
 ```
-Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -FirewallPolicyObject <PSAzureFirewallPolicy>
- -Priority <UInt32> [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -FirewallPolicyObject <PSAzureFirewallPolicy> -Priority <UInt32>
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzFirewallPolicyRuleCollectionGroupDraft -InputObject <PSAzureFirewallPolicyRuleCollectionGroupDraftWrapper>
- [-Priority <UInt32>] [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzFirewallPolicyRuleCollectionGroupDraft
+ -InputObject <PSAzureFirewallPolicyRuleCollectionGroupDraftWrapper> [-Priority <UInt32>]
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Set-AzFirewallPolicyRuleCollectionGroupDraft -ResourceId <String> -Priority <UInt32>
  [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +72,78 @@ Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyName <String> -
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureFirewallPolicyName
+The name of the firewall policy
+
+```yaml
+Type: System.String
+Parameter Sets: SetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureFirewallPolicyRuleCollectionGroupName
+The name of the rule collection group associated with the draft.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByParentInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -80,21 +159,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallPolicyName
-The name of the firewall policy.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -FirewallPolicyObject
 Firewall Policy.
 
@@ -106,7 +170,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -122,33 +186,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AzureFirewallPolicyRuleCollectionGroupName
-The name of the rule collection group associated with the draft.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByNameParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: SetByParentInputObjectParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

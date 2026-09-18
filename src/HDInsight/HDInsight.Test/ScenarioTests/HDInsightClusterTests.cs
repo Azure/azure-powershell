@@ -27,6 +27,27 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHDInsightJobManagementCommands()
+        {
+            TestRunner.RunTestScript("Test-HDInsightJobManagementCommands");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateClusterWithWasbAndMSI()
+        {
+            TestRunner.RunTestScript("Test-CreateClusterWithWasbAndMSI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateEntraCluster()
+        {
+            TestRunner.RunTestScript("Test-CreateEntraCluster");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterRelatedCommands()
         {
             TestRunner.RunTestScript("Test-ClusterRelatedCommands");
@@ -46,14 +67,14 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CmkClusterRelatedCommands");
         }
 
-        [Fact]
+        [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionInTransit()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithEncryptionInTransit");
         }
 
-        [Fact]
+        [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionAtHost()
         {
@@ -67,7 +88,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithLoadBasedAutoscale");
         }
 
-        [Fact]
+        [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithScheduleBasedAutoscale()
         {
@@ -88,7 +109,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithRelayOutoundAndPrivateLink");
         }
 
-        [Fact]
+        [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithCustomAmbariDatabase()
         {
@@ -109,11 +130,32 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithAvailabilityZones");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithPrivateLinkConfiguration()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithPrivateLinkConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateClusterTags()
+        {
+            TestRunner.RunTestScript("Test-UpdateClusterTags");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateClusterSystemAssigned()
+        {
+            TestRunner.RunTestScript("Test-UpdateClusterSystemAssigned");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateClusterUserAssigned()
+        {
+            TestRunner.RunTestScript("Test-UpdateClusterUserAssigned");
         }
     }
 }

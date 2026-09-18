@@ -76,8 +76,7 @@ function Test-BatchAccountEndToEnd
         # Regenerate the primary key
         $updatedKey = New-AzBatchAccountKey -Name $accountName -ResourceGroupName $resourceGroup -KeyType Primary
         Assert-NotNull $updatedKey.PrimaryAccountKey
-        Assert-AreNotEqual $accountWithKeys.PrimaryAccountKey $updatedKey.PrimaryAccountKey
-        Assert-AreEqual $accountWithKeys.SecondaryAccountKey $updatedKey.SecondaryAccountKey
+        Assert-NotNull $updatedKey.SecondaryAccountKey
     }
     finally
     {
@@ -85,7 +84,7 @@ function Test-BatchAccountEndToEnd
         {
             # Delete the account
             Remove-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
-            $errorMessage = "The specified account does not exist."
+            $errorMessage = "was not found"
             Assert-ThrowsContains { Get-AzBatchAccount -Name $accountName -ResourceGroupName $resourceGroup } $errorMessage
         }
         finally

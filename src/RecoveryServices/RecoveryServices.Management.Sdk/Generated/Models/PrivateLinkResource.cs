@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
     /// Information of the private link resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource
+    public partial class PrivateLinkResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateLinkResource class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified identifier of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">e.g. Microsoft.RecoveryServices/vaults/privateLinkResources
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="groupId">e.g. f9ad6492-33d4-4690-9999-6bfd52a0d081 (Backup) or
@@ -43,12 +49,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="requiredZoneNames">The private link resource Private link DNS zone name.
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
             this.RequiredZoneNames = requiredZoneNames;
@@ -60,24 +64,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets fully qualified identifier of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets name of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets e.g. Microsoft.RecoveryServices/vaults/privateLinkResources
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets e.g. f9ad6492-33d4-4690-9999-6bfd52a0d081 (Backup) or

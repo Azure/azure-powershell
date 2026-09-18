@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
                     {
                         authority = authority + "/";
                     }
-                    return Instance.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && 0 == string.Compare(authority, AzureAuthorityHosts.AzurePublicCloud.OriginalString, System.StringComparison.OrdinalIgnoreCase);
+                    return Instance.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && authority.StartsWith(AzureAuthorityHosts.AzurePublicCloud.OriginalString, System.StringComparison.OrdinalIgnoreCase);
                 }
                 catch
                 {

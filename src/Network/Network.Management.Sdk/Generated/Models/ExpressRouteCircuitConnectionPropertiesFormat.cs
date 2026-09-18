@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Connected&#39;, &#39;Connecting&#39;, &#39;Disconnected&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the express route circuit connection resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public ExpressRouteCircuitConnectionPropertiesFormat(SubResource expressRouteCircuitPeering = default(SubResource), SubResource peerExpressRouteCircuitPeering = default(SubResource), string addressPrefix = default(string), string authorizationKey = default(string), Ipv6CircuitConnectionConfig ipv6CircuitConnectionConfig = default(Ipv6CircuitConnectionConfig), string circuitConnectionStatus = default(string), string provisioningState = default(string))
 
         {
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets the provisioning state of the express route circuit connection
-        /// resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

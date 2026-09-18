@@ -32,6 +32,7 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
  [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>]
  [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-TestNetworkId <String>]
+ [-PlatformFaultDomain <Integer>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,7 +81,7 @@ Don't pass -EnableAcceleratedNetworkingOnRecovery to disable accelerated Network
 ### Example 6
 ```powershell
 $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi `
-		-DiskEncryptionVaultId $DiskEncryptionVaultId -DiskEncryptionSecretUrl $DiskEncryptionSecertUrl `
+		-DiskEncryptionVaultId $DiskEncryptionVaultId -DiskEncryptionSecretUrl $DiskEncryptionSecretUrl `
 		-KeyEncryptionVaultId $KeyEncryptionVaultId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
 ```
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureUpdateReplicationConfiguration
-Specifies the disk configuration to updated for managed disk Vm (Azure to Azure DR scenrio).
+Specifies the disk configuration to updated for managed disk Vm (Azure to Azure DR scenario).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig[]
@@ -270,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-Specifiy the license type selection to be used for Windows Server virtual machines. If you are entitled to use the Azure Hybrid Use Benefit (HUB) for migrations and would like to specify that the HUB setting be used while failing over this protected item set the license type to be WindowsServer.
+Specify the license type selection to be used for Windows Server virtual machines. If you are entitled to use the Azure Hybrid Use Benefit (HUB) for migrations and would like to specify that the HUB setting be used while failing over this protected item set the license type to be WindowsServer.
 
 ```yaml
 Type: System.String
@@ -309,6 +310,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NotSelected, SelectedByUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlatformFaultDomain
+Specify the platform fault domain to used by the failover Vm in target recovery region.
+
+```yaml
+Type: System.int32
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
 
 Required: False
 Position: Named

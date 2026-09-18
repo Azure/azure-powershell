@@ -34,14 +34,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateTrigger()
         {
             TestRunner.RunTestScript("Test-CreateNewTrigger");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveTrigger()
         {
             TestRunner.RunTestScript("Test-RemoveTrigger");

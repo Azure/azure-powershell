@@ -287,5 +287,26 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ListModels");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRai()
+        {
+            TestRunner.RunTestScript("Test-Rai");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDefenderForAISetting()
+        {
+            TestRunner.RunTestScript("Test-DefenderForAISetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestModelCapacity()
+        {
+            TestRunner.RunTestScript("Test-ModelCapacity");
+        }
     }
 }

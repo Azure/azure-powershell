@@ -104,6 +104,12 @@ function Update-AzElasticSanVolumeGroup {
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Boolean]
+        # A boolean indicating whether or not Data Integrity Check is enabled
+        ${EnforceDataIntegrityCheckForIscsi},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
@@ -245,7 +251,7 @@ function Update-AzElasticSanVolumeGroup {
                     break
                 }
                 Default {
-                    $volumeGroupProperties = AZ.ElasticSan\Get-AzElasticSanVolumeGroup -Nam $Name -ResourceGroupName $ResourceGroupName -ElasticSanName $ElasticSanName
+                    $volumeGroupProperties = AZ.ElasticSan\Get-AzElasticSanVolumeGroup -Name $Name -ResourceGroupName $ResourceGroupName -ElasticSanName $ElasticSanName
                     break 
                 }
             }
@@ -260,6 +266,14 @@ function Update-AzElasticSanVolumeGroup {
             }
             $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentityId')
         }
+
+        if ($PSBoundParameters.ContainsKey("EnforceDataIntegrityCheckForIscsi") -and ($PSBoundParameters.EnforceDataIntegrityCheckForIscsi -eq $true)) {
+            Write-Warning "CRC protection feature is not supported for Azure VMware solution (AVS) yet. Do not enable this flag if you plan to use the volumes within this volume group as datastores for AVS, as the datastore creation will fail. For Azure Virtual Machines, enabling this flag would need CRC32C to be set on iSCSI header and data digests on the client for all the connections from the client to the volumes in this volume group. You can achieve that by disconnecting the volumes from the client and reconnecting using multi-session scripts generated in portal connect flow or from documentation, which contain steps to set CRC32C on header and data digests. Do not enable CRC protection on the volume group if you are using Fedora or its downstream Linux distributions such as RHEL, CentOS etc. as data digests are not supported on them. If you enable this flag for those distributions, connectivity to the volumes will fail. Learn more: https://go.microsoft.com/fwlink/?LinkId=2294733&id=Microsoft_Azure_ElasticSan"
+        }
+        else {
+            Write-Warning "CRC protection is recommended if you plan to connect the volumes in this volume group to Azure Virtual Machines. Do not enable it if you are using Fedora or its downstream Linux distributions such as RHEL, CentOS etc. on your VM, as data digests are not supported on them. If you enable this flag for those distributions, connectivity to the volumes will fail. Also, do not enable this flag if you plan to use the volumes within this volume group as datastores for Azure VMware Solution (AVS), as this feature is not supported for AVS yet and the datastore creation will fail. Learn more: https://go.microsoft.com/fwlink/?LinkId=2294733&id=Microsoft_Azure_ElasticSan"
+        }
+        
         Az.ElasticSan.internal\Update-AzElasticSanVolumeGroup @PSBoundParameters
     }
 }

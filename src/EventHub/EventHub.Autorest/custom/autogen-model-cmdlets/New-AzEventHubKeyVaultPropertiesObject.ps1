@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.KeyVaultProperties
 https://learn.microsoft.com/powershell/module/Az.EventHub/new-azeventhubkeyvaultpropertiesobject
 #>
 function New-AzEventHubKeyVaultPropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.KeyVaultProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

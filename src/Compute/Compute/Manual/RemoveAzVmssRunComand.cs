@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var expand = new Microsoft.Rest.Azure.OData.ODataQuery<VirtualMachineScaleSetVM>();
             expand.Expand = "instanceView";
-            var vmList = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName, expand);
+            var vmList = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName, expand: expand.Expand);
             var resultList = vmList.ToList();
             var nextPageLink = vmList.NextPageLink;
             while (!string.IsNullOrEmpty(nextPageLink))

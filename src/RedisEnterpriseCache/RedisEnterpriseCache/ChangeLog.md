@@ -19,6 +19,31 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 1.6.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.6.0
+* Added a new required property: PublicNetworkAccess for Cluster.
+* Updated the default value of AccessKeysAuthentication property for Database to 'Disabled'.
+
+## Version 1.5.0
+* Added support for listing all SKUs a cluster can scale to.
+* Added a new enum: NoCluster for Clustering policy.
+
+## Version 1.4.1
+* Upgraded nuget package to signed package.
+
+## Version 1.4.0
+* Added support for using Microsoft Entra token-based authentication.
+* Added the new properties of Cluster: highAvailability and redundancyMode.
+* Added new product SKUs.
+* Added the new properties of Database: accessKeysAuthentication.
+* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
+* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
+
 ## Version 1.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

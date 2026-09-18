@@ -25,7 +25,7 @@ Get-AzSecuritySecureScoreControlDefinition -Name <String> [-DefaultProfile <IAzu
 ```
 
 ## DESCRIPTION
-The Get-AzSecuritySecureScoreControlDefinition comlet gets security secure score control definitions on a subscription.
+The Get-AzSecuritySecureScoreControlDefinition cmdlet gets security secure score control definitions on a subscription.
 
 ## EXAMPLES
 

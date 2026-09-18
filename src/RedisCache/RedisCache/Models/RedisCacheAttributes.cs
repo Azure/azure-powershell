@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             ShardCount = cache.ShardCount;
             MinimumTlsVersion = cache.MinimumTlsVersion;
             DisableAccessKeyAuthentication = cache.DisableAccessKeyAuthentication;
+            ZonalAllocationPolicy = cache.ZonalAllocationPolicy;
 
             Tag = cache.Tags;
             Zone = cache.Zones;
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 }
             }
 
-            // Converting cache.Identity Object into a readable SystemAssignedIdenty dictionary and UserAssignedIdentities list
+            // Converting cache.Identity Object into a readable SystemAssignedIdentity dictionary and UserAssignedIdentities list
             if (cache.Identity != null)
             {
                 IdentityType = "";
@@ -151,6 +152,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public string RedisVersion { get; protected set; }
 
         public string UpdateChannel { get; protected set; }
+
+        public string ZonalAllocationPolicy { get; protected set; }
 
         public string Size { get; protected set; }
 

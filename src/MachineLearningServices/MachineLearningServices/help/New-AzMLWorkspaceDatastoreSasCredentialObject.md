@@ -13,7 +13,7 @@ Create an in-memory object for SasDatastoreCredentials.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDatastoreSasCredentialObject -SasToken <String> [-ProgressAction <ActionPreference>]
+New-AzMLWorkspaceDatastoreSasCredentialObject -SasToken <String>
  [<CommonParameters>]
 ```
 
@@ -30,21 +30,6 @@ New-AzMLWorkspaceDatastoreSasCredentialObject
 Create an in-memory object for SasDatastoreCredentials
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -SasToken
 [Required] Storage container secrets.
@@ -68,7 +53,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SasDatastoreCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.SasDatastoreCredentials
 
 ## NOTES
 

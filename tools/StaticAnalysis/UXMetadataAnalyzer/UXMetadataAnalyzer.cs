@@ -115,7 +115,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     Directory.SetCurrentDirectory(directory);
 
                     var moduleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-
+                    
                     string[] UXFolders = Directory.GetDirectories(moduleFolder, "UX", SearchOption.AllDirectories);
                     foreach (var UXFolder in UXFolders)
                     {
@@ -178,6 +178,10 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
         private void ValidateExample(IssueLoggerContext context, UXMetadataCommand command, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
+            if (example.Parameters == null)
+            {
+                return;
+            }
             List<string> parameterListConvertedFromAlias = example.Parameters.Select(x =>
             {
                 string parameterNameInExample = x.Name.Trim('-');
@@ -197,7 +201,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                         }
                     }
                 }
-                string description = string.Format("Cannot find the defination of parameter {0} in example", parameterNameInExample);
+                string description = string.Format("Cannot find the definition of parameter {0} in example", parameterNameInExample);
                 issueLogger.LogUXMetadataIssue(context, 1, description);
                 return null;
             }).ToList();
@@ -231,7 +235,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 issueLogger.LogUXMetadataIssue(context, 1, description);
             }
 
-            #region valiate the parameters in path
+            #region validate the parameters in path
             var httpPathParameterRegex = new Regex(@"\{\w+\}");
             HashSet<string> parametersFromHttpPath = new HashSet<string>(httpPathParameterRegex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')), StringComparer.OrdinalIgnoreCase);
             ValidateParametersDefinedInPathContainsInExample(context, parametersFromHttpPath, example, issueLogger);
@@ -251,7 +255,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 if (!isParameterContainsInExample)
                 {
                     string description = string.Format("{0} is defined in path but cannot find in example", parameterFromHttpPath);
-                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                    issueLogger.LogUXMetadataIssue(context, 2, description);
                 }
             }
         }

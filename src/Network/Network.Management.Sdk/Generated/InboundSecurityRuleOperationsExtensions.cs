@@ -13,53 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class InboundSecurityRuleOperationsExtensions
     {
         /// <summary>
-        /// Creates or updates the specified Network Virtual Appliance Inbound Security
-        /// Rules.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
-        /// </param>
-        public static InboundSecurityRule CreateOrUpdate(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters)
-        {
-                return ((IInboundSecurityRuleOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkVirtualApplianceName, ruleCollectionName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates the specified Network Virtual Appliance Inbound Security
-        /// Rules.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<InboundSecurityRule> CreateOrUpdateAsync(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, ruleCollectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieves the available specified Network Virtual Appliance Inbound
         /// Security Rules Collection.
         /// </summary>
@@ -67,13 +20,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static InboundSecurityRule Get(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName)
         {
@@ -88,13 +42,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -114,13 +69,63 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static InboundSecurityRule CreateOrUpdate(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters)
+        {
+                return ((IInboundSecurityRuleOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkVirtualApplianceName, ruleCollectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates the specified Network Virtual Appliance Inbound Security
+        /// Rules.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='ruleCollectionName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<InboundSecurityRule> CreateOrUpdateAsync(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, ruleCollectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates the specified Network Virtual Appliance Inbound Security
+        /// Rules.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='ruleCollectionName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static InboundSecurityRule BeginCreateOrUpdate(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, InboundSecurityRule parameters)
         {
@@ -135,13 +140,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
+        /// The name of Network Virtual Appliance.
         /// </param>
         /// <param name='ruleCollectionName'>
-        /// The name of security rule collection.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

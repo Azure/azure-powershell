@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the load balancing rule.
-        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;</param>
+        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;</param>
 
         /// <param name="loadDistribution">The load distribution policy for this rule.
         /// Possible values include: &#39;Default&#39;, &#39;SourceIP&#39;, &#39;SourceIPProtocol&#39;</param>
@@ -72,9 +72,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified in the frontend of the load balancing rule.
         /// </param>
 
+        /// <param name="enableConnectionTracking">Enables UDP flow tracking for the load balancing rule. This property is
+        /// retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the load balancing rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
-        public LoadBalancingRulePropertiesFormat(string protocol, int frontendPort, SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string loadDistribution = default(string), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), string provisioningState = default(string))
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
+        public LoadBalancingRulePropertiesFormat(string protocol, int frontendPort, SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string loadDistribution = default(string), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?), string provisioningState = default(string))
 
         {
             this.FrontendIPConfiguration = frontendIPConfiguration;
@@ -89,6 +96,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableFloatingIP = enableFloatingIP;
             this.EnableTcpReset = enableTcpReset;
             this.DisableOutboundSnat = disableOutboundSnat;
+            this.EnableConnectionTracking = enableConnectionTracking;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -127,7 +135,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the reference to the transport protocol used by the load
-        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;
+        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; set; }
@@ -187,7 +195,16 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? DisableOutboundSnat {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets or sets enables UDP flow tracking for the load balancing rule. This
+        /// property is retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableConnectionTracking")]
+        public bool? EnableConnectionTracking {get; set; }
+
+        /// <summary>
+        /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

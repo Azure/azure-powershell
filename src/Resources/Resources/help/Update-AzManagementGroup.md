@@ -15,29 +15,30 @@ Updates a Management Group
 ### GroupOperations (Default)
 ```
 Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ParentAndManagementGroupObject
 ```
 Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>]
  [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup>
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
 Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
 Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
- -ParentObject <PSManagementGroup> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,13 +55,13 @@ Update-AzManagementGroup -GroupName "TestGroup" -DisplayName "New Display Name"
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : New Display Name
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
-ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
-ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 ### Example 2: Update a Management Group's Parent
@@ -72,7 +73,7 @@ Update-AzManagementGroup -GroupName "TestGroup" -ParentId "/providers/Microsoft.
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -90,7 +91,7 @@ Get-AzManagementGroup -GroupName "TestGroup" | Update-AzManagementGroup -Display
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestDisplayName
 UpdatedTime       : 2/1/2018 12:03:37 PM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
@@ -109,16 +110,46 @@ Update-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent
 ```
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -204,21 +235,6 @@ Parameter Sets: ParentAndManagementGroupObject, ParentGroupObject
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

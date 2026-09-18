@@ -45,15 +45,15 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
         /// <param name='deletedAccountName'>
         /// Name of the deleted storage account.
         /// </param>
-        /// <param name='location'>
-        /// The location of the deleted storage account.
-        /// </param>
-        public static DeletedAccount Get(this IDeletedAccountsOperations operations, string deletedAccountName, string location)
+        public static DeletedAccount Get(this IDeletedAccountsOperations operations, string location, string deletedAccountName)
         {
-                return ((IDeletedAccountsOperations)operations).GetAsync(deletedAccountName, location).GetAwaiter().GetResult();
+                return ((IDeletedAccountsOperations)operations).GetAsync(location, deletedAccountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -62,18 +62,18 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
         /// <param name='deletedAccountName'>
         /// Name of the deleted storage account.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the deleted storage account.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeletedAccount> GetAsync(this IDeletedAccountsOperations operations, string deletedAccountName, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeletedAccount> GetAsync(this IDeletedAccountsOperations operations, string location, string deletedAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(deletedAccountName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(location, deletedAccountName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

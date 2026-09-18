@@ -106,6 +106,11 @@ function New-AzEventHubNamespace{
         [System.String]
         ${MinimumTlsVersion},
 
+        [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${IPAddressType},
+
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -125,6 +130,15 @@ function New-AzEventHubNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Collections.Hashtable]
         ${Tag},
+
+        [Parameter(HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int64]
+        ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+        [Parameter(HelpMessage = "Replica locations for geo data replication.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
+        ${GeoDataReplicationLocation},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -184,6 +198,21 @@ function New-AzEventHubNamespace{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.EventHub.private\New-AzEventHubNamespace_CreateExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
     process{
         try{
        	    $null = $PSBoundParameters.Remove('WhatIf')

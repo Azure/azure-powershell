@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="createMode">The vault&#39;s create mode to indicate whether the vault need to be recovered
         /// or not.
-        /// Possible values include: 'recover', 'default'</param>
+        /// Possible values include: &#39;recover&#39;, &#39;default&#39;</param>
 
         /// <param name="enablePurgeProtection">Property specifying whether protection against purge is enabled for this
         /// vault. Setting this property to true activates protection against purge for
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the vault.
-        /// Possible values include: 'Succeeded', 'RegisteringDns'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;RegisteringDns&#39;</param>
 
         /// <param name="privateEndpointConnections">List of private endpoint connections associated with the key vault.
         /// </param>

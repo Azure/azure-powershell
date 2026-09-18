@@ -1,0 +1,259 @@
+{
+  "id": null,
+  "name": "dotnet",
+  "type": "Microsoft.Web/locations/functionAppStacks?stackOsType=All",
+  "location": "eastasia",
+  "properties": {
+    "displayText": ".NET",
+    "value": "dotnet",
+    "preferredOs": "windows",
+    "majorVersions": [
+      {
+        "displayText": ".NET 10 Isolated (Preview)",
+        "value": "dotnet10isolated",
+        "minorVersions": [
+          {
+            "displayText": ".NET 10 Isolated (Preview)",
+            "value": "10 (LTS), isolated worker model (Preview)",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "DOTNET-ISOLATED|10.0",
+                "isPreview": false,
+                "isDefault": false,
+                "isHidden": false,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "10.0.x"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                  "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "DOTNET-ISOLATED|10.0"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": false
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "dotnet-isolated",
+                        "version": "10.0"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Fri Nov 10 2028 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "displayText": ".NET 9 Isolated",
+        "value": "dotnet9isolated",
+        "minorVersions": [
+          {
+            "displayText": ".NET 9 Isolated",
+            "value": "9 (STS), isolated worker model",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "DOTNET-ISOLATED|9.0",
+                "isDefault": false,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "9.0.x"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                  "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "DOTNET-ISOLATED|9.0"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": false
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "dotnet-isolated",
+                        "version": "9.0"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Tue May 12 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "displayText": ".NET 8 Isolated",
+        "value": "dotnet8isolated",
+        "minorVersions": [
+          {
+            "displayText": ".NET 8 Isolated",
+            "value": "8 (LTS), isolated worker model",
+            "stackSettings": {
+              "linuxRuntimeSettings": {
+                "runtimeVersion": "DOTNET-ISOLATED|8.0",
+                "isHidden": false,
+                "isDefault": true,
+                "remoteDebuggingSupported": false,
+                "appInsightsSettings": {
+                  "isSupported": true
+                },
+                "gitHubActionSettings": {
+                  "isSupported": true,
+                  "supportedVersion": "8.0.x"
+                },
+                "appSettingsDictionary": {
+                  "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+                  "WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED": "1"
+                },
+                "siteConfigPropertiesDictionary": {
+                  "use32BitWorkerProcess": false,
+                  "linuxFxVersion": "DOTNET-ISOLATED|8.0"
+                },
+                "supportedFunctionsExtensionVersions": [
+                  "~4"
+                ],
+                "supportedFunctionsExtensionVersionsInfo": [
+                  {
+                    "version": "~4",
+                    "isDeprecated": false,
+                    "isDefault": true
+                  }
+                ],
+                "Sku": [
+                  {
+                    "skuCode": "Y1"
+                  },
+                  {
+                    "skuCode": "Dedicated"
+                  },
+                  {
+                    "skuCode": "ElasticPremium"
+                  },
+                  {
+                    "skuCode": "FC1",
+                    "instanceMemoryMB": [
+                      {
+                        "size": "512",
+                        "isDefault": false
+                      },
+                      {
+                        "size": "2048",
+                        "isDefault": true
+                      },
+                      {
+                        "size": "4096",
+                        "isDefault": false
+                      }
+                    ],
+                    "maximumInstanceCount": {
+                      "lowestMaximumInstanceCount": 40,
+                      "highestMaximumInstanceCount": 1000,
+                      "defaultValue": 100
+                    },
+                    "functionAppConfigProperties": {
+                      "runtime": {
+                        "name": "dotnet-isolated",
+                        "version": "8.0"
+                      }
+                    }
+                  }
+                ],
+                "endOfLifeDate": "Tue Nov 10 2026 00:00:00 GMT+0000 (Coordinated Universal Time)"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionMode { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSTunnelConfig> TunnelProperties;
+
         public string SharedKey { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -75,6 +78,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool EnablePrivateLinkFastPath { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public string AuthenticationType { get; set; }
+
+        public PSCertificateAuthentication CertificateAuthentication { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionProtocol { get; set; }
 
         [Ps1Xml(Label = "IngressNatRules", Target = ViewControl.Table)]
@@ -85,6 +93,14 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "GatewayCustomBgpIpAddresses", Target = ViewControl.Table)]
         public List<PSGatewayCustomBgpIpConfiguration> GatewayCustomBgpIpAddresses { get; set; }
+
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [JsonIgnore]
+        public string RoutingConfigurationText
+        {
+            get { return RoutingConfiguration == null ? string.Empty : JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
@@ -132,6 +148,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string GatewayCustomBgpIpAddressesText
         {
             get { return GatewayCustomBgpIpAddresses == null ? string.Empty : JsonConvert.SerializeObject(GatewayCustomBgpIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CertificateAuthenticationText
+        {
+            get { return CertificateAuthentication == null ? string.Empty : JsonConvert.SerializeObject(CertificateAuthentication, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

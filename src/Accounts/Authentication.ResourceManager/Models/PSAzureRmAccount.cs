@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureRmAccount(IAzureAccount other)
         {
             this.CopyFrom(other);
-            /* We remove the sceret attributes from display as they are stored in plain text.
+            /* We remove the secret attributes from display as they are stored in plain text.
              * At the same time to keep the secrets in AzureRmContext.json.
              * It only takes effect when Az.Accounts converts AzureAccount to PSAzureRmAccount.
              * When the user stores the PSAzureRmAccount object (usually in a PSAzureContext) and sets it back as the current context,

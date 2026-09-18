@@ -384,6 +384,9 @@
   <data name="InvalidName" xml:space="preserve">
     <value>Field Name {0} contains invalid character.</value>
   </data>
+  <data name="RouteServerToUpdateNotFound" xml:space="preserve">
+    <value>The Route Server to update could not be found.</value>
+  </data>
   <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
     <value>The VirtualHub to update could not be found.</value>
   </data>
@@ -507,7 +510,7 @@
     <value>IP version is undefined</value>
   </data>
   <data name="TestConfiguration" xml:space="preserve">
-    <value>No test configuraiton is provided</value>
+    <value>No test configuration is provided</value>
   </data>
   <data name="TestGroupParameters" xml:space="preserve">
     <value>Test group is missing one or more mandatory parameter</value>
@@ -574,6 +577,9 @@
   </data>
   <data name="InvalidStatusCodeRangesFormat" xml:space="preserve">
     <value>Invalid format of status code ranges in HTTPConfiguration. Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.</value>
+  </data>
+  <data name="InvalidUserAssignedManagedIdentity" xml:space="preserve">
+    <value>UserAssigned ManagedIdentity specified in flow log is not a valid ID ManagedIdentity.</value>
   </data>
   <data name="ConnectionMonitorEndpointMustHaveName" xml:space="preserve">
     <value>Connection monitor endpoint must have name.</value>
@@ -677,6 +683,9 @@
   <data name="InvalidFlowLogFormatVersion" xml:space="preserve">
     <value>Invalid format version. Supported values are 0, 1 and 2.</value>
   </data>
+  <data name="FlowLogFilteringCriteriaExceedsLimit" xml:space="preserve">
+    <value>Filtering string can be maximum of 1000 characters in length.</value>
+  </data>
   <data name="InvalidFlowLogFormatType" xml:space="preserve">
     <value>Invalid format type. Supported value is 'JSON'.</value>
   </data>
@@ -762,6 +771,12 @@
   <data name="RoutingIntentNotFound" xml:space="preserve">
     <value>The routing intent resource could not be found</value>
   </data>
+  <data name="ConnectionPolicyNotFound" xml:space="preserve">
+    <value>The connection policy resource could not be found</value>
+  </data>
+  <data name="ConnectionPolicyInputObjectIdEmpty" xml:space="preserve">
+    <value>InputObject.Id cannot be null or empty.</value>
+  </data>
   <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
@@ -818,5 +833,17 @@
   </data>
   <data name="BastionTunnelingAndSessionRecordingNotAllowed" xml:space="preserve">
     <value>Tunneling and session recording cannot be enabled together</value>
+  </data>
+  <data name="BastionShareableLinkConfirmRemove" xml:space="preserve">
+    <value>Are you sure you want to remove Bastion shareable link(s)?</value>
+  </data>
+  <data name="BastionShareableLinkRemoving" xml:space="preserve">
+    <value>Removing Bastion shareable link(s)</value>
+  </data>
+  <data name="BastionShareableLinkNotEnabled" xml:space="preserve">
+    <value>Shareable link feature is not enabled</value>
+  </data>
+  <data name="FlowLogRecordTypeExceedsLimit" xml:space="preserve">
+    <value>RecordType string can be maximum of 20 characters in length.</value>
   </data>
 </root>

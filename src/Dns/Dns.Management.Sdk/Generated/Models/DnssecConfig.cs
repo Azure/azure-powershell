@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Dns.Models
     /// Represents the DNSSEC configuration.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DnssecConfig : Microsoft.Rest.Azure.IResource
+    public partial class DnssecConfig : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DnssecConfig class.
@@ -25,19 +25,22 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// Initializes a new instance of the DnssecConfig class.
         /// </summary>
 
-        /// <param name="id">The ID of the DNSSEC configuration.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">The name of the DNSSEC configuration.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the DNSSEC configuration.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">The etag of the DNSSEC configuration.
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
         /// </param>
 
         /// <param name="provisioningState">Provisioning State of the DNSSEC configuration.
@@ -45,14 +48,11 @@ namespace Microsoft.Azure.Management.Dns.Models
 
         /// <param name="signingKeys">The list of signing keys.
         /// </param>
-        public DnssecConfig(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), System.Collections.Generic.IList<SigningKey> signingKeys = default(System.Collections.Generic.IList<SigningKey>))
+        public DnssecConfig(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<SigningKey> signingKeys = default(System.Collections.Generic.IList<SigningKey>))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.Etag = etag;
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.SigningKeys = signingKeys;
             CustomInit();
@@ -65,34 +65,10 @@ namespace Microsoft.Azure.Management.Dns.Models
 
 
         /// <summary>
-        /// Gets the ID of the DNSSEC configuration.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the DNSSEC configuration.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the type of the DNSSEC configuration.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
         /// Gets or sets the etag of the DNSSEC configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; set; }
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets provisioning State of the DNSSEC configuration.

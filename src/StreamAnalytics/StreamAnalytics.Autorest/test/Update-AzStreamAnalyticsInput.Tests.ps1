@@ -13,11 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzStreamAnalyticsInput' {
   It 'UpdateExpanded' {
-    { Update-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.input01 -File (Join-Path $PSScriptRoot 'template-json\IotHub.json') } | Should -Not -Throw
+    { Update-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.input01 -File (Join-Path $PSScriptRoot 'template-json' 'IotHub.json') } | Should -Not -Throw
   }
 
   It 'UpdateViaIdentityExpanded'  {
     $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.input01
-    { Update-AzStreamAnalyticsInput -InputObject $result -File (Join-Path $PSScriptRoot 'template-json\IotHub.json') } | Should -Not -Throw
+    { Update-AzStreamAnalyticsInput -InputObject $result -File (Join-Path $PSScriptRoot 'template-json' 'IotHub.json') } | Should -Not -Throw
   }
 }

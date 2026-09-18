@@ -19,6 +19,13 @@ Remove-AzMySqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityFlexibleServer
+```
+Remove-AzMySqlFlexibleServerFirewallRule -Name <String> -FlexibleServerInputObject <IMySqlIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzMySqlFlexibleServerFirewallRule -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob]
@@ -78,9 +85,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlexibleServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: DeleteViaIdentityFlexibleServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -99,7 +120,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityFlexibleServer
 Aliases: FirewallRuleName
 
 Required: True

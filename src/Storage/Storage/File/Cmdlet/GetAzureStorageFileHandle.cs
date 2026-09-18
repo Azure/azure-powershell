@@ -17,8 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using System.Collections.Generic;
@@ -43,16 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the files/directories would list File Handles.")]
-        [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.ShareParameterSetName,
             HelpMessage = "ShareClient object indicated the share where the files/directories would list File Handles")]
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
@@ -63,30 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the base folder where the files/directories would list File Handles.")]
-        [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.DirectoryParameterSetName,
             HelpMessage = "ShareDirectoryClient object indicated the base folder where the files/directories would list File Handles")]
         [ValidateNotNull]
         public ShareDirectoryClient ShareDirectoryClient { get; set; }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.FileParameterSetName,
-            HelpMessage = "CloudFile object indicated the file to list File Handles.")]
-        [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -124,14 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
-                    if (this.ShareDirectoryClient != null)
-                    {
-                        baseDirClient = this.ShareDirectoryClient;
-                    }
-                    else
-                    {
-                        baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-                    }
+                    baseDirClient = this.ShareDirectoryClient;
                     break;
 
                 case Constants.ShareNameParameterSetName:
@@ -141,26 +101,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
-                    if (this.ShareClient != null)
-                    {
-                        baseDirClient = this.ShareClient.GetRootDirectoryClient();
-                    }
-                    else
-                    {
-                        baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-                    }
+                    baseDirClient = this.ShareClient.GetRootDirectoryClient();
                     break;
 
                 case Constants.FileParameterSetName:
-                    if (this.ShareFileClient != null)
-                    {
-                        targetFile = this.ShareFileClient;
-                    }
-                    else
-                    {
-
-                        targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
-                    }
+                    targetFile = this.ShareFileClient;
                     break;
 
                 default:

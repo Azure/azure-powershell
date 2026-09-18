@@ -273,7 +273,7 @@ Azure key vault resource group name, if not given it will be defaulted to resour
 ```yaml
 Type: System.String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases: KeyVaultResouceGroupName
+Aliases: KeyVaultResourceGroupName
 
 Required: False
 Position: Named
@@ -322,7 +322,7 @@ The Operating System of the VMs that make up the cluster.
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 Parameter Sets: ByDefaultArmTemplate
 Aliases: VmImage
-Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604, UbuntuServer1804, UbuntuServer2004, WindowsServer2022
+Accepted values: WindowsServer2012R2Datacenter, WindowsServer2016Datacenter, WindowsServer2016DatacenterwithContainers, UbuntuServer1604, UbuntuServer1804, UbuntuServer2004, WindowsServer2022, WindowsServer2019Datacenter, WindowsServer2019DatacenterGen2, WindowsServer2022Standard, WindowsServer2022Core, WindowsServer2022Gen2, WindowsServer2022Hotpatch, WindowsServer2025, WindowsServer2025AzureEdition, WindowsServer2025AzureEditionCore, WindowsServer2025Gen2, UbuntuServer2204, UbuntuServer2404
 
 Required: False
 Position: Named
@@ -428,7 +428,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-The thumbprint for the certificate correspoinding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retreive the thumbprint.
+The thumbprint for the certificate corresponding to the SecretIdentifier. Use this if the certificate is not managed as the key vault would only have the certificate stored as a secret and the cmdlet is unable to retrieve the thumbprint.
 
 ```yaml
 Type: System.String

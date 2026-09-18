@@ -16,34 +16,44 @@ This step prepares the profile for migration and will be followed by Commit to f
 ### MigrateExpanded (Default)
 ```
 Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <SkuName>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-IdentityType <String>] [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Migrate
 ```
 Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- -MigrationParameter <ICdnMigrationToAfdParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] -MigrationParameter <ICdnMigrationToAfdParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MigrateViaJsonFilePath
+```
+Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IdentityType <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MigrateViaJsonString
+```
+Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IdentityType <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
 ```
-Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] -MigrationParameter <ICdnMigrationToAfdParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> -MigrationParameter <ICdnMigrationToAfdParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
 Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> [-MigrationEndpointMapping <IMigrationEndpointMapping[]>]
- [-SkuName <SkuName>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,28 +170,11 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+Azure Subscription ID.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: MigrateExpanded, Migrate, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases:
 
 Required: False
@@ -193,7 +186,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -207,12 +199,41 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MigrationEndpointMapping
-A name map between classic CDN endpoints and AFD Premium/Standard endpoints.
-To construct, see NOTES section for MIGRATIONENDPOINTMAPPING properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Migrate operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrationEndpointMapping[]
+Type: System.String
+Parameter Sets: MigrateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Migrate operation
+
+```yaml
+Type: System.String
+Parameter Sets: MigrateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MigrationEndpointMapping
+A name map between classic CDN endpoints and AFD Premium/Standard endpoints.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationEndpointMapping[]
 Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
@@ -225,10 +246,9 @@ Accept wildcard characters: False
 
 ### -MigrationParameter
 Request body for Migrate operation.
-To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICdnMigrationToAfdParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters
 Parameter Sets: Migrate, MigrateViaIdentity
 Aliases:
 
@@ -259,25 +279,10 @@ Name of the Azure Front Door Standard or Azure Front Door Premium which is uniqu
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded, Migrate
+Parameter Sets: MigrateExpanded, Migrate, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,7 +295,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded, Migrate
+Parameter Sets: MigrateExpanded, Migrate, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases:
 
 Required: True
@@ -304,7 +309,7 @@ Accept wildcard characters: False
 Name of the pricing tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
+Type: System.String
 Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
@@ -320,7 +325,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded, Migrate
+Parameter Sets: MigrateExpanded, Migrate, MigrateViaJsonFilePath, MigrateViaJsonString
 Aliases:
 
 Required: False
@@ -366,13 +371,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICdnMigrationToAfdParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 
 ## NOTES
 

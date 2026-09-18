@@ -60,6 +60,10 @@ Alternatively, set the env variable "SuppressAzurePowerShellBreakingChangeWarnin
 Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
 ```
 
+This environment variable must be set before importing the **Az** or **Az.Accounts** PowerShell module for it to take effect in the current PowerShell session.
+
+For additional methods to disable breaking change warning messages in Azure PowerShell, see [Configure Azure PowerShell global settings](https://learn.microsoft.com/powershell/azure/configure-global-settings#breaking-change-warning-messages).
+
 NOTE :
 - The only time you will see the output (at runtime) of an attribute applied to a parameter (property or field) is if the parameter is actually invoked on the cmdline. The breaking change attributes to all parameters that are not invoked are ignored.
 

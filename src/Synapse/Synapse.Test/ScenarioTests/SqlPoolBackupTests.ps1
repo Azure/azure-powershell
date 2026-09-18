@@ -188,12 +188,8 @@ function Test-RestoreFromRestorePoint
         $restorePointLabelToSet = 'ContosoRestorePoint'
         $restorePoint = New-AzSynapseSqlPoolRestorePoint -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName -RestorePointLabel $restorePointLabelToSet
 
-        # Transform Synapse SQL pool resource ID to SQL database ID because 
-        # currently the command only accepts the SQL databse ID
         $pool = Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
-        $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
-            -replace "workspaces", "servers" `
-            -replace "sqlPools", "databases"
+        $databaseId = $pool.Id 
 
         # Restore to same workspace with source SQL database
         $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName $params.restoredSqlPoolName -ResourceGroupName $params.rgname `
@@ -201,6 +197,7 @@ function Test-RestoreFromRestorePoint
 
         Assert-AreEqual $params.rgname $restoredPool.ResourceGroupName
         Assert-AreEqual $params.workspaceName $restoredPool.WorkspaceName
+
         Assert-AreEqual $params.restoredSqlPoolName $restoredPool.SqlPoolName
 	}
 	finally
@@ -223,11 +220,8 @@ function Test-RestoreFromBackup
 
 	try
 	{
-        # Transform Synapse SQL pool resource ID to SQL database ID because 
-        # currently the command only accepts the SQL databse ID
         $pool = Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
-        $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
-            -replace "workspaces", "servers" `
+        $databaseId = $pool.Id 
 
         # Restore to same workspace with source SQL database
         $restoredPool = Restore-AzSynapseSqlPool -FromBackup -TargetSqlPoolName $params.restoredSqlPoolName -ResourceGroupName $params.rgname `
@@ -264,7 +258,7 @@ function Test-RestoreFromDroppedSqlPool
 	    $pool = Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
         # Transform Synapse Dropped SQL pool resource ID to SQL pool resource ID
         $poolId = $pool.Id.Split(",")[0]
-        $poolId = $poolId -replace "restorableDroppedSqlPools", "sqlPools"
+        $poolId = $poolId 
         $restoreTags = @{"RestoreSqlPoolTag" = "TestTagToRestoreCommand"}
         $restoreStorageAccountType = "LRS"
 
@@ -309,10 +303,10 @@ function Get-SqlPoolBackupTestEnvironmentParameters ($testSuffix)
 			  storageAccountName = "sqlbkstorage" + $testSuffix;
 			  fileSystemName = "sqlbkcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
-			  pwd = "testp@ssMakingIt1007Longer";
+			  pwd = Get-TestPassword;
 			  perfLevel = 'DW200c';
-              location = "northeurope";
-              restoredSqlPoolName = "dwrestore" + $testSuffix;
+			  location = "northeurope";
+			  restoredSqlPoolName = "dwrestore" + $testSuffix;
 		}
 }
 

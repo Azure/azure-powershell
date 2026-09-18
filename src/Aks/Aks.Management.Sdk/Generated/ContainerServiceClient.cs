@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.ContainerService
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -69,13 +69,29 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         public virtual IManagedClustersOperations ManagedClusters { get; private set; }
         /// <summary>
-        /// Gets the IMaintenanceConfigurationsOperations
+        /// Gets the ITrustedAccessRolesOperations
         /// </summary>
-        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
+        public virtual ITrustedAccessRolesOperations TrustedAccessRoles { get; private set; }
+        /// <summary>
+        /// Gets the ISnapshotsOperations
+        /// </summary>
+        public virtual ISnapshotsOperations Snapshots { get; private set; }
         /// <summary>
         /// Gets the IAgentPoolsOperations
         /// </summary>
         public virtual IAgentPoolsOperations AgentPools { get; private set; }
+        /// <summary>
+        /// Gets the IMachinesOperations
+        /// </summary>
+        public virtual IMachinesOperations Machines { get; private set; }
+        /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations
+        /// </summary>
+        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IManagedNamespacesOperations
+        /// </summary>
+        public virtual IManagedNamespacesOperations ManagedNamespaces { get; private set; }
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
@@ -89,9 +105,9 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         public virtual IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; private set; }
         /// <summary>
-        /// Gets the ISnapshotsOperations
+        /// Gets the ITrustedAccessRoleBindingsOperations
         /// </summary>
-        public virtual ISnapshotsOperations Snapshots { get; private set; }
+        public virtual ITrustedAccessRoleBindingsOperations TrustedAccessRoleBindings { get; private set; }
         /// <summary>
         /// Initializes a new instance of the ContainerServiceClient class.
         /// </summary>
@@ -296,6 +312,9 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -329,14 +348,18 @@ namespace Microsoft.Azure.Management.ContainerService
         {
             this.Operations = new Operations(this);
             this.ManagedClusters = new ManagedClustersOperations(this);
-            this.MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
+            this.TrustedAccessRoles = new TrustedAccessRolesOperations(this);
+            this.Snapshots = new SnapshotsOperations(this);
             this.AgentPools = new AgentPoolsOperations(this);
+            this.Machines = new MachinesOperations(this);
+            this.MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
+            this.ManagedNamespaces = new ManagedNamespacesOperations(this);
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.ResolvePrivateLinkServiceId = new ResolvePrivateLinkServiceIdOperations(this);
-            this.Snapshots = new SnapshotsOperations(this);
+            this.TrustedAccessRoleBindings = new TrustedAccessRoleBindingsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-04-01";
+            this.ApiVersion = "2026-03-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

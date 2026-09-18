@@ -14,7 +14,7 @@ Enables Remote Support.
 
 ```
 Enable-AzStackHCIRemoteSupport [-AccessLevel] <String> [[-ExpireInMinutes] <Int32>] [[-SasCredential] <String>]
- [-AgreeToRemoteSupportConsent] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AgreeToRemoteSupportConsent] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ ExpiresAt     : 3/30/2022 10:29:53 AM +00:00
 SasCredential :
 ```
 
-Enable remort support by providing consent.
+Enable remote support by providing consent.
 In this case, user is not prompted for consent
 
 ## PARAMETERS
@@ -113,21 +113,6 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

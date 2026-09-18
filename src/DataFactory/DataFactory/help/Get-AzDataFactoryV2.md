@@ -36,7 +36,7 @@ Get-AzDataFactoryV2 -ResourceGroupName "ADF"
 ```
 
 ```output
-    DataFactoryName   : WikiADF
+DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
     ResourceGroupName : ADF
     Location          : EastUS
@@ -61,7 +61,7 @@ $DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
 ```
 
 ```output
-    DataFactoryName   : WikiADF
+DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataF
                         actory/factories/wikiadf
     ResourceGroupName : ADF
@@ -138,7 +138,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2]()
+[Set-AzDataFactoryV2](Set-AzDataFactoryV2.md)
 
-[Remove-AzDataFactoryV2]()
+[Remove-AzDataFactoryV2](Remove-AzDataFactoryV2.md)
 

@@ -17,7 +17,8 @@ Creates a Scalable VPN Gateway.
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
  -VirtualHubName <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
  [-EnableBgpRouteTranslationForNat] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-Tag <Hashtable>]
- [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
@@ -25,7 +26,8 @@ New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
  -VirtualHub <PSVirtualHub> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
  [-EnableBgpRouteTranslationForNat] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-Tag <Hashtable>]
- [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
@@ -33,7 +35,8 @@ New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit
 New-AzVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleUnit <UInt32>
  -VirtualHubId <String> [-VpnConnection <PSVpnConnection[]>] [-EnableRoutingPreferenceInternetFlag]
  [-EnableBgpRouteTranslationForNat] [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-Tag <Hashtable>]
- [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +77,21 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -94,6 +112,21 @@ The vpn gateway's ASN for BGP over VPN
 
 ```yaml
 Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -329,9 +362,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzVpnGateway]()
+[Get-AzVpnGateway](Get-AzVpnGateway.md)
 
-[Remove-AzVpnGateway]()
+[Remove-AzVpnGateway](Remove-AzVpnGateway.md)
 
-[Update-AzVpnGateway]()
-
+[Update-AzVpnGateway](Update-AzVpnGateway.md)

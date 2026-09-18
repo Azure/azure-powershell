@@ -31,11 +31,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryPointId">The recovery point id to be passed to failover to a particular recovery
         /// point. In case of latest recovery point, null should be passed.
         /// </param>
-        public InMageRcmUnplannedFailoverInput(string performShutdown, string recoveryPointId = default(string))
+
+        /// <param name="osUpgradeVersion">A value indicating the inplace OS Upgrade version.
+        /// </param>
+
+        /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
+        /// </param>
+        public InMageRcmUnplannedFailoverInput(string performShutdown, string recoveryPointId = default(string), string osUpgradeVersion = default(string), string targetCapacityReservationGroupId = default(string))
 
         {
             this.PerformShutdown = performShutdown;
             this.RecoveryPointId = recoveryPointId;
+            this.OSUpgradeVersion = osUpgradeVersion;
+            this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
             CustomInit();
         }
 
@@ -57,6 +65,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPointId")]
         public string RecoveryPointId {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the inplace OS Upgrade version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "osUpgradeVersion")]
+        public string OSUpgradeVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target capacity reservation group ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
+        public string TargetCapacityReservationGroupId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -69,6 +89,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PerformShutdown");
             }
+
+
 
 
         }

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicystatesummary
 schema: 2.0.0
@@ -12,61 +12,66 @@ Gets latest policy compliance states summary for resources.
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
+### SummarizeBySubscriptionId (Default)
 ```
-Get-AzPolicyStateSummary [-SubscriptionId <String>] [-Top <Int32>] [-From <DateTime>] [-To <DateTime>]
- [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-Get-AzPolicyStateSummary -ManagementGroupName <String> [-Top <Int32>] [-From <DateTime>] [-To <DateTime>]
- [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceGroupScope
-```
-Get-AzPolicyStateSummary [-SubscriptionId <String>] -ResourceGroupName <String> [-Top <Int32>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPolicyStateSummary [-SubscriptionId <String>] [-Filter <String>] [-From <DateTime>] [-To <DateTime>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### PolicySetDefinitionScope
+### SummarizeByResourceGroup
 ```
-Get-AzPolicyStateSummary [-SubscriptionId <String>] -PolicySetDefinitionName <String> [-Top <Int32>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### PolicyDefinitionScope
-```
-Get-AzPolicyStateSummary [-SubscriptionId <String>] -PolicyDefinitionName <String> [-Top <Int32>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPolicyStateSummary [-SubscriptionId <String>] -ResourceGroupName <String> [-Filter <String>]
+ [-From <DateTime>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionLevelPolicyAssignmentScope
+### SummarizeByPolicySetDefinition
 ```
-Get-AzPolicyStateSummary [-SubscriptionId <String>] -PolicyAssignmentName <String> [-Top <Int32>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPolicyStateSummary [-SubscriptionId <String>] -PolicySetDefinitionName <String> [-Filter <String>]
+ [-From <DateTime>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceGroupLevelPolicyAssignmentScope
+### SummarizeByPolicyDefinition
+```
+Get-AzPolicyStateSummary [-SubscriptionId <String>] -PolicyDefinitionName <String> [-Filter <String>]
+ [-From <DateTime>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SummarizeByPolicyAssignment
+```
+Get-AzPolicyStateSummary [-SubscriptionId <String>] -PolicyAssignmentName <String> [-Filter <String>]
+ [-From <DateTime>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SummarizeByPolicyAssignmentAndResourceGroup
 ```
 Get-AzPolicyStateSummary [-SubscriptionId <String>] -ResourceGroupName <String> -PolicyAssignmentName <String>
- [-Top <Int32>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Filter <String>] [-From <DateTime>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceScope
+### SummarizeByManagementGroup
 ```
-Get-AzPolicyStateSummary -ResourceId <String> [-Top <Int32>] [-From <DateTime>] [-To <DateTime>]
- [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyStateSummary -ManagementGroupName <String> [-Filter <String>] [-From <DateTime>] [-To <DateTime>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SummarizeByResourceId
+```
+Get-AzPolicyStateSummary -ResourceId <String> [-Filter <String>] [-From <DateTime>] [-To <DateTime>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a summary view of latest policy compliance state numbers at various scopes, broken down into policy assignments and policy definitions. It includes only non-compliant policy states.
+The **Get-AzPolicyStateSummary** cmdlet gets a summary view of latest policy compliance state numbers at various scopes, broken down into policy assignments and policy definitions.
+
+It includes mostly information on non-compliant policy states.
 
 ## EXAMPLES
 
@@ -166,7 +171,8 @@ Gets the summary view of latest policy compliance states generated in the last d
 Get-AzPolicyStateSummary -Top 5
 ```
 
-Gets the summary view of latest policy compliance states generated in the last day for all resources within the subscription in current session context. 
+Gets the summary view of latest policy compliance states generated in the last day for all resources within the subscription in current session context.
+
 The command orders the policy assignment summaries in the results by non-compliant resource counts in descending order, and takes only top 5 of those policy assignment summaries.
 
 ### Example 15: Get latest non-compliant policy states summary in current subscription scope, with From and To query options
@@ -187,12 +193,13 @@ The command limits the results returned by filtering based on policy definition 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -218,7 +225,7 @@ Accept wildcard characters: False
 
 ### -From
 ISO 8601 formatted timestamp specifying the start time of the interval to query.
-When not specified, defaults to 'To' parameter value minus 1 day.
+When not specified, the service uses ($to - 1-day).
 
 ```yaml
 Type: System.DateTime
@@ -237,13 +244,13 @@ Management group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupScope
+Parameter Sets: SummarizeByManagementGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -252,13 +259,13 @@ Policy assignment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
+Parameter Sets: SummarizeByPolicyAssignment, SummarizeByPolicyAssignmentAndResourceGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -267,13 +274,13 @@ Policy definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PolicyDefinitionScope
+Parameter Sets: SummarizeByPolicyDefinition
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -282,13 +289,13 @@ Policy set definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PolicySetDefinitionScope
+Parameter Sets: SummarizeByPolicySetDefinition
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -297,13 +304,13 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupScope, ResourceGroupLevelPolicyAssignmentScope
+Parameter Sets: SummarizeByResourceGroup, SummarizeByPolicyAssignmentAndResourceGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -312,34 +319,35 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceScope
+Parameter Sets: SummarizeByResourceId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription ID.
+The ID of the target subscription.
+Uses current subscription if one isn't provided.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionScope, ResourceGroupScope, PolicySetDefinitionScope, PolicyDefinitionScope, SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
+Parameter Sets: SummarizeBySubscriptionId, SummarizeByResourceGroup, SummarizeByPolicySetDefinition, SummarizeByPolicyDefinition, SummarizeByPolicyAssignment, SummarizeByPolicyAssignmentAndResourceGroup
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -To
 ISO 8601 formatted timestamp specifying the end time of the interval to query.
-When not specified, defaults to time of request.
+When not specified, the service uses request time.
 
 ```yaml
 Type: System.DateTime
@@ -368,19 +376,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.ISummary
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzPolicyState](./Get-AzPolicyState.md)

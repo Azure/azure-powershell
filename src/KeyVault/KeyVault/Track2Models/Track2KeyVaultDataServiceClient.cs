@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         private IAzureContext _context;
 
         /// <summary>
-        /// For lazy instanciating. Please use properties instead of fields.
+        /// For lazy instantiating. Please use properties instead of fields.
         /// </summary>
         private Track2VaultClient VaultClient => _vaultClient ?? (_vaultClient = new Track2VaultClient(_authFactory, _context));
         private Track2HsmClient HsmClient => _hsmClient ?? (_hsmClient = new Track2HsmClient(_authFactory, _context));
@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return VaultClient.Encrypt(vaultName, keyName, version, value, encryptAlgorithm);
         }
 
-        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name)
+        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string keyName)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetDeletedKey(vaultName, keyName);
         }
 
         public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetDeletedKeys(options.VaultName);
         }
 
 
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetKeys(options.VaultName);
         }
 
         public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
         {
-            throw new NotImplementedException();
+            return VaultClient.GetKeyVersions(options.VaultName, options.Name);
         }
 
         public PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, Microsoft.Azure.KeyVault.WebKey.JsonWebKey webKey, bool? importToHsm)

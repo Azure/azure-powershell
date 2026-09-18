@@ -161,7 +161,7 @@ function setupEnv() {
     New-AzContainerApp -ResourceGroupName $env.resourceGroupManaged -Name $env.containerApp1 -Location $env.location -Configuration $configuration -TemplateContainer $temp -TemplateInitContainer $temp2 -TemplateServiceBind $serviceBind -EnvironmentId $EnvId
 
     write-host "Create ResourceGroup for connected env"
-    # New-AzResourceGroup -Name $env.resourceGroupConnected -Location $env.location
+    New-AzResourceGroup -Name $env.resourceGroupConnected -Location $env.location
 
     write-host "Create storage account"
     New-AzStorageAccount -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2 -Location $env.location -SkuName Standard_GRS

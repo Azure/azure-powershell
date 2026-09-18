@@ -1,17 +1,17 @@
 {
-  "Get-AzStreamAnalyticsQuota+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas?api-version=2017-04-01-preview+1": {
+  "Get-AzStreamAnalyticsQuota+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "fa35cc6e-95d3-41a6-aee2-72d06403d714" ],
+        "x-ms-unique-id": [ "167" ],
+        "x-ms-client-request-id": [ "5f281bfd-c73f-48d0-a7c0-36a2f4884f68" ],
         "CommandName": [ "Get-AzStreamAnalyticsQuota" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsQuota_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "fa35cc6e-95d3-41a6-aee2-72d06403d714" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11938" ],
-        "x-ms-correlation-request-id": [ "42186a00-12a3-400c-a853-a1fd0d1b9132" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032007Z:42186a00-12a3-400c-a853-a1fd0d1b9132" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5f281bfd-c73f-48d0-a7c0-36a2f4884f68" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/f1374a46-27fb-4939-9087-d614bb7503ca" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "5ea16a4a-cef6-47dc-accf-6d4e8037024a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T090138Z:5ea16a4a-cef6-47dc-accf-6d4e8037024a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:20:06 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1CC28578B44A41CD871E3F0D8AF542AD Ref B: MAA201060513019 Ref C: 2025-08-21T09:01:37Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:01:37 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "527" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "1032" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingUnits\",\"name\":\"StreamingUnits\",\"type\":\"Microsoft.StreamAnalytics/quotas\",\"properties\":{\"maxCount\":500,\"currentCount\":0}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingClusters\",\"name\":\"StreamingClusters\",\"type\":\"Microsoft.StreamAnalytics/quotas\",\"properties\":{\"maxCount\":5,\"currentCount\":3}}]}",
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingUnits\",\r\n      \"name\": \"StreamingUnits\",\r\n      \"type\": \"Microsoft.StreamAnalytics/quotas\",\r\n      \"properties\": {\r\n        \"maxCount\": 500,\r\n        \"currentCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingClusters\",\r\n      \"name\": \"StreamingClusters\",\r\n      \"type\": \"Microsoft.StreamAnalytics/quotas\",\r\n      \"properties\": {\r\n        \"maxCount\": 5,\r\n        \"currentCount\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.StreamAnalytics/locations/westcentralus/quotas/StreamingUnitsV2\",\r\n      \"name\": \"StreamingUnitsV2\",\r\n      \"type\": \"Microsoft.StreamAnalytics/quotas\",\r\n      \"properties\": {\r\n        \"maxCount\": 840,\r\n        \"currentCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false
     }
   }

@@ -1864,3 +1864,221 @@ function Test-DiskGrantAccessGetSASWithTL
 		Clean-ResourceGroup $rgname;
 	}
 }
+
+<#
+.SYNOPSIS
+Test confidential vm securityMetadataUri during confidential VM OS disk creation from an unmanaged storage account.
+#>
+function Test-ConfVMImportSecure
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2euap";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+    
+        $rgname="haagha-test-gdskaccess"; 
+
+        $accessuri="https://haaghagsdkaccess.blob.core.windows.net/disks/access.vhd"; 
+        $securityuri="https://haaghagsdkaccess.blob.core.windows.net/disks/securitydata.vhd"; 
+        $securitymetadatauri="https://haaghagsdkaccess.blob.core.windows.net/disks/securitymetadata.vhd";
+        $storageacctid = "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c/resourceGroups/haagha-test-gdskaccess/providers/Microsoft.Storage/storageAccounts/haaghagsdkaccess"
+        $securityTypeDSP = "ConfidentialVM_DiskEncryptedWithPlatformKey";
+        $diskName = "testDiskconfv2"
+
+        $diskConfig = New-AzDiskConfig -Location $loc -CreateOption ImportSecure -SourceUri $accessuri -SecurityDataUri $securityuri -SecurityMetadataUri $securitymetadatauri -StorageAccountId $storageacctid -HyperVGeneration V2
+        Set-AzDiskSecurityProfile -Disk $diskConfig -SecurityType $securityTypeDSP 
+        
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig -AsJob
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskName -Access 'Read' -DurationInSecond 60 -SecureVMGuestStateSAS;
+        Assert-NotNull $grantAccess.SecurityMetadataAccessSAS;
+        Assert-NotNull $grantAccess.SecurityDataAccessSAS;
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test confidential vm securityMetadataUri during confidential VM OS disk creation from an unmanaged storage account.
+#>
+function Test-DiskSnapshotInstantAccess
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $location = "eastus2euap";
+
+    try
+    {
+        $diskName = "haagha-premiumv2test"
+        $snapshotName = "snapshotTest"
+
+        New-AzResourceGroup -Name $rgname -Location $location -Force;
+                
+        $diskConfig = New-AzDiskConfig `
+          -Location $location `
+          -DiskSizeGB 1024 `
+          -DiskIOPSReadWrite 10000 `
+          -DiskMBpsReadWrite 500 `
+          -AccountType PremiumV2_LRS `
+          -CreateOption Empty `
+          -Zone $zone
+
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskConfig
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName
+        $snapshotConfig = New-AzSnapshotConfig -SourceUri $disk.Id  -Location $location  -CreateOption Copy -InstantAccessDurationMinutes 300 -Incremental Premium_LRS
+
+        New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $rgname
+
+        $snapshotGet = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName
+
+        Asset-NotNull = $snapshotGet.CreationData.InstantAccessDurationMinutes
+        Asset-NotNull = $snapshotGet.SnapshotAccessState
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test SupportedSecurityOption Parameter during creation and update of disk
+#>
+function Test-SupportedSecurityOption 
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+    try{
+    	New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskConfig = New-AzDiskConfig -Location $loc -SkuName 'PremiumV2_LRS' -DiskSizeGB 2 -CreateOption Empty -SupportedSecurityOption 'TrustedLaunchSupported';
+		$diskname = "disk" + $rgname;
+		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        
+        Assert-NotNull $disk.SupportedCapabilities;
+        Assert-AreEqual "TrustedLaunchSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
+
+        $updateconfig = New-AzDiskUpdateConfig -SupportedSecurityOption "TrustedLaunchAndConfidentialVMSupported";
+        $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual "TrustedLaunchAndConfidentialVMSupported" $disk.SupportedCapabilities.SupportedSecurityOption;
+    }
+
+    finally
+    {
+    	# Cleanup
+		Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing disk availability policy - comprehensive coverage
+#>
+function Test-DiskAvailabilityPolicy
+{
+    $rgname = Get-ComputeTestResourceName;
+    $diskname1 = 'disk1' + $rgname;
+    $diskname2 = 'disk2' + $rgname;
+    $diskname3 = 'disk3' + $rgname;
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # In-memory config validation
+        $diskConfigWithPolicy = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'None';
+        Assert-NotNull $diskConfigWithPolicy.AvailabilityPolicy;
+        Assert-AreEqual 'None' $diskConfigWithPolicy.AvailabilityPolicy.ActionOnDiskDelay;
+
+        $diskConfigAutoReattach = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'AutomaticReattach';
+        Assert-NotNull $diskConfigAutoReattach.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $diskConfigAutoReattach.AvailabilityPolicy.ActionOnDiskDelay;
+
+        $updateConfigWithPolicy = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Assert-NotNull $updateConfigWithPolicy.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $updateConfigWithPolicy.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Create disk with AvailabilityPolicy
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'None';
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -Disk $diskconfig;
+        Assert-NotNull $disk;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'None' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Update AvailabilityPolicy (None -> AutomaticReattach)
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Update AvailabilityPolicy (AutomaticReattach -> None)
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'None';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'None' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Null update preserves existing policy
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $updateConfig = New-AzDiskUpdateConfig -Tag @{"test"="preservePolicy"};
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+        Assert-AreEqual 'preservePolicy' $disk.Tags["test"];
+
+        # Create disk with AutomaticReattach initially
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'AutomaticReattach';
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname2 -Disk $diskconfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname2;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Hydrated disk with AvailabilityPolicy
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty;
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname3 -Disk $diskconfig;
+        
+        $access = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname3 -Access Read -DurationInSecond 3600;
+        Assert-NotNull $access.AccessSAS;
+        
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname3 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname3;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+        
+        Revoke-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname3;
+
+        # Verify disk properties
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -65,13 +65,25 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="logSettings">Log settings of script activity.
         /// </param>
-        public ScriptActivity(string name, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object scriptBlockExecutionTimeout = default(object), System.Collections.Generic.IList<ScriptActivityScriptBlock> scripts = default(System.Collections.Generic.IList<ScriptActivityScriptBlock>), ScriptActivityTypePropertiesLogSettings logSettings = default(ScriptActivityTypePropertiesLogSettings))
+
+        /// <param name="returnMultistatementResult">Enable to retrieve result sets from multiple SQL statements and the number
+        /// of rows affected by the DML statement. Supported connector: SnowflakeV2.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="treatDecimalAsString">Indicates whether to treat decimal values as strings to avoid value
+        /// overflow issue. This option is enabled for SnowflakeV2 connector only.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </param>
+        public ScriptActivity(string name, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object scriptBlockExecutionTimeout = default(object), System.Collections.Generic.IList<ScriptActivityScriptBlock> scripts = default(System.Collections.Generic.IList<ScriptActivityScriptBlock>), ScriptActivityTypePropertiesLogSettings logSettings = default(ScriptActivityTypePropertiesLogSettings), object returnMultistatementResult = default(object), object treatDecimalAsString = default(object))
 
         : base(name, additionalProperties, description, state, onInactiveMarkAs, dependsOn, userProperties, linkedServiceName, policy)
         {
             this.ScriptBlockExecutionTimeout = scriptBlockExecutionTimeout;
             this.Scripts = scripts;
             this.LogSettings = logSettings;
+            this.ReturnMultistatementResult = returnMultistatementResult;
+            this.TreatDecimalAsString = treatDecimalAsString;
             CustomInit();
         }
 
@@ -100,6 +112,22 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.logSettings")]
         public ScriptActivityTypePropertiesLogSettings LogSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable to retrieve result sets from multiple SQL statements
+        /// and the number of rows affected by the DML statement. Supported connector:
+        /// SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.returnMultistatementResult")]
+        public object ReturnMultistatementResult {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to treat decimal values as strings to avoid
+        /// value overflow issue. This option is enabled for SnowflakeV2 connector
+        /// only. Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.treatDecimalAsString")]
+        public object TreatDecimalAsString {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -124,6 +152,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.LogSettings.Validate();
             }
+
+
         }
     }
 }

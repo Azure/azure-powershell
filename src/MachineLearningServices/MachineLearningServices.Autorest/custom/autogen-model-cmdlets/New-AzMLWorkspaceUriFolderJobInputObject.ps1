@@ -21,33 +21,30 @@ Create an in-memory object for UriFolderJobInput.
 Create an in-memory object for UriFolderJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.UriFolderJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUriFolderJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceurifolderjobinputobject
 #>
 function New-AzMLWorkspaceUriFolderJobInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobInput')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.UriFolderJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Input Asset Delivery Mode.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("ReadOnlyMount", "ReadWriteMount", "Download", "Direct", "EvalMount", "EvalDownload")]
+        [string]
         $Mode,
         [Parameter(Mandatory, HelpMessage="[Required] Input Asset URI.")]
         [string]
         $Uri,
         [Parameter(HelpMessage="Description for the input.")]
         [string]
-        $Description,
-        [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
-        $Type
+        $Description
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.UriFolderJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.UriFolderJobInput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode
@@ -57,9 +54,6 @@ function New-AzMLWorkspaceUriFolderJobInputObject {
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

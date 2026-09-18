@@ -1,17 +1,17 @@
 {
-  "Sync-AzLabServicesLabUser+[NoContext]+Sync-AzLabServicesLabUser+$POST+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/syncGroup?api-version=2021-10-01-preview+1": {
+  "Sync-AzLabServicesLabUser+[NoContext]+Sync-AzLabServicesLabUser+$POST+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/syncGroup?api-version=2021-10-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/syncGroup?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-record-powershell/syncGroup?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "5bb0253e-551e-4a7e-b0e4-0b9d1335ea7a" ],
+        "x-ms-unique-id": [ "214" ],
+        "x-ms-client-request-id": [ "99b5586d-c06c-44da-b4a5-7643c40b70a2" ],
         "CommandName": [ "Sync-AzLabServicesLabUser" ],
         "FullCommandName": [ "Sync-AzLabServicesLabUser_Sync" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.LabServices/0.1.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,16 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCNTDL2N80G:00000003" ],
-        "x-ms-correlation-request-id": [ "e19fb356-8511-4b17-85f4-bb48ca9b8071" ],
-        "traceparent": [ "00-6122f4a2f8ee834cb5075a1164be326a-ea65c92167edda71-01" ],
-        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6205f759-1234-453c-9712-34d7671bceff/southindia/e397cee3-3a3e-4db0-9838-c8ed5936ee58" ],
+        "Request-Context": [ "appId=cid-v1:3c29314f-2b9f-4fd1-b8fc-13cc225f1416" ],
+        "x-ms-request-id": [ "0HNDPHPOOCDKJ:00000001" ],
+        "x-ms-correlation-request-id": [ "ddecf0ee-f216-42e2-9b26-d99915fb9dd0" ],
+        "traceparent": [ "00-c4fd57777bbcf22952670d7795b6d12f-734b04f98b14cf79-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview, 2021-11-15-preview, 2022-05-01-preview, 2022-08-01, 2023-06-07" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211025T234739Z:e19fb356-8511-4b17-85f4-bb48ca9b8071" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250707T031055Z:ddecf0ee-f216-42e2-9b26-d99915fb9dd0" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 25 Oct 2021 23:47:38 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83ADC220FDE0413281F8686C94516D7E Ref B: MAA201060515035 Ref C: 2025-07-07T03:10:54Z" ],
+        "Date": [ "Mon, 07 Jul 2025 03:10:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "175" ],

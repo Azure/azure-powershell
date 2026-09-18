@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -58,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
-        /// Gets a list of all distributed availiability groups in managed instance
+        /// Gets a list of all distributed availability groups in managed instance
         /// </summary>
         /// <param name="resourceGroupName"></param>
         /// <param name="instanceName"></param>
@@ -66,7 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         public List<AzureSqlManagedInstanceLinkModel> ListManagedInstanceLinks(string resourceGroupName, string instanceName)
         {
             var resp = Communicator.List(resourceGroupName, instanceName);
-
             return resp.Select((dag) => CreateManagedInstanceLinkModelFromResponse(resourceGroupName, instanceName, dag)).ToList();
         }
 
@@ -77,15 +78,49 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <returns>The upserted Azure Sql Managed Instance Link</returns>
         internal AzureSqlManagedInstanceLinkModel CreateManagedInstanceLink(AzureSqlManagedInstanceLinkModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
+            try
             {
-                TargetDatabase = model.TargetDatabase,
-                SourceEndpoint = model.SourceEndpoint, 
-                PrimaryAvailabilityGroupName = model.PrimaryAvailabilityGroupName,
-                SecondaryAvailabilityGroupName = model.SecondaryAvailabilityGroupName,
-            });
+                var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
+                {
+                    Databases = model.Databases,
+                    FailoverMode = model.FailoverMode,
+                    InstanceAvailabilityGroupName = model.InstanceAvailabilityGroupName,
+                    InstanceLinkRole = model.InstanceLinkRole,
+                    PartnerAvailabilityGroupName = model.PartnerAvailabilityGroupName,
+                    PartnerEndpoint = model.PartnerEndpoint,
+                    ReplicationMode = model.ReplicationMode,
+                    SeedingMode = model.SeedingMode,
+                    LinkMode = model.LinkMode
+                });
 
-            return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
+                return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
+            }
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Response.Content.Contains("seedingMode") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                    (!model.SeedingMode.Equals("Manual") && !model.SeedingMode.Equals("Automatic")))
+                {
+                    throw new ErrorResponseException("Allowed values for seeding mode are 'Manual' or 'Automatic'.");
+                }
+
+                if (ex.Response.Content.Contains("failoverMode") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                    (!model.FailoverMode.Equals("Manual") && !model.FailoverMode.Equals("None")))
+                {
+                    throw new ErrorResponseException("Allowed values for failover mode are 'Manual' or 'None'.");
+                }
+
+                if (ex.Response.Content.Contains("instanceLinkRole") &&
+                   ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
+                   (!string.Equals(model.InstanceLinkRole, "Primary", System.StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(model.InstanceLinkRole, "Secondary", System.StringComparison.OrdinalIgnoreCase)))
+                {
+                    throw new ErrorResponseException("Allowed values for instance link role are 'Primary' or 'Secondary'.");
+                }
+
+                throw ErrorResponseExceptionHelper.CreateFrom(ex);
+            }
         }
 
         /// <summary>
@@ -98,6 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
             var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
                 ReplicationMode = model.ReplicationMode,
+                Databases = model.Databases,
             });
 
             return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
@@ -115,11 +151,40 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
+        /// Failovers managed instance link
+        /// </summary>
+        /// <param name="model">The input parameters for the update operation</param>
+        /// <returns>The updated Azure Sql Managed Instance Link</returns>
+        internal AzureSqlManagedInstanceLinkModel FailoverManagedInstanceLink(AzureSqlManagedInstanceLinkModel model)
+        {
+            try
+            {
+                var resp = Communicator.Failover(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroupsFailoverRequest
+                {
+                    FailoverType = model.FailoverMode,
+                });
+
+                return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
+            }
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Response.Content.Contains("failoverType") &&
+                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
+                    (!model.FailoverMode.Equals("Planned") && !model.FailoverMode.Equals("ForcedAllowDataLoss")))
+                {
+                    throw new ErrorResponseException("Allowed values for failover type are 'Planned' or 'ForcedAllowDataLoss'.");
+                }
+
+                throw ErrorResponseExceptionHelper.CreateFrom(ex);
+            }
+        }
+
+        /// <summary>
         /// Convert a Management.Sql.Models.DistributedAvailabilityGroup to AzureSqlManagedInstanceLinkModel
         /// </summary>
         /// <param name="resourceGroupName">Resource group used by the managed instance</param>
         /// <param name="instanceName">Name of the managed instance</param>
-        /// <param name="managedInstanceLink">The management client distributed availiability group response to convert</param>
+        /// <param name="managedInstanceLink">The management client distributed availability group response to convert</param>
         /// <returns>The converted managed instance link model</returns>
         private static AzureSqlManagedInstanceLinkModel CreateManagedInstanceLinkModelFromResponse(string resourceGroupName, string instanceName, Management.Sql.Models.DistributedAvailabilityGroup managedInstanceLink)
         {
@@ -130,18 +195,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                 Id = managedInstanceLink.Id,
                 Type = managedInstanceLink.Type,
                 Name = managedInstanceLink.Name,
-                TargetDatabase = managedInstanceLink.TargetDatabase,
-                SourceEndpoint = managedInstanceLink.SourceEndpoint,
-                ReplicationMode = managedInstanceLink.ReplicationMode,
-                PrimaryAvailabilityGroupName = managedInstanceLink.PrimaryAvailabilityGroupName,
-                SecondaryAvailabilityGroupName = managedInstanceLink.SecondaryAvailabilityGroupName,
+                DistributedAvailabilityGroupName = managedInstanceLink.DistributedAvailabilityGroupName,
                 DistributedAvailabilityGroupId = managedInstanceLink.DistributedAvailabilityGroupId,
-                SourceReplicaId = managedInstanceLink.SourceReplicaId,
-                TargetReplicaId = managedInstanceLink.TargetReplicaId,
-                LinkState = managedInstanceLink.LinkState,
-                LastHardenedLsn =managedInstanceLink.LastHardenedLsn,
+                Databases = managedInstanceLink.Databases,
+                InstanceAvailabilityGroupName = managedInstanceLink.InstanceAvailabilityGroupName,
+                PartnerAvailabilityGroupName = managedInstanceLink.PartnerAvailabilityGroupName,
+                InstanceLinkRole = managedInstanceLink.InstanceLinkRole,
+                PartnerLinkRole = managedInstanceLink.PartnerLinkRole,
+                PartnerEndpoint = managedInstanceLink.PartnerEndpoint,
+                ReplicationMode = managedInstanceLink.ReplicationMode,
+                FailoverMode = managedInstanceLink.FailoverMode,
+                SeedingMode = managedInstanceLink.SeedingMode,
+                LinkMode = managedInstanceLink.LinkMode,
             };
             return managedInstanceLinkModel;
         }
+
     }
 }

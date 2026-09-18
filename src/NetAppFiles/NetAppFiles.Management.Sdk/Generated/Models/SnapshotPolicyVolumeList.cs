@@ -24,12 +24,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the SnapshotPolicyVolumeList class.
         /// </summary>
 
-        /// <param name="value">List of volumes
+        /// <param name="value">The Volume items on this page
         /// </param>
-        public SnapshotPolicyVolumeList(System.Collections.Generic.IList<Volume> value = default(System.Collections.Generic.IList<Volume>))
+
+        /// <param name="nextLink">The link to the next page of items
+        /// </param>
+        public SnapshotPolicyVolumeList(System.Collections.Generic.IList<Volume> value, string nextLink = default(string))
 
         {
             this.Value = value;
+            this.NextLink = nextLink;
             CustomInit();
         }
 
@@ -40,9 +44,39 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets list of volumes
+        /// Gets or sets the Volume items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<Volume> Value {get; set; }
+
+        /// <summary>
+        /// Gets or sets the link to the next page of items
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
+        public string NextLink {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+            if (this.Value != null)
+            {
+                foreach (var element in this.Value)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+        }
     }
 }

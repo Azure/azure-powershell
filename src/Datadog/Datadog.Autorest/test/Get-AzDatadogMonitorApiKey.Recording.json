@@ -1,17 +1,17 @@
 {
-  "Get-AzDatadogMonitorApiKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/listApiKeys?api-version=2021-03-01+1": {
+  "Get-AzDatadogMonitorApiKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listApiKeys?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/listApiKeys?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/Datadogmonitor-rg-ksj4xg/providers/Microsoft.Datadog/monitors/monitornwlcjs/listApiKeys?api-version=2025-12-26-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "9da99489-066e-43d0-bb9b-f13720dee5cf" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "08e70ab5-9b3c-4329-bd58-8b7ca0e3deb9" ],
         "CommandName": [ "Get-AzDatadogMonitorApiKey" ],
         "FullCommandName": [ "Get-AzDatadogMonitorApiKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/eastus2euap/48f51729-ce41-4369-94da-1afaf9adc8ac" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "mise-correlation-id": [ "c97b4c18-0a22-40ec-ba31-aac9080d959b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "36640b0a-545c-4746-80ee-0f9a365b182c" ],
-        "x-ms-correlation-request-id": [ "bc09bf9a-bb6a-498d-ad96-da222dc3fc71" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T070647Z:bc09bf9a-bb6a-498d-ad96-da222dc3fc71" ],
-        "Date": [ "Mon, 31 May 2021 07:06:46 GMT" ]
+        "x-ms-request-id": [ "3c03f91e-3858-4365-b188-35361b599fc2" ],
+        "x-ms-correlation-request-id": [ "a643c451-a993-4683-bd30-4a966ae014f3" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260723T095057Z:a643c451-a993-4683-bd30-4a966ae014f3" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E813901CEFA04F3DBB10A1E1A39988B6 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:50:56Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:50:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "171" ],
+        "Content-Length": [ "176" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"createdBy\":\"v-diya@microsoft.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"c2200ba61f8f44a69a2cbe6fc4edf124\",\"created\":\"2021-05-31 06:24:38\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"createdBy\":\"user@example.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"xxxxxxxxxxxxxxxxxxxxxx\",\"created\":\"2026-07-23 09:45:37\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

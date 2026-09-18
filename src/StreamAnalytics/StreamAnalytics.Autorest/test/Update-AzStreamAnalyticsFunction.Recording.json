@@ -1,8 +1,8 @@
 {
-  "Update-AzStreamAnalyticsFunction+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf?api-version=2017-04-01-preview+1": {
+  "Update-AzStreamAnalyticsFunction+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7?api-version=2017-04-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Scalar\",\r\n    \"properties\": {\r\n      \"inputs\": [\r\n        {\r\n          \"dataType\": \"any\"\r\n        },\r\n        {\r\n          \"dataType\": \"any\"\r\n        }\r\n      ],\r\n      \"output\": {\r\n        \"dataType\": \"any\"\r\n      },\r\n      \"binding\": {\r\n        \"type\": \"Microsoft.StreamAnalytics/JavascriptUdf\",\r\n        \"properties\": {\r\n          \"script\": \"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,40 +17,40 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "e1fb9134-db56-4132-a9d3-f4f267b0d5ea" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "10ea3bc6-deea-4daa-9d20-9cc74357d7c1" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
-        "x-ms-correlation-request-id": [ "01676cd5-ff0e-4713-b579-8b54d9bb6ea2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032323Z:01676cd5-ff0e-4713-b579-8b54d9bb6ea2" ],
+        "ETag": [ "69cd6bca-0dfd-4942-aa36-d6466353d736" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "244732e7-2054-487e-840d-26189a2b1ffd" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/39cd7367-01cf-47d4-843c-0c5e62c7304f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "52582e7e-84fd-45b5-943f-096a4de6c9eb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020501Z:52582e7e-84fd-45b5-943f-096a4de6c9eb" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:23:23 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EBDB2E60E14542E3B7C37F9D56609D29 Ref B: MAA201060513047 Ref C: 2025-08-22T02:04:59Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:05:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "647" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "892" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf\",\"name\":\"functionob48nf\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/functions\",\"properties\":{\"type\":\"Scalar\",\"properties\":{\"inputs\":[{\"dataType\":\"any\",\"isConfigurationParameter\":null},{\"dataType\":\"any\",\"isConfigurationParameter\":null}],\"output\":{\"dataType\":\"any\"},\"binding\":{\"type\":\"Microsoft.StreamAnalytics/JavascriptUdf\",\"properties\":{\"script\":\"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"}}}}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7\",\r\n  \"name\": \"function25pit7\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs/functions\",\r\n  \"properties\": {\r\n    \"type\": \"Scalar\",\r\n    \"properties\": {\r\n      \"inputs\": [\r\n        {\r\n          \"dataType\": \"any\",\r\n          \"isConfigurationParameter\": null\r\n        },\r\n        {\r\n          \"dataType\": \"any\",\r\n          \"isConfigurationParameter\": null\r\n        }\r\n      ],\r\n      \"output\": {\r\n        \"dataType\": \"any\"\r\n      },\r\n      \"binding\": {\r\n        \"type\": \"Microsoft.StreamAnalytics/JavascriptUdf\",\r\n        \"properties\": {\r\n          \"script\": \"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzStreamAnalyticsFunction+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf?api-version=2017-04-01-preview+1": {
+  "Update-AzStreamAnalyticsFunction+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "97" ],
-        "x-ms-client-request-id": [ "08aeb964-0dd5-4de2-ba2c-7c8e6ff28feb" ],
+        "x-ms-unique-id": [ "1014" ],
+        "x-ms-client-request-id": [ "33dcf403-5bdf-415c-9e77-f20f42aea2a2" ],
         "CommandName": [ "Get-AzStreamAnalyticsFunction" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsFunction_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -61,31 +61,31 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "e1fb9134-db56-4132-a9d3-f4f267b0d5ea" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "08aeb964-0dd5-4de2-ba2c-7c8e6ff28feb" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11892" ],
-        "x-ms-correlation-request-id": [ "0c4029ae-6441-4d16-86a3-a97688a66b36" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032324Z:0c4029ae-6441-4d16-86a3-a97688a66b36" ],
+        "ETag": [ "69cd6bca-0dfd-4942-aa36-d6466353d736" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "33dcf403-5bdf-415c-9e77-f20f42aea2a2" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/c74072ee-4fe7-46e4-ae13-8be3604a6ab8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "c93a6327-880b-436c-8b44-51cf28ca65db" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020503Z:c93a6327-880b-436c-8b44-51cf28ca65db" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:23:23 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2DB3087E4AB34FCDA9B9CF5258C8368E Ref B: MAA201060513047 Ref C: 2025-08-22T02:05:01Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:05:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "647" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "892" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf\",\"name\":\"functionob48nf\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/functions\",\"properties\":{\"type\":\"Scalar\",\"properties\":{\"inputs\":[{\"dataType\":\"any\",\"isConfigurationParameter\":null},{\"dataType\":\"any\",\"isConfigurationParameter\":null}],\"output\":{\"dataType\":\"any\"},\"binding\":{\"type\":\"Microsoft.StreamAnalytics/JavascriptUdf\",\"properties\":{\"script\":\"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"}}}}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7\",\r\n  \"name\": \"function25pit7\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs/functions\",\r\n  \"properties\": {\r\n    \"type\": \"Scalar\",\r\n    \"properties\": {\r\n      \"inputs\": [\r\n        {\r\n          \"dataType\": \"any\",\r\n          \"isConfigurationParameter\": null\r\n        },\r\n        {\r\n          \"dataType\": \"any\",\r\n          \"isConfigurationParameter\": null\r\n        }\r\n      ],\r\n      \"output\": {\r\n        \"dataType\": \"any\"\r\n      },\r\n      \"binding\": {\r\n        \"type\": \"Microsoft.StreamAnalytics/JavascriptUdf\",\r\n        \"properties\": {\r\n          \"script\": \"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzStreamAnalyticsFunction+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf?api-version=2017-04-01-preview+2": {
+  "Update-AzStreamAnalyticsFunction+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7?api-version=2017-04-01-preview+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7?api-version=2017-04-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Scalar\",\r\n    \"properties\": {\r\n      \"inputs\": [\r\n        {\r\n          \"dataType\": \"any\"\r\n        },\r\n        {\r\n          \"dataType\": \"any\"\r\n        }\r\n      ],\r\n      \"output\": {\r\n        \"dataType\": \"any\"\r\n      },\r\n      \"binding\": {\r\n        \"type\": \"Microsoft.StreamAnalytics/JavascriptUdf\",\r\n        \"properties\": {\r\n          \"script\": \"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -100,24 +100,24 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "694ff345-ad18-4896-a861-c512793c530a" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "54979e1b-abc1-47d6-ab79-394a01074281" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
-        "x-ms-correlation-request-id": [ "657fc666-bce9-44d2-9397-5f7cb99d58cd" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032324Z:657fc666-bce9-44d2-9397-5f7cb99d58cd" ],
+        "ETag": [ "7b5471d6-a63c-4992-9846-9f0146dbf5f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0888c7e2-b992-4c1b-b148-545d6df9d881" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/8717ec47-e8fd-4686-afbb-fdb3c820ac41" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "752b7603-eaed-4e51-8081-fb1981a83309" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250822T020504Z:752b7603-eaed-4e51-8081-fb1981a83309" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:23:24 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5BEB51AB69A24BB6946960C78C03564F Ref B: MAA201060513047 Ref C: 2025-08-22T02:05:03Z" ],
+        "Date": [ "Fri, 22 Aug 2025 02:05:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "647" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "892" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6/functions/functionob48nf\",\"name\":\"functionob48nf\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/functions\",\"properties\":{\"type\":\"Scalar\",\"properties\":{\"inputs\":[{\"dataType\":\"any\",\"isConfigurationParameter\":null},{\"dataType\":\"any\",\"isConfigurationParameter\":null}],\"output\":{\"dataType\":\"any\"},\"binding\":{\"type\":\"Microsoft.StreamAnalytics/JavascriptUdf\",\"properties\":{\"script\":\"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"}}}}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq/functions/function25pit7\",\r\n  \"name\": \"function25pit7\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs/functions\",\r\n  \"properties\": {\r\n    \"type\": \"Scalar\",\r\n    \"properties\": {\r\n      \"inputs\": [\r\n        {\r\n          \"dataType\": \"any\",\r\n          \"isConfigurationParameter\": null\r\n        },\r\n        {\r\n          \"dataType\": \"any\",\r\n          \"isConfigurationParameter\": null\r\n        }\r\n      ],\r\n      \"output\": {\r\n        \"dataType\": \"any\"\r\n      },\r\n      \"binding\": {\r\n        \"type\": \"Microsoft.StreamAnalytics/JavascriptUdf\",\r\n        \"properties\": {\r\n          \"script\": \"// Sample UDF which returns sum of two values.\\nfunction main(arg3, arg4) {\\n    return arg1 + arg2;\\n}\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

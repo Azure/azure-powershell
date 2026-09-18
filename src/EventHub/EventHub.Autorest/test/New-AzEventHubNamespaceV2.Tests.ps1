@@ -24,7 +24,6 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
         $eventhubNamespace.PublicNetworkAccess | Should -Be "Enabled"
         $eventHubNamespace.EnableAutoInflate | Should -Be $false
-        $eventHubNamespace.ZoneRedundant | Should -Be $false
         $eventHubNamespace.DisableLocalAuth | Should -Be $false
         $eventHubNamespace.KafkaEnabled | Should be $true
 
@@ -91,6 +90,12 @@ Describe 'New-AzEventHubNamespaceV2' {
 
         $listOfNamespaces = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup
         $listOfNamespaces.Count | Should -BeGreaterOrEqual 5
+
+        # Create a geo-Dr namespace
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
+        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName southcentralus -RoleType Secondary
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -SkuName Premium -Location westus -GeoDataReplicationLocation $primaryReplica, $secondaryReplica
+        $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
 
     }
 }

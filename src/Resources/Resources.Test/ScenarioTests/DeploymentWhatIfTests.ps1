@@ -284,6 +284,46 @@ function Test-WhatIfExcludeChangeTypesAtResourceGroupScope
 	}
 }
 
+<#
+.SYNOPSIS
+Tests resource group level deployment what-if with resource creation.
+#>
+function Test-WhatIfProviderNoRbacAtResourceGroupScope
+{
+	try
+	{
+		# Arrange.
+		$deploymentName = Get-ResourceName
+		$location = "westus"
+		$resourceGroupName = Get-ResourceGroupName
+		$storageAccountName = Get-ResourceName
+		$validationLevel = "ProviderNoRbac"
+
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+		# Act.
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
+			-ResourceGroupName $resourceGroupName `
+			-Name $deploymentName `
+			-ResultFormat ResourceIdOnly `
+			-TemplateFile sampleDeploymentTemplate.json `
+			-storageAccountName $storageAccountName `
+			-ValidationLevel $validationLevel
+
+		# Assert.
+		foreach ($change in $result.Changes)
+		{
+			Assert-AreEqual "Create" $change.ChangeType
+		}
+
+	}
+	finally
+	{
+		# Cleanup.
+		Clean-ResourceGroup $resourceGroupName
+	}
+}
+
 
 
 <#
@@ -505,6 +545,34 @@ function Test-WhatIfExcludeChangeTypesAtSubscriptionScope
 
 <#
 .SYNOPSIS
+Tests subscription level deployment what-if with resource creation.
+#>
+function Test-WhatIfProviderNoRbacAtSubscriptionScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+	$validationLevel = "ProviderNoRbac"
+
+	# Act.
+	$result = Get-AzDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-ResultFormat ResourceIdOnly `
+		-TemplateFile subscription_level_template.json `
+		-storageAccountName $storageAccountName `
+		-ValidationLevel $validationLevel
+
+	# Assert.
+	foreach ($change in $result.Changes)
+	{
+		Assert-AreEqual "Create" $change.ChangeType
+	}
+}
+
+<#
+.SYNOPSIS
 Tests management group level deployment what-if with resource creation.
 #>
 function Test-WhatIfCreateResourcesAtManagementGroupScope
@@ -615,6 +683,44 @@ function Test-WhatIfExcludeChangeTypesAtManagementGroupScope
 
 <#
 .SYNOPSIS
+Tests management group level deployment what-if with resource creation.
+#>
+function Test-WhatIfProviderNoRbacAtManagementGroupScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+	$validationLevel = "ProviderNoRbac"
+
+	# Act.
+	$result = Get-AzManagementGroupDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-ManagementGroupId $managementGroupId `
+		-TemplateFile management_group_level_template.json `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName `
+		-ValidationLevel $validationLevel
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -gt 0 }
+
+	foreach ($change in $result.Changes)
+	{
+		Assert-AreEqual "Create" $change.ChangeType
+	}
+}
+
+<#
+.SYNOPSIS
 Tests tenant level deployment what-if with resource creation.
 #>
 function Test-WhatIfCreateResourcesAtTenantScope
@@ -718,4 +824,41 @@ function Test-WhatIfExcludeChangeTypesAtTenantScope
 	Assert-AreEqual "Succeeded" $result.Status
 	Assert-NotNull $result.Changes
 	Assert-True { $result.Changes.Count -eq 0 }
+}
+
+<#
+.SYNOPSIS
+Tests tenant level deployment what-if with ExcludeChangeType.
+#>
+function Test-WhatIfProviderNoRbacAtTenantScope
+{
+	# Arrange.
+	$deploymentName = Get-ResourceName
+	$managementGroupId = "myTestMG"
+	$subscriptionId = "a93e8c5c-63cb-4635-933f-6d166ac25187"
+	$resourceGroupName = Get-ResourceGroupName
+	$storageAccountName = Get-ResourceName
+	$location = "westus"
+	$validationLevel = "ProviderNoRbac"
+
+	# Act.
+	$result = Get-AzTenantDeploymentWhatIfResult `
+		-Name $deploymentName `
+		-Location $location `
+		-TemplateFile management_group_level_template.json `
+		-targetMG $managementGroupId `
+		-nestedsubId $subscriptionId `
+		-nestedRG $resourceGroupName `
+		-storageAccountName $storageAccountName `
+		-ValidationLevel $validationLevel
+
+	# Assert.
+	Assert-AreEqual "Succeeded" $result.Status
+	Assert-NotNull $result.Changes
+	Assert-True { $result.Changes.Count -gt 0 }
+
+	foreach ($change in $result.Changes)
+	{
+		Assert-AreEqual "Create" $change.ChangeType
+	}
 }

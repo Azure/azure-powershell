@@ -143,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccountKeys
 
 ## NOTES
 

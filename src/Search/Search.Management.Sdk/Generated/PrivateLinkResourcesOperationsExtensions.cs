@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Search
     public static partial class PrivateLinkResourcesOperationsExtensions
     {
         /// <summary>
-        /// Gets a list of all supported private link resource types for the given service.
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,10 +23,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         public static System.Collections.Generic.IEnumerable<PrivateLinkResource> ListSupported(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -33,7 +36,8 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Gets a list of all supported private link resource types for the given service.
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -42,10 +46,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.ManagedServices","New-AzManagedServicesDefinition","2","5","Unassigned_Variable","5110","2","New-AzManagedServicesDefinition -Authorization $permantAuth is a null-valued parameter value.","-Authorization","Assign value for $permantAuth."
+"Az.ManagedServices","New-AzManagedServicesDefinition","2","5","Unassigned_Variable","5110","2","New-AzManagedServicesDefinition -Authorization $permantAuth is a null-valued parameter value.","-Authorization","Assign value for $permantAuth."

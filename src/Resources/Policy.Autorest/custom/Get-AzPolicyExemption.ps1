@@ -46,7 +46,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy exemption.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
@@ -68,14 +68,8 @@ param(
     [Parameter(ParameterSetName='IncludeDescendent', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.Management.Automation.SwitchParameter]
-    # Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.
+    # Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes. If not provided, only exemptions at and above the given scope are included.
     ${IncludeDescendent},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -147,16 +141,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Get-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # make mapping table
-    $mapping = @{
-        Get = 'Az.Policy.private\Get-AzPolicyExemption_Get';
-        GetViaIdentity = 'Az.Policy.private\Get-AzPolicyExemption_GetViaIdentity';
-        List = 'Az.Policy.private\Get-AzPolicyExemption_List';
-        List1 = 'Az.Policy.private\Get-AzPolicyExemption_List1';
-        List2 = 'Az.Policy.private\Get-AzPolicyExemption_List2';
-        List3 = 'Az.Policy.private\Get-AzPolicyExemption_List3';
-    }
 }
 
 process {
@@ -183,7 +167,6 @@ process {
     }
 
     if ($Name) {
-        $calledParameterSet = 'Get'
         $calledParameters.Name = $Name
         $calledParameters.Scope = $Scope
     }
@@ -204,20 +187,16 @@ process {
                         throw 'The IncludeDescendent switch is not supported for management group scopes.'
                     }
 
-                    $calledParameterSet = 'List3'
                     $calledParameters.ManagementGroupId = $resolved.ManagementGroupName
                 }
                 'subId' {
-                    $calledParameterSet = 'List'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                 }
                 'rgname' {
-                    $calledParameterSet = 'List1'
                     $calledParameters.SubscriptionId = @($resolved.SubscriptionId)
                     $calledParameters.ResourceGroupName = $resolved.ResourceGroupName
                 }
                 'resource' {
-                    $calledParameterSet = 'List2'
                     $calledParameters.ResourceProviderNamespace = $resolved.ResourceNamespace
                     $calledParameters.ResourceName = $resolved.ResourceName
                     $calledParameters.ResourceType = $resolved.ResourceType
@@ -237,37 +216,11 @@ process {
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('PolicyAssignmentIdFilter')
     $null = $calledParameters.Remove('IncludeDescendent')
-    $null = $calledParameters.Remove('BackwardCompatible')
 
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
-    }
-
-    $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $object = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $object = Az.Policy.internal\Get-AzPolicyExemption @calledParameters
 
     foreach ($item in $object) {
-        # add property bag for backward compatibility with previous SDK cmdlets
-        if ($BackwardCompatible) {
-            $propertyBag = @{
-                Description = $item.Description;
-                DisplayName = $item.DisplayName;
-                ExpiresOn = $item.ExpiresOn;
-                ExemptionCategory = $item.ExemptionCategory;
-                Metadata = (ConvertObjectToPSObject $item.Metadata);
-                PolicyDefinitionReferenceIds = (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId);
-                PolicyAssignmentId = $item.PolicyAssignmentId
-            }
-
-            $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-        }
-
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionReferenceId' -Value (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId) -Force
         $PSCmdlet.WriteObject($item)

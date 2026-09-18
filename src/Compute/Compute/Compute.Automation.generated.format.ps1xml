@@ -630,7 +630,11 @@
             <Label>ProvisioningState</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
-        </TableHeaders>
+		  <TableColumnHeader>
+			<Label>ResiliencyPolicy</Label>
+			<Alignment>Right</Alignment>
+		  </TableColumnHeader>
+		</TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
@@ -652,7 +656,10 @@
               <TableColumnItem>
                 <ScriptBlock>$_.ProvisioningState</ScriptBlock>
               </TableColumnItem>
-            </TableColumnItems>
+			  <TableColumnItem>
+				<ScriptBlock>$_.ResiliencyPolicy.ResilientVMCreationPolicy</ScriptBlock>
+			  </TableColumnItem>
+			</TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>

@@ -42,5 +42,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets the remote region for the other end of the Volume Replication.
         /// </summary>
         public string RemoteVolumeRegion { get; set; }
+
+        /// <summary>
+        /// Gets the status of the replication Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;
+        /// </summary>        
+        public string MirrorState { get; set; }
+
+        /// <summary>
+        /// Gets replication creation time
+        /// </summary>        
+        public System.DateTime? ReplicationCreationTime { get; set; }
+
+        /// <summary>
+        /// Gets replication deletion time
+        /// </summary>        
+        public System.DateTime? ReplicationDeletionTime { get; set; }
     }
 }

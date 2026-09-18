@@ -50,6 +50,26 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Validate that EdgeZone and Zones are not both specified.
+            // Treat any non-null Zones (including empty list) as invalid when ExtendedLocation is set,
+            // and explicitly null it out to prevent an empty list from being sent in the update payload.
+            if (this.AzureFirewall.ExtendedLocation != null && 
+                !string.IsNullOrEmpty(this.AzureFirewall.ExtendedLocation.Name))
+            {
+                if (this.AzureFirewall.Zones != null && this.AzureFirewall.Zones.Count > 0)
+                {
+                    throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.", nameof(this.AzureFirewall.Zones));
+                }
+
+                // Ensure an empty Zones list is not sent in the payload for EdgeZone firewalls
+                this.AzureFirewall.Zones = null;
+            }
+
+            // Note: VNet/PIP co-location validation is intentionally omitted for Set-AzFirewall.
+            // New-AzFirewall already validates at creation time, and the ARM service will reject
+            // mismatches during CreateOrUpdate. Avoiding extra GET calls on every update improves
+            // performance and eliminates a potential failure point.
+
             // Map to the sdk object
             var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
             secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);

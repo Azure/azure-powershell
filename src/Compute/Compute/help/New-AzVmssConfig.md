@@ -28,11 +28,17 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-SpotRestoreTimeout <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
  [-ScaleInPolicy <String[]>] [-EncryptionAtHost] [-OrchestrationMode <String>]
- [-CapacityReservationGroupId <String>] [-UserData <String>] [-AutomaticRepairAction <String>]
+ [-CapacityReservationGroupId <String>] [-DisableCapacityReservationAssignment] [-UserData <String>] [-AutomaticRepairAction <String>]
  [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-ImageReferenceId <String>]
  [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
- [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-ProcessorMode <String>] [-SecurityType <String>]
+ [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
+ [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
+ [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
+ [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
+ [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
+ [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,12 +56,19 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-EnableSpotRestore]
  [-SpotRestoreTimeout <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-TerminateScheduledEvents]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-EncryptionAtHost]
- [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-AutomaticRepairAction <String>] [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>]
- [-ImageReferenceId <String>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
- [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-ScaleInPolicy <String[]>] -IdentityType <ResourceIdentityType> [-IdentityId <String[]>]
+ [-EncryptionIdentity <String>] [-EncryptionAtHost] [-OrchestrationMode <String>]
+ [-CapacityReservationGroupId <String>] [-DisableCapacityReservationAssignment] [-UserData <String>] [-AutomaticRepairAction <String>]
+ [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-ImageReferenceId <String>]
+ [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
+ [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-ProcessorMode <String>] [-SecurityType <String>]
+ [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>] [-SecurityPostureExcludeExtension <String[]>]
+ [-SkuProfileVmSize <String[]>] [-SkuProfileAllocationStrategy <String>] [-EnableResilientVMCreate]
+ [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
+ [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
+ [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
+ [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -174,7 +187,7 @@ $securityType = "TrustedLaunch";
 $enable = $true;
 $disable = $false;
 $extDefaultName = "GuestAttestation";
-$vmGADefaultIDentity = "SystemAssigned";
+$vmGADefaultIdentity = "SystemAssigned";
 
 # NRP
 $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -214,6 +227,28 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
 This example Creates a new VMSS using VMSSConfig object for the Trusted Launch Security Type and validates flags SecureBoot and Vtpm as True by default.
 
+### Example 6: Create a VMSS config with processor mode
+```powershell
+New-AzVmssConfig -Location "westus" -SkuName "Standard_E2pds_v8" -SkuCapacity 2 -ProcessorMode "Deterministic"
+```
+
+### Example 7: Create a SpotPlus VMSS config
+```powershell
+New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 2 -UpgradePolicyMode "Automatic" -Priority "SpotPlus" -EvictionPolicy "Deallocate" -MaxPrice -1
+```
+
+This command creates a scale set configuration object whose instances use the Spot Plus priority, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+'-EvictionPolicy' and '-MaxPrice' behave the same way as they do for 'Spot'.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
+### Example 8: Create a SpotPlus VMSS config with a priority mix
+```powershell
+New-AzVmssConfig -Location "eastus2" -SkuName "Standard_D2s_v5" -SkuCapacity 10 -OrchestrationMode "Flexible" -PlatformFaultDomainCount 1 -Priority "SpotPlus" -EvictionPolicy "Delete" -BaseRegularPriorityCount 5 -RegularPriorityPercentage 50
+```
+
+This command creates a Flexible orchestration mode scale set configuration object that mixes regular priority instances with Spot Plus instances.
+The first 5 instances are regular priority, and 50 percent of the instances above that base are also regular priority. The remaining instances use the Spot Plus priority.
+
 ## PARAMETERS
 
 ### -AutomaticRepairAction
@@ -233,6 +268,36 @@ Accept wildcard characters: False
 
 ### -AutomaticRepairGracePeriod
 The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The minimum allowed grace period is 30 minutes (PT30M), which is also the default value. The maximum allowed grace period is 90 minutes (PT90M).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AutomaticZoneRebalanceBehavior
+Specifies the behavior for Automatic Zone Rebalance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutomaticZoneRebalanceStrategy
+Specifies the strategy for Automatic Zone Rebalance.
 
 ```yaml
 Type: System.String
@@ -321,6 +386,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EdgeZone
 Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
 
@@ -363,6 +443,66 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticZoneRebalance
+Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableMaxInstancePercentPerZone
+Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableResilientVMCreate
+Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableResilientVMDelete
+Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -442,6 +582,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EncryptionIdentity
+Specifies the user identity associated with the virtual machine.That identity will be used for Azure Disk Encryption.
+
+
+```yaml
+Type: System.String
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EvictionPolicy
 Specifies the eviction policy for the virtual machines in the scale set.
 
@@ -454,6 +610,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExcludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -481,6 +652,22 @@ HealthProbeId is in the form of '/subscriptions/{subscriptionId}/resourceGroups/
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -HighSpeedInterconnectPlacement
+Specifies the high speed interconnect placement for the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, Trunk
 
 Required: False
 Position: Named
@@ -543,6 +730,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeZone
+This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LicenseType
 Specify the license type, which is for bringing your own license scenario.
 
@@ -573,11 +775,41 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MaxInstancePercentPerZoneValue
+Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -MaxPrice
 Specifies the maximum price you are willing to pay for a Spot VM/VMSS. This price is in US Dollars. This price will be compared with the current Spot price for the VM size. Also, the prices are compared at the time of create/update of Spot VM/VMSS and the operation will only succeed if the maxPrice is greater than the current Spot price. The maxPrice will also be used for evicting a Spot VM/VMSS if the current Spot price goes beyond the maxPrice after creation of VM/VMSS. Possible values are: any decimal value greater than zero. Example: 0.01538.  -1 indicates that the Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you.
 
 ```yaml
 Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxZoneCount
+The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -756,10 +988,26 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machien in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior for VM instances in the scale set model. Typical values are `Deterministic` and `Opportunistic`.
 
 ```yaml
 Type: System.String
@@ -823,6 +1071,36 @@ The rules to be followed when scaling-in a virtual machine scale set.  Possible 
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityPostureExcludeExtension
+List of virtual machine extensions to exclude when applying the security posture.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityPostureId
+The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -919,6 +1197,36 @@ Aliases: AccountType
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuProfileAllocationStrategy
+Allocation strategy for the SKU profile.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuProfileVmSize
+Array of VM sizes for the scale set.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -1079,6 +1387,60 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZonePlacementPolicy
+Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ZonalPlatformFaultDomainAlignMode
+Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. 'BestEffortAligned' offloads alignment to VMSS - disks that support enough Storage Fault Domains are aligned, while others remain unaligned, preventing deployment failures for mixed-SKU disk configurations. Applicable to VMSS Flex only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Aligned, Unaligned, BestEffortAligned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LifecycleHooksProfile
+Specifies the lifecycle hooks profile for the virtual machine scale set.
+
+Use 'New-AzVmssLifecycleHookConfig' to create hook objects, then build the profile with 'Set-AzVmssLifecycleHooksProfile', or create a LifecycleHooksProfile object directly as shown:
+
+```powershell
+$hook    = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
+$profile = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile -Property @{ LifecycleHooks = @($hook) }
+New-AzVmssConfig -Location eastus -SkuCapacity 2 -LifecycleHooksProfile $profile
+```
+
+```yaml
+Type: Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

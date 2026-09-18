@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TagsResource>> CreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, TagsResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TagsResource,TagsCreateOrUpdateAtScopeHeaders>> CreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, TagsResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// This operation allows replacing, merging or selectively deleting tags on
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TagsResource>> UpdateAtScopeWithHttpMessagesAsync(string scope, TagsPatchResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TagsResource,TagsUpdateAtScopeHeaders>> UpdateAtScopeWithHttpMessagesAsync(string scope, TagsPatchResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the entire set of tags on a resource or subscription.
@@ -260,7 +260,95 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteAtScopeWithHttpMessagesAsync(string scope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TagsDeleteAtScopeHeaders>> DeleteAtScopeWithHttpMessagesAsync(string scope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation allows adding or replacing the entire set of tags on the
+        /// specified resource or subscription. The specified entity can have a maximum
+        /// of 50 tags.
+        /// </summary>
+        /// <remarks>
+        /// This operation allows adding or replacing the entire set of tags on the
+        /// specified resource or subscription. The specified entity can have a maximum
+        /// of 50 tags.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The resource scope.
+        /// </param>
+        /// <param name='parameters'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TagsResource,TagsCreateOrUpdateAtScopeHeaders>> BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, TagsResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// This operation allows replacing, merging or selectively deleting tags on
+        /// the specified resource or subscription. The specified entity can have a
+        /// maximum of 50 tags at the end of the operation. The &#39;replace&#39; option
+        /// replaces the entire set of existing tags with a new set. The &#39;merge&#39; option
+        /// allows adding tags with new names and updating the values of tags with
+        /// existing names. The &#39;delete&#39; option allows selectively deleting tags based
+        /// on given names or name/value pairs.
+        /// </summary>
+        /// <remarks>
+        /// This operation allows replacing, merging or selectively deleting tags on
+        /// the specified resource or subscription. The specified entity can have a
+        /// maximum of 50 tags at the end of the operation. The &#39;replace&#39; option
+        /// replaces the entire set of existing tags with a new set. The &#39;merge&#39; option
+        /// allows adding tags with new names and updating the values of tags with
+        /// existing names. The &#39;delete&#39; option allows selectively deleting tags based
+        /// on given names or name/value pairs.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The resource scope.
+        /// </param>
+        /// <param name='parameters'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TagsResource,TagsUpdateAtScopeHeaders>> BeginUpdateAtScopeWithHttpMessagesAsync(string scope, TagsPatchResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the entire set of tags on a resource or subscription.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the entire set of tags on a resource or subscription.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The resource scope.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TagsDeleteAtScopeHeaders>> BeginDeleteAtScopeWithHttpMessagesAsync(string scope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// This operation performs a union of predefined tags, resource tags, resource

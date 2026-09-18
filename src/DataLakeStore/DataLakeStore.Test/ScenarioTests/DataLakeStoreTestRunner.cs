@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.TestFx;
 using System.Collections.Generic;
@@ -55,19 +56,10 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
-                .WithManagementClients(mockContext =>
-                    {
-                        var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-                        AdlsClientFactory.IsTest = true;
-                        AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(currentEnvironment, new AdlMockDelegatingHandler());
-                        AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
-                        var dummyObj = new object();
-                        return dummyObj;
-                    }
-                )
-                .WithCleanupAction(
-                    () => AdlsClientFactory.IsTest = false
-                )
+                .WithManagementClients(context =>
+                {
+                    return new object();
+                })
                 .Build();
         }
     }

@@ -8,33 +8,34 @@ schema: 2.0.0
 # Update-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Updates an existing RedisEnterprise cluster
+Update an existing (overwrite/reupdate  with potential downtime) cache cluster
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-Sku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-HighAvailability <String>] [-KeyEncryptionKeyIdentityType <String>]
+ [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-Sku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing RedisEnterprise cluster
+Update an existing (overwrite/reupdate  with potential downtime) cache cluster
 
 ## EXAMPLES
 
@@ -69,9 +70,9 @@ Accept wildcard characters: False
 ```
 
 ### -Capacity
-The size of the RedisEnterprise cluster.
-Defaults to 2 or 3 depending on SKU.
-Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
+This property is only used with Enterprise and EnterpriseFlash SKUs.
+Determines the size of the cluster.
+Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
 
 ```yaml
 Type: System.Int32
@@ -86,7 +87,10 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
@@ -132,11 +136,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -147,13 +151,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+### -HighAvailability
+Enabled by default.
+If highAvailability is disabled, the data set is not replicated.
+This affects the availability SLA, and increases the risk of data loss.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +170,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
@@ -184,7 +187,7 @@ Accept wildcard characters: False
 Only userAssignedIdentity is supported in this API version; other types may be supported in the future
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.CmkIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -213,10 +216,13 @@ Accept wildcard characters: False
 
 ### -MinimumTlsVersion
 The minimum TLS version for the cluster to support, e.g.
-'1.2'
+'1.2'.
+Newer versions can be added in the future.
+Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them.
+They are mentioned only for the sake of consistency with old API versions.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -232,6 +238,23 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network traffic can access the Redis cluster.
+Only 'Enabled' or 'Disabled' can be set.
+null is returned only for clusters created using an old API version which do not have this property and cannot be set.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -259,11 +282,13 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The type of RedisEnterprise cluster to deploy.
-Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
+The level of Redis Enterprise cluster to deploy.
+Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.).
+For more information on SKUs see the latest pricing documentation.
+Note that additional SKUs may become supported in the future.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases: SkuName
 
@@ -294,6 +319,37 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The Availability Zones where this cluster will be deployed.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -344,7 +400,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster
 
 ## NOTES
 

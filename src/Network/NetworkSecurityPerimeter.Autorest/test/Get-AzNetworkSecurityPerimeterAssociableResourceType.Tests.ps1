@@ -1,0 +1,36 @@
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimeterAssociableResourceType'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzNetworkSecurityPerimeterAssociableResourceType.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'Get-AzNetworkSecurityPerimeterAssociableResourceType' {
+    It 'List' {
+        {
+            Get-AzNetworkSecurityPerimeterAssociableResourceType -Location $env.location
+
+        } | Should -Not -Throw
+    }
+
+    It 'ListAndValidateNewProperties' {
+        $result = Get-AzNetworkSecurityPerimeterAssociableResourceType -Location $env.location
+        $result | Should -Not -BeNullOrEmpty
+        $resource = $result[0]
+        $resource.ReadinessState | Should -Not -BeNullOrEmpty
+        $resource.ReadinessState | Should -BeIn @('GA', 'Preview', 'Onboarding')
+        $resource.OutboundSupported | Should -Not -BeNull
+        $resource.OutboundSupported | Should -BeOfType [bool]
+        $resource.PSObject.Properties.Name | Should -Contain 'Description'
+        $resource.PSObject.Properties.Name | Should -Contain 'ServiceTag'
+    }
+}

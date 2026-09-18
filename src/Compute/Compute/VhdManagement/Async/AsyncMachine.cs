@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
         public bool IsCompleted { get; internal set; }
 
         // Cancels pending async operation meaning that we'll call the corresponding end operation whenever it completes
-        // (since there is no currently real cancelation mechanism for .NET async operations)
+        // (since there is no currently real cancellation mechanism for .NET async operations)
         public void Cancel(AsyncCallback endAsyncOperation)
         {
             if (endAsyncOperation == null)
@@ -180,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
 
             // this.CheckOperationCompletion will set AsyncOperation.IsCompleted to false if quorum is reached or timeout is expired,
             // and async machine has resumed its execution. In this case we'll consider the operation not completed in time and 
-            // require user to schedule cancelation on completion port
+            // require user to schedule cancellation on completion port
             this.CheckOperationCompletion(this);
 
             if (!this.IsCompleted && this.EndAsynchronousOperation != null && Interlocked.CompareExchange(ref this.isEndOperationCalled, True, False) == False)
@@ -297,7 +297,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
                 //
                 // Async machine is not resumed at this point despite that some operations may be completed by this time.
                 // We'll mark all operations as incomplete and resume async machine execution so that user would schedule
-                // cancelation on all port operations.
+                // cancellation on all port operations.
                 //
 
                 lock (this.OperationsLock)

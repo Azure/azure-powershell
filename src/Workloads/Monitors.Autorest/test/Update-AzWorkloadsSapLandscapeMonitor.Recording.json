@@ -1,0 +1,84 @@
+{
+  "Update-AzWorkloadsSapLandscapeMonitor+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": "{\n  \"properties\": {\n    \"grouping\": {\n      \"landscape\": [\n        {\n          \"name\": \"NonProd\",\n          \"topSid\": [ \"CHA\" ]\n        }\n      ],\n      \"sapApplication\": [\n        {\n          \"name\": \"NonProd\",\n          \"topSid\": [ \"CHA\" ]\n        }\n      ]\n    },\n    \"topMetricsThresholds\": [\n      {\n        \"name\": \"Instance Availability\",\n        \"green\": 90,\n        \"yellow\": 75,\n        \"red\": 50\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "426" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"4702daca-0000-0100-0000-68e7aff60000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/westindia/3f321bca-4c17-4602-96ec-a3bc23443e70" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "583f86a1-bf0a-48c7-865a-348d7cabae03" ],
+        "x-ms-correlation-request-id": [ "4cef8265-65b0-4b3a-956c-a8afebd4462f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T125206Z:4cef8265-65b0-4b3a-956c-a8afebd4462f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A1BF0E53F5964BD38A73D9A153370F20 Ref B: PNQ231110909040 Ref C: 2025-10-09T12:52:04Z" ],
+        "Date": [ "Thu, 09 Oct 2025 12:52:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T07:34:03.6880234Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T12:52:05.593469Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"CHA\"]}],\"sapApplication\":[{\"name\":\"NonProd\",\"topSid\":[\"CHA\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzWorkloadsSapLandscapeMonitor+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": "{\n  \"properties\": {\n    \"grouping\": {\n      \"landscape\": [\n        {\n          \"name\": \"NonProd\",\n          \"topSid\": [ \"CHA\" ]\n        }\n      ],\n      \"sapApplication\": [\n        {\n          \"name\": \"NonProd\",\n          \"topSid\": [ \"CHA\" ]\n        }\n      ]\n    },\n    \"topMetricsThresholds\": [\n      {\n        \"name\": \"Instance Availability\",\n        \"green\": 90,\n        \"yellow\": 75,\n        \"red\": 50\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "426" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"4702e5ca-0000-0100-0000-68e7aff70000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5f2064eb-56d6-4a8d-aaaf-500454539218/eastus/a9019cf5-9502-4313-a625-27ddf07025f2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "baf751af-c926-43d9-9234-15eafcb5ebad" ],
+        "x-ms-correlation-request-id": [ "596bfc72-56ce-4c99-8100-af636f7691e6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T125207Z:596bfc72-56ce-4c99-8100-af636f7691e6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F051811A8C5E420687B9725317083BD6 Ref B: PNQ231110909040 Ref C: 2025-10-09T12:52:06Z" ],
+        "Date": [ "Thu, 09 Oct 2025 12:52:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/40449e6d-a5d2-40f1-a151-0b76f21a48c0/resourceGroups/ams-long-haul-rg-1/providers/Microsoft.Workloads/monitors/ams-long-haul-bs-new-mon-2/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"tpounjula@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T07:34:03.6880234Z\",\"lastModifiedBy\":\"jasksingh@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T12:52:07.1254369Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"CHA\"]}],\"sapApplication\":[{\"name\":\"NonProd\",\"topSid\":[\"CHA\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  }
+}

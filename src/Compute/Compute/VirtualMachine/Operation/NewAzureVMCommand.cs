@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+ // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,6 +59,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+    [GenericBreakingChangeWithVersion("The default VM size will change from 'Standard_D2s_v3' to 'Standard_D2s_v5'.", "15.0.0", "11.0.0", "Nov 2025")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
@@ -286,10 +287,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string VmssId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
-        [PSArgumentCompleter("Regular", "Spot")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
@@ -353,6 +354,16 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
@@ -408,6 +419,19 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.")]
         [PSArgumentCompleter("SCSI", "NVMe")]
         public string DiskControllerType { get; set; }
@@ -453,15 +477,77 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.")]
+        [ValidateSet("Ed25519", "RSA")]
+        public string SshKeyType { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Any")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+        
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AlignRegionalDisksToVMZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
+        public SwitchParameter AddProxyAgentExtension { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => c.UserData))
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
-                {
-                    this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
-                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
-                }
+                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
             }
 
             switch (ParameterSetName)
@@ -491,7 +577,7 @@ namespace Microsoft.Azure.Commands.Compute
                 _cmdlet = cmdlet;
                 _client = client;
                 _resourceClient = resourceClient;
-                _cmdlet.validate();
+                _cmdlet.ValidateVmParameters();
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
@@ -579,25 +665,19 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 else {
-                    publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
+                    // since Az 13.0.0 and Az.Compute 9.0.0, if PublicIpSku is not specified, it should be Standard by default.
+                    // https://aka.ms/ipbasictostandard
+                    publicIpSku = PublicIPAddressStrategy.Sku.Standard;
                 }
                 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    if (_cmdlet.IsTrustedLaunchOrConfidentialVM(_cmdlet.SecurityType))
                     {
                         _cmdlet.SecurityType = _cmdlet.SecurityType;
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                }
-
-                // Standard security type removing value since API does not support it.
-                if (_cmdlet.IsParameterBound(c => c.SecurityType)  
-                    && _cmdlet.SecurityType != null
-                    && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
-                {
-                    _cmdlet.SecurityType = null;
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -670,7 +750,7 @@ namespace Microsoft.Azure.Commands.Compute
                 CM.ExtendedLocation extLoc = null;
                 if (_cmdlet.EdgeZone != null)
                 {
-                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                    extLoc = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
                 }
 
                 if (_cmdlet.DiskFile == null)
@@ -705,6 +785,7 @@ namespace Microsoft.Azure.Commands.Compute
                         additionalCapabilities: vAdditionalCapabilities,
                         vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
                         vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
+                        processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                         imageReferenceId: _cmdlet.ImageReferenceId,
                         auxAuthHeader: auxAuthHeader,
                         diskControllerType: _cmdlet.DiskControllerType,
@@ -714,8 +795,17 @@ namespace Microsoft.Azure.Commands.Compute
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot,
                         ifMatch: _cmdlet.IfMatch,
-                        ifNoneMatch: _cmdlet.IfNoneMatch
-                        );
+                        ifNoneMatch: _cmdlet.IfNoneMatch,
+                        zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
+                        includeZone: _cmdlet.IncludeZone,
+                        excludeZone: _cmdlet.ExcludeZone,
+                        alignRegionalDisksToVMZone: _cmdlet.AlignRegionalDisksToVMZone,
+                        enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                        addProxyAgentExtension: _cmdlet.AddProxyAgentExtension ? true : (bool?)null,
+                        scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
+                        enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
+                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
+                    );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
                 {
@@ -751,10 +841,12 @@ namespace Microsoft.Azure.Commands.Compute
                         additionalCapabilities: vAdditionalCapabilities,
                         vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
                         vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
+                        processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                         extendedLocation: extLoc,
                         securityType: _cmdlet.SecurityType,
                         enableVtpm: _cmdlet.EnableVtpm,
-                        enableSecureBoot: _cmdlet.EnableSecureBoot
+                        enableSecureBoot: _cmdlet.EnableSecureBoot,
+                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
                     );
                 }
             }
@@ -770,48 +862,12 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            // Check TrustedLaunch UEFI values defaulting
-            if (this.IsParameterBound(c => c.SecurityType)
-                && this.SecurityType != null)
+            if (this.IsParameterBound(c => c.Image))
             {
-                if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
-                {
-                    this.SecurityType = this.SecurityType;
-                    this.EnableVtpm = this.EnableVtpm ?? true;
-                    this.EnableSecureBoot = this.EnableSecureBoot ?? true;
-                }
-                // Default in TL Image to ease later migration. 
-                else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
-                {
-                    if (!this.IsParameterBound(c => c.Image)
-                    && !this.IsParameterBound(c => c.ImageReferenceId)
-                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
-                    {
-                        this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
-                    }
-                }
-                
+                WriteInformation(HelpMessages.PSVMImageMessage, new string[] { "PSHOST" });
             }
-            // Default TrustedLaunch values for SimpleParameterSet (no config)
-            // imagerefid is specifically shared gallery id, so don't want it.
-            else
-            {
-                if (!this.IsParameterBound(c => c.Image) 
-                    && !this.IsParameterBound(c => c.ImageReferenceId) 
-                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
-                {
-                    this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                    this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
-                    if (!this.IsParameterBound(c => c.EnableSecureBoot))
-                    {
-                        this.EnableSecureBoot = true;
-                    }
-                    if (!this.IsParameterBound(c => c.EnableVtpm))
-                    {
-                        this.EnableVtpm = true;
-                    }
-                }
-            } 
+
+            ConfigureStrategySecurityDefaults();
 
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                     DefaultProfile.DefaultContext,
@@ -926,7 +982,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public void DefaultExecuteCmdlet()
         {
-            validate();
+            ValidateVmParameters();
 
             base.ExecuteCmdlet();
             if (this.VM.DiagnosticsProfile == null)
@@ -949,155 +1005,16 @@ namespace Microsoft.Azure.Commands.Compute
             CM.ExtendedLocation ExtendedLocation = null;
             if (this.EdgeZone != null)
             {
-                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
-            // Normal TL defaulting check, minimal params
-            if (this.VM.SecurityProfile?.SecurityType == null
-             && this.VM.StorageProfile?.ImageReference == null
-             && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null
-             && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) //had to add this
-            {
-                defaultTrustedLaunchAndUefi();
-                setTrustedLaunchImage();
-            }
-            // Disk attached scenario for TL defaulting
-            // Determines if the disk has SecurityType enabled.
-            // If so, turns on TrustedLaunch for this VM.
-            else if (this.VM.SecurityProfile?.SecurityType == null
-                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
-            {
-                var mDiskId = this.VM.StorageProfile?.OsDisk?.ManagedDisk.Id.ToString();
-                var diskIdParts = mDiskId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                string rgName = diskIdParts[Array.IndexOf(diskIdParts, "resourceGroups") + 1];
-                string diskName = diskIdParts[Array.IndexOf(diskIdParts, "disks") + 1];
-                var getManagedDisk = ComputeClient.ComputeManagementClient.Disks.Get(rgName, diskName);
-                if (getManagedDisk.SecurityProfile?.SecurityType != null
-                    && getManagedDisk.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.TrustedLaunchSecurityType)
-                {
-                    defaultTrustedLaunchAndUefi();
-                }
-            }
-            // ImageReference provided, TL defaulting occurs if image is Gen2. 
-            // This will handle when the Id is provided in a URI format and 
-            // when the image segments are provided individually.
-            else if (this.VM.SecurityProfile?.SecurityType == null
-                && this.VM.StorageProfile?.ImageReference != null)
-            {
-                if (this.VM.StorageProfile?.ImageReference?.Id != null)
-                {
-                    string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
+            // SIMPLIFIED: This replaces ALL the complex security configuration logic
+            ConfigureTrustedLaunchDefaults();
 
-                    string galleryImgIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/galleries/(?<gallery>[^/]+)/images/(?<image>[^/]+)";
-                    string managedImageIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/images/(?<image>[^/]+)";
-                    string defaultExistingImagePattern = @"/Subscriptions/(?<subscriptionId>[^/]+)/Providers/Microsoft.Compute/Locations/(?<location>[^/]+)/Publishers/(?<publisher>[^/]+)/ArtifactTypes/VMImage/Offers/(?<offer>[^/]+)/Skus/(?<sku>[^/]+)/Versions/(?<version>[^/]+)";
-
-                    //Gallery Id
-                    Regex galleryRgx = new Regex(galleryImgIdPattern, RegexOptions.IgnoreCase);
-                    Match galleryMatch = galleryRgx.Match(imageRefString);
-                    // Managed Image Id
-                    Regex managedImageRgx = new Regex(managedImageIdPattern, RegexOptions.IgnoreCase);
-                    Match managedImageMatch = managedImageRgx.Match(imageRefString);
-                    // Default Image Id
-                    Regex defaultImageRgx = new Regex(defaultExistingImagePattern, RegexOptions.IgnoreCase);
-                    Match defaultImageMatch = defaultImageRgx.Match(imageRefString);
-
-                    if (defaultImageMatch.Success)
-                    {
-                        var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                        // It's a default existing image  
-                        string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
-                        string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
-                        string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
-                        string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
-                        //location is required when config object provided. 
-                        var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
-                                this.Location.Canonicalize(),
-                                imagePublisher,
-                                imageOffer,
-                                imageSku,
-                                version: imageVersion).GetAwaiter().GetResult();
-
-                        setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
-                    }
-                    // This scenario might have additional logic added later, so making its own if check fo now.
-                    else if (galleryMatch.Success || managedImageMatch.Success)
-                    {
-                        // do nothing, send message to use TL.
-                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                        {
-                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                        }
-                    }
-                    else
-                    {
-                        // Default behavior is to remind customer to use TrustedLaunch.
-                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                        {
-                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                        }
-                    }
-                }
-                else if (this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId != null) {
-                    // do nothing, send message to use TrustedLaunch.
-                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                    {
-                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                    }
-                }
-                else if (this.VM.StorageProfile?.ImageReference?.CommunityGalleryImageId != null) {
-                    // do nothing, send message to use TrustedLaunch.
-                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                    {
-                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                    }
-                }
-                else
-                {
-                    // handle each field in image reference itself to then call it.
-                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone = retrieveSpecificImageFromNotId();
-                    setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
-                }
-            }
-            else if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
-                && this.VM.StorageProfile?.ImageReference == null
-                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
-                && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null)
+            // Final UEFI configuration for any TrustedLaunch/ConfidentialVM
+            if (IsTrustedLaunchOrConfidentialVM(this.VM.SecurityProfile?.SecurityType))
             {
-                defaultTrustedLaunchAndUefi();
-                setTrustedLaunchImage();
-            }
-
-            // SecureBootEnabled and VtpmEnabled defaulting scenario.
-            if (this.VM.SecurityProfile?.SecurityType != null
-                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
-                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
-            {
-                if (this.VM?.SecurityProfile?.UefiSettings != null)
-                {
-                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
-                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
-                }
-                else
-                {
-                    this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
-                }
-            }
-
-            // Standard security type removing value since API does not support it yet.
-            if (this.VM.SecurityProfile?.SecurityType != null
-                && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
-            {
-                if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
-                    && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
-                    && this.VM.SecurityProfile.EncryptionAtHost == null)
-                {
-                    this.VM.SecurityProfile = null;
-                }
-                else
-                {
-                    this.VM.SecurityProfile.SecurityType = null;
-                }
+                SetDefaultUefiSettings();
             }
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
@@ -1129,7 +1046,10 @@ namespace Microsoft.Azure.Commands.Compute
                         SecurityProfile = this.VM.SecurityProfile,
                         CapacityReservation = this.VM.CapacityReservation,
                         UserData = this.VM.UserData,
-                        PlatformFaultDomain = this.VM.PlatformFaultDomain
+                        PlatformFaultDomain = this.VM.PlatformFaultDomain,
+                        Placement = this.VM.Placement,
+                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy,
+                        ResiliencyProfile = this.VM.ResiliencyProfile
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
@@ -1151,7 +1071,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    Rest.Azure.AzureOperationResponse<VirtualMachine> result;
+                    Rest.Azure.AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
                     {
@@ -1163,7 +1083,7 @@ namespace Microsoft.Azure.Commands.Compute
                         result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
-                        parameters,this.IfMatch,this.IfNoneMatch,
+                        parameters, this.IfMatch, this.IfNoneMatch,
                         auxAuthHeader).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)
@@ -1174,40 +1094,45 @@ namespace Microsoft.Azure.Commands.Compute
 
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
-                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
-                    {
-                        var currentBginfoVersion = GetBginfoExtension();
+					if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+					{
+						// The BGInfo extension is a convenience add-on and the virtual machine has
+						// already been created at this point, so a failure to look it up or install
+						// it must not fail the cmdlet.
+						try
+						{
+							var currentBginfoVersion = GetBginfoExtension();
 
-                        if (!string.IsNullOrEmpty(currentBginfoVersion))
-                        {
-                            var extensionParameters = new VirtualMachineExtension
-                            {
-                                Location = this.Location,
-                                Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                                VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                TypeHandlerVersion = currentBginfoVersion,
-                                AutoUpgradeMinorVersion = true,
-                            };
+							if (!string.IsNullOrEmpty(currentBginfoVersion))
+							{
+								var extensionParameters = new VirtualMachineExtension
+								{
+									Location = this.Location,
+									Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+									VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+									TypeHandlerVersion = currentBginfoVersion,
+									AutoUpgradeMinorVersion = true,
+								};
 
-                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Name")
-                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Type")
-                                .SetValue(extensionParameters, VirtualMachineExtensionType);
+								var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+									this.ResourceGroupName,
+									this.VM.Name,
+									VirtualMachineBGInfoExtensionContext.ExtensionDefaultName, 
+									extensionParameters).GetAwaiter().GetResult();
+								psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+							}
+						}
+						catch (Exception bginfoEx)
+						{
+							WriteWarning(string.Format(Properties.Resources.ErrorDuringInstallingBginfoExtension, bginfoEx.Message));
+						}
+					}
 
-                            var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.VM.Name,
-                                VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                extensionParameters).GetAwaiter().GetResult();
-                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
-                        }
-                    }
-
-                    WriteObject(psResult);
+					WriteObject(psResult);
                 });
             }
         }
-        
+
         private void setTrustedLaunchImage()
         {
             if (this.VM.StorageProfile == null)
@@ -1270,10 +1195,7 @@ namespace Microsoft.Azure.Commands.Compute
                     
                 }
 
-                if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                {
-                    WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                }
+                ShowTrustedLaunchUpgradeMessage();
             }
         }
 
@@ -1361,49 +1283,46 @@ namespace Microsoft.Azure.Commands.Compute
         {
             var canonicalizedLocation = this.Location.Canonicalize();
 
-            var publishers =
-                ComputeClient.ComputeManagementClient.VirtualMachineImages.ListPublishers(canonicalizedLocation);
-
-            var publisher = publishers.FirstOrDefault(e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher));
-
-            if (publisher == null || !publisher.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher))
+            // The publisher and extension type are well-known constants, so the image catalogue is
+            // only consulted to discover the latest available version. Those lookups live under
+            // 'locations/publishers', which lags the api-version the Compute client targets, so a
+            // failure there must fall back to the default version rather than skip the extension
+            // or fail the cmdlet after the virtual machine has already been created.
+            try
             {
-                return null;
-            }
+                var bginfoVersions =
+                    ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages.ListVersions(
+                        canonicalizedLocation,
+                        VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                        VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
 
-            var virtualMachineImageClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages;
-
-
-            var imageTypes =
-                virtualMachineImageClient.ListTypes(canonicalizedLocation,
-                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher);
-
-            var extensionType = imageTypes.FirstOrDefault(
-                e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName));
-
-            if (extensionType == null || !extensionType.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName))
-            {
-                return null;
-            }
-
-            var bginfoVersions =
-                virtualMachineImageClient.ListVersions(canonicalizedLocation,
-                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-
-            if (bginfoVersions != null
-                && bginfoVersions.Count > 0)
-            {
-                return bginfoVersions.Max(ver =>
+                if (bginfoVersions != null
+                    && bginfoVersions.Count > 0)
                 {
-                    Version result;
-                    return (Version.TryParse(ver.Name, out result))
-                        ? string.Format("{0}.{1}", result.Major, result.Minor)
-                        : VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
-                });
+                    Version latestVersion = bginfoVersions
+                        .Select(ver =>
+                        {
+                            Version parsed;
+                            return Version.TryParse(ver.Name, out parsed) ? parsed : null;
+                        })
+                        .Where(parsed => parsed != null)
+                        .Max();
+
+                    if (latestVersion != null)
+                    {
+                        return string.Format("{0}.{1}", latestVersion.Major, latestVersion.Minor);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteVerbose(string.Format(
+                    Properties.Resources.BginfoExtensionVersionLookupFailed,
+                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
+                    ex.Message));
             }
 
-            return null;
+            return VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
         }
 
         private bool IsLinuxOs()
@@ -1524,7 +1443,7 @@ namespace Microsoft.Azure.Commands.Compute
             SM.ExtendedLocation extendedLocation = null;
             if (this.EdgeZone != null)
             {
-                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationType.EdgeZone };
             }
 
             var storaeAccountParameter = new StorageAccountCreateParameters
@@ -1608,7 +1527,7 @@ namespace Microsoft.Azure.Commands.Compute
                     SshPublicKeyResource sshkey = new SshPublicKeyResource();
                     sshkey.Location = this.Location != null ? this.Location : "eastus";
                     SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName);
+                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName, this.SshKeyType);
 
                     string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
                     if (!Directory.Exists(sshFolder))
@@ -1682,33 +1601,213 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private void validate()
+        private void ConfigureTrustedLaunchDefaults()
         {
-            if (this.IsParameterBound(c => c.SshKeyName))
+            // Skip if security type already configured
+            if (this.VM.SecurityProfile?.SecurityType != null)
             {
-                if (this.ParameterSetName == "DefaultParameterSet" && !IsLinuxOs())
+                // Handle the one special case where TL is set but no image
+                if (IsTrustedLaunchOrConfidentialVM(this.VM.SecurityProfile.SecurityType) &&
+                    this.VM.StorageProfile?.ImageReference == null &&
+                    this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null &&
+                    this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null)
                 {
-                    throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                    defaultTrustedLaunchAndUefi();
+                    setTrustedLaunchImage();
                 }
+                return;
+            }
 
-                if (this.ParameterSetName == "SimpleParameterSet")
-                {
-                    var client = new Client(DefaultProfile.DefaultContext);
-                    ImageAndOsType ImageAndOsType = client.UpdateImageAndOsTypeAsync(
-                            null, this.ResourceGroupName, this.Image, "").Result;
-                    if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
-                    {
-                        throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
-                    }
-                }
+            // Determine what type of configuration we have
+            var hasImageReference = this.VM.StorageProfile?.ImageReference != null;
+            var hasAttachedDisk = this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null;
+            var hasSharedGallery = this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId != null;
+
+            if (!hasImageReference && !hasAttachedDisk && !hasSharedGallery)
+            {
+                // Default case: no configuration provided
+                defaultTrustedLaunchAndUefi();
+                setTrustedLaunchImage();
+            }
+            else if (hasAttachedDisk)
+            {
+                CheckAttachedDiskForTrustedLaunch();
+            }
+            else if (hasImageReference)
+            {
+                CheckImageReferenceForTrustedLaunch();
             }
             else
             {
-                if (this.GenerateSshKey.IsPresent)
+                ShowTrustedLaunchUpgradeMessage();
+            }
+        }
+        public bool IsTrustedLaunchOrConfidentialVM(string securityType)
+        {
+            if (string.IsNullOrEmpty(securityType)) return false;
+            var lower = securityType.ToLower();
+            return lower == ConstantValues.TrustedLaunchSecurityType ||
+                   lower == ConstantValues.ConfidentialVMSecurityType;
+        }
+
+        private void CheckAttachedDiskForTrustedLaunch()
+        {
+            var mDiskId = this.VM.StorageProfile.OsDisk.ManagedDisk.Id.ToString();
+            var diskIdParts = mDiskId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            string rgName = diskIdParts[Array.IndexOf(diskIdParts, "resourceGroups") + 1];
+            string diskName = diskIdParts[Array.IndexOf(diskIdParts, "disks") + 1];
+            var getManagedDisk = ComputeClient.ComputeManagementClient.Disks.Get(rgName, diskName);
+
+            if (getManagedDisk.SecurityProfile?.SecurityType != null &&
+                getManagedDisk.SecurityProfile.SecurityType.ToString().ToLower() == ConstantValues.TrustedLaunchSecurityType)
+            {
+                defaultTrustedLaunchAndUefi();
+            }
+        }
+
+        private void CheckImageReferenceForTrustedLaunch()
+        {
+            if (this.VM.StorageProfile.ImageReference.Id != null)
+            {
+                // Handle the complex image ID logic (keeping original logic but simplified flow)
+                string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
+                string defaultImagePattern = @"/Subscriptions/(?<subscriptionId>[^/]+)/Providers/Microsoft.Compute/Locations/(?<location>[^/]+)/Publishers/(?<publisher>[^/]+)/ArtifactTypes/VMImage/Offers/(?<offer>[^/]+)/Skus/(?<sku>[^/]+)/Versions/(?<version>[^/]+)";
+
+                if (Regex.IsMatch(imageRefString, defaultImagePattern, RegexOptions.IgnoreCase))
                 {
-                    throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+                    var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                    string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
+                    string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
+                    string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
+                    string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+
+                    var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                            this.Location.Canonicalize(), imagePublisher, imageOffer, imageSku, version: imageVersion).GetAwaiter().GetResult();
+                    setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                }
+                else
+                {
+                    ShowTrustedLaunchUpgradeMessage();
                 }
             }
+            else if (this.VM.StorageProfile.ImageReference.SharedGalleryImageId != null ||
+                     this.VM.StorageProfile.ImageReference.CommunityGalleryImageId != null)
+            {
+                ShowTrustedLaunchUpgradeMessage();
+            }
+            else
+            {
+                var specificImageResponse = retrieveSpecificImageFromNotId();
+                setHyperVGenForImageCheckAndTLDefaulting(specificImageResponse);
+            }
+        }
+
+        private bool HasNoImageConfiguration()
+        {
+            return !this.IsParameterBound(c => c.Image) &&
+                   !this.IsParameterBound(c => c.ImageReferenceId) &&
+                   !this.IsParameterBound(c => c.SharedGalleryImageId);
+        }
+
+        private void SetDefaultUefiSettings()
+        {
+            if (this.VM.SecurityProfile.UefiSettings != null)
+            {
+                this.VM.SecurityProfile.UefiSettings.SecureBootEnabled =
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
+                this.VM.SecurityProfile.UefiSettings.VTpmEnabled =
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
+            }
+            else
+            {
+                this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+            }
+        }
+
+        private void ShowTrustedLaunchUpgradeMessage()
+        {
+            if (!this.AsJobPresent())
+            {
+                WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+            }
+        }
+
+        private void ValidateUserDataEncoding()
+        {
+            if (this.IsParameterBound(c => c.UserData) &&
+                !ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
+            {
+                this.UserData = ValidateBase64EncodedString.EncodeStringToBase64(this.UserData);
+                this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
+            }
+        }
+
+        private void ConfigureStrategySecurityDefaults()
+        {
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType != null)
+            {
+                if (IsTrustedLaunchOrConfidentialVM(this.SecurityType))
+                {
+                    this.EnableVtpm = this.EnableVtpm ?? true;
+                    this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                }
+                else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType && HasNoImageConfiguration())
+                {
+                    this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                }
+            }
+            else if (HasNoImageConfiguration())
+            {
+                // Default TrustedLaunch values for SimpleParameterSet
+                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                this.EnableVtpm = this.EnableVtpm ?? true;
+            }
+        }
+        private bool IsLinuxImage()
+        {
+            var client = new Client(DefaultProfile.DefaultContext);
+            var imageAndOsType = client.UpdateImageAndOsTypeAsync(null, this.ResourceGroupName, this.Image, "").Result;
+            return imageAndOsType?.OsType == OperatingSystemTypes.Linux;
+        }
+
+        private void ValidateSshKeyConfiguration()
+        {
+            if (this.IsParameterBound(c => c.SshKeyName))
+            {
+                var isLinux = (this.ParameterSetName == "DefaultParameterSet" && IsLinuxOs()) ||
+                              (this.ParameterSetName == "SimpleParameterSet" && IsLinuxImage());
+
+                if (!isLinux)
+                {
+                    throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                }
+            }
+            else if (this.GenerateSshKey.IsPresent)
+            {
+                throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+            }
+        }
+
+        private void ValidateEncryptionIdentityConfiguration()
+        {
+            if (this.IsParameterBound(c => c.VM) && this.ParameterSetName == "DefaultParameterSet")
+            {
+                var encryptionId = VM.SecurityProfile?.EncryptionIdentity?.UserAssignedIdentityResourceId;
+                if (encryptionId != null &&
+                    (VM.Identity?.UserAssignedIdentities == null || !VM.Identity.UserAssignedIdentities.ContainsKey(encryptionId)))
+                {
+                    throw new Exception("Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource");
+                }
+            }
+        }
+
+        private void ValidateVmParameters()
+        {
+            ValidateUserDataEncoding();
+            ValidateSshKeyConfiguration();
+            ValidateEncryptionIdentityConfiguration();
         }
     }
 }

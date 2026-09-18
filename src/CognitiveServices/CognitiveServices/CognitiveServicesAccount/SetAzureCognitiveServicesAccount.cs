@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set the new Cognitive Services Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Set the new Cognitive Services Account Identity type, the identity is for use with key management services like Azure KeyVault.")]
         public IdentityType? IdentityType { get; set; }
 
         [Parameter(HelpMessage = "List of User Owned Storage Accounts.", Mandatory = false)]
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     resourceIdentityType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                updateParameters.Identity = new Identity(resourceIdentityType);
+                updateParameters.Identity = new Microsoft.Azure.Management.CognitiveServices.Models.Identity(resourceIdentityType);
                 if (this.UserAssignedIdentityId != null)
                 {
                     updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();

@@ -95,7 +95,7 @@ This command gets detailed output for the Requests metric.
 
 ### Example 4: Get summarized output for a specified metric with specified dimension filter
 ```powershell
-$dimFilter = New-AzMetricFilter -Dimension availabilityResult/location -Operator eq -Value "Seattle","Toronto"
+$dimFilter = "$(New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto") and $(New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User)"
 
 Get-AzMetric -ResourceId <ResourceId> -MetricName availabilityResults/availabilityPercentage -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2024-07-02T00:00:00Z -EndTime 2024-07-02T00:10:00Z -AggregationType Average
 ```

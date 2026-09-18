@@ -16,15 +16,16 @@ Modifies a Template Spec.
 ```
 Set-AzTemplateSpec [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>]
  [-UIFormDefinitionString <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateByIdParameterSet
 ```
 Set-AzTemplateSpec [-ResourceId] <String> [[-Description] <String>] [[-DisplayName] <String>]
  [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateVersionByIdFromJsonFileParameterSet
@@ -32,8 +33,8 @@ Set-AzTemplateSpec [-ResourceId] <String> [[-Description] <String>] [[-DisplayNa
 Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateVersionByIdFromJsonParameterSet
@@ -41,8 +42,8 @@ Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <S
 Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateByNameParameterSet
@@ -50,7 +51,8 @@ Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <S
 Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>]
  [-UIFormDefinitionString <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateVersionByNameFromJsonFileParameterSet
@@ -58,8 +60,8 @@ Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [[-Description
 Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateVersionByNameFromJsonParameterSet
@@ -67,12 +69,12 @@ Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <St
 Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Modifies a Templace Spec. If the Template Spec with the specified name and/or specific version does not already exist, it will be 
+Modifies a Template Spec. If the Template Spec with the specified name and/or specific version does not already exist, it will be 
 created.
 
 When modifying a Template Spec version's ARM Template content, the content can either come from a raw 
@@ -126,6 +128,36 @@ Template Spec does not already exist it will be created.
 **Note:** Location is only required when the Template Spec does not already exist
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -200,21 +232,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

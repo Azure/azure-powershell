@@ -95,6 +95,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlClientEncryptionPolicy ClientEncryptionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlVectorEmbeddingPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlVectorEmbeddingPolicy vectorEmbeddingPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.SqlContainerAnalyticalStorageTtlHelpMessage)]
         public int? AnalyticalStorageTtl { get; set; }
 
@@ -117,7 +121,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readSqlContainerGetResults = CosmosDBManagementClient.SqlResources.GetSqlContainer(ResourceGroupName, AccountName, DatabaseName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
@@ -163,6 +167,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ClientEncryptionPolicy != null)
             {
                 sqlContainerResource.ClientEncryptionPolicy = PSClientEncryptionPolicy.ToSDKModel(ClientEncryptionPolicy, Paths);
+            }
+
+            if (vectorEmbeddingPolicy != null)
+            {
+                sqlContainerResource.VectorEmbeddingPolicy = PSVectorEmbeddingPolicy.ToSDKModel(vectorEmbeddingPolicy);
             }
 
             if (ConflictResolutionPolicyMode != null)

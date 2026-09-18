@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region AgentRegistrationInforamtion
+        #region AgentRegistrationInformation
         AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
 
         AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
@@ -477,6 +477,34 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<Module> ListPython3Package(string resourceGroupName, string automationAccountName, ref string nextLink);
 
         void DeletePython3Package(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
+
+        #region RuntimeEnvironment
+
+        RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, string location, string language, string version, IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags);
+
+        RuntimeEnvironment GetRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name);
+
+        RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, IDictionary<string, string> defaultPackages, string description, IDictionary<string, string> tags);
+
+        IEnumerable<RuntimeEnvironment> ListRuntimeEnvironments(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void DeleteRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
+
+        #region RuntimeEnvironmentPackage
+
+        RuntimeEnvironmentPackage CreateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion);
+
+        RuntimeEnvironmentPackage GetRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName);
+
+        RuntimeEnvironmentPackage UpdateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion);
+
+        IEnumerable<RuntimeEnvironmentPackage> ListRuntimeEnvironmentPackages(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, ref string nextLink);
+
+        void DeleteRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName);
 
         #endregion
     }

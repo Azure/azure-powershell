@@ -1,3 +1,4 @@
+
 //
 // Copyright (c) Microsoft.  All rights reserved.
 //
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSAzureFirewallPacketCaptureFlags> Flags { get; set; }
 
         public List<PSAzureFirewallPacketCaptureRule> Filters { get; set; }
+
+        public string Operation {  get; set; }
 
         [JsonIgnore]
         public string FlagsText

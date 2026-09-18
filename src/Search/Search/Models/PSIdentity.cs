@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Search.Models;
+using SearchModels = Microsoft.Azure.Management.Search.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Management.Search.Models
@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         [Ps1Xml(Label = "Type", Target = ViewControl.List, Position = 0)]
         public PSIdentityType Type { get; set; }
 
-        public static explicit operator PSIdentity(Identity v)
+        public static explicit operator PSIdentity(SearchModels.Identity v)
         {
-            PSIdentityType? identityType = (PSIdentityType?)v?.Type;
+            PSIdentityType? identityType = v?.Type.ParsePSIdentityType();
 
             if (identityType.HasValue)
             {
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             }
         }
 
-        public static explicit operator Identity(PSIdentity v)
+        public static explicit operator SearchModels.Identity(PSIdentity v)
         {
-            IdentityType? identityType = (IdentityType?)v?.Type;
-            if (identityType.HasValue)
+            string identityType = v?.Type.ToString();
+            if (identityType != null)
             {
-                return new Identity(
-                    type: identityType.Value,
+                return new SearchModels.Identity(
+                    type: identityType,
                     principalId: v?.PrincipalId,
                     tenantId: v?.TenantId);
             }

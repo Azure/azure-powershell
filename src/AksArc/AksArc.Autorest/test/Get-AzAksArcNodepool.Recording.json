@@ -1,0 +1,93 @@
+{
+  "Get-AzAksArcNodepool+[NoContext]+List+$GET+https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "54e10c90-144b-4e1f-a3a7-1a8301b897b1" ],
+        "CommandName": [ "Az.AksArc.internal\\Get-AzAksArcNodepool" ],
+        "FullCommandName": [ "Get-AzAksArcNodepool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.AksArc/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=2717d02a-6a0e-4f54-b968-8543e7eb3a3a/canadacentral/d2db2114-1c98-4442-9e54-72dee75c6071" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "91a51509-9114-4e7f-8020-7a0d03b25e36" ],
+        "x-ms-correlation-request-id": [ "57666950-2cb7-4e45-8480-5e2c4ffc7b24" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20251002T061941Z:57666950-2cb7-4e45-8480-5e2c4ffc7b24" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 422DEAFF3DE64F7C9C93EFB281D9C735 Ref B: CO6AA3150220011 Ref C: 2025-10-02T06:19:41Z" ],
+        "Date": [ "Thu, 02 Oct 2025 06:19:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "906" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/ProvisionedClusterInstances/default/agentPools/nodepool1\",\"name\":\"nodepool1\",\"type\":\"microsoft.hybridcontainerservice/provisionedclusterinstances/agentpools\",\"systemData\":{\"createdBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"createdByType\":\"Application\",\"createdAt\":\"2025-09-26T19:22:34.1510564Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-26T19:33:15.5045952Z\"},\"properties\":{\"count\":1,\"osSKU\":\"CBLMariner\",\"osType\":\"Linux\",\"vmSize\":\"Standard_A4_v2\",\"provisioningState\":\"Succeeded\",\"status\":{\"currentState\":\"Succeeded\",\"readyReplicas\":[{\"count\":1,\"kubernetesVersion\":\"1.32.6\",\"vmSize\":\"Standard_A4_v2\"}]}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksArcNodepool+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/nodepool1?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/nodepool1?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "98d2e357-6ca1-4598-ad32-70adfdbce54d" ],
+        "CommandName": [ "Az.AksArc.internal\\Get-AzAksArcNodepool" ],
+        "FullCommandName": [ "Get-AzAksArcNodepool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.AksArc/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"040193d6-0000-0a00-0000-68d6ea7b0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=2717d02a-6a0e-4f54-b968-8543e7eb3a3a/canadacentral/0f820bbc-3b45-43ce-8756-c9786dfda848" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "69f02b90-1389-4ae4-af08-34a59f0df386" ],
+        "x-ms-correlation-request-id": [ "f58214d0-3374-4440-84e8-82f0134b454f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20251002T061941Z:f58214d0-3374-4440-84e8-82f0134b454f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5EBD5D72794A472E80D04CF919135D81 Ref B: CO6AA3150220011 Ref C: 2025-10-02T06:19:41Z" ],
+        "Date": [ "Thu, 02 Oct 2025 06:19:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "894" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.Kubernetes/connectedClusters/s-aszc/providers/Microsoft.HybridContainerService/ProvisionedClusterInstances/default/agentPools/nodepool1\",\"name\":\"nodepool1\",\"type\":\"microsoft.hybridcontainerservice/provisionedclusterinstances/agentpools\",\"systemData\":{\"createdBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"createdByType\":\"Application\",\"createdAt\":\"2025-09-26T19:22:34.1510564Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-09-26T19:33:15.5045952Z\"},\"properties\":{\"count\":1,\"osSKU\":\"CBLMariner\",\"osType\":\"Linux\",\"vmSize\":\"Standard_A4_v2\",\"provisioningState\":\"Succeeded\",\"status\":{\"currentState\":\"Succeeded\",\"readyReplicas\":[{\"count\":1,\"kubernetesVersion\":\"1.32.6\",\"vmSize\":\"Standard_A4_v2\"}]}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Management.Automation
         /// <remarks>
         /// Retrieve the Dsc node report list by node id.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='nodeId'>
-        /// The parameters supplied to the list operation.
+        /// The node id.
+        /// </param>
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DscNodeReport>>> ListByNodeWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string nodeId, Microsoft.Rest.Azure.OData.ODataQuery<DscNodeReport> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DscNodeReport>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DscNodeReport>>> ListByNodeWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string nodeId, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve the Dsc node report data by node id and report id.
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve the Dsc node report data by node id and report id.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='nodeId'>
-        /// The Dsc node id.
+        /// The node id.
         /// </param>
         /// <param name='reportId'>
         /// The report id.
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve the Dsc node reports by node id and report id.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='nodeId'>
-        /// The Dsc node id.
+        /// The node id.
         /// </param>
         /// <param name='reportId'>
         /// The report id.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string nodeId, string reportId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> GetContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string nodeId, string reportId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve the Dsc node report list by node id.

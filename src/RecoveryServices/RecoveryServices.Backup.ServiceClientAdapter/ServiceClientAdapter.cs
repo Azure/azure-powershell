@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Configuration;
-using System.Reflection;
 using RecoveryServicesBackupNS = Microsoft.Azure.Management.RecoveryServices.Backup;
 using RecoveryServicesBackupCRRNS = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
+using ARGNS = Microsoft.Azure.Management.ResourceGraph;
+using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -32,13 +32,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
         public ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
         public ClientProxy<RecoveryServicesBackupCRRNS.RecoveryServicesBackupClient> CrrAdapter;
-        
+        public ClientProxy<ARGNS.ResourceGraphClient> ARGAdapter;
+
         ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
 
         ClientProxy<ResourcesNS.ResourceManagementClient> RMAdapter;
         ClientProxy<ResourcesNS.FeatureClient> FeatureAdapter;
 
         public string SubscriptionId;
+
+        private static RestAzureNS.AzureOperationResponse ToAzureOperationResponse<THeader>(
+            RestAzureNS.AzureOperationHeaderResponse<THeader> response)
+        {
+            return new RestAzureNS.AzureOperationResponse
+            {
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
+        }
+
+        private static RestAzureNS.AzureOperationResponse<TBody> ToAzureOperationResponse<TBody, THeader>(
+            RestAzureNS.AzureOperationResponse<TBody, THeader> response)
+        {
+            return new RestAzureNS.AzureOperationResponse<TBody>
+            {
+                Body = response.Body,
+                Request = response.Request,
+                Response = response.Response,
+                RequestId = response.RequestId
+            };
+        }
 
         /// <summary>
         /// Resource provider namespace that this adapter uses to 
@@ -56,6 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrAdapter = new ClientProxy<RecoveryServicesBackupCRRNS.RecoveryServicesBackupClient>(context);
             RSAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesClient>(context);
             RMAdapter = new ClientProxy<ResourcesNS.ResourceManagementClient>(context);
+            ARGAdapter = new ClientProxy<ARGNS.ResourceGraphClient>(context);
             FeatureAdapter = new ClientProxy<ResourcesNS.FeatureClient>(context);
             SubscriptionId = context.Subscription.Id;
         }

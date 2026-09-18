@@ -1,0 +1,49 @@
+{
+  "Get-AzElasticAllTrafficFilter+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listAllTrafficFilters?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listAllTrafficFilters?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "62e2ecfa-e46e-40b4-ae66-d8603b83cbfb" ],
+        "CommandName": [ "Get-AzElasticAllTrafficFilter" ],
+        "FullCommandName": [ "Get-AzElasticAllTrafficFilter_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/westindia/25eb954b-171c-4a52-83e8-fa7111f49395" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "608f0897-c9f8-4684-aa9a-130634c26595" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5d0d2e4c-a710-4427-9988-d371b437716b" ],
+        "x-ms-correlation-request-id": [ "ff536e96-b3b9-4ef5-8b88-eeefa0298bde" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251017T030859Z:ff536e96-b3b9-4ef5-8b88-eeefa0298bde" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B0731182D0E64070B1F6C45628DA57B5 Ref B: PNQ231110908052 Ref C: 2025-10-17T03:08:57Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:08:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "15" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"rulesets\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

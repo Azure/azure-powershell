@@ -81,14 +81,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         /// <param name="response">Response from service</param>
         /// <param name="operationName">Name of the operation</param>
-        /// <param name="vaultName"></param>
+        /// <param name="vaultName"></param>        
         /// <param name="resourceGroupName"></param>
-        protected void HandleCreatedJob(
+        /// <param name="returnJobObject"></param>
+        public JobBase HandleCreatedJob(
             AzureRestNS.AzureOperationResponse response,
             string operationName,
             string vaultName = null,
-            string resourceGroupName = null)
+            string resourceGroupName = null,
+            bool returnJobObject = false)
         {
+            JobBase jobObj = null;
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             response.Response.Headers.GetAzureAsyncOperationHeader());
 
@@ -112,10 +115,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         var jobStatusResponse =
                             (OperationStatusJobExtendedInfo)operationStatus.Properties;
-                        WriteObject(GetJobObject(
+
+                        try
+                        {
+                            jobObj = GetJobObject(
                             jobStatusResponse.JobId,
                             vaultName: vaultName,
-                            resourceGroupName: resourceGroupName));
+                            resourceGroupName: resourceGroupName);
+
+                            if (!returnJobObject)
+                            {
+                                WriteObject(jobObj);
+                            }                            
+                        }
+                        catch (Exception e)
+                        {
+                            WriteDebug("Caught exception while fetching Jobresource: " + e.Message);
+                            WriteDebug("Job resource could not be fetched"); // resx: Resources.FailedToFetchJob
+                        }
                     }
                 }
 
@@ -130,14 +147,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new Exception(errorMessage);
                 }
             }
+
+            if (returnJobObject)
+            {
+                return jobObj;
+            }
+            return null;
         }
 
-        protected void HandleCreatedJob(
+        protected JobBase HandleCreatedJob(
             AzureRestNS.AzureOperationResponse<ProtectedItemResource> response,
             string operationName,
             string vaultName = null,
-            string resourceGroupName = null)
+            string resourceGroupName = null,
+            bool returnJobObject = false)
         {
+            JobBase jobObj = null;
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             response.Response.Headers.GetAzureAsyncOperationHeader());
 
@@ -161,10 +186,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         var jobStatusResponse =
                             (OperationStatusJobExtendedInfo)operationStatus.Properties;
-                        WriteObject(GetJobObject(
+
+                        jobObj = GetJobObject(
                             jobStatusResponse.JobId,
                             vaultName: vaultName,
-                            resourceGroupName: resourceGroupName));
+                            resourceGroupName: resourceGroupName);
+
+                        if (!returnJobObject)
+                        {
+                            WriteObject(jobObj);
+                        }                        
                     }
                 }
 
@@ -177,8 +208,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         operationStatus.Error.Code,
                         operationStatus.Error.Message);
                     throw new Exception(errorMessage);
-                }
+                }                                
             }
+
+            if (returnJobObject)
+            {
+                return jobObj;
+            }
+            return null;
         }
     }
 }

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -42,9 +43,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ParameterSetName = ModifyPolicyParamSet)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ParameterSetName = ModifyPolicyParamSet)]
         [ValidateNotNullOrEmpty]
         public string Token;
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ParameterSetName = ModifyPolicyParamSet)]
+        [ValidateNotNullOrEmpty]
+        public System.Security.SecureString SecureToken;
 
         /// <summary>
         /// Retention policy object to be modified
@@ -151,6 +156,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.PolicyNotFoundException,
                         Policy.Name));
                 }
+                // Validate the setting of changing of backup tier here is workload is afs
+                if (Policy.WorkloadType == WorkloadType.AzureFiles)
+                {
+                    ServiceClientModel.AzureFileShareProtectionPolicy azureFileSharePolicy =
+                    (ServiceClientModel.AzureFileShareProtectionPolicy)servicePolicy.Properties;
+
+                    // Vaulted -> Snapshot: Unsupported 
+                    // Snapshot->Vaulted: Warning and confirmation as below
+                    if (azureFileSharePolicy.VaultRetentionPolicy != null && RetentionPolicy != null &&  RetentionPolicy.GetType() == typeof(LongTermRetentionPolicy))
+                    {
+                        throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateNotAllowed));
+                    }
+
+                    if (azureFileSharePolicy.RetentionPolicy != null && RetentionPolicy != null && RetentionPolicy.GetType() == typeof(VaultRetentionPolicy))
+                    {
+                        if (!ShouldContinue(string.Format(Resources.AFSPolicyUpdateWarning), string.Format(Resources.AFSPolicyUpdate)))
+                        {
+                            throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateCanceled));
+                        }
+                    }
+                }
 
                 if (SnapshotConsistencyType != 0 &&  Policy.BackupManagementType != BackupManagementType.AzureVM)
                 {
@@ -193,6 +219,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 }
 
+                string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+                
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
                     {
@@ -202,7 +230,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
                         { PolicyParams.FixForInconsistentItems, FixForInconsistentItems.IsPresent },
-                        { ResourceGuardParams.Token, Token },
+                        { ResourceGuardParams.Token, plainToken },
                         { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                         { PolicyParams.ExistingPolicy, servicePolicy},
                         { PolicyParams.TieringPolicy, tieringDetails},

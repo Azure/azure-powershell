@@ -19,7 +19,8 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
  [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -28,7 +29,8 @@ New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protoco
  [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>] [-SourceAddressPrefix <String[]>]
  [-DestinationAddressPrefix <String[]>] [-SourceApplicationSecurityGroupId <String[]>]
  [-DestinationApplicationSecurityGroupId <String[]>] [-Access <String>] [-Priority <Int32>]
- [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +67,36 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -333,5 +365,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 [Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
-
-

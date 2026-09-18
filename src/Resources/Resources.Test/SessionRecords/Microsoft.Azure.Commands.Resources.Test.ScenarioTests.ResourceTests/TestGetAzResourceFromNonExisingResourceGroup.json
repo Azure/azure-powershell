@@ -1,0 +1,87 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/28d194e0-fa92-40ee-b3e7-2e76df62f16b/resourceGroups/ps9129/resources?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjhkMTk0ZTAtZmE5Mi00MGVlLWIzZTctMmU3NmRmNjJmMTZiL3Jlc291cmNlR3JvdXBzL3BzOTEyOS9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "44929662-3258-4301-8398-dc24f2c7da0d"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.1525.16413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-request-id": [
+          "3c4188ac-36f6-4ffc-b184-4d1d2ac32f2f"
+        ],
+        "x-ms-correlation-request-id": [
+          "3c4188ac-36f6-4ffc-b184-4d1d2ac32f2f"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20250426T072224Z:3c4188ac-36f6-4ffc-b184-4d1d2ac32f2f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F53B2DE73893471D819390BD6D241A32 Ref B: MAA201060515045 Ref C: 2025-04-26T07:22:24Z"
+        ],
+        "Date": [
+          "Sat, 26 Apr 2025 07:22:24 GMT"
+        ],
+        "Content-Length": [
+          "98"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'ps9129' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-GetAzResourceFromNonExisingResourceGroup": [
+      "ps9129"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "28d194e0-fa92-40ee-b3e7-2e76df62f16b"
+  }
+}

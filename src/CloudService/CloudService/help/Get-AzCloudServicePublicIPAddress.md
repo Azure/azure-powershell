@@ -35,6 +35,33 @@ Get-AzCloudServicePublicIPAddress -CloudServiceName <String> -IPConfigurationNam
  [<CommonParameters>]
 ```
 
+### GetViaIdentityRoleInstance
+```
+Get-AzCloudServicePublicIPAddress -IPConfigurationName <String> -Name <String> -NetworkInterfaceName <String>
+ -RoleInstanceInputObject <ICloudServiceIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityNetworkInterface
+```
+Get-AzCloudServicePublicIPAddress -IPConfigurationName <String> -Name <String>
+ -NetworkInterfaceInputObject <ICloudServiceIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityCloudService
+```
+Get-AzCloudServicePublicIPAddress -IPConfigurationName <String> -Name <String> -NetworkInterfaceName <String>
+ -RoleInstanceName <String> -CloudServiceInputObject <ICloudServiceIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityIpconfiguration
+```
+Get-AzCloudServicePublicIPAddress -Name <String> -IpconfigurationInputObject <ICloudServiceIdentity>
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzCloudServicePublicIPAddress -InputObject <ICloudServiceIdentity> [-Expand <String>]
@@ -62,6 +89,21 @@ Get-AzCloudServicePublicIPAddress -InputObject $cs
 Gets the instance level public IP addresses for a given cloud service object.
 
 ## PARAMETERS
+
+### -CloudServiceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: GetViaIdentityCloudService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -CloudServiceName
 The name of the cloud service.
@@ -99,7 +141,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentityRoleInstance, GetViaIdentityNetworkInterface, GetViaIdentityCloudService, GetViaIdentityIpconfiguration, GetViaIdentity
 Aliases:
 
 Required: False
@@ -111,11 +153,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IpconfigurationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: GetViaIdentityIpconfiguration
 Aliases:
 
 Required: True
@@ -130,7 +186,7 @@ The name of the IP configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get
+Parameter Sets: List1, Get, GetViaIdentityRoleInstance, GetViaIdentityNetworkInterface, GetViaIdentityCloudService
 Aliases:
 
 Required: True
@@ -145,7 +201,7 @@ The name of the public IP Address.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityRoleInstance, GetViaIdentityNetworkInterface, GetViaIdentityCloudService, GetViaIdentityIpconfiguration
 Aliases: PublicIPAddressName
 
 Required: True
@@ -155,12 +211,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkInterfaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: GetViaIdentityNetworkInterface
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkInterfaceName
 The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get
+Parameter Sets: List1, Get, GetViaIdentityRoleInstance, GetViaIdentityCloudService
 Aliases:
 
 Required: True
@@ -185,12 +256,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RoleInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: GetViaIdentityRoleInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RoleInstanceName
 The role instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get
+Parameter Sets: List1, Get, GetViaIdentityCloudService
 Aliases:
 
 Required: True
@@ -225,7 +311,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IPublicIPAddress
 
 ## NOTES
 

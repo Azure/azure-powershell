@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="recoveryPointType">The recovery point type.
-        /// Possible values include: 'ApplicationConsistent', 'CrashConsistent'</param>
+        /// Possible values include: &#39;ApplicationConsistent&#39;, &#39;CrashConsistent&#39;</param>
 
         /// <param name="useMultiVMSyncPoint">A value indicating whether multi VM sync enabled VMs should use multi VM
         /// sync points for failover.

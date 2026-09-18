@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
         /// <summary>
-        /// Schedule policy object assoicated with the policy to be created
+        /// Schedule policy object associated with the policy to be created
         /// </summary>
         [Parameter(Position = 5, Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SchedulePolicy,
             ValueFromPipelineByPropertyName = true)]

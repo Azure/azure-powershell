@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve the automation agent registration information.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Regenerate a primary or secondary agent registration key
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.

@@ -8,7 +8,10 @@ schema: 2.0.0
 # Get-AzAccessToken
 
 ## SYNOPSIS
-Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+Get secure access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+
+> [!NOTE]
+> For security purposes, the default output type has been changed from a plain text `String` to `SecureString`. For more information, see [Protect secrets in Azure PowerShell](https://go.microsoft.com/fwlink/?linkid=2258844).
 
 ## SYNTAX
 
@@ -25,27 +28,27 @@ Get-AzAccessToken -ResourceUrl <String> [-TenantId <String>] [-AsSecureString]
 ```
 
 ## DESCRIPTION
-Get access token
+Get secure access token
 
 ## EXAMPLES
 
 ### Example 1 Get the access token for ARM endpoint
 ```powershell
-Get-AzAccessToken
+Get-AzAccessToken -AsSecureString
 ```
 
 Get access token of current account for ResourceManager endpoint
 
 ### Example 2 Get the access token for Microsoft Graph endpoint
 ```powershell
-Get-AzAccessToken -ResourceTypeName MSGraph
+Get-AzAccessToken -AsSecureString -ResourceTypeName MSGraph
 ```
 
 Get access token of Microsoft Graph endpoint for current account
 
 ### Example 3 Get the access token for Microsoft Graph endpoint
 ```powershell
-Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
+Get-AzAccessToken -AsSecureString -ResourceUrl "https://graph.microsoft.com/"
 ```
 
 Get access token of Microsoft Graph endpoint for current account
@@ -53,7 +56,7 @@ Get access token of Microsoft Graph endpoint for current account
 ## PARAMETERS
 
 ### -AsSecureString
-Specifiy to convert output token as a secure string.
+The parameter is no longer used but kept for backward compatibility. No matter `AsSecureString` is specified, the output token is a `SecureString`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -135,8 +138,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.Profile.Models.PSAccessToken
 
 ### Microsoft.Azure.Commands.Profile.Models.PSSecureAccessToken
 

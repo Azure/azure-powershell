@@ -111,7 +111,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="tfoDiskName">The test failover name for the managed disk.
         /// </param>
-        public A2AProtectedManagedDiskDetails(string diskId = default(string), string recoveryResourceGroupId = default(string), string recoveryTargetDiskId = default(string), string recoveryReplicaDiskId = default(string), string recoveryOrignalTargetDiskId = default(string), string recoveryReplicaDiskAccountType = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryDiskEncryptionSetId = default(string), string primaryDiskEncryptionSetId = default(string), string diskName = default(string), long? diskCapacityInBytes = default(long?), string primaryStagingAzureStorageAccountId = default(string), string diskType = default(string), bool? resyncRequired = default(bool?), int? monitoringPercentageCompletion = default(int?), string monitoringJobType = default(string), double? dataPendingInStagingStorageAccountInMb = default(double?), double? dataPendingAtSourceAgentInMb = default(double?), string diskState = default(string), System.Collections.Generic.IList<string> allowedDiskLevelOperation = default(System.Collections.Generic.IList<string>), bool? isDiskEncrypted = default(bool?), string secretIdentifier = default(string), string dekKeyVaultArmId = default(string), bool? isDiskKeyEncrypted = default(bool?), string keyIdentifier = default(string), string kekKeyVaultArmId = default(string), string failoverDiskName = default(string), string tfoDiskName = default(string))
+
+        /// <param name="recoveryNetworkAccessPolicy">The network access policy for the recovery managed disk.
+        /// Possible values include: &#39;AllowAll&#39;, &#39;AllowPrivate&#39;, &#39;DenyAll&#39;</param>
+
+        /// <param name="recoveryDiskAccessId">The recovery disk access Arm Id.
+        /// </param>
+
+        /// <param name="recoveryPublicNetworkAccess">The public network access setting for the recovery managed disk.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public A2AProtectedManagedDiskDetails(string diskId = default(string), string recoveryResourceGroupId = default(string), string recoveryTargetDiskId = default(string), string recoveryReplicaDiskId = default(string), string recoveryOrignalTargetDiskId = default(string), string recoveryReplicaDiskAccountType = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryDiskEncryptionSetId = default(string), string primaryDiskEncryptionSetId = default(string), string diskName = default(string), long? diskCapacityInBytes = default(long?), string primaryStagingAzureStorageAccountId = default(string), string diskType = default(string), bool? resyncRequired = default(bool?), int? monitoringPercentageCompletion = default(int?), string monitoringJobType = default(string), double? dataPendingInStagingStorageAccountInMb = default(double?), double? dataPendingAtSourceAgentInMb = default(double?), string diskState = default(string), System.Collections.Generic.IList<string> allowedDiskLevelOperation = default(System.Collections.Generic.IList<string>), bool? isDiskEncrypted = default(bool?), string secretIdentifier = default(string), string dekKeyVaultArmId = default(string), bool? isDiskKeyEncrypted = default(bool?), string keyIdentifier = default(string), string kekKeyVaultArmId = default(string), string failoverDiskName = default(string), string tfoDiskName = default(string), string recoveryNetworkAccessPolicy = default(string), string recoveryDiskAccessId = default(string), string recoveryPublicNetworkAccess = default(string))
 
         {
             this.DiskId = diskId;
@@ -142,6 +151,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.KekKeyVaultArmId = kekKeyVaultArmId;
             this.FailoverDiskName = failoverDiskName;
             this.TfoDiskName = tfoDiskName;
+            this.RecoveryNetworkAccessPolicy = recoveryNetworkAccessPolicy;
+            this.RecoveryDiskAccessId = recoveryDiskAccessId;
+            this.RecoveryPublicNetworkAccess = recoveryPublicNetworkAccess;
             CustomInit();
         }
 
@@ -322,5 +334,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tfoDiskName")]
         public string TfoDiskName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the network access policy for the recovery managed disk. Possible values include: &#39;AllowAll&#39;, &#39;AllowPrivate&#39;, &#39;DenyAll&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryNetworkAccessPolicy")]
+        public string RecoveryNetworkAccessPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk access Arm Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryDiskAccessId")]
+        public string RecoveryDiskAccessId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the public network access setting for the recovery managed
+        /// disk. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPublicNetworkAccess")]
+        public string RecoveryPublicNetworkAccess {get; set; }
     }
 }

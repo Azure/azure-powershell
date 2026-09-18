@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectedVMware", "ConnectedVMware\ConnectedVMware.csproj", "{9DFD321C-5FA3-40B4-9A34-18E6FD43F57A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedVMware", "ConnectedVMware.Autorest\Az.ConnectedVMware.csproj", "{80DB7BBE-A954-4CE2-AEEA-D03A8AB9B275}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedVMware", "..\..\generated\ConnectedVMware\ConnectedVMware.Autorest\Az.ConnectedVMware.csproj", "{15E56D92-2016-4096-A595-88532E431ECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{9DFD321C-5FA3-40B4-9A34-18E6FD43F57A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DFD321C-5FA3-40B4-9A34-18E6FD43F57A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DFD321C-5FA3-40B4-9A34-18E6FD43F57A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80DB7BBE-A954-4CE2-AEEA-D03A8AB9B275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80DB7BBE-A954-4CE2-AEEA-D03A8AB9B275}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80DB7BBE-A954-4CE2-AEEA-D03A8AB9B275}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80DB7BBE-A954-4CE2-AEEA-D03A8AB9B275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E56D92-2016-4096-A595-88532E431ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E56D92-2016-4096-A595-88532E431ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E56D92-2016-4096-A595-88532E431ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E56D92-2016-4096-A595-88532E431ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA495AE8-A609-4C67-9469-98EFB51B3BC2} = {606D36D7-3AB7-4ED1-991C-8148581574B4}

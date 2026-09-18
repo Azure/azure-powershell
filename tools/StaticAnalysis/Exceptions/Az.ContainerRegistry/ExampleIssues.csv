@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.ContainerRegistry","Connect-AzContainerRegistry","4","4","Capitalization_Conventions_Violated","5101","1","docker doesn't follow the Capitalization Conventions.","docker login $loginServer -u 00000000-0000-0000-0000-000000000000 --password $token","Check the Capitalization Conventions. Suggest format: docker.exe"

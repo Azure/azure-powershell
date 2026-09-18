@@ -61,7 +61,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.DistributeVersionerLatest
 
 ## NOTES
 

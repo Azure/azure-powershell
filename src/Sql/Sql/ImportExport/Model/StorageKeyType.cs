@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
     public enum StorageKeyType
     {
         StorageAccessKey,
-        SharedAccessKey
+        SharedAccessKey,
+        ManagedIdentity
     }
 }

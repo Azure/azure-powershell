@@ -55,10 +55,6 @@ subject-prefix: MonitorLogAnalytics
 
 inlining-threshold: 40
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Fix error in swagger: PUT, PATCH, DELETE of solutions are not long running
   - from: swagger-document
@@ -67,7 +63,10 @@ directive:
     transform: return $.replace(/"x-ms-long-running-operation":\ true/g, "\"x-ms-long-running-operation\":\ false")
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentityExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:

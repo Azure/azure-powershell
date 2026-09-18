@@ -13,9 +13,10 @@ Creates a new IoT Central Application.
 ## SYNTAX
 
 ```
-New-AzIotCentralApp [-Subdomain] <String> [-DisplayName <String>] [-Template <String>] [-Sku <String>] [-Identity <String>]
- [-Location <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzIotCentralApp [-Subdomain] <String> [-DisplayName <String>] [-Template <String>] [-Sku <String>]
+ [-Location <String>] [-Tag <Hashtable>] [-AsJob] [-Identity <String>] [-ResourceGroupName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +45,7 @@ SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 ```
+
 Create an IoT Central application in the standard pricing tier ST2, in the region of the resource group.
 
 ### Example 2 Create simple IoT Central Application.
@@ -67,6 +69,7 @@ SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 Identity          : Microsoft.Azure.Management.IotCentral.Models.SystemAssignedServiceIdentity
 ```
+
 Create an IoT Central application with the standard pricing tier ST2 in the 'westus' region, with a custom display name, based on the iotc-default template.
 
 ## PARAMETERS
@@ -114,6 +117,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Identity
+The type of managed identity for the IoT Central application.
+Default value is None. System-assigned managed identities are supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -223,22 +242,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Identity
-The type of managed identity for the IoT Central application.
-Default value is None. System-assigned managed identities are supported.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

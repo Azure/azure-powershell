@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSo
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azextensiondatasourceobject
 #>
 function New-AzExtensionDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

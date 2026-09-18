@@ -130,8 +130,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.")]
-        [PSArgumentCompleter("CacheDisk", "ResourceDisk")]
+            HelpMessage = "Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk, resource disk or Nvme disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.")]
+        [PSArgumentCompleter("CacheDisk", "ResourceDisk", "NvmeDisk")]
         public string DiffDiskPlacement { get; set; }
 
         [Parameter(
@@ -179,6 +179,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the storage fault domain alignment type for the OS disk in the VMSS template. Valid values are 'Aligned' and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "BestEffortAligned")]
+        public string OsDiskStorageFaultDomainAlignment { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -674,6 +681,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet = new DiskEncryptionSetParameters();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = this.SecureVMDiskEncryptionSet;
+            }
+
+            if (this.IsParameterBound(c => c.OsDiskStorageFaultDomainAlignment))
+            {
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // StorageProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+                // OsDisk
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetOSDisk();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.StorageFaultDomainAlignment = this.OsDiskStorageFaultDomainAlignment;
             }
             WriteObject(this.VirtualMachineScaleSet);
         }

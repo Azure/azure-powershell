@@ -1,5 +1,5 @@
 ---
-external help file: Az.MonitorWorkspace.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspace
 schema: 2.0.0
@@ -8,14 +8,13 @@ schema: 2.0.0
 # Get-AzMonitorWorkspace
 
 ## SYNOPSIS
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzMonitorWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMonitorWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,20 +23,20 @@ Get-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> [-Subscription
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzMonitorWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzMonitorWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ## EXAMPLES
 
@@ -54,7 +53,7 @@ azps-monitor-workspace eastus   Succeeded         Enabled             azps_test_
 
 List the specific Azure Monitor workspace.
 
-### Example 2: List the specific Azure Monitor workspace by Resource Groupy.
+### Example 2: List the specific Azure Monitor workspace by Resource Group.
 ```powershell
 Get-AzMonitorWorkspace -ResourceGroupName azps_test_group
 ```
@@ -65,7 +64,7 @@ Name                   Location ProvisioningState PublicNetworkAccess ResourceGr
 azps-monitor-workspace eastus   Succeeded         Enabled             azps_test_group
 ```
 
-List the specific Azure Monitor workspace by Resource Groupy.
+List the specific Azure Monitor workspace by Resource Group.
 
 ### Example 3: Get the specific Azure Monitor workspace by monitor workspace name.
 ```powershell
@@ -100,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentity
@@ -115,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure Monitor workspace.
+The name of the Azure Monitor Workspace.
 The name is case insensitive
 
 ```yaml
@@ -136,7 +134,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -148,10 +146,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -170,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource
 
 ## NOTES
 

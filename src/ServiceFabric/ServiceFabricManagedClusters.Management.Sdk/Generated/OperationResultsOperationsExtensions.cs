@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='operationId'>
         /// operation identifier.
         /// </param>
-        public static void Get(this IOperationResultsOperations operations, string location, string operationId)
+        public static OperationResultsGetHeaders Get(this IOperationResultsOperations operations, string location, string operationId)
         {
-                ((IOperationResultsOperations)operations).GetAsync(location, operationId).GetAwaiter().GetResult();
+                return ((IOperationResultsOperations)operations).GetAsync(location, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The name of Azure region.
         /// </param>
         /// <param name='operationId'>
         /// operation identifier.
@@ -44,9 +44,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task GetAsync(this IOperationResultsOperations operations, string location, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OperationResultsGetHeaders> GetAsync(this IOperationResultsOperations operations, string location, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.GetWithHttpMessagesAsync(location, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.GetWithHttpMessagesAsync(location, operationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

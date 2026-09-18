@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Remove ACL recusive async function
+        /// Remove ACL recursive async function
         /// </summary>
         protected override async Task OperationAclResusive(long taskId)
         {

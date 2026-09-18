@@ -17,14 +17,14 @@ Partially updates a Network Connection
 Update-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DomainName <String>] [-DomainPassword <String>] [-DomainUsername <String>] [-OrganizationUnit <String>]
  [-SubnetId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> [-DomainName <String>]
  [-DomainPassword <String>] [-DomainUsername <String>] [-OrganizationUnit <String>] [-SubnetId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,12 +40,12 @@ Update-AzDevCenterAdminNetworkConnection -Name eastusNetwork -ResourceGroupName 
 
 This command updates an Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
-### Example 2: Update a hybid Azure AD joined network connection
+### Example 2: Update a hybrid Azure AD joined network connection
 ```powershell
 Update-AzDevCenterAdminNetworkConnection -Name eastusNetwork -ResourceGroupName testRg -DomainName mydomaincontroller.local -DomainUsername testuser@mydomaincontroller.local -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
 ```
 
-This command updates a hybid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
+This command updates a hybrid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
 ### Example 3: Update an Azure AD joined network connection
 ```powershell
@@ -55,13 +55,13 @@ Update-AzDevCenterAdminNetworkConnection -InputObject $networkConnectionInput -S
 
 This command updates an Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
-### Example 4: Update a hybid Azure AD joined network connection
+### Example 4: Update a hybrid Azure AD joined network connection
 ```powershell
 $hybridNetworkConnectionInput = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName testRg -Name eastusNetwork
 Update-AzDevCenterAdminNetworkConnection -InputObject $hybridNetworkConnectionInput -DomainName mydomaincontroller.local -DomainUsername testuser@mydomaincontroller.local -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
 ```
 
-This command updates a hybid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
+This command updates a hybrid Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".
 
 ## PARAMETERS
 
@@ -203,21 +203,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -319,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.INetworkConnection
 
 ## NOTES
 

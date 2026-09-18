@@ -16,6 +16,7 @@ Create a gallery.
 New-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Location] <String>
  [-Description <String>] [-Tag <Hashtable>] [-Permission <String>] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -38,6 +39,21 @@ New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location 
 ```
 
 Create a gallery with Direct Sharing enabled.
+
+### Example 3
+```powershell
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -EnableSystemAssignedIdentity
+```
+
+Create a gallery with a system-assigned managed identity.
+
+### Example 4
+```powershell
+$uid = Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -UserAssignedIdentity $uid.Id
+```
+
+Create a gallery with a user-assigned managed identity.
 
 ## PARAMETERS
 
@@ -83,6 +99,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Enables system-assigned managed identity on the gallery.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -221,6 +252,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -260,6 +306,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### System.Collections.Hashtable
+
+### System.String[]
 
 ## OUTPUTS
 

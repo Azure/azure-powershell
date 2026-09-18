@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceVirtualMachineObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacevirtualmachineobject
 schema: 2.0.0
 ---
 
@@ -14,10 +14,10 @@ Create an in-memory object for VirtualMachine.
 
 ```
 New-AzMLWorkspaceVirtualMachineObject [-Description <String>] [-DisableLocalAuth <Boolean>]
- [-ResourceId <String>] [-Address <String>] [-AdministratorAccountPassword <String>]
+ [-Location <String>] [-ResourceId <String>] [-Address <String>] [-AdministratorAccountPassword <String>]
  [-AdministratorAccountPrivateKeyData <String>] [-AdministratorAccountPublicKeyData <String>]
  [-AdministratorAccountUsername <String>] [-IsNotebookInstanceCompute <Boolean>] [-NotebookServerPort <Int32>]
- [-Size <String>] [-SshPort <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Size <String>] [-SshPort <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,11 +154,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NotebookServerPort
-Notebook server port open for ssh connections.
+### -Location
+Location for the underlying compute.
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,13 +169,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -NotebookServerPort
+Notebook server port open for ssh connections.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named
@@ -236,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.VirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.VirtualMachine
 
 ## NOTES
 

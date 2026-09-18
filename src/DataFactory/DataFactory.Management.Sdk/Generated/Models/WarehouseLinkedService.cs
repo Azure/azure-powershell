@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -53,6 +56,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="workspaceId">The ID of Microsoft Fabric workspace. Type: string (or Expression with
         /// resultType string).
         /// </param>
+
+        /// <param name="authenticationType">The authentication type to use.
+        /// Possible values include: &#39;ServicePrincipal&#39;,
+        /// &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;</param>
 
         /// <param name="servicePrincipalId">The ID of the application used to authenticate against Microsoft Fabric
         /// Warehouse. Type: string (or Expression with resultType string).
@@ -83,19 +90,24 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// &#39;ServicePrincipalCert&#39;, servicePrincipalCredential can only be
         /// AzureKeyVaultSecretReference.
         /// </param>
-        public WarehouseLinkedService(object artifactId, object endpoint, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object workspaceId = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), string encryptedCredential = default(string), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+        public WarehouseLinkedService(object artifactId, object endpoint, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object workspaceId = default(object), string authenticationType = default(string), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), string encryptedCredential = default(string), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), CredentialReference credential = default(CredentialReference))
+
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ArtifactId = artifactId;
             this.Endpoint = endpoint;
             this.WorkspaceId = workspaceId;
+            this.AuthenticationType = authenticationType;
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalKey = servicePrincipalKey;
             this.Tenant = tenant;
             this.EncryptedCredential = encryptedCredential;
             this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
             this.ServicePrincipalCredential = servicePrincipalCredential;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -125,6 +137,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.workspaceId")]
         public object WorkspaceId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication type to use. Possible values include: &#39;ServicePrincipal&#39;, &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
+        public string AuthenticationType {get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the application used to authenticate against
@@ -175,6 +193,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalCredential")]
         public SecretBase ServicePrincipalCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -201,6 +226,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
         }
     }
 }

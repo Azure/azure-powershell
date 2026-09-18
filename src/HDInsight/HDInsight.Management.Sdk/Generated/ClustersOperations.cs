@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <param name='tags'>
         /// The resource tags.
         /// </param>
+        /// <param name='identity'>
+        /// The identity of the cluster, if configured. Setting this property will
+        /// override the existing identity configuration of the cluster.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -96,7 +100,7 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Cluster>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ClusterIdentity identity = default(ClusterIdentity), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -123,9 +127,10 @@ namespace Microsoft.Azure.Management.HDInsight
             }
 
             ClusterPatchParameters parameters = new ClusterPatchParameters();
-            if(tags != null)
+            if(tags != null||identity != null)
             {
                 parameters.Tags = tags;
+                parameters.Identity = identity;
             }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
@@ -1524,7 +1529,10 @@ namespace Microsoft.Azure.Management.HDInsight
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
             }
-
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");

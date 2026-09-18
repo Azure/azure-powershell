@@ -26,7 +26,7 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: 6f498e0646e1bb978b8b6f8b4e701938dd79df2b
+commit: 4517f89a8ebd2f6a94e107e5ee60fff9886f3612
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -35,27 +35,22 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/DiagnosticRP/preview/2024-06-01-preview/diagnostic.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/RecommenderRP/stable/2025-06-05/RecommenderRP.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 module-version: 0.3.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Remove following verbs
   - select: command

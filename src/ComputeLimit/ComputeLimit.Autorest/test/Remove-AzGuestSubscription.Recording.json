@@ -1,0 +1,37 @@
+{
+  "Remove-AzGuestSubscription+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/guestSubscriptions/00000000-0000-0000-0000-000000000001?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "dddddddd-dddd-dddd-dddd-dddddddddddd" ],
+        "CommandName": [ "Remove-AzGuestSubscription" ],
+        "FullCommandName": [ "Remove-AzGuestSubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee" ],
+        "x-ms-correlation-request-id": [ "ffffffff-ffff-ffff-ffff-ffffffffffff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "",
+      "isContentBase64": false
+    }
+  }
+}

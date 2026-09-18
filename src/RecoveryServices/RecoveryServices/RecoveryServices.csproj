@@ -11,13 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
   	<ProjectReference Include="..\RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj" />
 	<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
-	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />	
   </ItemGroup>
 
   <ItemGroup>

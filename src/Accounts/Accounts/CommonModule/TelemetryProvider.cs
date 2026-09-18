@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Create a Telemetry Provider using the given event listener
         /// </summary>
-        /// <param name="listener">The event listenet</param>
+        /// <param name="listener">The event listener</param>
         /// <returns>A telemetry provider that send data over the given event listener</returns>
         public static TelemetryProvider Create(IEventListener listener)
         {
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Factory method for TelemetryProvider
         /// </summary>
-        /// <param name="warningLogger">A logger for warnign messages (conditionally used for data collection warning)</param>
+        /// <param name="warningLogger">A logger for warning messages (conditionally used for data collection warning)</param>
         /// <param name="debugLogger">A logger for debugging traces</param>
         /// <returns></returns>
         public static TelemetryProvider Create(Action<string> warningLogger, Action<string> debugLogger)
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Create a telemtry provider, using the given profile settings and event store
+        /// Create a telemetry provider, using the given profile settings and event store
         /// </summary>
         /// <param name="collect">Whether ot not to collect data</param>
         /// <param name="store">The store for events generated during telemetry</param>
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Create a telmetry record
+        /// Create a telemetry record
         /// </summary>
         /// <param name="invocationInfo"></param>
         /// <param name="parameterSetName"></param>
@@ -157,6 +158,18 @@ namespace Microsoft.Azure.Commands.Common
                 HostVersion = AzurePSCmdlet.PSHostVersion,
                 PSHostName = AzurePSCmdlet.PSHostName,
             };
+
+
+            if (qosEvent.UserAgent == null)
+            {
+                qosEvent.UserAgent = new ProductInfoHeaderValue("AzurePowershell", string.Format("Az{0}", "0.0.0")).ToString();
+                string hostEnv = Environment.GetEnvironmentVariable("AZUREPS_HOST_ENVIRONMENT");
+                if (!String.IsNullOrWhiteSpace(hostEnv))
+                {
+                    hostEnv = hostEnv.Trim().Replace("@", "_").Replace("/", "_");
+                    qosEvent.UserAgent += string.Format(" {0}", hostEnv);
+                }
+            }
 
             if (invocationInfo != null)
             {

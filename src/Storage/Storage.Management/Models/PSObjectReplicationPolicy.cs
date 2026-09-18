@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string DestinationAccount { get; set; }
         [Ps1Xml(Label = "Rules", Target = ViewControl.Table, ScriptBlock = "if (($_.Rules -ne $null) -and ($_.Rules.Count -ne 0)) {'[' + $_.Rules[0].RuleId + ',...]'} else {$null}", Position = 6)]
         public PSObjectReplicationPolicyRule[] Rules { get; set; }
+        public PSObjectReplicationPolicyPropertiesMetrics Metrics { get; set; }
+        public PSObjectReplicationPolicyPropertiesPriorityReplication PriorityReplication { get; set; }
+        public PSObjectReplicationPolicyPropertiesTagsReplication TagsReplication { get; set; }
 
         public PSObjectReplicationPolicy()
         { }
@@ -59,6 +62,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.SourceAccount = policy.SourceAccount;
             this.DestinationAccount = policy.DestinationAccount;
             this.Rules = PSObjectReplicationPolicyRule.GetPSObjectReplicationPolicyRules(policy.Rules);
+            this.Metrics = policy.Metrics is null ? null : new PSObjectReplicationPolicyPropertiesMetrics(policy.Metrics);
+            this.PriorityReplication = policy.PriorityReplication is null ? null : new PSObjectReplicationPolicyPropertiesPriorityReplication(policy.PriorityReplication);
+            this.TagsReplication = policy.TagsReplication is null ? null : new PSObjectReplicationPolicyPropertiesTagsReplication(policy.TagsReplication);
         }
 
         public ObjectReplicationPolicy ParseObjectReplicationPolicy()
@@ -67,7 +73,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 SourceAccount = this.SourceAccount,
                 DestinationAccount = this.DestinationAccount,
-                Rules = PSObjectReplicationPolicyRule.ParseObjectReplicationPolicyRules(this.Rules)
+                Rules = PSObjectReplicationPolicyRule.ParseObjectReplicationPolicyRules(this.Rules),
+                Metrics = this.Metrics is null ? null : this.Metrics.ParseObjectReplicationPolicyPropertiesMetrics(),
+                PriorityReplication = this.PriorityReplication is null ? null : this.PriorityReplication.ParseObjectReplicationPolicyPropertiesPriorityReplication(),
+                TagsReplication = this.TagsReplication is null ? null : this.TagsReplication.ParseObjectReplicationPolicyPropertiesTagsReplication()
             };
             return policy;
         }
@@ -190,6 +199,78 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 PrefixMatch = this.PrefixMatch is null ? null : new List<string>(this.PrefixMatch),
                 //must be in format: 2020-02-19T16:05:00Z
                 MinCreationTime = this.MinCreationTime is null ? null : this.MinCreationTime.Value.ToUniversalTime().ToString("s") + "Z"
+            };
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ObjectReplicationPolicyPropertiesMetrics
+    /// </summary>
+    public class PSObjectReplicationPolicyPropertiesMetrics
+    {
+        public bool? Enabled { get; set; }
+
+        public PSObjectReplicationPolicyPropertiesMetrics()
+        {
+        }
+
+        public PSObjectReplicationPolicyPropertiesMetrics(ObjectReplicationPolicyPropertiesMetrics metrics)
+        {
+            this.Enabled = metrics.Enabled;
+        }
+        public ObjectReplicationPolicyPropertiesMetrics ParseObjectReplicationPolicyPropertiesMetrics()
+        {
+            return new ObjectReplicationPolicyPropertiesMetrics()
+            {
+                Enabled = this.Enabled
+            };
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ObjectReplicationPolicyPropertiesPriorityReplication
+    /// </summary>
+    public class PSObjectReplicationPolicyPropertiesPriorityReplication
+    {
+        public bool? Enabled { get; set; }
+
+        public PSObjectReplicationPolicyPropertiesPriorityReplication()
+        {
+        }
+
+        public PSObjectReplicationPolicyPropertiesPriorityReplication(ObjectReplicationPolicyPropertiesPriorityReplication priorityReplication)
+        {
+            this.Enabled = priorityReplication.Enabled;
+        }
+        public ObjectReplicationPolicyPropertiesPriorityReplication ParseObjectReplicationPolicyPropertiesPriorityReplication()
+        {
+            return new ObjectReplicationPolicyPropertiesPriorityReplication()
+            {
+                Enabled = this.Enabled
+            };
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ObjectReplicationPolicyPropertiesTagsReplication
+    /// </summary>
+    public class PSObjectReplicationPolicyPropertiesTagsReplication
+    {
+        public bool? Enabled { get; set; }
+
+        public PSObjectReplicationPolicyPropertiesTagsReplication()
+        {
+        }
+
+        public PSObjectReplicationPolicyPropertiesTagsReplication(ObjectReplicationPolicyPropertiesTagsReplication tagsReplication)
+        {
+            this.Enabled = tagsReplication.Enabled;
+        }
+        public ObjectReplicationPolicyPropertiesTagsReplication ParseObjectReplicationPolicyPropertiesTagsReplication()
+        {
+            return new ObjectReplicationPolicyPropertiesTagsReplication()
+            {
+                Enabled = this.Enabled
             };
         }
     }

@@ -31,5 +31,12 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureMonitorRelatedCommands");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureMonitorAgentRelatedCommands()
+        {
+            TestRunner.RunTestScript("Test-AzureMonitorAgentRelatedCommands");
+        }
     }
 }

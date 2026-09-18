@@ -1,7 +1,7 @@
 ---
 external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersapnetweaverinstanceobject
+online version: https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadsprovidersapnetweaverinstanceobject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 New-AzWorkloadsProviderSapNetWeaverInstanceObject [-SapClientId <String>] [-SapHostFileEntry <String[]>]
  [-SapHostname <String>] [-SapInstanceNr <String>] [-SapPassword <String>] [-SapPasswordUri <String>]
  [-SapPortNumber <String>] [-SapSid <String>] [-SapUsername <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SslPreference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,21 +38,6 @@ SapNetWeaver 000         {["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.8
 Create SAP Netweaver Provider for an AMS instance
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -SapClientId
 Gets or sets the SAP Client ID.
@@ -208,7 +193,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapNetWeaverProviderInstanceProperties
 
 ## NOTES
 

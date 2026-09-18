@@ -23,10 +23,18 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="azureAsyncOperation">
         /// </param>
-        public AgentPoolsUpgradeNodeImageVersionHeaders(string azureAsyncOperation = default(string))
+
+        /// <param name="location">
+        /// </param>
+
+        /// <param name="retryAfter">
+        /// </param>
+        public AgentPoolsUpgradeNodeImageVersionHeaders(string azureAsyncOperation = default(string), string location = default(string), int? retryAfter = default(int?))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;
+            this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -41,5 +49,17 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
         public string AzureAsyncOperation {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

@@ -253,13 +253,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The auxiliary sku of the Network Interface ")]
-        [ValidateSet(
-            MNM.NetworkInterfaceAuxiliarySku.None,
-            MNM.NetworkInterfaceAuxiliarySku.A1,
-            MNM.NetworkInterfaceAuxiliarySku.A2,
-            MNM.NetworkInterfaceAuxiliarySku.A4,
-            MNM.NetworkInterfaceAuxiliarySku.A8,
-            IgnoreCase = true)]
         public string AuxiliarySku { get; set; }
 
         [Parameter(

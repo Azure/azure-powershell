@@ -97,7 +97,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionMetadataResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionMetadataResource
 
 ## NOTES
 

@@ -15,19 +15,22 @@ Saves a Resource Group scoped Deployment Stack Template.
 ### SaveByNameAndResourceGroupName (Default)
 ```
 Save-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-StackName] <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SaveByResourceId
 ```
 Save-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SaveByStackObject
 ```
-Save-AzResourceGroupDeploymentStackTemplate [-InputObjet] <PSDeploymentStack> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Save-AzResourceGroupDeploymentStackTemplate [-InputObject] <PSDeploymentStack> [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +47,36 @@ Save a template from a stack named 'MyRGStack' under an RG named 'MyResourceGrou
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -59,13 +92,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object
 
 ```yaml
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
 Parameter Sets: SaveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0
@@ -81,21 +114,6 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

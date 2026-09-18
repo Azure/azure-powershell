@@ -80,6 +80,9 @@ Apply Update
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
 
+### [New-AzStackHciArcSettingIdentity](New-AzStackHciArcSettingIdentity.md)
+Create Aad identity for arc settings.
+
 ### [New-AzStackHciCluster](New-AzStackHciCluster.md)
 Create an HCI cluster.
 
@@ -135,13 +138,13 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
 
 ### [Set-AzStackHciDeploymentSetting](Set-AzStackHciDeploymentSetting.md)
-Create a DeploymentSetting
+Update a DeploymentSetting
 
 ### [Set-AzStackHciEdgeDevice](Set-AzStackHciEdgeDevice.md)
-Create a EdgeDevice
+Update a EdgeDevice
 
 ### [Set-AzStackHciSecuritySetting](Set-AzStackHciSecuritySetting.md)
-Create a security setting
+Update a security setting
 
 ### [Set-AzStackHciUpdate](Set-AzStackHciUpdate.md)
 Put specified Update

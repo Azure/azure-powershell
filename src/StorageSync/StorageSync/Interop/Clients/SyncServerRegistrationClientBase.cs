@@ -89,6 +89,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine Name</param>
+        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server resource</returns>
         public abstract ServerRegistrationData Setup(
             Uri managementEndpointUri,
@@ -101,7 +102,8 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
-            string serverMachineName);
+            string serverMachineName,
+            bool assignIdentity);
 
         /// <summary>
         /// Persisting the register server resource from cloud to the local service.
@@ -118,7 +120,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// This function will return the application id of the server if it is available.
         /// </summary>
         /// <returns>Application Id or null</returns>
-        public abstract Guid? GetApplicationIdOrNull();
+        public abstract Task<ServerApplicationIdentity> GetServerApplicationIdentityOrNull();
 
         /// <summary>
         /// Dispose method for cleaning Interop client object.
@@ -144,6 +146,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
         /// 4. Persists registered server resource from cloud to local FileSyncSvc service
         /// </summary>
+        /// <param name="storageSyncServiceTenantId">Storage Sync Service TenantId</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
         /// <param name="storageSyncServiceName">Storage Sync Service Name</param>
@@ -155,8 +158,10 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine Name</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
+        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server Resource</returns>
         public RegisteredServer Register(
+            string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
             string storageSyncServiceName,
@@ -167,19 +172,26 @@ namespace Commands.StorageSync.Interop.Clients
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback)
+            Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback,
+            bool assignIdentity)
         {
             // Discover the server type , Get the application id, 
-            Guid? applicationId = GetApplicationIdOrNull();
+            ServerApplicationIdentity serverApplicationIdentity = assignIdentity ? GetServerApplicationIdentityOrNull().GetAwaiter().GetResult() : null;
+            Guid? applicationId = serverApplicationIdentity?.ApplicationId;
 
-            // Honor identity if present
-            bool isCertificateRegistration = true;
-            // We allow only server registration with server certificate in v19. applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
+            if (serverApplicationIdentity != null && serverApplicationIdentity.TenantId != Guid.Empty)
+            {
+                // Check that tenants match
+                if (!string.Equals(storageSyncServiceTenantId, serverApplicationIdentity.TenantId.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ServerRegistrationException(ServerRegistrationErrorCode.ServerAndSyncServiceTenantMismatched);
+                }
+            }
 
             // Set the registry key for ServerAuthType
             RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
                        StorageSyncConstants.AfsRegistryKey,
-                      (isCertificateRegistration ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
+                      (assignIdentity ? RegisteredServerAuthType.ManagedIdentity : RegisteredServerAuthType.Certificate).ToString(),
                        RegistryValueKind.String,
                        true);
 
@@ -188,7 +200,7 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ValidateSyncServerFailed);
             }
 
-            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName);
+            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName, assignIdentity);
             if (null == serverRegistrationData)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ProcessSyncRegistrationFailed);
@@ -200,7 +212,7 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterOnlineSyncRegistrationFailed);
             }
 
-            //if (isCertificateRegistration)
+            if (!assignIdentity)
             {
                 // Setting ServerCertificate from request resource to response resource so that it can be used by Monitoring pipeline
                 resultantRegisteredServerResource.ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate);

@@ -44,21 +44,46 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 50175f111e9c899249e79eb082a75fb8a7aba0e2
+commit: 7910c370daefac65d619a7cc0c0c5575b5665060
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/stable/2025-10-10/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+
+#v4 migration settings
+keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
+  - where:
+      verb: Update
+      subject: Application
+      parameter-name: Tag
+    set:
+      breaking-change:
+        change-description: The parameter 'Tag' will be removed from the Update cmdlet of Application.
+        deprecated-by-version: 6.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/06/02
+  - where:
+      verb: Update
+      subject: Desktop
+      parameter-name: Tag
+    set:
+      breaking-change:
+        change-description: The parameter 'Tag' will be removed from the Update cmdlet of Desktop.
+        deprecated-by-version: 6.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/06/02
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
   - where:
       verb: New
       subject: HostPool
@@ -94,10 +119,14 @@ directive:
       verb: Get
       subject: ActiveApplication
     remove: true
-  - where:      
-      verb: Remove    
+  - where:
+      verb: Remove
       subject: UserSession
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
-```
+  # remove Update-AzWvdPrivateEndpointConnection, Finally, we need to remove all private endpoint connection related cmdlets and implement them in Az.Network. Please see https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/examples/private-link-resource-example.md for details.
+  - where:
+      verb: Update
+      subject: PrivateEndpointConnection
+    remove: true

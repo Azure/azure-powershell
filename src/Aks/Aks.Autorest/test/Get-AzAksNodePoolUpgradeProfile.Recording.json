@@ -1,17 +1,17 @@
 {
-  "Get-AzAksNodePoolUpgradeProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default?api-version=2023-02-01+1": {
+  "Get-AzAksNodePoolUpgradeProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/upgradeProfiles/default?api-version=2025-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/upgradeProfiles/default?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "e995b955-a1d6-471f-a628-5947e5717a70" ],
+        "x-ms-client-request-id": [ "46b5e6eb-b0fb-439e-9e56-bfce97306999" ],
         "CommandName": [ "Get-AzAksNodePoolUpgradeProfile" ],
         "FullCommandName": [ "Get-AzAksNodePoolUpgradeProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,21 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "facf4fab-89f9-4eef-bcfd-9cdc8bbfd55f" ],
-        "x-ms-request-id": [ "d207c51f-abf8-44a9-9757-8a1580b4d5cf" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/southeastasia/865d374f-8b21-4df6-ad76-072e44d05b26" ],
+        "x-ms-correlation-request-id": [ "afd5c07e-cb32-4fda-9f4c-74bf7fdc60e3" ],
+        "x-ms-request-id": [ "cf780371-8fdf-4112-b4f1-72870b17b8a0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251104T064859Z:afd5c07e-cb32-4fda-9f4c-74bf7fdc60e3" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230329T083459Z:facf4fab-89f9-4eef-bcfd-9cdc8bbfd55f" ],
-        "Date": [ "Wed, 29 Mar 2023 08:34:58 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D5B5D4EDF19A480A9E6E63207A13C305 Ref B: JKT201051406023 Ref C: 2025-11-04T06:48:58Z" ],
+        "Date": [ "Tue, 04 Nov 2025 06:48:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "441" ],
+        "Content-Length": [ "448" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default\",\n  \"name\": \"default\",\n  \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles\",\n  \"properties\": {\n   \"kubernetesVersion\": \"1.24.9\",\n   \"osType\": \"Linux\",\n   \"latestNodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\"\n  }\n }",
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/agentPools/default/upgradeProfiles/default\",\n \"name\": \"default\",\n \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles\",\n \"properties\": {\n  \"kubernetesVersion\": \"1.32.7\",\n  \"osType\": \"Linux\",\n  \"latestNodeImageVersion\": \"AKSUbuntu-2204containerd-202510.19.1\"\n }\n}",
       "isContentBase64": false
     }
   }

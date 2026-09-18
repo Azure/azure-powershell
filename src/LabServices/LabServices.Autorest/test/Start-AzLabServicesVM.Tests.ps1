@@ -19,8 +19,8 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Start-AzLabServicesVM' {
     It 'Start' {
-        Start-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 1
-        Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 1 | Select -ExpandProperty State |  Should -BeIn @("Started","Running")
-        Stop-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 1
+        Start-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 1
+        Get-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 1 | Select -ExpandProperty State |  Should -BeIn @("Started","Running")
+        Stop-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 1
     }
 }

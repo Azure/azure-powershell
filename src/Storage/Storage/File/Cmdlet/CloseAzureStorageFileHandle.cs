@@ -17,8 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using System;
@@ -84,31 +82,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string ShareName { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ShareCloseAllParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ShareCloseSingleParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share which contains the files/directories to closed handle.")]
-        [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareCloseAllParameterSetName,
             HelpMessage = "ShareClient object indicated the share which contains the files/directories to closed handle.")]
         [Parameter(
-            Mandatory = false,
+            Position = 0, 
+            Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareCloseSingleParameterSetName,
@@ -117,18 +99,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public ShareClient ShareClient { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 0, 
             Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DirectoryCloseAllParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the base folder which contains the files/directories to closed handle.")]
-        [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DirectoryCloseAllParameterSetName,
@@ -139,16 +111,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = FileCloseAllParameterSetName,
-            HelpMessage = "CloudFile object indicated the file to close handle.")]
-        [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = FileCloseAllParameterSetName,
@@ -189,18 +151,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = FileCloseAllParameterSetName, HelpMessage = "Force close all File handles.")]
         public SwitchParameter CloseAll { get; set; }
 
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ShareNameCloseSingleParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ShareNameCloseAllParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        public override IStorageContext Context { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = ShareNameCloseAllParameterSetName)]
         [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = ShareNameCloseSingleParameterSetName)]
         public override SwitchParameter DisAllowTrailingDot { get; set; }
@@ -220,14 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 switch (this.ParameterSetName)
                 {
                     case DirectoryCloseAllParameterSetName:
-                        if (this.ShareDirectoryClient != null)
-                        {
-                            baseDirClient = this.ShareDirectoryClient;
-                        }
-                        else
-                        {
-                            baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-                        }
+                        baseDirClient = this.ShareDirectoryClient;
                         break;
 
                     case ShareNameCloseSingleParameterSetName:
@@ -239,25 +182,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     case ShareCloseSingleParameterSetName:
                     case ShareCloseAllParameterSetName:
-                        if (this.ShareClient != null)
-                        {
-                            baseDirClient = this.ShareClient.GetRootDirectoryClient(); ;
-                        }
-                        else
-                        {
-                            baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-                        }
+                        baseDirClient = this.ShareClient.GetRootDirectoryClient();
                         break;
 
                     case FileCloseAllParameterSetName:
-                        if (this.ShareFileClient != null)
-                        {
-                            targetFile = this.ShareFileClient;
-                        }
-                        else
-                        {
-                            targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
-                        }
+                        targetFile = this.ShareFileClient;
                         break;
 
                     default:
@@ -272,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 // When not input path/File, the list handle target must be a Dir
                 bool foundAFolder = true;
                 ShareDirectoryClient targetDir = baseDirClient;
-                if (this.File != null)
+                if (targetFile != null)
                 {
                     foundAFolder = false;
                 }

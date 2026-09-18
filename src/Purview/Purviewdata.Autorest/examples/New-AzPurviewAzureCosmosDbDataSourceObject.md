@@ -1,6 +1,6 @@
 ### Example 1: Create Azure CosmosDB data source object
 ```powershell
-New-AzPurviewAzureCosmosDbDataSourceObject -Kind 'AzureCosmosDb' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -AccountUri 'https://cosmosd.documents.azure.com'
+New-AzPurviewAzureCosmosDbDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -AccountUri 'https://cosmosd.documents.azure.com'
 ```
 
 ```output

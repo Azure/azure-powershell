@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Possible values include: &#39;Assigned&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Failed&#39;,
         /// &#39;Succeeded&#39;, &#39;Updating&#39;</param>
 
-        /// <param name="provisioningInfo">
+        /// <param name="provisioningInfo">The provisioning information for the pod identity.
         /// </param>
         public ManagedClusterPodIdentity(string name, string namespaceProperty, UserAssignedIdentity identity, string bindingSelector = default(string), string provisioningState = default(string), ManagedClusterPodIdentityProvisioningInfo provisioningInfo = default(ManagedClusterPodIdentityProvisioningInfo))
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets
+        /// Gets the provisioning information for the pod identity.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningInfo")]
         public ManagedClusterPodIdentityProvisioningInfo ProvisioningInfo {get; private set; }

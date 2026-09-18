@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="failoverDeploymentModel">The failover deployment model.
-        /// Possible values include: 'NotApplicable', 'Classic', 'ResourceManager'</param>
+        /// Possible values include: &#39;NotApplicable&#39;, &#39;Classic&#39;, &#39;ResourceManager&#39;</param>
 
         /// <param name="groups">The recovery plan groups.
         /// </param>

@@ -35,7 +35,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<NetworkMapping> GetAzureSiteRecoveryNetworkMappings()
         {
             var firstPage = this.GetSiteRecoveryClient()
-                .ReplicationNetworkMappings.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ReplicationNetworkMappings.ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -61,6 +64,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationNetworkMappings.ListByReplicationNetworksWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     primaryNetworkName,
                     this.GetRequestHeaders(true))
@@ -90,6 +95,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return this.GetSiteRecoveryClient()
                 .ReplicationNetworkMappings.GetWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     fabricName,
                     primaryNetworkName,
                     networkMappingName,
@@ -115,6 +122,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationNetworkMappings.BeginCreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,
@@ -140,6 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationNetworkMappings.BeginDeleteWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,
@@ -166,6 +177,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationNetworkMappings.BeginUpdateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,

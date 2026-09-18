@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretNameInKeyVault
-The name of secret in keyvault refenced by -SecretStoreKeyVaultId.
+The name of secret in keyvault referenced by -SecretStoreKeyVaultId.
 
 ```yaml
 Type: System.String
@@ -131,7 +131,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SecretAuthInfo
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SecretAuthInfo
 
 ## NOTES
 

@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System.Collections;
     using System.Management.Automation;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// A cmdlet that invokes a resource action.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+                    var apiVersion = DetermineApiVersion(resourceId);
                     var parameters = this.GetParameters();
 
                     var operationResult = this.GetResourcesClient()

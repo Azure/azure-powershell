@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the service endpoint resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public ServiceEndpointPropertiesFormat(string service = default(string), SubResource networkIdentifier = default(SubResource), System.Collections.Generic.IList<string> locations = default(System.Collections.Generic.IList<string>), string provisioningState = default(string))
 
         {
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> Locations {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the service endpoint resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the service endpoint resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

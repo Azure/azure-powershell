@@ -75,7 +75,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Test-TFO -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
-        [Fact]
+        [Fact(Skip = "need fix up by ASR team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPlannedFailover()
         {
@@ -145,6 +145,15 @@ namespace RecoveryServices.SiteRecovery.Test
             TestRunner.RunTestScript(
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 $"Test-CreateRPIWithMangedDisksForReplication -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRPIWithMangedDisksForReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-UpdateRPIWithMangedDisksForReplication -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
     }
 }

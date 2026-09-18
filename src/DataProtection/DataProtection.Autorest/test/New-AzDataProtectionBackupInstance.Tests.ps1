@@ -55,50 +55,46 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $clusterName = $env.TestAksRestoreScenario.ClusterName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceId -eq $sourceClusterId }
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
-        # remove permissions
-        #
-        # if($backupInstance -ne $null){
-        #    Remove-azdataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Name $backupInstance.BackupInstanceName
-        # }
-        #
-        # $roles = Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
-        # foreach ($role in $roles){
-        #    Remove-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId -RoleDefinitionName $role.RoleDefinitionName -Scope $role.Scope
-        # }
-        #
-        # $aksCluster = Get-AzAksCluster -Id $backupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $sub
-        # $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId
-        # Remove-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId -RoleDefinitionName "Contributor" -Scope $snapshotResourceGroupId
+        # configure backup - create backup instance if it doesn't exist
+        if ($null -eq $backupInstance) {
+            $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService
 
-        # configure backup
-        # if($backupInstance -eq $null){
-            # $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService # -LabelSelector "x=y","foo=bar"
+            $backupInstanceInit = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
 
-            # $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
+            # set MSI permissions (may fail if user lacks role assignment permissions but roles are already configured)
+            try {
+                Set-AzDataProtectionMSIPermission -BackupInstance $backupInstanceInit -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup" -Confirm:$false
+            }
+            catch {
+                Write-Host "Set-AzDataProtectionMSIPermission failed (permissions may already be configured): $_"
+            }
 
-            ## set MSI permissions
-            # Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup"
-
-            ## enable protection
-            # $tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2027"}
-            # $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag
-        # }
-
-        # validate bi created
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
-        ($backupInstance -ne $null) | Should be $true
-
-        while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured")
-        {
-            Start-TestSleep -Seconds 10
-            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+            # enable protection
+            $tag = @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="12-2027"}
+            $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstanceInit -SubscriptionId $sub -Tag $tag
         }
 
+        # validate bi created
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceId -eq $sourceClusterId }
+        ($backupInstance -ne $null) | Should be $true
+
+        $maxRetries = 30
+        $retryCount = 0
+        while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured" -and $retryCount -lt $maxRetries)
+        {
+            Start-TestSleep -Seconds 10
+            $retryCount++
+            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceId -eq $sourceClusterId }
+        }
+        $backupInstance.Property.ProtectionStatus.Status | Should be "ProtectionConfigured"
+
+        $policyRule = $policy.Property.PolicyRule | Where-Object { $_.ObjectType -eq "AzureBackupRule"}
+
         # adhoc backup
-        Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupRuleOptionRuleName  $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
+        Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupRuleOptionRuleName  $policyRule.Name -TriggerOptionRetentionTagOverride $policyRule.Trigger.TaggingCriterion[0].TagInfoTagName
 
         Start-TestSleep -Seconds 30
 

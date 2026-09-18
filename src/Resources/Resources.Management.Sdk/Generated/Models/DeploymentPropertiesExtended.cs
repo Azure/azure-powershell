@@ -76,7 +76,13 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="error">The deployment error.
         /// </param>
-        public DeploymentPropertiesExtended(string provisioningState = default(string), string correlationId = default(string), System.DateTime? timestamp = default(System.DateTime?), string duration = default(string), object outputs = default(object), System.Collections.Generic.IList<Provider> providers = default(System.Collections.Generic.IList<Provider>), System.Collections.Generic.IList<Dependency> dependencies = default(System.Collections.Generic.IList<Dependency>), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DeploymentMode? mode = default(DeploymentMode?), DebugSetting debugSetting = default(DebugSetting), OnErrorDeploymentExtended onErrorDeployment = default(OnErrorDeploymentExtended), string templateHash = default(string), System.Collections.Generic.IList<ResourceReference> outputResources = default(System.Collections.Generic.IList<ResourceReference>), System.Collections.Generic.IList<ResourceReference> validatedResources = default(System.Collections.Generic.IList<ResourceReference>), ErrorResponse error = default(ErrorResponse))
+
+        /// <param name="diagnostics">Contains diagnostic information collected during validation process.
+        /// </param>
+
+        /// <param name="validationLevel">The validation level of the deployment
+        /// Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;</param>
+        public DeploymentPropertiesExtended(string provisioningState = default(string), string correlationId = default(string), System.DateTime? timestamp = default(System.DateTime?), string duration = default(string), object outputs = default(object), System.Collections.Generic.IList<Provider> providers = default(System.Collections.Generic.IList<Provider>), System.Collections.Generic.IList<Dependency> dependencies = default(System.Collections.Generic.IList<Dependency>), TemplateLink templateLink = default(TemplateLink), object parameters = default(object), ParametersLink parametersLink = default(ParametersLink), DeploymentMode? mode = default(DeploymentMode?), DebugSetting debugSetting = default(DebugSetting), OnErrorDeploymentExtended onErrorDeployment = default(OnErrorDeploymentExtended), string templateHash = default(string), System.Collections.Generic.IList<ResourceReference> outputResources = default(System.Collections.Generic.IList<ResourceReference>), System.Collections.Generic.IList<ResourceReference> validatedResources = default(System.Collections.Generic.IList<ResourceReference>), ErrorResponse error = default(ErrorResponse), System.Collections.Generic.IList<DeploymentDiagnosticsDefinition> diagnostics = default(System.Collections.Generic.IList<DeploymentDiagnosticsDefinition>), string validationLevel = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -96,6 +102,8 @@ namespace Microsoft.Azure.Management.Resources.Models
             this.OutputResources = outputResources;
             this.ValidatedResources = validatedResources;
             this.Error = error;
+            this.Diagnostics = diagnostics;
+            this.ValidationLevel = validationLevel;
             CustomInit();
         }
 
@@ -206,6 +214,18 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
         public ErrorResponse Error {get; private set; }
+
+        /// <summary>
+        /// Gets contains diagnostic information collected during validation process.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diagnostics")]
+        public System.Collections.Generic.IList<DeploymentDiagnosticsDefinition> Diagnostics {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the validation level of the deployment Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "validationLevel")]
+        public string ValidationLevel {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -232,6 +252,17 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
 
+
+            if (this.Diagnostics != null)
+            {
+                foreach (var element in this.Diagnostics)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
 
         }
     }

@@ -135,11 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 destinationResourceGroup,
                 () =>
                 {
-                    var apiVersion = this
-                        .DetermineApiVersion(
-                            providerNamespace: Constants.MicrosoftResourceNamesapce,
-                            resourceType: Constants.ResourceGroups)
-                        .Result;
+                    var apiVersion = DetermineApiVersion(Constants.MicrosoftResourceNamesapce, Constants.ResourceGroups);
 
                     var parameters = new ResourceBatchMoveParameters
                     {

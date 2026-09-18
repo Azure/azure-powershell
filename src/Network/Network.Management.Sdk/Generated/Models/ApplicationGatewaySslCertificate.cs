@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the SSL certificate resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="data">Base-64 encoded pfx certificate. Only applicable in PUT Request.
         /// </param>
@@ -54,7 +55,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="keyVaultSecretId">Secret Id of (base-64 encoded unencrypted pfx) &#39;Secret&#39; or &#39;Certificate&#39;
         /// object stored in KeyVault.
         /// </param>
-        public ApplicationGatewaySslCertificate(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string))
+
+        /// <param name="hsm">Managed HSM properties of the Application Gateway resource.
+        /// </param>
+        public ApplicationGatewaySslCertificate(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string), ApplicationGatewayManagedHsm hsm = default(ApplicationGatewayManagedHsm))
 
         : base(id)
         {
@@ -66,6 +70,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Password = password;
             this.PublicCertData = publicCertData;
             this.KeyVaultSecretId = keyVaultSecretId;
+            this.Hsm = hsm;
             CustomInit();
         }
 
@@ -96,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the SSL certificate resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the SSL certificate resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -128,5 +133,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.keyVaultSecretId")]
         public string KeyVaultSecretId {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed HSM properties of the Application Gateway resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hsm")]
+        public ApplicationGatewayManagedHsm Hsm {get; set; }
     }
 }

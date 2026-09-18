@@ -15,15 +15,15 @@ Creates a Management Group
 ### GroupOperations (Default)
 ```
 New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-ParentId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
 New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
- -ParentObject <PSManagementGroup> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,13 +40,13 @@ New-AzManagementGroup -GroupName "TestGroup"
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 11:06:27 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
-ParentId          : /providers/Microsoft.Management/managementGroups/14307de0-5e6f-46cf-b2ba-64a062964d30
-ParentName        : 14307de0-5e6f-46cf-b2ba-64a062964d30
-ParentDisplayName : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 Creation of a new group with `DisplayName` and `ParentId` set to `null`. The `DisplayName` will be same as the `GroupName` and the parent of the group will be the tenant.  
@@ -60,13 +60,13 @@ New-AzManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName"
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 11:06:27 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
-ParentId          : /providers/Microsoft.Management/managementGroups/14307de0-5e6f-46cf-b2ba-64a062964d30
-ParentName        : 14307de0-5e6f-46cf-b2ba-64a062964d30
-ParentDisplayName : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentId          : /providers/Microsoft.Management/managementGroups/00001111-aaaa-2222-bbbb-3333cccc4444
+ParentName        : 00001111-aaaa-2222-bbbb-3333cccc4444
+ParentDisplayName : 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 In this case, the parent of the group will be the tenant and the `DisplayName` will be set to the value given.
@@ -80,10 +80,10 @@ New-AzManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName"
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent
@@ -99,16 +99,46 @@ New-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
 Name              : TestGroup
-TenantId          : 14307de0-5e6f-46cf-b2ba-64a062964d30
+TenantId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
-UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
+UpdatedBy         : 00001111-aaaa-2222-bbbb-3333cccc4444
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
 ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent
 ```
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -179,21 +209,6 @@ Parameter Sets: ParentGroupObject
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

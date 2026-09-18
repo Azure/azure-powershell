@@ -14,13 +14,56 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IVpnGatewaysOperations
     {
         /// <summary>
+        /// Lists all the VpnGateways in a subscription.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the VpnGateways in a subscription.
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the VpnGateways in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the VpnGateways in a resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieves the details of a virtual wan vpn gateway.
         /// </summary>
         /// <remarks>
         /// Retrieves the details of a virtual wan vpn gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -48,7 +91,7 @@ namespace Microsoft.Azure.Management.Network
         /// existing gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -77,7 +120,7 @@ namespace Microsoft.Azure.Management.Network
         /// Updates virtual wan vpn gateway tags.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -106,7 +149,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a virtual wan vpn gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -129,7 +172,7 @@ namespace Microsoft.Azure.Management.Network
         /// Resets the primary of the vpn gateway in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -158,7 +201,7 @@ namespace Microsoft.Azure.Management.Network
         /// Starts packet capture on vpn gateway in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -188,7 +231,7 @@ namespace Microsoft.Azure.Management.Network
         /// Stops packet capture on vpn gateway in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -212,49 +255,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, VpnGatewayPacketCaptureStopParameters parameters = default(VpnGatewayPacketCaptureStopParameters), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the VpnGateways in a resource group.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the VpnGateways in a resource group.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all the VpnGateways in a subscription.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the VpnGateways in a subscription.
-        /// </remarks>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Creates a virtual wan vpn gateway if it doesn&#39;t exist else updates the
         /// existing gateway.
         /// </summary>
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.Network
         /// existing gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Network
         /// Updates virtual wan vpn gateway tags.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a virtual wan vpn gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Management.Network
         /// Resets the primary of the vpn gateway in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Network
         /// Starts packet capture on vpn gateway in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Management.Network
         /// Stops packet capture on vpn gateway in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -427,29 +427,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, VpnGatewayPacketCaptureStopParameters parameters = default(VpnGatewayPacketCaptureStopParameters), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the VpnGateways in a resource group.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the VpnGateways in a resource group.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Lists all the VpnGateways in a subscription.
         /// </summary>
         /// <remarks>
@@ -471,6 +448,29 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the VpnGateways in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the VpnGateways in a resource group.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnGateway>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

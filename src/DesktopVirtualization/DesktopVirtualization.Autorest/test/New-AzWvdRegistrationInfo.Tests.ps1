@@ -29,14 +29,14 @@ Describe 'New-AzWvdRegistrationInfo' {
                                 -CustomRdpProperty $null `
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
-                                -PreferredAppGroupType 'Desktop'
+                                -PreferredAppGroupType 'Desktop' 
             $date = get-date
             $newDate = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
             $regInfo = New-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
                                         -ResourceGroupName $env.ResourceGroup `
                                         -HostPoolName $env.HostPool `
                                         -ExpirationTime $newDate
-                $regInfo.Token | Should -Not -BeNullOrEmpty
+            $regInfo.Token | Should -Not -BeNullOrEmpty
         }
         finally{
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `

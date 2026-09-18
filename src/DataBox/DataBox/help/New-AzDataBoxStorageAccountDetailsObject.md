@@ -14,7 +14,7 @@ Create an in-memory object for StorageAccountDetails.
 
 ```
 New-AzDataBoxStorageAccountDetailsObject -StorageAccountId <String> -DataAccountType <DataAccountType>
- [-SharePassword <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SharePassword <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,21 +46,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,7 +95,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails
 
 ## NOTES
 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="fabricLocation">The fabric location.
-        /// Possible values include: 'Primary', 'Recovery'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Recovery&#39;</param>
         public RecoveryPlanScriptActionDetails(string path, string fabricLocation, string timeout = default(string))
 
         {

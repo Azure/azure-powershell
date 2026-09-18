@@ -1,0 +1,52 @@
+{
+  "resourceType": "sapVirtualInstances/databaseInstances",
+  "apiVersion": "2024-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.workloads"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWorkloadsSapDatabaseInstance",
+      "description": "Gets the SAP Database Instance resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapdatabaseinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SapVirtualInstanceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the SAP Database Instance resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.databaseInstanceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SapVirtualInstanceName",
+              "value": "[Path.sapVirtualInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

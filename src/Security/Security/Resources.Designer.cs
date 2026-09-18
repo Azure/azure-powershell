@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to deserialize SQL inforamtion protection policy..
+        ///   Looks up a localized string similar to Failed to deserialize SQL information protection policy..
         /// </summary>
         internal static string SqlInformationProtectionPolicyDeserializationError {
             get {

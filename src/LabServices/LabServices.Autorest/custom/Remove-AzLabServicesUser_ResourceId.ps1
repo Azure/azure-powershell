@@ -12,12 +12,25 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to delete a user resource.
+.Description
+Operation to delete a user resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser
+#>
 function Remove-AzLabServicesUser_ResourceId {
 [OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource Id of lab service user.
     ${ResourceId},
 
     [Parameter()]
@@ -93,18 +106,17 @@ param(
 )
 
 process {
-    $resourceHash = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
-
+    $HandleUserResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleUserResourceId.ps1'
+    $resourceHash = . $HandleUserResourceId -ResourceId $ResourceId
+    $PSBoundParameters.Remove("SubscriptionId") > $null
     $PSBoundParameters.Remove("Name") > $null
-    $PSBoundParameters.Add("Name", $PSBoundParameters.UserName)
-    $PSBoundParameters.Remove("UserName") > $null
-
-
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {
             $PSBoundParameters.Add($_, $($resourceHash[$_]))
         }
-   
+        $PSBoundParameters.Add("Name", $PSBoundParameters.UserName)
+        $PSBoundParameters.Remove("UserName") > $null
+        
         $PSBoundParameters.Remove("ResourceId") > $null
 
         return Az.LabServices\Remove-AzLabServicesUser @PSBoundParameters

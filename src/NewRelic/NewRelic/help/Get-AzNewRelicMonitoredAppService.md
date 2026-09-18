@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicMonitoredAppService
 
 ## SYNOPSIS
-List the app service resources currently being monitored by the NewRelic resource.
+Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app services are under monitoring
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Get-AzNewRelicMonitoredAppService -MonitorName <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-List the app service resources currently being monitored by the NewRelic resource.
+Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app services are under monitoring
 
 ## EXAMPLES
 

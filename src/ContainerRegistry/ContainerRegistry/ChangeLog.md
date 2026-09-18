@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
+
+## Version 5.1.0
+* Added ChangeSafety Support
+
+## Version 5.0.1
+* Fixed `-ExposeToken` with `Connect-AzContainerRegistry`
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
+## Version 5.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+## Version 4.3.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 4.3.0
+* Upgraded nuget package to signed package.
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 4.2.1
 * Introduced secrets detection feature to safeguard sensitive data.

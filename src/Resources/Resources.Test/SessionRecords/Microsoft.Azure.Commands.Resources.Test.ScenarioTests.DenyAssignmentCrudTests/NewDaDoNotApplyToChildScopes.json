@@ -1,0 +1,89 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/9a57751b-3a68-4ee8-90f2-26fb1ab70ac3?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzlhNTc3NTFiLTNhNjgtNGVlOC05MGYyLTI2ZmIxYWI3MGFjMz9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "ed6cd14a-289d-4253-b8c9-c894517740bb"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2526.11203",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.3"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "603"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-ChildScopes\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"doNotApplyToChildScopes\": true,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0d700e67-8e19-41cd-a81b-c471de7336b5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/cf7149bb-d30a-45b6-8cc3-f8ab403fb41e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "2999"
+        ],
+        "x-ms-correlation-request-id": [
+          "332f3f1f-d66f-4a03-a636-008c14f49f28"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20260330T112022Z:332f3f1f-d66f-4a03-a636-008c14f49f28"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 55C8B10457744B14A43CAB4225915134 Ref B: AMS231020614019 Ref C: 2026-03-30T11:20:21Z"
+        ],
+        "Date": [
+          "Mon, 30 Mar 2026 11:20:21 GMT"
+        ],
+        "Content-Length": [
+          "149"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"UserAssignedDenyAssignmentPropertiesNotValid\",\r\n    \"message\": \"User assigned deny assignment does not support doNotApplyToChildScopes.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "34560e2c-8954-4848-a8d2-dc419301b9fc"
+  }
+}

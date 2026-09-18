@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Resources</PsModuleName>   
@@ -26,11 +26,11 @@
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
     <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj" />
-    <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj" />
+    <ProjectReference Include="..\..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj" />
 	<ProjectReference Include="..\Resources.Management.Sdk\Resources.Management.Sdk.csproj" />
     <ProjectReference Include="..\..\Purview\Purview\Purview.csproj" />
-    <ProjectReference Include="..\..\Purview\Purview.Autorest\Az.Purview.csproj" />
-    <ProjectReference Include="..\..\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj" />
+    <ProjectReference Include="..\..\..\generated\Purview\Purview.Autorest\Az.Purview.csproj" />
+    <ProjectReference Include="..\..\..\generated\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj" />
   </ItemGroup>
 
   <ItemGroup>

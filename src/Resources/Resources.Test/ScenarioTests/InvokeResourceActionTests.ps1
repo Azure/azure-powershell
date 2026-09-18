@@ -19,37 +19,26 @@ Tests invoking registering resource provider action
 function Test-InvokeResourceActionsWithResouceId
 {
     # Setup
-    $rpName = "Microsoft.ApiManagement"   
+    $rpName = "Microsoft.AwsConnector"   
     $action = "Register"
     $subId = GetDefaultSubscriptionId
     $resourceId = $subId + "/providers/" + $rpName
-    Unregister-AzResourceProvider -ProviderNamespace $rpName
 
     try
     {
         # Test
-        $res = Invoke-AzResourceAction -ResourceId $resourceId -action $action -Force
-
+        $res = Invoke-AzResourceAction -ResourceId $resourceId -Action $action -Force
 
         # Assert
         Assert-AreEqual $res.registrationState Registering
         
-        $statusChanged = $false
+        do {
+            $rp = Get-AzResourceProvider | Where-Object ProviderNamespace -eq $rpName
 
-        # within two minutes, the registrationState should change to "Registered"
-        $timeout = new-timespan -Minutes 2
-        $sw = [diagnostics.stopwatch]::StartNew()
-
-        while ($sw.elapsed -lt $timeout){
-            $rp = Get-AzResourceProvider | where ProviderNamespace -eq $rpName
-            if($rp -ne $null -and $rp.registrationState -eq "Registered") {
-                $statusChanged = $true
-                break
-			}
-        	Start-TestSleep -Seconds 20
-        }
+            Start-TestSleep -Seconds 10
+        } while ($rp.RegistrationState -ne "Registered")
         
-        Assert-True { $statusChanged }
+        Assert-AreEqual $rp.RegistrationState Registered
     }
     finally
     {

@@ -15,8 +15,7 @@ Creates or updates a KQL script in a workspace.
 ### SetByName (Default)
 ```
 New-AzSynapseKqlScript -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByNameAndKustoPoolDatabase
@@ -29,8 +28,7 @@ New-AzSynapseKqlScript -WorkspaceName <String> [-Name <String>] -KustoPoolName <
 ### SetByObject
 ```
 New-AzSynapseKqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObjectAndKustoPoolDatabase

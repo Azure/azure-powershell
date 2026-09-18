@@ -15,14 +15,14 @@ Update a file system resource
 ### UpdateExpanded (Default)
 ```
 Update-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzQumuloFileSystem -InputObject <IQumuloIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Update-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource
 Location Name               SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGrou
                                                                                                                                                                              pName
 -------- ----               ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ------------
-eastus   qumulo-resource-01 6/8/2023 9:49:18 AM user@organization.com User                    6/21/2023 6:27:53 AM     user@organization.com    User                         ps-joyer-te…
+eastus   qumulo-resource-01 6/8/2023 9:49:18 AM [redacted]           User                    6/21/2023 6:27:53 AM     [redacted]                User                         ps-joyer-te…
 ```
 
 Update tags with specific name and group
@@ -87,21 +87,6 @@ Parameter Sets: UpdateExpanded
 Aliases: FileSystemName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource
+### Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource
 
 ## NOTES
 

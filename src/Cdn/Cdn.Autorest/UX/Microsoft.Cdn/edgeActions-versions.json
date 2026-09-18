@@ -1,0 +1,138 @@
+{
+  "resourceType": "edgeActions/versions",
+  "apiVersion": "2024-07-22-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cdn"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCdnEdgeActionVersionCode",
+      "description": "A long-running operation to get versioncode deployed to EdgeActionVersion resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeactionversioncode"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "A long-running operation to get versioncode deployed to EdgeActionVersion resource.",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzCdnEdgeActionVersion",
+      "description": "Get EdgeActionVersion resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeactionversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get EdgeActionVersion resource",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCdnEdgeActionVersion",
+      "description": "Delete EdgeActionVersion resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnedgeactionversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EdgeActionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-Version <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete EdgeActionVersion resource",
+          "parameters": [
+            {
+              "name": "-EdgeActionName",
+              "value": "[Path.edgeActionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-Version",
+              "value": "[Path.version]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

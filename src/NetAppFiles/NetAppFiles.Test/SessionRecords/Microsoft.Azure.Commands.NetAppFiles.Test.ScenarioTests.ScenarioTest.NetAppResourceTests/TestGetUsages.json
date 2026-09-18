@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/westus2/usages/totalTibsPerSubscription?api-version=2025-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy93ZXN0dXMyL3VzYWdlcy90b3RhbFRpYnNQZXJTdWJzY3JpcHRpb24/YXBpLXZlcnNpb249MjAyNS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "47bd9f16-5d8c-48e9-ab39-74ffd6c96b37"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.1425.11118",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "039d374a-1d1d-4b58-adae-a65091b6589c"
+        ],
+        "x-ms-correlation-request-id": [
+          "039d374a-1d1d-4b58-adae-a65091b6589c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20250414T105741Z:039d374a-1d1d-4b58-adae-a65091b6589c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1195AE0407F4431580751AEDA91EFC2F Ref B: AMS231020512029 Ref C: 2025-04-14T10:57:41Z"
+        ],
+        "Date": [
+          "Mon, 14 Apr 2025 10:57:41 GMT"
+        ],
+        "Content-Length": [
+          "916"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NoRegisteredProviderFound\",\r\n    \"message\": \"No registered resource provider found for location 'westus2' and API version '2025-01-01' for type 'locations/Usages'. The supported api-versions are '2024-11-01, 2025-03-01, 2025-03-01-preview'. The supported locations are 'australiacentral, australiacentral2, australiaeast, australiasoutheast, brazilsouth, brazilsoutheast, canadacentral, canadaeast, centralindia, centralus, eastasia, eastus, eastus2, francecentral, germanynorth, germanywestcentral, israelcentral, italynorth, japaneast, japanwest, koreacentral, koreasouth, northcentralus, northeurope, norwayeast, norwaywest, qatarcentral, southcentralus, spaincentral, southafricanorth, southindia, southeastasia, swedencentral, switzerlandnorth, switzerlandwest, uaenorth, uaecentral, uksouth, ukwest, westeurope, westus, westus2, westus3, westusstage, eastus2euap, westcentralus, centraluseuap, '.\"\r\n  }\r\n}",
+      "StatusCode": 400
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0661b131-4a11-479b-96bf-2f95acca2f73"
+  }
+}

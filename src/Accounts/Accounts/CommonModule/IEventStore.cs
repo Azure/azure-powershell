@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.CommonModule
         /// Try to get the next event from the store
         /// </summary>
         /// <param name="data">The next event in the store</param>
-        /// <returns>True if there is an event remainign in the store, otherwise false</returns>
+        /// <returns>True if there is an event remaining in the store, otherwise false</returns>
         bool TryGetEvent(out EventData data);
     }
 }

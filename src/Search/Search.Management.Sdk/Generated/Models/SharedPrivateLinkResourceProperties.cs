@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the properties of an existing Shared Private Link Resource
-    /// managed by the Azure Cognitive Search service.
+    /// Describes the properties of an existing shared private link resource
+    /// managed by the Azure AI Search service.
     /// </summary>
     public partial class SharedPrivateLinkResourceProperties
     {
@@ -25,32 +25,31 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the SharedPrivateLinkResourceProperties class.
         /// </summary>
 
-        /// <param name="privateLinkResourceId">The resource id of the resource the shared private link resource is for.
+        /// <param name="privateLinkResourceId">The resource ID of the resource the shared private link resource is for.
         /// </param>
 
-        /// <param name="groupId">The group id from the provider of resource the shared private link resource
+        /// <param name="groupId">The group ID from the provider of resource the shared private link resource
         /// is for.
         /// </param>
 
-        /// <param name="requestMessage">The request message for requesting approval of the shared private link
-        /// resource.
+        /// <param name="requestMessage">The message for requesting approval of the shared private link resource.
         /// </param>
 
         /// <param name="resourceRegion">Optional. Can be used to specify the Azure Resource Manager location of the
-        /// resource to which a shared private link is to be created. This is only
+        /// resource for which a shared private link is being created. This is only
         /// required for those resources whose DNS configuration are regional (such as
         /// Azure Kubernetes Service).
         /// </param>
 
-        /// <param name="status">Status of the shared private link resource. Can be Pending, Approved,
-        /// Rejected or Disconnected.
-        /// Possible values include: 'Pending', 'Approved', 'Rejected', 'Disconnected'</param>
+        /// <param name="status">Status of the shared private link resource. Valid values are Pending,
+        /// Approved, Rejected or Disconnected.
+        /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;</param>
 
-        /// <param name="provisioningState">The provisioning state of the shared private link resource. Can be
-        /// Updating, Deleting, Failed, Succeeded or Incomplete.
-        /// Possible values include: 'Updating', 'Deleting', 'Failed', 'Succeeded',
-        /// 'Incomplete'</param>
-        public SharedPrivateLinkResourceProperties(string privateLinkResourceId = default(string), string groupId = default(string), string requestMessage = default(string), string resourceRegion = default(string), SharedPrivateLinkResourceStatus? status = default(SharedPrivateLinkResourceStatus?), SharedPrivateLinkResourceProvisioningState? provisioningState = default(SharedPrivateLinkResourceProvisioningState?))
+        /// <param name="provisioningState">The provisioning state of the shared private link resource. Valid values
+        /// are Updating, Deleting, Failed, Succeeded or Incomplete.
+        /// Possible values include: &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;,
+        /// &#39;Incomplete&#39;</param>
+        public SharedPrivateLinkResourceProperties(string privateLinkResourceId = default(string), string groupId = default(string), string requestMessage = default(string), string resourceRegion = default(string), string status = default(string), string provisioningState = default(string))
 
         {
             this.PrivateLinkResourceId = privateLinkResourceId;
@@ -69,29 +68,29 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets the resource id of the resource the shared private link
+        /// Gets or sets the resource ID of the resource the shared private link
         /// resource is for.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkResourceId")]
         public string PrivateLinkResourceId {get; set; }
 
         /// <summary>
-        /// Gets or sets the group id from the provider of resource the shared private
+        /// Gets or sets the group ID from the provider of resource the shared private
         /// link resource is for.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; set; }
 
         /// <summary>
-        /// Gets or sets the request message for requesting approval of the shared
-        /// private link resource.
+        /// Gets or sets the message for requesting approval of the shared private link
+        /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "requestMessage")]
         public string RequestMessage {get; set; }
 
         /// <summary>
         /// Gets or sets optional. Can be used to specify the Azure Resource Manager
-        /// location of the resource to which a shared private link is to be created.
+        /// location of the resource for which a shared private link is being created.
         /// This is only required for those resources whose DNS configuration are
         /// regional (such as Azure Kubernetes Service).
         /// </summary>
@@ -99,17 +98,17 @@ namespace Microsoft.Azure.Management.Search.Models
         public string ResourceRegion {get; set; }
 
         /// <summary>
-        /// Gets or sets status of the shared private link resource. Can be Pending,
-        /// Approved, Rejected or Disconnected. Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;
+        /// Gets or sets status of the shared private link resource. Valid values are
+        /// Pending, Approved, Rejected or Disconnected. Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
-        public SharedPrivateLinkResourceStatus? Status {get; set; }
+        public string Status {get; set; }
 
         /// <summary>
         /// Gets or sets the provisioning state of the shared private link resource.
-        /// Can be Updating, Deleting, Failed, Succeeded or Incomplete. Possible values include: &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Incomplete&#39;
+        /// Valid values are Updating, Deleting, Failed, Succeeded or Incomplete. Possible values include: &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Incomplete&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
-        public SharedPrivateLinkResourceProvisioningState? ProvisioningState {get; set; }
+        public string ProvisioningState {get; set; }
     }
 }

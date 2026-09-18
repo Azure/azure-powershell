@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -73,6 +77,12 @@ namespace Microsoft.Azure.Commands.Compute
         public string[] IdentityId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = true)]
+        public string EncryptionIdentity { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
         public string [] Zone { get; set; }
@@ -105,8 +115,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
-        [PSArgumentCompleter("Regular", "Spot")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -131,6 +141,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -187,6 +202,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies processor frequency behavior.")]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
 	
@@ -210,6 +232,31 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Any")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AlignRegionalDisksToVMZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -224,7 +271,8 @@ namespace Microsoft.Azure.Commands.Compute
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
                 EvictionPolicy = this.EvictionPolicy,
-                Priority = this.Priority
+                Priority = this.Priority,
+                SecurityProfile = null
             };
 
             if (this.IsParameterBound(c => c.IdentityType))
@@ -244,6 +292,25 @@ namespace Microsoft.Azure.Commands.Compute
                 foreach (var id in this.IdentityId)
                 {
                     vm.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionIdentity))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+
+                if (vm.SecurityProfile.EncryptionIdentity == null)
+                {
+                    vm.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+                }
+
+                if (String.IsNullOrEmpty(vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) ||
+                    !vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
+                {
+                    vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
                 }
             }
 
@@ -277,6 +344,15 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.HardwareProfile.VmSizeProperties = new VMSizeProperties();
                 }
                 vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vm.HardwareProfile == null)
+                {
+                    vm.HardwareProfile = new HardwareProfile();
+                }
+                vm.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.EnableUltraSSD.IsPresent)
@@ -325,10 +401,24 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
             }
 
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
+            }
+
             if (this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 vm.CapacityReservation = new CapacityReservationProfile();
                 vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (vm.CapacityReservation == null)
+                {
+                    vm.CapacityReservation = new CapacityReservationProfile();
+                }
+                vm.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
             }
 	    
 	        if (this.IsParameterBound(c => c.UserData))
@@ -426,6 +516,43 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
+
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (vm.Placement == null)
+                {
+                    vm.Placement = new Placement();
+                }
+                vm.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.IncludeZone))
+            {
+                if (vm.Placement == null)
+                {
+                    vm.Placement = new Placement();
+                }
+                vm.Placement.IncludeZones = this.IncludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.ExcludeZone))
+            {
+                if (vm.Placement == null)
+                {
+                    vm.Placement = new Placement();
+                }
+                vm.Placement.ExcludeZones = this.ExcludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.AlignRegionalDisksToVMZone))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                vm.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
+            }
+
 
             WriteObject(vm);
         }

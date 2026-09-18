@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Management.Resources
         /// is supported:
         /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
         /// </param>
-        public static void Delete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
+        public static ResourceGroupsDeleteHeaders Delete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
         {
-                ((IResourceGroupsOperations)operations).DeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
+                return ((IResourceGroupsOperations)operations).DeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -122,9 +122,12 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGroupsDeleteHeaders> DeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a resource group.
@@ -135,9 +138,13 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='resourceGroupName'>
         /// The name of the resource group to get. The name is case insensitive.
         /// </param>
-        public static ResourceGroup Get(this IResourceGroupsOperations operations, string resourceGroupName)
+        /// <param name='expand'>
+        /// Comma-separated list of additional properties to be included in the
+        /// response. Valid values include createdTime, changedTime.
+        /// </param>
+        public static ResourceGroup Get(this IResourceGroupsOperations operations, string resourceGroupName, string expand = default(string))
         {
-                return ((IResourceGroupsOperations)operations).GetAsync(resourceGroupName).GetAwaiter().GetResult();
+                return ((IResourceGroupsOperations)operations).GetAsync(resourceGroupName, expand).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -149,12 +156,16 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='resourceGroupName'>
         /// The name of the resource group to get. The name is case insensitive.
         /// </param>
+        /// <param name='expand'>
+        /// Comma-separated list of additional properties to be included in the
+        /// response. Valid values include createdTime, changedTime.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ResourceGroup> GetAsync(this IResourceGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGroup> GetAsync(this IResourceGroupsOperations operations, string resourceGroupName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, expand, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -238,7 +249,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='odataQuery'>
         /// 
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ResourceGroup> List(this IResourceGroupsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter>))
+        public static Microsoft.Rest.Azure.IPage<ResourceGroup> List(this IResourceGroupsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand>))
         {
                 return ((IResourceGroupsOperations)operations).ListAsync(odataQuery).GetAwaiter().GetResult();
         }
@@ -255,7 +266,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ResourceGroup>> ListAsync(this IResourceGroupsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ResourceGroup>> ListAsync(this IResourceGroupsOperations operations, Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
             {
@@ -278,9 +289,9 @@ namespace Microsoft.Azure.Management.Resources
         /// is supported:
         /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
         /// </param>
-        public static void BeginDelete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
+        public static ResourceGroupsDeleteHeaders BeginDelete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
         {
-                ((IResourceGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
+                return ((IResourceGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -302,9 +313,12 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGroupsDeleteHeaders> BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Captures the specified resource group as a template.

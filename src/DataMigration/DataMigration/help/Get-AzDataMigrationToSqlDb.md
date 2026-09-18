@@ -16,13 +16,13 @@ Retrieve the specified database migration for a given SQL Db.
 ```
 Get-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> [-SubscriptionId <String[]>]
  -TargetDbName <String> [-Expand <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Expand <String>]
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
@@ -137,21 +137,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
@@ -222,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlDb
 
 ## NOTES
 

@@ -8,28 +8,50 @@ schema: 2.0.0
 # Update-AzContainerRegistryWebhook
 
 ## SYNOPSIS
-Updates a webhook with the specified parameters.
+Update a webhook with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Action <WebhookAction[]>] [-CustomHeader <Hashtable>] [-Scope <String>]
- [-ServiceUri <String>] [-Status <WebhookStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Action <String[]>] [-CustomHeader <Hashtable>] [-Scope <String>]
+ [-ServiceUri <String>] [-Status <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzContainerRegistryWebhook -InputObject <IContainerRegistryIdentity> [-Action <WebhookAction[]>]
- [-CustomHeader <Hashtable>] [-Scope <String>] [-ServiceUri <String>] [-Status <WebhookStatus>]
+Update-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityRegistryExpanded
+```
+Update-AzContainerRegistryWebhook -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ [-Action <String[]>] [-CustomHeader <Hashtable>] [-Scope <String>] [-ServiceUri <String>] [-Status <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzContainerRegistryWebhook -InputObject <IContainerRegistryIdentity> [-Action <String[]>]
+ [-CustomHeader <Hashtable>] [-Scope <String>] [-ServiceUri <String>] [-Status <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates a webhook with the specified parameters.
+Update a webhook with the specified parameters.
 
 ## EXAMPLES
 
@@ -52,8 +74,8 @@ Update an existing container registry webhook.
 The list of actions that trigger the webhook to post notifications.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookAction[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -83,7 +105,7 @@ Custom headers that will be added to the webhook notifications.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaIdentityExpanded
 Aliases: Header
 
 Required: False
@@ -111,7 +133,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
@@ -125,12 +146,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the webhook.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityRegistryExpanded
 Aliases: WebhookName, ResourceName
 
 Required: True
@@ -155,12 +206,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: UpdateViaIdentityRegistryExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: ContainerRegistryName
 
 Required: True
@@ -176,7 +242,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -195,7 +261,7 @@ Empty means all events.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -210,7 +276,7 @@ The service URI for the webhook to post notifications.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaIdentityExpanded
 Aliases: Uri
 
 Required: False
@@ -224,8 +290,8 @@ Accept wildcard characters: False
 The status of the webhook at the time the operation was called.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -241,7 +307,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -256,7 +322,7 @@ The tags for the webhook.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityRegistryExpanded, UpdateViaIdentityExpanded
 Aliases: Tags
 
 Required: False
@@ -306,7 +372,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 
 ## NOTES
 

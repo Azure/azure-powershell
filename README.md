@@ -11,10 +11,10 @@ The Az PowerShell module is preinstalled in [Azure Cloud Shell][AzureCloudShell]
 
 The following table contains a list of the Azure PowerShell rollup modules.
 
-Description       | Module Name  | PowerShell Gallery Link
------------------ | ------------ | -----------------------
-Azure PowerShell  | `Az`         | [![Az]][AzGallery]
-Azure PowerShell with preview modules | `AzPreview`                             | [![AzPreview]][AzPreviewGallery]
+Description       | Module Name  | PowerShell Gallery Link | Microsoft Artifact Registry |
+----------------- | ------------ | ----------------------- | ----------------------------- |
+Azure PowerShell  | `Az`         | [![Az]][AzGallery]| [![Az]][AzMar] |
+Azure PowerShell with preview modules | `AzPreview`                             | [![AzPreview]][AzPreviewGallery] | [![AzPreview]][AzPreviewMar] |
 
 For a complete list of the modules found in this repository, see
 [Azure PowerShell Modules][AzurePowerShellModules].
@@ -207,6 +207,8 @@ information see the [Code of Conduct FAQ][CodeOfConductFaq] or contact
 [AzPreview]: https://img.shields.io/powershellgallery/v/AzPreview.svg?style=flat-square&label=AzPreview
 [AzGallery]: https://www.powershellgallery.com/packages/Az/
 [AzPreviewGallery]: https://www.powershellgallery.com/packages/AzPreview/
+[AzMar]: https://mcr.microsoft.com/en-us/artifact/mar/psresource/az/tags
+[AzPreviewMar]: https://mcr.microsoft.com/en-us/artifact/mar/psresource/azpreview/tags
 
 [DotNetFramework]: https://dotnet.microsoft.com/download/dotnet-framework-runtime
 [PowerShellCore]: https://github.com/PowerShell/PowerShell/releases/latest

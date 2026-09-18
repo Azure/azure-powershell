@@ -198,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -215,7 +215,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime](Set-AzDataFactoryV2IntegrationRuntime.md)
 
-[Get-AzDataFactoryV2IntegrationRuntime]()
+[Get-AzDataFactoryV2IntegrationRuntime](Get-AzDataFactoryV2IntegrationRuntime.md)
 

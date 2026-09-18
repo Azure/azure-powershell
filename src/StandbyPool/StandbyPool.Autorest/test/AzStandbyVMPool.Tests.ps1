@@ -17,29 +17,45 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStandbyVMPool'))
 Describe 'AzStandbyVMPool' {
     It 'CreateExpanded' {
         {
-            $standbyvmpool = New-AzStandbyVMPool -Name testPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -Location eastus -VMSSId "/subscriptions/$($env.SubscriptionId)/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss" -MaxReadyCapacity 1 -VMState Running
+            $standbyvmpool = New-AzStandbyVMPool -Name testPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId -Location eastasia -VMSSId "/subscriptions/$($env.SubscriptionId)/resourceGroups/test-sdks/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss" -MaxReadyCapacity 1 -MinReadyCapacity 1 -VMState Running -DynamicSizingEnabled -PostProvisioningDelay "PT2S"
             $standbyvmpool.Name | Should -Be testPool
+            $standbyvmpool.ElasticityProfileMaxReadyCapacity | Should -Be 1
+            $standbyvmpool.ElasticityProfileMinReadyCapacity | Should -Be 1
+            $standbyvmpool.DynamicSizingEnabled | Should -Be $true
+            $standbyvmpool.ElasticityProfilePostProvisioningDelay | Should -Be "PT2S"
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $standbyvmpool = Get-AzStandbyVMPool -Name testPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId
+            $standbyvmpool = Get-AzStandbyVMPool -Name testPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId
             $standbyvmpool.Name | Should -Be testPool
+        } | Should -Not -Throw
+    }
+
+    It 'GetRuntimeView' {
+        {
+            $standbyvmpool = Get-AzStandbyVMPoolStatus -Name testPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId
+            $standbyvmpool.Name | Should -Be latest
+            $standbyvmpool.InstanceCountSummary.Count | Should BeGreaterThan 0
+            $standbyvmpool.InstanceCountSummary.instanceCountsByState.Count | Should BeGreaterThan 0
+            $standbyvmpool.StatusCode | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
 
     It 'Update' {
         {
-            $standbyvmpool = Update-AzStandbyVMPool -Name testPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -MaxReadyCapacity 2
+            $standbyvmpool = Update-AzStandbyVMPool -Name testPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId -MaxReadyCapacity 2 -DynamicSizingEnabled -PostProvisioningDelay "PT5S"
             $standbyvmpool.Name | Should -Be testPool
             $standbyvmpool.ElasticityProfileMaxReadyCapacity | Should -Be 2
+            $standbyvmpool.DynamicSizingEnabled | Should -Be $true
+            $standbyvmpool.ElasticityProfilePostProvisioningDelay | Should -Be "PT5S"
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzStandbyVMPool -Name testPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -NoWait
+            Remove-AzStandbyVMPool -Name testPool -ResourceGroupName test-sdks -SubscriptionId $env.SubscriptionId -NoWait
         } | Should -Not -Throw
     }
 

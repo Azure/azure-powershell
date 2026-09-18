@@ -308,6 +308,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string TestNetworkId { get; set; }
 
         /// <summary>
+        ///     Gets or sets the platform fault domain for replication protected item after failover.
+        /// </summary>
+        [Parameter]
+        public int? PlatformFaultDomain { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -354,6 +360,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId) &&
                     this.IsParameterBound(c => c.RecoveryVirtualMachineScaleSetId) &&
                     this.IsParameterBound(c => c.RecoveryCapacityReservationGroupId) &&
+                    this.IsParameterBound(c => c.PlatformFaultDomain) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType) &&
@@ -419,6 +426,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var recoveryNicTag = this.RecoveryNicTag;
                 var diskTag = this.DiskTag;
                 var tfoNetworkId = string.Empty;
+                var platformFaultDomain = this.PlatformFaultDomain;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
                 var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
 
@@ -513,11 +521,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                       useManagedDisk));
                     }
 
-                    var deploymentType = Utilities.GetValueFromArmId(
-                        providerSpecificDetails.RecoveryAzureStorageAccount,
-                        ARMResourceTypeConstants.Providers);
-                    if (deploymentType.ToLower()
-                        .Contains(Constants.Classic.ToLower()))
+                    string deploymentType = Constants.ResourceManager;
+
+                    if (!string.IsNullOrEmpty(providerSpecificDetails.RecoveryAzureStorageAccount))
+                    {
+                        deploymentType = Utilities.GetValueFromArmId(
+                            providerSpecificDetails.RecoveryAzureStorageAccount,
+                            ARMResourceTypeConstants.Providers);
+                    }
+
+                    if (!string.IsNullOrEmpty(deploymentType) && deploymentType.ToLower()
+                            .Contains(Constants.Classic.ToLower()))
                     {
                         providerSpecificInput =
                             new HyperVReplicaAzureUpdateReplicationProtectedItemInput
@@ -688,6 +702,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         ? this.RecoveryCapacityReservationGroupId
                         : providerSpecificDetails.RecoveryCapacityReservationGroupId;
 
+                    availabilityZone = this.IsParameterBound(c => c.RecoveryAvailabilityZone)
+                        ? this.RecoveryAvailabilityZone : providerSpecificDetails.RecoveryAvailabilityZone;
+
+                    platformFaultDomain = this.IsParameterBound(c => c.PlatformFaultDomain)
+                        ? this.PlatformFaultDomain
+                        : providerSpecificDetails.PlatformFaultDomain;
+
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.RecoveryCloudServiceId)))
                     {
@@ -750,7 +771,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             this.DiskEncryptionSecretUrl,
                             this.DiskEncryptionVaultId,
                             this.KeyEncryptionKeyUrl,
-                            this.KeyEncryptionVaultId)
+                            this.KeyEncryptionVaultId),
+                        RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
+                        PlatformFaultDomain = this.PlatformFaultDomain
                     };
 
                     if (this.ASRVMNicConfiguration != null &&

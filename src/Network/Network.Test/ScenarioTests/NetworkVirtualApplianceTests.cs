@@ -33,6 +33,14 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-NetworkVirtualApplianceCRUD"));
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestSaasNetworkVirtualApplianceGet()
+        {
+            TestRunner.RunTestScript(string.Format("Test-SaasNetworkVirtualApplianceGet"));
+        }
+
         [Fact(Skip = "A bug is being fixed by Nfv-Rp team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
@@ -40,5 +48,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualApplianceSiteCRUD");
         }
-    }
+
+		    [Fact]
+		    [Trait(Category.AcceptanceType, Category.CheckIn)]
+		    [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+		    public void TestNVAInVNetCRUD()
+		    {
+			    TestRunner.RunTestScript("Test-NVAInVnetCRUD");
+		    }
+	}
 }

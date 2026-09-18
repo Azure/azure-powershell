@@ -100,7 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.IAcceptOwnershipStatusResponse
 
 ## NOTES
 

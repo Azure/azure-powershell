@@ -1,6 +1,6 @@
 ### Example 1: Create Azure Data Explorer data source object
 ```powershell
-New-AzPurviewAzureDataExplorerDataSourceObject -Kind 'AzureDataExplorer' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://adxd.australiaeast.kusto.windows.net'
+New-AzPurviewAzureDataExplorerDataSourceObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -Endpoint 'https://adxd.australiaeast.kusto.windows.net'
 ```
 
 ```output

@@ -18,7 +18,7 @@ New-AzDataBoxJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscr
  [-DataImportDetail <IDataImportDetails[]>] [-ExpectedDataSizeInTeraByte <Int32>]
  [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
  [-ReverseShippingDetail <IReverseShippingDetails>] [-ShippingAddress <IShippingAddress>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,21 @@ New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDet
 ```output
 Action                     :
 ChainOfCustodySasKey       :
-ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
+ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails
 CopyLogDetail              :
 CopyProgress               :
 DataExportDetail           :
-DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetails}
-DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
+DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataImportDetails}
+DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails
 DevicePassword             :
 ExpectedDataSizeInTeraByte : 0
 JobStage                   :
-KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKey
-LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJob
-Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.Preferences
-ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
+KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
+LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.LastMitigationActionOnJob
+Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.Preferences
+ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.PackageShippingDetails
 ReverseShipmentLabelSasKey :
-ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
+ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ShippingAddress
 Type                       : DataBox
 ```
 
@@ -64,7 +64,7 @@ Contact details for notification and shipping.
 To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ Details of the data to be exported from azure.
 To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataExportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Details of the data to be imported into azure.
 To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataImportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Details about which key encryption type is being used.
 To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -164,24 +164,9 @@ Preferences for the order.
 To construct, see NOTES section for PREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -195,7 +180,7 @@ Optional Reverse Shipping details for order.
 To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IReverseShippingDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +196,7 @@ Shipping address of the customer.
 To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 
 ## NOTES
 

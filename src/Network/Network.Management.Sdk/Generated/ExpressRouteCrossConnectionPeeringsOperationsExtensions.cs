@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         public static Microsoft.Rest.Azure.IPage<ExpressRouteCrossConnectionPeering> List(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName)
         {
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,58 +52,16 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Deletes the specified peering from the ExpressRouteCrossConnection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        public static void Delete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
-        {
-                ((IExpressRouteCrossConnectionPeeringsOperations)operations).DeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified peering from the ExpressRouteCrossConnection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Gets the specified peering for the ExpressRouteCrossConnection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -120,10 +78,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -145,10 +103,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -165,10 +123,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -190,17 +148,17 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        public static void BeginDelete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
+        public static void Delete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
         {
-                ((IExpressRouteCrossConnectionPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
+                ((IExpressRouteCrossConnectionPeeringsOperations)operations).DeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -210,10 +168,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -221,9 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
@@ -232,10 +190,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -252,10 +210,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// Name for the express route cross connection.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -269,6 +227,48 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified peering from the ExpressRouteCrossConnection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// Name for the express route cross connection.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        public static void BeginDelete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
+        {
+                ((IExpressRouteCrossConnectionPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified peering from the ExpressRouteCrossConnection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// Name for the express route cross connection.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all peerings in a specified ExpressRouteCrossConnection.

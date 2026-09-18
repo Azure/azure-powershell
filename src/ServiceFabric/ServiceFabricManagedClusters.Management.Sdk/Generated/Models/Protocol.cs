@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class Protocol
     {
+        /// <summary>
+        /// Transport protocol is TCP.
+        /// </summary>
         public const string Tcp = "tcp";
+        /// <summary>
+        /// Transport protocol is UDP.
+        /// </summary>
         public const string Udp = "udp";
     }
 }

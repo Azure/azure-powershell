@@ -1,6 +1,6 @@
 {
   "resourceType": "Clusters/Databases/scripts",
-  "apiVersion": "2023-08-15",
+  "apiVersion": "2024-04-13",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.kusto"
   },

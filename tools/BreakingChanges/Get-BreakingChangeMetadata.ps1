@@ -289,7 +289,7 @@ Function Get-BreakingChangeOfGeneratedModule
                     })
                 }
                 Else {
-                    $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add($BreakingChangeMessage)
+                    $null = $AllBreakingChangeMessages[$CmdletName][$ParameterSetName]["CmdletBreakingChange"].Add($BreakingChangeMessage)
                 }
             }
         }
@@ -334,7 +334,7 @@ Function Get-BreakingChangeOfGeneratedModule
                 })
             }
             Else {
-                $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add('ParameterBreakingChange', $ParameterBreakingChangeMessage)
+                $null = $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add('ParameterBreakingChange', $ParameterBreakingChangeMessage)
             }
         }
     }
@@ -358,12 +358,14 @@ Function Get-BreakingChangeOfGeneratedModule
             }
             If (-not $AllBreakingChangeMessages[$CmdletName].ContainsKey($AllParameterSetsName))
             {
-                $AllBreakingChangeMessages[$CmdletName].Add($AllParameterSetsName, @{
-                    "CmdletBreakingChange" = [System.Collections.ArrayList]::New(@($BreakingChangeMessage))
-                })
+                $AllBreakingChangeMessages[$CmdletName].Add($AllParameterSetsName, @{})
+            }
+            If (-not $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].ContainsKey("CmdletBreakingChange"))
+            {
+                $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["CmdletBreakingChange"] = [System.Collections.ArrayList]::New(@($BreakingChangeMessage))
             }
             Else {
-                $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].Add($BreakingChangeMessage)
+                $null = $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["CmdletBreakingChange"].Add($BreakingChangeMessage)
             }
         }
     }
@@ -389,12 +391,14 @@ Function Get-BreakingChangeOfGeneratedModule
             }
             If (-not $AllBreakingChangeMessages[$CmdletName].ContainsKey($AllParameterSetsName))
             {
-                $AllBreakingChangeMessages[$CmdletName].Add($AllParameterSetsName, @{
-                    "ParameterBreakingChange" = $ParameterBreakingChangeMessage
-                })
+                $AllBreakingChangeMessages[$CmdletName].Add($AllParameterSetsName, @{})
+            }
+            If (-not $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].ContainsKey("ParameterBreakingChange"))
+            {
+                $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["ParameterBreakingChange"] = [System.Collections.ArrayList]::New(@($ParameterBreakingChangeMessage))
             }
             Else {
-                $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].Add('ParameterBreakingChange', $ParameterBreakingChangeMessage)
+                $null = $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName]["ParameterBreakingChange"].Add($ParameterBreakingChangeMessage)
             }
         }
     }

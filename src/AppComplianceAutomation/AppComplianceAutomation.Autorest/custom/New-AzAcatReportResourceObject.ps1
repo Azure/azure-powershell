@@ -24,6 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResourc
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/new-azacatreportresourceobject
 #>
 function New-AzAcatReportResourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.ModelCmdletAttribute()]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

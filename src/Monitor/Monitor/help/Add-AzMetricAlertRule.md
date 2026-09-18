@@ -9,7 +9,7 @@ schema: 2.0.0
 # Add-AzMetricAlertRule
 
 ## SYNOPSIS
-Adds or updates a claasic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
+Adds or updates a classic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
 
 ## SYNTAX
 

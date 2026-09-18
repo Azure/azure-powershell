@@ -1,0 +1,178 @@
+{
+  "Get-AzAksManagedClusterMeshRevisionProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "95eb5728-71dc-4ff3-ab90-0adae3aa02fa" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/southeastasia/53527a68-0c07-4c72-b0f1-862464cb7728" ],
+        "x-ms-correlation-request-id": [ "a5290215-88fb-4eb1-85ae-e7831769b03b" ],
+        "x-ms-request-id": [ "8915442f-5384-42d3-a01f-7e98b88f413e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251110T080039Z:a5290215-88fb-4eb1-85ae-e7831769b03b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 580A24A9F60842A19DE4A868D683968F Ref B: JKT201051407052 Ref C: 2025-11-10T08:00:39Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:00:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1802" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"value\": [\n  {\n   \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/istio\",\n   \"name\": \"istio\",\n   \"type\": \"Microsoft.ContainerService/locations/meshRevisionProfiles\",\n   \"properties\": {\n    \"meshRevisions\": [\n     {\n      \"revision\": \"asm-1-25\",\n      \"upgrades\": [\n       \"asm-1-26\",\n       \"asm-1-27\"\n      ],\n      \"compatibleWith\": [\n       {\n        \"name\": \"KubernetesOfficial\",\n        \"versions\": [\n         \"1.29\",\n         \"1.30\",\n         \"1.31\",\n         \"1.32\",\n         \"1.33\"\n        ]\n       },\n       {\n        \"name\": \"AKSLongTermSupport\",\n        \"versions\": [\n         \"1.28\",\n         \"1.29\",\n         \"1.30\",\n         \"1.31\",\n         \"1.32\",\n         \"1.33\"\n        ]\n       }\n      ]\n     },\n     {\n      \"revision\": \"asm-1-26\",\n      \"upgrades\": [\n       \"asm-1-27\"\n      ],\n      \"compatibleWith\": [\n       {\n        \"name\": \"KubernetesOfficial\",\n        \"versions\": [\n         \"1.29\",\n         \"1.30\",\n         \"1.31\",\n         \"1.32\",\n         \"1.33\",\n         \"1.34\"\n        ]\n       },\n       {\n        \"name\": \"AKSLongTermSupport\",\n        \"versions\": [\n         \"1.28\",\n         \"1.29\",\n         \"1.30\",\n         \"1.31\",\n         \"1.32\",\n         \"1.33\",\n         \"1.34\"\n        ]\n       }\n      ]\n     },\n     {\n      \"revision\": \"asm-1-27\",\n      \"compatibleWith\": [\n       {\n        \"name\": \"KubernetesOfficial\",\n        \"versions\": [\n         \"1.29\",\n         \"1.30\",\n         \"1.31\",\n         \"1.32\",\n         \"1.33\",\n         \"1.34\"\n        ]\n       },\n       {\n        \"name\": \"AKSLongTermSupport\",\n        \"versions\": [\n         \"1.29\",\n         \"1.30\",\n         \"1.31\",\n         \"1.32\",\n         \"1.33\",\n         \"1.34\"\n        ]\n       }\n      ]\n     }\n    ]\n   }\n  }\n ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterMeshRevisionProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/asm-1-25?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/asm-1-25?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "3e819477-88ca-4fe4-99b9-4a0ab1640532" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/southeastasia/84395c7f-81e6-4497-88bf-5b2b3002cba5" ],
+        "x-ms-correlation-request-id": [ "1756dc1a-e234-4af7-a5f5-776bd27261ea" ],
+        "x-ms-request-id": [ "2c3fbfa5-b32a-46bb-8cd5-cc84121b5b77" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251110T080041Z:1756dc1a-e234-4af7-a5f5-776bd27261ea" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 54687B9ABDA24A68BBC87650F0528012 Ref B: JKT201051407052 Ref C: 2025-11-10T08:00:40Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:00:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1592" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/asm-1-25\",\n \"name\": \"istio\",\n \"type\": \"Microsoft.ContainerService/locations/meshRevisionProfiles\",\n \"properties\": {\n  \"meshRevisions\": [\n   {\n    \"revision\": \"asm-1-25\",\n    \"upgrades\": [\n     \"asm-1-26\",\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.28\",\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     }\n    ]\n   },\n   {\n    \"revision\": \"asm-1-26\",\n    \"upgrades\": [\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.28\",\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     }\n    ]\n   },\n   {\n    \"revision\": \"asm-1-27\",\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     }\n    ]\n   }\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterMeshRevisionProfile+[NoContext]+GetViaIdentityLocation+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/asm-1-25?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/asm-1-25?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "3e71560e-1ea5-4614-af8f-18364f95718d" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile_GetViaIdentityLocation" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/southeastasia/5e60528a-03b5-49ba-a49a-3e49617be335" ],
+        "x-ms-correlation-request-id": [ "c2f15c87-59b2-4bc2-8c29-3e1ec0892f36" ],
+        "x-ms-request-id": [ "fadf857a-467e-4d3e-8754-65cd77a64184" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251110T080041Z:c2f15c87-59b2-4bc2-8c29-3e1ec0892f36" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 417671781F2843B594C04D5D7D80A05A Ref B: JKT201051407052 Ref C: 2025-11-10T08:00:41Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:00:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1592" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/asm-1-25\",\n \"name\": \"istio\",\n \"type\": \"Microsoft.ContainerService/locations/meshRevisionProfiles\",\n \"properties\": {\n  \"meshRevisions\": [\n   {\n    \"revision\": \"asm-1-25\",\n    \"upgrades\": [\n     \"asm-1-26\",\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.28\",\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     }\n    ]\n   },\n   {\n    \"revision\": \"asm-1-26\",\n    \"upgrades\": [\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.28\",\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     }\n    ]\n   },\n   {\n    \"revision\": \"asm-1-27\",\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     }\n    ]\n   }\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterMeshRevisionProfile+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/istio?api-version=2025-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/istio?api-version=2025-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "a58ca3e0-eb60-4ee7-9c32-4631f14ae1c4" ],
+        "CommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterMeshRevisionProfile_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/southeastasia/9380539b-710d-4a68-b552-6675b567c5d2" ],
+        "x-ms-correlation-request-id": [ "6feae410-b14f-4c11-a36e-54b63f6f3768" ],
+        "x-ms-request-id": [ "9fdec5f6-5e2f-4fe5-b758-9b7496d49f82" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251110T080042Z:6feae410-b14f-4c11-a36e-54b63f6f3768" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7B8DE8EFB91C43F393725B5C35846BAB Ref B: JKT201051407052 Ref C: 2025-11-10T08:00:42Z" ],
+        "Date": [ "Mon, 10 Nov 2025 08:00:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1589" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.ContainerService/locations/eastus/meshRevisionProfiles/istio\",\n \"name\": \"istio\",\n \"type\": \"Microsoft.ContainerService/locations/meshRevisionProfiles\",\n \"properties\": {\n  \"meshRevisions\": [\n   {\n    \"revision\": \"asm-1-25\",\n    \"upgrades\": [\n     \"asm-1-26\",\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.28\",\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\"\n      ]\n     }\n    ]\n   },\n   {\n    \"revision\": \"asm-1-26\",\n    \"upgrades\": [\n     \"asm-1-27\"\n    ],\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.28\",\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     }\n    ]\n   },\n   {\n    \"revision\": \"asm-1-27\",\n    \"compatibleWith\": [\n     {\n      \"name\": \"KubernetesOfficial\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     },\n     {\n      \"name\": \"AKSLongTermSupport\",\n      \"versions\": [\n       \"1.29\",\n       \"1.30\",\n       \"1.31\",\n       \"1.32\",\n       \"1.33\",\n       \"1.34\"\n      ]\n     }\n    ]\n   }\n  ]\n }\n}",
+      "isContentBase64": false
+    }
+  }
+}

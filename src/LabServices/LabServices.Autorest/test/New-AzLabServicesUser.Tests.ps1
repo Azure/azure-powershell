@@ -19,7 +19,7 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'New-AzLabServicesUser' {
     It 'Create' {        
-        New-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserNameSecond -Email $ENV:UserEmailSecond | Should -Not -BeNullOrEmpty
-        Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserNameSecond | Select-Object -Property Email | Should -BeExactly "@{Email=$($ENV:UserEmailSecond)}"
+        New-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.UserNameSecond -Email $env.UserEmailSecond | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.UserNameSecond | Select-Object -Property Email | Should -BeExactly "@{Email=$($env.UserEmailSecond)}"
     }
 }

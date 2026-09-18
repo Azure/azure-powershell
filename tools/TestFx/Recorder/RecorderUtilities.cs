@@ -36,15 +36,33 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
 
         static RecorderUtilities()
         {
+            JsonPathSanitizers.Add("$..Password");
+            JsonPathSanitizers.Add("$..password");
+            JsonPathSanitizers.Add("$..adminPassword");
+            JsonPathSanitizers.Add("$..passwords[*].value");
+            JsonPathSanitizers.Add("$..secret");
+            JsonPathSanitizers.Add("$..secretText");
+            JsonPathSanitizers.Add("$..accessSAS");
+            JsonPathSanitizers.Add("$..storageAccountKey");
             JsonPathSanitizers.Add("$..primaryKey");
             JsonPathSanitizers.Add("$..primaryMasterKey");
             JsonPathSanitizers.Add("$..primaryReadonlyMasterKey");
             JsonPathSanitizers.Add("$..secondaryKey");
             JsonPathSanitizers.Add("$..secondaryMasterKey");
             JsonPathSanitizers.Add("$..secondaryReadonlyMasterKey");
+            JsonPathSanitizers.Add("$..keys[*].value");
+            JsonPathSanitizers.Add("$..connectionString");
             JsonPathSanitizers.Add("$..primaryConnectionString");
             JsonPathSanitizers.Add("$..secondaryConnectionString");
-            JsonPathSanitizers.Add("$..connectionString");
+            JsonPathSanitizers.Add("$..aliasPrimaryConnectionString");
+            JsonPathSanitizers.Add("$..aliasSecondaryConnectionString");
+            JsonPathSanitizers.Add("$..administratorLoginPassword");
+            JsonPathSanitizers.Add("$..hubDatabasePassword");
+            JsonPathSanitizers.Add("$.properties.siteConfig.machineKey.decryptionKey");
+            JsonPathSanitizers.Add("$.properties.WEBSITE_AUTH_ENCRYPTION_KEY");
+            JsonPathSanitizers.Add("$.properties.DOCKER_REGISTRY_SERVER_PASSWORD");
+            JsonPathSanitizers.Add("$.properties.protectedSettings.storageAccountKey");
+            JsonPathSanitizers.Add("$..privateKey");
         }
 
         public static bool IsHttpContentBinary(HttpContent content)
@@ -82,7 +100,7 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
             return content;
         }
 
-        public static RecordEntryContentType GetContetTypeFromHeaders(Dictionary<string, List<string>> responseHeaders)
+        public static RecordEntryContentType GetContentTypeFromHeaders(Dictionary<string, List<string>> responseHeaders)
         {
             string mimeType = string.Empty;
             RecordEntryContentType contentType = RecordEntryContentType.Null;
@@ -215,6 +233,10 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
                         }
                     }
                 }
+
+                var sanitizer = new RecordSanitizer(SanitizeValue);
+                sanitizer.ProcessJsonToken(parsedJson);
+
                 return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
             }
             catch

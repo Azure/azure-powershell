@@ -15,17 +15,35 @@ Update an AML file system instance.
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-KeyEncryptionKeyUrl <String>] [-MaintenanceWindowDayOfWeek <MaintenanceDayOfWeekType>]
- [-MaintenanceWindowTimeOfDayUtc <String>] [-SourceVaultId <String>] [-Tag <Hashtable>]
+ [-KeyEncryptionKeyUrl <String>] [-MaintenanceWindowDayOfWeek <String>]
+ [-MaintenanceWindowTimeOfDayUtc <String>] [-RootSquashSettingMode <String>]
+ [-RootSquashSettingNoSquashNidList <String>] [-RootSquashSettingSquashGid <Int64>]
+ [-RootSquashSettingSquashUid <Int64>] [-SourceVaultId <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageCacheAmlFileSystem -InputObject <IStorageCacheIdentity> [-KeyEncryptionKeyUrl <String>]
- [-MaintenanceWindowDayOfWeek <MaintenanceDayOfWeekType>] [-MaintenanceWindowTimeOfDayUtc <String>]
- [-SourceVaultId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-MaintenanceWindowDayOfWeek <String>] [-MaintenanceWindowTimeOfDayUtc <String>]
+ [-RootSquashSettingMode <String>] [-RootSquashSettingNoSquashNidList <String>]
+ [-RootSquashSettingSquashGid <Int64>] [-RootSquashSettingSquashUid <Int64>] [-SourceVaultId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -82,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
@@ -96,12 +113,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyEncryptionKeyUrl
 The URL referencing a key encryption key in key vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -115,8 +162,8 @@ Accept wildcard characters: False
 Day of the week on which the maintenance window will occur.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,7 +178,7 @@ The time of day (in UTC) to start the maintenance window.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +195,7 @@ Start and end with alphanumeric.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: AmlFilesystemName
 
 Required: True
@@ -179,10 +226,73 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingMode
+Squash mode of the AML file system.
+'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+'None': No squashing of User and Group IDs is performed for any users on any systems.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingNoSquashNidList
+Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingSquashGid
+Group ID to squash to.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquashSettingSquashUid
+User ID to squash to.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +304,7 @@ Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -209,7 +319,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -224,7 +334,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -274,7 +384,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem
+### Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem
 
 ## NOTES
 

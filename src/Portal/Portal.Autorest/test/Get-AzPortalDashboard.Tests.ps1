@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPortalDashboard'))
 }
 
 Describe 'Get-AzPortalDashboard' {
-    It 'List1' -skip {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -23,7 +23,7 @@ Describe 'Get-AzPortalDashboard' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' -skip {
+    It 'List1' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

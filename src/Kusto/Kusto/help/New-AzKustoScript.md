@@ -8,33 +8,78 @@ schema: 2.0.0
 # New-AzKustoScript
 
 ## SYNOPSIS
-Creates a Kusto database script.
+Create a Kusto database script.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>] [-ScriptContent <String>]
- [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzKustoScript -Name <String> -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ContinueOnError] [-ForceUpdateTag <String>]
+ [-PrincipalPermissionsAction <String>] [-ScriptContent <String>] [-ScriptLevel <String>] [-ScriptUrl <String>]
+ [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzKustoScript -Name <String> -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzKustoScript -Name <String> -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzKustoScript -ClusterName <String> -DatabaseName <String> -Name <String> -ResourceGroupName <String>
+New-AzKustoScript -Name <String> -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Parameter <IScript> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentityClusterExpanded
+```
+New-AzKustoScript -Name <String> -DatabaseName <String> -ClusterInputObject <IKustoIdentity> [-ContinueOnError]
+ [-ForceUpdateTag <String>] [-PrincipalPermissionsAction <String>] [-ScriptContent <String>]
+ [-ScriptLevel <String>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityCluster
+```
+New-AzKustoScript -Name <String> -DatabaseName <String> -ClusterInputObject <IKustoIdentity>
+ -Parameter <IScript> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityDatabaseExpanded
+```
+New-AzKustoScript -Name <String> -DatabaseInputObject <IKustoIdentity> [-ContinueOnError]
+ [-ForceUpdateTag <String>] [-PrincipalPermissionsAction <String>] [-ScriptContent <String>]
+ [-ScriptLevel <String>] [-ScriptUrl <String>] [-ScriptUrlSasToken <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityDatabase
+```
+New-AzKustoScript -Name <String> -DatabaseInputObject <IKustoIdentity> -Parameter <IScript>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a Kusto database script.
+Create a Kusto database script.
 
 ## EXAMPLES
 
 ### Example 1: Create a Kusto database script
 ```powershell
-New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken
+New-AzKustoScript -ClusterName testnewkustocluster -DatabaseName mykustodatabase -Name newkustoscript -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 ```
 
 ```output
@@ -44,6 +89,8 @@ testnewkustocluster/mykustodatabase/newkustoscript Microsoft.Kusto/Clusters/Data
 ```
 
 The above command creates a Kusto database script named "newkustocript" in the resource group "testrg".
+
+This script contains database scoped commands and the permissions of the script executor will be removed upon completion
 
 ## PARAMETERS
 
@@ -62,12 +109,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -82,7 +144,7 @@ Flag that indicates whether to continue if one of the command fails.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -92,12 +154,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: CreateViaIdentityDatabaseExpanded, CreateViaIdentityDatabase
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create, CreateViaIdentityClusterExpanded, CreateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -129,10 +206,40 @@ If changed the script will be applied again.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,11 +278,10 @@ Accept wildcard characters: False
 
 ### -Parameter
 Class representing a database script.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
-Parameter Sets: Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IScript
+Parameter Sets: Create, CreateViaIdentityCluster, CreateViaIdentityDatabase
 Aliases:
 
 Required: True
@@ -185,13 +291,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -PrincipalPermissionsAction
+Indicates if the permissions for the script caller are kept following completion of the script.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -208,7 +329,23 @@ Must not be used together with scriptUrl and scriptUrlSasToken properties.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptLevel
+Differentiates between the type of script commands included - Database or Cluster.
+The default is Database.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -224,7 +361,7 @@ Must not be used together with scriptContent property
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -240,7 +377,7 @@ Must be provided when using scriptUrl property.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityDatabaseExpanded
 Aliases:
 
 Required: False
@@ -255,7 +392,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: False
@@ -301,11 +438,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IScript
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IScript
 
 ## NOTES
 

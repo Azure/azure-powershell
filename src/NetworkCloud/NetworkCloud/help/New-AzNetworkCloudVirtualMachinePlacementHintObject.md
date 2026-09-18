@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudVirtualMachinePlacementHintObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudvirtualmachineplacementhintobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for VirtualMachinePlacementHint.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <VirtualMachinePlacementHintType>
- -ResourceId <String> -SchedulingExecution <VirtualMachineSchedulingExecution>
- -Scope <VirtualMachinePlacementHintPodAffinityScope> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <String> -ResourceId <String>
+ -SchedulingExecution <String> -Scope <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,26 +41,11 @@ Creates an in-memory object for VirtualMachinePlacementHint.
 The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -87,7 +71,7 @@ Accept wildcard characters: False
 The indicator of whether the hint is a hard or soft requirement during scheduling.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineSchedulingExecution
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +87,7 @@ The scope for the virtual machine affinity or anti-affinity placement hint.
 It should always be "Machine" in the case of node affinity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachinePlacementHintPodAffinityScope
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.VirtualMachinePlacementHint
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePlacementHint
 
 ## NOTES
 

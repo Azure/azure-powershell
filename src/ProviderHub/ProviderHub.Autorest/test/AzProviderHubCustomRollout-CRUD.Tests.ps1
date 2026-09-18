@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'AzProviderHubCustomRollout-CRUD' {
     It 'Create and get a CustomRollout' {
-        $customRollout = New-AzProviderHubCustomRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psCustomRollout" -CanaryRegion "eastus2euap"
+        $customRollout = New-AzProviderHubCustomRollout -ProviderNamespace $env.ProviderNamespace -RolloutName "psCustomRollout" -SpecificationCanaryRegion "eastus2euap"
         $customRollout | Should -Not -BeNullOrEmpty
         $customRollout.Name | Should -BeExactly "psCustomRollout"
         $customRollout.ProvisioningState | Should -BeExactly "Succeeded"

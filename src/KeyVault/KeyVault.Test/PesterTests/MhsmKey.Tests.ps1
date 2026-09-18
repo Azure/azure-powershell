@@ -7,7 +7,7 @@ function Get-KeyName{
 }
 
 
-Describe "Exportable and ReleasePolicyPath shoud show up at the same time"{
+Describe "Exportable and ReleasePolicyPath should show up at the same time"{
     
     It "Both Exportable and ReleasePolicyPath don't show up"{
         {

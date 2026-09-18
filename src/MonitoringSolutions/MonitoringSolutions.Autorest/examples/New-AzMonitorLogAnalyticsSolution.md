@@ -32,4 +32,3 @@ Commonly used types are:
 | AzureAutomation |	Automation Hybrid Worker |
 | LogicAppsManagement | Logic Apps Management |
 | SQLDataClassification | SQL Data Discovery & Classification |
-

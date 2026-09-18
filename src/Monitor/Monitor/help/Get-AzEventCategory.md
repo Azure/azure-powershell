@@ -68,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILocalizableString
 
 ## NOTES
 

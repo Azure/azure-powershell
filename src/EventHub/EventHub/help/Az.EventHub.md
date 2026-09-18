@@ -50,6 +50,12 @@ Gets the description of the specified namespace.
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
+### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
+
+### [Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation.md)
+Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+
 ### [Get-AzEventHubPrivateEndpointConnection](Get-AzEventHubPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection name.
 
@@ -88,6 +94,9 @@ Regenerates an EventHub SAS key
 
 ### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
+
+### [New-AzEventHubLocationsNameObject](New-AzEventHubLocationsNameObject.md)
+Create an in-memory object for NamespaceReplicaLocation.
 
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an EventHub Namespace
@@ -157,6 +166,9 @@ Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set
+
+### [Start-AzEventHubNamespaceFailOver](Start-AzEventHubNamespaceFailOver.md)
+Triggers EventHub Namespace Failover
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks availability of a namespace name or disaster recovery alias.

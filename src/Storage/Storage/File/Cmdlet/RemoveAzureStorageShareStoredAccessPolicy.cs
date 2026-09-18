@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Common;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
-    using Microsoft.Azure.Storage.File;
     using Model.Contract;
     using System;
     using System.Collections.Generic;

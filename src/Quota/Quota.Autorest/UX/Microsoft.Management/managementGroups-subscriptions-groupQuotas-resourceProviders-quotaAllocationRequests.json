@@ -1,0 +1,57 @@
+{
+  "resourceType": "managementGroups/subscriptions/groupQuotas/resourceProviders/quotaAllocationRequests",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.quota"
+  },
+  "commands": [
+    {
+      "name": "Get-AzQuotaGroupQuotaSubscriptionAllocationRequest",
+      "description": "Get the quota allocation request status for the subscriptionId by allocationId.",
+      "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocationRequests/{allocationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.quota/get-azquotagroupquotasubscriptionallocationrequest"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AllocationId <String>",
+              "-GroupQuotaName <String>",
+              "-ManagementGroupId <String>",
+              "-ResourceProviderName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the quota allocation request status for the subscriptionId by allocationId.",
+          "parameters": [
+            {
+              "name": "-AllocationId",
+              "value": "[Path.allocationId]"
+            },
+            {
+              "name": "-GroupQuotaName",
+              "value": "[Path.groupQuotaName]"
+            },
+            {
+              "name": "-ManagementGroupId",
+              "value": "[Path.managementGroupId]"
+            },
+            {
+              "name": "-ResourceProviderName",
+              "value": "[Path.resourceProviderName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

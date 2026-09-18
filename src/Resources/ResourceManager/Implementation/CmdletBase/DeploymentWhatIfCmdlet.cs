@@ -20,6 +20,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
     public abstract class DeploymentWhatIfCmdlet: DeploymentCmdletBase, IDynamicParameters
     {
+        [Parameter(Mandatory = false, HelpMessage = "Sets the validation level for validate/what-if. ValidationLevel can be Template(Skips provider validation), Provider(Performs full validation), " +
+                                                   "or ProviderNoRbac(Performs full validation using RBAC read checks instead of RBAC write checks for provider validation).")]
+        public string ValidationLevel { get; set; }
+
         /// <summary>
         /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
         /// This is slow, and can also cause diagnostics to be emitted multiple times.

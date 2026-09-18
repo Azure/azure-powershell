@@ -161,24 +161,3 @@ function Test-AutoScaleActions
     $pool = Get-AzBatchPool $poolId -BatchContext $context
     Assert-False { $pool.AutoScaleEnabled }
 }
-
-<#
-.SYNOPSIS
-Tests changing the pool OS version
-#>
-function Test-ChangeOSVersion
-{
-    param([string]$poolId, [string]$specificOSVersion)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-
-    # Pool should be using the default target OS version
-    $pool = Get-AzBatchPool $poolId -BatchContext $context
-    Assert-AreNotEqual $specificOSVersion $pool.CloudServiceConfiguration.TargetOSVersion
-
-    $pool | Set-AzBatchPoolOSVersion -TargetOSVersion $specificOSVersion -BatchContext $context
-    
-    # Verify the target OS version changed
-    $pool = Get-AzBatchPool $poolId -BatchContext $context
-    Assert-AreEqual $specificOSVersion $pool.CloudServiceConfiguration.TargetOSVersion
-}

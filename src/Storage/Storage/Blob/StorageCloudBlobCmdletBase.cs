@@ -493,7 +493,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">container name</param>
         /// <param name="skipCheckExists"></param>
-        /// <returns>return CloudBlobContianer object if specified container exists, otherwise throw an exception</returns>
+        /// <returns>return CloudBlobContainer object if specified container exists, otherwise throw an exception</returns>
         internal async Task<CloudBlobContainer> GetCloudBlobContainerByName(IStorageBlobManagement localChannel, string containerName, bool skipCheckExists = false)
         {
             if (!NameUtil.IsValidContainerName(containerName))
@@ -903,7 +903,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 if (context == null)
                 {
                     //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credential to Track2 Blob object.");
                 }
                 blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
 

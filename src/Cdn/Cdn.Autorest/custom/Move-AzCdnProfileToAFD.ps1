@@ -21,17 +21,13 @@ This step prepares the profile for migration and will be followed by Commit to f
 .Description
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 This step prepares the profile for migration and will be followed by Commit to finalize the migration.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICdnMigrationToAfdParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,11 +62,13 @@ MIGRATIONPARAMETER <ICdnMigrationToAfdParameters>: Request body for Migrate oper
 https://learn.microsoft.com/powershell/module/az.cdn/move-azcdnprofiletoafd
 #>
 function Move-AzCdnProfileToAFD {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult])]
     [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='Migrate', Mandatory)]
         [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
@@ -78,6 +76,8 @@ function Move-AzCdnProfileToAFD {
     
         [Parameter(ParameterSetName='Migrate', Mandatory)]
         [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -86,60 +86,64 @@ function Move-AzCdnProfileToAFD {
     
         [Parameter(ParameterSetName='Migrate')]
         [Parameter(ParameterSetName='MigrateExpanded')]
+        [Parameter(ParameterSetName='MigrateViaJsonFilePath')]
+        [Parameter(ParameterSetName='MigrateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
+
+        [Parameter(ParameterSetName='Migrate')]
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Parameter(ParameterSetName='MigrateViaJsonFilePath')]
+        [Parameter(ParameterSetName='MigrateViaJsonString')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+        [System.String]
+        # Azure Subscription ID.
+        ${IdentityType},
     
         [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
         # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
         [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICdnMigrationToAfdParameters]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters]
         # Request body for Migrate operation.
-        # To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
         ${MigrationParameter},
     
         [Parameter(ParameterSetName='MigrateExpanded')]
         [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrationEndpointMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationEndpointMapping[]]
         # A name map between classic CDN endpoints and AFD Premium/Standard endpoints.
-        # To construct, see NOTES section for MIGRATIONENDPOINTMAPPING properties and create a hash table.
         ${MigrationEndpointMapping},
     
         [Parameter(ParameterSetName='MigrateExpanded')]
         [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
+        [System.String]
         # Name of the pricing tier.
         ${SkuName},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+    
+        [Parameter(ParameterSetName='MigrateViaJsonFilePath', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
-        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        ${IdentityType},
-
-        [Parameter()]
+        [System.String]
+        # Path of Json file supplied to the Migrate operation
+        ${JsonFilePath},
+    
+        [Parameter(ParameterSetName='MigrateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
+        [System.String]
+        # Json string supplied to the Migrate operation
+        ${JsonString},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -201,6 +205,21 @@ function Move-AzCdnProfileToAFD {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Move-AzFrontDoorCdnCdnProfilesTo_MigrateExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
     process {
         ValidateIdentityType
         Write-Host("Start the initial progress of migration of CDN profile to Azure Front Door.")
@@ -208,7 +227,7 @@ function Move-AzCdnProfileToAFD {
         [void]$PSBoundParameters.Remove("IdentityType")
         [void]$PSBoundParameters.Remove("IdentityUserAssignedIdentity")
 
-        Az.Cdn.internal\Move-AzFrontDoorCdnCdnProfileToAFD @PSBoundParameters
+        Az.Cdn.internal\Move-AzFrontDoorCdnCdnProfilesTo @PSBoundParameters
 
         Write-Host("Migration of endpoint completed.")
 

@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = node.Name;
             this.Id = node.NodeId;
             this.IpAddress = node.IP;
-            this.LastSeen = node.LastSeen.ToLocalTime();
-            this.RegistrationTime = node.RegistrationTime.ToLocalTime();
+            this.LastSeen = node.LastSeen.GetValueOrDefault().ToLocalTime();
+            this.RegistrationTime = node.RegistrationTime.GetValueOrDefault().ToLocalTime();
             this.Status = node.Status;
             this.NodeConfigurationName = node.PropertiesNodeConfigurationName;
         }

@@ -21,20 +21,20 @@ Create an in-memory object for TransferConfiguration.
 Create an in-memory object for TransferConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxTransferConfigurationObject
 #>
 function New-AzDataBoxTransferConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferAllDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferAllDetails]
         $TransferAllDetail,
         [Parameter(HelpMessage="Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ITransferConfigurationTransferFilterDetails]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ITransferConfigurationTransferFilterDetails]
         $TransferFilterDetail,
         [Parameter(Mandatory, HelpMessage="Type of the configuration for transfer.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType])]
@@ -43,7 +43,7 @@ function New-AzDataBoxTransferConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.TransferConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.TransferConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('TransferAllDetail')) {
             $Object.TransferAllDetail = $TransferAllDetail

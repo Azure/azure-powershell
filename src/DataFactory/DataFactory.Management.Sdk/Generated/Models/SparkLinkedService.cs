@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -72,6 +75,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// The default value is false.
         /// </param>
 
+        /// <param name="enableServerCertificateValidation">Specifies whether the connections to the server will validate server
+        /// certificate, the default value is True. Only used for Version 2.0
+        /// </param>
+
         /// <param name="trustedCertPath">The full path of the .pem file containing trusted CA certificates for
         /// verifying the server when connecting over SSL. This property can only be
         /// set when using SSL on self-hosted IR. The default value is the cacerts.pem
@@ -94,9 +101,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SparkLinkedService(object host, object port, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), string serverType = default(string), string thriftTransportProtocol = default(string), object username = default(object), SecretBase password = default(SecretBase), object httpPath = default(object), object enableSsl = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), object allowHostNameCnMismatch = default(object), object allowSelfSignedServerCert = default(object), string encryptedCredential = default(string))
+        public SparkLinkedService(object host, object port, string authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), string serverType = default(string), string thriftTransportProtocol = default(string), object username = default(object), SecretBase password = default(SecretBase), object httpPath = default(object), object enableSsl = default(object), object enableServerCertificateValidation = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), object allowHostNameCnMismatch = default(object), object allowSelfSignedServerCert = default(object), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Host = host;
             this.Port = port;
@@ -107,6 +114,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Password = password;
             this.HttpPath = httpPath;
             this.EnableSsl = enableSsl;
+            this.EnableServerCertificateValidation = enableServerCertificateValidation;
             this.TrustedCertPath = trustedCertPath;
             this.UseSystemTrustStore = useSystemTrustStore;
             this.AllowHostNameCnMismatch = allowHostNameCnMismatch;
@@ -179,6 +187,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object EnableSsl {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies whether the connections to the server will validate
+        /// server certificate, the default value is True. Only used for Version 2.0
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.enableServerCertificateValidation")]
+        public object EnableServerCertificateValidation {get; set; }
+
+        /// <summary>
         /// Gets or sets the full path of the .pem file containing trusted CA
         /// certificates for verifying the server when connecting over SSL. This
         /// property can only be set when using SSL on self-hosted IR. The default
@@ -237,6 +252,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AuthenticationType");
             }
+
 
 
 

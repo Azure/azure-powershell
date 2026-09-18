@@ -1,17 +1,17 @@
 {
-  "Get-AzEventHubApplicationGroup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups?api-version=2023-01-01-preview+1": {
+  "Get-AzEventHubApplicationGroup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "ec588b8c-682a-4dfb-80b6-4b92eb8d940d" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "dab783f5-1ad7-41de-907a-3913e5411e7d" ],
         "CommandName": [ "Get-AzEventHubApplicationGroup" ],
         "FullCommandName": [ "Get-AzEventHubApplicationGroup_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EventHub/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,134 +22,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "a98814fe-3906-472c-bf07-8ee804f4e7da" ],
-        "x-ms-client-request-id": [ "ec588b8c-682a-4dfb-80b6-4b92eb8d940d_RP" ],
-        "x-ms-messaging-activity-id": [ "3e9c5d2a-cfbe-48fb-a12e-bf33225eb011" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G11|2024-04-29T12:44:09" ],
+        "x-ms-correlation-request-id": [ "816ba1b9-8134-4ef9-9a06-52cbd3abddb8" ],
+        "x-ms-client-request-id": [ "dab783f5-1ad7-41de-907a-3913e5411e7d_RP" ],
+        "x-ms-messaging-activity-id": [ "6dcf61f5-0768-4319-be0b-6fdc564f435b" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G7|2026-07-15T11:25:39" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "a98814fe-3906-472c-bf07-8ee804f4e7da" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240429T124409Z:a98814fe-3906-472c-bf07-8ee804f4e7da" ],
+        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/db801c36-f534-4537-9e94-05df77da75ee" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "816ba1b9-8134-4ef9-9a06-52cbd3abddb8" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260715T112539Z:816ba1b9-8134-4ef9-9a06-52cbd3abddb8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C6AFD1FA65004B89B64838E4F6CC7B91 Ref B: SEL221051504047 Ref C: 2024-04-29T12:44:07Z" ],
-        "Date": [ "Mon, 29 Apr 2024 12:44:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CEC57706FFA94CA6B1F6C247E933B76B Ref B: SG2AA1070306040 Ref C: 2026-07-15T11:25:38Z" ],
+        "Date": [ "Wed, 15 Jul 2026 11:25:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "547" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2\",\"name\":\"appGroup3iw8s2\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroup3iw8s2\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh\",\"name\":\"appGroupn0imzh\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroupn0imzh\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzEventHubApplicationGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview+1": {
+  "Get-AzEventHubApplicationGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "f478e2b0-73cf-47bf-8c41-21b3a29e8e3c" ],
-        "CommandName": [ "Get-AzEventHubApplicationGroup" ],
-        "FullCommandName": [ "Get-AzEventHubApplicationGroup_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "bef7168b-66b7-4865-a13e-45b6186cbf21" ],
-        "x-ms-client-request-id": [ "f478e2b0-73cf-47bf-8c41-21b3a29e8e3c_RP" ],
-        "x-ms-messaging-activity-id": [ "1e7dc7df-d1fe-4768-aaf8-1244870c729a" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G14|2024-04-29T12:44:11" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "bef7168b-66b7-4865-a13e-45b6186cbf21" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240429T124411Z:bef7168b-66b7-4865-a13e-45b6186cbf21" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0F1F5A9F5E3E491CB6A7561981A24722 Ref B: SEL221051504047 Ref C: 2024-04-29T12:44:09Z" ],
-        "Date": [ "Mon, 29 Apr 2024 12:44:10 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "535" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2\",\"name\":\"appGroup3iw8s2\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroup3iw8s2\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzEventHubApplicationGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "0c5e656f-a086-4f2e-b7a7-d5f5b1303117" ],
-        "CommandName": [ "Get-AzEventHubApplicationGroup" ],
-        "FullCommandName": [ "Get-AzEventHubApplicationGroup_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "a4160dac-dccf-495d-b4d8-946f9dbc136e" ],
-        "x-ms-client-request-id": [ "0c5e656f-a086-4f2e-b7a7-d5f5b1303117_RP" ],
-        "x-ms-messaging-activity-id": [ "89757025-d49a-4174-acad-a9d4e85cde46" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G14|2024-04-29T12:44:11" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "a4160dac-dccf-495d-b4d8-946f9dbc136e" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240429T124412Z:a4160dac-dccf-495d-b4d8-946f9dbc136e" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1D5ED20FD84247EAAF2D0CE2A0F2EA8C Ref B: SEL221051504047 Ref C: 2024-04-29T12:44:11Z" ],
-        "Date": [ "Mon, 29 Apr 2024 12:44:11 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "535" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2\",\"name\":\"appGroup3iw8s2\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroup3iw8s2\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzEventHubApplicationGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "0a341922-335f-4f94-9fd9-6921e40b1111" ],
+        "x-ms-client-request-id": [ "1912f2ef-2729-4f85-8954-6025e9b61f86" ],
         "CommandName": [ "Get-AzEventHubApplicationGroup" ],
-        "FullCommandName": [ "Get-AzEventHubApplicationGroup_GetViaIdentity" ],
+        "FullCommandName": [ "Get-AzEventHubApplicationGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EventHub/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -160,42 +69,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "73e891b5-6d20-4815-9ecf-183c75089a3f" ],
-        "x-ms-client-request-id": [ "0a341922-335f-4f94-9fd9-6921e40b1111_RP" ],
-        "x-ms-messaging-activity-id": [ "e38bf8c2-89b9-45ad-9c2b-f125df62ccec" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G12|2024-04-29T12:44:13" ],
+        "x-ms-correlation-request-id": [ "dd9acd44-207e-4b3a-915a-4d57b871926f" ],
+        "x-ms-client-request-id": [ "1912f2ef-2729-4f85-8954-6025e9b61f86_RP" ],
+        "x-ms-messaging-activity-id": [ "bdcf4ff0-ada7-4bfb-8d20-9c1661aec90d" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G11|2026-07-15T11:25:40" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "73e891b5-6d20-4815-9ecf-183c75089a3f" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240429T124413Z:73e891b5-6d20-4815-9ecf-183c75089a3f" ],
+        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/a0d5a288-6520-4f5e-9490-2e242138cae9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "dd9acd44-207e-4b3a-915a-4d57b871926f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260715T112540Z:dd9acd44-207e-4b3a-915a-4d57b871926f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AD5E73DE8B3C4D66A40F6E8D023ACB45 Ref B: SEL221051504047 Ref C: 2024-04-29T12:44:12Z" ],
-        "Date": [ "Mon, 29 Apr 2024 12:44:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 17E8BF7957C1498CAC3CFF15CCC9D4ED Ref B: SG2AA1070306040 Ref C: 2026-07-15T11:25:39Z" ],
+        "Date": [ "Wed, 15 Jul 2026 11:25:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "535" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2\",\"name\":\"appGroup3iw8s2\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroup3iw8s2\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
+      "Content": "{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh\",\"name\":\"appGroupn0imzh\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroupn0imzh\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
       "isContentBase64": false
     }
   },
-  "Get-AzEventHubApplicationGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview+3": {
+  "Get-AzEventHubApplicationGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "e6432078-6ea8-4070-8055-6ea129008bbe" ],
+        "x-ms-client-request-id": [ "70080383-85ee-44ae-9582-0da0f082f593" ],
         "CommandName": [ "Get-AzEventHubApplicationGroup" ],
-        "FullCommandName": [ "Get-AzEventHubApplicationGroup_GetViaIdentity" ],
+        "FullCommandName": [ "Get-AzEventHubApplicationGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EventHub/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -206,26 +116,121 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "b0609367-629b-4fbc-991f-a25c072f53cf" ],
-        "x-ms-client-request-id": [ "e6432078-6ea8-4070-8055-6ea129008bbe_RP" ],
-        "x-ms-messaging-activity-id": [ "2f662677-2977-4a3e-9294-1d0a45cc7665" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G11|2024-04-29T12:44:15" ],
+        "x-ms-correlation-request-id": [ "14b3af7c-6e9f-4339-98e2-5cdf48628c35" ],
+        "x-ms-client-request-id": [ "70080383-85ee-44ae-9582-0da0f082f593_RP" ],
+        "x-ms-messaging-activity-id": [ "c2d65ec7-5cc4-468d-9227-9f1a17a9905d" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G14|2026-07-15T11:25:41" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-request-id": [ "b0609367-629b-4fbc-991f-a25c072f53cf" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240429T124415Z:b0609367-629b-4fbc-991f-a25c072f53cf" ],
+        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/ff582edb-e77c-47fb-b945-91ec776d4096" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "14b3af7c-6e9f-4339-98e2-5cdf48628c35" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260715T112541Z:14b3af7c-6e9f-4339-98e2-5cdf48628c35" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 86F09383757542EC94BB39BB2CF9E0DE Ref B: SEL221051504047 Ref C: 2024-04-29T12:44:13Z" ],
-        "Date": [ "Mon, 29 Apr 2024 12:44:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3DC834A1FC0B44DA820A197A1378D366 Ref B: SG2AA1070306040 Ref C: 2026-07-15T11:25:40Z" ],
+        "Date": [ "Wed, 15 Jul 2026 11:25:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "535" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/applicationGroups/appGroup3iw8s2\",\"name\":\"appGroup3iw8s2\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroup3iw8s2\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
+      "Content": "{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh\",\"name\":\"appGroupn0imzh\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroupn0imzh\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEventHubApplicationGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "a4db4234-8717-4d35-9c27-ebcd17382d50" ],
+        "CommandName": [ "Get-AzEventHubApplicationGroup" ],
+        "FullCommandName": [ "Get-AzEventHubApplicationGroup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "4967272a-96e2-4bee-88ff-a9a5adface7f" ],
+        "x-ms-client-request-id": [ "a4db4234-8717-4d35-9c27-ebcd17382d50_RP" ],
+        "x-ms-messaging-activity-id": [ "b871cf3c-1628-40ac-85a9-93c28143b10c" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G13|2026-07-15T11:25:43" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/996e1b4f-421f-4303-8170-d280634539fa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "4967272a-96e2-4bee-88ff-a9a5adface7f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260715T112543Z:4967272a-96e2-4bee-88ff-a9a5adface7f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7AF226498CC943FA86FC521ABF0D9088 Ref B: SG2AA1070306040 Ref C: 2026-07-15T11:25:42Z" ],
+        "Date": [ "Wed, 15 Jul 2026 11:25:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "535" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh\",\"name\":\"appGroupn0imzh\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroupn0imzh\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzEventHubApplicationGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh?api-version=2026-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "81fc1167-a945-4f81-96b7-0bf5df42c0a8" ],
+        "CommandName": [ "Get-AzEventHubApplicationGroup" ],
+        "FullCommandName": [ "Get-AzEventHubApplicationGroup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "060c639b-3397-4553-afd3-08ae08852fa7" ],
+        "x-ms-client-request-id": [ "81fc1167-a945-4f81-96b7-0bf5df42c0a8_RP" ],
+        "x-ms-messaging-activity-id": [ "910339da-8551-49fe-a1b5-2d607882b9b6" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G7|2026-07-15T11:25:44" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/99e00d17-3ee5-4bac-ad9e-c84344c77cae" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "060c639b-3397-4553-afd3-08ae08852fa7" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260715T112544Z:060c639b-3397-4553-afd3-08ae08852fa7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83047A403CEC439E8EE1B8D04BE25D82 Ref B: SG2AA1070306040 Ref C: 2026-07-15T11:25:44Z" ],
+        "Date": [ "Wed, 15 Jul 2026 11:25:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "535" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep/applicationGroups/appGroupn0imzh\",\"name\":\"appGroupn0imzh\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"eastus\",\"properties\":{\"name\":\"appGroupn0imzh\",\"isEnabled\":true,\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=RootManageSharedAccessKey\",\"policies\":[{\"metricId\":\"IncomingBytes\",\"rateLimitThreshold\":10234,\"type\":\"ThrottlingPolicy\",\"name\":\"t1\"}]}}",
       "isContentBase64": false
     }
   }

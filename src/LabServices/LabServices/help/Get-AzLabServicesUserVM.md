@@ -73,6 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Email
+Email address of the user.
 
 ```yaml
 Type: System.String
@@ -87,10 +88,10 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-To construct, see NOTES section for LAB properties and create a hash table.
+The object of lab service lab.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
 Aliases:
 
@@ -102,6 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -LabName
+The name of lab service lab.
 
 ```yaml
 Type: System.String
@@ -116,6 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -130,6 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource Id of lab service user.
 
 ```yaml
 Type: System.String
@@ -159,10 +164,10 @@ Accept wildcard characters: False
 ```
 
 ### -User
-To construct, see NOTES section for USER properties and create a hash table.
+The object of lab service user.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 Parameter Sets: User
 Aliases:
 
@@ -178,11 +183,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ## NOTES
 

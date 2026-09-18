@@ -63,15 +63,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        /// <summary>
+        /// Gets or sets the expand properties parameter.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "When specified, output includes CreatedTime and ChangedTime of a resource.")]
+        public SwitchParameter ExpandProperties { get; set; }
+
         protected override void OnProcessRecord()
         {
-            String subscriptionId = null;
             if (ResourceGroupIdParameterSet.Equals(ParameterSetName)){
                 ResourceIdentifier resourceIdentifier = ResourceIdentifier.FromResourceGroupIdentifier(this.Id);
                 Name = resourceIdentifier.ResourceGroupName;
-                subscriptionId = resourceIdentifier.Subscription;
             }
-            this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location, subscriptionId), true);
+            this.WriteObject(this.NewResourceManagerSdkClient.FilterResourceGroups(this.Name, this.Tag, false, this.Location, this.ExpandProperties), true);
         }
 
     }

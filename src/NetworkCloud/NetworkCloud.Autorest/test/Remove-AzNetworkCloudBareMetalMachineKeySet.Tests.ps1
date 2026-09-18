@@ -19,7 +19,7 @@ Describe 'Remove-AzNetworkCloudBareMetalMachineKeySet' {
             Remove-AzNetworkCloudBareMetalMachineKeySet -Name $bmmksconfig.bmmKeySetName `
                 -ResourceGroupName $bmmksconfig.bmmksrg  -ClusterName $bmmksconfig.clusterName`
                 -Subscription $bmmksconfig.subscriptionId
-        } | Should -Not -Throw
+        }  | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

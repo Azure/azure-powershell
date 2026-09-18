@@ -8,39 +8,50 @@ schema: 2.0.0
 # New-AzWvdHostPool
 
 ## SYNOPSIS
-Create or update a host pool.
+Create a host pool.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
- -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
- [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
- [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String>
+ [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
+ [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
- [-ManagedBy <String>] [-MaxSessionLimit <Int32>]
- [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-PublicNetworkAccess <HostpoolPublicNetworkAccess>] [-RegistrationInfoToken <String>]
- [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-SsoClientId <String>]
- [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <SsoSecretType>] [-SsoadfsAuthority <String>]
+ [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>] [-Kind <String>]
+ [-ManagedBy <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-PublicNetworkAccess <String>] [-RegistrationInfoToken <String>]
+ [-RegistrationTokenOperation <String>] [-Ring <Int32>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-SsoClientId <String>]
+ [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-SsoadfsAuthority <String>]
  [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### FullSenerioCreate
+### FullScenarioCreate
 ```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
- -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
- [-SubscriptionId <String>] [-DesktopAppGroupName <String>] [-WorkspaceName <String>]
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
+ -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-DesktopAppGroupName <String>]
+ [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a host pool.
+Create a host pool.
 
 ## EXAMPLES
 
@@ -109,10 +120,9 @@ This command creates a Windows Virtual Desktop HostPool in a Resource Group.
 ### -AgentUpdateMaintenanceWindow
 List of maintenance windows.
 Maintenance windows are 2 hours long.
-To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -124,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -143,7 +153,7 @@ Accept wildcard characters: False
 The type of maintenance for session host components.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -220,7 +230,7 @@ Desktop App Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: FullSenerioCreate
+Parameter Sets: FullScenarioCreate
 Aliases:
 
 Required: False
@@ -264,8 +274,8 @@ Accept wildcard characters: False
 HostPool type for desktop.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: True
@@ -276,14 +286,44 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (either system assigned, or none).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -311,8 +351,8 @@ Accept wildcard characters: False
 The type of the load balancer.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: True
@@ -327,10 +367,10 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -388,7 +428,7 @@ Accept wildcard characters: False
 PersonalDesktopAssignment type for HostPool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PersonalDesktopAssignmentType
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -483,8 +523,8 @@ Accept wildcard characters: False
 The type of preferred application group type, default to Desktop Application Group
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, FullScenarioCreate
 Aliases:
 
 Required: True
@@ -498,7 +538,7 @@ Accept wildcard characters: False
 Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -528,7 +568,7 @@ Accept wildcard characters: False
 The type of resetting the token.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -603,7 +643,8 @@ Accept wildcard characters: False
 
 ### -SkuName
 The name of the SKU.
-Ex - P3.
+E.g.
+P3.
 It is typically a letter+number code
 
 ```yaml
@@ -638,7 +679,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -698,7 +739,7 @@ Accept wildcard characters: False
 The type of single sign on Secret Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -726,6 +767,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -789,7 +831,7 @@ Workspace Name
 
 ```yaml
 Type: System.String
-Parameter Sets: FullSenerioCreate
+Parameter Sets: FullScenarioCreate
 Aliases:
 
 Required: False
@@ -837,7 +879,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool
 
 ## NOTES
 

@@ -1,0 +1,37 @@
+{
+  "Add-AzSharedLimit+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family?api-version=2025-08-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family?api-version=2025-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d4e5f6a7-b8c9-0123-defa-234567890123" ],
+        "CommandName": [ "Add-AzSharedLimit" ],
+        "FullCommandName": [ "Add-AzSharedLimit_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.ComputeLimit/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e5f6a7b8-c9d0-1234-efab-345678901234" ],
+        "x-ms-correlation-request-id": [ "f6a7b8c9-d0e1-2345-fabc-456789012345" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Wed, 12 Mar 2026 12:00:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000099/providers/Microsoft.ComputeLimit/locations/eastus/sharedLimits/standardDSv3Family\",\"name\":\"standardDSv3Family\",\"type\":\"Microsoft.ComputeLimit/locations/sharedLimits\",\"properties\":{\"provisioningState\":\"Succeeded\",\"limitName\":{\"value\":\"standardDSv3Family\",\"localizedValue\":\"Standard DSv3 Family vCPUs\"}},\"systemData\":{\"createdBy\":\"user@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-12T12:00:01.0000000Z\",\"lastModifiedBy\":\"user@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-12T12:00:01.0000000Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

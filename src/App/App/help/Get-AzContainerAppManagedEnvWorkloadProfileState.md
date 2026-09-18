@@ -14,7 +14,8 @@ Get all workload Profile States for a Managed Environment.
 
 ```
 Get-AzContainerAppManagedEnvWorkloadProfileState -EnvName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -15,8 +15,8 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -29,11 +29,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to update Managed Instance Link
     /// </summary>
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureSqlManagedInstanceLinkModel), "13.0.0", "6.0.0",
-        DeprecatedOutputProperties = new String[] { "TargetDatabase", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName",
-            "SourceEndpoint", "SourceReplicaId", "TargetReplicaId", "LinkState", "LastHardenedLsn" },
-        NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
-            "InstanceLinkRole", "PartnerLinkRole", "FailoverMode", "SeedingMode", "PartnerEndpoint" })]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
@@ -46,6 +41,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         private const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
         private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
 
+        private bool _isReplicationModeSpecified;
+        private bool _areDatabasesSpecified;
+        private bool _useInputObjectReplicationMode;
+
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 1, HelpMessage = "Name of the managed instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -65,8 +64,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the link name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 2, HelpMessage = "Name of the instance link.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 2, HelpMessage = "Managed Instance link name.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 1, HelpMessage = "Managed Instance link name.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
@@ -75,13 +74,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the replication mode
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 3, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 2, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet, Position = 1, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet, Position = 1, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, Position = 3, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByParentObjectParameterSet, Position = 2, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet, Position = 1, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByResourceIdParameterSet, Position = 1, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
         [PSArgumentCompleter("Sync", "Async")]
         [ValidateNotNullOrEmpty]
         public string ReplicationMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the databases in a multi-database Managed Instance link
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, HelpMessage = "Database names in the distributed availability group. This property can be updated only for links in MultiDatabase mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group. This property can be updated only for links in MultiDatabase mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet, HelpMessage = "Database names in the distributed availability group. This property can be updated only for links in MultiDatabase mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByResourceIdParameterSet, HelpMessage = "Database names in the distributed availability group. This property can be updated only for links in MultiDatabase mode.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Databases")]
+        public string[] Database { get; set; }
 
         /// <summary>
         /// Gets or sets the instance link resource Id
@@ -115,6 +125,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
 
         public override void ExecuteCmdlet()
         {
+            _isReplicationModeSpecified = this.IsParameterBound(c => c.ReplicationMode);
+            _areDatabasesSpecified = this.IsParameterBound(c => c.Database);
+
             switch (ParameterSetName)
             {
                 case UpdateByNameParameterSet:
@@ -130,7 +143,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     ResourceGroupName = InputObject.ResourceGroupName;
                     InstanceName = InputObject.InstanceName;
                     Name = InputObject.Name;
-                    ReplicationMode = this.IsParameterBound(c => c.ReplicationMode) ? ReplicationMode : InputObject.ReplicationMode;
+                    if (!_isReplicationModeSpecified && !_areDatabasesSpecified)
+                    {
+                        ReplicationMode = InputObject.ReplicationMode;
+                        _useInputObjectReplicationMode = true;
+                    }
                     break;
                 case UpdateByResourceIdParameterSet:
                     // we need to derive RG, MI and MiLink name from resource id
@@ -141,6 +158,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
                 default:
                     break;
+            }
+
+            if (!_isReplicationModeSpecified && !_areDatabasesSpecified && !_useInputObjectReplicationMode)
+            {
+                throw new PSArgumentException("At least one of -ReplicationMode or -Database must be specified.");
             }
 
             // messages describing behavior with -WhatIf and -Confirm flags
@@ -162,7 +184,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         {
             List<AzureSqlManagedInstanceLinkModel> newEntity = new List<AzureSqlManagedInstanceLinkModel> { };
             var updatedModel = model.First();
-            updatedModel.ReplicationMode = ReplicationMode;
+            if (_useInputObjectReplicationMode &&
+                string.Equals(updatedModel.ReplicationMode, ReplicationMode, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PSArgumentException("At least one of -ReplicationMode or -Database must be specified.");
+            }
+
+            updatedModel.ReplicationMode = _isReplicationModeSpecified || _useInputObjectReplicationMode
+                ? ReplicationMode
+                : null;
+            updatedModel.Databases = _areDatabasesSpecified
+                ? Database.Select(databaseName => new DistributedAvailabilityGroupDatabase { DatabaseName = databaseName }).ToList()
+                : null;
             newEntity.Add(updatedModel);
             return newEntity;
         }

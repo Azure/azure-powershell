@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreBlobObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacedatastoreblobobject
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ Create an in-memory object for AzureBlobDatastore.
 
 ```
 New-AzMLWorkspaceDatastoreBlobObject -Credentials <IDatastoreCredentials> [-AccountName <String>]
- [-ContainerName <String>] [-Endpoint <String>] [-Protocol <String>]
- [-ServiceDataAccessAuthIdentity <ServiceDataAccessAuthIdentity>] [-Description <String>]
- [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>] [-ProgressAction <ActionPreference>]
+ [-ContainerName <String>] [-Endpoint <String>] [-Protocol <String>] [-ServiceDataAccessAuthIdentity <String>]
+ [-ResourceGroup <String>] [-SubscriptionId <String>] [-Description <String>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
 
@@ -72,10 +72,9 @@ Accept wildcard characters: False
 
 ### -Credentials
 [Required] Account credentials.
-To construct, see NOTES section for CREDENTIALS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDatastoreCredentials
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDatastoreCredentials
 Parameter Sets: (All)
 Aliases:
 
@@ -116,27 +115,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Property
 The asset property dictionary.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -162,11 +145,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroup
+Azure Resource Group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServiceDataAccessAuthIdentity
 Indicates which identity to use to authenticate service data access to customer's storage.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ServiceDataAccessAuthIdentity
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Azure Subscription Id.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,10 +193,9 @@ Accept wildcard characters: False
 ### -Tag
 Tag dictionary.
 Tags can be added, removed, and updated.
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureBlobDatastore
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureBlobDatastore
 
 ## NOTES
 

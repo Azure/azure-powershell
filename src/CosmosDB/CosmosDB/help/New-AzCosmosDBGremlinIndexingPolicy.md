@@ -15,7 +15,8 @@ Creates a new CosmosDB IndexingPolicy object.
 ```
 New-AzCosmosDBGremlinIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec <PSSpatialSpec[]>]
  [-CompositePath <PSCompositePath[][]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>]
- [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

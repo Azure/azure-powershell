@@ -15,7 +15,7 @@
 <#
 .SYNOPSIS
 Creates a linked service and then does a Get to compare the results.
-Delete sthe created linked service at the end.
+Deletes the created linked service at the end.
 #>
 function Test-LinkedService
 {
@@ -144,7 +144,7 @@ function Test-LinkedServicePiping
 <#
 .SYNOPSIS
 Creates a linked service and then does a Get to compare the results.
-Delete sthe created linked service at the end.
+Deletes the created linked service at the end.
 #>
 function Test-LinkedService-SqlServer
 {

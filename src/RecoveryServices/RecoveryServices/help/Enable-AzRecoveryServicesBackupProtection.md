@@ -16,8 +16,9 @@ Enables or resumes backup for an item with a specified Backup protection policy.
 ### AzureVMComputeEnableProtection (Default)
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String> [-ResourceGroupName] <String>
- [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks]
+ [-ContainerSubscriptionId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMClassicComputeEnableProtection
@@ -45,7 +46,7 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableIt
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase>
  [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ResetExclusionSettings]
  [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +78,31 @@ Enables backup for an item with a specified Backup protection policy or resumes 
 Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
 ```
 
+### Example 3: Enable Backup protection for a Cross Subscription VM
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "vaultResourceGroup" -Name "vaultName"
+$Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy" -VaultId $vault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -ContainerSubscriptionId "00000000-0000-0000-0000-000000000000" -VaultId $vault.ID
+```
+
+This example configures backup for a virtual machine that resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). The **-ContainerSubscriptionId** parameter specifies the subscription of the virtual machine identified by **-Name** and **-ResourceGroupName**.
+
 ## PARAMETERS
+
+### -ContainerSubscriptionId
+Subscription ID of the Azure Virtual Machine to be protected. Use this parameter to configure backup for a VM that resides in a different subscription than the Recovery Services vault (Cross Subscription Backup).
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMComputeEnableProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -229,6 +254,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: ModifyProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -18,7 +18,7 @@ Describe 'New/Update-AzStorageMoverSmbEndpoint' {
     It 'Create and update' {
         $endpointName = "testsmbendpoint1" + $env.RandomString
         $shareName = "shareName" + $env.RandomString
-        $smbendpoint = New-AzStorageMoverSmbEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Host "10.0.0.1" -ShareName $shareName -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/examples-username" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/examples-password" -Description "new smb endpoint"
+        $smbendpoint = New-AzStorageMoverSmbEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Host "10.0.0.1" -ShareName $shareName  -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/examples-username" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/examples-password" -Description "new smb endpoint"
         $smbendpoint.Name | Should -Be $endpointName
         $smbendpoint.Property.CredentialsType | Should -Be "AzureKeyVaultSmb"
         $smbendpoint.Property.CredentialsPasswordUri | Should -Be "https://examples-azureKeyVault.vault.azure.net/secrets/examples-password"

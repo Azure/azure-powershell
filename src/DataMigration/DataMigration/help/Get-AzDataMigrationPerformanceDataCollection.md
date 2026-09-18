@@ -16,13 +16,13 @@ Collect performance data for given SQL Server instance(s)
 ```
 Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings <String[]> [-OutputFolder <String>]
  [-PerfQueryInterval <String>] [-StaticQueryInterval <String>] [-NumberOfIterations <String>] [-Time <Int64>]
- [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-PassThru] [<CommonParameters>]
 ```
 
 ### ConfigFile
 ```
 Get-AzDataMigrationPerformanceDataCollection [-Time <Int64>] -ConfigFilePath <String> [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,21 +191,6 @@ Interval at which to query performance data, in seconds.
 Type: System.String
 Parameter Sets: CommandLine
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

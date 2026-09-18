@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceLiteralJobInputObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceliteraljobinputobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for LiteralJobInput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceLiteralJobInputObject -Value <String> -Type <JobInputType> [-Description <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzMLWorkspaceLiteralJobInputObject -Value <String> -Type <String> [-Description <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,26 +46,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Type
 [Required] Specifies the type of job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput
 
 ## NOTES
 

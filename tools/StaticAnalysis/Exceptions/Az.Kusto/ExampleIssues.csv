@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Kusto","Update-AzKustoScript","1","1","Invalid_Parameter_Name","5011","1","Update-AzKustoScript -ScriptUrlSasToken is not a valid parameter name.","-ScriptUrlSasToken","Check validity of the parameter -ScriptUrlSasToken."
+"Az.Kusto","Update-AzKustoScript","1","1","Invalid_Parameter_Name","5011","1","Update-AzKustoScript -ScriptUrlSasToken is not a valid parameter name.","-ScriptUrlSasToken","Check validity of the parameter -ScriptUrlSasToken."
