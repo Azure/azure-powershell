@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule> NetworkSecurityPerimeterAccessRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule> NetworkSecurityPerimeterAccessRulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule> NetworkSecurityPerimeterAccessRulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -787,7 +787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule> NetworkSecurityPerimeterAccessRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule> NetworkSecurityPerimeterAccessRulesGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesList(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1157,7 +1157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesListViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleListResult> NetworkSecurityPerimeterAccessRulesListViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1286,7 +1286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleListResult> NetworkSecurityPerimeterAccessRulesListWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1491,7 +1491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesReconcile(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesReconcileViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1607,7 +1607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny> NetworkSecurityPerimeterAccessRulesReconcileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1676,7 +1676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAccessRulesReconcileViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1729,7 +1729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny> NetworkSecurityPerimeterAccessRulesReconcileViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1783,7 +1783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny> NetworkSecurityPerimeterAccessRulesReconcileWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, string accessRuleName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1987,7 +1987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociableResourceTypesList(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2029,7 +2029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociableResourceTypesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2080,7 +2080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcesListResult> NetworkSecurityPerimeterAssociableResourceTypesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2132,7 +2132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcesListResult> NetworkSecurityPerimeterAssociableResourceTypesListWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2312,7 +2312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2361,7 +2361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2421,7 +2421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation> NetworkSecurityPerimeterAssociationsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2534,7 +2534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation> NetworkSecurityPerimeterAssociationsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2584,7 +2584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation> NetworkSecurityPerimeterAssociationsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2966,7 +2966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3010,7 +3010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3251,7 +3251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3294,7 +3294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3348,7 +3348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation> NetworkSecurityPerimeterAssociationsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3405,7 +3405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation> NetworkSecurityPerimeterAssociationsGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3598,7 +3598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsList(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3648,7 +3648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsListViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3708,7 +3708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationsListResult> NetworkSecurityPerimeterAssociationsListViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3770,7 +3770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociationsListResult> NetworkSecurityPerimeterAssociationsListWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3968,7 +3968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsReconcile(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4018,7 +4018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsReconcileViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4079,7 +4079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny> NetworkSecurityPerimeterAssociationsReconcileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4144,7 +4144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterAssociationsReconcileViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4194,7 +4194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny> NetworkSecurityPerimeterAssociationsReconcileViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4245,7 +4245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny> NetworkSecurityPerimeterAssociationsReconcileWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4444,7 +4444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinkReferencesDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkReferenceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4488,7 +4488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinkReferencesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4729,7 +4729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinkReferencesGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkReferenceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4772,7 +4772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinkReferencesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4826,7 +4826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference> NetworkSecurityPerimeterLinkReferencesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4883,7 +4883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReference> NetworkSecurityPerimeterLinkReferencesGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkReferenceName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5078,7 +5078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinkReferencesList(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferenceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5130,7 +5130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinkReferencesListViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferenceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5192,7 +5192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferenceListResult> NetworkSecurityPerimeterLinkReferencesListViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5256,7 +5256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferenceListResult> NetworkSecurityPerimeterLinkReferencesListWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5455,7 +5455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5505,7 +5505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5565,7 +5565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink> NetworkSecurityPerimeterLinksCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5630,7 +5630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5679,7 +5679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink> NetworkSecurityPerimeterLinksCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5729,7 +5729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink> NetworkSecurityPerimeterLinksCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5940,7 +5940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5984,7 +5984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6225,7 +6225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6268,7 +6268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6322,7 +6322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink> NetworkSecurityPerimeterLinksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6379,7 +6379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink> NetworkSecurityPerimeterLinksGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string linkName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6570,7 +6570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksList(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6620,7 +6620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLinksListViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6680,7 +6680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkListResult> NetworkSecurityPerimeterLinksListViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6742,7 +6742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkListResult> NetworkSecurityPerimeterLinksListWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6939,7 +6939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6989,7 +6989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7049,7 +7049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7114,7 +7114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7163,7 +7163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7213,7 +7213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> NetworkSecurityPerimeterLoggingConfigurationsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7424,7 +7424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7468,7 +7468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7616,7 +7616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7659,7 +7659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7713,7 +7713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> NetworkSecurityPerimeterLoggingConfigurationsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7770,7 +7770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration> NetworkSecurityPerimeterLoggingConfigurationsGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string loggingConfigurationName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7959,7 +7959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsList(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8001,7 +8001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterLoggingConfigurationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8053,7 +8053,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfigurationListResult> NetworkSecurityPerimeterLoggingConfigurationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8107,7 +8107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfigurationListResult> NetworkSecurityPerimeterLoggingConfigurationsListWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8291,7 +8291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterOperationStatusesGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IOperationStatusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8332,7 +8332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterOperationStatusesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IOperationStatusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8383,7 +8383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IOperationStatusResult> NetworkSecurityPerimeterOperationStatusesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8436,7 +8436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IOperationStatusResult> NetworkSecurityPerimeterOperationStatusesGetWithResult(string subscriptionId, string location, string operationId, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8620,7 +8620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8670,7 +8670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8730,7 +8730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile> NetworkSecurityPerimeterProfilesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8795,7 +8795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8844,7 +8844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile> NetworkSecurityPerimeterProfilesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8894,7 +8894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile> NetworkSecurityPerimeterProfilesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9105,7 +9105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9149,7 +9149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9297,7 +9297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9340,7 +9340,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9394,7 +9394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile> NetworkSecurityPerimeterProfilesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9451,7 +9451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile> NetworkSecurityPerimeterProfilesGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9644,7 +9644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesList(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9694,7 +9694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterProfilesListViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9754,7 +9754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfileListResult> NetworkSecurityPerimeterProfilesListViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9816,7 +9816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfileListResult> NetworkSecurityPerimeterProfilesListWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10012,7 +10012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterServiceTagsList(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10054,7 +10054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterServiceTagsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10105,7 +10105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsListResult> NetworkSecurityPerimeterServiceTagsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10157,7 +10157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspServiceTagsListResult> NetworkSecurityPerimeterServiceTagsListWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10337,7 +10337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10385,7 +10385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10442,7 +10442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10503,7 +10503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10549,7 +10549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10596,7 +10596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10801,7 +10801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersDelete(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10846,7 +10846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersDeleteViaIdentity(global::System.String viaIdentity, bool? forceDeletion, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11080,7 +11080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersGet(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11121,7 +11121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11172,7 +11172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11225,7 +11225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersGetWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11409,7 +11409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersList(string subscriptionId, string resourceGroupName, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11457,7 +11457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersListBySubscription(string subscriptionId, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11503,7 +11503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersListBySubscriptionViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11557,7 +11557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult> NetworkSecurityPerimetersListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11611,7 +11611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult> NetworkSecurityPerimetersListBySubscriptionWithResult(string subscriptionId, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11796,7 +11796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersListViaIdentity(global::System.String viaIdentity, int? Top, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11853,7 +11853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult> NetworkSecurityPerimetersListViaIdentityWithResult(global::System.String viaIdentity, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11911,7 +11911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterListResult> NetworkSecurityPerimetersListWithResult(string subscriptionId, string resourceGroupName, int? Top, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12100,7 +12100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersPatch(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12147,7 +12147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersPatchViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12204,7 +12204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersPatchViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12264,7 +12264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkSecurityPerimetersPatchViaJsonString(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12310,7 +12310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersPatchViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12357,7 +12357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter> NetworkSecurityPerimetersPatchWithResult(string subscriptionId, string resourceGroupName, string networkSecurityPerimeterName, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest body, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-01-01";
+            var apiVersion = @"2025-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
