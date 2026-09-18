@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageCache
-Module Guid: 9ad477fa-fa3c-49f8-b1fd-4c7a9b1ec2c6
+Module Guid: 535eb7e6-ec98-4d3f-9bb5-747108731bfb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagecache
 Help Version: 1.0.0.0
 Locale: en-US
