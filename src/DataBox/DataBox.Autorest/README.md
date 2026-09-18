@@ -44,13 +44,13 @@ title: DataBox
 subject-prefix: $(service-name)
 inlining-threshold: 50
 
+# Disable managed identity best practice transform for Jobs_Update as it cannot be auto-transformed
+disable-transform-identity-type-for-operation:
+  - Jobs_Update
+
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -82,7 +82,7 @@ directive:
   
   - where:
       verb: Update
-      parameter-name: ^Detail(.*)
+      parameter-name: ^Detail(.+)
     set:
       parameter-name: $1
   
@@ -151,22 +151,40 @@ directive:
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IJobSecrets');  
     
   - model-cmdlet:
-    - DataBoxDiskJobDetails
-    - DataBoxHeavyJobDetails
-    - DataBoxJobDetails
-    - StorageAccountDetails
-    - ManagedDiskDetails
-    - KeyEncryptionKey
-    - ShippingAddress
-    - ContactDetails
-    - TransferConfiguration
+    - model-name: DataBoxDiskJobDetails
+      cmdlet-name: New-AzDataBoxDiskJobDetailsObject
+    - model-name: DataBoxHeavyJobDetails
+      cmdlet-name: New-AzDataBoxHeavyJobDetailsObject
+    - model-name: DataBoxJobDetails
+      cmdlet-name: New-AzDataBoxJobDetailsObject
+    - model-name: StorageAccountDetails
+      cmdlet-name: New-AzDataBoxStorageAccountDetailsObject
+    - model-name: ManagedDiskDetails
+      cmdlet-name: New-AzDataBoxManagedDiskDetailsObject
+    - model-name: KeyEncryptionKey
+      cmdlet-name: New-AzDataBoxKeyEncryptionKeyObject
+    - model-name: ShippingAddress
+      cmdlet-name: New-AzDataBoxShippingAddressObject
+    - model-name: ContactDetails
+      cmdlet-name: New-AzDataBoxContactDetailsObject
+    - model-name: TransferConfiguration
+      cmdlet-name: New-AzDataBoxTransferConfigurationObject
 ```
 ``` yaml
+# Models that should not be inlined to allow customization
+no-inline:
+  - KeyEncryptionKey
+  - JobDetails
+  - ShippingAddress
+  - ContactDetails
+  - TransferConfiguration
 directive:
-  no-inline:  # the name of the model schema in the swagger file
-    - KeyEncryptionKey
-    - JobDetails
-    - ShippingAddress
-    - ContactDetails
-    - TransferConfiguration
+  # Remove ViaIdentity create variants as they are not needed
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  # Keep only Expanded, JsonFilePath, and JsonString variants for Create/Update
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
 ```
