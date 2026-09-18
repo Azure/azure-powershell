@@ -1,0 +1,49 @@
+{
+  "Get-AzMonitorHealthModelEntitySignalRecommendation+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/getSignalRecommendations?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/getSignalRecommendations?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000059" ],
+        "CommandName": [ "Get-AzMonitorHealthModelEntitySignalRecommendation" ],
+        "FullCommandName": [ "Get-AzMonitorHealthModelEntitySignalRecommendation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000060" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000061" ],
+        "x-ms-error-code": [ "EntityHasNoAzureResource" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000062" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "245" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3745" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052012Z:00000000-0000-4000-8000-000000000062" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B81FD84143844733A6BDE245FF81B15C Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:12Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:20:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "211" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"EntityHasNoAzureResource\",\"message\":\"Entity \u0027azps-ent-shared-a9skjo\u0027 does not have an Azure resource assigned. Signal recommendations require an Azure resource on the entity\u0027s signal groups.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

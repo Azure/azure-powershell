@@ -1,0 +1,80 @@
+{
+  "Get-AzMonitorHealthModelEntityHistory+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/ingestHealthReport?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/ingestHealthReport?api-version=2026-09-01-preview",
+      "Content": "{\n  \"signalName\": \"azps-sig-shared-a9skjo\",\n  \"healthState\": \"Degraded\",\n  \"value\": 91.1,\n  \"expiresInMinutes\": 60\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "116" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000047" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000048" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000049" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052010Z:00000000-0000-4000-8000-000000000049" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8EE725D0A9844B25AF6D3C6673D57392 Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:10Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:20:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMonitorHealthModelEntityHistory+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/getHistory?api-version=2026-09-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/getHistory?api-version=2026-09-01-preview",
+      "Content": "{\n  \"top\": 5\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "14" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000050" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000051" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000052" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "245" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3745" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052010Z:00000000-0000-4000-8000-000000000052" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C5AA87E021C047DC91ECF13D0DCFC7A3 Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:10Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:20:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "178" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"entityName\":\"azps-ent-shared-a9skjo\",\"history\":[{\"previousState\":\"Unknown\",\"newState\":\"Degraded\",\"occurredAt\":\"2026-09-10T05:20:10.6486797+00:00\",\"reason\":\"SignalTransition\"}]}",
+      "isContentBase64": false
+    }
+  }
+}
