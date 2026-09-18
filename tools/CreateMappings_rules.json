@@ -881,6 +881,10 @@
     "alias": "AppComplianceAutomation"
   },
   {
+    "module": "AppNetwork",
+    "alias": "AppNetwork"
+  },
+  {
     "module": "Informatica",
     "alias": "Informatica"
   },
