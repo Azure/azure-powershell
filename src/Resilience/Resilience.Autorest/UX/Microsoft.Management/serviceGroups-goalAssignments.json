@@ -1,0 +1,108 @@
+{
+  "resourceType": "serviceGroups/goalAssignments",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resilience"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceGoalAssignment",
+      "description": "Get a GoalAssignment",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalAssignments/{goalAssignmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resilience/get-azresiliencegoalassignment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a GoalAssignment",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.goalAssignmentName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResilienceGoalAssignment",
+      "description": "Delete a GoalAssignment",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalAssignments/{goalAssignmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resilience/remove-azresiliencegoalassignment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a GoalAssignment",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.goalAssignmentName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sync-AzResilienceGoalResource",
+      "description": "Refreshes the goal resources under a goal assignment.\nThis operation scans for new resources under the scope of the assignment.",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalAssignments/{goalAssignmentName}/refreshGoalResources",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resilience/sync-azresiliencegoalresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GoalAssignmentName <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Refreshes the goal resources under a goal assignment. This operation scans for new resources under the scope of the assignment.",
+          "parameters": [
+            {
+              "name": "-GoalAssignmentName",
+              "value": "[Path.goalAssignmentName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
