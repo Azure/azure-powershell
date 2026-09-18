@@ -1527,6 +1527,8 @@ function Test-NetworkManagerIpamPoolCRUD
     $rglocation = "eastus2euap"
     $subscriptionId = "/subscriptions/dfa8d777-26f3-4e5e-be19-d6d5fa3176fc"
     $addressPrefixes  = @("10.0.0.0/8")
+    $minAllocationSize = "256"
+    $maxAllocationSize = "65536"
     $tags = @{ testtag = "testval" }
 
     try{
@@ -1541,13 +1543,17 @@ function Test-NetworkManagerIpamPoolCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create ipam pool
-        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes -Tag $tags
+        $createdIpamPool = New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes -MinAllocationSize $minAllocationSize -MaxAllocationSize $maxAllocationSize -Tag $tags
+        Assert-AreEqual $minAllocationSize $createdIpamPool.Properties.MinAllocationSize;
+        Assert-AreEqual $maxAllocationSize $createdIpamPool.Properties.MaxAllocationSize;
 
         $ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName
         Assert-NotNull $ipamPool;
         Assert-AreEqual $ipamPoolName $ipamPool.Name;
         Assert-AreEqual $rglocation $ipamPool.Location;
         Assert-AreEqual $ipamPool.Properties.AddressPrefixes[0] $addressPrefixes[0];
+        Assert-AreEqual $minAllocationSize $ipamPool.Properties.MinAllocationSize;
+        Assert-AreEqual $maxAllocationSize $ipamPool.Properties.MaxAllocationSize;
         Assert-AreEqual $ipamPool.Tags.Count 1;
         Assert-NotNull $ipamPool.Etag;
 
@@ -1559,12 +1565,18 @@ function Test-NetworkManagerIpamPoolCRUD
         Assert-AreEqual $listPools[0].Location $ipamPool.Location
         Assert-AreEqual $listPools[0].ProvisioningState $ipamPool.ProvisioningState
         Assert-AreEqual $listPools[0].Etag $ipamPool.Etag
+        Assert-AreEqual $minAllocationSize $listPools[0].Properties.MinAllocationSize
+        Assert-AreEqual $maxAllocationSize $listPools[0].Properties.MaxAllocationSize
 
-        # Update access
+        # Update address prefixes and clear allocation size bounds
         $ipamPool.Properties.AddressPrefixes.Add("11.0.0.0/8");
-        $newIpamPool = Set-AzNetworkManagerIpamPool -InputObject $ipamPool
+        $newIpamPool = Set-AzNetworkManagerIpamPool -InputObject $ipamPool -MinAllocationSize "" -MaxAllocationSize ""
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[0] "10.0.0.0/8";
         Assert-AreEqual  $newIpamPool.Properties.AddressPrefixes[1] "11.0.0.0/8";
+        Assert-True {[string]::IsNullOrEmpty($newIpamPool.Properties.MinAllocationSize)};
+        Assert-True {[string]::IsNullOrEmpty($newIpamPool.Properties.MaxAllocationSize)};
+        Assert-True {[string]::IsNullOrEmpty($ipamPool.Properties.MinAllocationSize)};
+        Assert-True {[string]::IsNullOrEmpty($ipamPool.Properties.MaxAllocationSize)};
         
         # Etag should change after update
         Assert-True {$newIpamPool.Etag -ne $ipamPool.Etag};
