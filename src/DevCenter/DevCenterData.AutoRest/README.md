@@ -38,13 +38,22 @@ title: DevCenterdata
 subject-prefix: DevCenter
 root-module-name: $(prefix).DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - no-inline:
     - AzureCoreFoundationsInnerError
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/environments/{environmentName}/operations/{operationId}/logs"].get
+    transform: >
+      $.produces = ["application/json"];
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}/logs/{customizationTaskId}"].get
+    transform: >
+      $.produces = ["application/json"];
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/imageBuildLogs/{imageBuildLogId}"].get
+    transform: >
+      $.produces = ["application/json"];
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
@@ -219,7 +228,7 @@ directive:
       alias: ActionName
   - where:
       verb: New|Test
-      variant: ^Create$|^CreateViaIdentity$|^Validate$|^ValidateViaIdentity$
+      variant: ^(Create|Validate)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: ^(.*)

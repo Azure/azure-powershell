@@ -25,9 +25,9 @@ Lets a user set their own active hours for their Dev Box, overriding the default
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IUserActiveHoursConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IUserActiveHoursConfiguration
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBox
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,7 +41,7 @@ BODY <IUserActiveHoursConfiguration>: Manual user set active hours configuration
 https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteruserdevboxactivehour
 #>
 function Set-AzDevCenterUserDevBoxActiveHour {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBox])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Set', Mandatory)]
@@ -82,7 +82,7 @@ function Set-AzDevCenterUserDevBoxActiveHour {
         [Parameter(ParameterSetName = 'Set', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'SetByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IUserActiveHoursConfiguration]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IUserActiveHoursConfiguration]
         # Manual user set active hours configuration.
         # To construct, see NOTES section for BODY properties and create a hash table.
         ${Body},

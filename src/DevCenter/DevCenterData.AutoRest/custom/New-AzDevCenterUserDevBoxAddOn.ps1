@@ -27,7 +27,7 @@ Creates a Dev Box addon.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBoxAddOn
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxaddon
 #>
 function New-AzDevCenterUserDevBoxAddOn {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevBoxAddOn])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
