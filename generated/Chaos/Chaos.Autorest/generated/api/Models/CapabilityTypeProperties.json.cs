@@ -75,6 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)_kind;}
             {_azureRbacAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("azureRbacActions"), out var __jsonAzureRbacActions) ? If( __jsonAzureRbacActions as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _azureRbacAction;}
             {_azureRbacDataAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("azureRbacDataActions"), out var __jsonAzureRbacDataActions) ? If( __jsonAzureRbacDataActions as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _azureRbacDataAction;}
+            {_requiredAzureRoleDefinitionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("requiredAzureRoleDefinitionIds"), out var __jsonRequiredAzureRoleDefinitionIds) ? If( __jsonRequiredAzureRoleDefinitionIds as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _requiredAzureRoleDefinitionId;}
             AfterFromJson(json);
         }
 
@@ -109,7 +110,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return container;
             }
-            AddIf( null != this._runtimeProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._runtimeProperty.ToJson(null,serializationMode) : null, "runtimeProperties" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._runtimeProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._runtimeProperty.ToJson(null,serializationMode) : null, "runtimeProperties" ,container.Add );
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._publisher)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._publisher.ToString()) : null, "publisher" ,container.Add );
@@ -138,23 +142,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 AddIf( null != (((object)this._kind)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._kind.ToString()) : null, "kind" ,container.Add );
             }
-            if (null != this._azureRbacAction)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.XNodeArray();
-                foreach( var __x in this._azureRbacAction )
+                if (null != this._azureRbacAction)
                 {
-                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._azureRbacAction )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("azureRbacActions",__w);
                 }
-                container.Add("azureRbacActions",__w);
             }
-            if (null != this._azureRbacDataAction)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
             {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.XNodeArray();
-                foreach( var __s in this._azureRbacDataAction )
+                if (null != this._azureRbacDataAction)
                 {
-                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._azureRbacDataAction )
+                    {
+                        AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                    }
+                    container.Add("azureRbacDataActions",__r);
                 }
-                container.Add("azureRbacDataActions",__r);
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._requiredAzureRoleDefinitionId)
+                {
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._requiredAzureRoleDefinitionId )
+                    {
+                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                    }
+                    container.Add("requiredAzureRoleDefinitionIds",__m);
+                }
             }
             AfterToJson(ref container);
             return container;
