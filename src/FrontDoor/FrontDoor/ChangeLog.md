@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2026-04-01.
+* Added WAF managed rule set display name and status, and managed rule paranoia level, to `Get-AzFrontDoorWafManagedRuleSetDefinition` output.
+    - Added the `DisplayName` and `Status` properties to the returned rule sets. `Status` is one of `Preview`, `GA`, `Supported`, or `Deprecated`.
+    - Added the `ParanoiaLevel` property to the returned rules. It is set for DRS rules only and is empty for Bot Manager, DDoS, and AI rules.
+    - All three properties are read-only and are populated from API version 2026-04-01 and later.
 
 ## Version 2.3.0
 * Added support for Front Door WAF managed rule exceptions.
