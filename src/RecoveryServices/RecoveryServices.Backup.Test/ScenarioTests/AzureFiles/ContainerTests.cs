@@ -47,5 +47,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureFSUnregisterContainer"
             );
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSRegisterParameterValidation()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSRegisterParameterValidation"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSManagedIdentityRegisterAndReregister()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSManagedIdentityRegisterAndReregister"
+            );
+        }
     }
 }

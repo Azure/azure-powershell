@@ -265,6 +265,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
             string secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
 
+            // Azure Files identity-based restore (MSI) + Cross-Subscription Restore (CSR) inputs.
+            bool restoreWithSystemAssignedIdentity = ProviderData.ContainsKey(RestoreFSBackupItemParams.IsSystemAssignedIdentity) &&
+                (bool)ProviderData[RestoreFSBackupItemParams.IsSystemAssignedIdentity];
+            string restoreUserAssignedIdentityArmUrl = ProviderData.ContainsKey(RestoreFSBackupItemParams.UserAssignedIdentityArmUrl) ?
+                (string)ProviderData[RestoreFSBackupItemParams.UserAssignedIdentityArmUrl] : null;
+            string targetSubscriptionId = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetSubscriptionId) ?
+                (string)ProviderData[RestoreFSBackupItemParams.TargetSubscriptionId] : null;
+
+            if (!string.IsNullOrEmpty(targetSubscriptionId) && string.IsNullOrEmpty(targetStorageAccountName))
+            {
+                throw new ArgumentException(Resources.AzureFileTargetSubscriptionRequiresStorageAccount);
+            }
+
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
 
@@ -280,6 +293,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
             }
 
+            if (useSecondaryRegion &&
+                (restoreWithSystemAssignedIdentity ||
+                 !string.IsNullOrEmpty(restoreUserAssignedIdentityArmUrl)))
+            {
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreIdentityNotSupported);
+            }
+
             //validate alternate location restore request
             ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
 
@@ -293,7 +313,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetStorageAccountLocation = null;
             if (!string.IsNullOrEmpty(targetStorageAccountName))
             {                
-                targetStorageAccountResource = ServiceClientAdapter.GetStorageAccountResource(targetStorageAccountName);
+                // For Cross-Subscription Restore (CSR), resolve the target storage account in the target subscription.
+                targetStorageAccountResource = ServiceClientAdapter.GetStorageAccountResource(targetStorageAccountName, targetSubscriptionId);
                 
                 if(targetStorageAccountResource == null)
                 {
@@ -384,6 +405,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             restoreRequest.RestoreFileSpecs = restoreFileSpecs;
             restoreRequest.TargetDetails = targetDetails;
+
+            // Identity-based restore (MSI): the restore identity may differ from the one on the storage account.
+            if (restoreWithSystemAssignedIdentity || !string.IsNullOrEmpty(restoreUserAssignedIdentityArmUrl))
+            {
+                IdentityInfo restoreIdentityInfo = new IdentityInfo();
+                if (restoreWithSystemAssignedIdentity)
+                {
+                    restoreIdentityInfo.IsSystemAssignedIdentity = true;
+                }
+                else
+                {
+                    restoreIdentityInfo.IsSystemAssignedIdentity = false;
+                    restoreIdentityInfo.ManagedIdentityResourceId = restoreUserAssignedIdentityArmUrl;
+                }
+                restoreRequest.IdentityInfo = restoreIdentityInfo;
+            }
 
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
@@ -704,21 +741,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private WorkloadProtectableItemResource GetAzureFileShareProtectableObject(
             string azureFileShareName,
             string storageAccountName,
+            string accessType = null,
+            IdentityInfo requestedIdentityInfo = null,
+            bool forceReregister = false,
+            Func<bool> confirmReregister = null,
             string vaultName = null,
             string vaultResourceGroupName = null)
         {   
             //get registered storage accounts
             bool isRegistered = false;            
             string storageContainerName = null;
-            List<ContainerBase> registeredStorageAccounts = GetRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
+            List<ContainerBase> registeredStorageAccounts =
+                GetRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
             ContainerBase registeredStorageAccount = registeredStorageAccounts.Find(
-                storageAccount => string.Compare(storageAccount.Name.Split(';').Last(),
-                storageAccountName, true) == 0);
+                storageAccount => string.Compare(
+                    storageAccount.Name.Split(';').Last(),
+                    storageAccountName,
+                    true) == 0);
             if (registeredStorageAccount != null)
             {
                 isRegistered = true;
                 storageContainerName = "StorageContainer;" + registeredStorageAccount.Name;
                 Logger.Instance.WriteDebug("Storage account was already registered");
+
+                // If identity-based access (or an explicit access type) was requested, compare it against the
+                // existing registration and re-register the storage account when it differs.
+                if (!string.IsNullOrEmpty(accessType))
+                {
+                    ReregisterStorageAccount(
+                        registeredStorageAccount,
+                        storageAccountName,
+                        accessType,
+                        requestedIdentityInfo,
+                        forceReregister,
+                        confirmReregister,
+                        vaultName,
+                        vaultResourceGroupName);
+                }
             }
 
             //get unregistered storage account, trigger discovery if not found.
@@ -729,8 +788,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 List<ProtectableContainerResource> unregisteredStorageAccounts =
                     GetUnRegisteredStorageAccounts(vaultName, vaultResourceGroupName);
                 ProtectableContainerResource unregisteredStorageAccount = unregisteredStorageAccounts.Find(
-                    storageAccount => string.Compare(storageAccount.Name.Split(';').Last(),
-                    storageAccountName, true) == 0);
+                    storageAccount => string.Compare(
+                        storageAccount.Name.Split(';').Last(),
+                        storageAccountName,
+                        true) == 0);
 
                 // refresh containers as the given storage account is not found
                 if (unregisteredStorageAccount == null && !isRefreshed)
@@ -759,6 +820,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         backupManagementType: ServiceClientModel.BackupManagementType.AzureStorage,
                         sourceResourceId: unregisteredStorageAccount.Properties.ContainerId,
                         resourceGroup: vaultResourceGroupName);
+
+                    // Identity-based access (MSI): stamp the access type + identity on the register request.
+                    if (!string.IsNullOrEmpty(accessType))
+                    {
+                        azureStorageContainer.AccessType = accessType;
+                        azureStorageContainer.IdentityInfo = requestedIdentityInfo;
+                    }
+
                     protectionContainerResource.Properties = azureStorageContainer;
                     AzureWorkloadProviderHelper.RegisterContainer(unregisteredStorageAccount.Name,
                         protectionContainerResource,
@@ -809,6 +878,121 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return protectableObjectResource;
         }
 
+        /// <summary>
+        /// Builds the <see cref="IdentityInfo"/> for identity-based Azure Files access from the supplied params.
+        /// Returns null for key-based access (no identity).
+        /// </summary>
+        private static IdentityInfo BuildAfsIdentityInfo(string accessType, bool isSystemAssignedIdentity, string userAssignedIdentityArmUrl)
+        {
+            if (string.IsNullOrEmpty(accessType) ||
+                !string.Equals(accessType, ServiceClientModel.AccessType.IdentityBased, StringComparison.OrdinalIgnoreCase))
+            {
+                return null;
+            }
+
+            IdentityInfo identityInfo = new IdentityInfo();
+            if (isSystemAssignedIdentity)
+            {
+                identityInfo.IsSystemAssignedIdentity = true;
+            }
+            else
+            {
+                identityInfo.IsSystemAssignedIdentity = false;
+                identityInfo.ManagedIdentityResourceId = userAssignedIdentityArmUrl;
+            }
+            return identityInfo;
+        }
+
+        /// <summary>
+        /// Compares the requested access type / identity against the existing registration and re-registers the
+        /// storage account (operationType = Reregister) when they differ. When nothing changed this is a no-op.
+        /// A change requires -Force (acts as the re-registration confirmation gate).
+        /// </summary>
+        private void ReregisterStorageAccount(
+            ContainerBase registeredStorageAccount,
+            string storageAccountName,
+            string accessType,
+            IdentityInfo requestedIdentityInfo,
+            bool forceReregister,
+            Func<bool> confirmReregister,
+            string vaultName,
+            string vaultResourceGroupName)
+        {
+            AzureFileShareContainer container = (AzureFileShareContainer)registeredStorageAccount;
+
+            string existingAccessType = container.AccessType;
+            IdentityInfo existingIdentity = container.IdentityInfo;
+
+            bool accessTypeChanged = !string.Equals(
+                existingAccessType ?? ServiceClientModel.AccessType.KeyBased,
+                accessType,
+                StringComparison.OrdinalIgnoreCase);
+
+            bool identityChanged = !AreIdentitiesEqual(existingIdentity, requestedIdentityInfo);
+
+            if (!accessTypeChanged && !identityChanged)
+            {
+                // Same access type + identity: nothing to do.
+                Logger.Instance.WriteDebug("Storage account already registered with the requested access type / identity; skipping re-registration.");
+                return;
+            }
+
+            if (!forceReregister &&
+                (confirmReregister == null || !confirmReregister()))
+            {
+                throw new ArgumentException(Resources.AFSReregisterCanceled);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(container.Id), container.Id);
+
+            ProtectionContainerResource protectionContainerResource =
+                new ProtectionContainerResource(container.Id, containerUri);
+
+            AzureStorageContainer storageContainer = new AzureStorageContainer(
+                friendlyName: storageAccountName,
+                backupManagementType: ServiceClientModel.BackupManagementType.AzureStorage,
+                sourceResourceId: container.SourceResourceId,
+                resourceGroup: vaultResourceGroupName,
+                operationType: ServiceClientModel.OperationType.Reregister,
+                accessType: accessType,
+                identityInfo: requestedIdentityInfo);
+
+            protectionContainerResource.Properties = storageContainer;
+
+            AzureWorkloadProviderHelper.RegisterContainer(
+                containerUri,
+                protectionContainerResource,
+                vaultName,
+                vaultResourceGroupName);
+
+            Logger.Instance.WriteDebug("Re-registered storage account with new access type / identity.");
+        }
+
+        private static bool AreIdentitiesEqual(IdentityInfo a, IdentityInfo b)
+        {
+            if (a == null && b == null)
+            {
+                return true;
+            }
+            if (a == null || b == null)
+            {
+                return false;
+            }
+
+            bool aSystem = a.IsSystemAssignedIdentity ?? false;
+            bool bSystem = b.IsSystemAssignedIdentity ?? false;
+            if (aSystem != bSystem)
+            {
+                return false;
+            }
+
+            return string.Equals(
+                a.ManagedIdentityResourceId ?? string.Empty,
+                b.ManagedIdentityResourceId ?? string.Empty,
+                StringComparison.OrdinalIgnoreCase);
+        }
+
         private WorkloadProtectableItemResource GetProtectableItem(string vaultName, string vaultResourceGroupName,
             string azureFileShareName, string storageAccountName)
         {
@@ -843,12 +1027,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return protectableObjectResource;
         }
 
-        private List<ContainerBase> GetRegisteredStorageAccounts(string vaultName = null,
+        private List<ContainerBase> GetRegisteredStorageAccounts(
+            string vaultName = null,
             string vaultResourceGroupName = null)
         {
-            ODataQuery<BMSContainerQueryObject> queryParams = null;
-            queryParams = new ODataQuery<BMSContainerQueryObject>(
-                q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+            ODataQuery<BMSContainerQueryObject> queryParams =
+                new ODataQuery<BMSContainerQueryObject>(
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+
+            var listResponse = ServiceClientAdapter.ListContainers(
+                queryParams,
+                vaultName: vaultName,
+                resourceGroupName: vaultResourceGroupName);
+
+            return ConversionHelpers.GetContainerModelList(listResponse);
+        }
+
+        private List<ProtectableContainerResource> GetUnRegisteredStorageAccounts(
+            string vaultName = null,
+            string vaultResourceGroupName = null)
+        {
+            ODataQuery<BMSContainerQueryObject> queryParams =
+                new ODataQuery<BMSContainerQueryObject>(
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+
+            var listResponse = ServiceClientAdapter.ListUnregisteredContainers(
+                queryParams,
+                vaultName: vaultName,
+                resourceGroupName: vaultResourceGroupName);
+
+            return listResponse.ToList();
+        }
+
+        private ContainerBase GetRegisteredStorageAccount(
+            string storageAccountName,
+            string vaultName = null,
+            string vaultResourceGroupName = null)
+        {
+            ODataQuery<BMSContainerQueryObject> queryParams =
+                new ODataQuery<BMSContainerQueryObject>(
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage &&
+                         q.FriendlyName == storageAccountName);
 
             var listResponse = ServiceClientAdapter.ListContainers(
                 queryParams,
@@ -857,23 +1076,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             List<ContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
-            return containerModels;
+            return containerModels.FirstOrDefault(
+                storageAccount => string.Equals(
+                    storageAccount.Name.Split(';').Last(),
+                    storageAccountName,
+                    StringComparison.OrdinalIgnoreCase));
         }
 
-        private List<ProtectableContainerResource> GetUnRegisteredStorageAccounts(string vaultName = null,
+        private ProtectableContainerResource GetUnregisteredStorageAccount(
+            string storageAccountName,
+            string vaultName = null,
             string vaultResourceGroupName = null)
         {
-            ODataQuery<BMSContainerQueryObject> queryParams = null;
-            queryParams = new ODataQuery<BMSContainerQueryObject>(
-                q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+            ODataQuery<BMSContainerQueryObject> queryParams =
+                new ODataQuery<BMSContainerQueryObject>(
+                    q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage &&
+                         q.FriendlyName == storageAccountName);
 
             var listResponse = ServiceClientAdapter.ListUnregisteredContainers(
                 queryParams,
                 vaultName: vaultName,
                 resourceGroupName: vaultResourceGroupName);
-            List<ProtectableContainerResource> containerModels = listResponse.ToList();
 
-            return containerModels;
+            return listResponse.FirstOrDefault(
+                storageAccount => string.Equals(
+                    storageAccount.Name.Split(';').Last(),
+                    storageAccountName,
+                    StringComparison.OrdinalIgnoreCase));
         }
 
         public SchedulePolicyBase GetDefaultSchedulePolicyObject()
@@ -1125,7 +1354,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public void RegisterContainer()
         {
-            throw new NotImplementedException();
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            string storageAccountName = ProviderData.ContainsKey(ContainerParams.Name) ?
+                (string)ProviderData[ContainerParams.Name] : null;
+
+            string accessType = ProviderData.ContainsKey(ItemParams.AccessType) ? (string)ProviderData[ItemParams.AccessType] : null;
+            bool isSystemAssignedIdentity = ProviderData.ContainsKey(ItemParams.IsSystemAssignedIdentity) && (bool)ProviderData[ItemParams.IsSystemAssignedIdentity];
+            string userAssignedIdentityArmUrl = ProviderData.ContainsKey(ItemParams.UserAssignedIdentityArmUrl) ? (string)ProviderData[ItemParams.UserAssignedIdentityArmUrl] : null;
+            bool forceReregister = ProviderData.ContainsKey(ItemParams.ForceReregister) && (bool)ProviderData[ItemParams.ForceReregister];
+            Func<bool> confirmReregister = ProviderData.ContainsKey(ItemParams.ConfirmReregister) ?
+                (Func<bool>)ProviderData[ItemParams.ConfirmReregister] : null;
+
+            IdentityInfo requestedIdentityInfo = BuildAfsIdentityInfo(accessType, isSystemAssignedIdentity, userAssignedIdentityArmUrl);
+
+            // Already registered? Compare + (re)register with the requested access type / identity.
+            ContainerBase registeredStorageAccount = GetRegisteredStorageAccount(
+                storageAccountName,
+                vaultName,
+                vaultResourceGroupName);
+            if (registeredStorageAccount != null)
+            {
+                if (!string.IsNullOrEmpty(accessType))
+                {
+                    ReregisterStorageAccount(
+                        registeredStorageAccount, storageAccountName, accessType, requestedIdentityInfo,
+                        forceReregister, confirmReregister, vaultName, vaultResourceGroupName);
+                }
+                Logger.Instance.WriteDebug("Storage account already registered; ensured requested access type / identity.");
+                return;
+            }
+
+            // Not registered yet: discover + register (with access type / identity if provided).
+            bool isRegistered = false, isBreak = false, isRefreshed = false;
+            while (!isRegistered && !isBreak)
+            {
+                ProtectableContainerResource unregisteredStorageAccount =
+                    GetUnregisteredStorageAccount(
+                        storageAccountName,
+                        vaultName,
+                        vaultResourceGroupName);
+
+                if (unregisteredStorageAccount == null && !isRefreshed)
+                {
+                    ODataQuery<BMSRefreshContainersQueryObject> queryParam = new ODataQuery<BMSRefreshContainersQueryObject>(
+                        q => q.BackupManagementType == ServiceClientModel.BackupManagementType.AzureStorage);
+                    AzureWorkloadProviderHelper.RefreshContainer(vaultName, vaultResourceGroupName, queryParam);
+                    isRefreshed = true;
+                }
+                else
+                {
+                    isBreak = true;
+                }
+
+                if (unregisteredStorageAccount != null)
+                {
+                    ProtectionContainerResource protectionContainerResource =
+                        new ProtectionContainerResource(unregisteredStorageAccount.Id, unregisteredStorageAccount.Name);
+                    AzureStorageContainer azureStorageContainer = new AzureStorageContainer(
+                        friendlyName: storageAccountName,
+                        backupManagementType: ServiceClientModel.BackupManagementType.AzureStorage,
+                        sourceResourceId: unregisteredStorageAccount.Properties.ContainerId,
+                        resourceGroup: vaultResourceGroupName);
+                    if (!string.IsNullOrEmpty(accessType))
+                    {
+                        azureStorageContainer.AccessType = accessType;
+                        azureStorageContainer.IdentityInfo = requestedIdentityInfo;
+                    }
+                    protectionContainerResource.Properties = azureStorageContainer;
+                    AzureWorkloadProviderHelper.RegisterContainer(unregisteredStorageAccount.Name,
+                        protectionContainerResource, vaultName, vaultResourceGroupName);
+                    isRegistered = true;
+                    Logger.Instance.WriteDebug("Registered a new storage account");
+                }
+            }
+
+            if (!isRegistered)
+            {
+                throw new ArgumentException(string.Format(Resources.AFSDiscoveryFailure, storageAccountName, vaultResourceGroupName));
+            }
         }
         public void UndeleteContainer()
         {
@@ -1193,6 +1500,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
+            // Azure Files identity-based access (MSI) inputs.
+            string accessType = ProviderData.ContainsKey(ItemParams.AccessType) ? (string)ProviderData[ItemParams.AccessType] : null;
+            bool isSystemAssignedIdentity = ProviderData.ContainsKey(ItemParams.IsSystemAssignedIdentity) && (bool)ProviderData[ItemParams.IsSystemAssignedIdentity];
+            string userAssignedIdentityArmUrl = ProviderData.ContainsKey(ItemParams.UserAssignedIdentityArmUrl) ? (string)ProviderData[ItemParams.UserAssignedIdentityArmUrl] : null;
+            bool forceReregister = ProviderData.ContainsKey(ItemParams.ForceReregister) && (bool)ProviderData[ItemParams.ForceReregister];
+            Func<bool> confirmReregister = ProviderData.ContainsKey(ItemParams.ConfirmReregister) ?
+                (Func<bool>)ProviderData[ItemParams.ConfirmReregister] : null;
+
+            IdentityInfo requestedIdentityInfo = BuildAfsIdentityInfo(accessType, isSystemAssignedIdentity, userAssignedIdentityArmUrl);
+
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
             
@@ -1234,6 +1551,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     GetAzureFileShareProtectableObject(
                         azureFileShareName,
                         storageAccountName,
+                        accessType,
+                        requestedIdentityInfo,
+                        forceReregister,
+                        confirmReregister,
                         vaultName: vaultName,
                         vaultResourceGroupName: vaultResourceGroupName);
 
