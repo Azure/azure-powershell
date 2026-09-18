@@ -17,11 +17,13 @@ Update a host pool.
 Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
- [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-FriendlyName <String>] [-IdentityType <String>] [-LoadBalancerType <String>] [-MaxSessionLimit <Int32>]
- [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>]
- [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
- [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
+ [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
+ [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-FriendlyName <String>]
+ [-IdentityType <String>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
+ [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>]
+ [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
+ [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
  [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,11 +33,13 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
 Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
- [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-FriendlyName <String>] [-IdentityType <String>] [-LoadBalancerType <String>] [-MaxSessionLimit <Int32>]
- [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>]
- [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
- [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
+ [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
+ [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-FriendlyName <String>]
+ [-IdentityType <String>] [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>]
+ [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>]
+ [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
+ [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
  [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -142,6 +146,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowRdpShortPathWithPrivateLink
+Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomRdpProperty
 Custom rdp property of HostPool.
 
@@ -175,6 +194,22 @@ Accept wildcard characters: False
 
 ### -Description
 Description of HostPool.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DirectUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 
 ```yaml
 Type: System.String
@@ -278,6 +313,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedPrivateUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxSessionLimit
 The max session limit of HostPool.
 
@@ -353,6 +404,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistrationInfoExpirationTime
 Expiration time of registration token.
 
@@ -370,6 +437,22 @@ Accept wildcard characters: False
 
 ### -RegistrationInfoRegistrationTokenOperation
 The type of resetting the token.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelayUdp
+Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
+This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
 
 ```yaml
 Type: System.String

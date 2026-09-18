@@ -1,13 +1,13 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2025-10-10",
+  "apiVersion": "2026-04-16",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
       "name": "Get-AzWvdHostPoolRegistrationToken",
-      "description": "Operation to list the RegistrationTokens associated with the HostPool",
+      "description": "Operation to list the RegistrationTokens associated with the HostPool.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
       "help": {
         "learnMore": {

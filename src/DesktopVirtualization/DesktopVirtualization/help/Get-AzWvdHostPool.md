@@ -12,7 +12,7 @@ Get a host pool.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdHostPool [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -24,7 +24,7 @@ Get-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzWvdHostPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
  [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
@@ -92,7 +92,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -122,7 +122,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -152,7 +152,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -168,7 +168,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -184,7 +184,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
