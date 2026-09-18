@@ -1,0 +1,46 @@
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Fleet/Fleet.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.2.2
+    prefix: "Az"
+    subject-prefix: "Fleet"
+    service-name: Fleet
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+
+    directive:
+      # Remove the unexpanded parameter set
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      # Hide set cmdlet
+      - where:
+          verb: Set
+        remove: true
+      # Rename UpdateStrategyName
+      - where:
+          parameter-name: UpdateStrategyName
+          subject: FleetUpdateStrategy
+        set:
+          parameter-name: Name
+      # SubscriptionId defaults to the current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            name: SubscriptionId Default
+            description: Gets the SubscriptionId from the current context.
+            script: '(Get-AzContext).Subscription.Id'
+      # Add required model cmdlet
+      - model-cmdlet:
+        - model-name: UpdateStage
+        - model-name: UpdateGroup

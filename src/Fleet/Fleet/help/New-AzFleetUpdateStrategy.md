@@ -12,11 +12,12 @@ Create a FleetUpdateStrategy
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
+### CreateExpanded (Default)
 ```
-New-AzFleetUpdateStrategy -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -StrategyStage <IUpdateStage[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFleetUpdateStrategy -FleetName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-StrategyStage <IUpdateStage[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -35,18 +36,17 @@ New-AzFleetUpdateStrategy -FleetName <String> -Name <String> -ResourceGroupName 
  [<CommonParameters>]
 ```
 
-### CreateExpanded
-```
-New-AzFleetUpdateStrategy -FleetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -StrategyStage <IUpdateStage[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ### CreateViaIdentityFleetExpanded
 ```
 New-AzFleetUpdateStrategy -Name <String> -FleetInputObject <IFleetIdentity> [-IfMatch <String>]
- [-IfNoneMatch <String>] -StrategyStage <IUpdateStage[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-IfNoneMatch <String>] [-StrategyStage <IUpdateStage[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzFleetUpdateStrategy -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-StrategyStage <IUpdateStage[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -176,7 +176,7 @@ The name of the Fleet resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -266,7 +266,7 @@ The name of the UpdateStrategy resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded, CreateViaIdentityFleetExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityFleetExpanded
 Aliases:
 
 Required: True
@@ -297,7 +297,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -313,10 +313,10 @@ Min size: 1.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded, CreateViaIdentityFleetExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityFleetExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -325,10 +325,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False

@@ -14,23 +14,24 @@ Create a FleetMember
 
 ### CreateExpanded (Default)
 ```
-New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> -ClusterResourceId <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Group <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-ClusterResourceId <String>] [-Group <String>]
+ [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzFleetMember -InputObject <IFleetIdentity> -ClusterResourceId <String> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFleetMember -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-ClusterResourceId <String>] [-Group <String>] [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityFleetExpanded
 ```
-New-AzFleetMember -FleetInputObject <IFleetIdentity> -Name <String> -ClusterResourceId <String>
- [-IfMatch <String>] [-IfNoneMatch <String>] [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFleetMember -FleetInputObject <IFleetIdentity> -Name <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-ClusterResourceId <String>] [-Group <String>] [-Label <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -103,7 +104,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFleetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,6 +247,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Label
+The labels for the fleet member.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFleetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Fleet member resource.
 
@@ -294,6 +310,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
