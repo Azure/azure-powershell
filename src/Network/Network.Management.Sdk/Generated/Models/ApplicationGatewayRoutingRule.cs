@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="ruleType">Rule type.
-        /// Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;, &#39;AdvancedRouting&#39;</param>
 
         /// <param name="priority">Priority of the routing rule.
         /// </param>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets rule type. Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;
+        /// Gets or sets rule type. Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;, &#39;AdvancedRouting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ruleType")]
         public string RuleType {get; set; }
