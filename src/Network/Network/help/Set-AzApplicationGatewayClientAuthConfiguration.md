@@ -14,8 +14,9 @@ Modifies the client auth configuration of a ssl profile object.
 
 ```
 Set-AzApplicationGatewayClientAuthConfiguration -SslProfile <PSApplicationGatewaySslProfile>
- [-VerifyClientCertIssuerDN] [-VerifyClientRevocation <String>] [-DefaultProfile <IAzureContextContainer>]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-VerifyClientCertIssuerDN] [-VerifyClientRevocation <String>] [-VerifyClientAuthMode <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,16 @@ Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile -VerifyClie
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the ssl profile named SslProfile01 for $AppGw and stores the settings in the $profile variable. The last command modifies the client auth configuration of the ssl profile object stored in $profile.
+
+### Example 2: Switch a ssl profile to mutual TLS (mTLS) passthrough
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$profile = Get-AzApplicationGatewaySslProfile -Name "SslProfile01" -ApplicationGateway $AppGw
+Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile -VerifyClientAuthMode Passthrough
+Set-AzApplicationGateway -ApplicationGateway $AppGw
+```
+
+The last two commands set the client auth configuration of the ssl profile to Passthrough mode and persist the change on the application gateway. In Passthrough mode the client certificate is forwarded to the backend without being verified by the application gateway.
 
 ## PARAMETERS
 
@@ -79,6 +90,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SslProfile
 The ssl profile
 
@@ -91,6 +117,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VerifyClientAuthMode
+Client certificate verification mode.
+In Passthrough mode the application gateway forwards the client certificate to the backend without verifying it.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Strict, Passthrough
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
