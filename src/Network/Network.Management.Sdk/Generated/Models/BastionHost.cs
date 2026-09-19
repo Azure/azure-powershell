@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="sku">The sku of this Bastion Host.
         /// </param>
 
+        /// <param name="identity">The identity assigned to the Bastion Host resource
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the bastion host resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
@@ -93,13 +96,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enablePrivateOnlyBastion">Enable/Disable Private Only feature of the Bastion Host resource.
         /// </param>
-        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?), bool? enablePrivateOnlyBastion = default(bool?))
+
+        /// <param name="sessionRecordingConfiguration">The storage account and identity to use for session recording
+        /// </param>
+        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?), bool? enablePrivateOnlyBastion = default(bool?), BastionSessionRecordingConfiguration sessionRecordingConfiguration = default(BastionSessionRecordingConfiguration))
 
         : base(id, name, type, location, tags)
         {
             this.Zones = zones;
             this.Etag = etag;
             this.Sku = sku;
+            this.Identity = identity;
             this.ProvisioningState = provisioningState;
             this.IPConfigurations = ipConfigurations;
             this.DnsName = dnsName;
@@ -114,6 +121,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableKerberos = enableKerberos;
             this.EnableSessionRecording = enableSessionRecording;
             this.EnablePrivateOnlyBastion = enablePrivateOnlyBastion;
+            this.SessionRecordingConfiguration = sessionRecordingConfiguration;
             CustomInit();
         }
 
@@ -142,6 +150,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public Sku Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity assigned to the Bastion Host resource
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the bastion host resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -231,6 +245,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enablePrivateOnlyBastion")]
         public bool? EnablePrivateOnlyBastion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage account and identity to use for session recording
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sessionRecordingConfiguration")]
+        public BastionSessionRecordingConfiguration SessionRecordingConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -239,6 +259,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 
@@ -257,6 +278,10 @@ namespace Microsoft.Azure.Management.Network.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ScaleUnits", 2);
                 }
+            }
+            if (this.SessionRecordingConfiguration != null)
+            {
+                this.SessionRecordingConfiguration.Validate();
             }
         }
     }

@@ -42,13 +42,18 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ruleSetVersion">The version of the web application firewall rule set type.
         /// </param>
-        public ApplicationGatewayWafDynamicManifestResult(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet> availableRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet>), string ruleSetType = default(string), string ruleSetVersion = default(string))
+
+        /// <param name="displayName">Human-readable display name for the managed rule set version (e.g.,
+        /// &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </param>
+        public ApplicationGatewayWafDynamicManifestResult(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet> availableRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet>), string ruleSetType = default(string), string ruleSetVersion = default(string), string displayName = default(string))
 
         : base(id, name, type)
         {
             this.AvailableRuleSets = availableRuleSets;
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
+            this.DisplayName = displayName;
             CustomInit();
         }
 
@@ -75,5 +80,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultRuleSet.ruleSetVersion")]
         public string RuleSetVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets human-readable display name for the managed rule set version
+        /// (e.g., &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultRuleSet.displayName")]
+        public string DisplayName {get; set; }
     }
 }
