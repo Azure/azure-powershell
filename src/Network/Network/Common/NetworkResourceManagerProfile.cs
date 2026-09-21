@@ -578,6 +578,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.IPTagType,
                         opt => opt.MapFrom(src => src.IpTagType)
+                    )
+                    .ForMember(
+                        dest => dest.FirstPartyServiceTagId,
+                        opt => opt.MapFrom(src => src.FirstPartyServiceTagId)
                     );
                 cfg.CreateMap<CNM.PSPublicIpAddress, MNM.ReferencedPublicIpAddress>();
 
@@ -592,6 +596,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.IpTagType,
                         opt => opt.MapFrom(src => src.IPTagType)
+                    )
+                    .ForMember(
+                        dest => dest.FirstPartyServiceTagId,
+                        opt => opt.MapFrom(src => src.FirstPartyServiceTagId)
                     );
                 cfg.CreateMap<MNM.ReferencedPublicIpAddress, CNM.PSPublicIpAddress>();
 
