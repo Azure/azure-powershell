@@ -870,12 +870,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureVmRPMountScriptDetails result = null;
 
             // Wait for the provision LRO to reach a terminal state before fetching scripts.
-            TrackingHelpers.GetOperationStatus(
+            var provisionOperationStatus = TrackingHelpers.GetOperationStatus(
                 ilRResponse,
                 opId => ServiceClientAdapter.GetProtectedItemOperationStatus(
                     opId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
+
+            // Fail fast with the service-reported error if the provision operation did not succeed,
+            // instead of surfacing a downstream null when no mount scripts are returned.
+            if (provisionOperationStatus != null &&
+                provisionOperationStatus.Status == ServiceClientModel.OperationStatusValues.Failed &&
+                provisionOperationStatus.Error != null)
+            {
+                throw new Exception(string.Format(
+                    Resources.OperationFailed,
+                    "Provision Item Level Recovery Access",
+                    provisionOperationStatus.Error.Code,
+                    provisionOperationStatus.Error.Message));
+            }
 
             // Always source the mount scripts from the dedicated listInstantItemRecoveryOperationResult
             // action using the provision operationId (MSRC 114273). Scripts are no longer read from the
