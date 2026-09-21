@@ -23,7 +23,7 @@ namespace RecoveryServices.SiteRecovery.Test
 {
     /// <summary>
     /// Pure in-process unit tests covering the A2A Confidential VM (CVM) surface
-    /// added for API version 2026-06-01.
+    /// added for API version 2026-10-01.
     ///
     /// These tests do not require a recorded HTTP cassette or live Azure
     /// credentials and are safe to run on every CI build. They pin the

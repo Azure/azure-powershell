@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         /// Gets or sets the confidential data disk encryption (CDDE) user-assigned managed identity ARM Id.
-        /// Required when protecting a CMK confidential VM with encrypted data disks.
+        /// Applicable when protecting a CMK confidential VM with encrypted data disks.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential Vm in target recovery region.")]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the confidential data disk encryption user-assigned managed identity ARM Id to be used by the failover confidential Vm in target recovery region.")]

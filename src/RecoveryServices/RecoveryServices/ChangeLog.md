@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Added Confidential VM (CVM) support for Azure-to-Azure replication:
-    - `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig` accepts `-ReplicaConfidentialDiskEncryptionSetId` and `-TargetConfidentialDiskEncryptionSetId` to specify the per-disk replica and target confidential disk encryption sets for CMK confidential VM disks.
+    - `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig` accepts `-ReplicaConfidentialDiskEncryptionSetId` and `-TargetConfidentialDiskEncryptionSetId` to specify the per-disk replica and target confidential disk encryption sets for customer-managed key (CMK) confidential VM disks.
     - `New-AzRecoveryServicesAsrReplicationProtectedItem` accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` to specify the confidential data disk encryption (CDDE) user-assigned managed identity used at failover.
     - `Set-AzRecoveryServicesAsrReplicationProtectedItem` (update) accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` and honors the per-disk target confidential disk encryption set.
     - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` and forwards the per-disk confidential disk encryption sets on the switch-protection call.

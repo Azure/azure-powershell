@@ -78,14 +78,14 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStor
 
 Create a managed disk mapping object that restricts the recovery disk to private network access using the specified disk access resource.Used during Azure to Azure EnableDr and re-protect operation.
 
-### Example 6
+### Example 6: Configure replica and target confidential disk encryption sets
 ```powershell
 New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
 -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType `
 -ReplicaConfidentialDiskEncryptionSetId $replicaConfidentialDesId -TargetConfidentialDiskEncryptionSetId $targetConfidentialDesId
 ```
 
-Create a managed disk mapping object for a CMK confidential VM disk with replica and target confidential disk encryption sets.Used during Azure to Azure EnableDr and re-protect operation.
+Creates a managed disk mapping object for a confidential VM disk encrypted with a customer-managed key (CMK), using replica and target confidential disk encryption sets. Use this configuration during Azure-to-Azure enable replication and reprotect operations.
 
 ## PARAMETERS
 
