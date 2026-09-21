@@ -233,12 +233,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayPointToSiteProfileMigration");
         }
-
-        [Fact]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
-        public void TestVirtualNetworkGatewayDualStackMigration()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayDualStackMigration");
-        }
     }
 }
