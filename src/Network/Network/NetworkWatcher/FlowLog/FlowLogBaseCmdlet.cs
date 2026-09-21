@@ -90,14 +90,9 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.InvalidStorageId);
             }
 
-            if (formatVersion != null && (formatVersion < 0 || formatVersion > 2))
-            {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
-            }
-
             if (!string.IsNullOrEmpty(formatType) && (!string.Equals(formatType, "JSON", StringComparison.OrdinalIgnoreCase) && !string.Equals(formatType, "FlowLogJSON", StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
+                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatType);
             }
 
             if (enableTrafficAnalytics && string.IsNullOrEmpty(trafficAnalyticsWorkspaceId))
