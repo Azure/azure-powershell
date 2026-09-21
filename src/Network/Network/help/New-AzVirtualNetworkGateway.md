@@ -23,7 +23,7 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-EnableFipsCompliance] [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNat] [-Tag <Hashtable>] [-Force]
  [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
@@ -187,6 +187,16 @@ ipconfigurationId1 of gateway ipconfiguration just created and stored in ngwipco
 The gateway will be called "gateway1" within the resource group "resourcegroup1resourcegroup1" in the location "UK West" 
 New virtualNetworkGateway NatRule will be saved in the variable "natRule" 
 the gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled and BgpRouteTranslationForNat enabled.
+
+### Example 8: Create a point-to-site VPN gateway with FIPS compliance enabled
+```powershell
+$gateway = New-AzVirtualNetworkGateway -Name "Gateway001" -ResourceGroupName "ResourceGroup001" -Location "East US" -IpConfigurations $gatewayIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -VpnClientProtocol IkeV2 -VpnClientAddressPool "172.16.0.0/24" -VpnClientRootCertificates $rootCertificate -EnableFipsCompliance
+$gateway.VpnClientConfiguration.EnableFipsCompliance
+```
+
+This example assumes that the gateway IP configuration and VPN client root certificate have already been created.
+It enables FIPS (Federal Information Processing Standards) compliance for the gateway's point-to-site VPN configuration and reads the returned setting.
+VPN clients must use compatible cryptographic settings. This parameter does not configure site-to-site connections.
 
 ## PARAMETERS
 
@@ -417,6 +427,23 @@ Accept wildcard characters: False
 
 ### -EnableBgpRouteTranslationForNat
 Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFipsCompliance
+Enables FIPS (Federal Information Processing Standards) compliance for point-to-site VPN connections.
+Specify point-to-site VPN client settings with this parameter; it cannot be used without a VPN client configuration.
+Use `-EnableFipsCompliance:$false` to explicitly disable FIPS compliance. If omitted, the FIPS property is not sent on creation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

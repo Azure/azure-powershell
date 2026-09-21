@@ -157,6 +157,11 @@ namespace Microsoft.Azure.Commands.Network
         public bool UsePolicyBasedTrafficSelectors { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable FIPS compliance for this VPN connection. Specify -EnableFipsCompliance:$false to disable it.")]
+        public SwitchParameter EnableFipsCompliance { get; set; }
+
+        [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
@@ -287,6 +292,11 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
             vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
             vnetGatewayConnection.EnablePrivateLinkFastPath = this.EnablePrivateLinkFastPath.IsPresent;
+
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(EnableFipsCompliance)))
+            {
+                vnetGatewayConnection.EnableFipsCompliance = this.EnableFipsCompliance.IsPresent;
+            }
 
             if (!string.IsNullOrWhiteSpace(this.ConnectionProtocol))
             {

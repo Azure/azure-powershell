@@ -120,6 +120,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable FIPS compliance for point-to-site VPN connections. Specify -EnableFipsCompliance:$false to disable it. If omitted, the input object's setting is preserved.")]
+        public SwitchParameter EnableFipsCompliance { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway's ASN, used to set up BGP sessions inside IPsec tunnels")]
         public uint Asn { get; set; }
@@ -374,6 +379,17 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
+            }
+
+            // A bound false switch disables FIPS; an omitted switch must not reset it.
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(EnableFipsCompliance)))
+            {
+                if (this.VirtualNetworkGateway.VpnClientConfiguration == null)
+                {
+                    throw new ArgumentException("EnableFipsCompliance requires a point-to-site VPN client configuration. Configure point-to-site VPN settings before changing FIPS compliance.", nameof(EnableFipsCompliance));
+                }
+
+                this.VirtualNetworkGateway.VpnClientConfiguration.EnableFipsCompliance = this.EnableFipsCompliance.IsPresent;
             }
 
             if (this.VpnClientAddressPool != null)

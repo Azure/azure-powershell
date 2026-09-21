@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 * Added Change Safety support for additional cmdlets.
+* Added `-EnableFipsCompliance` to `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` for point-to-site VPN connections.
+    - Exposed the FIPS (Federal Information Processing Standards) compliance setting in the VPN client configuration returned by `Get-AzVirtualNetworkGateway`.
+    - Omitting the parameter on an update preserves the input object's FIPS setting.
+* Added `-EnableFipsCompliance` to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection` for site-to-site VPN connections.
+    - Exposed the connection-level FIPS setting in named and list results from `Get-AzVirtualNetworkGatewayConnection`.
+    - Supports explicit disable and preserves the input object's FIPS setting when the parameter is omitted on an update.
 * Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
     - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
     - Added the `-CaptchaExpirationInMins` parameter to `New-AzApplicationGatewayFirewallPolicySetting`.

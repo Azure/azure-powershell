@@ -22,6 +22,8 @@ Get-AzVirtualNetworkGatewayConnection [-Name <String>] -ResourceGroupName <Strin
 The Virtual Network Gateway Connection is the object representing the IPsec tunnel (Site-to-Site or Vnet-to-Vnet) connected to your Virtual Network Gateway in Azure.
 The **Get-AzVirtualNetworkGatewayConnection** cmdlet returns the object of your connection based on Name and Resource Group Name.
 If the **Get-AzVirtualNetworkGatewayConnection** cmdlet is issued without specifying the -Name parameter, the output will not show ConnectionStatus and SharedKey details.
+The connection-level `EnableFipsCompliance` property reports the Federal Information Processing Standards (FIPS) setting returned by the service, for both named and list results.
+If the service omits the property, its value is unspecified, not an explicit false.
 
 ## EXAMPLES
 
@@ -38,6 +40,15 @@ Get-AzVirtualNetworkGatewayConnection -Name myTunnel* -ResourceGroupName myRG
 ```
 
 Returns all Virtual Network Gateway Connections that start with "myTunnel" within the resource group "myRG"
+
+### Example 3: Inspect the FIPS setting on VPN connections
+```powershell
+Get-AzVirtualNetworkGatewayConnection -ResourceGroupName "myRG" |
+	Select-Object Name, ConnectionType, EnableFipsCompliance
+```
+
+This example displays the FIPS setting returned for each connection.
+The returned configuration alone does not verify that the gateway and remote VPN peer negotiated FIPS-compliant algorithms.
 
 ## PARAMETERS
 
