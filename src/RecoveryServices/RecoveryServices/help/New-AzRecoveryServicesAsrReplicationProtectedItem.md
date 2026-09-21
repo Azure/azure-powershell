@@ -232,6 +232,54 @@ $job = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureToA
 
 Starts the replication protected item creation operation for a Virtual Machine with target virtual machine scale set configured and returns the ASR job used to track the operation (Azure to Azure scenario).
 
+### Example 10: Enable replication for a confidential VM with customer-managed disk encryption
+
+```powershell
+$osDiskConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    -ManagedDisk -DiskId $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+    -LogStorageAccountId $cacheStorageAccountId `
+    -RecoveryResourceGroupId $recoveryResourceGroupId `
+    -RecoveryReplicaDiskAccountType StandardSSD_LRS `
+    -RecoveryTargetDiskAccountType StandardSSD_LRS `
+    -ReplicaConfidentialDiskEncryptionSetId $replicaOsConfidentialDesId `
+    -TargetConfidentialDiskEncryptionSetId $targetOsConfidentialDesId
+
+$dataDiskConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    -ManagedDisk -DiskId $vm.StorageProfile.DataDisks[0].ManagedDisk.Id `
+    -LogStorageAccountId $cacheStorageAccountId `
+    -RecoveryResourceGroupId $recoveryResourceGroupId `
+    -RecoveryReplicaDiskAccountType StandardSSD_LRS `
+    -RecoveryTargetDiskAccountType StandardSSD_LRS `
+    -ReplicaConfidentialDiskEncryptionSetId $replicaDataConfidentialDesId `
+    -TargetConfidentialDiskEncryptionSetId $targetDataConfidentialDesId
+
+$job = New-AzRecoveryServicesAsrReplicationProtectedItem `
+    -AzureToAzure -AzureVmId $vm.Id -Name $rpiName `
+    -ProtectionContainerMapping $forwardMapping `
+    -RecoveryResourceGroupId $recoveryResourceGroupId `
+    -RecoveryAzureNetworkId $recoveryNetworkId `
+    -RecoveryAzureSubnetName $recoverySubnetName `
+    -AzureToAzureDiskReplicationConfiguration $osDiskConfig,$dataDiskConfig `
+    -RecoveryConfidentialDataDiskEncryptionIdentity $recoveryIdentityId
+```
+
+Starts replication for an existing confidential VM with one customer-managed-key encrypted OS disk and one confidential customer-managed-key encrypted data disk.
+Authenticate, select the subscription, and set the ASR vault context with `Set-AzRecoveryServicesAsrVaultContext -Vault $vault` before running this example.
+The service and installed module must support confidential VM replication.
+`$vm` is the source VM returned by `Get-AzVM`; `$rpiName` is the name to assign to the replication protected item.
+`$forwardMapping` is the existing source-to-recovery protection-container mapping.
+The cache storage account is in the source region, and the recovery resource group, network, and subnet already exist.
+
+Supply the existing confidential DES ARM resource IDs appropriate to each disk and its replica or target role; do not assume that the OS and data disks use the same DES.
+`$recoveryIdentityId` is the recovery user-assigned managed identity ARM resource ID for confidential data disk encryption, not its client ID or principal ID.
+Configure the required encryption permissions before enabling replication.
+The disk account types shown are illustrative; choose types supported by the VM, service, and regions.
+This example includes both disks; include configurations for any additional disks that need protection.
+
+The command returns an asynchronous ASR job.
+Monitor it with `Get-AzRecoveryServicesAsrJob -Name $job.Name`; after it succeeds, retrieve the protected item with `Get-AzRecoveryServicesAsrReplicationProtectedItem` to inspect the saved settings.
+Job completion does not by itself mean that initial replication has finished.
+
 ## PARAMETERS
 
 ### -Account

@@ -102,6 +102,49 @@ $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rp
 
 Start the update operation for the specified replication protected item to use the supplied virtual machine scale set for failover VM.
 
+### Example 9: Update a confidential data disk's target DES and recovery identity
+
+```powershell
+$rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
+    -ProtectionContainer $protectionContainer -Name $rpiName
+
+$diskDetails = @($rpi.ProviderSpecificDetails.A2ADiskDetails |
+    Where-Object DiskName -eq $protectedDataDiskName)
+if ($diskDetails.Count -ne 1) {
+    throw "Expected exactly one protected disk named '$protectedDataDiskName'."
+}
+$diskDetails = $diskDetails[0]
+
+$dataDiskUpdate = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    -ManagedDisk -DiskId $protectedDataDiskId `
+    -LogStorageAccountId $diskDetails.PrimaryStagingAzureStorageAccountId `
+    -RecoveryResourceGroupId $diskDetails.RecoveryResourceGroupId `
+    -RecoveryReplicaDiskAccountType $diskDetails.RecoveryReplicaDiskAccountType `
+    -RecoveryTargetDiskAccountType $diskDetails.RecoveryTargetDiskAccountType `
+    -TargetConfidentialDiskEncryptionSetId $newTargetDataConfidentialDesId
+
+$job = Set-AzRecoveryServicesAsrReplicationProtectedItem `
+    -InputObject $rpi `
+    -AzureToAzureUpdateReplicationConfiguration $dataDiskUpdate `
+    -RecoveryConfidentialDataDiskEncryptionIdentity $newRecoveryIdentityId
+```
+
+Updates the target confidential DES for one protected data disk and the VM-level recovery identity used for confidential data disk encryption.
+Authenticate, select the subscription, and set the ASR vault context before running the example.
+The service and installed module must support confidential VM replication.
+`$protectionContainer` and `$rpiName` identify the protected item.
+`$protectedDataDiskName` and `$protectedDataDiskId` identify the same currently protected source data disk; obtain its ARM resource ID from the source VM or managed disk resource.
+`A2ADiskDetails` exposes `DiskName`, not the source disk's `DiskId`.
+
+The configuration preserves the existing replica and target disk account types because the update cmdlet forwards those values.
+The disk-configuration factory also requires cache and resource-group values, but this per-disk update does not change those settings.
+Only the target confidential DES can be changed after protection is enabled; do not supply `ReplicaConfidentialDiskEncryptionSetId` for this update.
+
+`$newTargetDataConfidentialDesId` is the existing replacement target confidential DES ARM resource ID.
+`$newRecoveryIdentityId` is a user-assigned managed identity ARM resource ID, not its client ID or principal ID.
+Configure its required encryption permissions for all applicable confidential data disks before updating the VM-level identity.
+Monitor the job with `Get-AzRecoveryServicesAsrJob -Name $job.Name` and retrieve the protected item again after the job succeeds to inspect the saved settings.
+
 ## PARAMETERS
 
 ### -ASRVMNicConfiguration
