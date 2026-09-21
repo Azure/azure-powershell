@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterCreateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterCreatePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.SkuTypeConverter.ConvertFrom);
@@ -84,10 +88,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterCreateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterCreatePropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Kind"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Kind, global::System.Convert.ToString);
@@ -95,6 +95,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("Zone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -116,13 +144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("SkuName"))
+            if (content.Contains("MaintenanceConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration) content.GetValueForProperty("MaintenanceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfigurationTypeConverter.ConvertFrom);
             }
             if (content.Contains("HighAvailability"))
             {
@@ -140,21 +164,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).ResourceState = (string) content.GetValueForProperty("ResourceState",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).ResourceState, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("SkuCapacity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("IdentityType"))
+            if (content.Contains("MaintenanceConfigurationMaintenanceWindow"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfigurationMaintenanceWindow = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>) content.GetValueForProperty("MaintenanceConfigurationMaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfigurationMaintenanceWindow, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceWindowTypeConverter.ConvertFrom));
             }
             if (content.Contains("Encryption"))
             {
@@ -176,9 +196,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
             }
+            if (content.Contains("MigratedEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MigratedEndpoint = (string) content.GetValueForProperty("MigratedEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MigratedEndpoint, global::System.Convert.ToString);
+            }
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("EncryptionCustomerManagedKeyEncryption"))
             {
@@ -217,6 +257,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterCreateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterCreatePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.SkuTypeConverter.ConvertFrom);
@@ -225,10 +269,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterCreateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterCreatePropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Kind"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Kind, global::System.Convert.ToString);
@@ -236,6 +276,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("Zone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -257,13 +325,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("SkuName"))
+            if (content.Contains("MaintenanceConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuCapacity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration) content.GetValueForProperty("MaintenanceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfigurationTypeConverter.ConvertFrom);
             }
             if (content.Contains("HighAvailability"))
             {
@@ -281,21 +345,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).ResourceState = (string) content.GetValueForProperty("ResourceState",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).ResourceState, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("SkuCapacity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("IdentityType"))
+            if (content.Contains("MaintenanceConfigurationMaintenanceWindow"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfigurationMaintenanceWindow = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>) content.GetValueForProperty("MaintenanceConfigurationMaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MaintenanceConfigurationMaintenanceWindow, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceWindowTypeConverter.ConvertFrom));
             }
             if (content.Contains("Encryption"))
             {
@@ -317,9 +377,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
             }
+            if (content.Contains("MigratedEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MigratedEndpoint = (string) content.GetValueForProperty("MigratedEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).MigratedEndpoint, global::System.Convert.ToString);
+            }
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("EncryptionCustomerManagedKeyEncryption"))
             {
