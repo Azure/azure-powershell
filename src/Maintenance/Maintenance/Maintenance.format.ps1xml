@@ -91,5 +91,56 @@
         </CustomEntries>
       </CustomControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsApproveResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsApproveResponse</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>$_ | ConvertTo-Json -Depth 10</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Maintenance.Models.MaintenanceError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Maintenance.Models.MaintenanceError</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>$_ | ConvertTo-Json -Depth 10</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>$_ | ConvertTo-Json -Depth 10</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

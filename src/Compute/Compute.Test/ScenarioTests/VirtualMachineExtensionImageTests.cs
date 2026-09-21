@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     public class VirtualMachineExtensionImageTests : ComputeTestRunner
     {
         public VirtualMachineExtensionImageTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output, includeDependentModules: false)
+            : base(output)
         {
         }
 

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="id">Gets the id.
         /// </param>
-        public Statistics(string counterProperty = default(string), long? counterValue = default(long?), System.DateTimeOffset startTime = default(System.DateTimeOffset), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string id = default(string))
+        public Statistics(string counterProperty = default(string), long? counterValue = default(long?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string id = default(string))
 
         {
             this.CounterProperty = counterProperty;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the startTime of the statistic.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
-        public System.DateTimeOffset StartTime {get; private set; }
+        public System.DateTimeOffset? StartTime {get; private set; }
 
         /// <summary>
         /// Gets gets the endTime of the statistic.

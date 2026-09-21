@@ -196,6 +196,16 @@ namespace StorageSyncTests
         }
 
         /// <summary>
+        /// Defines the test method TestPatchRegisteredServer.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPatchRegisteredServerInvalidServerId()
+        {
+           TestRunner.RunTestScript("Test-PatchRegisteredServer-InvalidServerId");
+        }
+
+        /// <summary>
         /// Defines the test method TestPatchRegisteredServerWithServerEndpoint.
         /// </summary>
         [Fact]

@@ -19,19 +19,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void Export(this IJobsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject>))
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
+        public static void Export(this IJobsOperations operations, string vaultName, string resourceGroupName, string filter = default(string))
         {
-                ((IJobsOperations)operations).ExportAsync(vaultName, resourceGroupName, odataQuery).GetAwaiter().GetResult();
+                ((IJobsOperations)operations).ExportAsync(vaultName, resourceGroupName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -41,22 +40,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ExportAsync(this IJobsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task ExportAsync(this IJobsOperations operations, string vaultName, string resourceGroupName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ExportWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.ExportWithHttpMessagesAsync(vaultName, resourceGroupName, filter, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

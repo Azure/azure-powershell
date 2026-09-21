@@ -25,6 +25,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureWorkloadPointInTimeRecoveryPoint class.
         /// </summary>
 
+        /// <param name="threatStatus">Threat status of the recovery point
+        /// Possible values include: &#39;Unknown&#39;, &#39;Healthy&#39;, &#39;UnHealthy&#39;, &#39;Warning&#39;,
+        /// &#39;NotAvailable&#39;</param>
+
+        /// <param name="threatInfo">Recovery point threat information.
+        /// </param>
+
         /// <param name="recoveryPointTimeInUtc">UTC time at which recovery point was created
         /// </param>
 
@@ -43,9 +50,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="timeRanges">List of log ranges
         /// </param>
-        public AzureWorkloadPointInTimeRecoveryPoint(System.DateTime? recoveryPointTimeInUtc = default(System.DateTime?), string type = default(string), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), System.Collections.Generic.IList<PointInTimeRange> timeRanges = default(System.Collections.Generic.IList<PointInTimeRange>))
+        public AzureWorkloadPointInTimeRecoveryPoint(string threatStatus = default(string), System.Collections.Generic.IList<ThreatInfo> threatInfo = default(System.Collections.Generic.IList<ThreatInfo>), System.DateTime? recoveryPointTimeInUtc = default(System.DateTime?), string type = default(string), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), System.Collections.Generic.IList<PointInTimeRange> timeRanges = default(System.Collections.Generic.IList<PointInTimeRange>))
 
-        : base(recoveryPointTimeInUtc, type, recoveryPointTierDetails, recoveryPointMoveReadinessInfo, recoveryPointProperties)
+        : base(threatStatus, threatInfo, recoveryPointTimeInUtc, type, recoveryPointTierDetails, recoveryPointMoveReadinessInfo, recoveryPointProperties)
         {
             this.TimeRanges = timeRanges;
             CustomInit();
@@ -62,5 +69,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeRanges")]
         public System.Collections.Generic.IList<PointInTimeRange> TimeRanges {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+
+        }
     }
 }

@@ -149,6 +149,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Enabled", "Disabled", "PermanentlyDisabled")]
         public CrossSubscriptionRestoreState? CrossSubscriptionRestoreState { get; set; }
 
+        /// <summary>
+        /// Enables or disables Source Scan for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Source Scan state of the vault. Allowed values are \"Enabled\", \"Disabled\".")]
+        [ValidateSet("Enabled", "Disabled")]
+        public SourceScanState? SourceScanState { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -277,7 +284,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         }
                         
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null && CostManagementGranularity == null)
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null && CostManagementGranularity == null && SourceScanState == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
@@ -364,7 +371,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {
                             throw new ArgumentException(Resources.ImmutabilityCantBeLocked);
                         }
-                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();                                               
+                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
+
+                        if (ImmutabilityState != cmdletModel.ImmutabilityState.Disabled)
+                        {
+                            patchVault.Properties.SecuritySettings.ImmutabilitySettings.Configuration =
+                                vault.Properties?.SecuritySettings?.ImmutabilitySettings?.Configuration ??
+                                new ServiceClientModel.ImmutabilityConfiguration
+                                {
+                                    Type = ServiceClientModel.ImmutabilityType.AsPerPolicy
+                                };
+                        }
                     }
 
                     // update cross subscription restore state of the vault
@@ -384,6 +401,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
                         if (patchVault.Properties.CostManagementSettings == null) { patchVault.Properties.CostManagementSettings = new CostManagementSettings(); }
                         patchVault.Properties.CostManagementSettings.GranularityLevel = CostManagementGranularity.ToString();
+                    }
+
+                    // update source scan configuration of the vault
+                    if (SourceScanState != null)
+                    {
+                        ServiceClientModel.SourceScanConfiguration sourceScanConfiguration = new ServiceClientModel.SourceScanConfiguration();
+                        sourceScanConfiguration.State = SourceScanState.ToString();
+
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.SecuritySettings == null) { patchVault.Properties.SecuritySettings = new SecuritySettings(); }
+                        patchVault.Properties.SecuritySettings.SourceScanConfiguration = sourceScanConfiguration;
                     }
 
                     #endregion

@@ -32,7 +32,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,9 +59,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-ProcessorMode <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProcessorMode <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DisableCapacityReservationAssignment]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -387,6 +386,15 @@ New-AzVM -ResourceGroupName "myResourceGroup" -Location "westus" -Name "myVM" -C
 
 This command creates a VM and sets processor frequency behavior to deterministic mode.
 
+### Example 15: Create a SpotPlus VM
+```powershell
+New-AzVM -ResourceGroupName "MyResourceGroup" -Name "MySpotPlusVM" -Location "eastus2" -Credential (Get-Credential) -Size "Standard_D2s_v5" -Image "Win2022AzureEdition" -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
+```
+
+This command creates a Spot Plus VM, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+Eviction and billing behave the same as 'Spot', so '-EvictionPolicy' and '-MaxPrice' are used the same way.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
+
 ## PARAMETERS
 
 ### -AddProxyAgentExtension
@@ -572,6 +580,22 @@ Indicates that this cmdlet does not install the **BG Info** extension on the vir
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
+When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
 Required: False
@@ -1053,9 +1077,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml

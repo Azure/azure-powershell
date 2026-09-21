@@ -13,136 +13,43 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class VariableOperationsExtensions
     {
         /// <summary>
-        /// Create a variable.
+        /// Retrieve a list of variables.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='variableName'>
-        /// The variable name.
-        /// </param>
-        public static Variable CreateOrUpdate(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableCreateOrUpdateParameters parameters)
+        public static Microsoft.Rest.Azure.IPage<Variable> ListByAutomationAccount(this IVariableOperations operations, string resourceGroupName, string automationAccountName)
         {
-                return ((IVariableOperations)operations).CreateOrUpdateAsync(resourceGroupName, automationAccountName, variableName, parameters).GetAwaiter().GetResult();
+                return ((IVariableOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create a variable.
+        /// Retrieve a list of variables.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
-        /// </param>
-        /// <param name='variableName'>
-        /// The variable name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Variable> CreateOrUpdateAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableCreateOrUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Variable>> ListByAutomationAccountAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, variableName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
-        }
-        /// <summary>
-        /// Update a variable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='variableName'>
-        /// The variable name.
-        /// </param>
-        public static Variable Update(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableUpdateParameters parameters)
-        {
-                return ((IVariableOperations)operations).UpdateAsync(resourceGroupName, automationAccountName, variableName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update a variable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='variableName'>
-        /// The variable name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Variable> UpdateAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, variableName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Delete the variable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='variableName'>
-        /// The name of variable.
-        /// </param>
-        public static void Delete(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName)
-        {
-                ((IVariableOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, variableName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete the variable.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='variableName'>
-        /// The name of variable.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, variableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve the variable identified by variable name.
@@ -151,7 +58,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -171,7 +78,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -190,43 +97,136 @@ namespace Microsoft.Azure.Management.Automation
             }
         }
         /// <summary>
-        /// Retrieve a list of variables.
+        /// Create a variable.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<Variable> ListByAutomationAccount(this IVariableOperations operations, string resourceGroupName, string automationAccountName)
+        /// <param name='variableName'>
+        /// The name of variable.
+        /// </param>
+        public static Variable CreateOrUpdate(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableCreateOrUpdateParameters parameters)
         {
-                return ((IVariableOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
+                return ((IVariableOperations)operations).CreateOrUpdateAsync(resourceGroupName, automationAccountName, variableName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieve a list of variables.
+        /// Create a variable.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='variableName'>
+        /// The name of variable.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Variable>> ListByAutomationAccountAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Variable> CreateOrUpdateAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableCreateOrUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, variableName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Update a variable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='variableName'>
+        /// The name of variable.
+        /// </param>
+        public static Variable Update(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableUpdateParameters parameters)
+        {
+                return ((IVariableOperations)operations).UpdateAsync(resourceGroupName, automationAccountName, variableName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update a variable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='variableName'>
+        /// The name of variable.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Variable> UpdateAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, VariableUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, automationAccountName, variableName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete the variable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='variableName'>
+        /// The name of variable.
+        /// </param>
+        public static void Delete(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName)
+        {
+                ((IVariableOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, variableName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete the variable.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='variableName'>
+        /// The name of variable.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVariableOperations operations, string resourceGroupName, string automationAccountName, string variableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, variableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve a list of variables.
