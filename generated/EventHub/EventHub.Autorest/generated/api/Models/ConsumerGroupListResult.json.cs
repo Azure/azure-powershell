@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The result to the List Consumer Group operation.</summary>
+    /// <summary>The response of a ConsumerGroup list operation.</summary>
     public partial class ConsumerGroupListResult
     {
 

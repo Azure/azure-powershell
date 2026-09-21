@@ -35,22 +35,25 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
- [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
- [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
+ [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>]
+ [-DisableCapacityReservationAssignment] [-ImageReferenceId <String>]
+ [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-ProcessorMode <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SecurityPostureId <String>]
  [-SecurityPostureExcludeExtension <String[]>] [-SkuProfileVmSize <String[]>]
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
- [-HighSpeedInterconnectPlacement <String>] [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HighSpeedInterconnectPlacement <String>] [-ScheduledEventsApiVersion <String>]
+ [-EnableAllInstancesDown <Boolean>] [-ZonalPlatformFaultDomainAlignMode <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
-Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. <br> 
+Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. <br>
 
-Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation. 
-For default parameter set, first use the **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> 
+Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation.
+For default parameter set, first use the **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br>
 
 Then use the following cmdlets to set different properties of the virtual machine scale set object: <br>
 - **[Add-AzVmssNetworkInterfaceConfiguration](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration)** to set the network profile.<br>
@@ -229,7 +232,7 @@ $adminUsername = "<Username>";
 $adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-# VMSS Creation 
+# VMSS Creation
 $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
 # Validate that for -SecurityType "TrustedLaunch", "-Vtpm" and -"SecureBoot" are "Enabled/true"
 # $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled;
@@ -243,11 +246,11 @@ This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and t
 # Create configuration object
 $vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -SinglePlacementGroup $true
 
-# VMSS Creation 
+# VMSS Creation
 New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
 ```
 
-This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
+This example Creates a new VMSS and it will default to OrchestrationMode Flexible.
 
 ### Example 6: Create a new VMSS with TrustedLaunch turned on by default.
 ```powershell
@@ -277,7 +280,7 @@ $ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
 $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
     | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
     | Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password;
-    
+
 # Create TL Vmss
 $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
 $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
@@ -289,6 +292,20 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 ```
 
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
+
+### Example 7: Create a VMSS with processor mode
+```powershell
+New-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -Credential (Get-Credential) -Location "westus" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+```
+
+### Example 8: Create a SpotPlus VMSS
+```powershell
+New-AzVmss -ResourceGroupName "MyResourceGroup" -VMScaleSetName "MySpotPlusVmss" -Location "eastus2" -Credential (Get-Credential) -VmSize "Standard_D2s_v5" -ImageName "Win2022AzureEdition" -Priority "SpotPlus" -EvictionPolicy "Delete" -MaxPrice -1
+```
+
+This command creates a scale set whose instances use the Spot Plus priority, the next generation of Azure Spot that provides higher reliability and longer running time than 'Spot' at a discounted price.
+Eviction and billing behave the same as 'Spot', so '-EvictionPolicy' and '-MaxPrice' are used the same way.
+Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature to be registered and a region where the feature is enabled.
 
 ## PARAMETERS
 
@@ -438,6 +455,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableCapacityReservationAssignment
+Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DiskControllerType
 Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
 
@@ -474,6 +506,21 @@ Sets the edge zone name. If set, the query will be routed to the specified edgez
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableAllInstancesDown
+Specifies if Scheduled Events should be auto-approved when all instances are down.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -819,7 +866,7 @@ Accept wildcard characters: False
 ### -OrchestrationMode
 Specifies the orchestration mode for the virtual machine scale set. Possible values: Uniform, Flexible
 
-Creating a VMSS in OrchestrationMode:Flexible using default parameter set will result in having the VirtualMachineScaleSetVMProfile being populated by default. 
+Creating a VMSS in OrchestrationMode:Flexible using default parameter set will result in having the VirtualMachineScaleSetVMProfile being populated by default.
 If you want to create a VMSS with an empty VirtualMachineScaleSetVMProfile, first create a VirtualMachineScaleSet object with empty VMProfile property using **[New-AzVmssConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)**, then create the VMSS using simple parameter set.
 
 ```yaml
@@ -850,9 +897,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
 'Spot' is for spot virtual machine.
+'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'.
 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml
@@ -864,6 +912,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProcessorMode
+Specifies processor frequency behavior for VM instances in the scale set model. Typical values are `Deterministic` and `Opportunistic`.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -936,6 +999,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduledEventsApiVersion
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -1224,7 +1302,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-The size of the VM instances in this scale set. [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. A default size (Standard_DS1_v2) will be used if no Size is specified. 
+The size of the VM instances in this scale set. [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. A default size (Standard_DS1_v2) will be used if no Size is specified.
 
 ```yaml
 Type: System.String

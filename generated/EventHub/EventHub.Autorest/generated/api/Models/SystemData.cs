@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Backing field for <see cref="LastModifiedAt" /> property.</summary>
         private global::System.DateTime? _lastModifiedAt;
 
-        /// <summary>The type of identity that last modified the resource.</summary>
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public global::System.DateTime? LastModifiedAt { get => this._lastModifiedAt; set => this._lastModifiedAt = value; }
 
@@ -100,14 +100,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
         string CreatedByType { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The type of identity that last modified the resource.",
+        Description = @"The timestamp of resource last modification (UTC)",
         SerializedName = @"lastModifiedAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastModifiedAt { get; set; }
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>The type of identity that created the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
         string CreatedByType { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
         global::System.DateTime? LastModifiedAt { get; set; }
         /// <summary>The identity that last modified the resource.</summary>
         string LastModifiedBy { get; set; }

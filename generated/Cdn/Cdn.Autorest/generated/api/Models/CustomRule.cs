@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"Describes what action to be applied when rule matches",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge", "CAPTCHA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect")]
         string Action { get; set; }
         /// <summary>
         /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     {
         /// <summary>Describes what action to be applied when rule matches</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge", "CAPTCHA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect")]
         string Action { get; set; }
         /// <summary>
         /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.

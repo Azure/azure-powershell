@@ -98,7 +98,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// PremiumV2_LRS disks. Supported values are 512 and 4096. 4096 is the
         /// default.
         /// </param>
-        public DiskRestorePoint(string id = default(string), string name = default(string), string type = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), Encryption encryption = default(Encryption), System.DateTime? timeCreated = default(System.DateTime?), string sourceResourceId = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), string familyId = default(string), string sourceUniqueId = default(string), bool? supportsHibernation = default(bool?), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), double? completionPercent = default(double?), string replicationState = default(string), string sourceResourceLocation = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), int? logicalSectorSize = default(int?))
+
+        /// <param name="snapshotAccessState">The state of snapshot which determines the access availability of the
+        /// snapshot.
+        /// Possible values include: &#39;Unknown&#39;, &#39;Pending&#39;, &#39;Available&#39;,
+        /// &#39;InstantAccess&#39;, &#39;AvailableWithInstantAccess&#39;</param>
+        public DiskRestorePoint(string id = default(string), string name = default(string), string type = default(string), PurchasePlan purchasePlan = default(PurchasePlan), SupportedCapabilities supportedCapabilities = default(SupportedCapabilities), Encryption encryption = default(Encryption), System.DateTime? timeCreated = default(System.DateTime?), string sourceResourceId = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), string hyperVGeneration = default(string), string familyId = default(string), string sourceUniqueId = default(string), bool? supportsHibernation = default(bool?), string networkAccessPolicy = default(string), string publicNetworkAccess = default(string), string diskAccessId = default(string), double? completionPercent = default(double?), string replicationState = default(string), string sourceResourceLocation = default(string), DiskSecurityProfile securityProfile = default(DiskSecurityProfile), int? logicalSectorSize = default(int?), string snapshotAccessState = default(string))
 
         : base(id, name, type)
         {
@@ -120,6 +125,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.SourceResourceLocation = sourceResourceLocation;
             this.SecurityProfile = securityProfile;
             this.LogicalSectorSize = logicalSectorSize;
+            this.SnapshotAccessState = snapshotAccessState;
             CustomInit();
         }
 
@@ -246,6 +252,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.logicalSectorSize")]
         public int? LogicalSectorSize {get; private set; }
+
+        /// <summary>
+        /// Gets the state of snapshot which determines the access availability of the
+        /// snapshot. Possible values include: &#39;Unknown&#39;, &#39;Pending&#39;, &#39;Available&#39;, &#39;InstantAccess&#39;, &#39;AvailableWithInstantAccess&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.snapshotAccessState")]
+        public string SnapshotAccessState {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -258,6 +271,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.PurchasePlan.Validate();
             }
+
 
 
 

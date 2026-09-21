@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Backing field for <see cref="ConfigName" /> property.</summary>
         private string _configName;
 
-        /// <summary>The configuration name. Should always be "$default".</summary>
+        /// <summary>The configuration name. Should always be $default.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string ConfigName { get => this._configName; set => this._configName = value; }
 
@@ -62,10 +62,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string QueueName { get => this._queueName; set => this._queueName = value; }
 
+        /// <summary>Backing field for <see cref="ResourceAssociationName" /> property.</summary>
+        private string _resourceAssociationName;
+
+        /// <summary>The ResourceAssociation Name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
+        public string ResourceAssociationName { get => this._resourceAssociationName; set => this._resourceAssociationName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -79,10 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -131,14 +135,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"authorizationRuleName",
         PossibleTypes = new [] { typeof(string) })]
         string AuthorizationRuleName { get; set; }
-        /// <summary>The configuration name. Should always be "$default".</summary>
+        /// <summary>The configuration name. Should always be $default.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The configuration name. Should always be ""$default"".",
+        Description = @"The configuration name. Should always be $default.",
         SerializedName = @"configName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("$default")]
@@ -187,14 +191,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"queueName",
         PossibleTypes = new [] { typeof(string) })]
         string QueueName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The ResourceAssociation Name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the Resource group within the Azure subscription.",
+        Description = @"The ResourceAssociation Name",
+        SerializedName = @"resourceAssociationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceAssociationName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -209,17 +224,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"ruleName",
         PossibleTypes = new [] { typeof(string) })]
         string RuleName { get; set; }
-        /// <summary>
-        /// Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -254,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         string Alias { get; set; }
         /// <summary>The authorization rule name.</summary>
         string AuthorizationRuleName { get; set; }
-        /// <summary>The configuration name. Should always be "$default".</summary>
+        /// <summary>The configuration name. Should always be $default.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("$default")]
         string ConfigName { get; set; }
         /// <summary>Resource identity path</summary>
@@ -265,14 +277,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>The queue name.</summary>
         string QueueName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The ResourceAssociation Name</summary>
+        string ResourceAssociationName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The rule name.</summary>
         string RuleName { get; set; }
-        /// <summary>
-        /// Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The subscription name.</summary>
         string SubscriptionName { get; set; }

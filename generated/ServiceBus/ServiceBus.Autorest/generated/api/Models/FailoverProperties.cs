@@ -16,23 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal
     {
 
-        /// <summary>
-        /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public bool? IsSafeFailover { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1Internal)Property).IsSafeFailover; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1Internal)Property).IsSafeFailover = value ?? default(bool); }
-
-        /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverPropertiesInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailoverProperties1()); set { {_property = value;} } }
-
-        /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1 _property;
+        /// <summary>Backing field for <see cref="IsSafeFailover" /> property.</summary>
+        private bool? _isSafeFailover;
 
         /// <summary>
         /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1 Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailoverProperties1()); set => this._property = value; }
+        public bool? IsSafeFailover { get => this._isSafeFailover; set => this._isSafeFailover = value; }
 
         /// <summary>Creates an new <see cref="FailoverProperties" /> instance.</summary>
         public FailoverProperties()
@@ -67,10 +58,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
         /// </summary>
         bool? IsSafeFailover { get; set; }
-        /// <summary>
-        /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties1 Property { get; set; }
 
     }
 }

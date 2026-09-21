@@ -7,37 +7,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list ServiceBus operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>The list of available operations.</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.DoNotFormat]
     public partial class OperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The URL to get the next set of results, if any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> _value;
 
-        /// <summary>
-        /// List of ServiceBus operations supported by the Microsoft.ServiceBus resource provider.
-        /// </summary>
+        /// <summary>The list of operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="OperationListResult" /> instance.</summary>
         public OperationListResult()
@@ -45,47 +34,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 
         }
     }
-    /// Result of the request to list ServiceBus operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// The list of available operations.
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The URL to get the next set of results, if any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next set of operation list results if there are any.",
+        Create = true,
+        Update = true,
+        Description = @"The URL to get the next set of results, if any.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>
-        /// List of ServiceBus operations supported by the Microsoft.ServiceBus resource provider.
-        /// </summary>
+        string NextLink { get; set; }
+        /// <summary>The list of operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of ServiceBus operations supported by the Microsoft.ServiceBus resource provider.",
+        Create = true,
+        Update = true,
+        Description = @"The list of operations.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> Value { get; set; }
 
     }
-    /// Result of the request to list ServiceBus operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// The list of available operations.
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>The URL to get the next set of results, if any.</summary>
         string NextLink { get; set; }
-        /// <summary>
-        /// List of ServiceBus operations supported by the Microsoft.ServiceBus resource provider.
-        /// </summary>
+        /// <summary>The list of operations.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation> Value { get; set; }
 
     }

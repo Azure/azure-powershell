@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class LinuxLicenseType
     {
+        /// <summary>
+        /// NotSpecified
+        /// </summary>
         public const string NotSpecified = "NotSpecified";
+        /// <summary>
+        /// NoLicenseType
+        /// </summary>
         public const string NoLicenseType = "NoLicenseType";
+        /// <summary>
+        /// LinuxServer
+        /// </summary>
         public const string LinuxServer = "LinuxServer";
     }
 }

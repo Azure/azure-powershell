@@ -8,19 +8,38 @@ schema: 2.0.0
 # Switch-AzEdgeActionVersionDefault
 
 ## SYNOPSIS
-Swap the default version for an Edge Action.
+A long-running resource action.
 
 ## SYNTAX
 
+### SwapCustom (Default)
 ```
 Switch-AzEdgeActionVersionDefault -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### Swap
+```
+Switch-AzEdgeActionVersionDefault -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SwapViaIdentity
+```
+Switch-AzEdgeActionVersionDefault -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SwapViaIdentityEdgeAction
+```
+Switch-AzEdgeActionVersionDefault -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-A long-running resource action that swaps the default version for an Edge Action.
-This operation makes the specified version the new default version.
+A long-running resource action.
 
 ## EXAMPLES
 
@@ -56,7 +75,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -70,18 +90,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeActionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
+Parameter Sets: SwapViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Swap, SwapCustom
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
+Parameter Sets: SwapViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,7 +171,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Swap, SwapCustom
 Aliases:
 
 Required: True
@@ -137,7 +187,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Swap, SwapCustom
 Aliases:
 
 Required: False
@@ -148,11 +198,11 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-The name of the Edge Action version to make the default
+The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Swap, SwapCustom, SwapViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -197,6 +247,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
 
 ## OUTPUTS
 

@@ -37,12 +37,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// resources in the Network Interface Configurations for Virtual Machine Scale
         /// Set with orchestration mode &#39;Flexible&#39;
         /// Possible values include: &#39;2020-11-01&#39;, &#39;2022-11-01&#39;</param>
-        public VirtualMachineScaleSetUpdateNetworkProfile(ApiEntityReference healthProbe = default(ApiEntityReference), System.Collections.Generic.IList<VirtualMachineScaleSetUpdateNetworkConfiguration> networkInterfaceConfigurations = default(System.Collections.Generic.IList<VirtualMachineScaleSetUpdateNetworkConfiguration>), string networkApiVersion = default(string))
+
+        /// <param name="interconnectGroupProfile">Specifies the interconnect group profile to associate with the scale set.
+        /// Minimum api-version: 2026-03-01.
+        /// </param>
+        public VirtualMachineScaleSetUpdateNetworkProfile(ApiEntityReference healthProbe = default(ApiEntityReference), System.Collections.Generic.IList<VirtualMachineScaleSetUpdateNetworkConfiguration> networkInterfaceConfigurations = default(System.Collections.Generic.IList<VirtualMachineScaleSetUpdateNetworkConfiguration>), string networkApiVersion = default(string), InterconnectGroupProfile interconnectGroupProfile = default(InterconnectGroupProfile))
 
         {
             this.HealthProbe = healthProbe;
             this.NetworkInterfaceConfigurations = networkInterfaceConfigurations;
             this.NetworkApiVersion = networkApiVersion;
+            this.InterconnectGroupProfile = interconnectGroupProfile;
             CustomInit();
         }
 
@@ -74,5 +79,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkApiVersion")]
         public string NetworkApiVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the interconnect group profile to associate with the
+        /// scale set. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectGroupProfile")]
+        public InterconnectGroupProfile InterconnectGroupProfile {get; set; }
     }
 }

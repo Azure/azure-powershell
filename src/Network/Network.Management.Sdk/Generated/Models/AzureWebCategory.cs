@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Azure Web Category Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureWebCategory
+    public partial class AzureWebCategory : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the AzureWebCategory class.
@@ -41,11 +41,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
         public AzureWebCategory(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string group = default(string))
 
+        : base(id, name, type, etag)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
-            this.Etag = etag;
             this.Group = group;
             CustomInit();
         }
@@ -55,31 +52,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; private set; }
 
         /// <summary>
         /// Gets the name of the group that the category belongs to.

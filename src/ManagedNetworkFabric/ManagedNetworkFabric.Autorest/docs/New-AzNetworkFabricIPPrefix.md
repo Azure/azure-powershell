@@ -14,8 +14,8 @@ Implements IP Prefix PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricIPPrefix -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Annotation <String>] [-IPPrefixRule <IIPPrefixRule[]>] [-Tag <Hashtable>]
+New-AzNetworkFabricIPPrefix -Name <String> -ResourceGroupName <String> -IPPrefixRule <IIPPrefixRule[]>
+ -Location <String> [-SubscriptionId <String>] [-Annotation <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRu
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

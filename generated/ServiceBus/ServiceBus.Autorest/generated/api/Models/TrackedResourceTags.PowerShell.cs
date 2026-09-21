@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>Resource tags</summary>
+    /// <summary>Resource tags.</summary>
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTagsTypeConverter))]
     public partial class TrackedResourceTags
     {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// Resource tags
+    /// Resource tags.
     [System.ComponentModel.TypeConverter(typeof(TrackedResourceTagsTypeConverter))]
     public partial interface ITrackedResourceTags
 

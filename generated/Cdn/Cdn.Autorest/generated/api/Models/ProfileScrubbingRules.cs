@@ -20,6 +20,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string MatchVariable { get => this._matchVariable; set => this._matchVariable = value; }
 
+        /// <summary>Internal Acessors for SelectorMatchOperator</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRulesInternal.SelectorMatchOperator { get => this._selectorMatchOperator; set { {_selectorMatchOperator = value;} } }
+
         /// <summary>Backing field for <see cref="Selector" /> property.</summary>
         private string _selector;
 
@@ -30,14 +33,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string Selector { get => this._selector; set => this._selector = value; }
 
         /// <summary>Backing field for <see cref="SelectorMatchOperator" /> property.</summary>
-        private string _selectorMatchOperator;
+        private string _selectorMatchOperator= @"EqualsAny";
 
         /// <summary>
         /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies
         /// to.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string SelectorMatchOperator { get => this._selectorMatchOperator; set => this._selectorMatchOperator = value; }
+        public string SelectorMatchOperator { get => this._selectorMatchOperator; }
 
         /// <summary>Backing field for <see cref="State" /> property.</summary>
         private string _state;
@@ -66,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"The variable to be scrubbed from the logs.",
         SerializedName = @"matchVariable",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames", "RequestHeaderNames", "RequestCookieNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames")]
         string MatchVariable { get; set; }
         /// <summary>
         /// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
@@ -87,15 +90,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
         Create = true,
         Update = true,
         Description = @"When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.",
         SerializedName = @"selectorMatchOperator",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("EqualsAny", "Equals")]
-        string SelectorMatchOperator { get; set; }
+        string SelectorMatchOperator { get;  }
         /// <summary>Defines the state of a log scrubbing rule. Default value is enabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -115,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     {
         /// <summary>The variable to be scrubbed from the logs.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames", "RequestHeaderNames", "RequestCookieNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames")]
         string MatchVariable { get; set; }
         /// <summary>
         /// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
@@ -125,7 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies
         /// to.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("EqualsAny", "Equals")]
         string SelectorMatchOperator { get; set; }
         /// <summary>Defines the state of a log scrubbing rule. Default value is enabled.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]

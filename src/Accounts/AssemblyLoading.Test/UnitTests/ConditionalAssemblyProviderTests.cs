@@ -48,6 +48,13 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
 
             Assert.True(assemblies.TryGetValue("Azure.Identity", out var azureIdentity));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Identity"), azureIdentity.Path);
+
+            Assert.True(assemblies.TryGetValue("System.Text.Encodings.Web", out var encodingsWeb));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Encodings.Web"), encodingsWeb.Path);
+            Assert.True(assemblies.TryGetValue("System.Text.Json", out var textJson));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Json"), textJson.Path);
+            Assert.True(assemblies.TryGetValue("System.Diagnostics.DiagnosticSource", out var diagnosticSource));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Diagnostics.DiagnosticSource"), diagnosticSource.Path);
         }
 
         [Fact]
@@ -71,6 +78,13 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
 
             Assert.True(assemblies.TryGetValue("Azure.Identity", out var azureIdentity));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Identity"), azureIdentity.Path);
+
+            Assert.True(assemblies.TryGetValue("System.Text.Encodings.Web", out var encodingsWeb));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Encodings.Web"), encodingsWeb.Path);
+            Assert.True(assemblies.TryGetValue("System.Text.Json", out var textJson));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Json"), textJson.Path);
+            Assert.True(assemblies.TryGetValue("System.Diagnostics.DiagnosticSource", out var diagnosticSource));
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Diagnostics.DiagnosticSource"), diagnosticSource.Path);
         }
 
         private string GetExpectedAssemblyPath(string framework, string assemblyName)

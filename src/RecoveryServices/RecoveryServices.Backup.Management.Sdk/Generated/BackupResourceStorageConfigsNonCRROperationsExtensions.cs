@@ -18,16 +18,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static BackupResourceConfigResource Get(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static BackupResourceConfigResource Get(this IBackupResourceStorageConfigsNonCrrOperations operations, string resourceGroupName, string vaultName)
         {
-                return ((IBackupResourceStorageConfigsNonCrrOperations)operations).GetAsync(vaultName, resourceGroupName).GetAwaiter().GetResult();
+                return ((IBackupResourceStorageConfigsNonCrrOperations)operations).GetAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -36,19 +35,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupResourceConfigResource> GetAsync(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupResourceConfigResource> GetAsync(this IBackupResourceStorageConfigsNonCrrOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -59,16 +57,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static BackupResourceConfigResource Update(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, BackupResourceConfigResource parameters)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static BackupResourceConfigResource Update(this IBackupResourceStorageConfigsNonCrrOperations operations, string resourceGroupName, string vaultName, BackupResourceConfigResource parameters)
         {
-                return ((IBackupResourceStorageConfigsNonCrrOperations)operations).UpdateAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IBackupResourceStorageConfigsNonCrrOperations)operations).UpdateAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -77,19 +74,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupResourceConfigResource> UpdateAsync(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, BackupResourceConfigResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupResourceConfigResource> UpdateAsync(this IBackupResourceStorageConfigsNonCrrOperations operations, string resourceGroupName, string vaultName, BackupResourceConfigResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -100,16 +96,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void Patch(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, BackupResourceConfigResource parameters)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static void Patch(this IBackupResourceStorageConfigsNonCrrOperations operations, string resourceGroupName, string vaultName, BackupResourceConfigResource parameters)
         {
-                ((IBackupResourceStorageConfigsNonCrrOperations)operations).PatchAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                ((IBackupResourceStorageConfigsNonCrrOperations)operations).PatchAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -118,19 +113,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task PatchAsync(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, BackupResourceConfigResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task PatchAsync(this IBackupResourceStorageConfigsNonCrrOperations operations, string resourceGroupName, string vaultName, BackupResourceConfigResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.PatchWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.PatchWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

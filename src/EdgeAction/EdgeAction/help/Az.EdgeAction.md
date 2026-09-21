@@ -24,7 +24,7 @@ Get a EdgeActionExecutionFilter
 Get a EdgeActionVersion
 
 ### [Get-AzEdgeActionVersionCode](Get-AzEdgeActionVersionCode.md)
-Get Edge Action version code and optionally save to file.
+A long-running resource action.
 
 ### [New-AzEdgeAction](New-AzEdgeAction.md)
 Create a EdgeAction
@@ -45,7 +45,7 @@ Delete a EdgeActionExecutionFilter
 Delete a EdgeActionVersion
 
 ### [Switch-AzEdgeActionVersionDefault](Switch-AzEdgeActionVersionDefault.md)
-Swap the default version for an Edge Action.
+A long-running resource action.
 
 ### [Update-AzEdgeAction](Update-AzEdgeAction.md)
 Update a EdgeAction

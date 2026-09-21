@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnNatRuleMode
     {
+        /// <summary>
+        /// EgressSnat
+        /// </summary>
         public const string EgressSnat = "EgressSnat";
+        /// <summary>
+        /// IngressSnat
+        /// </summary>
         public const string IngressSnat = "IngressSnat";
     }
 }

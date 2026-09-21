@@ -56,6 +56,9 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 ### [Get-AzCdnEndpointResourceUsage](Get-AzCdnEndpointResourceUsage.md)
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 
+### [Get-AzCdnManagedRuleSet](Get-AzCdnManagedRuleSet.md)
+Lists all available managed rule sets.
+
 ### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets an existing origin within an endpoint.
 
@@ -308,9 +311,6 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 ### [New-AzFrontDoorCdnRuleCookiesConditionObject](New-AzFrontDoorCdnRuleCookiesConditionObject.md)
 Create an in-memory object for DeliveryRuleCookiesCondition.
 
-### [New-AzFrontDoorCdnRuleEdgeActionObject](New-AzFrontDoorCdnRuleEdgeActionObject.md)
-Create an in-memory object for EdgeAction.
-
 ### [New-AzFrontDoorCdnRuleHostNameConditionObject](New-AzFrontDoorCdnRuleHostNameConditionObject.md)
 Create an in-memory object for DeliveryRuleHostNameCondition.
 
@@ -357,7 +357,7 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 Create an in-memory object for DeliveryRuleServerPortCondition.
 
 ### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
-Create a new rule set within the specified profile.
+Create or create a batch rule set within the specified profile along with the rules associate to it.
 
 ### [New-AzFrontDoorCdnRuleSocketAddrConditionObject](New-AzFrontDoorCdnRuleSocketAddrConditionObject.md)
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
@@ -566,6 +566,9 @@ Update an existing route with the specified route name under the specified subsc
 
 ### [Update-AzFrontDoorCdnRule](Update-AzFrontDoorCdnRule.md)
 Update an existing delivery rule within a rule set.
+
+### [Update-AzFrontDoorCdnRuleSet](Update-AzFrontDoorCdnRuleSet.md)
+Update or update a batch rule set within the specified profile along with the rules associate to it.
 
 ### [Update-AzFrontDoorCdnSecret](Update-AzFrontDoorCdnSecret.md)
 Update a new Secret within the specified profile.

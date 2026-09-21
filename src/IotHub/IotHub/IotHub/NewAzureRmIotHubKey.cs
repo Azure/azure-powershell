@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.Globalization;
     using System.Linq;
     using System.Management.Automation;
-    using System.Text;
+    using System.Security.Cryptography;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 switch (RenewKey.ToLower(CultureInfo.InvariantCulture))
                 {
                     case "primary":
-                        regeneratedAuthRule.PrimaryKey = this.RegenerateKey();
+                        regeneratedAuthRule.PrimaryKey = RegenerateKey();
                         break;
                     case "secondary":
-                        regeneratedAuthRule.SecondaryKey = this.RegenerateKey();
+                        regeneratedAuthRule.SecondaryKey = RegenerateKey();
                         break;
                     case "swap":
                         var temp = regeneratedAuthRule.PrimaryKey;
@@ -140,16 +140,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             }
         }
 
-        private string RegenerateKey(int byteLength = 32)
+        private static string RegenerateKey()
         {
-            char[] charArray = new char[byteLength];
-            for (int i = 0; i < byteLength; i++)
+            byte[] bytes = new byte[32];
+            using (RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create())
             {
-                charArray[i] = (char)new Random().Next(1, 255);
+                randomNumberGenerator.GetBytes(bytes);
             }
-            string charCode = new string(charArray);
-            byte[] bytes = Encoding.GetEncoding(28591).GetBytes(charCode);
-            return System.Convert.ToBase64String(bytes);
+
+            return Convert.ToBase64String(bytes);
         }
     }
 }

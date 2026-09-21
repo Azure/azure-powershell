@@ -96,6 +96,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string NeighborGroupName { get => this._neighborGroupName; set => this._neighborGroupName = value; }
 
+        /// <summary>Backing field for <see cref="NetworkBootstrapDeviceName" /> property.</summary>
+        private string _networkBootstrapDeviceName;
+
+        /// <summary>Name of the Network Bootstrap Device.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string NetworkBootstrapDeviceName { get => this._networkBootstrapDeviceName; set => this._networkBootstrapDeviceName = value; }
+
+        /// <summary>Backing field for <see cref="NetworkBootstrapInterfaceName" /> property.</summary>
+        private string _networkBootstrapInterfaceName;
+
+        /// <summary>Name of the Network Bootstrap Interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string NetworkBootstrapInterfaceName { get => this._networkBootstrapInterfaceName; set => this._networkBootstrapInterfaceName = value; }
+
         /// <summary>Backing field for <see cref="NetworkDeviceName" /> property.</summary>
         private string _networkDeviceName;
 
@@ -137,6 +151,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Name of the Network Interface.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public string NetworkInterfaceName { get => this._networkInterfaceName; set => this._networkInterfaceName = value; }
+
+        /// <summary>Backing field for <see cref="NetworkMonitorName" /> property.</summary>
+        private string _networkMonitorName;
+
+        /// <summary>Name of the Network Monitor.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string NetworkMonitorName { get => this._networkMonitorName; set => this._networkMonitorName = value; }
 
         /// <summary>Backing field for <see cref="NetworkPacketBrokerName" /> property.</summary>
         private string _networkPacketBrokerName;
@@ -335,6 +356,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"neighborGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string NeighborGroupName { get; set; }
+        /// <summary>Name of the Network Bootstrap Device.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Network Bootstrap Device.",
+        SerializedName = @"networkBootstrapDeviceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkBootstrapDeviceName { get; set; }
+        /// <summary>Name of the Network Bootstrap Interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Network Bootstrap Interface.",
+        SerializedName = @"networkBootstrapInterfaceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkBootstrapInterfaceName { get; set; }
         /// <summary>Name of the Network Device.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -401,6 +444,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"networkInterfaceName",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkInterfaceName { get; set; }
+        /// <summary>Name of the Network Monitor.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Network Monitor.",
+        SerializedName = @"networkMonitorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkMonitorName { get; set; }
         /// <summary>Name of the Network Packet Broker.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -518,6 +572,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string L3IsolationDomainName { get; set; }
         /// <summary>Name of the Neighbor Group.</summary>
         string NeighborGroupName { get; set; }
+        /// <summary>Name of the Network Bootstrap Device.</summary>
+        string NetworkBootstrapDeviceName { get; set; }
+        /// <summary>Name of the Network Bootstrap Interface.</summary>
+        string NetworkBootstrapInterfaceName { get; set; }
         /// <summary>Name of the Network Device.</summary>
         string NetworkDeviceName { get; set; }
         /// <summary>Name of the Network Device SKU.</summary>
@@ -530,6 +588,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string NetworkFabricSkuName { get; set; }
         /// <summary>Name of the Network Interface.</summary>
         string NetworkInterfaceName { get; set; }
+        /// <summary>Name of the Network Monitor.</summary>
+        string NetworkMonitorName { get; set; }
         /// <summary>Name of the Network Packet Broker.</summary>
         string NetworkPacketBrokerName { get; set; }
         /// <summary>Name of the Network Rack.</summary>

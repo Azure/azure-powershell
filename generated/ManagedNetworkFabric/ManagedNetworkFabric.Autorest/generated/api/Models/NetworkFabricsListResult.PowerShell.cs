@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of Network Fabrics.</summary>
+    /// <summary>Paged collection of NetworkFabric items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkFabricsListResultTypeConverter))]
     public partial class NetworkFabricsListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of Network Fabrics.
+    /// Paged collection of NetworkFabric items
     [System.ComponentModel.TypeConverter(typeof(NetworkFabricsListResultTypeConverter))]
     public partial interface INetworkFabricsListResult
 

@@ -3,6 +3,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using Xunit;
@@ -222,6 +223,68 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         {
             var volumeName = NewAzureRmNetAppFilesVolumeGroup.GenerateOracleVolumeName(applicationId, systemId, volumeType, numberOfVolume, systemRole);
             Assert.Equal(expected, volumeName);
+        }
+
+        [Fact]
+        public void ResolveBreakthroughModeSapDataUsesPerVolumeOverrideWhenProvided()
+        {
+            var cmdlet = new NewAzureRmNetAppFilesVolumeGroup
+            {
+                BreakthroughMode = "global",
+                DataBreakthroughMode = "sap-data"
+            };
+
+            var breakthroughMode = InvokeResolveBreakthroughMode(cmdlet, NewAzureRmNetAppFilesVolumeGroup.SapVolumeType.Data);
+
+            Assert.Equal("sap-data", breakthroughMode);
+        }
+
+        [Fact]
+        public void ResolveBreakthroughModeSapSharedFallsBackToGlobalWhenNoOverrideProvided()
+        {
+            var cmdlet = new NewAzureRmNetAppFilesVolumeGroup
+            {
+                BreakthroughMode = "global"
+            };
+
+            var breakthroughMode = InvokeResolveBreakthroughMode(cmdlet, NewAzureRmNetAppFilesVolumeGroup.SapVolumeType.Shared);
+
+            Assert.Equal("global", breakthroughMode);
+        }
+
+        [Fact]
+        public void ResolveBreakthroughModeOracleBackupUsesPerVolumeOverrideWhenProvided()
+        {
+            var cmdlet = new NewAzureRmNetAppFilesVolumeGroup
+            {
+                BreakthroughMode = "global",
+                BackupBreakthroughMode = "oracle-backup"
+            };
+
+            var breakthroughMode = InvokeResolveBreakthroughMode(cmdlet, NewAzureRmNetAppFilesVolumeGroup.OracleVolumeType.Backup);
+
+            Assert.Equal("oracle-backup", breakthroughMode);
+        }
+
+        [Fact]
+        public void ResolveBreakthroughModeOracleDataFallsBackToGlobalWhenNoOverrideExists()
+        {
+            var cmdlet = new NewAzureRmNetAppFilesVolumeGroup
+            {
+                BreakthroughMode = "global",
+                BackupBreakthroughMode = "oracle-backup"
+            };
+
+            var breakthroughMode = InvokeResolveBreakthroughMode(cmdlet, NewAzureRmNetAppFilesVolumeGroup.OracleVolumeType.Data);
+
+            Assert.Equal("global", breakthroughMode);
+        }
+
+        private static string InvokeResolveBreakthroughMode(NewAzureRmNetAppFilesVolumeGroup cmdlet, string volumeSpecName)
+        {
+            var method = typeof(NewAzureRmNetAppFilesVolumeGroup).GetMethod("ResolveBreakthroughMode", BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.NotNull(method);
+            return (string)method.Invoke(cmdlet, new object[] { volumeSpecName });
         }
 
         [Theory]

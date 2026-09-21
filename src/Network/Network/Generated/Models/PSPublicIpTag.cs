@@ -35,5 +35,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string IpTagType { get; set; }
         public string Tag { get; set; }
+        public string FirstPartyServiceTagId { get; set; }
     }
 }

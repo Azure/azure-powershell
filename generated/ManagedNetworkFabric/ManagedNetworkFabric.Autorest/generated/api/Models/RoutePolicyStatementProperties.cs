@@ -34,6 +34,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public string ActionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).ActionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).ActionType = value ; }
 
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> AddIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).AddIPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).AddIPCommunityId = value ?? null /* arrayOf */; }
+
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> AddIPExtendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).AddIPExtendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).AddIPExtendedCommunityId = value ?? null /* arrayOf */; }
+
         /// <summary>Switch configuration description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
@@ -47,11 +55,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>List of IP Community resource IDs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ConditionIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Condition).IPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Condition).IPCommunityId = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ConditionIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)Condition).IPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)Condition).IPCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>List of IP Extended Community resource IDs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ConditionIPExtendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)Condition).IPExtendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)Condition).IPExtendedCommunityId = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ConditionIPExtendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)Condition).IPExtendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)Condition).IPExtendedCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>Arm Resource Id of IpPrefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
@@ -63,57 +71,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>List of IP Community resource IDs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> IPCommunityPropertyAddIpcommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyAddIpcommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyAddIpcommunityId = value ?? null /* arrayOf */; }
-
-        /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> IPCommunityPropertyDeleteIpcommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyDeleteIpcommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyDeleteIpcommunityId = value ?? null /* arrayOf */; }
-
-        /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> IPCommunityPropertySetIpcommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertySetIpcommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertySetIpcommunityId = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> DeleteIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).DeleteIPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).DeleteIPCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>List of IP Extended Community resource IDs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> IPExtendedCommunityPropertyAddIpextendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyAddIpextendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyAddIpextendedCommunityId = value ?? null /* arrayOf */; }
-
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> IPExtendedCommunityPropertyDeleteIpextendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyDeleteIpextendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyDeleteIpextendedCommunityId = value ?? null /* arrayOf */; }
-
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> IPExtendedCommunityPropertySetIpextendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertySetIpextendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertySetIpextendedCommunityId = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> DeleteIPExtendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).DeleteIPExtendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).DeleteIPExtendedCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Action</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.Action { get => (this._action = this._action ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StatementActionProperties()); set { {_action = value;} } }
 
         /// <summary>Internal Acessors for ActionIPCommunityProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.ActionIPCommunityProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.ActionIPCommunityProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ActionIPExtendedCommunityProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPExtendedCommunityProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.ActionIPExtendedCommunityProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPExtendedCommunityProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.ActionIPExtendedCommunityProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Condition</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.Condition { get => (this._condition = this._condition ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StatementConditionProperties()); set { {_condition = value;} } }
 
         /// <summary>Internal Acessors for IPCommunityPropertyAdd</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPCommunityPropertyAdd { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyAdd; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyAdd = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPCommunityPropertyAdd { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyAdd; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyAdd = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IPCommunityPropertyDelete</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPCommunityPropertyDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyDelete = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPCommunityPropertyDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertyDelete = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IPCommunityPropertySet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPCommunityPropertySet { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertySet; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertySet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPCommunityPropertySet { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertySet; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPCommunityPropertySet = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IPExtendedCommunityPropertyAdd</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPExtendedCommunityPropertyAdd { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyAdd; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyAdd = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPExtendedCommunityPropertyAdd { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyAdd; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyAdd = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IPExtendedCommunityPropertyDelete</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPExtendedCommunityPropertyDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyDelete = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPExtendedCommunityPropertyDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertyDelete = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for IPExtendedCommunityPropertySet</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPExtendedCommunityPropertySet { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertySet; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertySet = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementPropertiesInternal.IPExtendedCommunityPropertySet { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertySet; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).IPExtendedCommunityPropertySet = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="SequenceNumber" /> property.</summary>
         private long _sequenceNumber;
@@ -121,6 +113,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Sequence to insert to/delete from existing route.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public long SequenceNumber { get => this._sequenceNumber; set => this._sequenceNumber = value; }
+
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> SetIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).SetIPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).SetIPCommunityId = value ?? null /* arrayOf */; }
+
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> SetIPExtendedCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).SetIPExtendedCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementActionPropertiesInternal)Action).SetIPExtendedCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="RoutePolicyStatementProperties" /> instance.</summary>
         public RoutePolicyStatementProperties()
@@ -178,6 +178,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"List of IP Community resource IDs.",
         SerializedName = @"ipCommunityIds",
         PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AddIPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Extended Community resource IDs.",
+        SerializedName = @"ipExtendedCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AddIPExtendedCommunityId { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Community resource IDs.",
+        SerializedName = @"ipCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ConditionIPCommunityId { get; set; }
         /// <summary>List of IP Extended Community resource IDs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -223,29 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"List of IP Community resource IDs.",
         SerializedName = @"ipCommunityIds",
         PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> IPCommunityPropertyAddIpcommunityId { get; set; }
-        /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"List of IP Community resource IDs.",
-        SerializedName = @"ipCommunityIds",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> IPCommunityPropertyDeleteIpcommunityId { get; set; }
-        /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"List of IP Community resource IDs.",
-        SerializedName = @"ipCommunityIds",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> IPCommunityPropertySetIpcommunityId { get; set; }
+        System.Collections.Generic.List<string> DeleteIPCommunityId { get; set; }
         /// <summary>List of IP Extended Community resource IDs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -256,29 +256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"List of IP Extended Community resource IDs.",
         SerializedName = @"ipExtendedCommunityIds",
         PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> IPExtendedCommunityPropertyAddIpextendedCommunityId { get; set; }
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"List of IP Extended Community resource IDs.",
-        SerializedName = @"ipExtendedCommunityIds",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> IPExtendedCommunityPropertyDeleteIpextendedCommunityId { get; set; }
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"List of IP Extended Community resource IDs.",
-        SerializedName = @"ipExtendedCommunityIds",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> IPExtendedCommunityPropertySetIpextendedCommunityId { get; set; }
+        System.Collections.Generic.List<string> DeleteIPExtendedCommunityId { get; set; }
         /// <summary>Sequence to insert to/delete from existing route.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = true,
@@ -290,6 +268,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"sequenceNumber",
         PossibleTypes = new [] { typeof(long) })]
         long SequenceNumber { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Community resource IDs.",
+        SerializedName = @"ipCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> SetIPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Extended Community resource IDs.",
+        SerializedName = @"ipExtendedCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> SetIPExtendedCommunityId { get; set; }
 
     }
     /// Route Policy Statement properties.
@@ -307,6 +307,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Action type. Example: Permit | Deny | Continue.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Permit", "Deny", "Continue")]
         string ActionType { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> AddIPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        System.Collections.Generic.List<string> AddIPExtendedCommunityId { get; set; }
         /// <summary>Route policy condition properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionProperties Condition { get; set; }
         /// <summary>List of IP Community resource IDs.</summary>
@@ -318,32 +322,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Type of the condition used.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Or", "And")]
         string ConditionType { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> DeleteIPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        System.Collections.Generic.List<string> DeleteIPExtendedCommunityId { get; set; }
         /// <summary>List of IP Community IDs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList IPCommunityPropertyAdd { get; set; }
-        /// <summary>List of IP Community resource IDs.</summary>
-        System.Collections.Generic.List<string> IPCommunityPropertyAddIpcommunityId { get; set; }
         /// <summary>List of IP Community IDs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList IPCommunityPropertyDelete { get; set; }
-        /// <summary>List of IP Community resource IDs.</summary>
-        System.Collections.Generic.List<string> IPCommunityPropertyDeleteIpcommunityId { get; set; }
         /// <summary>List of IP Community IDs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList IPCommunityPropertySet { get; set; }
-        /// <summary>List of IP Community resource IDs.</summary>
-        System.Collections.Generic.List<string> IPCommunityPropertySetIpcommunityId { get; set; }
         /// <summary>List of IP Extended Community IDs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList IPExtendedCommunityPropertyAdd { get; set; }
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        System.Collections.Generic.List<string> IPExtendedCommunityPropertyAddIpextendedCommunityId { get; set; }
         /// <summary>List of IP Extended Community IDs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList IPExtendedCommunityPropertyDelete { get; set; }
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        System.Collections.Generic.List<string> IPExtendedCommunityPropertyDeleteIpextendedCommunityId { get; set; }
         /// <summary>List of IP Extended Community IDs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdList IPExtendedCommunityPropertySet { get; set; }
-        /// <summary>List of IP Extended Community resource IDs.</summary>
-        System.Collections.Generic.List<string> IPExtendedCommunityPropertySetIpextendedCommunityId { get; set; }
         /// <summary>Sequence to insert to/delete from existing route.</summary>
         long SequenceNumber { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> SetIPCommunityId { get; set; }
+        /// <summary>List of IP Extended Community resource IDs.</summary>
+        System.Collections.Generic.List<string> SetIPExtendedCommunityId { get; set; }
 
     }
 }

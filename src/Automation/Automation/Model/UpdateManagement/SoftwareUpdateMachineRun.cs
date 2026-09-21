@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         {
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
-            this.CreationTime = sucmr.CreationTime;
-            this.LastModifiedTime = sucmr.LastModifiedTime;
+            this.CreationTime = sucmr.CreationTime.GetValueOrDefault();
+            this.LastModifiedTime = sucmr.LastModifiedTime.GetValueOrDefault();
             this.MachineRunId = Guid.Parse(sucmr.Name);
             this.Name = sucmr.Name;
             this.OperatingSystem = (OperatingSystemType)Enum.Parse(typeof(OperatingSystemType), sucmr.OSType, true);

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Recovery plan details.
     /// </summary>
-    public partial class RecoveryPlan : Resource
+    public partial class RecoveryPlan : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the RecoveryPlan class.
@@ -24,25 +24,32 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the RecoveryPlan class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource Type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">The custom details.
         /// </param>
-        public RecoveryPlan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), RecoveryPlanProperties properties = default(RecoveryPlanProperties))
 
-        : base(id, name, type, location)
+        /// <param name="location">Resource Location
+        /// </param>
+        public RecoveryPlan(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), RecoveryPlanProperties properties = default(RecoveryPlanProperties), string location = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Location = location;
             CustomInit();
         }
 
@@ -57,5 +64,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public RecoveryPlanProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource Location
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
     }
 }

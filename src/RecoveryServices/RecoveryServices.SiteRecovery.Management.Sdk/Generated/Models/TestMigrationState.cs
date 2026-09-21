@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class TestMigrationState
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// TestMigrationInProgress
+        /// </summary>
         public const string TestMigrationInProgress = "TestMigrationInProgress";
+        /// <summary>
+        /// TestMigrationSucceeded
+        /// </summary>
         public const string TestMigrationSucceeded = "TestMigrationSucceeded";
+        /// <summary>
+        /// TestMigrationFailed
+        /// </summary>
         public const string TestMigrationFailed = "TestMigrationFailed";
+        /// <summary>
+        /// TestMigrationCleanupInProgress
+        /// </summary>
         public const string TestMigrationCleanupInProgress = "TestMigrationCleanupInProgress";
+        /// <summary>
+        /// TestMigrationCompletedWithInformation
+        /// </summary>
         public const string TestMigrationCompletedWithInformation = "TestMigrationCompletedWithInformation";
+        /// <summary>
+        /// TestMigrationPartiallySucceeded
+        /// </summary>
         public const string TestMigrationPartiallySucceeded = "TestMigrationPartiallySucceeded";
     }
 }

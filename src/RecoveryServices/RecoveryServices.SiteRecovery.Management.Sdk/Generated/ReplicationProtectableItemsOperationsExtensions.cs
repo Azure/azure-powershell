@@ -18,15 +18,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -34,15 +30,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='protectionContainerName'>
         /// Protection container name.
         /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
         /// <param name='take'>
         /// take OData query parameter.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken OData query parameter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProtectableItem> ListByReplicationProtectionContainers(this IReplicationProtectableItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectableItemQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectableItemQueryParameter>), string take = default(string), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<ProtectableItem> ListByReplicationProtectionContainers(this IReplicationProtectableItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string filter = default(string), string take = default(string), string skipToken = default(string))
         {
-                return ((IReplicationProtectableItemsOperations)operations).ListByReplicationProtectionContainersAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, odataQuery, take, skipToken).GetAwaiter().GetResult();
+                return ((IReplicationProtectableItemsOperations)operations).ListByReplicationProtectionContainersAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, filter, take, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -51,21 +50,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='take'>
         /// take OData query parameter.
@@ -76,9 +74,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectableItem>> ListByReplicationProtectionContainersAsync(this IReplicationProtectableItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectableItemQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectableItemQueryParameter>), string take = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProtectableItem>> ListByReplicationProtectionContainersAsync(this IReplicationProtectableItemsOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string filter = default(string), string take = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationProtectionContainersWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, odataQuery, take, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationProtectionContainersWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, filter, take, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -90,11 +88,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -117,11 +114,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.

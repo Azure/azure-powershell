@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB
     using Models;
 
     /// <summary>
-    /// Azure Cosmos DB Database Service Resource Provider REST API
+    /// Azure Cosmos DB Throughput Pool REST API
     /// </summary>
     public partial interface ICosmosDBManagementClient :  System.IDisposable
     {
@@ -36,9 +36,15 @@ namespace Microsoft.Azure.Management.CosmosDB
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The API version to use for this operation.
         /// </summary>
-        string SubscriptionId { get; set;}
+        string ApiVersion { get;}
+
+
+        /// <summary>
+        /// The ID of the target subscription. The value must be an UUID.
+        /// </summary>
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -73,84 +79,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IDatabaseOperations
+        /// Gets the ICassandraClustersOperations
         /// </summary>
-        IDatabaseOperations Database { get; }
+        ICassandraClustersOperations CassandraClusters { get; }
 
         /// <summary>
-        /// Gets the ICollectionOperations
+        /// Gets the IFleetOperations
         /// </summary>
-        ICollectionOperations Collection { get; }
-
-        /// <summary>
-        /// Gets the ICollectionRegionOperations
-        /// </summary>
-        ICollectionRegionOperations CollectionRegion { get; }
-
-        /// <summary>
-        /// Gets the IDatabaseAccountRegionOperations
-        /// </summary>
-        IDatabaseAccountRegionOperations DatabaseAccountRegion { get; }
-
-        /// <summary>
-        /// Gets the IPercentileSourceTargetOperations
-        /// </summary>
-        IPercentileSourceTargetOperations PercentileSourceTarget { get; }
-
-        /// <summary>
-        /// Gets the IPercentileTargetOperations
-        /// </summary>
-        IPercentileTargetOperations PercentileTarget { get; }
-
-        /// <summary>
-        /// Gets the IPercentileOperations
-        /// </summary>
-        IPercentileOperations Percentile { get; }
-
-        /// <summary>
-        /// Gets the ICollectionPartitionRegionOperations
-        /// </summary>
-        ICollectionPartitionRegionOperations CollectionPartitionRegion { get; }
-
-        /// <summary>
-        /// Gets the ICollectionPartitionOperations
-        /// </summary>
-        ICollectionPartitionOperations CollectionPartition { get; }
-
-        /// <summary>
-        /// Gets the IPartitionKeyRangeIdOperations
-        /// </summary>
-        IPartitionKeyRangeIdOperations PartitionKeyRangeId { get; }
-
-        /// <summary>
-        /// Gets the IPartitionKeyRangeIdRegionOperations
-        /// </summary>
-        IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
-
-        /// <summary>
-        /// Gets the ISqlResourcesOperations
-        /// </summary>
-        ISqlResourcesOperations SqlResources { get; }
-
-        /// <summary>
-        /// Gets the IMongoDbResourcesOperations
-        /// </summary>
-        IMongoDbResourcesOperations MongoDbResources { get; }
-
-        /// <summary>
-        /// Gets the ITableResourcesOperations
-        /// </summary>
-        ITableResourcesOperations TableResources { get; }
-
-        /// <summary>
-        /// Gets the ICassandraResourcesOperations
-        /// </summary>
-        ICassandraResourcesOperations CassandraResources { get; }
-
-        /// <summary>
-        /// Gets the IGremlinResourcesOperations
-        /// </summary>
-        IGremlinResourcesOperations GremlinResources { get; }
+        IFleetOperations Fleet { get; }
 
         /// <summary>
         /// Gets the ILocationsOperations
@@ -158,9 +94,64 @@ namespace Microsoft.Azure.Management.CosmosDB
         ILocationsOperations Locations { get; }
 
         /// <summary>
-        /// Gets the ICassandraClustersOperations
+        /// Gets the IRestorableDatabaseAccountsOperations
         /// </summary>
-        ICassandraClustersOperations CassandraClusters { get; }
+        IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; }
+
+        /// <summary>
+        /// Gets the IRestorableGremlinGraphsOperations
+        /// </summary>
+        IRestorableGremlinGraphsOperations RestorableGremlinGraphs { get; }
+
+        /// <summary>
+        /// Gets the IRestorableGremlinDatabasesOperations
+        /// </summary>
+        IRestorableGremlinDatabasesOperations RestorableGremlinDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableGremlinResourcesOperations
+        /// </summary>
+        IRestorableGremlinResourcesOperations RestorableGremlinResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableMongodbCollectionsOperations
+        /// </summary>
+        IRestorableMongodbCollectionsOperations RestorableMongodbCollections { get; }
+
+        /// <summary>
+        /// Gets the IRestorableMongodbDatabasesOperations
+        /// </summary>
+        IRestorableMongodbDatabasesOperations RestorableMongodbDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableMongodbResourcesOperations
+        /// </summary>
+        IRestorableMongodbResourcesOperations RestorableMongodbResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableSqlContainersOperations
+        /// </summary>
+        IRestorableSqlContainersOperations RestorableSqlContainers { get; }
+
+        /// <summary>
+        /// Gets the IRestorableSqlDatabasesOperations
+        /// </summary>
+        IRestorableSqlDatabasesOperations RestorableSqlDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableSqlResourcesOperations
+        /// </summary>
+        IRestorableSqlResourcesOperations RestorableSqlResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableTableResourcesOperations
+        /// </summary>
+        IRestorableTableResourcesOperations RestorableTableResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableTablesOperations
+        /// </summary>
+        IRestorableTablesOperations RestorableTables { get; }
 
         /// <summary>
         /// Gets the ICassandraDataCentersOperations
@@ -168,9 +159,54 @@ namespace Microsoft.Azure.Management.CosmosDB
         ICassandraDataCentersOperations CassandraDataCenters { get; }
 
         /// <summary>
+        /// Gets the ICassandraResourcesOperations
+        /// </summary>
+        ICassandraResourcesOperations CassandraResources { get; }
+
+        /// <summary>
+        /// Gets the ICollectionOperations
+        /// </summary>
+        ICollectionOperations Collection { get; }
+
+        /// <summary>
+        /// Gets the IPartitionKeyRangeIdOperations
+        /// </summary>
+        IPartitionKeyRangeIdOperations PartitionKeyRangeId { get; }
+
+        /// <summary>
+        /// Gets the ICollectionPartitionOperations
+        /// </summary>
+        ICollectionPartitionOperations CollectionPartition { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseOperations
+        /// </summary>
+        IDatabaseOperations Database { get; }
+
+        /// <summary>
+        /// Gets the IGremlinResourcesOperations
+        /// </summary>
+        IGremlinResourcesOperations GremlinResources { get; }
+
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        IMongoMiResourcesOperations MongoMiResources { get; }
+
+        /// <summary>
+        /// Gets the IMongoDbResourcesOperations
+        /// </summary>
+        IMongoDbResourcesOperations MongoDbResources { get; }
+
+        /// <summary>
         /// Gets the INotebookWorkspacesOperations
         /// </summary>
         INotebookWorkspacesOperations NotebookWorkspaces { get; }
+
+        /// <summary>
+        /// Gets the IPercentileOperations
+        /// </summary>
+        IPercentileOperations Percentile { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
@@ -183,64 +219,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
         /// <summary>
-        /// Gets the IRestorableDatabaseAccountsOperations
+        /// Gets the ICollectionRegionOperations
         /// </summary>
-        IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; }
+        ICollectionRegionOperations CollectionRegion { get; }
 
         /// <summary>
-        /// Gets the IRestorableSqlDatabasesOperations
+        /// Gets the IPartitionKeyRangeIdRegionOperations
         /// </summary>
-        IRestorableSqlDatabasesOperations RestorableSqlDatabases { get; }
+        IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
 
         /// <summary>
-        /// Gets the IRestorableSqlContainersOperations
+        /// Gets the ICollectionPartitionRegionOperations
         /// </summary>
-        IRestorableSqlContainersOperations RestorableSqlContainers { get; }
+        ICollectionPartitionRegionOperations CollectionPartitionRegion { get; }
 
         /// <summary>
-        /// Gets the IRestorableSqlResourcesOperations
+        /// Gets the IDatabaseAccountRegionOperations
         /// </summary>
-        IRestorableSqlResourcesOperations RestorableSqlResources { get; }
-
-        /// <summary>
-        /// Gets the IRestorableMongodbDatabasesOperations
-        /// </summary>
-        IRestorableMongodbDatabasesOperations RestorableMongodbDatabases { get; }
-
-        /// <summary>
-        /// Gets the IRestorableMongodbCollectionsOperations
-        /// </summary>
-        IRestorableMongodbCollectionsOperations RestorableMongodbCollections { get; }
-
-        /// <summary>
-        /// Gets the IRestorableMongodbResourcesOperations
-        /// </summary>
-        IRestorableMongodbResourcesOperations RestorableMongodbResources { get; }
-
-        /// <summary>
-        /// Gets the IRestorableGremlinDatabasesOperations
-        /// </summary>
-        IRestorableGremlinDatabasesOperations RestorableGremlinDatabases { get; }
-
-        /// <summary>
-        /// Gets the IRestorableGremlinGraphsOperations
-        /// </summary>
-        IRestorableGremlinGraphsOperations RestorableGremlinGraphs { get; }
-
-        /// <summary>
-        /// Gets the IRestorableGremlinResourcesOperations
-        /// </summary>
-        IRestorableGremlinResourcesOperations RestorableGremlinResources { get; }
-
-        /// <summary>
-        /// Gets the IRestorableTablesOperations
-        /// </summary>
-        IRestorableTablesOperations RestorableTables { get; }
-
-        /// <summary>
-        /// Gets the IRestorableTableResourcesOperations
-        /// </summary>
-        IRestorableTableResourcesOperations RestorableTableResources { get; }
+        IDatabaseAccountRegionOperations DatabaseAccountRegion { get; }
 
         /// <summary>
         /// Gets the IServiceOperations
@@ -248,9 +244,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         IServiceOperations Service { get; }
 
         /// <summary>
-        /// Gets the IFleetOperations
+        /// Gets the IPercentileSourceTargetOperations
         /// </summary>
-        IFleetOperations Fleet { get; }
+        IPercentileSourceTargetOperations PercentileSourceTarget { get; }
+
+        /// <summary>
+        /// Gets the ISqlResourcesOperations
+        /// </summary>
+        ISqlResourcesOperations SqlResources { get; }
+
+        /// <summary>
+        /// Gets the ITableResourcesOperations
+        /// </summary>
+        ITableResourcesOperations TableResources { get; }
+
+        /// <summary>
+        /// Gets the IPercentileTargetOperations
+        /// </summary>
+        IPercentileTargetOperations PercentileTarget { get; }
 
         /// <summary>
         /// Gets the IFleetspaceOperations

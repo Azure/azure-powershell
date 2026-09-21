@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class InMageRcmFailbackRecoveryPointType
     {
+        /// <summary>
+        /// ApplicationConsistent
+        /// </summary>
         public const string ApplicationConsistent = "ApplicationConsistent";
+        /// <summary>
+        /// CrashConsistent
+        /// </summary>
         public const string CrashConsistent = "CrashConsistent";
     }
 }

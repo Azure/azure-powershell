@@ -2075,4 +2075,148 @@ function Test-VirtualHubAndVpnGatewayWithCustomAsn
 	}
 }
 
+function Test-ConnectionPolicyCRUD
+{
+    # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $policyName = "testConnectionPolicy1"
 
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+        Assert-AreEqual $virtualWanName $virtualWan.Name
+
+        # Create the Virtual Hub
+        $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+        Assert-AreEqual $virtualHubName $virtualHub.Name
+
+        # Create a ConnectionPolicy
+        New-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -EnableInternetSecurity
+        $connectionPolicy = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName -Name $policyName
+        Assert-AreEqual $policyName $connectionPolicy.Name
+        Assert-AreEqual $True $connectionPolicy.EnableInternetSecurity
+
+        # List ConnectionPolicies
+        $policies = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName
+        Assert-AreEqual 1 $policies.Count
+
+        # Update the ConnectionPolicy - disable internet security and assert the change
+        $connectionPolicy = Set-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -EnableInternetSecurity $false
+        $connectionPolicy = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName -Name $policyName
+        Assert-AreEqual $policyName $connectionPolicy.Name
+        Assert-AreEqual $False $connectionPolicy.EnableInternetSecurity
+
+        # Delete the ConnectionPolicy
+        $delete = Remove-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -Force -PassThru
+        Assert-AreEqual $True $delete
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-VirtualHubIPv6CRUD
+{
+    # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+        Assert-AreEqual $virtualWanName $virtualWan.Name
+
+        # Create the Virtual Hub without IPv6 address prefix
+        $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+
+        # Update the Virtual Hub to add an IPv6 address prefix
+        $updatedVirtualHub = Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -AddressPrefixV6 "2001:db8::/56"
+
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+        Assert-AreEqual $virtualHubName $virtualHub.Name
+        Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+        Assert-AreEqual "2001:db8::/56" $virtualHub.AddressPrefixV6
+
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+        Assert-AreEqual $True $delete
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}
+
+function Test-VirtualHubEnableOnlyIpv6PeeringCRUD
+{
+    # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $remoteVirtualNetworkName = Get-ResourceName
+    $hubVnetConnectionName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+        Assert-AreEqual $virtualWanName $virtualWan.Name
+
+        # Create the Virtual Hub with IPv6 address prefix
+        $createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -AddressPrefixV6 "2001:db8::/56" -VirtualWan $virtualWan
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+        Assert-AreEqual $virtualHubName $virtualHub.Name
+
+        # Create a remote VNet
+        $remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix @("10.0.1.0/24", "2001:db8:1::/48")
+
+        # Create a Hub Virtual Network Connection with EnableOnlyIpv6Peering
+        New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -EnableOnlyIpv6Peering "Enabled"
+        $hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName
+        Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
+        Assert-AreEqual "Enabled" $hubVnetConnection.EnableOnlyIpv6Peering
+
+        $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+        Assert-AreEqual $True $delete
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgName
+    }
+}

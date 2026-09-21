@@ -124,6 +124,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSpotPlusPriority()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotPlusPriority");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetWriteAcceleratorUpdate()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetWriteAcceleratorUpdate");
@@ -478,6 +485,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestProxyAgentSetting()
         {
             TestRunner.RunTestScript("Test-ProxyAgentSetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetProxyAgentUseLocalFileRules");
         }
 
         [Fact]

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class SqlStoredProcedureGetPropertiesResource
+    public partial class SqlStoredProcedureGetPropertiesResource : SqlStoredProcedureResource
     {
         /// <summary>
         /// Initializes a new instance of the SqlStoredProcedureGetPropertiesResource class.
@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public SqlStoredProcedureGetPropertiesResource(string id, string body = default(string), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id, body)
         {
-            this.Id = id;
-            this.Body = body;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -53,18 +52,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL storedProcedure
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets body of the Stored Procedure
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "body")]
-        public string Body {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -91,14 +78,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.Id == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
-            }
-
-
+            base.Validate();
 
 
         }

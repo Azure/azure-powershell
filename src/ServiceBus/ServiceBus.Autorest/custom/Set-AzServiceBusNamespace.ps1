@@ -159,8 +159,38 @@ function Set-AzServiceBusNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+        ${ProxyUseDefaultCredentials},
+
+		[Parameter(HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+		[System.Int64]
+		${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+		[Parameter(HelpMessage = "Replica locations for geo data replication. Pass an array of NamespaceReplicaLocation objects.")]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+		${GeoDataReplicationLocation},
+
+        [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+        [System.String]
+        ${IPAddressType}
 	)
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 	process{
 	    try{
                 $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
@@ -173,6 +203,9 @@ function Set-AzServiceBusNamespace{
                 $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
                 $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
                 $hasTag = $PSBoundParameters.Remove('Tag')
+                $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $PSBoundParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
+                $hasGeoDataReplicationLocation = $PSBoundParameters.Remove('GeoDataReplicationLocation')
+                $hasIPAddressType = $PSBoundParameters.Remove('IPAddressType')
                 $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
                 $hasAsJob = $PSBoundParameters.Remove('AsJob')
                 $hasNoWait = $PSBoundParameters.Remove('NoWait')
@@ -223,6 +256,15 @@ function Set-AzServiceBusNamespace{
                }
                if ($hasTag) {
                     $serviceBusNamespace.Tag = $Tag
+               }
+               if ($hasGeoDataReplicationMaxReplicationLagDurationInSecond) {
+                    $serviceBusNamespace.GeoDataReplicationMaxReplicationLagDurationInSecond = $GeoDataReplicationMaxReplicationLagDurationInSecond
+               }
+               if ($hasGeoDataReplicationLocation) {
+                    $serviceBusNamespace.GeoDataReplicationLocation = $GeoDataReplicationLocation
+               }
+               if($hasIPAddressType){
+                   $serviceBusNamespace.IPAddressType = $IPAddressType
                }
                if ($hasAsJob) {
                     $PSBoundParameters.Add('AsJob', $true)

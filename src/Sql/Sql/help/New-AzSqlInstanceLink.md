@@ -17,7 +17,8 @@ Creates a new instance link.
 New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
  -PartnerAvailabilityGroupName <String> -InstanceAvailabilityGroupName <String> -Database <String[]>
  -PartnerEndpoint <String> [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LinkMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
@@ -25,8 +26,8 @@ New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-N
 New-AzSqlInstanceLink [-Name] <String> -PartnerAvailabilityGroupName <String>
  -InstanceAvailabilityGroupName <String> -Database <String[]> -PartnerEndpoint <String>
  [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
- [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LinkMode <String>] [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +114,31 @@ SeedingMode                      : Automatic
 ```
 
 This command creates a new instance link by piping an instance object.
+
+### Example 4: Create a multi-database instance link
+```powershell
+New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "multilink01" -Database "Database01","Database02" -InstanceAvailabilityGroupName "AG_MultiLink01_MI" -PartnerAvailabilityGroupName "AG_MultiLink01" -InstanceLinkRole "Secondary" -PartnerEndpoint "TCP://SERVER01:5022" -FailoverMode "None" -SeedingMode "Automatic" -LinkMode "MultiDatabase"
+```
+
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/multilink01
+Name                             : multilink01
+Databases                        : {Database01, Database02}
+InstanceAvailabilityGroupName    : AG_MultiLink01_MI
+PartnerAvailabilityGroupName     : AG_MultiLink01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : None
+SeedingMode                      : Automatic
+LinkMode                         : MultiDatabase
+```
+
+This command creates a multi-database instance link. Multi-database link names must use lowercase letters.
 
 ## PARAMETERS
 
@@ -251,6 +277,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LinkMode
+Specifies whether the link operates in single-database or multi-database mode.
+Supported values are `SingleDatabase` and `MultiDatabase`.
+If omitted, the service creates a single-database link.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PartnerAvailabilityGroupName
 SQL server side availability group name.
 
@@ -297,7 +340,7 @@ Accept wildcard characters: False
 ```
 
 ### -SeedingMode
-Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
+Database seeding mode - can be Automatic (default), or Manual for supported scenarios.
 
 ```yaml
 Type: System.String

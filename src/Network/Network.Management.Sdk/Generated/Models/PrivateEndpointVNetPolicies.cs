@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PrivateEndpointVNetPolicies
     {
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
     }
 }

@@ -140,11 +140,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionBProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionAProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPropertiesOptionAProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPropertiesOptionAPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("InfrastructureVpnConfigurationNetworkToNetworkInterconnectId"))
             {
@@ -154,25 +154,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesBfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
             }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesMtu"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesVlanId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
             if (content.Contains("WorkloadVpnConfigurationOptionBProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("WorkloadVpnConfigurationOptionAProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPropertiesOptionAProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPropertiesOptionAPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("WorkloadVpnConfigurationNetworkToNetworkInterconnectId"))
             {
@@ -181,18 +169,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesMtu"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesVlanId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesPeerAsn"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionBPropertiesRouteTarget"))
             {
@@ -205,10 +181,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget = (System.Collections.Generic.List<string>) content.GetValueForProperty("InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix"))
             {
@@ -226,6 +198,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix = (string) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix, global::System.Convert.ToString);
             }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesMtu"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesVlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("WorkloadVpnConfigurationOptionBPropertiesRouteTarget"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesRouteTarget = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRouteTargetInformation) content.GetValueForProperty("WorkloadVpnConfigurationOptionBPropertiesRouteTarget",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesRouteTarget, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RouteTargetInformationTypeConverter.ConvertFrom);
@@ -237,10 +225,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget = (System.Collections.Generic.List<string>) content.GetValueForProperty("WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix"))
             {
@@ -257,6 +241,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix = (string) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesMtu"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesVlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesPeerAsn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionBPropertiesRouteTargetsImportIpv4RouteTarget"))
             {
@@ -349,11 +349,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionBProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionAProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPropertiesOptionAProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPropertiesOptionAPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAProperties) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("InfrastructureVpnConfigurationNetworkToNetworkInterconnectId"))
             {
@@ -363,25 +363,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesBfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
             }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesMtu"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesVlanId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
             if (content.Contains("WorkloadVpnConfigurationOptionBProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionBProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("WorkloadVpnConfigurationOptionAProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPropertiesOptionAProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPropertiesOptionAPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAProperties) content.GetValueForProperty("WorkloadVpnConfigurationOptionAProperty",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAProperty, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("WorkloadVpnConfigurationNetworkToNetworkInterconnectId"))
             {
@@ -390,18 +378,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesMtu"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesVlanId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesPeerAsn"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionBPropertiesRouteTarget"))
             {
@@ -414,10 +390,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget = (System.Collections.Generic.List<string>) content.GetValueForProperty("InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix"))
             {
@@ -435,6 +407,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix = (string) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix, global::System.Convert.ToString);
             }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesMtu"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesVlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("WorkloadVpnConfigurationOptionBPropertiesRouteTarget"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesRouteTarget = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRouteTargetInformation) content.GetValueForProperty("WorkloadVpnConfigurationOptionBPropertiesRouteTarget",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesRouteTarget, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RouteTargetInformationTypeConverter.ConvertFrom);
@@ -446,10 +434,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget = (System.Collections.Generic.List<string>) content.GetValueForProperty("WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix"))
             {
@@ -466,6 +450,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix = (string) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesMtu"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesMtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesMtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesVlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesVlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesVlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesPeerAsn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn = (long?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesPeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesPeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier = (int?) content.GetValueForProperty("WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationPropertiesInternal)this).WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("InfrastructureVpnConfigurationOptionBPropertiesRouteTargetsImportIpv4RouteTarget"))
             {

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AutoProtectionOfDataDisk
     {
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
     }
 }

@@ -9,123 +9,48 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
-### `Add-AzCdnEdgeActionAttachment`
+### Standalone EdgeAction resource cmdlets
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
+The standalone EdgeAction resource cmdlets listed below are planned for removal
+in Az.Cdn 7.0.0 and Az 17.0.0, with a planned effective date of November 15, 2026.
+This is a documentation-only advance announcement; the cmdlets remain available
+in the current release. No cmdlet attributes or runtime warnings are added by
+this announcement.
 
-### `Deploy-AzCdnEdgeActionVersionCode`
+- `Add-AzCdnEdgeActionAttachment`
+- `Deploy-AzCdnEdgeActionVersionCode`
+- `Get-AzCdnEdgeAction`
+- `Get-AzCdnEdgeActionExecutionFilter`
+- `Get-AzCdnEdgeActionVersion`
+- `Get-AzCdnEdgeActionVersionCode`
+- `New-AzCdnEdgeAction`
+- `New-AzCdnEdgeActionExecutionFilter`
+- `New-AzCdnEdgeActionVersion`
+- `Remove-AzCdnEdgeAction`
+- `Remove-AzCdnEdgeActionAttachment`
+- `Remove-AzCdnEdgeActionExecutionFilter`
+- `Remove-AzCdnEdgeActionVersion`
+- `Update-AzCdnEdgeAction`
+- `Update-AzCdnEdgeActionExecutionFilter`
+- `Update-AzCdnEdgeActionVersion`
 
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
+The removal will stop generating the standalone EdgeAction resource API from
+`Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json`, including resource,
+attachment, execution filter, version, and version-code operations. Scripts
+using these cmdlets will need to be updated before adopting the removal release.
+Review those dependencies now; this announcement does not specify a replacement
+cmdlet or announce retirement of the underlying service.
 
-### `Get-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Get-AzCdnEdgeActionVersionCode`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `New-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `New-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `New-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
+This change does not remove EdgeAction delivery-rule actions or URL signing
+properties from the CDN/AFD API. It is independent of the CDN/AFD upgrade to API
+version `2026-07-01`. The EdgeAction Swagger input, command implementations,
+exports, and existing tests are unchanged by this announcement.
 
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-SubjectAlternativeName`
     
-
-### `Remove-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Remove-AzCdnEdgeActionAttachment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Remove-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Remove-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Update-AzCdnEdgeAction`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Update-AzCdnEdgeActionExecutionFilter`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
-
-### `Update-AzCdnEdgeActionVersion`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Change description : All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired. 
-  - This change will take effect on '5/15/2026'- The change is expected to take effect from Az version : '14.5.0'
-  - The change is expected to take effect in 'Az.Cdn' from version : '5.4.0'
 
 ## Az.CloudService
 
@@ -276,6 +201,19 @@ Preview modules are not included in this list. Read more about [module version t
 - Cmdlet breaking-change will happen to all parameter sets
   - In the next breaking change period (Nov 2025), the default VM size will change from 'Standard_Ds1_v2' to 'Standard_D2s_v5'.
   - This change is expected to take effect from Az.Compute version: 11.0.0 and Az version: 15.0.0
+
+### `Set-AzVMAEMExtension`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableWAD`
+    - This parameter is deprecated because it is only used by the legacy Azure Enhanced Monitoring (AEM) extension for SAP, which is being deprecated. It will be removed in a future release.
+    - This change is expected to take effect from Az.Compute version: 12.0.0 and Az version: 17.0.0
+  - `-InstallNewExtension`
+    - This parameter is deprecated. The cmdlet installs the new VM Extension for SAP by default, so this switch is no longer required. It will be removed in a future release.
+    - This change is expected to take effect from Az.Compute version: 12.0.0 and Az version: 17.0.0
+  - `-SkipStorage`
+    - This parameter is deprecated because it is only used by the legacy Azure Enhanced Monitoring (AEM) extension for SAP, which is being deprecated. It will be removed in a future release.
+    - This change is expected to take effect from Az.Compute version: 12.0.0 and Az version: 17.0.0
 
 ## Az.ContainerInstance
 
@@ -561,7 +499,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzManagedServicesDefinition_CreateExpanded`
   - `-Authorization`
     - The parameter : 'Authorization' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -764,7 +702,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzSubscriptionDiagnosticSetting_CreateExpanded`
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -838,6 +776,64 @@ Preview modules are not included in this list. Read more about [module version t
     The type of the parameter is changing from 'Array' to 'List'.
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+## Az.NetAppFiles
+
+### `Get-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Get-AzNetAppFilesSubvolumeMetadata`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Get-AzNetAppFilesVolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Volume.GetAzureRmNetAppFilesVolume' is changing
+  - The following properties in the output type are being deprecated : 'EnableSubvolumes'
+  - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
+
+### `New-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `New-AzNetAppFilesVolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Volume.NewAzureRmNetAppFilesVolume' is changing
+  - The following properties in the output type are being deprecated : 'EnableSubvolumes'
+  - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableSubvolume`
+    - EnableSubvolume is being deprecated and removed in a future release; there is no replacement.
+    - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
+
+### `Remove-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Update-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Update-AzNetAppFilesVolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Volume.UpdateAzureRmNetAppFilesVolume' is changing
+  - The following properties in the output type are being deprecated : 'EnableSubvolumes'
+  - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
 
 ## Az.Network
 
@@ -925,8 +921,6 @@ Preview modules are not included in this list. Read more about [module version t
     The type of the parameter is changing from 'Array' to 'List'.
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
-
-- Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateExpanded`
 
 ## Az.StackHCI
 

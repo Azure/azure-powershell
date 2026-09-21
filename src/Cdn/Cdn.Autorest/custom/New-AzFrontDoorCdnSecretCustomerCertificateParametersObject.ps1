@@ -38,6 +38,7 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         [string]
         $SecretVersion,
         [Parameter(HelpMessage="The list of SANs.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChangeAttribute("SubjectAlternativeName", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "The '-SubjectAlternativeName' parameter is being deprecated and will be removed in a future release, following the removal of the 'subjectAlternativeNames' property from the 'CustomerCertificateParameters' schema in the service contract.")]
         [string[]]
         $SubjectAlternativeName,
         [Parameter(HelpMessage="Whether to use the latest version for the certificate.")]
@@ -49,24 +50,24 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
     )
 
     process {
-        $ObjectProperties = @{}
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('SecretSourceId')) {
-            $ObjectProperties.SecretSourceId = $SecretSourceId
+            $Object.SecretSourceId = $SecretSourceId
         }
         if ($PSBoundParameters.ContainsKey('SecretVersion')) {
-            $ObjectProperties.SecretVersion = $SecretVersion
+            $Object.SecretVersion = $SecretVersion
         }
         if ($PSBoundParameters.ContainsKey('SubjectAlternativeName')) {
-            $ObjectProperties.SubjectAlternativeName = $SubjectAlternativeName
+            $Object.SubjectAlternativeName = $SubjectAlternativeName
         }
         if ($PSBoundParameters.ContainsKey('UseLatestVersion')) {
-            $ObjectProperties.UseLatestVersion = $UseLatestVersion
+            $Object.UseLatestVersion = $UseLatestVersion
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
-            $ObjectProperties.Type = $Type
+            $Object.Type = $Type
         }
-        return [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters]::DeserializeFromDictionary($ObjectProperties)
+        return $Object
     }
 }
 

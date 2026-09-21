@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FailoverTestType
     {
+        /// <summary>
+        /// SingleSiteFailover
+        /// </summary>
         public const string SingleSiteFailover = "SingleSiteFailover";
+        /// <summary>
+        /// MultiSiteFailover
+        /// </summary>
         public const string MultiSiteFailover = "MultiSiteFailover";
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
     }
 }

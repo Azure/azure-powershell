@@ -17,7 +17,8 @@ Creates a new Recovery Services vault.
 New-AzRecoveryServicesVault -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>]
  [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CostManagementGranularity <CostManagementGranularity>] [-DefaultProfile <IAzureContextContainer>] 
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +40,13 @@ New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupN
 ```
 
 Create recovery service vault with options like ImmutabilityState, PublicNetworkAccess. Please note Public Network Access is by default enabled for RS vault (if not specified) and can be updated using Update-AzRecoveryServicesVault cmdlet.
+
+### Example 3: Create recovery service vault with CostManagementGranularity
+```powershell
+New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName" -Location "westus" -CostManagementGranularity "ProtectedItemLevel"
+```
+
+Create recovery service vault with cost management granularity set to "ProtectedItemLevel". This controls the level at which cost data is tracked and reported. Allowed values are "VaultLevel", "ProtectedItemLevel", and "ProtectedItemWithParentTag".
 
 ## PARAMETERS
 
@@ -90,12 +98,29 @@ Accept wildcard characters: False
 ### -ImmutabilityState
 Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
 Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+When immutability is enabled, its configuration defaults to AsPerPolicy and inherits the immutable duration from the backup policy.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Disabled, Unlocked
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CostManagementGranularity
+Specifies the granularity level for cost management settings of the vault. This parameter controls the level at which cost data is tracked and reported.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.CostManagementGranularity]
+Parameter Sets: (All)
+Aliases:
+Accepted values: VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag
 
 Required: False
 Position: Named
@@ -231,5 +256,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzRecoveryServicesVaultSettingsFile](./Get-AzRecoveryServicesVaultSettingsFile.md)
 
 [Remove-AzRecoveryServicesVault](./Remove-AzRecoveryServicesVault.md)
-
 

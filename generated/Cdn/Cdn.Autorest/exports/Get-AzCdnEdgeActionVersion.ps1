@@ -143,10 +143,10 @@ begin {
         }
 
         $mapping = @{
-            List = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersion';
-            Get = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersion';
+            Get = 'Az.Cdn.private\Get-AzCdnEdgeActionVersion_Get';
+            List = 'Az.Cdn.private\Get-AzCdnEdgeActionVersion_List';
         }
-        if (('List', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

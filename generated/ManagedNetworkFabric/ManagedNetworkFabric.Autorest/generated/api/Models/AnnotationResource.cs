@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
     /// <summary>
-    /// Switch configuration entries require a description to discern between configuration groups.
+    /// Switch configuration entries require a description to discern between configuration group
     /// </summary>
     public partial class AnnotationResource :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         }
     }
-    /// Switch configuration entries require a description to discern between configuration groups.
+    /// Switch configuration entries require a description to discern between configuration group
     public partial interface IAnnotationResource :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string Annotation { get; set; }
 
     }
-    /// Switch configuration entries require a description to discern between configuration groups.
+    /// Switch configuration entries require a description to discern between configuration group
     internal partial interface IAnnotationResourceInternal
 
     {

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class RpInMageRecoveryPointType
     {
+        /// <summary>
+        /// LatestTime
+        /// </summary>
         public const string LatestTime = "LatestTime";
+        /// <summary>
+        /// LatestTag
+        /// </summary>
         public const string LatestTag = "LatestTag";
+        /// <summary>
+        /// Custom
+        /// </summary>
         public const string Custom = "Custom";
     }
 }

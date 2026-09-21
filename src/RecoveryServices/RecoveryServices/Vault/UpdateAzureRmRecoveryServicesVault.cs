@@ -124,6 +124,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ImmutabilityState? ImmutabilityState { get; set; }
 
         /// <summary>
+        /// Gets or sets the cost management granularity for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Cost Management Granularity for the vault. Allowed values are \"VaultLevel\", \"ProtectedItemLevel\", \"ProtectedItemWithParentTag\".")]
+        [ValidateSet("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        public CostManagementGranularity? CostManagementGranularity { get; set; }
+
+        /// <summary>
         /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Parameter deprecated. Please use SecureToken instead")]        
@@ -141,6 +148,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Cross subscription restore state of the vault. Allowed values are \"Enabled\", \"Disabled\", \"PermanentlyDisabled\".")]
         [ValidateSet("Enabled", "Disabled", "PermanentlyDisabled")]
         public CrossSubscriptionRestoreState? CrossSubscriptionRestoreState { get; set; }
+
+        /// <summary>
+        /// Enables or disables Source Scan for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Source Scan state of the vault. Allowed values are \"Enabled\", \"Disabled\".")]
+        [ValidateSet("Enabled", "Disabled")]
+        public SourceScanState? SourceScanState { get; set; }
 
         #endregion
 
@@ -270,7 +284,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         }
                         
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null)
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null && CostManagementGranularity == null && SourceScanState == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
@@ -357,7 +371,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {
                             throw new ArgumentException(Resources.ImmutabilityCantBeLocked);
                         }
-                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();                                               
+                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
+
+                        if (ImmutabilityState != cmdletModel.ImmutabilityState.Disabled)
+                        {
+                            patchVault.Properties.SecuritySettings.ImmutabilitySettings.Configuration =
+                                vault.Properties?.SecuritySettings?.ImmutabilitySettings?.Configuration ??
+                                new ServiceClientModel.ImmutabilityConfiguration
+                                {
+                                    Type = ServiceClientModel.ImmutabilityType.AsPerPolicy
+                                };
+                        }
                     }
 
                     // update cross subscription restore state of the vault
@@ -369,6 +393,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
                         patchVault.Properties.RestoreSettings = csrSetting;
+                    }
+
+                    // update cost management granularity of the vault
+                    if(CostManagementGranularity != null)
+                    {
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.CostManagementSettings == null) { patchVault.Properties.CostManagementSettings = new CostManagementSettings(); }
+                        patchVault.Properties.CostManagementSettings.GranularityLevel = CostManagementGranularity.ToString();
+                    }
+
+                    // update source scan configuration of the vault
+                    if (SourceScanState != null)
+                    {
+                        ServiceClientModel.SourceScanConfiguration sourceScanConfiguration = new ServiceClientModel.SourceScanConfiguration();
+                        sourceScanConfiguration.State = SourceScanState.ToString();
+
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.SecuritySettings == null) { patchVault.Properties.SecuritySettings = new SecuritySettings(); }
+                        patchVault.Properties.SecuritySettings.SourceScanConfiguration = sourceScanConfiguration;
                     }
 
                     #endregion

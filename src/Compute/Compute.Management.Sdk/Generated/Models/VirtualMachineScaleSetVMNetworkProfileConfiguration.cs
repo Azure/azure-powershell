@@ -26,10 +26,15 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="networkInterfaceConfigurations">The list of network configurations.
         /// </param>
-        public VirtualMachineScaleSetVMNetworkProfileConfiguration(System.Collections.Generic.IList<VirtualMachineScaleSetNetworkConfiguration> networkInterfaceConfigurations = default(System.Collections.Generic.IList<VirtualMachineScaleSetNetworkConfiguration>))
+
+        /// <param name="interconnectGroupProfile">Specifies the interconnect group profile to associate with the scale set vm
+        /// instance. Minimum api-version: 2026-03-01.
+        /// </param>
+        public VirtualMachineScaleSetVMNetworkProfileConfiguration(System.Collections.Generic.IList<VirtualMachineScaleSetNetworkConfiguration> networkInterfaceConfigurations = default(System.Collections.Generic.IList<VirtualMachineScaleSetNetworkConfiguration>), InterconnectGroupProfile interconnectGroupProfile = default(InterconnectGroupProfile))
 
         {
             this.NetworkInterfaceConfigurations = networkInterfaceConfigurations;
+            this.InterconnectGroupProfile = interconnectGroupProfile;
             CustomInit();
         }
 
@@ -44,5 +49,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkInterfaceConfigurations")]
         public System.Collections.Generic.IList<VirtualMachineScaleSetNetworkConfiguration> NetworkInterfaceConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the interconnect group profile to associate with the
+        /// scale set vm instance. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectGroupProfile")]
+        public InterconnectGroupProfile InterconnectGroupProfile {get; set; }
     }
 }

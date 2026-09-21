@@ -6,43 +6,43 @@
       "value": "southcentralus"
     },
     "namespace_name": {
-      "value": "namespaceName6xazrb"
+      "value": "namespaceNamegi5dep"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceNamelzvg4y"
+      "value": "namespaceNamempwuof"
     },
     "primary_namespace_name": {
-      "value": "namespaceNamenxqfh4"
+      "value": "namespaceName4ntyl3"
     },
     "secondary_namespace_name": {
-      "value": "namespaceNamem3hun9"
+      "value": "namespaceNamewngrkd"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-ruleultwf8"
+      "value": "auth-rulewmp63d"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-ruleg465d0"
+      "value": "auth-rulezr25bj"
     },
     "eventhub_name": {
-      "value": "eventHubs758f4"
+      "value": "eventHubnbj67a"
     },
     "schema_group_name": {
-      "value": "schemaGroupijkz8r"
+      "value": "schemaGroupzxcvqh"
     },
     "appgroup_name": {
-      "value": "appGroup0exmij"
+      "value": "appGroupn0imzh"
     },
     "subnet1Id": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default"
+      "value": "/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.Network/virtualNetworks/eh-ps-yu2o19-vnet/subnets/default"
     },
     "peName1": {
-      "value": "privateEndpoint-uedzlo"
+      "value": "privateEndpoint-olv4w7"
     },
     "peName2": {
-      "value": "privateEndpoint-iq47tv"
+      "value": "privateEndpoint-ntrlpe"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb"
+      "value": "/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-EventHub-wvbour/providers/Microsoft.EventHub/namespaces/namespaceNamegi5dep"
     },
     "useZoneRedundancy": {
       "value": true

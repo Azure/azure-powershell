@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list NSP logging configuration. Contains a list of NSP logging configurations and a URL link
-    /// to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a NspLoggingConfiguration list operation.</summary>
     public partial class NspLoggingConfigurationListResult
     {
 

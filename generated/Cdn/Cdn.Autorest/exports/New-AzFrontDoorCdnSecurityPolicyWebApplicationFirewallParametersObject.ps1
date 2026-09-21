@@ -36,6 +36,8 @@ ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associatio
   [Domain <List<IActivatedResourceReference>>]: List of domains.
     [Id <String>]: Resource ID.
   [PatternsToMatch <List<String>>]: List of paths
+  [Route <List<IResourceReference>>]: List of routes.
+    [Id <String>]: Resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 #>
@@ -48,6 +50,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation[]]
     # Waf associations.
     ${Association},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.Boolean]
+    # Indicates if this is a profile-level WAF policy.
+    ${IsProfileLevel},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]

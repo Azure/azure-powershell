@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="diskEncryptionSetId">The DiskEncryptionSet ARM Id.
         /// </param>
 
+        /// <param name="confidentialDiskEncryptionSetId">The ConfidentialDiskEncryptionSet ARM Id.
+        /// </param>
+
         /// <param name="seedManagedDiskId">The ARM Id of the seed managed disk.
         /// </param>
 
@@ -81,7 +84,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="diskSizeInGb">The target disk size in GB.
         /// </param>
-        public VMwareCbtProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string diskType = default(string), string diskPath = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string logStorageAccountSasSecretName = default(string), string diskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string targetBlobUri = default(string), string targetDiskName = default(string), GatewayOperationDetails gatewayOperationDetails = default(GatewayOperationDetails), int? sectorSizeInBytes = default(int?), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
+        public VMwareCbtProtectedDiskDetails(string diskId = default(string), string diskName = default(string), string diskType = default(string), string diskPath = default(string), string isOSDisk = default(string), long? capacityInBytes = default(long?), string logStorageAccountId = default(string), string logStorageAccountSasSecretName = default(string), string diskEncryptionSetId = default(string), string confidentialDiskEncryptionSetId = default(string), string seedManagedDiskId = default(string), string seedBlobUri = default(string), string targetManagedDiskId = default(string), string targetBlobUri = default(string), string targetDiskName = default(string), GatewayOperationDetails gatewayOperationDetails = default(GatewayOperationDetails), int? sectorSizeInBytes = default(int?), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
 
         {
             this.DiskId = diskId;
@@ -93,6 +96,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.LogStorageAccountId = logStorageAccountId;
             this.LogStorageAccountSasSecretName = logStorageAccountSasSecretName;
             this.DiskEncryptionSetId = diskEncryptionSetId;
+            this.ConfidentialDiskEncryptionSetId = confidentialDiskEncryptionSetId;
             this.SeedManagedDiskId = seedManagedDiskId;
             this.SeedBlobUri = seedBlobUri;
             this.TargetManagedDiskId = targetManagedDiskId;
@@ -165,6 +169,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionSetId")]
         public string DiskEncryptionSetId {get; private set; }
+
+        /// <summary>
+        /// Gets the ConfidentialDiskEncryptionSet ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionSetId")]
+        public string ConfidentialDiskEncryptionSetId {get; private set; }
 
         /// <summary>
         /// Gets the ARM Id of the seed managed disk.

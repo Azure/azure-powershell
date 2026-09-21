@@ -125,6 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId = (string) content.GetValueForProperty("BilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("OfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).OfferId = (string) content.GetValueForProperty("OfferId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).OfferId, global::System.Convert.ToString);
+            }
             if (content.Contains("Subscribed"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).Subscribed = (bool?) content.GetValueForProperty("Subscribed",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).Subscribed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -161,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("BilledAzureSubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId = (string) content.GetValueForProperty("BilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).BilledAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).OfferId = (string) content.GetValueForProperty("OfferId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)this).OfferId, global::System.Convert.ToString);
             }
             if (content.Contains("Subscribed"))
             {

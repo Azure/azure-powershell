@@ -19,10 +19,19 @@
 -->
 
 ## Upcoming Release
-* Fixed placeholder text in help examples for `New-AzFrontDoorCdnRuleEdgeActionObject`.
+
+* Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
+
+## Version 6.2.0
+* Added ChangeSafety Support
+* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
+
+## Version 6.1.0
+* Upgraded API version to 2026-04-01-preview.
+* Fixed CDN long-running operations that returned completed resource responses without a Location header.
 
 ## Version 6.0.2
-* Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets, which will be removed in a future release.
+* Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.
 
 ## Version 6.0.1
 * Bug fix for https://github.com/Azure/azure-powershell/issues/29231

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzEventHubNamespaceFail
 Describe 'Start-AzEventHubNamespaceFailOver' {
     It 'SetExpanded' {
         # Failover geo-Dr namespace
-        $eventhubNamespace = Start-AzEventHubNamespaceFailOver -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -PrimaryLocation eastus2euap
+        $eventhubNamespace = Start-AzEventHubNamespaceFailOver -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -PrimaryLocation southcentralus
         $eventhubNamespace = Get-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 
         $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
     }

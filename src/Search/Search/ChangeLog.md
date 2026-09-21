@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.12.1
 * Updated Search service identity casts to explicitly use the Search SDK `Identity` model.
 
 ## Version 0.12.0
