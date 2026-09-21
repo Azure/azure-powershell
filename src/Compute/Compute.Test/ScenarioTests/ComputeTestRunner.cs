@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
@@ -24,6 +25,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         protected readonly ITestRunner TestRunner;
 
         protected ComputeTestRunner(ITestOutputHelper output)
+            : this(output, includeDependentModules: true)
+        {
+        }
+
+        protected ComputeTestRunner(ITestOutputHelper output, bool includeDependentModules)
         {
             TestRunner = TestManager.CreateInstance (output)
                 .WithNewPsScriptFilename ($"{GetType().Name}.ps1")
@@ -39,10 +45,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
-                    helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
-                })
+                }.Concat(includeDependentModules
+                    ? new[]
+                    {
+                        helper.GetRMModulePath("AzureRM.Network.psd1"),
+                        helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
+                        helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
+                    }
+                    : new string[0]).ToArray())
                 .WithNewRecordMatcherArguments (
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
