@@ -117,6 +117,34 @@ Waiting for 60 seconds for roles to propagate
 
 The above command is used to assign permissions to the backup vault "VaultName" under resource group "ResourceGroupName" at the "ResourceGroup" scope using a User Assigned Managed Identity (UAMI).
 
+### Example 6: Grant missing permissions to configure backup for AzureElasticSAN
+```powershell
+$backupInstance = Get-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "VaultName" -SubscriptionId "SubscriptionId" | Where-Object { $_.Name -match "volumeGroupName" }
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -BackupInstance $backupInstance[0]
+```
+
+```output
+Assigned Disk Snapshot Contributor permission to the backup vault over snapshot resource group with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName
+Assigned Elastic SAN Snapshot Exporter permission to the backup vault over DataSource with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.ElasticSan/elasticSans/elasticSanName/volumeGroups/volumeGroupName
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command assigns the backup permissions ("Elastic SAN Snapshot Exporter" on the volume group and "Disk Snapshot Contributor" on the snapshot resource group) required to configure backup for an Azure Elastic SAN volume group.
+
+### Example 7: Grant missing permissions for restore for AzureElasticSAN
+```powershell
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "ResourceGroupName" -VaultName "VaultName" -PermissionsScope "ResourceGroup" -RestoreRequest $restoreRequest -SnapshotResourceGroupId "/subscriptions/SubscriptionId/resourceGroups/SnapshotResourceGroupName"
+```
+
+```output
+Assigned Disk Snapshot Contributor permission to the backup vault over snapshot resource group with Id /subscriptions/SubscriptionId/resourceGroups/SnapshotResourceGroupName
+Assigned Elastic SAN Volume Importer permission to the backup vault over DataSource with Id /subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.ElasticSan/elasticSans/elasticSanName/volumeGroups/targetVolumeGroup
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command assigns the restore permissions ("Elastic SAN Volume Importer" on the target volume group and access on the snapshot resource group) required to restore an Azure Elastic SAN volume. $restoreRequest is built using Initialize-AzDataProtectionRestoreRequest with DatasourceType AzureElasticSAN.
+
 ## PARAMETERS
 
 ### -BackupInstance

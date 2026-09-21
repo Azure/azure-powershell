@@ -26,12 +26,12 @@ use-extension:
 
 ###
 ``` yaml
-commit: fae30cdf5799e6c1323b2ecc24ba4e9669571ee4
+commit: 13121b2c98320c042f28a8393fb5c6f16af2ed3c
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/Legacy/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/Legacy/stable/2014-04-01-legacy/sql.core_legacy.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2022-05-01-preview/ServerDevOpsAudit.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-11-01-preview/BlobAuditing.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2026-08-01-preview/blobAuditing.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/SyncGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/DatabaseSecurityAlertPolicies.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/DatabaseVulnerabilityAssesmentRuleBaselines.json

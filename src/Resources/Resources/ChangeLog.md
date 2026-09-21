@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 10.2.1
+* Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.
+
 ## Version 10.2.0
 * Updated Policy cmdlets to use `2026-01-01` API
 * Added `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, and `Update-AzPolicyEnrollment` for Policy Enrollments.

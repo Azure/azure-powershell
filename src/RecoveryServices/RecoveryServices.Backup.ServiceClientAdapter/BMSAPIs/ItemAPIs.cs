@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RestAzureNS = Microsoft.Rest.Azure;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -118,8 +119,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="request">Source Scan configuration request</param>
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
-        /// <returns>Response returned by the service for this operation, including tracking headers for async jobs</returns>
-        public RestAzureNS.AzureOperationResponse ConfigureProtectedItemSourceScan(
+        /// <returns>Final operation status returned by the service after the long-running operation completes</returns>
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus> ConfigureProtectedItemSourceScan(
             string containerName,
             string protectedItemName,
             ProtectedItemConfigureSourceScanRequest request,
@@ -131,7 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 throw new ArgumentNullException(nameof(request));
             }
 
-            var response = BmsAdapter.Client.ConfigureSourceScan.BeginExecuteWithHttpMessagesAsync(
+            var response = BmsAdapter.Client.ConfigureSourceScan.ExecuteWithHttpMessagesAsync(
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 request.SourceScanAction,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
-            return ToAzureOperationResponseWithoutBody(response);
+            return ToAzureOperationResponse<ServiceClientModel.OperationStatus, ConfigureSourceScanExecuteHeaders>(response);
         }
 
         /// <summary>
