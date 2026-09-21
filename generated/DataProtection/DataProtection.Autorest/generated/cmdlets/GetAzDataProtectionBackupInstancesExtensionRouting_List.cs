@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Gets a list of backup instances associated with a tracked resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/{resourceId}/providers/Microsoft.DataProtection/backupInstances", ApiVersion = "2026-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/{resourceId}/providers/Microsoft.DataProtection/backupInstances", ApiVersion = "2026-06-01")]
     public partial class GetAzDataProtectionBackupInstancesExtensionRouting_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IContext
