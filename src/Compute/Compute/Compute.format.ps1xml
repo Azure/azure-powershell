@@ -441,6 +441,18 @@
                 <Label>FilterExpression</Label>
                 <PropertyName>FilterExpression</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ReleaseCategory</Label>
+                <PropertyName>ReleaseCategory</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>UrgencyLevel</Label>
+                <PropertyName>UrgencyLevel</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RunProfile</Label>
+                <PropertyName>RunProfile</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -502,6 +514,30 @@
               <ListItem>
                 <Label>VMScaleSetEnabled</Label>
                 <PropertyName>VMScaleSetEnabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReleaseNotes</Label>
+                <PropertyName>ReleaseNotes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReleaseCategory</Label>
+                <PropertyName>ReleaseCategory</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>UrgencyLevel</Label>
+                <PropertyName>UrgencyLevel</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RunProfile</Label>
+                <PropertyName>RunProfile</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtensionFeatureMetadata</Label>
+                <ScriptBlock>
+                  if ($_.ExtensionFeatureMetadata -and $_.ExtensionFeatureMetadata.ExtensionFeatureTags) {
+                    "ExtensionFeatureTags={" + (($_.ExtensionFeatureMetadata.ExtensionFeatureTags | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join "; ") + "}"
+                  }
+                </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
