@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="ruleType">Rule type.
-        /// Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;, &#39;AdvancedRouting&#39;</param>
 
         /// <param name="priority">Priority of the request routing rule.
         /// </param>
@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="urlPathMap">URL path map resource of the application gateway.
         /// </param>
 
+        /// <param name="advancedRoutingMap">Advanced routing map resource of the application gateway.
+        /// </param>
+
         /// <param name="rewriteRuleSet">Rewrite Rule Set resource in Basic rule of the application gateway.
         /// </param>
 
@@ -71,7 +74,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="entraJwtValidationConfig">Entra JWT validation configuration resource of the application gateway.
         /// </param>
-        public ApplicationGatewayRequestRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource entraJwtValidationConfig = default(SubResource))
+
+        /// <param name="authConfigs">Authentication configuration bindings of the request routing rule. Only one
+        /// authentication configuration is supported. Authentication configuration
+        /// names must be unique across the Application Gateway, and an Application
+        /// Gateway can reference at most 100 distinct authentication policies.
+        /// Authentication policies can only be bound to Application Gateways using the
+        /// Standard_v2 or WAF_v2 SKU.
+        /// </param>
+        public ApplicationGatewayRequestRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource advancedRoutingMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource entraJwtValidationConfig = default(SubResource), System.Collections.Generic.IList<ApplicationGatewayAuthConfig> authConfigs = default(System.Collections.Generic.IList<ApplicationGatewayAuthConfig>))
 
         : base(id)
         {
@@ -85,10 +96,12 @@ namespace Microsoft.Azure.Management.Network.Models
             this.BackendHttpSettings = backendHttpSettings;
             this.HttpListener = httpListener;
             this.UrlPathMap = urlPathMap;
+            this.AdvancedRoutingMap = advancedRoutingMap;
             this.RewriteRuleSet = rewriteRuleSet;
             this.RedirectConfiguration = redirectConfiguration;
             this.LoadDistributionPolicy = loadDistributionPolicy;
             this.EntraJwtValidationConfig = entraJwtValidationConfig;
+            this.AuthConfigs = authConfigs;
             CustomInit();
         }
 
@@ -125,7 +138,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets rule type. Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;
+        /// Gets or sets rule type. Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;, &#39;AdvancedRouting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ruleType")]
         public string RuleType {get; set; }
@@ -161,6 +174,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource UrlPathMap {get; set; }
 
         /// <summary>
+        /// Gets or sets advanced routing map resource of the application gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.advancedRoutingMap")]
+        public SubResource AdvancedRoutingMap {get; set; }
+
+        /// <summary>
         /// Gets or sets rewrite Rule Set resource in Basic rule of the application
         /// gateway.
         /// </summary>
@@ -185,6 +204,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.entraJWTValidationConfig")]
         public SubResource EntraJwtValidationConfig {get; set; }
+
+        /// <summary>
+        /// Gets or sets authentication configuration bindings of the request routing
+        /// rule. Only one authentication configuration is supported. Authentication
+        /// configuration names must be unique across the Application Gateway, and an
+        /// Application Gateway can reference at most 100 distinct authentication
+        /// policies. Authentication policies can only be bound to Application Gateways
+        /// using the Standard_v2 or WAF_v2 SKU.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authConfigs")]
+        public System.Collections.Generic.IList<ApplicationGatewayAuthConfig> AuthConfigs {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -217,6 +247,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
+
+            if (this.AuthConfigs != null)
+            {
+                if (this.AuthConfigs.Count > 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxItems, "AuthConfigs", 1);
+                }
+                foreach (var element in this.AuthConfigs)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 * Added `MigrateGatewayForPointToSiteProfile` and `UpgradeGatewayToDualStack` as supported values for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
+* Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the client certificate verification mode (`Strict` or `Passthrough`) for Application Gateway frontend mutual TLS (mTLS). In `Passthrough` mode the client certificate is forwarded to the backend without being verified by the application gateway.
+* Upgraded Network SDK to API version `2026-01-01`.
+* Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
+    - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
+    - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).

@@ -44,7 +44,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">Provisioning states of a resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public IpamPoolProperties(System.Collections.Generic.IList<string> addressPrefixes, string description = default(string), string displayName = default(string), System.Collections.Generic.IList<string> ipAddressType = default(System.Collections.Generic.IList<string>), string parentPoolName = default(string), string provisioningState = default(string))
+
+        /// <param name="minAllocationSize">Minimum number of IP addresses required for allocations from this IpamPool
+        /// to be compliant. Must be less than or equal to the maximum allocation size.
+        /// If not specified or empty, no minimum is enforced.
+        /// </param>
+
+        /// <param name="maxAllocationSize">Maximum number of IP addresses allowed for allocations from this IpamPool
+        /// to be compliant. Must be greater than or equal to the minimum allocation
+        /// size. If not specified or empty, no maximum is enforced.
+        /// </param>
+        public IpamPoolProperties(System.Collections.Generic.IList<string> addressPrefixes, string description = default(string), string displayName = default(string), System.Collections.Generic.IList<string> ipAddressType = default(System.Collections.Generic.IList<string>), string parentPoolName = default(string), string provisioningState = default(string), string minAllocationSize = default(string), string maxAllocationSize = default(string))
 
         {
             this.Description = description;
@@ -53,6 +63,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ParentPoolName = parentPoolName;
             this.AddressPrefixes = addressPrefixes;
             this.ProvisioningState = provisioningState;
+            this.MinAllocationSize = minAllocationSize;
+            this.MaxAllocationSize = maxAllocationSize;
             CustomInit();
         }
 
@@ -98,6 +110,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets minimum number of IP addresses required for allocations from
+        /// this IpamPool to be compliant. Must be less than or equal to the maximum
+        /// allocation size. If not specified or empty, no minimum is enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minAllocationSize")]
+        public string MinAllocationSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum number of IP addresses allowed for allocations from
+        /// this IpamPool to be compliant. Must be greater than or equal to the minimum
+        /// allocation size. If not specified or empty, no maximum is enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxAllocationSize")]
+        public string MaxAllocationSize {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -110,6 +138,8 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AddressPrefixes");
             }
+
+
 
 
 

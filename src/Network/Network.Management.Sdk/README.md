@@ -27,26 +27,27 @@ use-extension:
 
 ###
 ``` yaml
-commit: a48bb3329f0d841f42232e6f0086b6e43bc242ef
+commit: e6556d8af59d346de05e19d4e6dd7d0d6b67c128
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/applicationGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/azureWebCategory.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/expressRoute.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firewall.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firewallPolicy.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/firstPartyServiceTag.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/interconnectGroup.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/loadBalancer.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkManager.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkSecurityPerimeter.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkWatcher.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/networkingOperations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/serviceGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualNetwork.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualNetworkAppliance.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-09-01/virtualWan.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/applicationGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/authenticationPolicy.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/azureWebCategory.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/common.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/expressRoute.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/firewall.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/firewallPolicy.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/firstPartyServiceTag.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/interconnectGroup.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/loadBalancer.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkManager.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkWatcher.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkingOperations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/serviceGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualNetwork.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualNetworkAppliance.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualWan.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2018-10-01/vmssNetwork.json
 
 output-folder: Generated
@@ -54,6 +55,35 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# Add the IPAM allocation bounds introduced by azure-rest-api-specs commit
+# cd2c909bbb9c0c59ab219bb68222f9d6c6a64100 without upgrading unrelated
+# virtual network operations from the module's 2025-09-01 API baseline.
+  - from: swagger-document
+    where: $
+    transform: >
+      if ($.definitions?.IpamPoolProperties &&
+          $.definitions?.IpamPoolUpdateProperties) {
+        $.definitions.IpamPoolProperties.properties.minAllocationSize = {
+          type: "string",
+          description: "Minimum number of IP addresses required for allocations from this IpamPool to be compliant. Must be less than or equal to the maximum allocation size. If not specified or empty, no minimum is enforced."
+        };
+        $.definitions.IpamPoolProperties.properties.maxAllocationSize = {
+          type: "string",
+          description: "Maximum number of IP addresses allowed for allocations from this IpamPool to be compliant. Must be greater than or equal to the minimum allocation size. If not specified or empty, no maximum is enforced."
+        };
+        $.definitions.IpamPoolUpdateProperties.properties.minAllocationSize = {
+          type: "string",
+          description: "Minimum number of IP addresses required for allocations from this IpamPool to be compliant. Must be less than or equal to the maximum allocation size. Omit to leave the current value unchanged; set to an empty string to clear it."
+        };
+        $.definitions.IpamPoolUpdateProperties.properties.maxAllocationSize = {
+          type: "string",
+          description: "Maximum number of IP addresses allowed for allocations from this IpamPool to be compliant. Must be greater than or equal to the minimum allocation size. Omit to leave the current value unchanged; set to an empty string to clear it."
+        };
+      }
+# Use the API version that implements allocation bounds for IPAM pool requests.
+  - from: IpamPoolsOperations.cs
+    where: $
+    transform: $ = $.replace(/string apiVersion = "2025-09-01";/g, 'string apiVersion = "2026-01-01";');
 # The 2025-09-01 service response returns resourceGuid at the resource root, while the
 # published swagger places it under properties. Move the schema property during generation
 # until the current and next API specifications are corrected.
