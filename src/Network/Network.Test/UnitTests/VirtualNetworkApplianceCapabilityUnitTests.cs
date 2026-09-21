@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -107,6 +108,60 @@ namespace Commands.Network.Test.UnitTests
             Assert.Equal("PLGateway", VirtualNetworkApplianceCapabilityBaseCmdlet.GetCapabilityKind(new PLGatewayCapability()));
             Assert.Equal("PLIPForwarders", VirtualNetworkApplianceCapabilityBaseCmdlet.GetCapabilityKind(new PlipForwardersCapability()));
             Assert.Equal("NAT64", VirtualNetworkApplianceCapabilityBaseCmdlet.GetCapabilityKind(new Nat64Capability()));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("PLGatewayFastpath", "IPv6")]
+        [InlineData("PLGateway", "DualStack")]
+        [InlineData("PLIPForwarders", "DualStack")]
+        public void BuildCapabilityParameters_MismatchedIpVersionForKind_Throws(string kind, string ipVersion)
+        {
+            var exception = Assert.Throws<ArgumentException>(
+                () => VirtualNetworkApplianceCapabilityBaseCmdlet.BuildCapabilityParameters(kind, ipVersion));
+            Assert.Contains(kind, exception.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParseCapabilityResourceId_ValidId_ParsesNames()
+        {
+            const string id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkAppliances/vna1/capabilities/pl-gateway";
+
+            VirtualNetworkApplianceCapabilityBaseCmdlet.ParseCapabilityResourceId(id, out var resourceGroupName, out var applianceName, out var capabilityName);
+
+            Assert.Equal("rg1", resourceGroupName);
+            Assert.Equal("vna1", applianceName);
+            Assert.Equal("pl-gateway", capabilityName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParseCapabilityResourceId_NamesEqualToStructuralKeywords_ParsedByPosition()
+        {
+            // An appliance literally named "capabilities" and a capability literally named "resourceGroups"
+            // must still be parsed from their fixed positions, not by keyword search.
+            const string id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkAppliances/capabilities/capabilities/resourceGroups";
+
+            VirtualNetworkApplianceCapabilityBaseCmdlet.ParseCapabilityResourceId(id, out var resourceGroupName, out var applianceName, out var capabilityName);
+
+            Assert.Equal("rg1", resourceGroupName);
+            Assert.Equal("capabilities", applianceName);
+            Assert.Equal("resourceGroups", capabilityName);
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("/subscriptions/s/resourceGroups/rg/providers/Microsoft.Network/virtualNetworkAppliances/vna")] // parent id, too short
+        [InlineData("/subscriptions/s/resourceGroups/rg/providers/Microsoft.Compute/virtualNetworkAppliances/vna/capabilities/c")] // wrong provider
+        [InlineData("/subscriptions/s/resourceGroups/rg/providers/Microsoft.Network/virtualNetworkAppliances/vna/subnets/c")] // wrong child type
+        [InlineData("/subscriptions/s/resourceGroups/rg/providers/Microsoft.Network/virtualNetworkAppliances/vna/capabilities/c/extra")] // too long
+        public void ParseCapabilityResourceId_MalformedId_Throws(string resourceId)
+        {
+            Assert.Throws<PSArgumentException>(
+                () => VirtualNetworkApplianceCapabilityBaseCmdlet.ParseCapabilityResourceId(resourceId, out _, out _, out _));
         }
     }
 }
