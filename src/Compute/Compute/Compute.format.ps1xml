@@ -442,14 +442,23 @@
                 <PropertyName>FilterExpression</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.ReleaseCategory</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>ReleaseCategory</Label>
                 <PropertyName>ReleaseCategory</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.UrgencyLevel</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>UrgencyLevel</Label>
                 <PropertyName>UrgencyLevel</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.RunProfile</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>RunProfile</Label>
                 <PropertyName>RunProfile</PropertyName>
               </ListItem>
@@ -516,22 +525,37 @@
                 <PropertyName>VMScaleSetEnabled</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.ReleaseNotes</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>ReleaseNotes</Label>
                 <PropertyName>ReleaseNotes</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.ReleaseCategory</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>ReleaseCategory</Label>
                 <PropertyName>ReleaseCategory</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.UrgencyLevel</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>UrgencyLevel</Label>
                 <PropertyName>UrgencyLevel</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.RunProfile</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>RunProfile</Label>
                 <PropertyName>RunProfile</PropertyName>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$null -ne $_.ExtensionFeatureMetadata -and @($_.ExtensionFeatureMetadata.ExtensionFeatureTags).Count -gt 0</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>ExtensionFeatureMetadata</Label>
                 <ScriptBlock>
                   if ($_.ExtensionFeatureMetadata -and $_.ExtensionFeatureMetadata.ExtensionFeatureTags) {
