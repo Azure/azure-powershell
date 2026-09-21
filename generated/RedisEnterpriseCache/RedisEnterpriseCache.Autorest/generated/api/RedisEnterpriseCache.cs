@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
     {
 
         /// <summary>update a particular access policy assignment for a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment> AccessPolicyAssignmentCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a particular access policy assignment for a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a particular access policy assignment for a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment> AccessPolicyAssignmentCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a particular access policy assignment for a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment> AccessPolicyAssignmentCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="AccessPolicyAssignmentCreateOrUpdate" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Deletes a single access policy assignment.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -711,7 +711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -958,7 +958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="AccessPolicyAssignmentDelete" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets information about access policy assignment for database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment> AccessPolicyAssignmentGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1153,7 +1153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets information about access policy assignment for database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1167,7 +1167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment> AccessPolicyAssignmentGetWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string accessPolicyAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="AccessPolicyAssignmentGet" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1331,7 +1331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1345,7 +1345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets all access policy assignments..</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1360,7 +1360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentList(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessPolicyAssignmentListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1459,7 +1459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentList> AccessPolicyAssignmentListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1505,7 +1505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets all access policy assignments..</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1518,7 +1518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignmentList> AccessPolicyAssignmentListWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1666,7 +1666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="AccessPolicyAssignmentList" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1680,7 +1680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1692,7 +1692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>create a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1709,7 +1709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesCreate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1758,7 +1758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1818,7 +1818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1867,7 +1867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>create a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1883,7 +1883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesCreateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1919,7 +1919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>create a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1933,7 +1933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1969,7 +1969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>create a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -1984,7 +1984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesCreateWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2317,7 +2317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesCreate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2332,7 +2332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2346,7 +2346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Deletes a single database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2362,7 +2362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2406,7 +2406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2604,7 +2604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2618,7 +2618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2630,7 +2630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Exports a database file from target database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2647,7 +2647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesExport(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2697,7 +2697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesExportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2747,7 +2747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Exports a database file from target database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2763,7 +2763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesExportViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2946,7 +2946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesExport" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2961,7 +2961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2975,7 +2975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Flushes all the keys in this database and also from its linked databases.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -2992,7 +2992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesFlush(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFlushParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3042,7 +3042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesFlushViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IFlushParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3092,7 +3092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Flushes all the keys in this database and also from its linked databases.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3108,7 +3108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesFlushViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3291,7 +3291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesFlush" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3306,7 +3306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3324,7 +3324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining
         /// the replication group.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3339,9 +3339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3393,9 +3393,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IForceLinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3449,7 +3449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// NOTE:** All data in this database will be discarded, and the database will temporarily be unavailable while rejoining
         /// the replication group.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3463,9 +3463,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroupViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroupViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3513,7 +3513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponseAutoGenerated>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesForceLinkToReplicationGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3631,7 +3631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponseAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3650,7 +3650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesForceLinkToReplicationGroup" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3665,7 +3665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3679,7 +3679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Forcibly removes the link to the specified database resource.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3696,7 +3696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesForceUnlink(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IForceUnlinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3746,7 +3746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesForceUnlinkViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IForceUnlinkParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3796,7 +3796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Forcibly removes the link to the specified database resource.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -3812,7 +3812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesForceUnlinkViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3995,7 +3995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesForceUnlink" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4010,7 +4010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4024,7 +4024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets information about a database in a Redis Enterprise cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4039,7 +4039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4082,7 +4082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4136,7 +4136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4181,7 +4181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets information about a database in a Redis Enterprise cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4194,7 +4194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesGetWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4339,7 +4339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4353,7 +4353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4365,7 +4365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Imports database files to target database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4382,7 +4382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesImport(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IImportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4432,7 +4432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesImportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IImportClusterParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4482,7 +4482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Imports database files to target database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4498,7 +4498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesImportViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4681,7 +4681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesImport" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4696,7 +4696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4710,7 +4710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets all databases in the specified Redis Enterprise cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4724,7 +4724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesListByCluster(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4766,7 +4766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4818,7 +4818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseList> DatabasesListByClusterViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4861,7 +4861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets all databases in the specified Redis Enterprise cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -4873,7 +4873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseList> DatabasesListByClusterWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5017,7 +5017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesListByCluster" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5030,7 +5030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5040,7 +5040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Retrieves the access keys for the Redis Enterprise database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5055,7 +5055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesListKeys(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5099,7 +5099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5154,7 +5154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys> DatabasesListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5200,7 +5200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Retrieves the access keys for the Redis Enterprise database.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5213,7 +5213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys> DatabasesListKeysWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5359,7 +5359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesListKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5373,7 +5373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5385,7 +5385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Regenerates the Redis Enterprise database's access keys.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5402,7 +5402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesRegenerateKey(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5452,7 +5452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesRegenerateKeyViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRegenerateKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5513,7 +5513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys> DatabasesRegenerateKeyViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRegenerateKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5563,7 +5563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Regenerates the Redis Enterprise database's access keys.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5579,7 +5579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesRegenerateKeyViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5616,7 +5616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Regenerates the Redis Enterprise database's access keys.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5630,7 +5630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys> DatabasesRegenerateKeyViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5667,7 +5667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Regenerates the Redis Enterprise database's access keys.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -5682,7 +5682,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessKeys> DatabasesRegenerateKeyWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRegenerateKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6018,7 +6018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesRegenerateKey" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6033,7 +6033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6047,7 +6047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6064,7 +6064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6113,7 +6113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6173,7 +6173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6222,7 +6222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6238,7 +6238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6274,7 +6274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6288,7 +6288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6324,7 +6324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update a database</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6339,7 +6339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase> DatabasesUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabaseUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6672,7 +6672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6687,7 +6687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6701,7 +6701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Upgrades the database Redis version to the latest available.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6716,7 +6716,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpgradeDbRedisVersion(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6760,7 +6760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task DatabasesUpgradeDbRedisVersionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6952,7 +6952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="DatabasesUpgradeDbRedisVersion" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -6966,7 +6966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6974,6 +6974,2040 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                 await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
                 await eventListener.AssertRegEx(nameof(databaseName), databaseName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
+            }
+        }
+
+        /// <summary>Cancel or rollback the migration operation in a Redis Enterprise cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsCancel(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default/cancel"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsCancel_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Cancel or rollback the migration operation in a Redis Enterprise cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsCancelViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default/cancel"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsCancel_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsCancel" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MigrationsCancel" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsCancel_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
+            }
+        }
+
+        /// <summary>Gets information about a migration in a Redis Enterprise cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a migration in a Redis Enterprise cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a migration in a Redis Enterprise cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about a migration in a Redis Enterprise cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsGetWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Migration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers));
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Migration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MigrationsGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsGet_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
+            }
+        }
+
+        /// <summary>Gets information about all migrations attempts in a Redis Enterprise cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about all migrations attempts in a Redis Enterprise cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about all migrations attempts in a Redis Enterprise cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList> MigrationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets information about all migrations attempts in a Redis Enterprise cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList> MigrationsListWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList> MigrationsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MigrationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MigrationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MigrationsList" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsList_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
+            }
+        }
+
+        /// <summary>Starts a new migration</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="body">Parameters supplied to start a migration operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsStart(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsStart_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Starts a new migration</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters supplied to start a migration operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsStartViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsStart_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Starts a new migration</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters supplied to start a migration operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsStartViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsStartWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Starts a new migration</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="jsonString">Json string supplied to the MigrationsStart operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsStartViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsStart_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Starts a new migration</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="jsonString">Json string supplied to the MigrationsStart operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsStartViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsStartWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Starts a new migration</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="body">Parameters supplied to start a migration operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsStartWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsStartWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsStartWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration> MigrationsStartWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: original-uri
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Migration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers));
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsStart" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: original-uri
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Migration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MigrationsStart" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="body">Parameters supplied to start a migration operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsStart_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="body">Parameters supplied to validate a migration operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsValidate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default/validate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsValidate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters supplied to validate a migration operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsValidateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default/validate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsValidate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters supplied to validate a migration operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse> MigrationsValidateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/migrations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/migrations/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/migrations/default/validate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsValidateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="jsonString">Json string supplied to the MigrationsValidate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MigrationsValidateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default/validate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MigrationsValidate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="jsonString">Json string supplied to the MigrationsValidate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse> MigrationsValidateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default/validate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsValidateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="body">Parameters supplied to validate a migration operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse> MigrationsValidateWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrations/default/validate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MigrationsValidateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsValidateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse> MigrationsValidateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MigrationValidationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MigrationsValidate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsValidate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MigrationValidationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MigrationsValidate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="body">Parameters supplied to validate a migration operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MigrationsValidate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigrationValidationRequest body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName), clusterName, @"^(?=.{1,60}$)[A-Za-z0-9]+(-[A-Za-z0-9]+)*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
@@ -6988,7 +9022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7024,7 +9058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7067,7 +9101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7109,7 +9143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7260,8 +9294,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets the status of operation.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="location">The name of Azure region.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="location">The name of the Azure region.</param>
         /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7273,7 +9307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsStatusGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7314,7 +9348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7365,7 +9399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationStatus> OperationsStatusGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7407,8 +9441,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets the status of operation.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="location">The name of Azure region.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="location">The name of the Azure region.</param>
         /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -7418,7 +9452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationStatus> OperationsStatusGetWithResult(string subscriptionId, string location, string operationId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7561,8 +9595,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="OperationsStatusGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="location">The name of Azure region.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="location">The name of the Azure region.</param>
         /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -7573,7 +9607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(location),location);
                 await eventListener.AssertMinimumLength(nameof(location),location,1);
                 await eventListener.AssertNotNull(nameof(operationId),operationId);
@@ -7584,11 +9618,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Deletes the specified private endpoint connection associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7600,7 +9634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7646,7 +9680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7844,11 +9878,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="PrivateEndpointConnectionsDelete" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -7858,7 +9892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -7871,11 +9905,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Gets the specified private endpoint connection associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -7886,7 +9920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7931,7 +9965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7987,7 +10021,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8034,11 +10068,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Gets the specified private endpoint connection associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -8047,7 +10081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8194,11 +10228,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="PrivateEndpointConnectionsGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -8208,7 +10242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8221,7 +10255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Lists all the private endpoint connections associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -8235,7 +10269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8279,7 +10313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8333,7 +10367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8378,7 +10412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Lists all the private endpoint connections associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -8390,7 +10424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8536,7 +10570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="PrivateEndpointConnectionsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -8549,7 +10583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8561,12 +10595,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// put the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="body">The private endpoint connection properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8575,9 +10610,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8608,7 +10643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateEndpointConnectionsPut_Call (request, onDefault,eventListener,sender);
+                await this.PrivateEndpointConnectionsPut_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -8617,6 +10652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The private endpoint connection properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8625,9 +10661,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8671,19 +10707,82 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateEndpointConnectionsPut_Call (request, onDefault,eventListener,sender);
+                await this.PrivateEndpointConnectionsPut_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
         /// put the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The private endpoint connection properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cache/redisEnterprise/(?<clusterName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + clusterName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PrivateEndpointConnectionsPutWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// put the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="jsonString">Json string supplied to the PrivateEndpointConnectionsPut operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8691,9 +10790,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPutViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8724,12 +10823,273 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.PrivateEndpointConnectionsPut_Call (request, onDefault,eventListener,sender);
+                await this.PrivateEndpointConnectionsPut_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// put the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
+        /// <param name="jsonString">Json string supplied to the PrivateEndpointConnectionsPut operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PrivateEndpointConnectionsPutWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// put the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
+        /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
+        /// <param name="body">The private endpoint connection properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutWithResult(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-06-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cache/redisEnterprise/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.PrivateEndpointConnectionsPutWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "PrivateEndpointConnectionsPutWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsPutWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
             }
         }
 
         /// <summary>Actual wire call for <see cref= "PrivateEndpointConnectionsPut" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8737,7 +11097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsPut_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8751,7 +11111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -8829,25 +11190,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -8870,11 +11234,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="PrivateEndpointConnectionsPut" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
-        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection associated with the Azure resource.</param>
         /// <param name="body">The private endpoint connection properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -8885,7 +11249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8900,7 +11264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Gets the private link resources that need to be created for a Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -8914,7 +11278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByCluster(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8958,7 +11322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9012,7 +11376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListByClusterViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9057,7 +11421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// <summary>
         /// Gets the private link resources that need to be created for a Redis Enterprise cluster.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9069,7 +11433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListByClusterWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9215,7 +11579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="PrivateLinkResourcesListByCluster" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9228,7 +11592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -9238,7 +11602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update an existing (overwrite/reupdate with potential downtime) cache cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9254,7 +11618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseCreate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9301,7 +11665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9358,7 +11722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9404,7 +11768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update an existing (overwrite/reupdate with potential downtime) cache cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9419,7 +11783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseCreateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9453,7 +11817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update an existing (overwrite/reupdate with potential downtime) cache cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9466,7 +11830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9500,7 +11864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>update an existing (overwrite/reupdate with potential downtime) cache cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9514,7 +11878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseCreateWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9845,7 +12209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseCreate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9859,7 +12223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -9871,7 +12235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Deletes a Redis Enterprise cache cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -9886,7 +12250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseDelete(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9928,7 +12292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10123,7 +12487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -10136,7 +12500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10146,7 +12510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets information about a Redis Enterprise cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -10160,7 +12524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10201,7 +12565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10252,7 +12616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10294,7 +12658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Gets information about a Redis Enterprise cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -10306,7 +12670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseGetWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10449,7 +12813,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -10462,7 +12826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10472,7 +12836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Lists all Redis Enterprise clusters in the specified subscription.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10483,7 +12847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10510,7 +12874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Lists all Redis Enterprise clusters in a resource group.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10522,7 +12886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10562,7 +12926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10611,7 +12975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList> RedisEnterpriseListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10651,7 +13015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Lists all Redis Enterprise clusters in a resource group.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10661,7 +13025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList> RedisEnterpriseListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10805,7 +13169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseListByResourceGroup" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -10816,7 +13180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10824,7 +13188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Lists the available SKUs for scaling the Redis Enterprise cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -10838,7 +13202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScaling(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10880,7 +13244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseListSkusForScalingViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuDetailsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10932,7 +13296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuDetailsList> RedisEnterpriseListSkusForScalingViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10975,7 +13339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Lists the available SKUs for scaling the Redis Enterprise cluster.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -10987,7 +13351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuDetailsList> RedisEnterpriseListSkusForScalingWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11133,7 +13497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseListSkusForScaling" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -11146,7 +13510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -11167,7 +13531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11213,7 +13577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList> RedisEnterpriseListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11250,7 +13614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Lists all Redis Enterprise clusters in the specified subscription.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -11259,7 +13623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterList> RedisEnterpriseListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11399,7 +13763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -11409,12 +13773,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Updates an existing Redis Enterprise cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -11430,7 +13794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11477,7 +13841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11534,7 +13898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11580,7 +13944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Updates an existing Redis Enterprise cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -11595,7 +13959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task RedisEnterpriseUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11629,7 +13993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Updates an existing Redis Enterprise cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -11642,7 +14006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11676,7 +14040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         }
 
         /// <summary>Updates an existing Redis Enterprise cluster</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -11690,7 +14054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster> RedisEnterpriseUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01";
+            var apiVersion = @"2026-06-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12021,7 +14385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
         /// Validation method for <see cref="RedisEnterpriseUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z,
         /// a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens</param>
@@ -12035,7 +14399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);

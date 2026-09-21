@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             // actually deserialize
             if (content.Contains("SasUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri = (string) content.GetValueForProperty("SasUri",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri = (System.Security.SecureString) content.GetValueForProperty("SasUri",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializeDictionary(content);
         }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             // actually deserialize
             if (content.Contains("SasUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri = (string) content.GetValueForProperty("SasUri",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri = (System.Security.SecureString) content.GetValueForProperty("SasUri",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IExportClusterParametersInternal)this).SasUri, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializePSObject(content);
         }
