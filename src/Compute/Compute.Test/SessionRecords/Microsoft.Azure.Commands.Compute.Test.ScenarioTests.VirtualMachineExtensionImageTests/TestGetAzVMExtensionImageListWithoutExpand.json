@@ -1,0 +1,86 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/eastus2euap/publishers/Microsoft.Compute/artifacttypes/vmextension/types/VMAccessAgent/versions?api-version=2026-04-01&$filter=startswith%28name%2C%272.4.16%27%29",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvcHVibGlzaGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9hcnRpZmFjdHR5cGVzL3ZtZXh0ZW5zaW9uL3R5cGVzL1ZNQWNjZXNzQWdlbnQvdmVyc2lvbnM/YXBpLXZlcnNpb249MjAyNi0wNC0wMSYkZmlsdGVyPXN0YXJ0c3dpdGglMjhuYW1lJTJDJTI3Mi40LjE2JTI3JTI5",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "5ed5e9cf-7f24-4fa4-860a-7305b2384d4b"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3126.42015",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/ListVMExtensions3Min;9998,Microsoft.Compute/ListVMExtensions30Min;21996"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "3f817cff-73a0-4f4f-ade7-b40f057a65f9_134336053466187725"
+        ],
+        "x-ms-request-id": [
+          "f069f97a-ba23-47f0-8499-c98545dcac33"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=d4cf561b-5aae-49e9-a42f-faef2354e23e/jioindiacentral/aede606d-ce5e-4f3f-94be-14b38b5f1530"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "03d76bcd-37f1-46c5-a2dd-89ef2c4c1fed"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIACENTRAL:20260921T103848Z:03d76bcd-37f1-46c5-a2dd-89ef2c4c1fed"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E5A16D64E94C4473B8533560AF84766C Ref B: PNQ231110907052 Ref C: 2026-09-21T10:38:45Z"
+        ],
+        "Date": [
+          "Mon, 21 Sep 2026 10:38:47 GMT"
+        ],
+        "Content-Length": [
+          "275"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"location\": \"EastUS2EUAP\",\r\n    \"name\": \"2.4.16\",\r\n    \"id\": \"/Subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/Providers/Microsoft.Compute/Locations/EastUS2EUAP/Publishers/Microsoft.Compute/ArtifactTypes/VMExtension/Types/VMAccessAgent/Versions/2.4.16\"\r\n  }\r\n]",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "87c158ca-3873-4850-9567-50a5b0a3c2ef"
+  }
+}

@@ -30,8 +30,34 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualMachineExtensionImageTests
+    public class VirtualMachineExtensionImageTests : ComputeTestRunner
     {
+        public VirtualMachineExtensionImageTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output, includeDependentModules: false)
+        {
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzVMExtensionImageMetadata()
+        {
+            TestRunner.RunTestScript("Test-GetAzVMExtensionImageMetadata");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzVMExtensionImageListWithExpand()
+        {
+            TestRunner.RunTestScript("Test-GetAzVMExtensionImageListWithExpand");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzVMExtensionImageListWithoutExpand()
+        {
+            TestRunner.RunTestScript("Test-GetAzVMExtensionImageListWithoutExpand");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureVMExtensionImageCommand_ExpandParameterAllowsOnlyProperties()
