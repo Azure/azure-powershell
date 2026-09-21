@@ -10,74 +10,235 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>Network Tap Rule Patch properties.</summary>
     public partial class NetworkTapRulePatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchableProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchableProperties __networkTapRulePatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkTapRulePatchableProperties();
+        /// <summary>Backing field for <see cref="Annotation" /> property.</summary>
+        private string _annotation;
 
         /// <summary>Switch configuration description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string Annotation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal)__annotationResource).Annotation = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Annotation { get => this._annotation; set => this._annotation = value; }
+
+        /// <summary>Backing field for <see cref="ConfigurationType" /> property.</summary>
+        private string _configurationType;
 
         /// <summary>Input method to configure Network Tap Rule.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string ConfigurationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).ConfigurationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).ConfigurationType = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string ConfigurationType { get => this._configurationType; set => this._configurationType = value; }
+
+        /// <summary>Backing field for <see cref="DynamicMatchConfiguration" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> _dynamicMatchConfiguration;
 
         /// <summary>List of dynamic match configurations.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration> DynamicMatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).DynamicMatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).DynamicMatchConfiguration = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> DynamicMatchConfiguration { get => this._dynamicMatchConfiguration; set => this._dynamicMatchConfiguration = value; }
+
+        /// <summary>Backing field for <see cref="GlobalNetworkTapRuleAction" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchProperties _globalNetworkTapRuleAction;
+
+        /// <summary>Global network tap rule actions</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchProperties GlobalNetworkTapRuleAction { get => (this._globalNetworkTapRuleAction = this._globalNetworkTapRuleAction ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalNetworkTapRuleActionPatchProperties()); set => this._globalNetworkTapRuleAction = value; }
+
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string GlobalNetworkTapRuleActionEnableCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchPropertiesInternal)GlobalNetworkTapRuleAction).EnableCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchPropertiesInternal)GlobalNetworkTapRuleAction).EnableCount = value ?? null; }
+
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string GlobalNetworkTapRuleActionTruncate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchPropertiesInternal)GlobalNetworkTapRuleAction).Truncate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchPropertiesInternal)GlobalNetworkTapRuleAction).Truncate = value ?? null; }
+
+        /// <summary>Backing field for <see cref="IdentitySelector" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch _identitySelector;
+
+        /// <summary>
+        /// The selection of the managed identity to use with this storage account. The identity type must be either system assigned
+        /// or user assigned.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch IdentitySelector { get => (this._identitySelector = this._identitySelector ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorPatch()); set => this._identitySelector = value; }
+
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentitySelectorIdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).IdentityType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).IdentityType = value ?? null; }
+
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string IdentitySelectorUserAssignedIdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).UserAssignedIdentityResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatchInternal)IdentitySelector).UserAssignedIdentityResourceId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="MatchConfiguration" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfigurationPatch> _matchConfiguration;
 
         /// <summary>List of match configurations.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration> MatchConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).MatchConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).MatchConfiguration = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfigurationPatch> MatchConfiguration { get => this._matchConfiguration; set => this._matchConfiguration = value; }
+
+        /// <summary>Internal Acessors for GlobalNetworkTapRuleAction</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchPropertiesInternal.GlobalNetworkTapRuleAction { get => (this._globalNetworkTapRuleAction = this._globalNetworkTapRuleAction ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.GlobalNetworkTapRuleActionPatchProperties()); set { {_globalNetworkTapRuleAction = value;} } }
+
+        /// <summary>Internal Acessors for IdentitySelector</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchPropertiesInternal.IdentitySelector { get => (this._identitySelector = this._identitySelector ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorPatch()); set { {_identitySelector = value;} } }
+
+        /// <summary>Backing field for <see cref="TapRulesUrl" /> property.</summary>
+        private string _tapRulesUrl;
 
         /// <summary>Network Tap Rules file URL.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public string TapRulesUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).TapRulesUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal)__networkTapRulePatchableProperties).TapRulesUrl = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string TapRulesUrl { get => this._tapRulesUrl; set => this._tapRulesUrl = value; }
 
         /// <summary>Creates an new <see cref="NetworkTapRulePatchProperties" /> instance.</summary>
         public NetworkTapRulePatchProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertObjectIsValid(nameof(__annotationResource), __annotationResource);
-            await eventListener.AssertNotNull(nameof(__networkTapRulePatchableProperties), __networkTapRulePatchableProperties);
-            await eventListener.AssertObjectIsValid(nameof(__networkTapRulePatchableProperties), __networkTapRulePatchableProperties);
-        }
     }
     /// Network Tap Rule Patch properties.
     public partial interface INetworkTapRulePatchProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResource,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchableProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>Switch configuration description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Switch configuration description.",
+        SerializedName = @"annotation",
+        PossibleTypes = new [] { typeof(string) })]
+        string Annotation { get; set; }
+        /// <summary>Input method to configure Network Tap Rule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Input method to configure Network Tap Rule.",
+        SerializedName = @"configurationType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
+        string ConfigurationType { get; set; }
+        /// <summary>List of dynamic match configurations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of dynamic match configurations.",
+        SerializedName = @"dynamicMatchConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> DynamicMatchConfiguration { get; set; }
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration to enable network tap rule counter.",
+        SerializedName = @"enableCount",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string GlobalNetworkTapRuleActionEnableCount { get; set; }
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Truncate. 0 indicates do not truncate.",
+        SerializedName = @"truncate",
+        PossibleTypes = new [] { typeof(string) })]
+        string GlobalNetworkTapRuleActionTruncate { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of managed identity that is being selected.",
+        SerializedName = @"identityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string IdentitySelectorIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentitySelectorUserAssignedIdentityResourceId { get; set; }
+        /// <summary>List of match configurations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of match configurations.",
+        SerializedName = @"matchConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfigurationPatch) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfigurationPatch> MatchConfiguration { get; set; }
+        /// <summary>Network Tap Rules file URL.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Network Tap Rules file URL.",
+        SerializedName = @"tapRulesUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        string TapRulesUrl { get; set; }
 
     }
     /// Network Tap Rule Patch properties.
-    internal partial interface INetworkTapRulePatchPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAnnotationResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRulePatchablePropertiesInternal
+    internal partial interface INetworkTapRulePatchPropertiesInternal
+
     {
+        /// <summary>Switch configuration description.</summary>
+        string Annotation { get; set; }
+        /// <summary>Input method to configure Network Tap Rule.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("File", "Inline")]
+        string ConfigurationType { get; set; }
+        /// <summary>List of dynamic match configurations.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfigurationPatch> DynamicMatchConfiguration { get; set; }
+        /// <summary>Global network tap rule actions</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IGlobalNetworkTapRuleActionPatchProperties GlobalNetworkTapRuleAction { get; set; }
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        string GlobalNetworkTapRuleActionEnableCount { get; set; }
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        string GlobalNetworkTapRuleActionTruncate { get; set; }
+        /// <summary>
+        /// The selection of the managed identity to use with this storage account. The identity type must be either system assigned
+        /// or user assigned.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelectorPatch IdentitySelector { get; set; }
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        string IdentitySelectorIdentityType { get; set; }
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        string IdentitySelectorUserAssignedIdentityResourceId { get; set; }
+        /// <summary>List of match configurations.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfigurationPatch> MatchConfiguration { get; set; }
+        /// <summary>Network Tap Rules file URL.</summary>
+        string TapRulesUrl { get; set; }
 
     }
 }

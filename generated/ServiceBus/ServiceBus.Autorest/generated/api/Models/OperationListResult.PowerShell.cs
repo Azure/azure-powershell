@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list ServiceBus operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>The list of available operations.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial class OperationListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list ServiceBus operations. It contains a list of operations and a URL link to get the next set
-    /// of results.
+    /// The list of available operations.
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial interface IOperationListResult
 

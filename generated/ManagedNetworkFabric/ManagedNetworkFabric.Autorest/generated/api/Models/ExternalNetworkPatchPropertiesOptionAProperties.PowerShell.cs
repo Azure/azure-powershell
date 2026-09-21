@@ -104,49 +104,93 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("BfdConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdPatchConfiguration) content.GetValueForProperty("BfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdPatchConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BmpConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkBmpPatchProperties) content.GetValueForProperty("BmpConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkBmpPatchPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NativeIpv4PrefixLimit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimit = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv4PrefixLimitPatchProperties) content.GetValueForProperty("NativeIpv4PrefixLimit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimit, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv4PrefixLimitPatchPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NativeIpv6PrefixLimit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimit = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv6PrefixLimitPatchProperties) content.GetValueForProperty("NativeIpv6PrefixLimit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimit, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv6PrefixLimitPatchPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PrimaryIpv4Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("PrimaryIpv6Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryIpv4Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryIpv6Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("Mtu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).Mtu = (int?) content.GetValueForProperty("Mtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).Mtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).Mtu = (int?) content.GetValueForProperty("Mtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).Mtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("VlanId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).VlanId = (int?) content.GetValueForProperty("VlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).VlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).VlanId = (int?) content.GetValueForProperty("VlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).VlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FabricAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).FabricAsn = (long?) content.GetValueForProperty("FabricAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).FabricAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).FabricAsn = (long?) content.GetValueForProperty("FabricAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).FabricAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("PeerAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).PeerAsn = (long?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("BfdConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).BfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("BfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).BfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PeerAsn = (long?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("IngressAclId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).IngressAclId = (string) content.GetValueForProperty("IngressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).IngressAclId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).IngressAclId = (string) content.GetValueForProperty("IngressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).IngressAclId, global::System.Convert.ToString);
             }
             if (content.Contains("EgressAclId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).EgressAclId = (string) content.GetValueForProperty("EgressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).EgressAclId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).EgressAclId = (string) content.GetValueForProperty("EgressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).EgressAclId, global::System.Convert.ToString);
+            }
+            if (content.Contains("V4OverV6BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V4OverV6BgpSession = (string) content.GetValueForProperty("V4OverV6BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V4OverV6BgpSession, global::System.Convert.ToString);
+            }
+            if (content.Contains("V6OverV4BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V6OverV4BgpSession = (string) content.GetValueForProperty("V6OverV4BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V6OverV4BgpSession, global::System.Convert.ToString);
+            }
+            if (content.Contains("BfdConfigurationAdministrativeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationAdministrativeState = (string) content.GetValueForProperty("BfdConfigurationAdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationAdministrativeState, global::System.Convert.ToString);
+            }
+            if (content.Contains("BfdConfigurationIntervalInMilliSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationIntervalInMilliSecond = (int?) content.GetValueForProperty("BfdConfigurationIntervalInMilliSecond",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationIntervalInMilliSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BfdConfigurationMultiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationMultiplier = (int?) content.GetValueForProperty("BfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BmpConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfigurationState = (string) content.GetValueForProperty("BmpConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("NativeIpv4PrefixLimitPrefixLimits"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimitPrefixLimits = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>) content.GetValueForProperty("NativeIpv4PrefixLimitPrefixLimits",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimitPrefixLimits, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PrefixLimitPatchPropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NativeIpv6PrefixLimitPrefixLimits"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimitPrefixLimits = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>) content.GetValueForProperty("NativeIpv6PrefixLimitPrefixLimits",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimitPrefixLimits, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PrefixLimitPatchPropertiesTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -165,49 +209,93 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("BfdConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdPatchConfiguration) content.GetValueForProperty("BfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdPatchConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BmpConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkBmpPatchProperties) content.GetValueForProperty("BmpConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkBmpPatchPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NativeIpv4PrefixLimit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimit = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv4PrefixLimitPatchProperties) content.GetValueForProperty("NativeIpv4PrefixLimit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimit, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv4PrefixLimitPatchPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("NativeIpv6PrefixLimit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimit = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INativeIpv6PrefixLimitPatchProperties) content.GetValueForProperty("NativeIpv6PrefixLimit",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimit, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv6PrefixLimitPatchPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("PrimaryIpv4Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("PrimaryIpv6Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryIpv4Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryIpv6Prefix"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
             }
             if (content.Contains("Mtu"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).Mtu = (int?) content.GetValueForProperty("Mtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).Mtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).Mtu = (int?) content.GetValueForProperty("Mtu",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).Mtu, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("VlanId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).VlanId = (int?) content.GetValueForProperty("VlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).VlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).VlanId = (int?) content.GetValueForProperty("VlanId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).VlanId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FabricAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).FabricAsn = (long?) content.GetValueForProperty("FabricAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).FabricAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).FabricAsn = (long?) content.GetValueForProperty("FabricAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).FabricAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("PeerAsn"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).PeerAsn = (long?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            }
-            if (content.Contains("BfdConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).BfdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration) content.GetValueForProperty("BfdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).BfdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdConfigurationTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PeerAsn = (long?) content.GetValueForProperty("PeerAsn",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).PeerAsn, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("IngressAclId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).IngressAclId = (string) content.GetValueForProperty("IngressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).IngressAclId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).IngressAclId = (string) content.GetValueForProperty("IngressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).IngressAclId, global::System.Convert.ToString);
             }
             if (content.Contains("EgressAclId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).EgressAclId = (string) content.GetValueForProperty("EgressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionAPropertiesInternal)this).EgressAclId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).EgressAclId = (string) content.GetValueForProperty("EgressAclId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).EgressAclId, global::System.Convert.ToString);
+            }
+            if (content.Contains("V4OverV6BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V4OverV6BgpSession = (string) content.GetValueForProperty("V4OverV6BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V4OverV6BgpSession, global::System.Convert.ToString);
+            }
+            if (content.Contains("V6OverV4BgpSession"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V6OverV4BgpSession = (string) content.GetValueForProperty("V6OverV4BgpSession",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).V6OverV4BgpSession, global::System.Convert.ToString);
+            }
+            if (content.Contains("BfdConfigurationAdministrativeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationAdministrativeState = (string) content.GetValueForProperty("BfdConfigurationAdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationAdministrativeState, global::System.Convert.ToString);
+            }
+            if (content.Contains("BfdConfigurationIntervalInMilliSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationIntervalInMilliSecond = (int?) content.GetValueForProperty("BfdConfigurationIntervalInMilliSecond",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationIntervalInMilliSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BfdConfigurationMultiplier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationMultiplier = (int?) content.GetValueForProperty("BfdConfigurationMultiplier",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BfdConfigurationMultiplier, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("BmpConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfigurationState = (string) content.GetValueForProperty("BmpConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).BmpConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("NativeIpv4PrefixLimitPrefixLimits"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimitPrefixLimits = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>) content.GetValueForProperty("NativeIpv4PrefixLimitPrefixLimits",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv4PrefixLimitPrefixLimits, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PrefixLimitPatchPropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NativeIpv6PrefixLimitPrefixLimits"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimitPrefixLimits = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>) content.GetValueForProperty("NativeIpv6PrefixLimitPrefixLimits",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetworkPatchPropertiesOptionAPropertiesInternal)this).NativeIpv6PrefixLimitPrefixLimits, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitPatchProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PrefixLimitPatchPropertiesTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

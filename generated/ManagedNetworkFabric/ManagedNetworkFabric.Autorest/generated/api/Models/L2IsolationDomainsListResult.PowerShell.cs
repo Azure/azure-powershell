@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of L2 Isolation Domains.</summary>
+    /// <summary>Paged collection of L2IsolationDomain items</summary>
     [System.ComponentModel.TypeConverter(typeof(L2IsolationDomainsListResultTypeConverter))]
     public partial class L2IsolationDomainsListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of L2 Isolation Domains.
+    /// Paged collection of L2IsolationDomain items
     [System.ComponentModel.TypeConverter(typeof(L2IsolationDomainsListResultTypeConverter))]
     public partial interface IL2IsolationDomainsListResult
 

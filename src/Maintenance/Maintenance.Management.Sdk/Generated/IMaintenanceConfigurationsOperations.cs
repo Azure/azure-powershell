@@ -14,16 +14,36 @@ namespace Microsoft.Azure.Management.Maintenance
     public partial interface IMaintenanceConfigurationsOperations
     {
         /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <remarks>
+        /// Get Configuration records within a subscription
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Get Configuration record
         /// </summary>
         /// <remarks>
         /// Get Configuration record
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,10 +66,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Create or Update configuration record
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='configuration'>
         /// The configuration
@@ -69,42 +89,16 @@ namespace Microsoft.Azure.Management.Maintenance
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MaintenanceConfiguration>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, MaintenanceConfiguration configuration, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete Configuration record
-        /// </summary>
-        /// <remarks>
-        /// Delete Configuration record
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Resource Group Name
-        /// </param>
-        /// <param name='resourceName'>
-        /// Maintenance Configuration Name
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MaintenanceConfiguration>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Patch configuration record
         /// </summary>
         /// <remarks>
         /// Patch configuration record
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='configuration'>
         /// The configuration
@@ -124,11 +118,17 @@ namespace Microsoft.Azure.Management.Maintenance
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MaintenanceConfiguration>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, MaintenanceConfiguration configuration, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get Configuration records within a subscription
+        /// Delete Configuration record
         /// </summary>
         /// <remarks>
-        /// Get Configuration records within a subscription
+        /// Delete Configuration record
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the MaintenanceConfiguration
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -141,7 +141,30 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<MaintenanceConfiguration>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MaintenanceConfiguration>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get Configuration records within a subscription
+        /// </summary>
+        /// <remarks>
+        /// Get Configuration records within a subscription
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

@@ -77,10 +77,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
-            __internalNetworkPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternalNetworkPatchableProperties(json);
-            {_bgpConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("bgpConfiguration"), out var __jsonBgpConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BgpConfiguration.FromJson(__jsonBgpConfiguration) : _bgpConfiguration;}
-            {_staticRouteConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("staticRouteConfiguration"), out var __jsonStaticRouteConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRouteConfiguration.FromJson(__jsonStaticRouteConfiguration) : _staticRouteConfiguration;}
+            {_bgpConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("bgpConfiguration"), out var __jsonBgpConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BgpPatchConfiguration.FromJson(__jsonBgpConfiguration) : _bgpConfiguration;}
+            {_staticRouteConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("staticRouteConfiguration"), out var __jsonStaticRouteConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRoutePatchConfiguration.FromJson(__jsonStaticRouteConfiguration) : _staticRouteConfiguration;}
+            {_nativeIpv4PrefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("nativeIpv4PrefixLimit"), out var __jsonNativeIpv4PrefixLimit) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv4PrefixLimitPatchProperties.FromJson(__jsonNativeIpv4PrefixLimit) : _nativeIpv4PrefixLimit;}
+            {_nativeIpv6PrefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("nativeIpv6PrefixLimit"), out var __jsonNativeIpv6PrefixLimit) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv6PrefixLimitPatchProperties.FromJson(__jsonNativeIpv6PrefixLimit) : _nativeIpv6PrefixLimit;}
+            {_annotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("annotation"), out var __jsonAnnotation) ? (string)__jsonAnnotation : (string)_annotation;}
+            {_mtu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("mtu"), out var __jsonMtu) ? (int?)__jsonMtu : _mtu;}
+            {_connectedIPv4Subnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("connectedIPv4Subnets"), out var __jsonConnectedIPv4Subnets) ? If( __jsonConnectedIPv4Subnets as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetPatch>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetPatch) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ConnectedSubnetPatch.FromJson(__u) )) ))() : null : _connectedIPv4Subnet;}
+            {_connectedIPv6Subnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("connectedIPv6Subnets"), out var __jsonConnectedIPv6Subnets) ? If( __jsonConnectedIPv6Subnets as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetPatch>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetPatch) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ConnectedSubnetPatch.FromJson(__p) )) ))() : null : _connectedIPv6Subnet;}
+            {_importRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("importRoutePolicy"), out var __jsonImportRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ImportRoutePolicy.FromJson(__jsonImportRoutePolicy) : _importRoutePolicy;}
+            {_exportRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("exportRoutePolicy"), out var __jsonExportRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExportRoutePolicy.FromJson(__jsonExportRoutePolicy) : _exportRoutePolicy;}
+            {_ingressAclId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ingressAclId"), out var __jsonIngressAclId) ? (string)__jsonIngressAclId : (string)_ingressAclId;}
+            {_egressAclId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("egressAclId"), out var __jsonEgressAclId) ? (string)__jsonEgressAclId : (string)_egressAclId;}
+            {_isMonitoringEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("isMonitoringEnabled"), out var __jsonIsMonitoringEnabled) ? (string)__jsonIsMonitoringEnabled : (string)_isMonitoringEnabled;}
             AfterFromJson(json);
         }
 
@@ -103,10 +112,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __annotationResource?.ToJson(container, serializationMode);
-            __internalNetworkPatchableProperties?.ToJson(container, serializationMode);
             AddIf( null != this._bgpConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._bgpConfiguration.ToJson(null,serializationMode) : null, "bgpConfiguration" ,container.Add );
             AddIf( null != this._staticRouteConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._staticRouteConfiguration.ToJson(null,serializationMode) : null, "staticRouteConfiguration" ,container.Add );
+            AddIf( null != this._nativeIpv4PrefixLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._nativeIpv4PrefixLimit.ToJson(null,serializationMode) : null, "nativeIpv4PrefixLimit" ,container.Add );
+            AddIf( null != this._nativeIpv6PrefixLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._nativeIpv6PrefixLimit.ToJson(null,serializationMode) : null, "nativeIpv6PrefixLimit" ,container.Add );
+            AddIf( null != (((object)this._annotation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._annotation.ToString()) : null, "annotation" ,container.Add );
+            AddIf( null != this._mtu ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._mtu) : null, "mtu" ,container.Add );
+            if (null != this._connectedIPv4Subnet)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __x in this._connectedIPv4Subnet )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("connectedIPv4Subnets",__w);
+            }
+            if (null != this._connectedIPv6Subnet)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._connectedIPv6Subnet )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("connectedIPv6Subnets",__r);
+            }
+            AddIf( null != this._importRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._importRoutePolicy.ToJson(null,serializationMode) : null, "importRoutePolicy" ,container.Add );
+            AddIf( null != this._exportRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._exportRoutePolicy.ToJson(null,serializationMode) : null, "exportRoutePolicy" ,container.Add );
+            AddIf( null != (((object)this._ingressAclId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._ingressAclId.ToString()) : null, "ingressAclId" ,container.Add );
+            AddIf( null != (((object)this._egressAclId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._egressAclId.ToString()) : null, "egressAclId" ,container.Add );
+            AddIf( null != (((object)this._isMonitoringEnabled)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._isMonitoringEnabled.ToString()) : null, "isMonitoringEnabled" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

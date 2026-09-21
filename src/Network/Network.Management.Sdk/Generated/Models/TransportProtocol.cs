@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class TransportProtocol
     {
+        /// <summary>
+        /// Udp
+        /// </summary>
         public const string Udp = "Udp";
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
+        /// <summary>
+        /// Quic
+        /// </summary>
         public const string Quic = "Quic";
     }
 }

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayLoadDistributionAlgorithm
     {
+        /// <summary>
+        /// RoundRobin
+        /// </summary>
         public const string RoundRobin = "RoundRobin";
+        /// <summary>
+        /// LeastConnections
+        /// </summary>
         public const string LeastConnections = "LeastConnections";
+        /// <summary>
+        /// IpHash
+        /// </summary>
         public const string IpHash = "IpHash";
     }
 }

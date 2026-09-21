@@ -13,102 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class SubscriptionNetworkManagerConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Create a network manager connection on this subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        public static NetworkManagerConnection CreateOrUpdate(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, NetworkManagerConnection parameters)
-        {
-                return ((ISubscriptionNetworkManagerConnectionsOperations)operations).CreateOrUpdateAsync(networkManagerConnectionName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create a network manager connection on this subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagerConnection> CreateOrUpdateAsync(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, NetworkManagerConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(networkManagerConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Get a specified connection created by this subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        public static NetworkManagerConnection Get(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName)
-        {
-                return ((ISubscriptionNetworkManagerConnectionsOperations)operations).GetAsync(networkManagerConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a specified connection created by this subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagerConnection> GetAsync(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Delete specified connection created by this subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        public static void Delete(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName)
-        {
-                ((ISubscriptionNetworkManagerConnectionsOperations)operations).DeleteAsync(networkManagerConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete specified connection created by this subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// List all network manager connections created by this subscription.
         /// </summary>
         /// <param name='operations'>
@@ -154,6 +58,102 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Get a specified connection created by this subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        public static NetworkManagerConnection Get(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName)
+        {
+                return ((ISubscriptionNetworkManagerConnectionsOperations)operations).GetAsync(networkManagerConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a specified connection created by this subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManagerConnection> GetAsync(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create a network manager connection on this subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        public static NetworkManagerConnection CreateOrUpdate(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, NetworkManagerConnection parameters)
+        {
+                return ((ISubscriptionNetworkManagerConnectionsOperations)operations).CreateOrUpdateAsync(networkManagerConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create a network manager connection on this subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkManagerConnection> CreateOrUpdateAsync(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, NetworkManagerConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(networkManagerConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete specified connection created by this subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        public static void Delete(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName)
+        {
+                ((ISubscriptionNetworkManagerConnectionsOperations)operations).DeleteAsync(networkManagerConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete specified connection created by this subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this ISubscriptionNetworkManagerConnectionsOperations operations, string networkManagerConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(networkManagerConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network manager connections created by this subscription.

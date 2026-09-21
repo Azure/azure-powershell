@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// be executed.
         /// </param>
 
+        /// <param name="jobRuntimeEnvironment">Runtime Environment Property
+        /// </param>
+
         /// <param name="jobId">Gets or sets the id of the job.
         /// </param>
 
@@ -68,12 +71,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="provisioningState">The current provisioning state of the job.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Suspended&#39;, &#39;Processing&#39;</param>
-        public JobProperties(RunbookAssociationProperty runbook = default(RunbookAssociationProperty), string startedBy = default(string), string runOn = default(string), System.Guid jobId = default(System.Guid), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string status = default(string), string statusDetails = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string exception = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastStatusModifiedTime = default(System.DateTimeOffset?), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string))
+        public JobProperties(RunbookAssociationProperty runbook = default(RunbookAssociationProperty), string startedBy = default(string), string runOn = default(string), JobRuntimeEnvironment jobRuntimeEnvironment = default(JobRuntimeEnvironment), System.Guid? jobId = default(System.Guid?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string status = default(string), string statusDetails = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string exception = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastStatusModifiedTime = default(System.DateTimeOffset?), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string))
 
         {
             this.Runbook = runbook;
             this.StartedBy = startedBy;
             this.RunOn = runOn;
+            this.JobRuntimeEnvironment = jobRuntimeEnvironment;
             this.JobId = jobId;
             this.CreationTime = creationTime;
             this.Status = status;
@@ -114,16 +118,22 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string RunOn {get; set; }
 
         /// <summary>
+        /// Gets or sets runtime Environment Property
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "jobRuntimeEnvironment")]
+        public JobRuntimeEnvironment JobRuntimeEnvironment {get; set; }
+
+        /// <summary>
         /// Gets or sets gets or sets the id of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "jobId")]
-        public System.Guid JobId {get; set; }
+        public System.Guid? JobId {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the creation time of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the status of the job. Possible values include: &#39;New&#39;, &#39;Activating&#39;, &#39;Running&#39;, &#39;Completed&#39;, &#39;Failed&#39;, &#39;Stopped&#39;, &#39;Blocked&#39;, &#39;Suspended&#39;, &#39;Disconnected&#39;, &#39;Suspending&#39;, &#39;Stopping&#39;, &#39;Resuming&#39;, &#39;Removing&#39;
@@ -174,9 +184,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         public System.Collections.Generic.IDictionary<string, string> Parameters {get; set; }
 
         /// <summary>
-        /// Gets or sets the current provisioning state of the job. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Suspended&#39;, &#39;Processing&#39;
+        /// Gets the current provisioning state of the job. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Suspended&#39;, &#39;Processing&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
     }
 }

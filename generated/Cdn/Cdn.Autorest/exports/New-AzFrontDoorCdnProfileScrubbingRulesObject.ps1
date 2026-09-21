@@ -34,18 +34,11 @@ function New-AzFrontDoorCdnProfileScrubbingRulesObject {
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames", "RequestHeaderNames", "RequestCookieNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The variable to be scrubbed from the logs.
     ${MatchVariable},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("EqualsAny", "Equals")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-    ${SelectorMatchOperator},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]

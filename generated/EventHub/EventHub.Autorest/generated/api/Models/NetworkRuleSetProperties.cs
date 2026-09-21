@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. ",
+        Description = @"This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]

@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ScopeConnectionState
     {
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// Pending
+        /// </summary>
         public const string Pending = "Pending";
+        /// <summary>
+        /// Conflict
+        /// </summary>
         public const string Conflict = "Conflict";
+        /// <summary>
+        /// Revoked
+        /// </summary>
         public const string Revoked = "Revoked";
+        /// <summary>
+        /// Rejected
+        /// </summary>
         public const string Rejected = "Rejected";
     }
 }

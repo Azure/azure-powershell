@@ -98,6 +98,8 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $policyAssignmentMissingLocation = $env.policyAssignmentMissingLocation
         $policyAssignmentMissingIdentityId = $env.policyAssignmentMissingIdentityId
         $policyExemptionNotFound = $env.policyExemptionNotFound
+        $policyEnrollmentNotFound = $env.policyEnrollmentNotFound
+        $unableToUpdateEnrollment = $env.unableToUpdateEnrollment
         $invalidRequestContent = $env.invalidRequestContent
         $policyDefinitionParameter = $env.policyDefinitionParameter
         $missingSubscription = $env.missingSubscription

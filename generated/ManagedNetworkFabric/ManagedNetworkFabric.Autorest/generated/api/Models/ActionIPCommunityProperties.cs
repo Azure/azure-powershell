@@ -10,97 +10,112 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     /// <summary>IP Community Properties.</summary>
     public partial class ActionIPCommunityProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationProperties __ipCommunityAddOperationProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityAddOperationProperties();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationProperties __ipCommunityDeleteOperationProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityDeleteOperationProperties();
-
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationProperties __ipCommunitySetOperationProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunitySetOperationProperties();
+        /// <summary>Backing field for <see cref="Add" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList _add;
 
         /// <summary>List of IP Community IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Add { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal)__ipCommunityAddOperationProperties).Add; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal)__ipCommunityAddOperationProperties).Add = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Add { get => (this._add = this._add ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList()); set => this._add = value; }
 
         /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> AddIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal)__ipCommunityAddOperationProperties).AddIPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal)__ipCommunityAddOperationProperties).AddIPCommunityId = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> AddIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Add).IPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Add).IPCommunityId = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="Delete" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList _delete;
 
         /// <summary>List of IP Community IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Delete { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal)__ipCommunityDeleteOperationProperties).Delete; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal)__ipCommunityDeleteOperationProperties).Delete = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Delete { get => (this._delete = this._delete ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList()); set => this._delete = value; }
 
         /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> DeleteIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal)__ipCommunityDeleteOperationProperties).DeleteIPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal)__ipCommunityDeleteOperationProperties).DeleteIPCommunityId = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> DeleteIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Delete).IPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Delete).IPCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Add</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal.Add { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal)__ipCommunityAddOperationProperties).Add; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal)__ipCommunityAddOperationProperties).Add = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityPropertiesInternal.Add { get => (this._add = this._add ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList()); set { {_add = value;} } }
 
         /// <summary>Internal Acessors for Delete</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal.Delete { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal)__ipCommunityDeleteOperationProperties).Delete; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal)__ipCommunityDeleteOperationProperties).Delete = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityPropertiesInternal.Delete { get => (this._delete = this._delete ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList()); set { {_delete = value;} } }
 
         /// <summary>Internal Acessors for Set</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal.Set { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal)__ipCommunitySetOperationProperties).Set; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal)__ipCommunitySetOperationProperties).Set = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IActionIPCommunityPropertiesInternal.Set { get => (this._set = this._set ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList()); set { {_set = value;} } }
+
+        /// <summary>Backing field for <see cref="Set" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList _set;
 
         /// <summary>List of IP Community IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Set { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal)__ipCommunitySetOperationProperties).Set; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal)__ipCommunitySetOperationProperties).Set = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Set { get => (this._set = this._set ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPCommunityIdList()); set => this._set = value; }
 
         /// <summary>List of IP Community resource IDs.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> SetIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal)__ipCommunitySetOperationProperties).SetIPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal)__ipCommunitySetOperationProperties).SetIPCommunityId = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> SetIPCommunityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Set).IPCommunityId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)Set).IPCommunityId = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="ActionIPCommunityProperties" /> instance.</summary>
         public ActionIPCommunityProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__ipCommunityAddOperationProperties), __ipCommunityAddOperationProperties);
-            await eventListener.AssertObjectIsValid(nameof(__ipCommunityAddOperationProperties), __ipCommunityAddOperationProperties);
-            await eventListener.AssertNotNull(nameof(__ipCommunityDeleteOperationProperties), __ipCommunityDeleteOperationProperties);
-            await eventListener.AssertObjectIsValid(nameof(__ipCommunityDeleteOperationProperties), __ipCommunityDeleteOperationProperties);
-            await eventListener.AssertNotNull(nameof(__ipCommunitySetOperationProperties), __ipCommunitySetOperationProperties);
-            await eventListener.AssertObjectIsValid(nameof(__ipCommunitySetOperationProperties), __ipCommunitySetOperationProperties);
-        }
     }
     /// IP Community Properties.
     public partial interface IActionIPCommunityProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationProperties
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Community resource IDs.",
+        SerializedName = @"ipCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AddIPCommunityId { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Community resource IDs.",
+        SerializedName = @"ipCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> DeleteIPCommunityId { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of IP Community resource IDs.",
+        SerializedName = @"ipCommunityIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> SetIPCommunityId { get; set; }
 
     }
     /// IP Community Properties.
-    internal partial interface IActionIPCommunityPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityAddOperationPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityDeleteOperationPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunitySetOperationPropertiesInternal
+    internal partial interface IActionIPCommunityPropertiesInternal
+
     {
+        /// <summary>List of IP Community IDs.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Add { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> AddIPCommunityId { get; set; }
+        /// <summary>List of IP Community IDs.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Delete { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> DeleteIPCommunityId { get; set; }
+        /// <summary>List of IP Community IDs.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdList Set { get; set; }
+        /// <summary>List of IP Community resource IDs.</summary>
+        System.Collections.Generic.List<string> SetIPCommunityId { get; set; }
 
     }
 }

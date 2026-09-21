@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class WebApplicationFirewallPolicyResourceState
     {
+        /// <summary>
+        /// Creating
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// Enabling
+        /// </summary>
         public const string Enabling = "Enabling";
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Disabling
+        /// </summary>
         public const string Disabling = "Disabling";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// Deleting
+        /// </summary>
         public const string Deleting = "Deleting";
     }
 }

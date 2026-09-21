@@ -67,7 +67,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             {_azureOrigin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("azureOrigin"), out var __jsonAzureOrigin) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonAzureOrigin) : _azureOrigin;}
             {_sharedPrivateLinkResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("sharedPrivateLinkResource"), out var __jsonSharedPrivateLinkResource) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourceProperties.FromJson(__jsonSharedPrivateLinkResource) : _sharedPrivateLinkResource;}
-            {_originCapacityResource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("originCapacityResource"), out var __jsonOriginCapacityResource) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourceProperties.FromJson(__jsonOriginCapacityResource) : _originCapacityResource;}
             {_originGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("originGroupName"), out var __jsonOriginGroupName) ? (string)__jsonOriginGroupName : (string)_originGroupName;}
             {_hostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("hostName"), out var __jsonHostName) ? (string)__jsonHostName : (string)_hostName;}
             {_httpPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("httpPort"), out var __jsonHttpPort) ? (int?)__jsonHttpPort : _httpPort;}
@@ -114,7 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             AddIf( null != this._azureOrigin ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._azureOrigin.ToJson(null,serializationMode) : null, "azureOrigin" ,container.Add );
             AddIf( null != this._sharedPrivateLinkResource ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._sharedPrivateLinkResource.ToJson(null,serializationMode) : null, "sharedPrivateLinkResource" ,container.Add );
-            AddIf( null != this._originCapacityResource ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._originCapacityResource.ToJson(null,serializationMode) : null, "originCapacityResource" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._originGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._originGroupName.ToString()) : null, "originGroupName" ,container.Add );

@@ -17,7 +17,7 @@ Updates the backend pool on a loadbalancer
 Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
@@ -25,14 +25,15 @@ Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerNa
 Set-AzLoadBalancerBackendAddressPool -Name <String> -LoadBalancer <PSLoadBalancer>
  -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool>
  [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -40,7 +41,7 @@ Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool>
 Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
  -ResourceId <String> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +80,36 @@ Set-AzLoadBalancerBackendAddressPool -ResourceId $b2.Id -LoadBalancerBackendAddr
 ```
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

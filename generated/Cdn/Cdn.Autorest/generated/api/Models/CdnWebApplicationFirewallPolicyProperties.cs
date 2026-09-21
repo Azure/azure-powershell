@@ -266,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"Provisioning state of the WebApplicationFirewallPolicy.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
         string ProvisioningState { get;  }
         /// <summary>List of rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Prevention", "Detection")]
         string PolicySettingMode { get; set; }
         /// <summary>Provisioning state of the WebApplicationFirewallPolicy.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
         string ProvisioningState { get; set; }
         /// <summary>Describes rate limit rules inside the policy.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRateLimitRuleList RateLimitRule { get; set; }

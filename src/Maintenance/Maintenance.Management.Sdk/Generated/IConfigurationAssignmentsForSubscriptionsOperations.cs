@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Management.Maintenance
     public partial interface IConfigurationAssignmentsForSubscriptionsOperations
     {
         /// <summary>
-        /// Get configuration assignment for resource..
+        /// Get configuration assignment for resource.
         /// </summary>
         /// <remarks>
-        /// Get configuration assignment for resource..
+        /// Get configuration assignment for resource.
         /// </remarks>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Register configuration for resource.
         /// </remarks>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='configurationAssignment'>
         /// The configurationAssignment
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Register configuration for resource.
         /// </remarks>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='configurationAssignment'>
         /// The configurationAssignment
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// Unregister configuration for resource.
         /// </remarks>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

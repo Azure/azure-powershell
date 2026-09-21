@@ -13,21 +13,69 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class ModuleProvisioningState
     {
+        /// <summary>
+        /// Created
+        /// </summary>
         public const string Created = "Created";
+        /// <summary>
+        /// Creating
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// StartingImportModuleRunbook
+        /// </summary>
         public const string StartingImportModuleRunbook = "StartingImportModuleRunbook";
+        /// <summary>
+        /// RunningImportModuleRunbook
+        /// </summary>
         public const string RunningImportModuleRunbook = "RunningImportModuleRunbook";
+        /// <summary>
+        /// ContentRetrieved
+        /// </summary>
         public const string ContentRetrieved = "ContentRetrieved";
+        /// <summary>
+        /// ContentDownloaded
+        /// </summary>
         public const string ContentDownloaded = "ContentDownloaded";
+        /// <summary>
+        /// ContentValidated
+        /// </summary>
         public const string ContentValidated = "ContentValidated";
+        /// <summary>
+        /// ConnectionTypeImported
+        /// </summary>
         public const string ConnectionTypeImported = "ConnectionTypeImported";
+        /// <summary>
+        /// ContentStored
+        /// </summary>
         public const string ContentStored = "ContentStored";
+        /// <summary>
+        /// ModuleDataStored
+        /// </summary>
         public const string ModuleDataStored = "ModuleDataStored";
+        /// <summary>
+        /// ActivitiesStored
+        /// </summary>
         public const string ActivitiesStored = "ActivitiesStored";
+        /// <summary>
+        /// ModuleImportRunbookComplete
+        /// </summary>
         public const string ModuleImportRunbookComplete = "ModuleImportRunbookComplete";
+        /// <summary>
+        /// Succeeded
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Canceled
+        /// </summary>
         public const string Canceled = "Canceled";
+        /// <summary>
+        /// Updating
+        /// </summary>
         public const string Updating = "Updating";
     }
 }

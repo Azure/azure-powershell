@@ -42,15 +42,6 @@
       "component": {
         "type": "nuget",
         "nuget": {
-          "name": "System.Diagnostics.DiagnosticSource",
-          "version": "10.0.3"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
           "name": "System.Numerics.Vectors",
           "version": "4.6.1"
         }
@@ -62,15 +53,6 @@
         "nuget": {
           "name": "System.Runtime.CompilerServices.Unsafe",
           "version": "6.1.2"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
-          "name": "System.Text.Encodings.Web",
-          "version": "10.0.3"
         }
       }
     },
@@ -97,7 +79,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Core",
-          "version": "1.56.0"
+          "version": "1.57.0"
         }
       }
     },
@@ -259,7 +241,16 @@
         "type": "nuget",
         "nuget": {
           "name": "System.ClientModel",
-          "version": "1.12.0"
+          "version": "1.13.0"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Diagnostics.DiagnosticSource",
+          "version": "10.0.3"
         }
       }
     },
@@ -350,6 +341,15 @@
         "nuget": {
           "name": "System.ServiceModel.Primitives",
           "version": "4.7.0"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Text.Encodings.Web",
+          "version": "10.0.3"
         }
       }
     },

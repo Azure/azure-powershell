@@ -77,15 +77,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
-            __networkFabricControllerPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricControllerPatchableProperties(json);
             {_infrastructureService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("infrastructureServices"), out var __jsonInfrastructureServices) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServices.FromJson(__jsonInfrastructureServices) : _infrastructureService;}
             {_workloadService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("workloadServices"), out var __jsonWorkloadServices) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ControllerServices.FromJson(__jsonWorkloadServices) : _workloadService;}
             {_managedResourceGroupConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("managedResourceGroupConfiguration"), out var __jsonManagedResourceGroupConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedResourceGroupConfiguration.FromJson(__jsonManagedResourceGroupConfiguration) : _managedResourceGroupConfiguration;}
-            {_networkFabricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("networkFabricIds"), out var __jsonNetworkFabricIds) ? If( __jsonNetworkFabricIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _networkFabricId;}
-            {_workloadManagementNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonBoolean>("workloadManagementNetwork"), out var __jsonWorkloadManagementNetwork) ? (bool?)__jsonWorkloadManagementNetwork : _workloadManagementNetwork;}
+            {_lastOperation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("lastOperation"), out var __jsonLastOperation) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationProperties.FromJson(__jsonLastOperation) : _lastOperation;}
+            {_annotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("annotation"), out var __jsonAnnotation) ? (string)__jsonAnnotation : (string)_annotation;}
+            {_infrastructureExpressRouteConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("infrastructureExpressRouteConnections"), out var __jsonInfrastructureExpressRouteConnections) ? If( __jsonInfrastructureExpressRouteConnections as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformation.FromJson(__u) )) ))() : null : _infrastructureExpressRouteConnection;}
+            {_workloadExpressRouteConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("workloadExpressRouteConnections"), out var __jsonWorkloadExpressRouteConnections) ? If( __jsonWorkloadExpressRouteConnections as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExpressRouteConnectionInformation.FromJson(__p) )) ))() : null : _workloadExpressRouteConnection;}
+            {_networkFabricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("networkFabricIds"), out var __jsonNetworkFabricIds) ? If( __jsonNetworkFabricIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _networkFabricId;}
             {_isWorkloadManagementNetworkEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("isWorkloadManagementNetworkEnabled"), out var __jsonIsWorkloadManagementNetworkEnabled) ? (string)__jsonIsWorkloadManagementNetworkEnabled : (string)_isWorkloadManagementNetworkEnabled;}
-            {_tenantInternetGatewayId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("tenantInternetGatewayIds"), out var __jsonTenantInternetGatewayIds) ? If( __jsonTenantInternetGatewayIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _tenantInternetGatewayId;}
+            {_tenantInternetGatewayId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("tenantInternetGatewayIds"), out var __jsonTenantInternetGatewayIds) ? If( __jsonTenantInternetGatewayIds as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _tenantInternetGatewayId;}
             {_ipv4AddressSpace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ipv4AddressSpace"), out var __jsonIpv4AddressSpace) ? (string)__jsonIpv4AddressSpace : (string)_ipv4AddressSpace;}
             {_ipv6AddressSpace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ipv6AddressSpace"), out var __jsonIpv6AddressSpace) ? (string)__jsonIpv6AddressSpace : (string)_ipv6AddressSpace;}
             {_nfcSku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("nfcSku"), out var __jsonNfcSku) ? (string)__jsonNfcSku : (string)_nfcSku;}
@@ -112,8 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __annotationResource?.ToJson(container, serializationMode);
-            __networkFabricControllerPatchableProperties?.ToJson(container, serializationMode);
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._infrastructureService ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._infrastructureService.ToJson(null,serializationMode) : null, "infrastructureServices" ,container.Add );
@@ -125,31 +124,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             AddIf( null != this._managedResourceGroupConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._managedResourceGroupConfiguration.ToJson(null,serializationMode) : null, "managedResourceGroupConfiguration" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
-                if (null != this._networkFabricId)
+                AddIf( null != this._lastOperation ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._lastOperation.ToJson(null,serializationMode) : null, "lastOperation" ,container.Add );
+            }
+            AddIf( null != (((object)this._annotation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._annotation.ToString()) : null, "annotation" ,container.Add );
+            if (null != this._infrastructureExpressRouteConnection)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __x in this._infrastructureExpressRouteConnection )
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._networkFabricId )
-                    {
-                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
-                    }
-                    container.Add("networkFabricIds",__w);
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
+                container.Add("infrastructureExpressRouteConnections",__w);
+            }
+            if (null != this._workloadExpressRouteConnection)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                foreach( var __s in this._workloadExpressRouteConnection )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("workloadExpressRouteConnections",__r);
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._workloadManagementNetwork ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonBoolean((bool)this._workloadManagementNetwork) : null, "workloadManagementNetwork" ,container.Add );
+                if (null != this._networkFabricId)
+                {
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._networkFabricId )
+                    {
+                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
+                    }
+                    container.Add("networkFabricIds",__m);
+                }
             }
             AddIf( null != (((object)this._isWorkloadManagementNetworkEnabled)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._isWorkloadManagementNetworkEnabled.ToString()) : null, "isWorkloadManagementNetworkEnabled" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._tenantInternetGatewayId)
                 {
-                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._tenantInternetGatewayId )
+                    var __h = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                    foreach( var __i in this._tenantInternetGatewayId )
                     {
-                        AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                        AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
                     }
-                    container.Add("tenantInternetGatewayIds",__r);
+                    container.Add("tenantInternetGatewayIds",__h);
                 }
             }
             AddIf( null != (((object)this._ipv4AddressSpace)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._ipv4AddressSpace.ToString()) : null, "ipv4AddressSpace" ,container.Add );

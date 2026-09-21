@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The response from the List namespace operation.</summary>
+    /// <summary>The response of a AuthorizationRule list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(AuthorizationRuleListResultTypeConverter))]
     public partial class AuthorizationRuleListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The response from the List namespace operation.
+    /// The response of a AuthorizationRule list operation.
     [System.ComponentModel.TypeConverter(typeof(AuthorizationRuleListResultTypeConverter))]
     public partial interface IAuthorizationRuleListResult
 

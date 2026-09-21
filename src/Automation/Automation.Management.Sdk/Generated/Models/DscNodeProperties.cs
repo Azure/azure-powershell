@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="name">Gets or sets the name of the dsc node configuration.
         /// </param>
-        public DscNodeProperties(System.DateTimeOffset lastSeen = default(System.DateTimeOffset), System.DateTimeOffset registrationTime = default(System.DateTimeOffset), string ip = default(string), string accountId = default(string), string status = default(string), string nodeId = default(string), string etag = default(string), int? totalCount = default(int?), System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty> extensionHandler = default(System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty>), string name = default(string))
+        public DscNodeProperties(System.DateTimeOffset? lastSeen = default(System.DateTimeOffset?), System.DateTimeOffset? registrationTime = default(System.DateTimeOffset?), string ip = default(string), string accountId = default(string), string status = default(string), string nodeId = default(string), string etag = default(string), int? totalCount = default(int?), System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty> extensionHandler = default(System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty>), string name = default(string))
 
         {
             this.LastSeen = lastSeen;
@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the last seen time of the node.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastSeen")]
-        public System.DateTimeOffset LastSeen {get; set; }
+        public System.DateTimeOffset? LastSeen {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the registration time of the node.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "registrationTime")]
-        public System.DateTimeOffset RegistrationTime {get; set; }
+        public System.DateTimeOffset? RegistrationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the ip of the node.

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class GroupMemberType
     {
+        /// <summary>
+        /// VirtualNetwork
+        /// </summary>
         public const string VirtualNetwork = "VirtualNetwork";
+        /// <summary>
+        /// Subnet
+        /// </summary>
         public const string Subnet = "Subnet";
     }
 }

@@ -22,7 +22,7 @@ Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ResourceGroupName <
 ### Get
 ```
 Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -ExecutionFilter <String> [-DefaultProfile <PSObject>]
+ -ExecutionFilter <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

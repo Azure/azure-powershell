@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of NetworkPacketBrokers.</summary>
+    /// <summary>Paged collection of NetworkPacketBroker items</summary>
     public partial class NetworkPacketBrokersListResult
     {
 

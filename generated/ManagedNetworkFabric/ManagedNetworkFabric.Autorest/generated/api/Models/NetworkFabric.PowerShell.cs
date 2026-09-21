@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -177,6 +181,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Annotation, global::System.Convert.ToString);
             }
+            if (content.Contains("StorageAccountConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountConfiguration) content.GetValueForProperty("StorageAccountConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StorageAccountConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UniqueRdConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherProperties) content.GetValueForProperty("UniqueRdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UniqueRouteDistinguisherPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecretRotationSummary"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummary = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationSummary) content.GetValueForProperty("SecretRotationSummary",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummary, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.SecretRotationSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthorizedTransceiver"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiver = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverProperties) content.GetValueForProperty("AuthorizedTransceiver",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiver, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AuthorizedTransceiverPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("QosConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QosConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosProperties) content.GetValueForProperty("QosConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QosConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.QosPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Sku, global::System.Convert.ToString);
@@ -188,6 +216,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("RouterId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).RouterId = (System.Collections.Generic.List<string>) content.GetValueForProperty("RouterId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).RouterId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FabricLock"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FabricLock = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFabricLockProperties>) content.GetValueForProperty("FabricLock",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FabricLock, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFabricLockProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.FabricLockPropertiesTypeConverter.ConvertFrom));
             }
             if (content.Contains("ControllerId"))
             {
@@ -229,9 +261,97 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).L3IsolationDomain = (System.Collections.Generic.List<string>) content.GetValueForProperty("L3IsolationDomain",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).L3IsolationDomain, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("HardwareAlertThreshold"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).HardwareAlertThreshold = (int?) content.GetValueForProperty("HardwareAlertThreshold",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).HardwareAlertThreshold, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ControlPlaneAcls"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ControlPlaneAcls = (System.Collections.Generic.List<string>) content.GetValueForProperty("ControlPlaneAcls",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ControlPlaneAcls, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FeatureFlag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FeatureFlag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties>) content.GetValueForProperty("FeatureFlag",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FeatureFlag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.FeatureFlagPropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("TrustedIPPrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).TrustedIPPrefix = (System.Collections.Generic.List<string>) content.GetValueForProperty("TrustedIPPrefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).TrustedIPPrefix, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("StorageArrayCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageArrayCount = (int?) content.GetValueForProperty("StorageArrayCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageArrayCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ActiveCommitBatch"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ActiveCommitBatch = (System.Collections.Generic.List<string>) content.GetValueForProperty("ActiveCommitBatch",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ActiveCommitBatch, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("ManagementNetworkConfiguration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ManagementNetworkConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationProperties) content.GetValueForProperty("ManagementNetworkConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ManagementNetworkConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagementNetworkConfigurationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageAccountConfigurationStorageAccountIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelector) content.GetValueForProperty("StorageAccountConfigurationStorageAccountIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageAccountConfigurationStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountId = (string) content.GetValueForProperty("StorageAccountConfigurationStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UniqueRdConfigurationUniqueRdConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRdConfigurationState = (string) content.GetValueForProperty("UniqueRdConfigurationUniqueRdConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRdConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("UniqueRdConfigurationUniqueRd"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRd = (System.Collections.Generic.List<string>) content.GetValueForProperty("UniqueRdConfigurationUniqueRd",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRd, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("UniqueRdConfigurationNniDerivedUniqueRdConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationNniDerivedUniqueRdConfigurationState = (string) content.GetValueForProperty("UniqueRdConfigurationNniDerivedUniqueRdConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationNniDerivedUniqueRdConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecretRotationSummaryActivePasswordSetCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummaryActivePasswordSetCount = (long?) content.GetValueForProperty("SecretRotationSummaryActivePasswordSetCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummaryActivePasswordSetCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperationDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthorizedTransceiverVendor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverVendor = (string) content.GetValueForProperty("AuthorizedTransceiverVendor",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverVendor, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthorizedTransceiverKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverKey = (string) content.GetValueForProperty("AuthorizedTransceiverKey",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("QoConfigurationQosConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QoConfigurationQosConfigurationState = (string) content.GetValueForProperty("QoConfigurationQosConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QoConfigurationQosConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageAccountIdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityType = (string) content.GetValueForProperty("StorageAccountIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageAccountIdentityUserAssignedIdentityResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityUserAssignedIdentityResourceId = (string) content.GetValueForProperty("StorageAccountIdentityUserAssignedIdentityResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityUserAssignedIdentityResourceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -254,6 +374,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NetworkFabricPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -318,6 +442,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Annotation = (string) content.GetValueForProperty("Annotation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Annotation, global::System.Convert.ToString);
             }
+            if (content.Contains("StorageAccountConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStorageAccountConfiguration) content.GetValueForProperty("StorageAccountConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StorageAccountConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UniqueRdConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUniqueRouteDistinguisherProperties) content.GetValueForProperty("UniqueRdConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UniqueRouteDistinguisherPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecretRotationSummary"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummary = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationSummary) content.GetValueForProperty("SecretRotationSummary",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummary, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.SecretRotationSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LastOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperation = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILastOperationProperties) content.GetValueForProperty("LastOperation",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperation, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.LastOperationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthorizedTransceiver"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiver = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAuthorizedTransceiverProperties) content.GetValueForProperty("AuthorizedTransceiver",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiver, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AuthorizedTransceiverPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("QosConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QosConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IQosProperties) content.GetValueForProperty("QosConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QosConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.QosPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).Sku, global::System.Convert.ToString);
@@ -329,6 +477,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("RouterId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).RouterId = (System.Collections.Generic.List<string>) content.GetValueForProperty("RouterId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).RouterId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FabricLock"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FabricLock = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFabricLockProperties>) content.GetValueForProperty("FabricLock",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FabricLock, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFabricLockProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.FabricLockPropertiesTypeConverter.ConvertFrom));
             }
             if (content.Contains("ControllerId"))
             {
@@ -370,9 +522,97 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).L3IsolationDomain = (System.Collections.Generic.List<string>) content.GetValueForProperty("L3IsolationDomain",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).L3IsolationDomain, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("HardwareAlertThreshold"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).HardwareAlertThreshold = (int?) content.GetValueForProperty("HardwareAlertThreshold",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).HardwareAlertThreshold, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ControlPlaneAcls"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ControlPlaneAcls = (System.Collections.Generic.List<string>) content.GetValueForProperty("ControlPlaneAcls",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ControlPlaneAcls, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FeatureFlag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FeatureFlag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties>) content.GetValueForProperty("FeatureFlag",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).FeatureFlag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.FeatureFlagPropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("TrustedIPPrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).TrustedIPPrefix = (System.Collections.Generic.List<string>) content.GetValueForProperty("TrustedIPPrefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).TrustedIPPrefix, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("StorageArrayCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageArrayCount = (int?) content.GetValueForProperty("StorageArrayCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageArrayCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ActiveCommitBatch"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ActiveCommitBatch = (System.Collections.Generic.List<string>) content.GetValueForProperty("ActiveCommitBatch",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ActiveCommitBatch, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("ManagementNetworkConfiguration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ManagementNetworkConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationProperties) content.GetValueForProperty("ManagementNetworkConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).ManagementNetworkConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ManagementNetworkConfigurationPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageAccountConfigurationStorageAccountIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIdentitySelector) content.GetValueForProperty("StorageAccountConfigurationStorageAccountIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IdentitySelectorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageAccountConfigurationStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountId = (string) content.GetValueForProperty("StorageAccountConfigurationStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountConfigurationStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UniqueRdConfigurationUniqueRdConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRdConfigurationState = (string) content.GetValueForProperty("UniqueRdConfigurationUniqueRdConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRdConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("UniqueRdConfigurationUniqueRd"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRd = (System.Collections.Generic.List<string>) content.GetValueForProperty("UniqueRdConfigurationUniqueRd",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationUniqueRd, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("UniqueRdConfigurationNniDerivedUniqueRdConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationNniDerivedUniqueRdConfigurationState = (string) content.GetValueForProperty("UniqueRdConfigurationNniDerivedUniqueRdConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).UniqueRdConfigurationNniDerivedUniqueRdConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecretRotationSummaryActivePasswordSetCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummaryActivePasswordSetCount = (long?) content.GetValueForProperty("SecretRotationSummaryActivePasswordSetCount",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).SecretRotationSummaryActivePasswordSetCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("LastOperationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperationDetail = (string) content.GetValueForProperty("LastOperationDetail",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).LastOperationDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthorizedTransceiverVendor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverVendor = (string) content.GetValueForProperty("AuthorizedTransceiverVendor",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverVendor, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthorizedTransceiverKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverKey = (string) content.GetValueForProperty("AuthorizedTransceiverKey",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).AuthorizedTransceiverKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("QoConfigurationQosConfigurationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QoConfigurationQosConfigurationState = (string) content.GetValueForProperty("QoConfigurationQosConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).QoConfigurationQosConfigurationState, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageAccountIdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityType = (string) content.GetValueForProperty("StorageAccountIdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageAccountIdentityUserAssignedIdentityResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityUserAssignedIdentityResourceId = (string) content.GetValueForProperty("StorageAccountIdentityUserAssignedIdentityResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricInternal)this).StorageAccountIdentityUserAssignedIdentityResourceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

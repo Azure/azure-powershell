@@ -13,10 +13,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RouteNextHopType
     {
+        /// <summary>
+        /// VirtualNetworkGateway
+        /// </summary>
         public const string VirtualNetworkGateway = "VirtualNetworkGateway";
+        /// <summary>
+        /// VnetLocal
+        /// </summary>
         public const string VnetLocal = "VnetLocal";
+        /// <summary>
+        /// Internet
+        /// </summary>
         public const string Internet = "Internet";
+        /// <summary>
+        /// VirtualAppliance
+        /// </summary>
         public const string VirtualAppliance = "VirtualAppliance";
+        /// <summary>
+        /// Routes traffic to virtual appliances using Equal-Cost Multi-Path (ECMP)
+        /// routing with multiple next hop IP addresses.
+        /// </summary>
+        public const string VirtualApplianceEcmp = "VirtualApplianceEcmp";
+        /// <summary>
+        /// No next hop type.
+        /// </summary>
         public const string None = "None";
     }
 }

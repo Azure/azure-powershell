@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? UpgradedToV2 { get; set; }
+
         public PSResourceId PublicIpPrefix { get; set; }
 
         [JsonIgnore]

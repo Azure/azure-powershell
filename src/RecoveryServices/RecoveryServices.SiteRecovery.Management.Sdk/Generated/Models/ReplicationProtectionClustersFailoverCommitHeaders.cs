@@ -21,19 +21,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the ReplicationProtectionClustersFailoverCommitHeaders class.
         /// </summary>
 
-        /// <param name="location">
+        /// <param name="azureAsyncOperation">
         /// </param>
 
-        /// <param name="azureAsyncOperation">
+        /// <param name="location">
         /// </param>
 
         /// <param name="retryAfter">
         /// </param>
-        public ReplicationProtectionClustersFailoverCommitHeaders(string location = default(string), string azureAsyncOperation = default(string), string retryAfter = default(string))
+        public ReplicationProtectionClustersFailoverCommitHeaders(string azureAsyncOperation = default(string), string location = default(string), int? retryAfter = default(int?))
 
         {
-            this.Location = location;
             this.AzureAsyncOperation = azureAsyncOperation;
+            this.Location = location;
             this.RetryAfter = retryAfter;
             CustomInit();
         }
@@ -47,19 +47,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
         public string AzureAsyncOperation {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public string RetryAfter {get; set; }
+        public int? RetryAfter {get; set; }
     }
 }

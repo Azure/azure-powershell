@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = true,
+        Update = false,
         Description = @"Managed resource group location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]

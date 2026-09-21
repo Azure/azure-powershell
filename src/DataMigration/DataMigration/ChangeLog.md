@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Removed the authentication key from console output.
 
 ## Version 1.1.0

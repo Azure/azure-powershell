@@ -8,29 +8,46 @@ schema: 2.0.0
 # Get-AzEdgeActionVersionCode
 
 ## SYNOPSIS
-Get Edge Action version code and optionally save to file.
+A long-running resource action.
 
 ## SYNTAX
 
 ### GetCustom (Default)
 ```
-Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetAndSaveCustom
 ```
-Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String[]>] -OutputPath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Version <String> -OutputPath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityEdgeAction
+```
+Get-AzEdgeActionVersionCode -Version <String> -EdgeActionInputObject <IEdgeActionIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzEdgeActionVersionCode -InputObject <IEdgeActionIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-A long-running resource action that retrieves the version code for an Edge Action version.
-When the -OutputPath parameter is specified, the base64-encoded content is decoded and saved 
-as a zip file to the specified directory.
-Otherwise, returns the raw response with base64 content.
+A long-running resource action.
 
 ## EXAMPLES
 
@@ -80,7 +97,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -94,18 +112,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeActionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
+Parameter Sets: GetViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetCustom, GetAndSaveCustom, Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -145,7 +193,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetCustom, GetAndSaveCustom, Get
 Aliases:
 
 Required: True
@@ -161,7 +209,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: GetCustom, GetAndSaveCustom, Get
 Aliases:
 
 Required: False
@@ -176,10 +224,41 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetCustom, GetAndSaveCustom, Get, GetViaIdentityEdgeAction
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,6 +269,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
 
 ## OUTPUTS
 

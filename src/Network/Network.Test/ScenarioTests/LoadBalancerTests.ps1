@@ -3665,3 +3665,88 @@ function Test-LoadBalancerInEdgeZone
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating a public Load Balancer in Advanced mode with a frontend IP configuration that has UDP connection tracking enabled,
+then toggling connection tracking off/on with Set-AzLoadBalancerFrontendIpConfig and adding a second tracked frontend with Add-AzLoadBalancerFrontendIpConfig.
+#>
+function Test-LoadBalancerAdvancedModeConnectionTracking
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $publicIpName = Get-ResourceName
+    $publicIpName2 = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $frontendName2 = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create the public IP. StandardV2 SKU is required for a public advanced-mode (Scope) load balancer.
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku StandardV2
+
+        # Create a frontend IP configuration with UDP connection tracking enabled
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip -EnableConnectionTracking
+        Assert-AreEqual $true $frontend.EnableConnectionTracking
+
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Udp -FrontendPort 80 -BackendPort 80
+
+        # Create the load balancer in Advanced mode
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -Sku Standard -Mode Advanced -Scope Public -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-AreEqual "Advanced" $expectedLb.Mode
+        Assert-AreEqual "Public" $expectedLb.Scope
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $true $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking
+
+        # Set: disable connection tracking on the existing frontend (omitting the switch clears it).
+        # NRP omits enableConnectionTracking when it is not enabled, so the property reads back as null.
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-True { $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking -ne $true }
+
+        # Set: re-enable connection tracking on the existing frontend
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip -EnableConnectionTracking | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual $true $expectedLb.FrontendIPConfigurations[0].EnableConnectionTracking
+
+        # Add: add a second frontend (StandardV2 public IP required for a public advanced-mode LB) with connection tracking enabled
+        $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -Sku StandardV2
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerFrontendIpConfig -Name $frontendName2 -PublicIpAddress $publicip2 -EnableConnectionTracking | Set-AzLoadBalancer
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($expectedLb.FrontendIPConfigurations).Count
+        $addedFrontend = $expectedLb.FrontendIPConfigurations | Where-Object { $_.Name -eq $frontendName2 }
+        Assert-AreEqual $true $addedFrontend.EnableConnectionTracking
+
+        # Delete
+        $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+
+        $list = Get-AzLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -19,10 +19,10 @@ Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### DeleteViaJsonString
 ```
 Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,23 +33,23 @@ Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaJsonString
+### Delete
 ```
 Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityExpanded
 ```
 Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -134,7 +134,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, Delete, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
@@ -149,7 +149,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentityExpanded
+Parameter Sets: DeleteViaIdentityExpanded, DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -210,7 +210,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, Delete, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
@@ -226,7 +226,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, Delete, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: False

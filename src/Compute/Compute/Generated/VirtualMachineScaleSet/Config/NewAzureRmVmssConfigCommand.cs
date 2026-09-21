@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("Regular", "Spot")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -289,6 +289,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
@@ -332,6 +337,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
 
         [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
@@ -456,7 +468,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
         [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
         public string ZonalPlatformFaultDomainAlignMode { get; set; }
-
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the lifecycle hooks profile for the virtual machine scale set. Use Set-AzVmssLifecycleHooksProfile or create a LifecycleHooksProfile object directly.")]
+        public LifecycleHooksProfile LifecycleHooksProfile { get; set; }
+        
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -695,6 +713,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
             }
 
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                {
+                    throw new PSArgumentException(
+                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
+                }
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.CapacityReservation == null)
+                {
+                    vVirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                vVirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
+            }
+
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
             {
                 if (vAutomaticRepairsPolicy == null)
@@ -786,6 +822,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                vVirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.IsParameterBound(c => c.EnableVtpm))
@@ -1264,7 +1313,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ResiliencyPolicy = vResiliencyPolicy,
                 Placement = vPlacement,
                 HighSpeedInterconnectPlacement = this.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? this.HighSpeedInterconnectPlacement : null,
-                ZonalPlatformFaultDomainAlignMode = this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? this.ZonalPlatformFaultDomainAlignMode : null
+                ZonalPlatformFaultDomainAlignMode = this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? this.ZonalPlatformFaultDomainAlignMode : null,
+                LifecycleHooksProfile = this.IsParameterBound(c => c.LifecycleHooksProfile) ? this.LifecycleHooksProfile : null
             };
 
             WriteObject(vVirtualMachineScaleSet);

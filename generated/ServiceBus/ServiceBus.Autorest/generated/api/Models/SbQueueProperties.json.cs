@@ -99,6 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {_enableExpress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean>("enableExpress"), out var __jsonEnableExpress) ? (bool?)__jsonEnableExpress : _enableExpress;}
             {_forwardTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("forwardTo"), out var __jsonForwardTo) ? (string)__jsonForwardTo : (string)_forwardTo;}
             {_forwardDeadLetteredMessagesTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("forwardDeadLetteredMessagesTo"), out var __jsonForwardDeadLetteredMessagesTo) ? (string)__jsonForwardDeadLetteredMessagesTo : (string)_forwardDeadLetteredMessagesTo;}
+            {_userMetadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("userMetadata"), out var __jsonUserMetadata) ? (string)__jsonUserMetadata : (string)_userMetadata;}
             AfterFromJson(json);
         }
 
@@ -161,6 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             AddIf( null != this._enableExpress ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean((bool)this._enableExpress) : null, "enableExpress" ,container.Add );
             AddIf( null != (((object)this._forwardTo)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._forwardTo.ToString()) : null, "forwardTo" ,container.Add );
             AddIf( null != (((object)this._forwardDeadLetteredMessagesTo)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._forwardDeadLetteredMessagesTo.ToString()) : null, "forwardDeadLetteredMessagesTo" ,container.Add );
+            AddIf( null != (((object)this._userMetadata)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._userMetadata.ToString()) : null, "userMetadata" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

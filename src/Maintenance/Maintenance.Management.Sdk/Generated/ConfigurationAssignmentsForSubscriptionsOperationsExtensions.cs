@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Management.Maintenance
     public static partial class ConfigurationAssignmentsForSubscriptionsOperationsExtensions
     {
         /// <summary>
-        /// Get configuration assignment for resource..
+        /// Get configuration assignment for resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Get(this IConfigurationAssignmentsForSubscriptionsOperations operations, string configurationAssignmentName)
         {
@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Management.Maintenance
         }
 
         /// <summary>
-        /// Get configuration assignment for resource..
+        /// Get configuration assignment for resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment CreateOrUpdate(this IConfigurationAssignmentsForSubscriptionsOperations operations, string configurationAssignmentName, ConfigurationAssignment configurationAssignment)
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Update(this IConfigurationAssignmentsForSubscriptionsOperations operations, string configurationAssignmentName, ConfigurationAssignment configurationAssignment)
         {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Delete(this IConfigurationAssignmentsForSubscriptionsOperations operations, string configurationAssignmentName)
         {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

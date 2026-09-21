@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>Result of the List private link resources operation.</summary>
+    /// <summary>Paged collection of PrivateLinkResource items</summary>
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.DoNotFormat]
     public partial class PrivateLinkResourcesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateLinkResourcesListResult,
@@ -17,14 +17,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>A link for the next page of private link resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateLinkResource> _value;
 
-        /// <summary>A collection of private link resources</summary>
+        /// <summary>The PrivateLinkResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateLinkResource> Value { get => this._value; set => this._value = value; }
 
@@ -34,41 +34,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         }
     }
-    /// Result of the List private link resources operation.
+    /// Paged collection of PrivateLinkResource items
     public partial interface IPrivateLinkResourcesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
-        /// <summary>A link for the next page of private link resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A link for the next page of private link resources.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>A collection of private link resources</summary>
+        /// <summary>The PrivateLinkResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A collection of private link resources",
+        Description = @"The PrivateLinkResource items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateLinkResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateLinkResource> Value { get; set; }
 
     }
-    /// Result of the List private link resources operation.
+    /// Paged collection of PrivateLinkResource items
     internal partial interface IPrivateLinkResourcesListResultInternal
 
     {
-        /// <summary>A link for the next page of private link resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>A collection of private link resources</summary>
+        /// <summary>The PrivateLinkResource items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateLinkResource> Value { get; set; }
 
     }

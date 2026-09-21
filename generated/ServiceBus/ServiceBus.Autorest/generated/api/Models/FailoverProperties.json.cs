@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 return;
             }
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailoverProperties1.FromJson(__jsonProperties) : _property;}
+            {_isSafeFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean>("IsSafeFailover"), out var __jsonIsSafeFailover) ? (bool?)__jsonIsSafeFailover : _isSafeFailover;}
             AfterFromJson(json);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 return container;
             }
-            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._isSafeFailover ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean((bool)this._isSafeFailover) : null, "IsSafeFailover" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

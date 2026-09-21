@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsEnvironment
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsenvironmentobject
 #>
 function New-AzSecurityAwsEnvironmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsEnvironment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

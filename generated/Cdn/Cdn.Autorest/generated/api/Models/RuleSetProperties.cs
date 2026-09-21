@@ -18,6 +18,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties();
 
+        /// <summary>Backing field for <see cref="BatchMode" /> property.</summary>
+        private bool? _batchMode;
+
+        /// <summary>
+        /// Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with
+        /// the rule set.
+        /// When batch mode is disabled, rules would need to be processed independently.
+        /// This property can only be set during rule set creation and cannot be updated later.
+        /// For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new
+        /// rule set.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public bool? BatchMode { get => this._batchMode; set => this._batchMode = value; }
+
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; }
 
@@ -40,6 +54,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Provisioning status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; }
+
+        /// <summary>Backing field for <see cref="Rule" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> _rule;
+
+        /// <summary>
+        /// A list of rules that are part of this rule set provided the rule set is in batch mode.
+        /// This property will be ignored if the rule set is not in batch mode.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> Rule { get => this._rule; set => this._rule = value; }
 
         /// <summary>Creates an new <see cref="RuleSetProperties" /> instance.</summary>
         public RuleSetProperties()
@@ -64,6 +88,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties
     {
+        /// <summary>
+        /// Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with
+        /// the rule set.
+        /// When batch mode is disabled, rules would need to be processed independently.
+        /// This property can only be set during rule set creation and cannot be updated later.
+        /// For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new
+        /// rule set.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set.
+        When batch mode is disabled, rules would need to be processed independently.
+        This property can only be set during rule set creation and cannot be updated later.
+        For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set.",
+        SerializedName = @"batchMode",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? BatchMode { get; set; }
         /// <summary>The name of the profile which holds the rule set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -75,14 +120,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
         string ProfileName { get;  }
+        /// <summary>
+        /// A list of rules that are part of this rule set provided the rule set is in batch mode.
+        /// This property will be ignored if the rule set is not in batch mode.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of rules that are part of this rule set provided the rule set is in batch mode.
+        This property will be ignored if the rule set is not in batch mode.",
+        SerializedName = @"rules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> Rule { get; set; }
 
     }
     /// The JSON object that contains the properties of the Rule Set to create.
     internal partial interface IRuleSetPropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal
     {
+        /// <summary>
+        /// Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with
+        /// the rule set.
+        /// When batch mode is disabled, rules would need to be processed independently.
+        /// This property can only be set during rule set creation and cannot be updated later.
+        /// For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new
+        /// rule set.
+        /// </summary>
+        bool? BatchMode { get; set; }
         /// <summary>The name of the profile which holds the rule set.</summary>
         string ProfileName { get; set; }
+        /// <summary>
+        /// A list of rules that are part of this rule set provided the rule set is in batch mode.
+        /// This property will be ignored if the rule set is not in batch mode.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> Rule { get; set; }
 
     }
 }

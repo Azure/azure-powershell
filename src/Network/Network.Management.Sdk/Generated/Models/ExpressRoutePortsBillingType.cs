@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ExpressRoutePortsBillingType
     {
+        /// <summary>
+        /// MeteredData
+        /// </summary>
         public const string MeteredData = "MeteredData";
+        /// <summary>
+        /// UnlimitedData
+        /// </summary>
         public const string UnlimitedData = "UnlimitedData";
     }
 }

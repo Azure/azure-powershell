@@ -105,6 +105,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inherited)]
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
+        /// <summary>The offer ID (e.g., "dd_liftr_v3_decoupled").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public string MarketplaceOfferDetailOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceOfferDetailOfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceOfferDetailOfferId = value ?? null; }
+
+        /// <summary>The publisher ID (e.g., "datadog1591740804488").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public string MarketplaceOfferDetailPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceOfferDetailPublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceOfferDetailPublisherId = value ?? null; }
+
         /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
         /// go in Suspended state.
@@ -130,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Internal Acessors for LiftrResourcePreference</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.LiftrResourcePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).LiftrResourcePreference = value ?? default(int); }
 
+        /// <summary>Internal Acessors for MarketplaceOfferDetail</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceOfferDetails Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.MarketplaceOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceOfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceOfferDetail = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for MarketplaceSubscriptionStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).MarketplaceSubscriptionStatus = value ?? null; }
 
@@ -138,6 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).ProvisioningState = value ?? null; }
+
+        /// <summary>Internal Acessors for SaaSData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISaaSData Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.SaaSData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).SaaSData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).SaaSData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ResourceSku()); set { {_sku = value;} } }
@@ -197,6 +211,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
+        /// <summary>SaaS resource id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public string SaaSDataSaaSresourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).SaaSDataSaaSresourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).SaaSDataSaaSresourceId = value ?? null; }
+
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku _sku;
 
@@ -208,6 +226,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSkuInternal)Sku).Name = value ?? null; }
+
+        /// <summary>
+        /// SRE Agent configuration to connect to MCP server of Datadog for given organization.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration> SreAgentConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).SreAgentConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorPropertiesInternal)Property).SreAgentConfiguration = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -461,6 +485,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"liftrResourcePreference",
         PossibleTypes = new [] { typeof(int) })]
         int? LiftrResourcePreference { get;  }
+        /// <summary>The offer ID (e.g., "dd_liftr_v3_decoupled").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The offer ID (e.g., ""dd_liftr_v3_decoupled"").",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceOfferDetailOfferId { get; set; }
+        /// <summary>The publisher ID (e.g., "datadog1591740804488").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The publisher ID (e.g., ""datadog1591740804488"").",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceOfferDetailPublisherId { get; set; }
         /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
         /// go in Suspended state.
@@ -500,6 +546,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
         string ProvisioningState { get;  }
+        /// <summary>SaaS resource id</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"SaaS resource id",
+        SerializedName = @"saaSResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SaaSDataSaaSresourceId { get; set; }
         /// <summary>
         /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
         /// </summary>
@@ -513,6 +570,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
+        /// <summary>
+        /// SRE Agent configuration to connect to MCP server of Datadog for given organization.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = false,
+        Create = false,
+        Update = true,
+        Description = @"SRE Agent configuration to connect to MCP server of Datadog for given organization.",
+        SerializedName = @"sreAgentConfiguration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration> SreAgentConfiguration { get; set; }
         /// <summary>Email of the user used by Datadog for contacting them if needed</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -602,6 +672,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>The priority of the resource.</summary>
         int? LiftrResourcePreference { get; set; }
         /// <summary>
+        /// Details about the marketplace offer associated with the resource.
+        /// Required for API version 2025-11 and later.
+        /// For earlier API versions, defaults to the legacy offer.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceOfferDetails MarketplaceOfferDetail { get; set; }
+        /// <summary>The offer ID (e.g., "dd_liftr_v3_decoupled").</summary>
+        string MarketplaceOfferDetailOfferId { get; set; }
+        /// <summary>The publisher ID (e.g., "datadog1591740804488").</summary>
+        string MarketplaceOfferDetailPublisherId { get; set; }
+        /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
         /// go in Suspended state.
         /// </summary>
@@ -615,12 +695,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
         string ProvisioningState { get; set; }
+        /// <summary>SaaS details</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISaaSData SaaSData { get; set; }
+        /// <summary>SaaS resource id</summary>
+        string SaaSDataSaaSresourceId { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IResourceSku Sku { get; set; }
         /// <summary>
         /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
         /// </summary>
         string SkuName { get; set; }
+        /// <summary>
+        /// SRE Agent configuration to connect to MCP server of Datadog for given organization.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration> SreAgentConfiguration { get; set; }
         /// <summary>
         /// Includes name, email and optionally, phone number. User Information can't be null.
         /// </summary>

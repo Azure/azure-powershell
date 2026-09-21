@@ -13,15 +13,15 @@
 # ----------------------------------------------------------------------------------
 
 # Test constants 
-$rgName = "DaniRG"
+$rgName = "ivankostic-rg"
 $boxName = "wwi-2022-sql02"
-$miName = "chimera-canary-gpv2-01"
+$miName = "ivan-mi-25"
 $linkName = "Link1"
 $databaseName = "CLI1"
 $databases = @($databaseName)
 $instanceAgName = "AG_CLI1_MI"
 $boxAgName = "AG_CLI1"
-$partnerEndpoint = "tcp://10.0.1.8:5022"
+$partnerEndpoint = "tcp://172.16.1.130:5022"
 $instanceLinkRole = "Primary"
 $failoverMode = "Manual"
 $failoverType = "Planned"
@@ -34,6 +34,50 @@ $linkType = "Microsoft.Sql/managedInstances/distributedAvailabilityGroups"
 $invalidLinkName = "invalid_link_name";
 $invalidMIName = "invalid_mi_name"
 $empty_database_list = @()
+
+function Wait-ManagedInstanceLinkDatabaseCount
+{
+    param(
+        [string] $ResourceGroupName,
+        [string] $InstanceName,
+        [string] $Name,
+        [int] $ExpectedCount
+    )
+
+    $maxAttempts = 60
+    for ($attempt = 0; $attempt -lt $maxAttempts; $attempt++)
+    {
+        $link = Get-AzSqlInstanceLink -ResourceGroupName $ResourceGroupName -InstanceName $InstanceName -Name $Name
+        if ($link.Databases.Count -eq $ExpectedCount)
+        {
+            return $link
+        }
+
+        if ((Get-SqlTestMode) -ne "Playback")
+        {
+            Start-Sleep -Seconds 10
+        }
+    }
+
+    throw "Timed out waiting for link '$Name' to contain $ExpectedCount databases."
+}
+
+function Assert-ManagedInstanceLinkDatabases
+{
+    param(
+        [object] $Link,
+        [string[]] $ExpectedDatabaseNames
+    )
+
+    $actualDatabaseNames = @($Link.Databases | ForEach-Object { $_.DatabaseName } | Sort-Object)
+    $sortedExpectedDatabaseNames = @($ExpectedDatabaseNames | Sort-Object)
+
+    Assert-AreEqual $actualDatabaseNames.Count $sortedExpectedDatabaseNames.Count
+    for ($index = 0; $index -lt $sortedExpectedDatabaseNames.Count; $index++)
+    {
+        Assert-AreEqual $actualDatabaseNames[$index] $sortedExpectedDatabaseNames[$index]
+    }
+}
 
 <#
     .SYNOPSIS
@@ -71,7 +115,7 @@ function Test-ManagedInstanceLink
         Assert-AreEqual $getLinkByNameParameterSet.ResourceGroupName $rgName
         Assert-AreEqual $getLinkByNameParameterSet.InstanceName $miName
         Assert-AreEqual $getLinkByNameParameterSet.Type $linkType
-        Assert-AreEqual $getLinkByNameParameterSet.Id $instanceId
+        Assert-AreEqual $getLinkByNameParameterSet.Id $linkId
         Assert-AreEqual $getLinkByNameParameterSet.Name $linkName
         Assert-AreEqual $getLinkByNameParameterSet.Databases[0].DatabaseName $databases[0]
         Assert-AreEqual $getLinkByNameParameterSet.ReplicationMode $replicationModeConst
@@ -90,7 +134,7 @@ function Test-ManagedInstanceLink
         Assert-AreEqual $getLinkByParentObjectParameterSet.ResourceGroupName $rgName
         Assert-AreEqual $getLinkByParentObjectParameterSet.InstanceName $miName
         Assert-AreEqual $getLinkByParentObjectParameterSet.Type $linkType
-        Assert-AreEqual $getLinkByParentObjectParameterSet.Id $instanceId
+        Assert-AreEqual $getLinkByParentObjectParameterSet.Id $linkId
         Assert-AreEqual $getLinkByParentObjectParameterSet.Name $linkName
         Assert-AreEqual $getLinkByParentObjectParameterSet.Databases[0].DatabaseName $databases[0]
         Assert-AreEqual $getLinkByParentObjectParameterSet.ReplicationMode $replicationModeConst
@@ -109,7 +153,7 @@ function Test-ManagedInstanceLink
         Assert-AreEqual $getLinkByResourceIdParameterSet.ResourceGroupName $rgName
         Assert-AreEqual $getLinkByResourceIdParameterSet.InstanceName $miName
         Assert-AreEqual $getLinkByResourceIdParameterSet.Type $linkType
-        Assert-AreEqual $getLinkByResourceIdParameterSet.Id $instanceId
+        Assert-AreEqual $getLinkByResourceIdParameterSet.Id $linkId
         Assert-AreEqual $getLinkByResourceIdParameterSet.Name $linkName
         Assert-AreEqual $getLinkByResourceIdParameterSet.Databases[0].DatabaseName $databases[0]
         Assert-AreEqual $getLinkByResourceIdParameterSet.ReplicationMode $replicationModeConst
@@ -128,7 +172,7 @@ function Test-ManagedInstanceLink
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.ResourceGroupName $rgName
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.InstanceName $miName
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Type $linkType
-        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Id $instanceId
+        Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Id $linkId
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Name $linkName
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.Databases[0].DatabaseName $databases[0]
         Assert-AreEqual $getLinkByInstanceResourceIdParameterSet.ReplicationMode $replicationModeConst
@@ -215,7 +259,7 @@ function Test-ManagedInstanceLinkErrHandling
         Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName1 -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode } $msgExcCreatingLink
 
         # Start failover and assert that the planned failover can't be invoked when MI is secondary
-        $msgExcCantFailover = "Planned failover can be executed on a link in the primary role only. Current state of the specified link is secondary."
+        $msgExcCantFailover = "A planned failover of Azure SQL Managed Instance link cannot be initiated from the secondary instance. Initiate failover from the primary instance for this link."
         Assert-ThrowsContains { Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType -Force } $msgExcCantFailover
 
         # Confirm that ShouldContinue message is triggered on Remove (tests don't support user interaction so we'll validate the exception)
@@ -257,13 +301,18 @@ function Test-ManagedInstanceLinkPiping
         $getLink = $instance | Get-AzSqlInstanceLink -LinkName $linkName
         Write-Debug ('$getLink is ' + (ConvertTo-Json $getLink))
         Assert-NotNull $getLink
-        
-        # validate forbidden updates in current link state
-        $updatedLink = $getLink | Set-AzSqlInstanceLink -ReplicationMode Sync
+
+        # Validate that an unchanged input object does not cause a no-op update
+        $missingUpdatePropertyMessage = "At least one of -ReplicationMode or -Database must be specified."
+        Assert-ThrowsContains { $getLink | Set-AzSqlInstanceLink } $missingUpdatePropertyMessage
+
+        # Validate updating replication mode by mutating the input object
+        $getLink.ReplicationMode = $replicationModeConst2
+        $updatedLink = $getLink | Set-AzSqlInstanceLink
         Assert-AreEqual $updatedLink.ReplicationMode $replicationModeConst2
 
         # validate delete pipe working
-        $removedLinkResult = $getLink | Remove-AzSqlInstanceLink -Force -PassThru
+        $removedLinkResult = $updatedLink | Remove-AzSqlInstanceLink -Force -PassThru
         Write-Debug ('$removedLinkResult is ' + (ConvertTo-Json $removedLinkResult))
         Assert-NotNull $removedLinkResult
     }
@@ -398,7 +447,7 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $primaryRoleConst
 
         # Perform planned failover and fail
-        $msgExc = "Planned failover can be executed on a link in the primary role only. Current state of the specified link is secondary."
+        $msgExc = "A planned failover of Azure SQL Managed Instance link cannot be initiated from the secondary instance. Initiate failover from the primary instance for this link."
         Assert-ThrowsContains { $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force } $msgExc
 
         $failoverType = "ForcedAllowDataLoss"
@@ -419,5 +468,216 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
     finally
     {
         # No need for cleanup
+    }
+}
+
+<#
+    .SYNOPSIS
+    Tests multi-database Managed Instance Link operations
+#>
+function Test-ManagedInstanceMultiDatabaseLink
+{
+    $linkCreated = $false
+    $linkName = "multilink1"
+    $databaseNames = @("db1", "db2")
+    $instanceAgName = "AG_multilink1_MI"
+    $boxAgName = "AG_multilink1"
+    $instanceLinkRole = "Secondary"
+    $failoverMode = "None"
+    $linkMode = "MultiDatabase"
+
+    try
+    {
+        $instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
+        $instanceId = $instance.Id
+        $linkId = $instanceId + "/distributedAvailabilityGroups/" + $linkName
+
+        # Confirm that the managed instance has no links
+        $existingLink = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $existingLink.Count 0
+
+        # Create a multi-database link with two databases
+        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode -LinkMode $linkMode
+        $linkCreated = $true
+
+        # Wait for both databases and validate the link properties
+        $link = Wait-ManagedInstanceLinkDatabaseCount -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -ExpectedCount $databaseNames.Count
+        Assert-AreEqual $link.ResourceGroupName $rgName
+        Assert-AreEqual $link.InstanceName $miName
+        Assert-AreEqual $link.Type $linkType
+        Assert-AreEqual $link.Id $linkId
+        Assert-AreEqual $link.Name $linkName
+        Assert-AreEqual $link.InstanceLinkRole $instanceLinkRole
+        Assert-AreEqual $link.LinkMode $linkMode
+        Assert-AreEqual $link.InstanceAvailabilityGroupName $instanceAgName
+        Assert-AreEqual $link.PartnerAvailabilityGroupName $boxAgName
+        Assert-AreEqual $link.PartnerEndpoint $partnerEndpoint
+        Assert-AreEqual $link.SeedingMode $seedingMode
+        Assert-True { ($null -eq $link.FailoverMode) -or ($link.FailoverMode -eq $failoverMode) }
+        Assert-ManagedInstanceLinkDatabases -Link $link -ExpectedDatabaseNames $databaseNames
+
+        # Validate the parent-object parameter set
+        $linkByParentObject = Get-AzSqlInstanceLink -InstanceObject $instance -Name $linkName
+        Assert-AreEqual $linkByParentObject.Id $linkId
+        Assert-AreEqual $linkByParentObject.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $linkByParentObject -ExpectedDatabaseNames $databaseNames
+
+        # Validate the link resource ID parameter set
+        $linkByResourceId = Get-AzSqlInstanceLink -ResourceId $linkId
+        Assert-AreEqual $linkByResourceId.Id $linkId
+        Assert-AreEqual $linkByResourceId.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $linkByResourceId -ExpectedDatabaseNames $databaseNames
+
+        # Validate the managed instance resource ID parameter set
+        $linkByInstanceResourceId = Get-AzSqlInstanceLink -InstanceResourceId $instanceId -Name $linkName
+        Assert-AreEqual $linkByInstanceResourceId.Id $linkId
+        Assert-AreEqual $linkByInstanceResourceId.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $linkByInstanceResourceId -ExpectedDatabaseNames $databaseNames
+
+        # Validate listing links on the managed instance
+        $listedLinks = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $listedLinks.Count 1
+        Assert-AreEqual $listedLinks[0].LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $listedLinks[0] -ExpectedDatabaseNames $databaseNames
+
+        # Remove the link and verify that no links remain
+        Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Force
+        $linkCreated = $false
+
+        $listedLinks = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $listedLinks.Count 0
+    }
+    finally
+    {
+        if ($linkCreated)
+        {
+            Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Force
+        }
+    }
+}
+
+<#
+    .SYNOPSIS
+    Tests database membership updates for a multi-database Managed Instance Link
+#>
+function Test-ManagedInstanceMultiDatabaseLinkUpdateDatabases
+{
+    $linkCreated = $false
+    $linkName = "multilink2"
+    $databaseNames = @("db1", "db2")
+    $instanceAgName = "AG_multilink2_MI"
+    $boxAgName = "AG_multilink2"
+    $instanceLinkRole = "Primary"
+    $linkMode = "MultiDatabase"
+
+    try
+    {
+        # Confirm that the managed instance has no links
+        $existingLink = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $existingLink.Count 0
+
+        # Create a multi-database link with two databases
+        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -SeedingMode $seedingMode -LinkMode $linkMode
+        $linkCreated = $true
+
+        # Wait for the initial database membership
+        $link = Wait-ManagedInstanceLinkDatabaseCount -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -ExpectedCount $databaseNames.Count
+        Assert-AreEqual $link.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $link -ExpectedDatabaseNames $databaseNames
+
+        # Add db3 to the link
+        $databaseNames = @("db1", "db2", "db3")
+        Update-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames
+
+        # Wait for db3 to be added
+        $link = Wait-ManagedInstanceLinkDatabaseCount -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -ExpectedCount $databaseNames.Count
+        Assert-AreEqual $link.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $link -ExpectedDatabaseNames $databaseNames
+
+        # Remove db2 and db3, leaving only db1
+        $databaseNames = @("db1")
+        Update-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames
+
+        # Wait for the databases to be removed
+        $link = Wait-ManagedInstanceLinkDatabaseCount -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -ExpectedCount $databaseNames.Count
+        Assert-AreEqual $link.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $link -ExpectedDatabaseNames $databaseNames
+
+        # Remove the link and verify that no links remain
+        Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Force
+        $linkCreated = $false
+
+        $listedLinks = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $listedLinks.Count 0
+    }
+    finally
+    {
+        if ($linkCreated)
+        {
+            Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Force
+        }
+    }
+}
+
+<#
+    .SYNOPSIS
+    Tests multi-database Managed Instance Link validation
+#>
+function Test-ManagedInstanceMultiDatabaseLinkErrHandling
+{
+    $linkCreated = $false
+    $linkName = "multilink3"
+    $invalidLinkName = "MultiLink3"
+    $databaseNames = @("db1", "db2")
+    $instanceAgName = "AG_multilink3_MI"
+    $boxAgName = "AG_multilink3"
+    $instanceLinkRole = "Secondary"
+    $failoverMode = "None"
+    $linkMode = "MultiDatabase"
+
+    try
+    {
+        # Confirm that the managed instance has no links
+        $existingLink = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $existingLink.Count 0
+
+        # Multiple databases are invalid for an explicit single-database link
+        $invalidDatabasesMessage = "Distributed Availability Group Create or Update request body has empty or Invalid Databases."
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode -LinkMode "SingleDatabase" } $invalidDatabasesMessage
+
+        # Omitting LinkMode defaults to single-database mode
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode } $invalidDatabasesMessage
+
+        # Multi-database link names must be lowercase
+        $invalidNameMessage = "Multi-database Distributed Availability Group name can only be made up of lowercase letters"
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $invalidLinkName -Database $databaseNames -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode -LinkMode $linkMode } $invalidNameMessage
+
+        # Create a valid multi-database link
+        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databaseNames -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode -LinkMode $linkMode
+        $linkCreated = $true
+
+        # Wait for both databases and validate the link mode
+        $link = Wait-ManagedInstanceLinkDatabaseCount -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -ExpectedCount $databaseNames.Count
+        Assert-AreEqual $link.LinkMode $linkMode
+        Assert-ManagedInstanceLinkDatabases -Link $link -ExpectedDatabaseNames $databaseNames
+
+        # An update must specify replication mode or database membership
+        $missingUpdatePropertyMessage = "At least one of -ReplicationMode or -Database must be specified."
+        Assert-ThrowsContains { Update-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName } $missingUpdatePropertyMessage
+
+        # Remove the multi-database link
+        Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Force
+        $linkCreated = $false
+
+        # Verify that all links were removed
+        $listedLinks = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
+        Assert-AreEqual $listedLinks.Count 0
+    }
+    finally
+    {
+        if ($linkCreated)
+        {
+            Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Force
+        }
     }
 }

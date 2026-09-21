@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests.Models
                 AdvancedSchedule = new AdvancedSchedule()
                 {
                     WeekDays = null,
-                    MonthDays = new List<int>() { 1, 15, },
+                    MonthDays = new List<int?>() { 1, 15, },
                     MonthlyOccurrences = null,
                 },
             };

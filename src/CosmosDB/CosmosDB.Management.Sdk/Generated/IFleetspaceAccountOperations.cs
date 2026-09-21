@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceAccountResource>> CreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, string fleetspaceAccountName, FleetspaceAccountResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceAccountResource,FleetspaceAccountCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, string fleetspaceAccountName, FleetspaceAccountResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Removes an existing Azure Cosmos DB fleetspace account from a fleetspace.
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceAccountResource>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, string fleetspaceAccountName, FleetspaceAccountResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FleetspaceAccountResource,FleetspaceAccountCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string fleetName, string fleetspaceName, string fleetspaceAccountName, FleetspaceAccountResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Removes an existing Azure Cosmos DB fleetspace account from a fleetspace.

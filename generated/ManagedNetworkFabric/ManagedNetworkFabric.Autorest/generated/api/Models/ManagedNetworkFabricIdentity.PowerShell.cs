@@ -122,13 +122,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).AccessControlListName = (string) content.GetValueForProperty("AccessControlListName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).AccessControlListName, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetGatewayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName = (string) content.GetValueForProperty("InternetGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName, global::System.Convert.ToString);
-            }
             if (content.Contains("InternetGatewayRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayRuleName = (string) content.GetValueForProperty("InternetGatewayRuleName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternetGatewayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName = (string) content.GetValueForProperty("InternetGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName, global::System.Convert.ToString);
             }
             if (content.Contains("IPCommunityName"))
             {
@@ -150,17 +150,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).L3IsolationDomainName = (string) content.GetValueForProperty("L3IsolationDomainName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).L3IsolationDomainName, global::System.Convert.ToString);
             }
-            if (content.Contains("InternalNetworkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName = (string) content.GetValueForProperty("InternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExternalNetworkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName = (string) content.GetValueForProperty("ExternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName, global::System.Convert.ToString);
-            }
             if (content.Contains("NeighborGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NeighborGroupName = (string) content.GetValueForProperty("NeighborGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NeighborGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkBootstrapDeviceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapDeviceName = (string) content.GetValueForProperty("NetworkBootstrapDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapDeviceName, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkDeviceSkuName"))
             {
@@ -169,10 +165,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("NetworkDeviceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkDeviceName = (string) content.GetValueForProperty("NetworkDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkDeviceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("NetworkInterfaceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName = (string) content.GetValueForProperty("NetworkInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkFabricControllerName"))
             {
@@ -186,9 +178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkFabricName = (string) content.GetValueForProperty("NetworkFabricName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkFabricName, global::System.Convert.ToString);
             }
-            if (content.Contains("NetworkToNetworkInterconnectName"))
+            if (content.Contains("NetworkMonitorName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName = (string) content.GetValueForProperty("NetworkToNetworkInterconnectName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkMonitorName = (string) content.GetValueForProperty("NetworkMonitorName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkMonitorName, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkPacketBrokerName"))
             {
@@ -209,6 +201,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("RoutePolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).RoutePolicyName = (string) content.GetValueForProperty("RoutePolicyName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).RoutePolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName = (string) content.GetValueForProperty("ExternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternalNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName = (string) content.GetValueForProperty("InternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkBootstrapInterfaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapInterfaceName = (string) content.GetValueForProperty("NetworkBootstrapInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapInterfaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkInterfaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName = (string) content.GetValueForProperty("NetworkInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkToNetworkInterconnectName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName = (string) content.GetValueForProperty("NetworkToNetworkInterconnectName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -243,13 +255,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).AccessControlListName = (string) content.GetValueForProperty("AccessControlListName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).AccessControlListName, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetGatewayName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName = (string) content.GetValueForProperty("InternetGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName, global::System.Convert.ToString);
-            }
             if (content.Contains("InternetGatewayRuleName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayRuleName = (string) content.GetValueForProperty("InternetGatewayRuleName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternetGatewayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName = (string) content.GetValueForProperty("InternetGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternetGatewayName, global::System.Convert.ToString);
             }
             if (content.Contains("IPCommunityName"))
             {
@@ -271,17 +283,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).L3IsolationDomainName = (string) content.GetValueForProperty("L3IsolationDomainName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).L3IsolationDomainName, global::System.Convert.ToString);
             }
-            if (content.Contains("InternalNetworkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName = (string) content.GetValueForProperty("InternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExternalNetworkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName = (string) content.GetValueForProperty("ExternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName, global::System.Convert.ToString);
-            }
             if (content.Contains("NeighborGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NeighborGroupName = (string) content.GetValueForProperty("NeighborGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NeighborGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkBootstrapDeviceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapDeviceName = (string) content.GetValueForProperty("NetworkBootstrapDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapDeviceName, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkDeviceSkuName"))
             {
@@ -290,10 +298,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("NetworkDeviceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkDeviceName = (string) content.GetValueForProperty("NetworkDeviceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkDeviceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("NetworkInterfaceName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName = (string) content.GetValueForProperty("NetworkInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkFabricControllerName"))
             {
@@ -307,9 +311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkFabricName = (string) content.GetValueForProperty("NetworkFabricName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkFabricName, global::System.Convert.ToString);
             }
-            if (content.Contains("NetworkToNetworkInterconnectName"))
+            if (content.Contains("NetworkMonitorName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName = (string) content.GetValueForProperty("NetworkToNetworkInterconnectName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkMonitorName = (string) content.GetValueForProperty("NetworkMonitorName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkMonitorName, global::System.Convert.ToString);
             }
             if (content.Contains("NetworkPacketBrokerName"))
             {
@@ -330,6 +334,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("RoutePolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).RoutePolicyName = (string) content.GetValueForProperty("RoutePolicyName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).RoutePolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName = (string) content.GetValueForProperty("ExternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).ExternalNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("InternalNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName = (string) content.GetValueForProperty("InternalNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).InternalNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkBootstrapInterfaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapInterfaceName = (string) content.GetValueForProperty("NetworkBootstrapInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkBootstrapInterfaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkInterfaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName = (string) content.GetValueForProperty("NetworkInterfaceName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkInterfaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkToNetworkInterconnectName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName = (string) content.GetValueForProperty("NetworkToNetworkInterconnectName",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentityInternal)this).NetworkToNetworkInterconnectName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

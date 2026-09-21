@@ -157,10 +157,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState, global::System.Convert.ToString);
             }
-            if (content.Contains("GrpcState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState = (string) content.GetValueForProperty("GrpcState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState, global::System.Convert.ToString);
-            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -257,10 +253,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("EnabledState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState, global::System.Convert.ToString);
-            }
-            if (content.Contains("GrpcState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState = (string) content.GetValueForProperty("GrpcState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The result to the List Consumer Group operation.</summary>
+    /// <summary>The response of a ConsumerGroup list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ConsumerGroupListResultTypeConverter))]
     public partial class ConsumerGroupListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The result to the List Consumer Group operation.
+    /// The response of a ConsumerGroup list operation.
     [System.ComponentModel.TypeConverter(typeof(ConsumerGroupListResultTypeConverter))]
     public partial interface IConsumerGroupListResult
 

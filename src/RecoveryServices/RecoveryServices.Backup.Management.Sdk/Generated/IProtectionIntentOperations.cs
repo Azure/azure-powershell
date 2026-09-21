@@ -47,23 +47,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the details of the protection intent up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the
-        /// GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the operation,
+        /// call the GetItemOperationResult API.
         /// </summary>
         /// <remarks>
         /// Provides the details of the protection intent up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the
-        /// GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the operation,
+        /// call the GetItemOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='intentObjectName'>
         /// Backed up item name whose details are to be fetched.
@@ -80,7 +79,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionIntentResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string intentObjectName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionIntentResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string intentObjectName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create Intent for Enabling backup of an item. This is a synchronous
@@ -90,18 +89,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Create Intent for Enabling backup of an item. This is a synchronous
         /// operation.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backup item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='intentObjectName'>
-        /// Intent object name.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='parameters'>
         /// resource backed up item
@@ -118,7 +116,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionIntentResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string intentObjectName, ProtectionIntentResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionIntentResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string intentObjectName, ProtectionIntentResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Used to remove intent from an item
@@ -126,18 +124,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Used to remove intent from an item
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the intent.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='intentObjectName'>
-        /// Intent to be deleted.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -148,7 +145,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string intentObjectName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string intentObjectName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

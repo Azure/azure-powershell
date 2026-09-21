@@ -15,19 +15,22 @@ Saves a Subscription scoped Deployment Stack Template.
 ### SaveByName (Default)
 ```
 Save-AzSubscriptionDeploymentStackTemplate [-StackName] <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SaveByResourceId
 ```
 Save-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SaveByStackObject
 ```
 Save-AzSubscriptionDeploymentStackTemplate [-InputObject] <PSDeploymentStack> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,11 +47,41 @@ Save a template (or template link) for a stack named 'MySubStack' under the defa
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +96,7 @@ Accept wildcard characters: False
 The stack PS object
 
 ```yaml
-Type: PSDeploymentStack
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
 Parameter Sets: SaveByStackObject
 Aliases: InputObjet
 
@@ -78,7 +111,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +126,7 @@ Accept wildcard characters: False
 ResourceId of the DeploymentStack to get
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SaveByResourceId
 Aliases: Id
 
@@ -108,7 +141,7 @@ Accept wildcard characters: False
 The name of the DeploymentStack to get
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SaveByName
 Aliases:
 

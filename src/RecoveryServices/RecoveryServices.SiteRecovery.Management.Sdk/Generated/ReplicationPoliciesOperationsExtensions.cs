@@ -19,11 +19,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         public static Microsoft.Rest.Azure.IPage<Policy> List(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName)
         {
@@ -37,11 +36,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -60,11 +58,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
@@ -81,11 +78,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
@@ -107,11 +103,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
@@ -128,11 +123,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
@@ -148,64 +142,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to delete a replication policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='policyName'>
-        /// Replication policy name.
-        /// </param>
-        public static void Delete(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
-        {
-                ((IReplicationPoliciesOperations)operations).DeleteAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to delete a replication policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='policyName'>
-        /// Replication policy name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The operation to update a replication policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
-        /// Policy Id.
+        /// Replication policy name.
         /// </param>
         public static Policy Update(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties))
         {
@@ -219,14 +168,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
-        /// Policy Id.
+        /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -239,17 +187,61 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
+        /// The operation to delete a replication policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='policyName'>
+        /// Replication policy name.
+        /// </param>
+        public static ReplicationPoliciesDeleteHeaders Delete(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
+        {
+                return ((IReplicationPoliciesOperations)operations).DeleteAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to delete a replication policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='policyName'>
+        /// Replication policy name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationPoliciesDeleteHeaders> DeleteAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// The operation to create a replication policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
@@ -266,11 +258,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
         /// Replication policy name.
@@ -286,64 +277,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             }
         }
         /// <summary>
-        /// The operation to delete a replication policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='policyName'>
-        /// Replication policy name.
-        /// </param>
-        public static void BeginDelete(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
-        {
-                ((IReplicationPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to delete a replication policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='policyName'>
-        /// Replication policy name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// The operation to update a replication policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
-        /// Policy Id.
+        /// Replication policy name.
         /// </param>
         public static Policy BeginUpdate(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, UpdatePolicyInputProperties properties = default(UpdatePolicyInputProperties))
         {
@@ -357,14 +303,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='policyName'>
-        /// Policy Id.
+        /// Replication policy name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -374,6 +319,51 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// The operation to delete a replication policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='policyName'>
+        /// Replication policy name.
+        /// </param>
+        public static ReplicationPoliciesDeleteHeaders BeginDelete(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName)
+        {
+                return ((IReplicationPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, policyName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to delete a replication policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='policyName'>
+        /// Replication policy name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationPoliciesDeleteHeaders> BeginDeleteAsync(this IReplicationPoliciesOperations operations, string resourceGroupName, string resourceName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, policyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

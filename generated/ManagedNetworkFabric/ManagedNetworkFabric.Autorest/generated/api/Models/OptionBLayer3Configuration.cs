@@ -19,6 +19,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixProperties __layer3IPPrefixProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.Layer3IPPrefixProperties();
 
+        /// <summary>Backing field for <see cref="BmpConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INniBmpProperties _bmpConfiguration;
+
+        /// <summary>BGP Monitoring Protocol (BMP) Configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INniBmpProperties BmpConfiguration { get => (this._bmpConfiguration = this._bmpConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NniBmpProperties()); set => this._bmpConfiguration = value; }
+
+        /// <summary>BGP Monitoring Protocol (BMP) Configuration State.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string BmpConfigurationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INniBmpPropertiesInternal)BmpConfiguration).ConfigurationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INniBmpPropertiesInternal)BmpConfiguration).ConfigurationState = value ?? null; }
+
         /// <summary>Backing field for <see cref="FabricAsn" /> property.</summary>
         private long? _fabricAsn;
 
@@ -26,15 +37,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public long? FabricAsn { get => this._fabricAsn; }
 
+        /// <summary>Internal Acessors for BmpConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INniBmpProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal.BmpConfiguration { get => (this._bmpConfiguration = this._bmpConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NniBmpProperties()); set { {_bmpConfiguration = value;} } }
+
         /// <summary>Internal Acessors for FabricAsn</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3ConfigurationInternal.FabricAsn { get => this._fabricAsn; set { {_fabricAsn = value;} } }
 
+        /// <summary>Backing field for <see cref="PeLoopbackIPAddress" /> property.</summary>
+        private System.Collections.Generic.List<string> _peLoopbackIPAddress;
+
+        /// <summary>Provider Edge (PE) Loopback IP Address.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> PeLoopbackIPAddress { get => this._peLoopbackIPAddress; set => this._peLoopbackIPAddress = value; }
+
         /// <summary>Backing field for <see cref="PeerAsn" /> property.</summary>
-        private long? _peerAsn;
+        private long _peerAsn;
 
         /// <summary>ASN of PE devices for CE/PE connectivity.Example : 28</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        public long? PeerAsn { get => this._peerAsn; set => this._peerAsn = value; }
+        public long PeerAsn { get => this._peerAsn; set => this._peerAsn = value; }
+
+        /// <summary>Backing field for <see cref="PrefixLimit" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties> _prefixLimit;
+
+        /// <summary>OptionB Layer3 prefix limit configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties> PrefixLimit { get => this._prefixLimit; set => this._prefixLimit = value; }
 
         /// <summary>IPv4 Address Prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
@@ -53,11 +81,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         public string SecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).SecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)__layer3IPPrefixProperties).SecondaryIpv6Prefix = value ?? null; }
 
         /// <summary>Backing field for <see cref="VlanId" /> property.</summary>
-        private int? _vlanId;
+        private int _vlanId;
 
         /// <summary>VLAN for CE/PE Layer 3 connectivity.Example : 501</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        public int? VlanId { get => this._vlanId; set => this._vlanId = value; }
+        public int VlanId { get => this._vlanId; set => this._vlanId = value; }
 
         /// <summary>Creates an new <see cref="OptionBLayer3Configuration" /> instance.</summary>
         public OptionBLayer3Configuration()
@@ -82,6 +110,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixProperties
     {
+        /// <summary>BGP Monitoring Protocol (BMP) Configuration State.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"BGP Monitoring Protocol (BMP) Configuration State.",
+        SerializedName = @"configurationState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string BmpConfigurationState { get; set; }
         /// <summary>ASN of CE devices for CE/PE connectivity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -93,9 +133,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"fabricASN",
         PossibleTypes = new [] { typeof(long) })]
         long? FabricAsn { get;  }
-        /// <summary>ASN of PE devices for CE/PE connectivity.Example : 28</summary>
+        /// <summary>Provider Edge (PE) Loopback IP Address.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Provider Edge (PE) Loopback IP Address.",
+        SerializedName = @"peLoopbackIpAddress",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> PeLoopbackIPAddress { get; set; }
+        /// <summary>ASN of PE devices for CE/PE connectivity.Example : 28</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -103,10 +154,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"ASN of PE devices for CE/PE connectivity.Example : 28",
         SerializedName = @"peerASN",
         PossibleTypes = new [] { typeof(long) })]
-        long? PeerAsn { get; set; }
-        /// <summary>VLAN for CE/PE Layer 3 connectivity.Example : 501</summary>
+        long PeerAsn { get; set; }
+        /// <summary>OptionB Layer3 prefix limit configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"OptionB Layer3 prefix limit configuration.",
+        SerializedName = @"prefixLimits",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties> PrefixLimit { get; set; }
+        /// <summary>VLAN for CE/PE Layer 3 connectivity.Example : 501</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -114,19 +176,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"VLAN for CE/PE Layer 3 connectivity.Example : 501",
         SerializedName = @"vlanId",
         PossibleTypes = new [] { typeof(int) })]
-        int? VlanId { get; set; }
+        int VlanId { get; set; }
 
     }
     /// OptionB Layer3 Configuration properties.
     internal partial interface IOptionBLayer3ConfigurationInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal
     {
+        /// <summary>BGP Monitoring Protocol (BMP) Configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INniBmpProperties BmpConfiguration { get; set; }
+        /// <summary>BGP Monitoring Protocol (BMP) Configuration State.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string BmpConfigurationState { get; set; }
         /// <summary>ASN of CE devices for CE/PE connectivity.</summary>
         long? FabricAsn { get; set; }
+        /// <summary>Provider Edge (PE) Loopback IP Address.</summary>
+        System.Collections.Generic.List<string> PeLoopbackIPAddress { get; set; }
         /// <summary>ASN of PE devices for CE/PE connectivity.Example : 28</summary>
-        long? PeerAsn { get; set; }
+        long PeerAsn { get; set; }
+        /// <summary>OptionB Layer3 prefix limit configuration.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3PrefixLimitProperties> PrefixLimit { get; set; }
         /// <summary>VLAN for CE/PE Layer 3 connectivity.Example : 501</summary>
-        int? VlanId { get; set; }
+        int VlanId { get; set; }
 
     }
 }

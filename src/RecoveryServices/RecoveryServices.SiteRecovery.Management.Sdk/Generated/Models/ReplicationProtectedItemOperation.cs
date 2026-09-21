@@ -13,19 +13,61 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class ReplicationProtectedItemOperation
     {
+        /// <summary>
+        /// ReverseReplicate
+        /// </summary>
         public const string ReverseReplicate = "ReverseReplicate";
+        /// <summary>
+        /// Commit
+        /// </summary>
         public const string Commit = "Commit";
+        /// <summary>
+        /// PlannedFailover
+        /// </summary>
         public const string PlannedFailover = "PlannedFailover";
+        /// <summary>
+        /// UnplannedFailover
+        /// </summary>
         public const string UnplannedFailover = "UnplannedFailover";
+        /// <summary>
+        /// DisableProtection
+        /// </summary>
         public const string DisableProtection = "DisableProtection";
+        /// <summary>
+        /// TestFailover
+        /// </summary>
         public const string TestFailover = "TestFailover";
+        /// <summary>
+        /// TestFailoverCleanup
+        /// </summary>
         public const string TestFailoverCleanup = "TestFailoverCleanup";
+        /// <summary>
+        /// Failback
+        /// </summary>
         public const string Failback = "Failback";
+        /// <summary>
+        /// FinalizeFailback
+        /// </summary>
         public const string FinalizeFailback = "FinalizeFailback";
+        /// <summary>
+        /// CancelFailover
+        /// </summary>
         public const string CancelFailover = "CancelFailover";
+        /// <summary>
+        /// ChangePit
+        /// </summary>
         public const string ChangePit = "ChangePit";
+        /// <summary>
+        /// RepairReplication
+        /// </summary>
         public const string RepairReplication = "RepairReplication";
+        /// <summary>
+        /// SwitchProtection
+        /// </summary>
         public const string SwitchProtection = "SwitchProtection";
+        /// <summary>
+        /// CompleteMigration
+        /// </summary>
         public const string CompleteMigration = "CompleteMigration";
     }
 }
