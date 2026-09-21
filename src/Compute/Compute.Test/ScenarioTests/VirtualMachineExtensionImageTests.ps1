@@ -27,7 +27,9 @@ function Test-GetAzVMExtensionImageMetadata
     Assert-NotNull $image
     Assert-AreEqual $version $image.Version
     Assert-NotNull $image.ReleaseNotes
-    Assert-NotNull $image.ReleaseNotes
+    Assert-AreEqual "BugFix" $image.ReleaseCategory
+    Assert-AreEqual "Regular" $image.UrgencyLevel
+    Assert-AreEqual "RunOnce" $image.RunProfile
     Assert-NotNull $image.ExtensionFeatureMetadata
     Assert-NotNull $image.ExtensionFeatureMetadata.ExtensionFeatureTags
     Assert-True { @($image.ExtensionFeatureMetadata.ExtensionFeatureTags).Count -gt 0 } "Extension feature tags should not be empty."
