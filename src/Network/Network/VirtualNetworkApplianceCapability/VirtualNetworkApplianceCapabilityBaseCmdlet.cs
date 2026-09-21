@@ -122,6 +122,21 @@ namespace Microsoft.Azure.Commands.Network
                 IPVersion = NormalizeIpVersion(ipVersion)
             };
 
+            // Enforce the per-kind ipVersion contract client-side (the service also validates it), so a
+            // documented-invalid combination fails fast without a network round-trip. NAT64 already returned
+            // above, so it is never evaluated here. The value compared is the normalized (canonical-cased) one.
+            bool invalidIpVersion =
+                (string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PLGatewayFastpath, StringComparison.OrdinalIgnoreCase)
+                    && !string.Equals(properties.IPVersion, VirtualNetworkApplianceCapabilityIpVersion.DualStack, StringComparison.Ordinal))
+                || ((string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PLGateway, StringComparison.OrdinalIgnoreCase)
+                        || string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PlipForwarders, StringComparison.OrdinalIgnoreCase))
+                    && !string.Equals(properties.IPVersion, VirtualNetworkApplianceCapabilityIpVersion.IPv6, StringComparison.Ordinal));
+
+            if (invalidIpVersion)
+            {
+                throw new ArgumentException($"The -IpVersion value '{ipVersion}' is not valid for the '{kind}' capability kind. PLGatewayFastpath requires DualStack; PLGateway and PLIPForwarders require IPv6.", nameof(ipVersion));
+            }
+
             if (string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PLGatewayFastpath, StringComparison.OrdinalIgnoreCase))
             {
                 return new PLGatewayFastpathCapabilityCreateOrUpdate { Properties = properties };
@@ -162,7 +177,8 @@ namespace Microsoft.Azure.Commands.Network
         // Every structural token is validated positionally and the resource group, appliance, and capability
         // names are read from fixed positions, so a resource NAME that happens to equal a type keyword
         // (e.g. an appliance literally named "resourceGroups" or "capabilities") cannot be mis-parsed.
-        protected static void ParseCapabilityResourceId(string resourceId, out string resourceGroupName, out string virtualNetworkApplianceName, out string capabilityName)
+        // Exposed for unit testing (no service dependency).
+        public static void ParseCapabilityResourceId(string resourceId, out string resourceGroupName, out string virtualNetworkApplianceName, out string capabilityName)
         {
             var segments = (resourceId ?? string.Empty).Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
