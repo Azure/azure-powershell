@@ -554,7 +554,7 @@
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$null -ne $_.ExtensionFeatureMetadata -and @($_.ExtensionFeatureMetadata.ExtensionFeatureTags).Count -gt 0</ScriptBlock>
+                  <ScriptBlock>$null -ne $_.ExtensionFeatureMetadata -and $null -ne $_.ExtensionFeatureMetadata.ExtensionFeatureTags -and $_.ExtensionFeatureMetadata.ExtensionFeatureTags.Count -gt 0</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>ExtensionFeatureMetadata</Label>
                 <ScriptBlock>
