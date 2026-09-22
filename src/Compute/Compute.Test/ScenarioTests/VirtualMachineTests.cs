@@ -524,6 +524,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSpotPlusPriority()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSpotPlusPriority");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVirtualMachineById()
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineById");

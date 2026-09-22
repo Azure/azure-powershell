@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site Name
+        /// App Service Environment Name
         /// </param>
         public static Microsoft.Rest.Azure.IPage<DetectorResponse> ListHostingEnvironmentDetectorResponses(this IDiagnosticsOperations operations, string resourceGroupName, string name)
         {
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site Name
+        /// App Service Environment Name
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// App Service Environment Name
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// App Service Environment Name
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -403,16 +403,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -435,16 +435,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DetectorDefinition> ListSiteDetectors(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory)
+        public static Microsoft.Rest.Azure.IPage<DetectorDefinitionResource> ListSiteDetectors(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory)
         {
                 return ((IDiagnosticsOperations)operations).ListSiteDetectorsAsync(resourceGroupName, siteName, diagnosticCategory).GetAwaiter().GetResult();
         }
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinition>> ListSiteDetectorsAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>> ListSiteDetectorsAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSiteDetectorsWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, null, cancellationToken).ConfigureAwait(false))
             {
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='detectorName'>
         /// Detector Name
         /// </param>
-        public static DetectorDefinition GetSiteDetector(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName)
+        public static DetectorDefinitionResource GetSiteDetector(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName)
         {
                 return ((IDiagnosticsOperations)operations).GetSiteDetectorAsync(resourceGroupName, siteName, diagnosticCategory, detectorName).GetAwaiter().GetResult();
         }
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DetectorDefinition> GetSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DetectorDefinitionResource> GetSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetSiteDetectorWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -568,16 +568,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -588,9 +588,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='timeGrain'>
         /// Time Grain
         /// </param>
-        public static DiagnosticDetectorResponse ExecuteSiteDetector(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
+        public static DiagnosticDetectorResponse ExecuteSiteDetector(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
         {
-                return ((IDiagnosticsOperations)operations).ExecuteSiteDetectorAsync(resourceGroupName, siteName, detectorName, diagnosticCategory, startTime, endTime, timeGrain).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).ExecuteSiteDetectorAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, startTime, endTime, timeGrain).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -600,16 +600,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -623,9 +623,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DiagnosticDetectorResponse> ExecuteSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DiagnosticDetectorResponse> ExecuteSiteDetectorAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ExecuteSiteDetectorWithHttpMessagesAsync(resourceGroupName, siteName, detectorName, diagnosticCategory, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ExecuteSiteDetectorWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -682,16 +682,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -702,9 +702,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='timeGrain'>
         /// Time Grain
         /// </param>
-        public static DetectorResponse GetSiteDetectorResponseSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
+        public static DetectorResponse GetSiteDetectorResponseSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
         {
-                return ((IDiagnosticsOperations)operations).GetSiteDetectorResponseSlotAsync(resourceGroupName, siteName, detectorName, slot, startTime, endTime, timeGrain).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).GetSiteDetectorResponseSlotAsync(resourceGroupName, siteName, slot, detectorName, startTime, endTime, timeGrain).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -714,16 +714,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -737,9 +737,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DetectorResponse> GetSiteDetectorResponseSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DetectorResponse> GetSiteDetectorResponseSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetSiteDetectorResponseSlotWithHttpMessagesAsync(resourceGroupName, siteName, detectorName, slot, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetSiteDetectorResponseSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, detectorName, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -796,20 +796,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
         /// </param>
-        public static DiagnosticCategory GetSiteDiagnosticCategorySlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot)
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
+        /// </param>
+        public static DiagnosticCategory GetSiteDiagnosticCategorySlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory)
         {
-                return ((IDiagnosticsOperations)operations).GetSiteDiagnosticCategorySlotAsync(resourceGroupName, siteName, diagnosticCategory, slot).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).GetSiteDiagnosticCategorySlotAsync(resourceGroupName, siteName, slot, diagnosticCategory).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -819,23 +819,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DiagnosticCategory> GetSiteDiagnosticCategorySlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DiagnosticCategory> GetSiteDiagnosticCategorySlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetSiteDiagnosticCategorySlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, slot, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetSiteDiagnosticCategorySlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -847,20 +847,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
         /// </param>
-        /// <param name='slot'>
-        /// Slot Name
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<AnalysisDefinition> ListSiteAnalysesSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot)
+        public static Microsoft.Rest.Azure.IPage<AnalysisDefinition> ListSiteAnalysesSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory)
         {
-                return ((IDiagnosticsOperations)operations).ListSiteAnalysesSlotAsync(resourceGroupName, siteName, diagnosticCategory, slot).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).ListSiteAnalysesSlotAsync(resourceGroupName, siteName, slot, diagnosticCategory).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -870,23 +870,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AnalysisDefinition>> ListSiteAnalysesSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AnalysisDefinition>> ListSiteAnalysesSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListSiteAnalysesSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, slot, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListSiteAnalysesSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -898,10 +898,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
@@ -909,12 +912,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='analysisName'>
         /// Analysis Name
         /// </param>
-        /// <param name='slot'>
-        /// Slot - optional
-        /// </param>
-        public static AnalysisDefinition GetSiteAnalysisSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot)
+        public static AnalysisDefinition GetSiteAnalysisSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName)
         {
-                return ((IDiagnosticsOperations)operations).GetSiteAnalysisSlotAsync(resourceGroupName, siteName, diagnosticCategory, analysisName, slot).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).GetSiteAnalysisSlotAsync(resourceGroupName, siteName, slot, diagnosticCategory, analysisName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -924,10 +924,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
@@ -935,39 +938,36 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='analysisName'>
         /// Analysis Name
         /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AnalysisDefinition> GetSiteAnalysisSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetSiteAnalysisSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, analysisName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Execute Analysis
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='siteName'>
+        /// Site Name
+        /// </param>
         /// <param name='slot'>
         /// Slot - optional
         /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<AnalysisDefinition> GetSiteAnalysisSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetSiteAnalysisSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, analysisName, slot, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Description for Execute Analysis
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='siteName'>
-        /// Site Name
-        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -978,9 +978,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='timeGrain'>
         /// Time Grain
         /// </param>
-        public static DiagnosticAnalysis ExecuteSiteAnalysisSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
+        public static DiagnosticAnalysis ExecuteSiteAnalysisSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
         {
-                return ((IDiagnosticsOperations)operations).ExecuteSiteAnalysisSlotAsync(resourceGroupName, siteName, diagnosticCategory, analysisName, slot, startTime, endTime, timeGrain).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).ExecuteSiteAnalysisSlotAsync(resourceGroupName, siteName, slot, diagnosticCategory, analysisName, startTime, endTime, timeGrain).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -990,19 +990,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -1016,9 +1016,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DiagnosticAnalysis> ExecuteSiteAnalysisSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DiagnosticAnalysis> ExecuteSiteAnalysisSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ExecuteSiteAnalysisSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, analysisName, slot, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ExecuteSiteAnalysisSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, analysisName, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1030,20 +1030,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DetectorDefinition> ListSiteDetectorsSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot)
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DetectorDefinitionResource> ListSiteDetectorsSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory)
         {
-                return ((IDiagnosticsOperations)operations).ListSiteDetectorsSlotAsync(resourceGroupName, siteName, diagnosticCategory, slot).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).ListSiteDetectorsSlotAsync(resourceGroupName, siteName, slot, diagnosticCategory).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1053,23 +1053,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinition>> ListSiteDetectorsSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>> ListSiteDetectorsSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListSiteDetectorsSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, slot, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListSiteDetectorsSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1081,10 +1081,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
@@ -1092,12 +1095,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='detectorName'>
         /// Detector Name
         /// </param>
-        /// <param name='slot'>
-        /// Slot Name
-        /// </param>
-        public static DetectorDefinition GetSiteDetectorSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot)
+        public static DetectorDefinitionResource GetSiteDetectorSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName)
         {
-                return ((IDiagnosticsOperations)operations).GetSiteDetectorSlotAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, slot).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).GetSiteDetectorSlotAsync(resourceGroupName, siteName, slot, diagnosticCategory, detectorName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1107,10 +1107,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
@@ -1118,15 +1121,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='detectorName'>
         /// Detector Name
         /// </param>
-        /// <param name='slot'>
-        /// Slot Name
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DetectorDefinition> GetSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DetectorDefinitionResource> GetSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetSiteDetectorSlotWithHttpMessagesAsync(resourceGroupName, siteName, diagnosticCategory, detectorName, slot, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetSiteDetectorSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, detectorName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1138,19 +1138,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Category Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -1161,9 +1161,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='timeGrain'>
         /// Time Grain
         /// </param>
-        public static DiagnosticDetectorResponse ExecuteSiteDetectorSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
+        public static DiagnosticDetectorResponse ExecuteSiteDetectorSlot(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string))
         {
-                return ((IDiagnosticsOperations)operations).ExecuteSiteDetectorSlotAsync(resourceGroupName, siteName, detectorName, diagnosticCategory, slot, startTime, endTime, timeGrain).GetAwaiter().GetResult();
+                return ((IDiagnosticsOperations)operations).ExecuteSiteDetectorSlotAsync(resourceGroupName, siteName, slot, diagnosticCategory, detectorName, startTime, endTime, timeGrain).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1173,19 +1173,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Category Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -1199,9 +1199,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DiagnosticDetectorResponse> ExecuteSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DiagnosticDetectorResponse> ExecuteSiteDetectorSlotAsync(this IDiagnosticsOperations operations, string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ExecuteSiteDetectorSlotWithHttpMessagesAsync(resourceGroupName, siteName, detectorName, diagnosticCategory, slot, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ExecuteSiteDetectorSlotWithHttpMessagesAsync(resourceGroupName, siteName, slot, diagnosticCategory, detectorName, startTime, endTime, timeGrain, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -1347,7 +1347,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DetectorDefinition> ListSiteDetectorsNext(this IDiagnosticsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<DetectorDefinitionResource> ListSiteDetectorsNext(this IDiagnosticsOperations operations, string nextPageLink)
         {
                 return ((IDiagnosticsOperations)operations).ListSiteDetectorsNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -1364,7 +1364,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinition>> ListSiteDetectorsNextAsync(this IDiagnosticsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>> ListSiteDetectorsNextAsync(this IDiagnosticsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSiteDetectorsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1479,7 +1479,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DetectorDefinition> ListSiteDetectorsSlotNext(this IDiagnosticsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<DetectorDefinitionResource> ListSiteDetectorsSlotNext(this IDiagnosticsOperations operations, string nextPageLink)
         {
                 return ((IDiagnosticsOperations)operations).ListSiteDetectorsSlotNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -1496,7 +1496,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinition>> ListSiteDetectorsSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>> ListSiteDetectorsSlotNextAsync(this IDiagnosticsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSiteDetectorsSlotNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

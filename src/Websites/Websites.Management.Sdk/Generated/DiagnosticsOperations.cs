@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List Hosting Environment Detector Responses
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site Name
+        /// App Service Environment Name
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -88,26 +93,13 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (name == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "name");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -115,6 +107,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("name", name);
 
@@ -126,14 +119,14 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -264,7 +257,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Hosting Environment Detector Response
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// App Service Environment Name
@@ -308,6 +301,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -321,10 +319,6 @@ namespace Microsoft.Azure.Management.WebSites
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
                 }
             }
             if (name == null)
@@ -346,16 +340,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -363,6 +348,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("name", name);
                 tracingParameters.Add("detectorName", detectorName);
@@ -378,12 +364,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{name}", System.Uri.EscapeDataString(name));
             _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -395,10 +385,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -529,7 +515,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List Site Detector Responses
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -561,6 +547,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -575,26 +566,13 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -602,6 +580,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
 
@@ -613,14 +592,14 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -751,7 +730,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get site detector response
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -795,6 +774,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -808,10 +792,6 @@ namespace Microsoft.Azure.Management.WebSites
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
                 }
             }
             if (siteName == null)
@@ -833,16 +813,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -850,6 +821,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("detectorName", detectorName);
@@ -865,12 +837,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -882,10 +858,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1016,7 +988,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Categories
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -1048,6 +1020,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1062,26 +1039,13 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1089,6 +1053,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
 
@@ -1100,14 +1065,14 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1238,7 +1203,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Category
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -1273,6 +1238,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1287,10 +1257,6 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
@@ -1302,16 +1268,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1319,6 +1276,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
@@ -1331,15 +1289,15 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1470,7 +1428,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analyses
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -1505,6 +1463,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1519,10 +1482,6 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
@@ -1534,16 +1493,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1551,6 +1501,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
@@ -1563,15 +1514,15 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1702,7 +1653,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analysis
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -1740,6 +1691,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -1753,10 +1709,6 @@ namespace Microsoft.Azure.Management.WebSites
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
                 }
             }
             if (siteName == null)
@@ -1774,16 +1726,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "analysisName");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1791,6 +1734,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
@@ -1804,16 +1748,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{analysisName}", System.Uri.EscapeDataString(analysisName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -1944,16 +1888,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Analysis
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -1991,6 +1935,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -2004,10 +1953,6 @@ namespace Microsoft.Azure.Management.WebSites
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
                 }
             }
             if (siteName == null)
@@ -2034,16 +1979,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2051,6 +1987,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
@@ -2067,13 +2004,17 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{analysisName}", System.Uri.EscapeDataString(analysisName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -2085,10 +2026,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2219,7 +2156,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detectors
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -2248,12 +2185,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -2268,10 +2210,6 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
@@ -2283,16 +2221,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2300,6 +2229,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
@@ -2312,15 +2242,15 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2410,7 +2340,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -2424,7 +2354,7 @@ namespace Microsoft.Azure.Management.WebSites
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinition>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinitionResource>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -2451,7 +2381,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detector
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -2483,12 +2413,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinition>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinitionResource>> GetSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -2502,10 +2437,6 @@ namespace Microsoft.Azure.Management.WebSites
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
                 }
             }
             if (siteName == null)
@@ -2523,16 +2454,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2540,6 +2462,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
@@ -2553,16 +2476,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2652,7 +2575,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinition>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinitionResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -2666,7 +2589,7 @@ namespace Microsoft.Azure.Management.WebSites
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorDefinition>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorDefinitionResource>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -2693,16 +2616,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Detector
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -2734,12 +2657,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -2754,24 +2682,20 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
             }
 
-            if (detectorName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
-            }
-
             if (diagnosticCategory == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
+            }
+
+            if (detectorName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
             }
 
 
@@ -2783,16 +2707,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2800,10 +2715,11 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("detectorName", detectorName);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
+                tracingParameters.Add("detectorName", detectorName);
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
@@ -2816,13 +2732,17 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/diagnostics/{diagnosticCategory}/detectors/{detectorName}/execute").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -2834,10 +2754,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -2968,7 +2884,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List Site Detector Responses
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -3003,6 +2919,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3017,10 +2938,6 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
@@ -3032,16 +2949,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3049,6 +2957,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("slot", slot);
@@ -3061,15 +2970,15 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3200,16 +3109,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get site detector response
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Resource Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -3241,12 +3150,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorResponse>> GetSiteDetectorResponseSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorResponse>> GetSiteDetectorResponseSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3261,24 +3175,20 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
             }
 
-            if (detectorName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
-            }
-
             if (slot == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
+            }
+
+            if (detectorName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
             }
 
 
@@ -3290,16 +3200,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3307,10 +3208,11 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("detectorName", detectorName);
                 tracingParameters.Add("slot", slot);
+                tracingParameters.Add("detectorName", detectorName);
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
@@ -3323,13 +3225,17 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -3341,10 +3247,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3475,7 +3377,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Categories
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
@@ -3510,6 +3412,11 @@ namespace Microsoft.Azure.Management.WebSites
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3524,10 +3431,6 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
@@ -3539,16 +3442,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3556,6 +3450,7 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
                 tracingParameters.Add("slot", slot);
@@ -3568,15 +3463,15 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3707,16 +3602,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Diagnostics Category
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3739,12 +3634,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticCategory>> GetSiteDiagnosticCategorySlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticCategory>> GetSiteDiagnosticCategorySlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -3759,19 +3659,10 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
-            }
-
-            if (diagnosticCategory == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
             if (slot == null)
@@ -3779,16 +3670,12 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
-            if (this.Client.SubscriptionId == null)
+            if (diagnosticCategory == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3796,10 +3683,11 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
+                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -3809,16 +3697,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -3949,16 +3837,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analyses
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3981,12 +3869,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AnalysisDefinition>>> ListSiteAnalysesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AnalysisDefinition>>> ListSiteAnalysesSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -4001,19 +3894,10 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
-            }
-
-            if (diagnosticCategory == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
             if (slot == null)
@@ -4021,16 +3905,12 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
-            if (this.Client.SubscriptionId == null)
+            if (diagnosticCategory == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4038,10 +3918,11 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
+                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -4051,16 +3932,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -4191,19 +4072,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Site Analysis
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
         /// Analysis Name
-        /// </param>
-        /// <param name='slot'>
-        /// Slot - optional
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4226,12 +4107,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AnalysisDefinition>> GetSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AnalysisDefinition>> GetSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -4246,14 +4132,15 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
+            }
+
+            if (slot == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
             if (diagnosticCategory == null)
@@ -4266,21 +4153,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "analysisName");
             }
 
-            if (slot == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4288,11 +4161,12 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("slot", slot);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("analysisName", analysisName);
-                tracingParameters.Add("slot", slot);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -4302,17 +4176,17 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses/{analysisName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{analysisName}", System.Uri.EscapeDataString(analysisName));
-            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -4443,19 +4317,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Analysis
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
+        /// <param name='slot'>
+        /// Slot - optional
+        /// </param>
         /// <param name='diagnosticCategory'>
-        /// Category Name
+        /// Diagnostic Category
         /// </param>
         /// <param name='analysisName'>
-        /// Analysis Resource Name
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
+        /// Analysis Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -4487,12 +4361,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticAnalysis>> ExecuteSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string analysisName, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticAnalysis>> ExecuteSiteAnalysisSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string analysisName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -4507,14 +4386,15 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
+            }
+
+            if (slot == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
             if (diagnosticCategory == null)
@@ -4527,11 +4407,6 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "analysisName");
             }
 
-            if (slot == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
-            }
-
 
 
             if (timeGrain != null)
@@ -4541,16 +4416,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4558,11 +4424,12 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("slot", slot);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("analysisName", analysisName);
-                tracingParameters.Add("slot", slot);
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
@@ -4575,14 +4442,18 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/analyses/{analysisName}/execute").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{analysisName}", System.Uri.EscapeDataString(analysisName));
-            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -4594,10 +4465,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -4728,16 +4595,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detectors
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Diagnostic Category
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4760,12 +4627,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -4780,19 +4652,10 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
-            }
-
-            if (diagnosticCategory == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
             if (slot == null)
@@ -4800,16 +4663,12 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
-            if (this.Client.SubscriptionId == null)
+            if (diagnosticCategory == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4817,10 +4676,11 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
+                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -4830,16 +4690,16 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -4929,7 +4789,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -4943,7 +4803,7 @@ namespace Microsoft.Azure.Management.WebSites
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinition>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinitionResource>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -4970,19 +4830,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get Detector
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
+        /// </param>
+        /// <param name='slot'>
+        /// Slot Name
         /// </param>
         /// <param name='diagnosticCategory'>
         /// Diagnostic Category
         /// </param>
         /// <param name='detectorName'>
         /// Detector Name
-        /// </param>
-        /// <param name='slot'>
-        /// Slot Name
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -5005,12 +4865,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinition>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string diagnosticCategory, string detectorName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinitionResource>> GetSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -5025,14 +4890,15 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
+            }
+
+            if (slot == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
             if (diagnosticCategory == null)
@@ -5045,21 +4911,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
             }
 
-            if (slot == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
-            }
-
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5067,11 +4919,12 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
+                tracingParameters.Add("slot", slot);
                 tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("detectorName", detectorName);
-                tracingParameters.Add("slot", slot);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -5081,17 +4934,17 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors/{detectorName}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
+            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
             _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
-            _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (this.Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -5181,7 +5034,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinition>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DetectorDefinitionResource>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -5195,7 +5048,7 @@ namespace Microsoft.Azure.Management.WebSites
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorDefinition>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DetectorDefinitionResource>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -5222,19 +5075,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Execute Detector
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='siteName'>
         /// Site Name
         /// </param>
-        /// <param name='detectorName'>
-        /// Detector Resource Name
-        /// </param>
-        /// <param name='diagnosticCategory'>
-        /// Category Name
-        /// </param>
         /// <param name='slot'>
         /// Slot Name
+        /// </param>
+        /// <param name='diagnosticCategory'>
+        /// Diagnostic Category
+        /// </param>
+        /// <param name='detectorName'>
+        /// Detector Name
         /// </param>
         /// <param name='startTime'>
         /// Start Time
@@ -5266,12 +5119,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string detectorName, string diagnosticCategory, string slot, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticDetectorResponse>> ExecuteSiteDetectorSlotWithHttpMessagesAsync(string resourceGroupName, string siteName, string slot, string diagnosticCategory, string detectorName, System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string timeGrain = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (this.Client.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -5286,19 +5144,15 @@ namespace Microsoft.Azure.Management.WebSites
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+[^\\.]$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+[^\\.]$");
-                }
             }
             if (siteName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "siteName");
             }
 
-            if (detectorName == null)
+            if (slot == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
             }
 
             if (diagnosticCategory == null)
@@ -5306,9 +5160,9 @@ namespace Microsoft.Azure.Management.WebSites
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "diagnosticCategory");
             }
 
-            if (slot == null)
+            if (detectorName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "slot");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "detectorName");
             }
 
 
@@ -5320,16 +5174,7 @@ namespace Microsoft.Azure.Management.WebSites
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "timeGrain", "PT[1-9][0-9]+[SMH]");
                 }
             }
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
+            string apiVersion = "2025-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -5337,11 +5182,12 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("siteName", siteName);
-                tracingParameters.Add("detectorName", detectorName);
-                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
                 tracingParameters.Add("slot", slot);
+                tracingParameters.Add("diagnosticCategory", diagnosticCategory);
+                tracingParameters.Add("detectorName", detectorName);
                 tracingParameters.Add("startTime", startTime);
                 tracingParameters.Add("endTime", endTime);
                 tracingParameters.Add("timeGrain", timeGrain);
@@ -5354,14 +5200,18 @@ namespace Microsoft.Azure.Management.WebSites
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slot}/diagnostics/{diagnosticCategory}/detectors/{detectorName}/execute").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{siteName}", System.Uri.EscapeDataString(siteName));
-            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
-            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
             _url = _url.Replace("{slot}", System.Uri.EscapeDataString(slot));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
+            _url = _url.Replace("{diagnosticCategory}", System.Uri.EscapeDataString(diagnosticCategory));
+            _url = _url.Replace("{detectorName}", System.Uri.EscapeDataString(detectorName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
             if (startTime != null)
             {
                 _queryParameters.Add(string.Format("startTime={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(startTime, this.Client.SerializationSettings).Trim('"'))));
@@ -5373,10 +5223,6 @@ namespace Microsoft.Azure.Management.WebSites
             if (timeGrain != null)
             {
                 _queryParameters.Add(string.Format("timeGrain={0}", System.Uri.EscapeDataString(timeGrain)));
-            }
-            if (this.Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(this.Client.ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -6238,7 +6084,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             if (nextPageLink == null)
@@ -6351,7 +6197,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -6365,7 +6211,7 @@ namespace Microsoft.Azure.Management.WebSites
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinition>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinitionResource>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -6946,7 +6792,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>> ListSiteDetectorsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>> ListSiteDetectorsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             if (nextPageLink == null)
@@ -7059,7 +6905,7 @@ namespace Microsoft.Azure.Management.WebSites
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinition>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DetectorDefinitionResource>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -7073,7 +6919,7 @@ namespace Microsoft.Azure.Management.WebSites
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinition>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<DetectorDefinitionResource>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

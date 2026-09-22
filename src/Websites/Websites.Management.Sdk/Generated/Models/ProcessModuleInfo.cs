@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Process Module Information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ProcessModuleInfo : ProxyOnlyResource
+    public partial class ProcessModuleInfo : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ProcessModuleInfo class.
@@ -25,16 +25,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ProcessModuleInfo class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="isDebug">Is debug?
         /// </param>
 
         /// <param name="baseAddress">Base address. Used as module identifier in ARM resource URI.
@@ -64,15 +73,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="productVersion">Product version.
         /// </param>
 
-        /// <param name="isDebug">Is debug?
-        /// </param>
-
         /// <param name="language">Module language (locale).
         /// </param>
-        public ProcessModuleInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string baseAddress = default(string), string fileName = default(string), string href = default(string), string filePath = default(string), int? moduleMemorySize = default(int?), string fileVersion = default(string), string fileDescription = default(string), string product = default(string), string productVersion = default(string), bool? isDebug = default(bool?), string language = default(string))
+        public ProcessModuleInfo(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), bool? isDebug = default(bool?), string baseAddress = default(string), string fileName = default(string), string href = default(string), string filePath = default(string), int? moduleMemorySize = default(int?), string fileVersion = default(string), string fileDescription = default(string), string product = default(string), string productVersion = default(string), string language = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
+            this.IsDebug = isDebug;
             this.BaseAddress = baseAddress;
             this.FileName = fileName;
             this.Href = href;
@@ -82,7 +90,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.FileDescription = fileDescription;
             this.Product = product;
             this.ProductVersion = productVersion;
-            this.IsDebug = isDebug;
             this.Language = language;
             CustomInit();
         }
@@ -92,6 +99,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
+
+        /// <summary>
+        /// Gets or sets is debug?
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.is_debug")]
+        public bool? IsDebug {get; set; }
 
         /// <summary>
         /// Gets or sets base address. Used as module identifier in ARM resource URI.
@@ -146,12 +165,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.product_version")]
         public string ProductVersion {get; set; }
-
-        /// <summary>
-        /// Gets or sets is debug?
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.is_debug")]
-        public bool? IsDebug {get; set; }
 
         /// <summary>
         /// Gets or sets module language (locale).

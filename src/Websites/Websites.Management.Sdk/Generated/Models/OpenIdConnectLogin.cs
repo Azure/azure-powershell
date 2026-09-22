@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the login flow of the custom Open ID Connect
     /// provider.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class OpenIdConnectLogin : ProxyOnlyResource
+    public partial class OpenIdConnectLogin
     {
         /// <summary>
         /// Initializes a new instance of the OpenIdConnectLogin class.
@@ -26,26 +25,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the OpenIdConnectLogin class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="nameClaimType">The name of the claim that contains the users name.
         /// </param>
 
         /// <param name="scopes">A list of the scopes that should be requested while authenticating.
         /// </param>
-        public OpenIdConnectLogin(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string nameClaimType = default(string), System.Collections.Generic.IList<string> scopes = default(System.Collections.Generic.IList<string>))
+        public OpenIdConnectLogin(string nameClaimType = default(string), System.Collections.Generic.IList<string> scopes = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
         {
             this.NameClaimType = nameClaimType;
             this.Scopes = scopes;
@@ -61,14 +47,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the name of the claim that contains the users name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nameClaimType")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nameClaimType")]
         public string NameClaimType {get; set; }
 
         /// <summary>
         /// Gets or sets a list of the scopes that should be requested while
         /// authenticating.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scopes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scopes")]
         public System.Collections.Generic.IList<string> Scopes {get; set; }
     }
 }

@@ -18,28 +18,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item whose backup copies are to be fetched.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecoveryPointResource> List(this IRecoveryPointsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject>))
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RecoveryPointResource> List(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string filter = default(string))
         {
-                return ((IRecoveryPointsOperations)operations).ListAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, odataQuery).GetAwaiter().GetResult();
+                return ((IRecoveryPointsOperations)operations).ListAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -48,90 +47,89 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item whose backup copies are to be fetched.
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPointResource>> ListAsync(this IRecoveryPointsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPointResource>> ListAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
         /// Provides the information of the backed up data identified using
-        /// RecoveryPointID. This is an asynchronous operation. To know the status of
-        /// the operation, call the GetProtectedItemOperationResult API.
+        /// RecoveryPointID. This is an asynchronous operation.
+        /// To know the status of the operation, call the
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with backed up item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose backup data needs to be fetched.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
         /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
-        public static RecoveryPointResource Get(this IRecoveryPointsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId)
+        public static RecoveryPointResource Get(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId)
         {
-                return ((IRecoveryPointsOperations)operations).GetAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId).GetAwaiter().GetResult();
+                return ((IRecoveryPointsOperations)operations).GetAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Provides the information of the backed up data identified using
-        /// RecoveryPointID. This is an asynchronous operation. To know the status of
-        /// the operation, call the GetProtectedItemOperationResult API.
+        /// RecoveryPointID. This is an asynchronous operation.
+        /// To know the status of the operation, call the
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with backed up item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose backup data needs to be fetched.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
         /// RecoveryPointID represents the backed up data to be fetched.
@@ -139,9 +137,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RecoveryPointResource> GetAsync(this IRecoveryPointsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RecoveryPointResource> GetAsync(this IRecoveryPointsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

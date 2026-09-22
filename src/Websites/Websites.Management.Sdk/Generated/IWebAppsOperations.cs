@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='includeSlots'>
         /// Specify &lt;strong&gt;true&lt;/strong&gt; to include deployment slots in results. The
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the details of a web, mobile, or API app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -97,11 +97,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Unique name of the app to create or update. To create or update a
-        /// deployment slot, use the {slot} parameter.
+        /// Name of the app.
         /// </param>
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
@@ -118,7 +117,38 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site,WebAppsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Creates a new web, mobile, or API app in an existing
+        /// resource group, or updates an existing app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Creates a new web, mobile, or API app in an existing
+        /// resource group, or updates an existing app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='siteEnvelope'>
+        /// A JSON representation of the app properties. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, SitePatchResource siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a web, mobile, or API app, or one of the deployment
@@ -129,10 +159,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the app to delete.
+        /// Name of the app.
         /// </param>
         /// <param name='deleteMetrics'>
         /// If true, web app metrics are also deleted.
@@ -153,48 +183,16 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates a new web, mobile, or API app in an existing
-        /// resource group, or updates an existing app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an existing
-        /// resource group, or updates an existing app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Unique name of the app to create or update. To create or update a
-        /// deployment slot, use the {slot} parameter.
-        /// </param>
-        /// <param name='siteEnvelope'>
-        /// A JSON representation of the app properties. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, SitePatchResource siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Analyze a custom hostname.
         /// </summary>
         /// <remarks>
         /// Description for Analyze a custom hostname.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='hostName'>
         /// Custom hostname.
@@ -222,7 +220,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// onto the current slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -248,7 +246,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a backup of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -278,7 +276,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets existing backups of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -304,7 +302,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -333,7 +331,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -365,13 +363,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// passed in the request body.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='backupId'>
-        /// ID of backup.
+        /// ID of the backup.
         /// </param>
         /// <param name='request'>
         /// Information on backup request.
@@ -399,7 +397,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -419,7 +417,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreHeaders>> RestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Returns whether Scm basic auth is allowed and whether Ftp
@@ -430,7 +428,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// is allowed for a given site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -456,7 +454,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Returns whether FTP is allowed on the site or not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -482,7 +480,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates whether FTP is allowed on the site or not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -513,7 +511,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -541,7 +539,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// the site or not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -570,7 +568,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List the configurations of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -596,7 +594,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Replaces the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -625,7 +623,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -653,10 +651,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='siteAuthSettings'>
         /// Auth settings associated with web app.
@@ -682,7 +680,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Authentication/Authorization settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -702,6 +700,34 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteAuthSettings>> GetAuthSettingsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Gets site&#39;s Authentication / Authorization settings for
+        /// apps via the V2 format
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets site&#39;s Authentication / Authorization settings for
+        /// apps via the V2 format
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteAuthSettingsV2>> GetAuthSettingsV2WithoutSecretsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Updates site&#39;s Authentication / Authorization settings for
         /// apps via the V2 format
         /// </summary>
@@ -710,10 +736,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// apps via the V2 format
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='siteAuthSettingsV2'>
         /// Auth settings associated with web app.
@@ -741,7 +767,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// apps via the V2 format
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -767,7 +793,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -796,7 +822,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -822,7 +848,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -851,7 +877,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -874,7 +900,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -900,7 +926,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference app settings and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -926,7 +952,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -955,7 +981,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference app settings and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -981,7 +1007,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1010,7 +1036,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Replaces the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1039,7 +1065,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1065,7 +1091,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1091,14 +1117,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='siteLogsConfig'>
         /// A SiteLogsConfig JSON object that contains the logging configuration to
-        /// change in the &#34;properties&#34; property.
+        /// change in the &#34;properties&#34;property
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1121,7 +1147,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Replaces the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1150,7 +1176,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1176,7 +1202,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1193,7 +1219,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User>> ListPublishingCredentialsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User,WebAppsListPublishingCredentialsHeaders>> ListPublishingCredentialsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates the Push settings associated with web app.
@@ -1202,10 +1228,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='pushSettings'>
         /// Push settings associated with web app.
@@ -1231,10 +1257,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1259,7 +1285,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// stick to the slot (not swapped).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1287,7 +1313,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// string that remain with the slot during swap operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1318,7 +1344,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// and bitness, default documents, virtual applications, Always On, etc.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1344,7 +1370,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1373,7 +1399,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1404,7 +1430,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Each element of the list contains a timestamp and the ID of the snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1432,7 +1458,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// previous point in time.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1461,7 +1487,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Reverts the configuration of an app to a previous snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1487,10 +1513,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the last lines of docker logs for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1510,10 +1536,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the ZIP archived docker log files for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1533,7 +1559,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List continuous web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -1561,7 +1587,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -1592,7 +1618,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -1620,7 +1646,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -1646,7 +1672,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stop a continuous web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -1666,13 +1692,94 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StopContinuousWebJobWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Creates the artifacts for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for Creates the artifacts for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='workflowArtifacts'>
+        /// Application settings and files of the workflow.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeployWorkflowArtifactsWithHttpMessagesAsync(string resourceGroupName, string name, WorkflowArtifacts workflowArtifacts = default(WorkflowArtifacts), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CsmDeploymentStatus>>> ListProductionSiteDeploymentStatusesWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the deployment status for an app (or deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets the deployment status for an app (or deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='deploymentStatusId'>
+        /// GUID of the deployment operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CsmDeploymentStatus,WebAppsGetProductionSiteDeploymentStatusHeaders>> GetProductionSiteDeploymentStatusWithHttpMessagesAsync(string resourceGroupName, string name, string deploymentStatusId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for List deployments for an app, or a deployment slot.
         /// </summary>
         /// <remarks>
         /// Description for List deployments for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1700,7 +1807,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1729,13 +1836,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create a deployment for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='id'>
-        /// ID of an existing deployment.
+        /// Deployment ID.
         /// </param>
         /// <param name='deployment'>
         /// Deployment details.
@@ -1763,7 +1870,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1791,14 +1898,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='id'>
-        /// The ID of a specific deployment. This is the value of the name property in
-        /// the JSON response from &#34;GET /api/sites/{siteName}/deployments&#34;.
+        /// Deployment ID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1825,7 +1931,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// stored in a backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1857,7 +1963,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1883,7 +1989,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get domain ownership identifier for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1914,7 +2020,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -1940,32 +2046,6 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> CreateOrUpdateDomainOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, Identifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Deletes a domain ownership identifier for a web app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a domain ownership identifier for a web app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='domainOwnershipIdentifierName'>
-        /// Name of domain ownership identifier.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDomainOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Creates a domain ownership identifier for web app, or
         /// updates an existing ownership identifier.
         /// </summary>
@@ -1974,7 +2054,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2000,13 +2080,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> UpdateDomainOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, Identifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes a domain ownership identifier for a web app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a domain ownership identifier for a web app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='domainOwnershipIdentifierName'>
+        /// Name of domain ownership identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDomainOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get the status of the last MSDeploy operation.
         /// </summary>
         /// <remarks>
         /// Description for Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -2032,7 +2138,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -2052,7 +2158,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> CreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateMSDeployOperationHeaders>> CreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
@@ -2061,7 +2167,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -2081,13 +2187,67 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployLog>> GetMSDeployLogWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Invoke onedeploy status API /api/deployments and gets the
+        /// deployment status for the site
+        /// </summary>
+        /// <remarks>
+        /// Description for Invoke onedeploy status API /api/deployments and gets the
+        /// deployment status for the site
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetOneDeployStatusWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Invoke the OneDeploy publish web app extension.
+        /// </summary>
+        /// <remarks>
+        /// Description for Invoke the OneDeploy publish web app extension.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> CreateOneDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for List the functions for a web site, or a deployment slot.
         /// </summary>
         /// <remarks>
         /// Description for List the functions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -2107,34 +2267,6 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<FunctionEnvelope>>> ListFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Fetch a short lived token that can be exchanged for a
-        /// master key.
-        /// </summary>
-        /// <remarks>
-        /// Description for Fetch a short lived token that can be exchanged for a
-        /// master key.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of web app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> GetFunctionsAdminTokenWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Get function information by its ID for web site, or a
         /// deployment slot.
         /// </summary>
@@ -2143,7 +2275,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -2172,7 +2304,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -2195,7 +2327,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope>> CreateFunctionWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope,WebAppsCreateFunctionHeaders>> CreateFunctionWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Delete a function for web site, or a deployment slot.
@@ -2204,7 +2336,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Delete a function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -2230,16 +2362,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Add or update a function secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// 
         /// </param>
         /// <param name='functionName'>
-        /// The name of the function.
+        /// 
         /// </param>
         /// <param name='keyName'>
-        /// The name of the key.
+        /// 
         /// </param>
         /// <param name='key'>
         /// The key to create or update
@@ -2265,16 +2397,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Delete a function secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// 
         /// </param>
         /// <param name='functionName'>
-        /// The name of the function.
+        /// 
         /// </param>
         /// <param name='keyName'>
-        /// The name of the key.
+        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -2296,7 +2428,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -2327,7 +2459,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -2350,16 +2482,18 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionSecrets>> ListFunctionSecretsWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get host secrets for a function app.
+        /// Description for Fetch a short lived token that can be exchanged for a
+        /// master key.
         /// </summary>
         /// <remarks>
-        /// Description for Get host secrets for a function app.
+        /// Description for Fetch a short lived token that can be exchanged for a
+        /// master key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -2373,53 +2507,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HostKeys>> ListHostKeysWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for This is to allow calling via powershell and ARM template.
-        /// </summary>
-        /// <remarks>
-        /// Description for This is to allow calling via powershell and ARM template.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ListSyncStatusWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Syncs function trigger metadata to the management database
-        /// </summary>
-        /// <remarks>
-        /// Description for Syncs function trigger metadata to the management database
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SyncFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> GetFunctionsAdminTokenWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Add or update a host level secret.
@@ -2428,10 +2516,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Add or update a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// Name of the app.
         /// </param>
         /// <param name='keyType'>
         /// The type of host key.
@@ -2463,10 +2551,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Delete a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// Name of the app.
         /// </param>
         /// <param name='keyType'>
         /// The type of host key.
@@ -2486,13 +2574,85 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHostSecretWithHttpMessagesAsync(string resourceGroupName, string name, string keyType, string keyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Get host secrets for a function app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Get host secrets for a function app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HostKeys>> ListHostKeysWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for This is to allow calling via powershell and ARM template.
+        /// </summary>
+        /// <remarks>
+        /// Description for This is to allow calling via powershell and ARM template.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ListSyncStatusWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Syncs function trigger metadata to the management database
+        /// </summary>
+        /// <remarks>
+        /// Description for Syncs function trigger metadata to the management database
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SyncFunctionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get hostname bindings for an app or a deployment slot.
         /// </summary>
         /// <remarks>
         /// Description for Get hostname bindings for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2520,7 +2680,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2549,7 +2709,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2582,7 +2742,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2610,7 +2770,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// this Web App.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -2642,7 +2802,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -2671,42 +2831,13 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> CreateOrUpdateHybridConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, HybridConnection connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Removes a Hybrid Connection from this site.
-        /// </summary>
-        /// <remarks>
-        /// Description for Removes a Hybrid Connection from this site.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the web app.
-        /// </param>
-        /// <param name='namespaceName'>
-        /// The namespace for this hybrid connection.
-        /// </param>
-        /// <param name='relayName'>
-        /// The relay name for this hybrid connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHybridConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
         /// </summary>
         /// <remarks>
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -2735,6 +2866,35 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> UpdateHybridConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, HybridConnection connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Removes a Hybrid Connection from this site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Removes a Hybrid Connection from this site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='namespaceName'>
+        /// The namespace for this hybrid connection.
+        /// </param>
+        /// <param name='relayName'>
+        /// The relay name for this hybrid connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHybridConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Retrieves all Service Bus Hybrid Connections used by this
         /// Web App.
         /// </summary>
@@ -2743,10 +2903,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Web App.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -2771,7 +2931,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2797,7 +2957,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a hybrid connection configuration by its name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2828,13 +2988,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='entityName'>
-        /// Name of the hybrid connection configuration.
+        /// Name of the hybrid connection.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Details of the hybrid connection configuration.
@@ -2854,32 +3014,6 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> CreateOrUpdateRelayServiceConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, RelayServiceConnectionEntity connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Deletes a relay service connection by its name.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a relay service connection by its name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='entityName'>
-        /// Name of the hybrid connection configuration.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteRelayServiceConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Creates a new hybrid connection configuration (PUT), or
         /// updates an existing one (PATCH).
         /// </summary>
@@ -2888,13 +3022,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='entityName'>
-        /// Name of the hybrid connection configuration.
+        /// Name of the hybrid connection.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Details of the hybrid connection configuration.
@@ -2914,13 +3048,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> UpdateRelayServiceConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, RelayServiceConnectionEntity connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes a relay service connection by its name.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a relay service connection by its name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='entityName'>
+        /// Name of the hybrid connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteRelayServiceConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets all scale-out instances of an app.
         /// </summary>
         /// <remarks>
         /// Description for Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2946,7 +3106,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -2975,7 +3135,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -3004,7 +3164,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -3027,7 +3187,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> CreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateInstanceMSDeployOperationHeaders>> CreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
@@ -3036,7 +3196,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -3067,7 +3227,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// or for a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -3099,17 +3259,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3123,7 +3283,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessInfo>> GetInstanceProcessWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessInfo>> GetInstanceProcessWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Terminate a process by its ID for a web site, or a
@@ -3134,17 +3294,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3155,7 +3315,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteInstanceProcessWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteInstanceProcessWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get a memory dump of a process by its ID for a specific
@@ -3166,17 +3326,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3187,7 +3347,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.IO.Stream>> GetInstanceProcessDumpWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.IO.Stream>> GetInstanceProcessDumpWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List module information for a process by its ID for a
@@ -3198,17 +3358,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3222,7 +3382,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessModuleInfo>>> ListInstanceProcessModulesWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessModuleInfo>>> ListInstanceProcessModulesWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get process information by its ID for a specific scaled-out
@@ -3233,10 +3393,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
+        /// </param>
+        /// <param name='instanceId'>
+        /// ID of a specific scaled-out instance. This is the value of the name
+        /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
         /// </param>
         /// <param name='processId'>
         /// PID.
@@ -3244,10 +3408,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='baseAddress'>
         /// Module base address.
         /// </param>
-        /// <param name='instanceId'>
-        /// ID of a specific scaled-out instance. This is the value of the name
-        /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -3260,7 +3420,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessModuleInfo>> GetInstanceProcessModuleWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string baseAddress, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessModuleInfo>> GetInstanceProcessModuleWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string processId, string baseAddress, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List the threads in a process by its ID for a specific
@@ -3271,17 +3431,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3295,7 +3455,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Shows whether an app can be cloned to another resource
@@ -3306,7 +3466,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// group or subscription.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3326,13 +3486,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteCloneability>> IsCloneableWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Lists logic app&#39;s connections for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Lists logic app&#39;s connections for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkflowEnvelope>> ListWorkflowsConnectionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets existing backups of an app.
         /// </summary>
         /// <remarks>
         /// Description for Gets existing backups of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3358,7 +3544,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3383,14 +3569,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// <remarks>
         /// Description for Restores a web app.
         /// </remarks>
-        /// <param name='subscriptionName'>
-        /// Azure subscription.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
+        /// </param>
+        /// <param name='subscriptionName'>
+        /// Azure subscription
         /// </param>
         /// <param name='migrationOptions'>
         /// Migration migrationOptions.
@@ -3407,7 +3593,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageMigrationResponse>> MigrateStorageWithHttpMessagesAsync(string subscriptionName, string resourceGroupName, string name, StorageMigrationOptions migrationOptions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageMigrationResponse,WebAppsMigrateStorageHeaders>> MigrateStorageWithHttpMessagesAsync(string resourceGroupName, string name, string subscriptionName, StorageMigrationOptions migrationOptions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Migrates a local (in-app) MySql database to a remote MySql
@@ -3418,10 +3604,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='migrationRequestEnvelope'>
         /// MySql migration options.
@@ -3438,7 +3624,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Operation>> MigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequest migrationRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Operation,WebAppsMigrateMySqlHeaders>> MigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequest migrationRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Returns the status of MySql in app migration, if one is
@@ -3449,7 +3635,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// active, and whether or not MySql in app is enabled
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -3475,7 +3661,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a Swift Virtual Network connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3509,7 +3695,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// in use by another App Service Plan other than the one this App is in.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3532,31 +3718,6 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SwiftVirtualNetwork>> CreateOrUpdateSwiftVirtualNetworkConnectionWithCheckWithHttpMessagesAsync(string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Deletes a Swift Virtual Network connection from an app (or
-        /// deployment slot).
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a Swift Virtual Network connection from an app (or
-        /// deployment slot).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSwiftVirtualNetworkWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Integrates this Web App with a Virtual Network. This
         /// requires that 1) &#34;swiftSupported&#34; is true when doing a GET against this
         /// resource, and 2) that the target Subnet has already been delegated, and is
@@ -3571,7 +3732,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// in use by another App Service Plan other than the one this App is in.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3594,6 +3755,31 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SwiftVirtualNetwork>> UpdateSwiftVirtualNetworkConnectionWithCheckWithHttpMessagesAsync(string resourceGroupName, string name, SwiftVirtualNetwork connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSwiftVirtualNetworkWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets all network features used by the app (or deployment
         /// slot, if specified).
         /// </summary>
@@ -3602,7 +3788,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3633,7 +3819,38 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Gets a named operation for a network trace capturing (or
+        /// deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets a named operation for a network trace capturing (or
+        /// deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3664,10 +3881,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// deprecated).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
@@ -3699,10 +3916,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
@@ -3725,7 +3942,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> StartWebSiteNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartWebSiteNetworkTraceOperationHeaders>> StartWebSiteNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Stop ongoing capturing network packets for the site.
@@ -3734,10 +3951,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3759,69 +3976,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='operationId'>
-        /// GUID of the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Gets a named operation for a network trace capturing (or
-        /// deployment slot, if specified).
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets a named operation for a network trace capturing (or
-        /// deployment slot, if specified).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='operationId'>
-        /// GUID of the operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetNetworkTraceOperationV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Gets a named operation for a network trace capturing (or
-        /// deployment slot, if specified).
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets a named operation for a network trace capturing (or
-        /// deployment slot, if specified).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3844,6 +3999,37 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Gets a named operation for a network trace capturing (or
+        /// deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets a named operation for a network trace capturing (or
+        /// deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetNetworkTraceOperationV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Generates a new publishing password for an app (or
         /// deployment slot, if specified).
         /// </summary>
@@ -3852,7 +4038,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3875,10 +4061,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets perfmon counters for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms to
@@ -3907,10 +4093,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets web app&#39;s event logs.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3933,7 +4119,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the premier add-ons of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3959,7 +4145,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -3988,7 +4174,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4014,39 +4200,13 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> AddPremierAddOnWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, PremierAddOn premierAddOn, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete a premier add-on from an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete a premier add-on from an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='premierAddOnName'>
-        /// Add-on name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeletePremierAddOnWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Updates a named add-on of an app.
         /// </summary>
         /// <remarks>
         /// Description for Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4072,6 +4232,32 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> UpdatePremierAddOnWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, PremierAddOnPatchResource premierAddOn, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Delete a premier add-on from an app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete a premier add-on from an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='premierAddOnName'>
+        /// Add-on name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeletePremierAddOnWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets data around private site access enablement and
         /// authorized Virtual Networks that can access the site.
         /// </summary>
@@ -4080,7 +4266,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// authorized Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -4108,7 +4294,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// authorized Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -4139,7 +4325,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// with a site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
@@ -4165,7 +4351,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
@@ -4194,13 +4380,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='privateEndpointWrapper'>
         /// 
@@ -4217,7 +4403,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,WebAppsApproveOrRejectPrivateEndpointConnectionHeaders>> ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -4226,13 +4412,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -4246,7 +4432,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsDeletePrivateEndpointConnectionHeaders>> DeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the private link resources
@@ -4255,10 +4441,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the private link resources
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the site.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -4283,7 +4469,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// or for a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4311,7 +4497,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4342,7 +4528,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4370,7 +4556,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4398,7 +4584,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4429,7 +4615,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4463,7 +4649,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4492,7 +4678,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get public certificates for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4520,7 +4706,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4549,7 +4735,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4582,7 +4768,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4610,14 +4796,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='publishingProfileOptions'>
         /// Specifies publishingProfileOptions for publishing profile. For example, use
-        /// {&#34;format&#34;: &#34;FileZilla3&#34;} to get a FileZilla publishing profile.
+        /// {&#34; format&#34;: &#34;FileZilla3&#34;} to get a FileZilla publishing profile.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -4639,7 +4825,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// they were previously modified by calling the API with POST.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4662,7 +4848,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restarts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4693,7 +4879,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4710,7 +4896,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreFromBackupBlobWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromBackupBlobHeaders>> RestoreFromBackupBlobWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a deleted web app to this web app.
@@ -4719,10 +4905,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='restoreRequest'>
         /// Deleted web app restore information.
@@ -4736,7 +4922,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreFromDeletedAppWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromDeletedAppHeaders>> RestoreFromDeletedAppWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a web app from a snapshot.
@@ -4745,10 +4931,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='restoreRequest'>
         /// Snapshot restore settings. Snapshot information can be obtained by calling
@@ -4763,7 +4949,120 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreSnapshotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreSnapshotHeaders>> RestoreSnapshotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SiteContainer>>> ListSiteContainersWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets a site container of a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Gets a site container of a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='containerName'>
+        /// Site Container Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteContainer>> GetSiteContainerWithHttpMessagesAsync(string resourceGroupName, string name, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or Updates a site container for a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Creates or Updates a site container for a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='containerName'>
+        /// Site Container Name
+        /// </param>
+        /// <param name='request'>
+        /// Container Entity
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteContainer>> CreateOrUpdateSiteContainerWithHttpMessagesAsync(string resourceGroupName, string name, string containerName, SiteContainer request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes a site container for a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a site container for a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='containerName'>
+        /// Site Container Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSiteContainerWithHttpMessagesAsync(string resourceGroupName, string name, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get list of siteextensions for a web site, or a deployment
@@ -4774,7 +5073,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4802,7 +5101,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4831,7 +5130,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4851,7 +5150,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo>> InstallSiteExtensionWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo,WebAppsInstallSiteExtensionHeaders>> InstallSiteExtensionWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Remove a site extension from a web site, or a deployment
@@ -4862,7 +5161,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -4888,7 +5187,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets an app&#39;s deployment slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4914,7 +5213,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the details of a web, mobile, or API app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -4946,15 +5245,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Unique name of the app to create or update. To create or update a
-        /// deployment slot, use the {slot} parameter.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot to create or update. By default, this API
-        /// attempts to create or modify the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
@@ -4971,7 +5269,42 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> CreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site,WebAppsCreateOrUpdateSlotHeaders>> CreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Creates a new web, mobile, or API app in an existing
+        /// resource group, or updates an existing app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Creates a new web, mobile, or API app in an existing
+        /// resource group, or updates an existing app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
+        /// <param name='siteEnvelope'>
+        /// A JSON representation of the app properties. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> UpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SitePatchResource siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a web, mobile, or API app, or one of the deployment
@@ -4982,14 +5315,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the app to delete.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot to delete. By default, the API deletes the
-        /// production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='deleteMetrics'>
         /// If true, web app metrics are also deleted.
@@ -5010,55 +5343,19 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, bool? deleteMetrics = default(bool?), bool? deleteEmptyServerFarm = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates a new web, mobile, or API app in an existing
-        /// resource group, or updates an existing app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Creates a new web, mobile, or API app in an existing
-        /// resource group, or updates an existing app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Unique name of the app to create or update. To create or update a
-        /// deployment slot, use the {slot} parameter.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot to create or update. By default, this API
-        /// attempts to create or modify the production slot.
-        /// </param>
-        /// <param name='siteEnvelope'>
-        /// A JSON representation of the app properties. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> UpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SitePatchResource siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Analyze a custom hostname.
         /// </summary>
         /// <remarks>
         /// Description for Analyze a custom hostname.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='hostName'>
@@ -5087,14 +5384,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// onto the current slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the source slot. If a slot is not specified, the production slot is
-        /// used as the source slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='slotSwapEntity'>
         /// JSON object that contains the target slot name. See example.
@@ -5117,14 +5414,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a backup of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// create a backup for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='request'>
         /// Backup configuration. You can use the JSON response from the POST action as
@@ -5151,14 +5448,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets existing backups of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// backups of the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// backup of the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5181,17 +5478,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='backupId'>
-        /// ID of the backup.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will get a
         /// backup of the production slot.
+        /// </param>
+        /// <param name='backupId'>
+        /// ID of the backup.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5205,7 +5502,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupItem>> GetBackupStatusSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupItem>> GetBackupStatusSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string backupId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a backup of an app by its ID.
@@ -5214,17 +5511,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a backup of an app by its ID.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// backup of the production slot.
+        /// </param>
         /// <param name='backupId'>
         /// ID of the backup.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete a backup of the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5235,7 +5532,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBackupSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBackupSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string backupId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets status of a web app backup that may be in progress,
@@ -5250,17 +5547,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// passed in the request body.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
-        /// </param>
-        /// <param name='backupId'>
-        /// ID of backup.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
-        /// slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// backup of the production slot.
+        /// </param>
+        /// <param name='backupId'>
+        /// ID of the backup.
         /// </param>
         /// <param name='request'>
         /// Information on backup request.
@@ -5277,7 +5574,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupItem>> ListBackupStatusSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, string slot, BackupRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupItem>> ListBackupStatusSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string backupId, BackupRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a specific backup to another app (or deployment
@@ -5288,17 +5585,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// backup of the production slot.
+        /// </param>
         /// <param name='backupId'>
         /// ID of the backup.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// restore a backup of the production slot.
         /// </param>
         /// <param name='request'>
         /// Information on restore request .
@@ -5312,7 +5609,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, string slot, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreSlotHeaders>> RestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string backupId, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Returns whether Scm basic auth is allowed and whether Ftp
@@ -5323,7 +5620,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// is allowed for a given site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5352,7 +5649,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Returns whether FTP is allowed on the site or not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5381,7 +5678,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates whether FTP is allowed on the site or not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5415,7 +5712,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5446,7 +5743,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// the site or not.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5478,7 +5775,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List the configurations of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5508,14 +5805,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Replaces the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the application settings for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='appSettings'>
         /// Application settings of the app.
@@ -5541,14 +5838,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the application settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the application settings for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5573,13 +5870,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='siteAuthSettings'>
@@ -5606,7 +5903,39 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Authentication/Authorization settings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteAuthSettings>> GetAuthSettingsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets site&#39;s Authentication / Authorization settings for apps via the V2
+        /// format
+        /// </summary>
+        /// <remarks>
+        /// Gets site&#39;s Authentication / Authorization settings for apps via the V2
+        /// format
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5627,7 +5956,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteAuthSettings>> GetAuthSettingsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteAuthSettingsV2>> GetAuthSettingsV2WithoutSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates site&#39;s Authentication / Authorization settings for
@@ -5638,14 +5967,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// apps via the V2 format
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
-        /// slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the settings for the production slot.
         /// </param>
         /// <param name='siteAuthSettingsV2'>
         /// Auth settings associated with web app.
@@ -5673,7 +6002,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// apps via the V2 format
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5703,14 +6032,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the Azure storage account configurations for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='azureStorageAccounts'>
         /// Azure storage accounts of the app.
@@ -5736,14 +6065,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Azure storage account configurations of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the Azure storage account configurations for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5766,14 +6095,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the backup configuration for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='request'>
         /// Edited backup configuration.
@@ -5799,14 +6128,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the backup configuration for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5826,14 +6155,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the backup configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the backup configuration for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5856,7 +6185,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference app settings and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5885,16 +6214,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='appSettingKey'>
-        /// App Setting key name.
-        /// </param>
         /// <param name='slot'>
         /// 
+        /// </param>
+        /// <param name='appSettingKey'>
+        /// App Setting key name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -5908,7 +6237,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApiKVReference>> GetAppSettingKeyVaultReferenceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string appSettingKey, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApiKVReference>> GetAppSettingKeyVaultReferenceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string appSettingKey, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the config reference app settings and status of an app
@@ -5917,7 +6246,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference app settings and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -5946,15 +6275,15 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the config reference and status of an app
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='connectionStringKey'>
+        /// <param name='slot'>
         /// 
         /// </param>
-        /// <param name='slot'>
+        /// <param name='connectionStringKey'>
         /// 
         /// </param>
         /// <param name='customHeaders'>
@@ -5969,7 +6298,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApiKVReference>> GetSiteConnectionStringKeyVaultReferenceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string connectionStringKey, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApiKVReference>> GetSiteConnectionStringKeyVaultReferenceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string connectionStringKey, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Replaces the connection strings of an app.
@@ -5978,14 +6307,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Replaces the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the connection settings for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='connectionStrings'>
         /// Connection strings of the app or deployment slot. See example.
@@ -6011,14 +6340,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the connection strings of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the connection settings for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6041,7 +6370,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -6071,18 +6400,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the logging configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the logging configuration for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the logging configuration for the production slot.
         /// </param>
         /// <param name='siteLogsConfig'>
         /// A SiteLogsConfig JSON object that contains the logging configuration to
-        /// change in the &#34;properties&#34; property.
+        /// change in the &#34;properties&#34;property
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6105,14 +6434,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Replaces the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the metadata for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='metadata'>
         /// Edited metadata of the app or deployment slot. See example.
@@ -6138,14 +6467,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the metadata of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the metadata for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6168,14 +6497,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the publishing credentials for the production slot.
+        /// If true, the password is included in the response. The default is false.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6189,7 +6517,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User>> ListPublishingCredentialsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User,WebAppsListPublishingCredentialsSlotHeaders>> ListPublishingCredentialsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates the Push settings associated with web app.
@@ -6198,13 +6526,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='pushSettings'>
@@ -6231,13 +6559,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Push settings associated with web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='customHeaders'>
@@ -6263,7 +6591,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// and bitness, default documents, virtual applications, Always On, etc.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -6293,14 +6621,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update configuration for the production slot.
+        /// return configuration for the production slot.
         /// </param>
         /// <param name='siteConfig'>
         /// JSON representation of a SiteConfig object. See example.
@@ -6326,14 +6654,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update configuration for the production slot.
+        /// return configuration for the production slot.
         /// </param>
         /// <param name='siteConfig'>
         /// JSON representation of a SiteConfig object. See example.
@@ -6361,7 +6689,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Each element of the list contains a timestamp and the ID of the snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -6393,17 +6721,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// previous point in time.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='snapshotId'>
-        /// The ID of the snapshot to read.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
         /// return configuration for the production slot.
+        /// </param>
+        /// <param name='snapshotId'>
+        /// The ID of the snapshot to read.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6417,7 +6745,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteConfigResource>> GetConfigurationSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string snapshotId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteConfigResource>> GetConfigurationSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string snapshotId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Reverts the configuration of an app to a previous snapshot.
@@ -6426,17 +6754,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Reverts the configuration of an app to a previous snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='snapshotId'>
-        /// The ID of the snapshot to read.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
         /// return configuration for the production slot.
+        /// </param>
+        /// <param name='snapshotId'>
+        /// The ID of the snapshot to read.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6447,7 +6775,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RecoverSiteConfigurationSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string snapshotId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RecoverSiteConfigurationSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string snapshotId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the last lines of docker logs for the given site
@@ -6456,13 +6784,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the last lines of docker logs for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='customHeaders'>
@@ -6483,13 +6811,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the ZIP archived docker log files for the given site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='customHeaders'>
@@ -6510,7 +6838,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List continuous web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -6542,17 +6870,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API deletes a
         /// deployment for the production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6566,7 +6894,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ContinuousWebJob>> GetContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ContinuousWebJob>> GetContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Delete a continuous web job by its ID for an app, or a
@@ -6577,17 +6905,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API deletes a
         /// deployment for the production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6598,7 +6926,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Start a continuous web job for an app, or a deployment
@@ -6609,17 +6937,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API deletes a
         /// deployment for the production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6630,7 +6958,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StartContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StartContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Stop a continuous web job for an app, or a deployment slot.
@@ -6639,17 +6967,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stop a continuous web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API deletes a
         /// deployment for the production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6660,23 +6988,116 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StopContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StopContinuousWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for List deployments for an app, or a deployment slot.
+        /// Description for Creates the artifacts for web site, or a deployment slot.
         /// </summary>
         /// <remarks>
-        /// Description for List deployments for an app, or a deployment slot.
+        /// Description for Creates the artifacts for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API returns
-        /// deployments for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
+        /// <param name='workflowArtifacts'>
+        /// Application settings and files of the workflow.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeployWorkflowArtifactsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, WorkflowArtifacts workflowArtifacts = default(WorkflowArtifacts), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the deployment status for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CsmDeploymentStatus>>> ListSlotSiteDeploymentStatusesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the deployment status for an app (or deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Gets the deployment status for an app (or deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the deployment status for the production slot.
+        /// </param>
+        /// <param name='deploymentStatusId'>
+        /// GUID of the deployment operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CsmDeploymentStatus,WebAppsGetSlotSiteDeploymentStatusSlotHeaders>> GetSlotSiteDeploymentStatusSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string deploymentStatusId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for List deployments for an app, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for List deployments for an app, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API gets a
+        /// deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6701,17 +7122,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='id'>
-        /// Deployment ID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API gets a
         /// deployment for the production slot.
+        /// </param>
+        /// <param name='id'>
+        /// Deployment ID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6725,7 +7146,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> GetDeploymentSlotWithHttpMessagesAsync(string resourceGroupName, string name, string id, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> GetDeploymentSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string id, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Create a deployment for an app, or a deployment slot.
@@ -6734,17 +7155,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create a deployment for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='id'>
-        /// ID of an existing deployment.
-        /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API creates a
+        /// Name of the deployment slot. If a slot is not specified, the API gets a
         /// deployment for the production slot.
+        /// </param>
+        /// <param name='id'>
+        /// Deployment ID.
         /// </param>
         /// <param name='deployment'>
         /// Deployment details.
@@ -6761,7 +7182,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> CreateDeploymentSlotWithHttpMessagesAsync(string resourceGroupName, string name, string id, string slot, Deployment deployment, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> CreateDeploymentSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string id, Deployment deployment, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Delete a deployment by its ID for an app, or a deployment
@@ -6772,17 +7193,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API gets a
+        /// deployment for the production slot.
+        /// </param>
         /// <param name='id'>
         /// Deployment ID.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API deletes a
-        /// deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6793,7 +7214,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDeploymentSlotWithHttpMessagesAsync(string resourceGroupName, string name, string id, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDeploymentSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string id, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List deployment log for specific deployment for an app, or
@@ -6804,18 +7225,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='id'>
-        /// The ID of a specific deployment. This is the value of the name property in
-        /// the JSON response from &#34;GET /api/sites/{siteName}/deployments&#34;.
-        /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API returns
-        /// deployments for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API gets a
+        /// deployment for the production slot.
+        /// </param>
+        /// <param name='id'>
+        /// Deployment ID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6829,7 +7249,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> ListDeploymentLogSlotWithHttpMessagesAsync(string resourceGroupName, string name, string id, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> ListDeploymentLogSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string id, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Discovers an existing app backup that can be restored from
@@ -6842,14 +7262,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// stored in a backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// perform discovery for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='request'>
         /// A RestoreRequest object that includes Azure storage URL and blog name for
@@ -6878,7 +7298,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -6908,17 +7328,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get domain ownership identifier for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='domainOwnershipIdentifierName'>
-        /// Name of domain ownership identifier.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
         /// delete the binding for the production slot.
+        /// </param>
+        /// <param name='domainOwnershipIdentifierName'>
+        /// Name of domain ownership identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -6932,7 +7352,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> GetDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> GetDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string domainOwnershipIdentifierName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a domain ownership identifier for web app, or
@@ -6943,17 +7363,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='domainOwnershipIdentifierName'>
-        /// Name of domain ownership identifier.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
         /// delete the binding for the production slot.
+        /// </param>
+        /// <param name='domainOwnershipIdentifierName'>
+        /// Name of domain ownership identifier.
         /// </param>
         /// <param name='domainOwnershipIdentifier'>
         /// A JSON representation of the domain ownership properties.
@@ -6970,37 +7390,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> CreateOrUpdateDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, string slot, Identifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Deletes a domain ownership identifier for a web app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a domain ownership identifier for a web app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='domainOwnershipIdentifierName'>
-        /// Name of domain ownership identifier.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the binding for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> CreateOrUpdateDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string domainOwnershipIdentifierName, Identifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a domain ownership identifier for web app, or
@@ -7011,17 +7401,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing ownership identifier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='domainOwnershipIdentifierName'>
-        /// Name of domain ownership identifier.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will
         /// delete the binding for the production slot.
+        /// </param>
+        /// <param name='domainOwnershipIdentifierName'>
+        /// Name of domain ownership identifier.
         /// </param>
         /// <param name='domainOwnershipIdentifier'>
         /// A JSON representation of the domain ownership properties.
@@ -7038,7 +7428,37 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> UpdateDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string domainOwnershipIdentifierName, string slot, Identifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Identifier>> UpdateDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string domainOwnershipIdentifierName, Identifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Deletes a domain ownership identifier for a web app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a domain ownership identifier for a web app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will
+        /// delete the binding for the production slot.
+        /// </param>
+        /// <param name='domainOwnershipIdentifierName'>
+        /// Name of domain ownership identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteDomainOwnershipIdentifierSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string domainOwnershipIdentifierName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the status of the last MSDeploy operation.
@@ -7047,7 +7467,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -7077,7 +7497,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -7101,7 +7521,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> CreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateMSDeployOperationSlotHeaders>> CreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
@@ -7110,7 +7530,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -7140,7 +7560,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List the functions for a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -7163,6 +7583,242 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<FunctionEnvelope>>> ListInstanceFunctionsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Get function information by its ID for web site, or a
+        /// deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for Get function information by its ID for web site, or a
+        /// deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot.
+        /// </param>
+        /// <param name='functionName'>
+        /// Function name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope>> GetInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Create function for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for Create function for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot.
+        /// </param>
+        /// <param name='functionName'>
+        /// Function name.
+        /// </param>
+        /// <param name='functionEnvelope'>
+        /// Function details.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope,WebAppsCreateInstanceFunctionSlotHeaders>> CreateInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Delete a function for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete a function for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot.
+        /// </param>
+        /// <param name='functionName'>
+        /// Function name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Add or update a function secret.
+        /// </summary>
+        /// <remarks>
+        /// Description for Add or update a function secret.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// 
+        /// </param>
+        /// <param name='slot'>
+        /// 
+        /// </param>
+        /// <param name='functionName'>
+        /// 
+        /// </param>
+        /// <param name='keyName'>
+        /// 
+        /// </param>
+        /// <param name='key'>
+        /// The key to create or update
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<KeyInfo>> CreateOrUpdateFunctionSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, string keyName, KeyInfo key, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Delete a function secret.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete a function secret.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// 
+        /// </param>
+        /// <param name='slot'>
+        /// 
+        /// </param>
+        /// <param name='functionName'>
+        /// 
+        /// </param>
+        /// <param name='keyName'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteFunctionSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, string keyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Get function keys for a function in a web site, or a
+        /// deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for Get function keys for a function in a web site, or a
+        /// deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// 
+        /// </param>
+        /// <param name='slot'>
+        /// 
+        /// </param>
+        /// <param name='functionName'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StringDictionary>> ListFunctionKeysSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Get function secrets for a function in a web site, or a
+        /// deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Description for Get function secrets for a function in a web site, or a
+        /// deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot.
+        /// </param>
+        /// <param name='functionName'>
+        /// Function name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionSecrets>> ListFunctionSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Fetch a short lived token that can be exchanged for a
         /// master key.
         /// </summary>
@@ -7171,13 +7827,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// master key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='customHeaders'>
@@ -7195,123 +7851,26 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> GetFunctionsAdminTokenSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get function information by its ID for web site, or a
-        /// deployment slot.
+        /// Description for Add or update a host level secret.
         /// </summary>
         /// <remarks>
-        /// Description for Get function information by its ID for web site, or a
-        /// deployment slot.
+        /// Description for Add or update a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='functionName'>
-        /// Function name.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope>> GetInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Create function for web site, or a deployment slot.
-        /// </summary>
-        /// <remarks>
-        /// Description for Create function for web site, or a deployment slot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='functionName'>
-        /// Function name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
-        /// <param name='functionEnvelope'>
-        /// Function details.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope>> CreateInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string slot, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Delete a function for web site, or a deployment slot.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete a function for web site, or a deployment slot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='functionName'>
-        /// Function name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Add or update a function secret.
-        /// </summary>
-        /// <remarks>
-        /// Description for Add or update a function secret.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='functionName'>
-        /// The name of the function.
+        /// <param name='keyType'>
+        /// The type of host key.
         /// </param>
         /// <param name='keyName'>
         /// The name of the key.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
         /// </param>
         /// <param name='key'>
         /// The key to create or update
@@ -7328,29 +7887,30 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<KeyInfo>> CreateOrUpdateFunctionSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string keyName, string slot, KeyInfo key, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<KeyInfo>> CreateOrUpdateHostSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string keyType, string keyName, KeyInfo key, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete a function secret.
+        /// Description for Delete a host level secret.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a function secret.
+        /// Description for Delete a host level secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// Name of the app.
         /// </param>
-        /// <param name='functionName'>
-        /// The name of the function.
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
+        /// <param name='keyType'>
+        /// The type of host key.
         /// </param>
         /// <param name='keyName'>
         /// The name of the key.
         /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -7360,75 +7920,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteFunctionSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string keyName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Get function keys for a function in a web site, or a
-        /// deployment slot.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get function keys for a function in a web site, or a
-        /// deployment slot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='functionName'>
-        /// Function name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StringDictionary>> ListFunctionKeysSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Get function secrets for a function in a web site, or a
-        /// deployment slot.
-        /// </summary>
-        /// <remarks>
-        /// Description for Get function secrets for a function in a web site, or a
-        /// deployment slot.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='functionName'>
-        /// Function name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionSecrets>> ListFunctionSecretsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHostSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string keyType, string keyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get host secrets for a function app.
@@ -7437,13 +7929,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get host secrets for a function app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Site name.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7466,13 +7959,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7492,13 +7986,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7512,90 +8007,20 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SyncFunctionsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Add or update a host level secret.
-        /// </summary>
-        /// <remarks>
-        /// Description for Add or update a host level secret.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='keyType'>
-        /// The type of host key.
-        /// </param>
-        /// <param name='keyName'>
-        /// The name of the key.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
-        /// <param name='key'>
-        /// The key to create or update
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<KeyInfo>> CreateOrUpdateHostSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string keyType, string keyName, string slot, KeyInfo key, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Delete a host level secret.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete a host level secret.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Site name.
-        /// </param>
-        /// <param name='keyType'>
-        /// The type of host key.
-        /// </param>
-        /// <param name='keyName'>
-        /// The name of the key.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHostSecretSlotWithHttpMessagesAsync(string resourceGroupName, string name, string keyType, string keyName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Get hostname bindings for an app or a deployment slot.
         /// </summary>
         /// <remarks>
         /// Description for Get hostname bindings for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API gets
-        /// hostname bindings for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API the named
+        /// binding for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7620,7 +8045,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -7653,17 +8078,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API the named
+        /// binding for the production slot.
+        /// </param>
         /// <param name='hostName'>
         /// Hostname in the hostname binding.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// create a binding for the production slot.
         /// </param>
         /// <param name='hostNameBinding'>
         /// Binding details. This is the JSON representation of a HostNameBinding
@@ -7681,7 +8106,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HostNameBinding>> CreateOrUpdateHostNameBindingSlotWithHttpMessagesAsync(string resourceGroupName, string name, string hostName, string slot, HostNameBinding hostNameBinding, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HostNameBinding>> CreateOrUpdateHostNameBindingSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string hostName, HostNameBinding hostNameBinding, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a hostname binding for an app.
@@ -7690,14 +8115,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the binding for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API the named
+        /// binding for the production slot.
         /// </param>
         /// <param name='hostName'>
         /// Hostname in the hostname binding.
@@ -7722,19 +8147,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// this Web App.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
         /// </param>
         /// <param name='namespaceName'>
         /// The namespace for this hybrid connection.
         /// </param>
         /// <param name='relayName'>
         /// The relay name for this hybrid connection.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for the web app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7748,7 +8173,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> GetHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> GetHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string namespaceName, string relayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
@@ -7757,19 +8182,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
         /// </param>
         /// <param name='namespaceName'>
         /// The namespace for this hybrid connection.
         /// </param>
         /// <param name='relayName'>
         /// The relay name for this hybrid connection.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for the web app.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// The details of the hybrid connection.
@@ -7786,39 +8211,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> CreateOrUpdateHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, string slot, HybridConnection connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Removes a Hybrid Connection from this site.
-        /// </summary>
-        /// <remarks>
-        /// Description for Removes a Hybrid Connection from this site.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the web app.
-        /// </param>
-        /// <param name='namespaceName'>
-        /// The namespace for this hybrid connection.
-        /// </param>
-        /// <param name='relayName'>
-        /// The relay name for this hybrid connection.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for the web app.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> CreateOrUpdateHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string namespaceName, string relayName, HybridConnection connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
@@ -7827,19 +8220,19 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a new Hybrid Connection using a Service Bus relay.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
         /// </param>
         /// <param name='namespaceName'>
         /// The namespace for this hybrid connection.
         /// </param>
         /// <param name='relayName'>
         /// The relay name for this hybrid connection.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for the web app.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// The details of the hybrid connection.
@@ -7856,7 +8249,39 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> UpdateHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string namespaceName, string relayName, string slot, HybridConnection connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridConnection>> UpdateHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string namespaceName, string relayName, HybridConnection connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Removes a Hybrid Connection from this site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Removes a Hybrid Connection from this site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the web app.
+        /// </param>
+        /// <param name='slot'>
+        /// The name of the slot for the web app.
+        /// </param>
+        /// <param name='namespaceName'>
+        /// The namespace for this hybrid connection.
+        /// </param>
+        /// <param name='relayName'>
+        /// The relay name for this hybrid connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteHybridConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string namespaceName, string relayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Retrieves all Service Bus Hybrid Connections used by this
@@ -7867,13 +8292,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Web App.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// The name of the slot for the web app.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7898,14 +8324,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// hybrid connections for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -7928,18 +8354,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a hybrid connection configuration by its name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='entityName'>
-        /// Name of the hybrid connection.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will get a
         /// hybrid connection for the production slot.
         /// </param>
+        /// <param name='entityName'>
+        /// Name of the hybrid connection.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -7952,7 +8378,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> GetRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> GetRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string entityName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new hybrid connection configuration (PUT), or
@@ -7963,17 +8389,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='entityName'>
-        /// Name of the hybrid connection configuration.
-        /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// create or update a hybrid connection for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// hybrid connection for the production slot.
+        /// </param>
+        /// <param name='entityName'>
+        /// Name of the hybrid connection.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Details of the hybrid connection configuration.
@@ -7990,37 +8416,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> CreateOrUpdateRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, string slot, RelayServiceConnectionEntity connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Deletes a relay service connection by its name.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a relay service connection by its name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='entityName'>
-        /// Name of the hybrid connection configuration.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete a hybrid connection for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> CreateOrUpdateRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string entityName, RelayServiceConnectionEntity connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new hybrid connection configuration (PUT), or
@@ -8031,17 +8427,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates an existing one (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='entityName'>
-        /// Name of the hybrid connection configuration.
-        /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// create or update a hybrid connection for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// hybrid connection for the production slot.
+        /// </param>
+        /// <param name='entityName'>
+        /// Name of the hybrid connection.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Details of the hybrid connection configuration.
@@ -8058,7 +8454,37 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> UpdateRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string entityName, string slot, RelayServiceConnectionEntity connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RelayServiceConnectionEntity>> UpdateRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string entityName, RelayServiceConnectionEntity connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Deletes a relay service connection by its name.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a relay service connection by its name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// hybrid connection for the production slot.
+        /// </param>
+        /// <param name='entityName'>
+        /// Name of the hybrid connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteRelayServiceConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string entityName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets all scale-out instances of an app.
@@ -8067,7 +8493,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -8097,17 +8523,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets all scale-out instances of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='instanceId'>
-        /// 
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API gets the
         /// production slot instances.
+        /// </param>
+        /// <param name='instanceId'>
+        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8121,7 +8547,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WebSiteInstanceStatus>> GetInstanceInfoSlotWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WebSiteInstanceStatus>> GetInstanceInfoSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the status of the last MSDeploy operation.
@@ -8130,7 +8556,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the status of the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -8163,7 +8589,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -8190,7 +8616,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> CreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateInstanceMSDeployOperationSlotHeaders>> CreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
@@ -8199,7 +8625,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the MSDeploy Log for the last MSDeploy operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -8234,7 +8660,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// or for a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -8270,13 +8696,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
-        /// </param>
-        /// <param name='processId'>
-        /// PID.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
@@ -8285,6 +8708,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8298,7 +8724,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessInfo>> GetInstanceProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessInfo>> GetInstanceProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Terminate a process by its ID for a web site, or a
@@ -8309,13 +8735,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
-        /// </param>
-        /// <param name='processId'>
-        /// PID.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
@@ -8324,6 +8747,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8334,7 +8760,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteInstanceProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteInstanceProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get a memory dump of a process by its ID for a specific
@@ -8345,13 +8771,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
-        /// </param>
-        /// <param name='processId'>
-        /// PID.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
@@ -8360,6 +8783,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8370,7 +8796,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.IO.Stream>> GetInstanceProcessDumpSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.IO.Stream>> GetInstanceProcessDumpSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List module information for a process by its ID for a
@@ -8381,13 +8807,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
-        /// </param>
-        /// <param name='processId'>
-        /// PID.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
@@ -8396,6 +8819,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8409,7 +8835,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessModuleInfo>>> ListInstanceProcessModulesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessModuleInfo>>> ListInstanceProcessModulesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get process information by its ID for a specific scaled-out
@@ -8420,10 +8846,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API returns
+        /// deployments for the production slot.
+        /// </param>
+        /// <param name='instanceId'>
+        /// ID of a specific scaled-out instance. This is the value of the name
+        /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
         /// </param>
         /// <param name='processId'>
         /// PID.
@@ -8431,14 +8865,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='baseAddress'>
         /// Module base address.
         /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API returns
-        /// deployments for the production slot.
-        /// </param>
-        /// <param name='instanceId'>
-        /// ID of a specific scaled-out instance. This is the value of the name
-        /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -8451,7 +8877,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessModuleInfo>> GetInstanceProcessModuleSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string baseAddress, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessModuleInfo>> GetInstanceProcessModuleSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, string processId, string baseAddress, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List the threads in a process by its ID for a specific
@@ -8462,14 +8888,11 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
@@ -8477,6 +8900,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='instanceId'>
         /// ID of a specific scaled-out instance. This is the value of the name
         /// property in the JSON response from &#34;GET api/sites/{siteName}/instances&#34;.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8490,7 +8916,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, string instanceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessThreadInfo>>> ListInstanceProcessThreadsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Shows whether an app can be cloned to another resource
@@ -8501,14 +8927,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// group or subscription.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. By default, this API returns information on
-        /// the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8525,20 +8951,50 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteCloneability>> IsCloneableSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Lists logic app&#39;s connections for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Lists logic app&#39;s connections for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkflowEnvelope>> ListWorkflowsConnectionsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets existing backups of an app.
         /// </summary>
         /// <remarks>
         /// Description for Gets existing backups of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// backups of the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8561,13 +9017,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for This is to allow calling via powershell and ARM template.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8592,7 +9049,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// active, and whether or not MySql in app is enabled
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -8621,7 +9078,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a Swift Virtual Network connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -8659,14 +9116,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// in use by another App Service Plan other than the one this App is in.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will add
-        /// or update connections for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// gateway for the production slot&#39;s Virtual Network.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Properties of the Virtual Network connection. See example.
@@ -8686,35 +9143,6 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SwiftVirtualNetwork>> CreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SwiftVirtualNetwork connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Deletes a Swift Virtual Network connection from an app (or
-        /// deployment slot).
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a Swift Virtual Network connection from an app (or
-        /// deployment slot).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the connection for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSwiftVirtualNetworkSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Integrates this Web App with a Virtual Network. This
         /// requires that 1) &#34;swiftSupported&#34; is true when doing a GET against this
         /// resource, and 2) that the target Subnet has already been delegated, and is
@@ -8729,14 +9157,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// in use by another App Service Plan other than the one this App is in.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will add
-        /// or update connections for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// gateway for the production slot&#39;s Virtual Network.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Properties of the Virtual Network connection. See example.
@@ -8756,6 +9184,35 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SwiftVirtualNetwork>> UpdateSwiftVirtualNetworkConnectionWithCheckSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SwiftVirtualNetwork connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a Swift Virtual Network connection from an app (or
+        /// deployment slot).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// gateway for the production slot&#39;s Virtual Network.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSwiftVirtualNetworkSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets all network features used by the app (or deployment
         /// slot, if specified).
         /// </summary>
@@ -8764,18 +9221,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='view'>
-        /// The type of view. Only &#34;summary&#34; is supported at this time.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will get
         /// network features for the production slot.
         /// </param>
+        /// <param name='view'>
+        /// The type of view. Only &#34;summary&#34; is supported at this time.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -8788,7 +9245,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkFeatures>> ListNetworkFeaturesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string view, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkFeatures>> ListNetworkFeaturesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string view, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets a named operation for a network trace capturing (or
@@ -8799,17 +9256,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
         /// <param name='operationId'>
         /// GUID of the operation.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// an operation for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8823,7 +9280,42 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Gets a named operation for a network trace capturing (or
+        /// deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// Description for Gets a named operation for a network trace capturing (or
+        /// deployment slot, if specified).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
+        /// <param name='operationId'>
+        /// GUID of the operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Start capturing network packets for the site (To be
@@ -8834,16 +9326,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deprecated).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for this web app.
         /// </param>
         /// <param name='maxFrameLength'>
         /// The maximum frame length in bytes (Optional).
@@ -8872,16 +9365,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for this web app.
         /// </param>
         /// <param name='maxFrameLength'>
         /// The maximum frame length in bytes (Optional).
@@ -8901,7 +9395,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> StartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartWebSiteNetworkTraceOperationSlotHeaders>> StartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Stop ongoing capturing network packets for the site.
@@ -8910,13 +9404,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// The name of the slot for this web app.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8938,17 +9433,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
         /// <param name='operationId'>
         /// GUID of the operation.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// an operation for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8962,7 +9457,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesSlotV2WithHttpMessagesAsync(string resourceGroupName, string name, string slot, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets a named operation for a network trace capturing (or
@@ -8973,17 +9468,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
+        /// </param>
         /// <param name='operationId'>
         /// GUID of the operation.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// an operation for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -8997,42 +9492,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetNetworkTraceOperationSlotV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Gets a named operation for a network trace capturing (or
-        /// deployment slot, if specified).
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets a named operation for a network trace capturing (or
-        /// deployment slot, if specified).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='operationId'>
-        /// GUID of the operation.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// an operation for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<NetworkTrace>>> GetNetworkTracesSlotV2WithHttpMessagesAsync(string resourceGroupName, string name, string operationId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> GetNetworkTraceOperationSlotV2WithHttpMessagesAsync(string resourceGroupName, string name, string slot, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Generates a new publishing password for an app (or
@@ -9043,14 +9503,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API generate a
-        /// new publishing password for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9070,13 +9530,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets perfmon counters for web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='filter'>
@@ -9106,13 +9566,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets web app&#39;s event logs.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='customHeaders'>
@@ -9136,14 +9596,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the premier add-ons of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the premier add-ons for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9166,18 +9626,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='premierAddOnName'>
-        /// Add-on name.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will get
         /// the named add-on for the production slot.
         /// </param>
+        /// <param name='premierAddOnName'>
+        /// Add-on name.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -9190,7 +9650,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> GetPremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> GetPremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string premierAddOnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates a named add-on of an app.
@@ -9199,17 +9659,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named add-on for the production slot.
+        /// </param>
         /// <param name='premierAddOnName'>
         /// Add-on name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the named add-on for the production slot.
         /// </param>
         /// <param name='premierAddOn'>
         /// A JSON representation of the edited premier add-on.
@@ -9226,37 +9686,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> AddPremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, string slot, PremierAddOn premierAddOn, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Delete a premier add-on from an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete a premier add-on from an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='premierAddOnName'>
-        /// Add-on name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the named add-on for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeletePremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> AddPremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string premierAddOnName, PremierAddOn premierAddOn, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates a named add-on of an app.
@@ -9265,17 +9695,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates a named add-on of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named add-on for the production slot.
+        /// </param>
         /// <param name='premierAddOnName'>
         /// Add-on name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the named add-on for the production slot.
         /// </param>
         /// <param name='premierAddOn'>
         /// A JSON representation of the edited premier add-on.
@@ -9292,7 +9722,37 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> UpdatePremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string premierAddOnName, string slot, PremierAddOnPatchResource premierAddOn, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PremierAddOn>> UpdatePremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string premierAddOnName, PremierAddOnPatchResource premierAddOn, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Delete a premier add-on from an app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete a premier add-on from an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named add-on for the production slot.
+        /// </param>
+        /// <param name='premierAddOnName'>
+        /// Add-on name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeletePremierAddOnSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string premierAddOnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets data around private site access enablement and
@@ -9303,7 +9763,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// authorized Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -9334,7 +9794,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// authorized Virtual Networks that can access the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the web app.
@@ -9368,7 +9828,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// with a site
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
@@ -9397,16 +9857,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// Name of the private endpoint connection.
-        /// </param>
         /// <param name='slot'>
         /// Name of the site deployment slot.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9420,7 +9880,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> GetPrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> GetPrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Approves or rejects a private endpoint connection
@@ -9429,16 +9889,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// 
-        /// </param>
         /// <param name='slot'>
-        /// 
+        /// Name of the site deployment slot.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='privateEndpointWrapper'>
         /// 
@@ -9455,7 +9915,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> ApproveOrRejectPrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, string slot, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,WebAppsApproveOrRejectPrivateEndpointConnectionSlotHeaders>> ApproveOrRejectPrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -9464,16 +9924,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// 
-        /// </param>
         /// <param name='slot'>
-        /// 
+        /// Name of the site deployment slot.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9487,7 +9947,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> DeletePrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsDeletePrivateEndpointConnectionSlotHeaders>> DeletePrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the private link resources
@@ -9496,13 +9956,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the private link resources
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the site.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// 
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9527,7 +9988,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// or for a specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -9559,17 +10020,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9583,7 +10044,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessInfo>> GetProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessInfo>> GetProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Terminate a process by its ID for a web site, or a
@@ -9594,17 +10055,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot, or specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9615,7 +10076,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteProcessSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get a memory dump of a process by its ID for a specific
@@ -9626,17 +10087,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9647,7 +10108,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.IO.Stream>> GetProcessDumpSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.IO.Stream>> GetProcessDumpSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List module information for a process by its ID for a
@@ -9658,17 +10119,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// specific scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9682,7 +10143,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessModuleInfo>>> ListProcessModulesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessModuleInfo>>> ListProcessModulesSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get process information by its ID for a specific scaled-out
@@ -9693,10 +10154,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API returns
+        /// deployments for the production slot.
         /// </param>
         /// <param name='processId'>
         /// PID.
@@ -9704,10 +10169,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='baseAddress'>
         /// Module base address.
         /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API returns
-        /// deployments for the production slot.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -9720,7 +10181,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessModuleInfo>> GetProcessModuleSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string baseAddress, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProcessModuleInfo>> GetProcessModuleSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string processId, string baseAddress, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List the threads in a process by its ID for a specific
@@ -9731,17 +10192,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// scaled-out instance in a web site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='processId'>
-        /// PID.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
+        /// </param>
+        /// <param name='processId'>
+        /// PID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9755,7 +10216,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessThreadInfo>>> ListProcessThreadsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string processId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProcessThreadInfo>>> ListProcessThreadsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string processId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get public certificates for an app or a deployment slot.
@@ -9764,14 +10225,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get public certificates for an app or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API gets
-        /// hostname bindings for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API the named
+        /// binding for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9796,7 +10257,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -9829,17 +10290,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API the named
+        /// binding for the production slot.
+        /// </param>
         /// <param name='publicCertificateName'>
         /// Public certificate name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// create a binding for the production slot.
         /// </param>
         /// <param name='publicCertificate'>
         /// Public certificate details. This is the JSON representation of a
@@ -9857,7 +10318,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicCertificate>> CreateOrUpdatePublicCertificateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string publicCertificateName, string slot, PublicCertificate publicCertificate, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PublicCertificate>> CreateOrUpdatePublicCertificateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string publicCertificateName, PublicCertificate publicCertificate, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a hostname binding for an app.
@@ -9866,14 +10327,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a hostname binding for an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the binding for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API the named
+        /// binding for the production slot.
         /// </param>
         /// <param name='publicCertificateName'>
         /// Public certificate name.
@@ -9898,18 +10359,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the publishing profile for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='publishingProfileOptions'>
         /// Specifies publishingProfileOptions for publishing profile. For example, use
-        /// {&#34;format&#34;: &#34;FileZilla3&#34;} to get a FileZilla publishing profile.
+        /// {&#34; format&#34;: &#34;FileZilla3&#34;} to get a FileZilla publishing profile.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9931,14 +10392,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// they were previously modified by calling the API with POST.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API resets
-        /// configuration settings for the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -9958,14 +10419,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restarts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// restart the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='softRestart'>
         /// Specify true to apply the configuration settings and restarts the app only
@@ -9993,14 +10454,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// restore a backup of the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='request'>
         /// Information on restore request .
@@ -10014,7 +10475,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreFromBackupBlobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromBackupBlobSlotHeaders>> RestoreFromBackupBlobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a deleted web app to this web app.
@@ -10023,13 +10484,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='restoreRequest'>
@@ -10044,7 +10505,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreFromDeletedAppSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromDeletedAppSlotHeaders>> RestoreFromDeletedAppSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a web app from a snapshot.
@@ -10053,13 +10514,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='restoreRequest'>
@@ -10075,7 +10536,136 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RestoreSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreSnapshotSlotHeaders>> RestoreSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the Site Container for the production slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SiteContainer>>> ListSiteContainersSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets a site container of a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Gets a site container of a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the Site Container for the production slot.
+        /// </param>
+        /// <param name='containerName'>
+        /// Site Container Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteContainer>> GetSiteContainerSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or Updates a site container for a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Creates or Updates a site container for a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the Site Container for the production slot.
+        /// </param>
+        /// <param name='containerName'>
+        /// Site Container Name
+        /// </param>
+        /// <param name='request'>
+        /// Container Entity
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteContainer>> CreateOrUpdateSiteContainerSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string containerName, SiteContainer request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes a site container for a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a site container for a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the Site Container for the production slot.
+        /// </param>
+        /// <param name='containerName'>
+        /// Site Container Name
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSiteContainerSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get list of siteextensions for a web site, or a deployment
@@ -10086,7 +10676,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -10118,17 +10708,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='siteExtensionId'>
-        /// Site extension name.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API uses the
         /// production slot.
+        /// </param>
+        /// <param name='siteExtensionId'>
+        /// Site extension name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10142,7 +10732,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo>> GetSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo>> GetSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Install site extension on a web site, or a deployment slot.
@@ -10151,17 +10741,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='siteExtensionId'>
-        /// Site extension name.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API uses the
         /// production slot.
+        /// </param>
+        /// <param name='siteExtensionId'>
+        /// Site extension name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10175,7 +10765,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo>> InstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo,WebAppsInstallSiteExtensionSlotHeaders>> InstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Remove a site extension from a web site, or a deployment
@@ -10186,17 +10776,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API uses the
+        /// production slot.
+        /// </param>
         /// <param name='siteExtensionId'>
         /// Site extension name.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API deletes a
-        /// deployment for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10207,7 +10797,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the difference in configuration settings between two
@@ -10218,14 +10808,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// web app slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the source slot. If a slot is not specified, the production slot is
-        /// used as the source slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='slotSwapEntity'>
         /// JSON object that contains the target slot name. See example.
@@ -10251,14 +10841,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the source slot. If a slot is not specified, the production slot is
-        /// used as the source slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='slotSwapEntity'>
         /// JSON object that contains the target slot name. See example.
@@ -10272,7 +10862,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SwapSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsSwapSlotHeaders>> SwapSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Returns all Snapshots to the user.
@@ -10281,13 +10871,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Returns all Snapshots to the user.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Website Name.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Website Slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10312,13 +10903,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Website Name.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Website Slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10341,7 +10933,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -10371,14 +10963,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the source control configuration for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the source control configuration for the production slot.
         /// </param>
         /// <param name='siteSourceControl'>
         /// JSON representation of a SiteSourceControl object. See example.
@@ -10395,37 +10987,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl>> CreateOrUpdateSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Deletes the source control configuration of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes the source control configuration of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the source control configuration for the production slot.
-        /// </param>
-        /// <param name='additionalFlags'>
-        /// 
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string additionalFlags = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl,WebAppsCreateOrUpdateSourceControlSlotHeaders>> CreateOrUpdateSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates the source control configuration of an app.
@@ -10434,14 +10996,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the source control configuration for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the source control configuration for the production slot.
         /// </param>
         /// <param name='siteSourceControl'>
         /// JSON representation of a SiteSourceControl object. See example.
@@ -10461,20 +11023,50 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl>> UpdateSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes the source control configuration of an app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes the source control configuration of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the source control configuration for the production slot.
+        /// </param>
+        /// <param name='additionalFlags'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string additionalFlags = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Starts an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
         /// Description for Starts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will start
-        /// the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10494,16 +11086,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for this web app.
         /// </param>
         /// <param name='maxFrameLength'>
         /// The maximum frame length in bytes (Optional).
@@ -10523,7 +11116,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> StartNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartNetworkTraceSlotHeaders>> StartNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Stops an app (or deployment slot, if specified).
@@ -10532,14 +11125,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stops an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will stop
-        /// the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10559,13 +11152,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// The name of the slot for this web app.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10585,13 +11179,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Sync web app repository.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='customHeaders'>
@@ -10612,13 +11206,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10638,14 +11233,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List triggered web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API deletes a
-        /// deployment for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API uses the
+        /// production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10670,17 +11265,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API uses the
         /// production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10694,7 +11289,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TriggeredWebJob>> GetTriggeredWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TriggeredWebJob>> GetTriggeredWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Delete a triggered web job by its ID for an app, or a
@@ -10705,17 +11300,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API uses the
+        /// production slot.
+        /// </param>
         /// <param name='webJobName'>
         /// Name of Web Job.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API deletes
-        /// web job for the production slot.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10726,7 +11321,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteTriggeredWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteTriggeredWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List a triggered web job&#39;s history for an app, or a
@@ -10737,17 +11332,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API uses the
         /// production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10761,7 +11356,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TriggeredJobHistory>>> ListTriggeredWebJobHistorySlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<TriggeredJobHistory>>> ListTriggeredWebJobHistorySlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets a triggered web job&#39;s history by its ID for an app, ,
@@ -10772,10 +11367,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API uses the
+        /// production slot.
         /// </param>
         /// <param name='webJobName'>
         /// Name of Web Job.
@@ -10783,10 +11382,6 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='id'>
         /// History ID.
         /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API uses the
-        /// production slot.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -10799,7 +11394,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TriggeredJobHistory>> GetTriggeredWebJobHistorySlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string id, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TriggeredJobHistory>> GetTriggeredWebJobHistorySlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, string id, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Run a triggered web job for an app, or a deployment slot.
@@ -10808,17 +11403,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Run a triggered web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of Web Job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API uses the
         /// production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of Web Job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -10829,7 +11424,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RunTriggeredWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RunTriggeredWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the quota usage information of an app (or deployment
@@ -10840,14 +11435,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// quota information of the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='filter'>
         /// Return only information specified in the filter (using OData syntax). For
@@ -10878,45 +11473,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// connected to.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// virtual network connections for the production slot.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VnetInfo>>> ListVnetConnectionsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Gets a virtual network the app (or deployment slot) is
-        /// connected to by name.
-        /// </summary>
-        /// <remarks>
-        /// Description for Gets a virtual network the app (or deployment slot) is
-        /// connected to by name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of the virtual network.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will get
@@ -10934,67 +11494,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> GetVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VnetInfoResource>>> ListVnetConnectionsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
-        /// or updates the connection properties (PATCH).
+        /// Description for Gets a virtual network the app (or deployment slot) is
+        /// connected to by name.
         /// </summary>
         /// <remarks>
-        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
-        /// or updates the connection properties (PATCH).
+        /// Description for Gets a virtual network the app (or deployment slot) is
+        /// connected to by name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of an existing Virtual Network.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will add
-        /// or update connections for the production slot.
-        /// </param>
-        /// <param name='connectionEnvelope'>
-        /// Properties of the Virtual Network connection. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> CreateOrUpdateVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string slot, VnetInfo connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Deletes a connection from an app (or deployment slot to a
-        /// named virtual network.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes a connection from an app (or deployment slot to a
-        /// named virtual network.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named virtual network for the production slot.
         /// </param>
         /// <param name='vnetName'>
         /// Name of the virtual network.
         /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// delete the connection for the production slot.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -11004,7 +11526,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> GetVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Adds a Virtual Network connection to an app or slot (PUT)
@@ -11015,17 +11540,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// or updates the connection properties (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
-        /// <param name='vnetName'>
-        /// Name of an existing Virtual Network.
-        /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will add
-        /// or update connections for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named virtual network for the production slot.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the virtual network.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Properties of the Virtual Network connection. See example.
@@ -11042,7 +11567,77 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> UpdateVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string slot, VnetInfo connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> CreateOrUpdateVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, VnetInfoResource connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
+        /// or updates the connection properties (PATCH).
+        /// </summary>
+        /// <remarks>
+        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
+        /// or updates the connection properties (PATCH).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named virtual network for the production slot.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the virtual network.
+        /// </param>
+        /// <param name='connectionEnvelope'>
+        /// Properties of the Virtual Network connection. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> UpdateVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, VnetInfoResource connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Deletes a connection from an app (or deployment slot to a
+        /// named virtual network.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes a connection from an app (or deployment slot to a
+        /// named virtual network.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the named virtual network for the production slot.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the virtual network.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteVnetConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets an app&#39;s Virtual Network gateway.
@@ -11051,21 +11646,21 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets an app&#39;s Virtual Network gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of the Virtual Network.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// Name of the gateway. Currently, the only supported string is &#34;primary&#34;.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API will get a
         /// gateway for the production slot&#39;s Virtual Network.
         /// </param>
+        /// <param name='vnetName'>
+        /// Name of the Virtual Network.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// Name of the gateway. Currently, the only supported string is &#34;primary&#34;.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -11078,7 +11673,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetGateway>> GetVnetConnectionGatewaySlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string gatewayName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetGateway>> GetVnetConnectionGatewaySlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, string gatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Adds a gateway to a connected Virtual Network (PUT) or
@@ -11089,20 +11684,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates it (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// gateway for the production slot&#39;s Virtual Network.
         /// </param>
         /// <param name='vnetName'>
         /// Name of the Virtual Network.
         /// </param>
         /// <param name='gatewayName'>
         /// Name of the gateway. Currently, the only supported string is &#34;primary&#34;.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will add
-        /// or update a gateway for the production slot&#39;s Virtual Network.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// The properties to update this gateway with.
@@ -11119,7 +11714,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetGateway>> CreateOrUpdateVnetConnectionGatewaySlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string gatewayName, string slot, VnetGateway connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetGateway>> CreateOrUpdateVnetConnectionGatewaySlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, string gatewayName, VnetGateway connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Adds a gateway to a connected Virtual Network (PUT) or
@@ -11130,20 +11725,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates it (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// gateway for the production slot&#39;s Virtual Network.
         /// </param>
         /// <param name='vnetName'>
         /// Name of the Virtual Network.
         /// </param>
         /// <param name='gatewayName'>
         /// Name of the gateway. Currently, the only supported string is &#34;primary&#34;.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will add
-        /// or update a gateway for the production slot&#39;s Virtual Network.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// The properties to update this gateway with.
@@ -11160,7 +11755,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetGateway>> UpdateVnetConnectionGatewaySlotWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string gatewayName, string slot, VnetGateway connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetGateway>> UpdateVnetConnectionGatewaySlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string vnetName, string gatewayName, VnetGateway connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List webjobs for an app, or a deployment slot.
@@ -11169,7 +11764,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List webjobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11199,17 +11794,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get webjob information for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='webJobName'>
-        /// Name of the web job.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API returns
         /// deployments for the production slot.
+        /// </param>
+        /// <param name='webJobName'>
+        /// Name of the web job.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11223,7 +11818,68 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WebJob>> GetWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WebJob>> GetWebJobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WorkflowEnvelope>>> ListInstanceWorkflowsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get workflow information by its ID for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Get workflow information by its ID for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot.
+        /// </param>
+        /// <param name='workflowName'>
+        /// Workflow name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkflowEnvelope>> GetInstanceWorkflowSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string workflowName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get the difference in configuration settings between two
@@ -11234,7 +11890,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// web app slots.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11263,7 +11919,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11280,7 +11936,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> SwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsSwapSlotWithProductionHeaders>> SwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Returns all Snapshots to the user.
@@ -11289,10 +11945,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Returns all Snapshots to the user.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Website Name.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11317,10 +11973,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Website Name.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11343,7 +11999,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11369,7 +12025,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11389,33 +12045,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl>> CreateOrUpdateSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Deletes the source control configuration of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Deletes the source control configuration of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='additionalFlags'>
-        /// 
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, string additionalFlags = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl,WebAppsCreateOrUpdateSourceControlHeaders>> CreateOrUpdateSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates the source control configuration of an app.
@@ -11424,7 +12054,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11447,13 +12077,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl>> UpdateSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Deletes the source control configuration of an app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Deletes the source control configuration of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='additionalFlags'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, string additionalFlags = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Starts an app (or deployment slot, if specified).
         /// </summary>
         /// <remarks>
         /// Description for Starts an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11476,10 +12132,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
@@ -11502,7 +12158,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> StartNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartNetworkTraceHeaders>> StartNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Stops an app (or deployment slot, if specified).
@@ -11511,7 +12167,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stops an app (or deployment slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11534,10 +12190,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Stop ongoing capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11557,10 +12213,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Sync web app repository.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -11580,7 +12236,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Syncs function trigger metadata to the management database
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11603,7 +12259,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List triggered web jobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11631,7 +12287,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11662,7 +12318,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11690,7 +12346,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11721,7 +12377,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11753,7 +12409,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Run a triggered web job for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -11773,6 +12429,32 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RunTriggeredWebJobWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Updates the machine key of an app.
+        /// </summary>
+        /// <remarks>
+        /// Updates the machine key of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> UpdateMachineKeyWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Gets the quota usage information of an app (or deployment
         /// slot, if specified).
         /// </summary>
@@ -11781,7 +12463,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11815,7 +12497,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// connected to.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11832,7 +12514,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VnetInfo>>> ListVnetConnectionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VnetInfoResource>>> ListVnetConnectionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets a virtual network the app (or deployment slot) is
@@ -11843,7 +12525,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// connected to by name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11863,7 +12545,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> GetVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> GetVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Adds a Virtual Network connection to an app or slot (PUT)
@@ -11874,13 +12556,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// or updates the connection properties (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='vnetName'>
-        /// Name of an existing Virtual Network.
+        /// Name of the virtual network.
         /// </param>
         /// <param name='connectionEnvelope'>
         /// Properties of the Virtual Network connection. See example.
@@ -11897,7 +12579,41 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> CreateOrUpdateVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> CreateOrUpdateVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
+        /// or updates the connection properties (PATCH).
+        /// </summary>
+        /// <remarks>
+        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
+        /// or updates the connection properties (PATCH).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the virtual network.
+        /// </param>
+        /// <param name='connectionEnvelope'>
+        /// Properties of the Virtual Network connection. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> UpdateVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, VnetInfoResource connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a connection from an app (or deployment slot to a
@@ -11908,7 +12624,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// named virtual network.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -11928,47 +12644,13 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
-        /// or updates the connection properties (PATCH).
-        /// </summary>
-        /// <remarks>
-        /// Description for Adds a Virtual Network connection to an app or slot (PUT)
-        /// or updates the connection properties (PATCH).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of an existing Virtual Network.
-        /// </param>
-        /// <param name='connectionEnvelope'>
-        /// Properties of the Virtual Network connection. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> UpdateVnetConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, VnetInfo connectionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Gets an app&#39;s Virtual Network gateway.
         /// </summary>
         /// <remarks>
         /// Description for Gets an app&#39;s Virtual Network gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -12002,7 +12684,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates it (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -12039,7 +12721,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// updates it (PATCH).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -12074,7 +12756,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for List webjobs for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -12100,7 +12782,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get webjob information for an app, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -12123,6 +12805,61 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WebJob>> GetWebJobWithHttpMessagesAsync(string resourceGroupName, string name, string webJobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WorkflowEnvelope>>> ListWorkflowsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get workflow information by its ID for web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Get workflow information by its ID for web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Site name.
+        /// </param>
+        /// <param name='workflowName'>
+        /// Workflow name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<WorkflowEnvelope>> GetWorkflowWithHttpMessagesAsync(string resourceGroupName, string name, string workflowName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Creates a new web, mobile, or API app in an existing
         /// resource group, or updates an existing app.
         /// </summary>
@@ -12131,11 +12868,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Unique name of the app to create or update. To create or update a
-        /// deployment slot, use the {slot} parameter.
+        /// Name of the app.
         /// </param>
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
@@ -12152,7 +12888,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site,WebAppsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a specific backup to another app (or deployment
@@ -12163,7 +12899,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -12183,7 +12919,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreHeaders>> BeginRestoreWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the Git/FTP publishing credentials of an app.
@@ -12192,7 +12928,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -12209,7 +12945,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User>> BeginListPublishingCredentialsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User,WebAppsListPublishingCredentialsHeaders>> BeginListPublishingCredentialsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Invoke the MSDeploy web app extension.
@@ -12218,7 +12954,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -12238,7 +12974,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> BeginCreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateMSDeployOperationHeaders>> BeginCreateMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Create function for web site, or a deployment slot.
@@ -12247,7 +12983,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -12270,7 +13006,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope>> BeginCreateFunctionWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope,WebAppsCreateFunctionHeaders>> BeginCreateFunctionWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Invoke the MSDeploy web app extension.
@@ -12279,7 +13015,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -12302,7 +13038,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> BeginCreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateInstanceMSDeployOperationHeaders>> BeginCreateInstanceMSDeployOperationWithHttpMessagesAsync(string resourceGroupName, string name, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a web app.
@@ -12310,14 +13046,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// <remarks>
         /// Description for Restores a web app.
         /// </remarks>
-        /// <param name='subscriptionName'>
-        /// Azure subscription.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
+        /// </param>
+        /// <param name='subscriptionName'>
+        /// Azure subscription
         /// </param>
         /// <param name='migrationOptions'>
         /// Migration migrationOptions.
@@ -12334,7 +13070,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageMigrationResponse>> BeginMigrateStorageWithHttpMessagesAsync(string subscriptionName, string resourceGroupName, string name, StorageMigrationOptions migrationOptions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<StorageMigrationResponse,WebAppsMigrateStorageHeaders>> BeginMigrateStorageWithHttpMessagesAsync(string resourceGroupName, string name, string subscriptionName, StorageMigrationOptions migrationOptions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Migrates a local (in-app) MySql database to a remote MySql
@@ -12345,10 +13081,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='migrationRequestEnvelope'>
         /// MySql migration options.
@@ -12365,7 +13101,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Operation>> BeginMigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequest migrationRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Operation,WebAppsMigrateMySqlHeaders>> BeginMigrateMySqlWithHttpMessagesAsync(string resourceGroupName, string name, MigrateMySqlRequest migrationRequestEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Start capturing network packets for the site.
@@ -12374,10 +13110,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
@@ -12400,7 +13136,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginStartWebSiteNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartWebSiteNetworkTraceOperationHeaders>> BeginStartWebSiteNetworkTraceOperationWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Approves or rejects a private endpoint connection
@@ -12409,13 +13145,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='privateEndpointWrapper'>
         /// 
@@ -12432,7 +13168,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,WebAppsApproveOrRejectPrivateEndpointConnectionHeaders>> BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -12441,13 +13177,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// 
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -12461,7 +13197,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsDeletePrivateEndpointConnectionHeaders>> BeginDeletePrivateEndpointConnectionWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores an app from a backup blob in Azure Storage.
@@ -12470,7 +13206,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
@@ -12487,7 +13223,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreFromBackupBlobWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromBackupBlobHeaders>> BeginRestoreFromBackupBlobWithHttpMessagesAsync(string resourceGroupName, string name, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a deleted web app to this web app.
@@ -12496,10 +13232,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='restoreRequest'>
         /// Deleted web app restore information.
@@ -12513,7 +13249,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreFromDeletedAppWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromDeletedAppHeaders>> BeginRestoreFromDeletedAppWithHttpMessagesAsync(string resourceGroupName, string name, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a web app from a snapshot.
@@ -12522,10 +13258,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='restoreRequest'>
         /// Snapshot restore settings. Snapshot information can be obtained by calling
@@ -12540,7 +13276,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreSnapshotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreSnapshotHeaders>> BeginRestoreSnapshotWithHttpMessagesAsync(string resourceGroupName, string name, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Install site extension on a web site, or a deployment slot.
@@ -12549,7 +13285,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
@@ -12569,7 +13305,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo>> BeginInstallSiteExtensionWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo,WebAppsInstallSiteExtensionHeaders>> BeginInstallSiteExtensionWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates a new web, mobile, or API app in an existing
@@ -12580,15 +13316,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// resource group, or updates an existing app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Unique name of the app to create or update. To create or update a
-        /// deployment slot, use the {slot} parameter.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot to create or update. By default, this API
-        /// attempts to create or modify the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='siteEnvelope'>
         /// A JSON representation of the app properties. See example.
@@ -12605,7 +13340,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site>> BeginCreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Site,WebAppsCreateOrUpdateSlotHeaders>> BeginCreateOrUpdateSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, Site siteEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a specific backup to another app (or deployment
@@ -12616,17 +13351,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// slot, if specified).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. If a slot is not specified, the API will get a
+        /// backup of the production slot.
+        /// </param>
         /// <param name='backupId'>
         /// ID of the backup.
-        /// </param>
-        /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// restore a backup of the production slot.
         /// </param>
         /// <param name='request'>
         /// Information on restore request .
@@ -12640,7 +13375,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string backupId, string slot, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreSlotHeaders>> BeginRestoreSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string backupId, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Gets the Git/FTP publishing credentials of an app.
@@ -12649,14 +13384,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets the Git/FTP publishing credentials of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will get
-        /// the publishing credentials for the production slot.
+        /// If true, the password is included in the response. The default is false.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -12670,7 +13404,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User>> BeginListPublishingCredentialsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<User,WebAppsListPublishingCredentialsSlotHeaders>> BeginListPublishingCredentialsSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Invoke the MSDeploy web app extension.
@@ -12679,7 +13413,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -12703,7 +13437,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> BeginCreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateMSDeployOperationSlotHeaders>> BeginCreateMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Create function for web site, or a deployment slot.
@@ -12712,16 +13446,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create function for web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
         /// </param>
-        /// <param name='functionName'>
-        /// Function name.
-        /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot.
+        /// </param>
+        /// <param name='functionName'>
+        /// Function name.
         /// </param>
         /// <param name='functionEnvelope'>
         /// Function details.
@@ -12738,7 +13472,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope>> BeginCreateInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string functionName, string slot, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FunctionEnvelope,WebAppsCreateInstanceFunctionSlotHeaders>> BeginCreateInstanceFunctionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string functionName, FunctionEnvelope functionEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Invoke the MSDeploy web app extension.
@@ -12747,7 +13481,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Invoke the MSDeploy web app extension.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of web app.
@@ -12774,7 +13508,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus>> BeginCreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MSDeployStatus,WebAppsCreateInstanceMSDeployOperationSlotHeaders>> BeginCreateInstanceMSDeployOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string instanceId, MSDeploy MSDeploy, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Start capturing network packets for the site.
@@ -12783,16 +13517,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the app.
+        /// </param>
+        /// <param name='slot'>
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
-        /// </param>
-        /// <param name='slot'>
-        /// The name of the slot for this web app.
         /// </param>
         /// <param name='maxFrameLength'>
         /// The maximum frame length in bytes (Optional).
@@ -12812,7 +13547,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginStartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartWebSiteNetworkTraceOperationSlotHeaders>> BeginStartWebSiteNetworkTraceOperationSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Approves or rejects a private endpoint connection
@@ -12821,16 +13556,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Approves or rejects a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// 
-        /// </param>
         /// <param name='slot'>
-        /// 
+        /// Name of the site deployment slot.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='privateEndpointWrapper'>
         /// 
@@ -12847,7 +13582,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource>> BeginApproveOrRejectPrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, string slot, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RemotePrivateEndpointConnectionARMResource,WebAppsApproveOrRejectPrivateEndpointConnectionSlotHeaders>> BeginApproveOrRejectPrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Deletes a private endpoint connection
@@ -12856,16 +13591,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Deletes a private endpoint connection
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the site.
         /// </param>
-        /// <param name='privateEndpointConnectionName'>
-        /// 
-        /// </param>
         /// <param name='slot'>
-        /// 
+        /// Name of the site deployment slot.
+        /// </param>
+        /// <param name='privateEndpointConnectionName'>
+        /// Name of the private endpoint connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -12879,7 +13614,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginDeletePrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string privateEndpointConnectionName, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsDeletePrivateEndpointConnectionSlotHeaders>> BeginDeletePrivateEndpointConnectionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores an app from a backup blob in Azure Storage.
@@ -12888,14 +13623,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores an app from a backup blob in Azure Storage.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// restore a backup of the production slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='request'>
         /// Information on restore request .
@@ -12909,7 +13644,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreFromBackupBlobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromBackupBlobSlotHeaders>> BeginRestoreFromBackupBlobSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, RestoreRequest request, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a deleted web app to this web app.
@@ -12918,13 +13653,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a deleted web app to this web app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='restoreRequest'>
@@ -12939,7 +13674,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreFromDeletedAppSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreFromDeletedAppSlotHeaders>> BeginRestoreFromDeletedAppSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, DeletedAppRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Restores a web app from a snapshot.
@@ -12948,13 +13683,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Restores a web app from a snapshot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of web app.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of web app slot. If not specified then will default to production
+        /// Name of the deployment slot. By default, this API returns the production
         /// slot.
         /// </param>
         /// <param name='restoreRequest'>
@@ -12970,7 +13705,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginRestoreSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsRestoreSnapshotSlotHeaders>> BeginRestoreSnapshotSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SnapshotRestoreRequest restoreRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Install site extension on a web site, or a deployment slot.
@@ -12979,18 +13714,18 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Install site extension on a web site, or a deployment slot.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Site name.
-        /// </param>
-        /// <param name='siteExtensionId'>
-        /// Site extension name.
         /// </param>
         /// <param name='slot'>
         /// Name of the deployment slot. If a slot is not specified, the API uses the
         /// production slot.
         /// </param>
+        /// <param name='siteExtensionId'>
+        /// Site extension name.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -13003,7 +13738,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo>> BeginInstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string siteExtensionId, string slot, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteExtensionInfo,WebAppsInstallSiteExtensionSlotHeaders>> BeginInstallSiteExtensionSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, string siteExtensionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Swaps two deployment slots of an app.
@@ -13012,14 +13747,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Swaps two deployment slots of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the source slot. If a slot is not specified, the production slot is
-        /// used as the source slot.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='slotSwapEntity'>
         /// JSON object that contains the target slot name. See example.
@@ -13033,7 +13768,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginSwapSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsSwapSlotHeaders>> BeginSwapSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Updates the source control configuration of an app.
@@ -13042,14 +13777,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Updates the source control configuration of an app.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// Name of the deployment slot. If a slot is not specified, the API will
-        /// update the source control configuration for the production slot.
+        /// Name of the deployment slot. If a slot is not specified, the API will get
+        /// the source control configuration for the production slot.
         /// </param>
         /// <param name='siteSourceControl'>
         /// JSON representation of a SiteSourceControl object. See example.
@@ -13066,7 +13801,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl>> BeginCreateOrUpdateSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl,WebAppsCreateOrUpdateSourceControlSlotHeaders>> BeginCreateOrUpdateSourceControlSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Start capturing network packets for the site.
@@ -13075,103 +13810,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Start capturing network packets for the site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// The name of the web app.
-        /// </param>
-        /// <param name='durationInSeconds'>
-        /// The duration to keep capturing in seconds.
+        /// Name of the app.
         /// </param>
         /// <param name='slot'>
-        /// The name of the slot for this web app.
-        /// </param>
-        /// <param name='maxFrameLength'>
-        /// The maximum frame length in bytes (Optional).
-        /// </param>
-        /// <param name='sasUrl'>
-        /// The Blob URL to store capture file.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginStartNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Swaps two deployment slots of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Swaps two deployment slots of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='slotSwapEntity'>
-        /// JSON object that contains the target slot name. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginSwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Updates the source control configuration of an app.
-        /// </summary>
-        /// <remarks>
-        /// Description for Updates the source control configuration of an app.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the app.
-        /// </param>
-        /// <param name='siteSourceControl'>
-        /// JSON representation of a SiteSourceControl object. See example.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl>> BeginCreateOrUpdateSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Start capturing network packets for the site.
-        /// </summary>
-        /// <remarks>
-        /// Description for Start capturing network packets for the site.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the web app.
+        /// Name of the deployment slot. By default, this API returns the production
+        /// slot.
         /// </param>
         /// <param name='durationInSeconds'>
         /// The duration to keep capturing in seconds.
@@ -13194,7 +13840,97 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object>> BeginStartNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartNetworkTraceSlotHeaders>> BeginStartNetworkTraceSlotWithHttpMessagesAsync(string resourceGroupName, string name, string slot, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Swaps two deployment slots of an app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Swaps two deployment slots of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='slotSwapEntity'>
+        /// JSON object that contains the target slot name. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<WebAppsSwapSlotWithProductionHeaders>> BeginSwapSlotWithProductionWithHttpMessagesAsync(string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Updates the source control configuration of an app.
+        /// </summary>
+        /// <remarks>
+        /// Description for Updates the source control configuration of an app.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='siteSourceControl'>
+        /// JSON representation of a SiteSourceControl object. See example.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSourceControl,WebAppsCreateOrUpdateSourceControlHeaders>> BeginCreateOrUpdateSourceControlWithHttpMessagesAsync(string resourceGroupName, string name, SiteSourceControl siteSourceControl, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Start capturing network packets for the site.
+        /// </summary>
+        /// <remarks>
+        /// Description for Start capturing network packets for the site.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the app.
+        /// </param>
+        /// <param name='durationInSeconds'>
+        /// The duration to keep capturing in seconds.
+        /// </param>
+        /// <param name='maxFrameLength'>
+        /// The maximum frame length in bytes (Optional).
+        /// </param>
+        /// <param name='sasUrl'>
+        /// The Blob URL to store capture file.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<object,WebAppsStartNetworkTraceHeaders>> BeginStartNetworkTraceWithHttpMessagesAsync(string resourceGroupName, string name, int? durationInSeconds = default(int?), int? maxFrameLength = default(int?), string sasUrl = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get all apps for a subscription.
@@ -13408,6 +14144,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ContinuousWebJob>>> ListContinuousWebJobsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CsmDeploymentStatus>>> ListProductionSiteDeploymentStatusesNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List deployments for an app, or a deployment slot.
@@ -13771,6 +14530,29 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PublicCertificate>>> ListPublicCertificatesNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SiteContainer>>> ListSiteContainersNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get list of siteextensions for a web site, or a deployment
         /// slot.
         /// </summary>
@@ -13982,6 +14764,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ContinuousWebJob>>> ListContinuousWebJobsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </summary>
+        /// <remarks>
+        /// List deployment statuses for an app (or deployment slot, if specified).
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CsmDeploymentStatus>>> ListSlotSiteDeploymentStatusesSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for List deployments for an app, or a deployment slot.
@@ -14345,6 +15150,29 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PublicCertificate>>> ListPublicCertificatesSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the site containers of a site, or a deployment slot.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SiteContainer>>> ListSiteContainersSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get list of siteextensions for a web site, or a deployment
         /// slot.
         /// </summary>
@@ -14539,6 +15367,29 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WebJob>>> ListWebJobsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WorkflowEnvelope>>> ListInstanceWorkflowsSlotNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Get the difference in configuration settings between two
         /// web app slots.
         /// </summary>
@@ -14706,6 +15557,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WebJob>>> ListWebJobsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </summary>
+        /// <remarks>
+        /// List the workflows for a web site, or a deployment slot.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WorkflowEnvelope>>> ListWorkflowsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

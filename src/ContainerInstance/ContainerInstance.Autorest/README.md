@@ -42,6 +42,7 @@ module-version: 1.0.3
 # Normally, title is the service name
 title: ContainerInstance
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs

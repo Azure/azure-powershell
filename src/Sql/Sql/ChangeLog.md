@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
+* Added selective-fields support to Azure SQL auditing
+    - Added the optional `RequiredFields` parameter to `Set-AzSqlServerAudit` and `Set-AzSqlDatabaseAudit`
+    - Added `RequiredFields` to the output of `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+    - Updated blob auditing operations to API version `2026-08-01-preview`
 
 ## Version 7.1.0
 * Added multi-database Managed Instance links through `LinkMode` on `New-AzSqlInstanceLink` and database membership updates on `Update-AzSqlInstanceLink`.

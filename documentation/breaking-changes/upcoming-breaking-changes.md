@@ -9,6 +9,43 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
+### Standalone EdgeAction resource cmdlets
+
+The standalone EdgeAction resource cmdlets listed below are planned for removal
+in Az.Cdn 7.0.0 and Az 17.0.0, with a planned effective date of November 15, 2026.
+This is a documentation-only advance announcement; the cmdlets remain available
+in the current release. No cmdlet attributes or runtime warnings are added by
+this announcement.
+
+- `Add-AzCdnEdgeActionAttachment`
+- `Deploy-AzCdnEdgeActionVersionCode`
+- `Get-AzCdnEdgeAction`
+- `Get-AzCdnEdgeActionExecutionFilter`
+- `Get-AzCdnEdgeActionVersion`
+- `Get-AzCdnEdgeActionVersionCode`
+- `New-AzCdnEdgeAction`
+- `New-AzCdnEdgeActionExecutionFilter`
+- `New-AzCdnEdgeActionVersion`
+- `Remove-AzCdnEdgeAction`
+- `Remove-AzCdnEdgeActionAttachment`
+- `Remove-AzCdnEdgeActionExecutionFilter`
+- `Remove-AzCdnEdgeActionVersion`
+- `Update-AzCdnEdgeAction`
+- `Update-AzCdnEdgeActionExecutionFilter`
+- `Update-AzCdnEdgeActionVersion`
+
+The removal will stop generating the standalone EdgeAction resource API from
+`Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json`, including resource,
+attachment, execution filter, version, and version-code operations. Scripts
+using these cmdlets will need to be updated before adopting the removal release.
+Review those dependencies now; this announcement does not specify a replacement
+cmdlet or announce retirement of the underlying service.
+
+This change does not remove EdgeAction delivery-rule actions or URL signing
+properties from the CDN/AFD API. It is independent of the CDN/AFD upgrade to API
+version `2026-07-01`. The EdgeAction Swagger input, command implementations,
+exports, and existing tests are unchanged by this announcement.
+
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
 - Parameter breaking-change will happen to all parameter sets

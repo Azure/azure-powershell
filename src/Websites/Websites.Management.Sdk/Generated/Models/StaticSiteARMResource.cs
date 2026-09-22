@@ -8,10 +8,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
     using System.Linq;
 
     /// <summary>
-    /// Static Site ARM resource.
+    /// Concrete tracked resource types can be created by aliasing this type using
+    /// a specific property type.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class StaticSiteARMResource : Resource
+    public partial class StaticSiteARMResource : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the StaticSiteARMResource class.
@@ -25,22 +26,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the StaticSiteARMResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
+        /// <param name="kind">Kind of resource.
         /// </param>
 
         /// <param name="sku">Description of a SKU for a scalable resource.
@@ -91,13 +98,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="userProvidedFunctionApps">User provided function apps registered with the static site
         /// </param>
 
+        /// <param name="linkedBackends">Backends linked to the static side
+        /// </param>
+
         /// <param name="provider">The provider that submitted the last deployment to the primary environment
         /// of the static site.
         /// </param>
-        public StaticSiteARMResource(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SkuDescription sku = default(SkuDescription), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), System.Collections.Generic.IList<string> customDomains = default(System.Collections.Generic.IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection>), StagingEnvironmentPolicy? stagingEnvironmentPolicy = default(StagingEnvironmentPolicy?), bool? allowConfigFileUpdates = default(bool?), StaticSiteTemplateOptions templateProperties = default(StaticSiteTemplateOptions), string contentDistributionEndpoint = default(string), string keyVaultReferenceIdentity = default(string), System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp>), string provider = default(string))
 
-        : base(location, id, name, kind, type, tags)
+        /// <param name="enterpriseGradeCdnStatus">State indicating the status of the enterprise grade CDN serving traffic to
+        /// the static web app.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Enabling&#39;, &#39;Disabled&#39;, &#39;Disabling&#39;</param>
+
+        /// <param name="publicNetworkAccess">State indicating whether public traffic are allowed or not for a static web
+        /// app. Allowed Values: &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
+        /// </param>
+
+        /// <param name="databaseConnections">Database connections for the static site
+        /// </param>
+        public StaticSiteARMResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string kind = default(string), SkuDescription sku = default(SkuDescription), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), System.Collections.Generic.IList<string> customDomains = default(System.Collections.Generic.IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection>), StagingEnvironmentPolicy? stagingEnvironmentPolicy = default(StagingEnvironmentPolicy?), bool? allowConfigFileUpdates = default(bool?), StaticSiteTemplateOptions templateProperties = default(StaticSiteTemplateOptions), string contentDistributionEndpoint = default(string), string keyVaultReferenceIdentity = default(string), System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp>), System.Collections.Generic.IList<StaticSiteLinkedBackend> linkedBackends = default(System.Collections.Generic.IList<StaticSiteLinkedBackend>), string provider = default(string), string enterpriseGradeCdnStatus = default(string), string publicNetworkAccess = default(string), System.Collections.Generic.IList<DatabaseConnectionOverview> databaseConnections = default(System.Collections.Generic.IList<DatabaseConnectionOverview>))
+
+        : base(location, id, name, type, systemData, tags)
         {
+            this.Kind = kind;
             this.Sku = sku;
             this.Identity = identity;
             this.DefaultHostname = defaultHostname;
@@ -113,7 +135,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.ContentDistributionEndpoint = contentDistributionEndpoint;
             this.KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
             this.UserProvidedFunctionApps = userProvidedFunctionApps;
+            this.LinkedBackends = linkedBackends;
             this.Provider = provider;
+            this.EnterpriseGradeCdnStatus = enterpriseGradeCdnStatus;
+            this.PublicNetworkAccess = publicNetworkAccess;
+            this.DatabaseConnections = databaseConnections;
             CustomInit();
         }
 
@@ -122,6 +148,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets description of a SKU for a scalable resource.
@@ -217,11 +249,37 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp> UserProvidedFunctionApps {get; private set; }
 
         /// <summary>
-        /// Gets the provider that submitted the last deployment to the primary
+        /// Gets backends linked to the static side
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.linkedBackends")]
+        public System.Collections.Generic.IList<StaticSiteLinkedBackend> LinkedBackends {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the provider that submitted the last deployment to the primary
         /// environment of the static site.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provider")]
-        public string Provider {get; private set; }
+        public string Provider {get; set; }
+
+        /// <summary>
+        /// Gets or sets state indicating the status of the enterprise grade CDN
+        /// serving traffic to the static web app. Possible values include: &#39;Enabled&#39;, &#39;Enabling&#39;, &#39;Disabled&#39;, &#39;Disabling&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enterpriseGradeCdnStatus")]
+        public string EnterpriseGradeCdnStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets state indicating whether public traffic are allowed or not for
+        /// a static web app. Allowed Values: &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets database connections for the static site
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.databaseConnections")]
+        public System.Collections.Generic.IList<DatabaseConnectionOverview> DatabaseConnections {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -231,6 +289,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
+
+
+
+
+
 
 
 

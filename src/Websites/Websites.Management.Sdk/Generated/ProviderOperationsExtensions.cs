@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Function App stack location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='stackOsType'>
         /// Stack OS Type
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Function App stack location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='stackOsType'>
         /// Stack OS Type
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Web App stack location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='stackOsType'>
         /// Stack OS Type
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Web App stack location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='stackOsType'>
         /// Stack OS Type

@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Management.WebSites
     public partial interface IDomainsOperations
     {
         /// <summary>
-        /// Description for Check if a domain is available for registration.
+        /// Check if a domain is available for registration.
         /// </summary>
         /// <remarks>
-        /// Description for Check if a domain is available for registration.
+        /// Check if a domain is available for registration.
         /// </remarks>
         /// <param name='identifier'>
         /// Name of the domain.
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DomainAvailabilityCheckResult>> CheckAvailabilityWithHttpMessagesAsync(NameIdentifier identifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get all domains in a subscription.
+        /// Get all domains in a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all domains in a subscription.
+        /// Get all domains in a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -57,12 +57,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Domain>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Generate a single sign-on request for the domain management
-        /// portal.
+        /// Generate a single sign-on request for the domain management portal.
         /// </summary>
         /// <remarks>
-        /// Description for Generate a single sign-on request for the domain management
-        /// portal.
+        /// Generate a single sign-on request for the domain management portal.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -79,10 +77,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DomainControlCenterSsoRequest>> GetControlCenterSsoRequestWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get domain name recommendations based on keywords.
+        /// Get domain name recommendations based on keywords.
         /// </summary>
         /// <remarks>
-        /// Description for Get domain name recommendations based on keywords.
+        /// Get domain name recommendations based on keywords.
         /// </remarks>
         /// <param name='parameters'>
         /// Search parameters for domain name recommendations.
@@ -102,10 +100,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<NameIdentifier>>> ListRecommendationsWithHttpMessagesAsync(DomainRecommendationSearchParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get all domains in a resource group.
+        /// Get all domains in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get all domains in a resource group.
+        /// Get all domains in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -125,10 +123,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Domain>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get a domain.
+        /// Get a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Get a domain.
+        /// Get a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -151,10 +149,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Domain>> GetWithHttpMessagesAsync(string resourceGroupName, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates or updates a domain.
+        /// Creates or updates a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Creates or updates a domain.
+        /// Creates or updates a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -180,10 +178,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Domain>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string domainName, Domain domain, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete a domain.
+        /// Delete a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Delete a domain.
+        /// Delete a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -207,10 +205,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string domainName, bool? forceHardDeleteDomain = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates or updates a domain.
+        /// Creates or updates a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Creates or updates a domain.
+        /// Creates or updates a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -236,10 +234,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Domain>> UpdateWithHttpMessagesAsync(string resourceGroupName, string domainName, DomainPatchResource domain, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Lists domain ownership identifiers.
+        /// Lists domain ownership identifiers.
         /// </summary>
         /// <remarks>
-        /// Description for Lists domain ownership identifiers.
+        /// Lists domain ownership identifiers.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -262,10 +260,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DomainOwnershipIdentifier>>> ListOwnershipIdentifiersWithHttpMessagesAsync(string resourceGroupName, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get ownership identifier for domain
+        /// Get ownership identifier for domain
         /// </summary>
         /// <remarks>
-        /// Description for Get ownership identifier for domain
+        /// Get ownership identifier for domain
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -291,12 +289,12 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DomainOwnershipIdentifier>> GetOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string domainName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates an ownership identifier for a domain or updates
-        /// identifier details for an existing identifier
+        /// Creates an ownership identifier for a domain or updates identifier details
+        /// for an existing identifier
         /// </summary>
         /// <remarks>
-        /// Description for Creates an ownership identifier for a domain or updates
-        /// identifier details for an existing identifier
+        /// Creates an ownership identifier for a domain or updates identifier details
+        /// for an existing identifier
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -325,10 +323,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DomainOwnershipIdentifier>> CreateOrUpdateOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string domainName, string name, DomainOwnershipIdentifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete ownership identifier for domain
+        /// Delete ownership identifier for domain
         /// </summary>
         /// <remarks>
-        /// Description for Delete ownership identifier for domain
+        /// Delete ownership identifier for domain
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -351,12 +349,12 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string domainName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates an ownership identifier for a domain or updates
-        /// identifier details for an existing identifier
+        /// Creates an ownership identifier for a domain or updates identifier details
+        /// for an existing identifier
         /// </summary>
         /// <remarks>
-        /// Description for Creates an ownership identifier for a domain or updates
-        /// identifier details for an existing identifier
+        /// Creates an ownership identifier for a domain or updates identifier details
+        /// for an existing identifier
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -385,10 +383,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DomainOwnershipIdentifier>> UpdateOwnershipIdentifierWithHttpMessagesAsync(string resourceGroupName, string domainName, string name, DomainOwnershipIdentifier domainOwnershipIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Renew a domain.
+        /// Renew a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Renew a domain.
+        /// Renew a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -408,10 +406,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RenewWithHttpMessagesAsync(string resourceGroupName, string domainName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates or updates a domain.
+        /// Creates or updates a domain.
         /// </summary>
         /// <remarks>
-        /// Description for Creates or updates a domain.
+        /// Creates or updates a domain.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -437,10 +435,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Domain>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string domainName, Domain domain, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get all domains in a subscription.
+        /// Get all domains in a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for Get all domains in a subscription.
+        /// Get all domains in a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -460,10 +458,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Domain>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get domain name recommendations based on keywords.
+        /// Get domain name recommendations based on keywords.
         /// </summary>
         /// <remarks>
-        /// Description for Get domain name recommendations based on keywords.
+        /// Get domain name recommendations based on keywords.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -483,10 +481,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<NameIdentifier>>> ListRecommendationsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get all domains in a resource group.
+        /// Get all domains in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get all domains in a resource group.
+        /// Get all domains in a resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -506,10 +504,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Domain>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Lists domain ownership identifiers.
+        /// Lists domain ownership identifiers.
         /// </summary>
         /// <remarks>
-        /// Description for Lists domain ownership identifiers.
+        /// Lists domain ownership identifiers.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

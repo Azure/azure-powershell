@@ -475,6 +475,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Configuring Source Scan for the item.
+        /// </summary>
+        public static string ConfigureSourceScanMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set Source Scan state to &apos;{0}&apos; for the item &apos;{1}&apos;.
+        /// </summary>
+        public static string ConfigureSourceScanWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Configure Source Scan Operation.
+        /// </summary>
+        public static string ConfigureSourceScanOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfigureSourceScanOperation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Source Scan is currently only supported for Azure Virtual Machine backup items.
+        /// </summary>
+        public static string SourceScanNotSupportedForItem
+        {
+            get
+            {
+                return ResourceManager.GetString("SourceScanNotSupportedForItem", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to disable protection for the item &apos;{0}&apos;.
         /// </summary>
         public static string DisableProtectionWarning

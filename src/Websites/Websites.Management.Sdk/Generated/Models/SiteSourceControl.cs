@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Source control configuration for an app.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SiteSourceControl : ProxyOnlyResource
+    public partial class SiteSourceControl : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SiteSourceControl class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SiteSourceControl class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="repoUrl">Repository or source control URL.
@@ -61,10 +67,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="gitHubActionConfiguration">If GitHub Action is selected, than the associated configuration.
         /// </param>
-        public SiteSourceControl(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? isGitHubAction = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?), GitHubActionConfiguration gitHubActionConfiguration = default(GitHubActionConfiguration))
+        public SiteSourceControl(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? isGitHubAction = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?), GitHubActionConfiguration gitHubActionConfiguration = default(GitHubActionConfiguration))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.RepoUrl = repoUrl;
             this.Branch = branch;
             this.IsManualIntegration = isManualIntegration;
@@ -80,6 +87,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets repository or source control URL.

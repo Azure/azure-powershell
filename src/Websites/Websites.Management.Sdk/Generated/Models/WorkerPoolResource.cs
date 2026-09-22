@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Worker pool of an App Service Environment ARM resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class WorkerPoolResource : ProxyOnlyResource
+    public partial class WorkerPoolResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the WorkerPoolResource class.
@@ -25,19 +25,27 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the WorkerPoolResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="sku">Description of a SKU for a scalable resource.
+        /// </param>
+
+        /// <param name="kind">Kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
         /// </param>
 
         /// <param name="workerSizeId">Worker size ID for referencing this worker pool.
@@ -54,11 +62,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="instanceNames">Names of all instances in the worker pool (read only).
         /// </param>
-        public WorkerPoolResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SkuDescription sku = default(SkuDescription), int? workerSizeId = default(int?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string workerSize = default(string), int? workerCount = default(int?), System.Collections.Generic.IList<string> instanceNames = default(System.Collections.Generic.IList<string>))
+        public WorkerPoolResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), SkuDescription sku = default(SkuDescription), string kind = default(string), int? workerSizeId = default(int?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string workerSize = default(string), int? workerCount = default(int?), System.Collections.Generic.IList<string> instanceNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
             this.Sku = sku;
+            this.Kind = kind;
             this.WorkerSizeId = workerSizeId;
             this.ComputeMode = computeMode;
             this.WorkerSize = workerSize;
@@ -78,6 +87,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public SkuDescription Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets worker size ID for referencing this worker pool.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Backup description.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BackupItem : ProxyOnlyResource
+    public partial class BackupItem : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the BackupItem class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the BackupItem class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="backupId">Id of the backup.
@@ -81,10 +87,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="websiteSizeInBytes">Size of the original web app which has been backed up.
         /// </param>
-        public BackupItem(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), System.Collections.Generic.IList<DatabaseBackupSetting> databases = default(System.Collections.Generic.IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
+        public BackupItem(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), System.Collections.Generic.IList<DatabaseBackupSetting> databases = default(System.Collections.Generic.IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.BackupId = backupId;
             this.StorageAccountUrl = storageAccountUrl;
             this.BlobName = blobName;
@@ -107,6 +114,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets id of the backup.

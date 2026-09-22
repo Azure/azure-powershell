@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all certificates in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the certificate.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the certificate.
@@ -116,36 +116,13 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Certificate>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, Certificate certificateEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete a certificate.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete a certificate.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the certificate.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Create or update a certificate.
         /// </summary>
         /// <remarks>
         /// Description for Create or update a certificate.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the certificate.
@@ -166,6 +143,29 @@ namespace Microsoft.Azure.Management.WebSites
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Certificate>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, CertificatePatchResource certificateEnvelope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Description for Delete a certificate.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete a certificate.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the certificate.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get all certificates for a subscription.
