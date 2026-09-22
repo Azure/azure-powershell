@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string highSpeedInterconnectPlacement = null,
             string scheduledEventsApiVersion = null,
             bool? enableAllInstancesDown = null,
-            bool? capacityReservationIdSpecified = null
+            bool capacityReservationIdSpecified = false
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
                             CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                                 capacityReservationId,
-                                capacityReservationIdSpecified ?? !string.IsNullOrEmpty(capacityReservationId),
+                                capacityReservationIdSpecified || !string.IsNullOrEmpty(capacityReservationId),
                                 disableCapacityReservationAssignment,
                                 serializeEmptyCapacityReservationGroupForNullId: false),
                             UserData = userData,
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string scheduledEventsApiVersion = null,
             bool? enableAllInstancesDown = null,
             string zonalPlatformFaultDomainAlignMode = null,
-            bool? capacityReservationIdSpecified = null
+            bool capacityReservationIdSpecified = false
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
                             CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                                 capacityReservationId,
-                                capacityReservationIdSpecified ?? !string.IsNullOrEmpty(capacityReservationId),
+                                capacityReservationIdSpecified || !string.IsNullOrEmpty(capacityReservationId),
                                 disableCapacityReservationAssignment,
                                 serializeEmptyCapacityReservationGroupForNullId: false),
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference

@@ -485,6 +485,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                this.CapacityReservationGroupId,
+                this.IsParameterBound(c => c.CapacityReservationGroupId),
+                this.DisableCapacityReservationAssignment.IsPresent);
+
             // Sku
             Sku vSku = null;
 
@@ -715,10 +720,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
-                    this.CapacityReservationGroupId,
-                    this.IsParameterBound(c => c.CapacityReservationGroupId),
-                    this.DisableCapacityReservationAssignment.IsPresent);
                 if (vVirtualMachineProfile == null)
                 {
                     vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();

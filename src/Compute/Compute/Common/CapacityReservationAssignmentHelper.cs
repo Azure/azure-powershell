@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             bool serializeEmptyCapacityReservationGroupForNullId = true)
         {
             bool serializeCapacityReservationGroup = isCapacityReservationGroupIdBound &&
-                (!string.IsNullOrEmpty(capacityReservationGroupId) ||
-                    (string.IsNullOrEmpty(capacityReservationGroupId) && serializeEmptyCapacityReservationGroupForNullId));
+                (!string.IsNullOrEmpty(capacityReservationGroupId) || serializeEmptyCapacityReservationGroupForNullId);
 
             if (!serializeCapacityReservationGroup && disableCapacityReservationAssignment == null)
             {

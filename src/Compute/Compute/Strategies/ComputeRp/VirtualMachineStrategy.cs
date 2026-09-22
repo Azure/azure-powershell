@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string scheduledEventsApiVersion = null,
             bool? enableAllInstancesDown = null,
             bool? disableCapacityReservationAssignment = null,
-            bool? capacityReservationGroupIdSpecified = null
+            bool capacityReservationGroupIdSpecified = false
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                             capacityReservationGroupId,
-                            capacityReservationGroupIdSpecified ?? !string.IsNullOrEmpty(capacityReservationGroupId),
+                            capacityReservationGroupIdSpecified || !string.IsNullOrEmpty(capacityReservationGroupId),
                             disableCapacityReservationAssignment,
                             serializeEmptyCapacityReservationGroupForNullId: false),
                         UserData = userData,
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableSecureBoot = null,
             string securityType = null,
             bool? disableCapacityReservationAssignment = null,
-            bool? capacityReservationGroupIdSpecified = null
+            bool capacityReservationGroupIdSpecified = false
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     } : null,
                     CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                         capacityReservationGroupId,
-                        capacityReservationGroupIdSpecified ?? !string.IsNullOrEmpty(capacityReservationGroupId),
+                        capacityReservationGroupIdSpecified || !string.IsNullOrEmpty(capacityReservationGroupId),
                         disableCapacityReservationAssignment,
                         serializeEmptyCapacityReservationGroupForNullId: false),
                     UserData = userData,

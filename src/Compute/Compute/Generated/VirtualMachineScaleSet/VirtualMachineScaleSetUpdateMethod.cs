@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. An explicitly supplied false value can be used together with CapacityReservationGroupId.")]
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. An explicitly supplied false value can be used together with CapacityReservationGroupId. This parameter is supported by both the direct update path and the VirtualMachineScaleSet object path.")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(
@@ -1713,34 +1713,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = this.BootDiagnosticsStorageUri;
             }
 
-            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+            bool isCapacityReservationGroupIdBound = this.IsParameterBound(c => c.CapacityReservationGroupId);
+            bool isDisableCapacityReservationAssignmentBound = this.IsParameterBound(c => c.DisableCapacityReservationAssignment);
+            if (isCapacityReservationGroupIdBound || isDisableCapacityReservationAssignmentBound)
             {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id = this.CapacityReservationGroupId;
-            }
+                CapacityReservationProfile requestedCapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                    this.CapacityReservationGroupId,
+                    isCapacityReservationGroupIdBound,
+                    isDisableCapacityReservationAssignmentBound ? this.DisableCapacityReservationAssignment.IsPresent : (bool?)null);
 
-            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                if (requestedCapacityReservation != null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                    if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                    {
+                        this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                    }
+                    if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation == null)
+                    {
+                        this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                    }
+                    if (isCapacityReservationGroupIdBound)
+                    {
+                        this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = requestedCapacityReservation.CapacityReservationGroup;
+                    }
+                    if (isDisableCapacityReservationAssignmentBound)
+                    {
+                        this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = requestedCapacityReservation.DisableCapacityReservationAssignment;
+                    }
                 }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
             }
 
             if (this.IsParameterBound(c => c.CustomData))
