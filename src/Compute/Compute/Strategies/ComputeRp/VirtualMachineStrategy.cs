@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string hostId,
             string hostGroupId,
             string capacityReservationGroupId,
-            bool capacityReservationGroupIdSpecified,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -91,7 +90,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? addProxyAgentExtension = null,
             string scheduledEventsApiVersion = null,
             bool? enableAllInstancesDown = null,
-            bool? disableCapacityReservationAssignment = null
+            bool? disableCapacityReservationAssignment = null,
+            bool? capacityReservationGroupIdSpecified = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                             capacityReservationGroupId,
-                            capacityReservationGroupIdSpecified,
+                            capacityReservationGroupIdSpecified ?? !string.IsNullOrEmpty(capacityReservationGroupId),
                             disableCapacityReservationAssignment,
                             serializeEmptyCapacityReservationGroupForNullId: false),
                         UserData = userData,
@@ -229,7 +229,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string hostId,
             string hostGroupId,
             string capacityReservationGroupId,
-            bool capacityReservationGroupIdSpecified,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -248,7 +247,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             string securityType = null,
-            bool? disableCapacityReservationAssignment = null
+            bool? disableCapacityReservationAssignment = null,
+            bool? capacityReservationGroupIdSpecified = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     } : null,
                     CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                         capacityReservationGroupId,
-                        capacityReservationGroupIdSpecified,
+                        capacityReservationGroupIdSpecified ?? !string.IsNullOrEmpty(capacityReservationGroupId),
                         disableCapacityReservationAssignment,
                         serializeEmptyCapacityReservationGroupForNullId: false),
                     UserData = userData,

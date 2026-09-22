@@ -138,13 +138,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+            HelpMessage = "Specifies the ID of the capacity reservation group to associate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. An explicitly supplied false value can be used together with CapacityReservationGroupId.")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(

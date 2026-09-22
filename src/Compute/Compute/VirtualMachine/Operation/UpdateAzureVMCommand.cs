@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+            HelpMessage = "Specifies the ID of the capacity reservation group to associate. For update cmdlets, explicitly passing null removes the existing association.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. An explicitly supplied false value can be used together with CapacityReservationGroupId.")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -428,22 +428,29 @@ namespace Microsoft.Azure.Commands.Compute
                         this.IsParameterBound(c => c.CapacityReservationGroupId),
                         this.DisableCapacityReservationAssignment.IsPresent);
 
-                    if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                    if (this.IsParameterBound(c => c.CapacityReservationGroupId) ||
+                        this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
                     {
-                        if (parameters.CapacityReservation == null)
-                        {
-                            parameters.CapacityReservation = new CapacityReservationProfile();
-                        }
-                        parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
-                    }
+                        CapacityReservationProfile requestedCapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                            this.CapacityReservationGroupId,
+                            this.IsParameterBound(c => c.CapacityReservationGroupId),
+                            this.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? this.DisableCapacityReservationAssignment.IsPresent : (bool?)null);
 
-                    if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
-                    {
-                        if (parameters.CapacityReservation == null)
+                        if (requestedCapacityReservation != null)
                         {
-                            parameters.CapacityReservation = new CapacityReservationProfile();
+                            if (parameters.CapacityReservation == null)
+                            {
+                                parameters.CapacityReservation = new CapacityReservationProfile();
+                            }
+                            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                            {
+                                parameters.CapacityReservation.CapacityReservationGroup = requestedCapacityReservation.CapacityReservationGroup;
+                            }
+                            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                            {
+                                parameters.CapacityReservation.DisableCapacityReservationAssignment = requestedCapacityReservation.DisableCapacityReservationAssignment;
+                            }
                         }
-                        parameters.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
                     }
 
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
