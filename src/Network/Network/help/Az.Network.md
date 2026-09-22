@@ -362,6 +362,9 @@ Gets the ARP table from an ExpressRoute circuit.
 ### [Get-AzExpressRouteCircuitAuthorization](Get-AzExpressRouteCircuitAuthorization.md)
 Gets information about ExpressRoute circuit authorizations.
 
+### [Get-AzExpressRouteCircuitAuthorizationKey](Get-AzExpressRouteCircuitAuthorizationKey.md)
+Gets the authorization key for an ExpressRoute circuit authorization.
+
 ### [Get-AzExpressRouteCircuitConnectionConfig](Get-AzExpressRouteCircuitConnectionConfig.md)
 Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
 
@@ -415,6 +418,9 @@ Gets an Azure ExpressRoutePort resource.
 
 ### [Get-AzExpressRoutePortAuthorization](Get-AzExpressRoutePortAuthorization.md)
 Gets information about ExpressRoutePort authorizations.
+
+### [Get-AzExpressRoutePortAuthorizationKey](Get-AzExpressRoutePortAuthorizationKey.md)
+Gets the authorization key for an ExpressRoute port authorization.
 
 ### [Get-AzExpressRoutePortIdentity](Get-AzExpressRoutePortIdentity.md)
 Get identity assigned to an ExpressRoutePort.
