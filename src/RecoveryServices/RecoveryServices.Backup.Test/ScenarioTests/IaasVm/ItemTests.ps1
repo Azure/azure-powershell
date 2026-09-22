@@ -1250,7 +1250,8 @@ function Test-AzureVMRPMountScript
 	Assert-NotNull $mountScriptDetails.Filename
 	Assert-NotNull $mountScriptDetails.FilePath
 
-	Write-Output $mountScriptDetails
+	# Emit only non-sensitive fields; the Password (CHAP credential) must not reach test logs.
+	Write-Output ([pscustomobject]@{ OsType = $mountScriptDetails.OsType; Filename = $mountScriptDetails.Filename; FilePath = $mountScriptDetails.FilePath })
 
 	# Disable (revoke) the mount session created above. No resource-group cleanup: the
 	# vault and VM are a shared pre-provisioned setup and must not be deleted.
