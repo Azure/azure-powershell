@@ -135,7 +135,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)'
+        ReleaseNotes = '* Added public preview support for Redis Enterprise Cache migration cmdlets, maintenance window configuration, keyspace notifications, custom access policy assignment strings, and API versions 2025-08-01-preview, 2026-02-01-preview, 2026-05-01-preview, and 2026-06-01-preview.'
 
         # Prerelease string of this module
         Prerelease = 'preview'
