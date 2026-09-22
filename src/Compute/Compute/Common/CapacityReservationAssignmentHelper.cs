@@ -21,6 +21,12 @@ namespace Microsoft.Azure.Commands.Compute.Common
     {
         public const string ConflictErrorMessage = "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to $true.";
 
+        /// <summary>
+        /// Validates the mutual exclusion rule for capacity reservation assignment parameters.
+        /// </summary>
+        /// <param name="capacityReservationGroupId">The capacity reservation group ID value supplied to the cmdlet.</param>
+        /// <param name="isCapacityReservationGroupIdBound">Indicates whether the capacity reservation group ID parameter was explicitly bound.</param>
+        /// <param name="disableCapacityReservationAssignment">The effective value of the opt-out switch. Explicit false values are allowed with a group ID.</param>
         public static void ValidateCapacityReservationAssignment(string capacityReservationGroupId, bool isCapacityReservationGroupIdBound, bool disableCapacityReservationAssignment)
         {
             if (isCapacityReservationGroupIdBound && capacityReservationGroupId != null && disableCapacityReservationAssignment)
@@ -29,16 +35,34 @@ namespace Microsoft.Azure.Commands.Compute.Common
             }
         }
 
-        public static CapacityReservationProfile CreateCapacityReservationProfile(string capacityReservationGroupId, bool isCapacityReservationGroupIdBound, bool? disableCapacityReservationAssignment)
+        /// <summary>
+        /// Creates a capacity reservation profile while preserving whether the capacity reservation group ID was explicitly bound.
+        /// </summary>
+        /// <param name="capacityReservationGroupId">The capacity reservation group ID value supplied to the cmdlet.</param>
+        /// <param name="isCapacityReservationGroupIdBound">Indicates whether the capacity reservation group ID parameter was explicitly bound.</param>
+        /// <param name="disableCapacityReservationAssignment">The nullable opt-out value to serialize, or null when the switch was omitted.</param>
+        /// <param name="serializeEmptyCapacityReservationGroupForNullId">When true, an explicitly bound null group ID is serialized as an empty subresource for update removal semantics.</param>
+        /// <returns>
+        /// A profile containing the requested capacity reservation assignment state, or null when no capacity reservation assignment state should be serialized.
+        /// </returns>
+        public static CapacityReservationProfile CreateCapacityReservationProfile(
+            string capacityReservationGroupId,
+            bool isCapacityReservationGroupIdBound,
+            bool? disableCapacityReservationAssignment,
+            bool serializeEmptyCapacityReservationGroupForNullId = true)
         {
-            if (!isCapacityReservationGroupIdBound && disableCapacityReservationAssignment == null)
+            bool serializeCapacityReservationGroup = isCapacityReservationGroupIdBound &&
+                (!string.IsNullOrEmpty(capacityReservationGroupId) ||
+                    (capacityReservationGroupId == null && serializeEmptyCapacityReservationGroupForNullId));
+
+            if (!serializeCapacityReservationGroup && disableCapacityReservationAssignment == null)
             {
                 return null;
             }
 
             return new CapacityReservationProfile
             {
-                CapacityReservationGroup = isCapacityReservationGroupIdBound ? new SubResource(capacityReservationGroupId) : null,
+                CapacityReservationGroup = serializeCapacityReservationGroup ? new SubResource(capacityReservationGroupId) : null,
                 DisableCapacityReservationAssignment = disableCapacityReservationAssignment
             };
         }

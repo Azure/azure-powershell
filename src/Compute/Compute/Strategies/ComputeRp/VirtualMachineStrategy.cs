@@ -175,7 +175,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                             capacityReservationGroupId,
                             capacityReservationGroupIdSpecified,
-                            disableCapacityReservationAssignment),
+                            disableCapacityReservationAssignment,
+                            serializeEmptyCapacityReservationGroupForNullId: false),
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
                         ExtendedLocation = extendedLocation,
@@ -304,7 +305,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                         capacityReservationGroupId,
                         capacityReservationGroupIdSpecified,
-                        disableCapacityReservationAssignment),
+                        disableCapacityReservationAssignment,
+                        serializeEmptyCapacityReservationGroupForNullId: false),
                     UserData = userData,
                     PlatformFaultDomain = platformFaultDomain,
                     ExtendedLocation = extendedLocation

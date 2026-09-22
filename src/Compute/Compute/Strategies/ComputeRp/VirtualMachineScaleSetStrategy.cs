@@ -194,7 +194,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                                 capacityReservationId,
                                 capacityReservationIdSpecified,
-                                disableCapacityReservationAssignment),
+                                disableCapacityReservationAssignment,
+                                serializeEmptyCapacityReservationGroupForNullId: false),
                             UserData = userData,
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
                             {
@@ -382,7 +383,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                                 capacityReservationId,
                                 capacityReservationIdSpecified,
-                                disableCapacityReservationAssignment),
+                                disableCapacityReservationAssignment,
+                                serializeEmptyCapacityReservationGroupForNullId: false),
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
                             {
                                 Id = securityPostureId,

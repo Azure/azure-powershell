@@ -64,6 +64,22 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateCapacityReservationProfileCanOmitNullSubResourceOnCreate()
+        {
+            var profile = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                null,
+                true,
+                false,
+                serializeEmptyCapacityReservationGroupForNullId: false);
+
+            string payload = JsonConvert.SerializeObject(profile, SerializationSettings);
+
+            Assert.DoesNotContain(@"""capacityReservationGroup"":", payload);
+            Assert.Contains(@"""disableCapacityReservationAssignment"":false", payload);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VmssPatchProfileSerializesCapacityReservation()
         {
             string crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg";
