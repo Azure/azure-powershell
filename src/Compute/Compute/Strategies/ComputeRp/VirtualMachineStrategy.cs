@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string hostId,
             string hostGroupId,
             string capacityReservationGroupId,
+            bool capacityReservationGroupIdSpecified,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -171,11 +172,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             SecurityType = securityType,
                             ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension): null,
                         },
-                        CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
-                        {
-                            CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
-                            DisableCapacityReservationAssignment = disableCapacityReservationAssignment
-                        },
+                        CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                            capacityReservationGroupId,
+                            capacityReservationGroupIdSpecified,
+                            disableCapacityReservationAssignment),
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
                         ExtendedLocation = extendedLocation,
@@ -228,6 +228,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string hostId,
             string hostGroupId,
             string capacityReservationGroupId,
+            bool capacityReservationGroupIdSpecified,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -300,11 +301,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                         SecurityType = securityType,
                     } : null,
-                    CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
-                    {
-                        CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
-                        DisableCapacityReservationAssignment = disableCapacityReservationAssignment
-                    },
+                    CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                        capacityReservationGroupId,
+                        capacityReservationGroupIdSpecified,
+                        disableCapacityReservationAssignment),
                     UserData = userData,
                     PlatformFaultDomain = platformFaultDomain,
                     ExtendedLocation = extendedLocation

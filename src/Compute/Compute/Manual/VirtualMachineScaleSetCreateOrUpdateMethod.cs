@@ -611,6 +611,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    capacityReservationIdSpecified: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId),
                     disableCapacityReservationAssignment: _cmdlet.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? _cmdlet.DisableCapacityReservationAssignment.IsPresent : (bool?)null,
                     userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
@@ -764,6 +765,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: OrchestrationModes.Flexible,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    capacityReservationIdSpecified: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId),
                     processorMode: _cmdlet.IsParameterBound(c => c.ProcessorMode) ? _cmdlet.ProcessorMode : null,
                     disableCapacityReservationAssignment: _cmdlet.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? _cmdlet.DisableCapacityReservationAssignment.IsPresent : (bool?)null,
                     securityType: _cmdlet.SecurityType,
@@ -792,11 +794,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
-            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment) && this.IsParameterBound(c => c.CapacityReservationGroupId))
-            {
-                throw new PSArgumentException(
-                    "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
-            }
+            CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                this.CapacityReservationGroupId,
+                this.IsParameterBound(c => c.CapacityReservationGroupId),
+                this.DisableCapacityReservationAssignment.IsPresent);
 
             bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
 

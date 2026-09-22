@@ -715,11 +715,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
-                {
-                    throw new PSArgumentException(
-                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
-                }
+                CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                    this.CapacityReservationGroupId,
+                    this.IsParameterBound(c => c.CapacityReservationGroupId),
+                    this.DisableCapacityReservationAssignment.IsPresent);
                 if (vVirtualMachineProfile == null)
                 {
                     vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();

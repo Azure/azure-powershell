@@ -7825,11 +7825,16 @@ function Test-VMDisableCapacityReservationAssignment
         Assert-AreEqual $true $vmConfig.CapacityReservation.DisableCapacityReservationAssignment;
         Assert-Null $vmConfig.CapacityReservation.CapacityReservationGroup;
 
-        # Opting out and explicitly associating a capacity reservation group are opposing intents.
         $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/$rgname/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        $vmConfig = New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment:$false;
+        Assert-NotNull $vmConfig.CapacityReservation;
+        Assert-AreEqual $crgId $vmConfig.CapacityReservation.CapacityReservationGroup.Id;
+        Assert-AreEqual $false $vmConfig.CapacityReservation.DisableCapacityReservationAssignment;
+
+        # Opting out and explicitly associating a capacity reservation group are opposing intents.
         Assert-ThrowsContains {
-            New-AzVMConfig -VMName ('cfg2' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
-        } "cannot be used together";
+            New-AzVMConfig -VMName ('cfg3' + $rgname) -VMSize $vmsize -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
+        } "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to `$true.";
 
         # Record the service validation response when creating an opted-out virtual machine.
         $vmname1 = '1' + $rgname;
@@ -7852,7 +7857,7 @@ function Test-VMDisableCapacityReservationAssignment
 
         Assert-ThrowsContains {
             Update-AzVM -ResourceGroupName $rgname -VM $vm2 -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment;
-        } "cannot be used together";
+        } "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to `$true.";
 
         Remove-AzVm -ResourceGroupName $rgname -Name $vmname2 -Force;
     }

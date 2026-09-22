@@ -545,10 +545,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
-            {
-                throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
-            }
+            CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                this.CapacityReservationGroupId,
+                this.IsParameterBound(c => c.CapacityReservationGroupId),
+                this.DisableCapacityReservationAssignment.IsPresent);
 
             switch (ParameterSetName)
             {
@@ -771,6 +771,7 @@ namespace Microsoft.Azure.Commands.Compute
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
                         capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
+                        capacityReservationGroupIdSpecified: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId),
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
@@ -804,7 +805,7 @@ namespace Microsoft.Azure.Commands.Compute
                         addProxyAgentExtension: _cmdlet.AddProxyAgentExtension ? true : (bool?)null,
                         scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
                         enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
-                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
+                        disableCapacityReservationAssignment: _cmdlet.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? _cmdlet.DisableCapacityReservationAssignment.IsPresent : (bool?)null
                     );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
@@ -828,6 +829,7 @@ namespace Microsoft.Azure.Commands.Compute
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
                         capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
+                        capacityReservationGroupIdSpecified: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId),
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
@@ -846,7 +848,7 @@ namespace Microsoft.Azure.Commands.Compute
                         securityType: _cmdlet.SecurityType,
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot,
-                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
+                        disableCapacityReservationAssignment: _cmdlet.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? _cmdlet.DisableCapacityReservationAssignment.IsPresent : (bool?)null
                     );
                 }
             }

@@ -250,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -CapacityReservationGroupId
-Id of the capacity reservation Group that is used to allocate.
+Specifies the ID of the capacity reservation group to associate. For update cmdlets, explicitly passing null removes the existing association.
 
 ```yaml
 Type: System.String
@@ -313,7 +313,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableCapacityReservationAssignment
-Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
+Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set to true, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. An explicitly supplied false value can be used together with -CapacityReservationGroupId.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

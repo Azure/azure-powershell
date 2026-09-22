@@ -1631,14 +1631,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
             }
 
-            // CapacityReservation is not supported in VirtualMachineScaleSetUpdate (PATCH) model.
-            // When using the PATCH path (VirtualMachineScaleSet is null), DisableCapacityReservationAssignment
-            // is not applied and is therefore rejected at runtime.
-            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                this.CapacityReservationGroupId,
+                this.IsParameterBound(c => c.CapacityReservationGroupId),
+                this.DisableCapacityReservationAssignment.IsPresent);
+
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId) ||
+                this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                throw new PSArgumentException(
-                    "The -DisableCapacityReservationAssignment parameter is only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
-                    "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring capacity reservation.");
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.CapacityReservation =
+                    CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                        this.CapacityReservationGroupId,
+                        this.IsParameterBound(c => c.CapacityReservationGroupId),
+                        this.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? this.DisableCapacityReservationAssignment.IsPresent : (bool?)null);
             }
 
             if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
@@ -1719,11 +1732,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
-                {
-                    throw new PSArgumentException(
-                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
-                }
+                CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                    this.CapacityReservationGroupId,
+                    this.IsParameterBound(c => c.CapacityReservationGroupId),
+                    this.DisableCapacityReservationAssignment.IsPresent);
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();

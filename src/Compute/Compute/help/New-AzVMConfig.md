@@ -280,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### -CapacityReservationGroupId
-Id of the capacity reservation Group that is used to allocate.
+Specifies the ID of the capacity reservation group to associate. For update cmdlets, explicitly passing null removes the existing association.
 
 ```yaml
 Type: System.String
@@ -310,8 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableCapacityReservationAssignment
-Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment.
-When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.
+Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set to true, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead. An explicitly supplied false value can be used together with -CapacityReservationGroupId.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
