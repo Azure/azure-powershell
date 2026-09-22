@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationKey
-The authorization key used when the circuit is provisioned on an ExpressRoutePort resource in different subscription.
+The authorization key used when the circuit is provisioned on an ExpressRoutePort or ExpressRouteLag resource in a different subscription.
 
 ```yaml
 Type: System.String
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -BandwidthInGbps
-The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
+The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort or ExpressRouteLag resource.
 
 ```yaml
 Type: System.Double
