@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             {
                 migrationParams.ResourceUrl = this.ResourceUrl;
             }
-            migrationParams.MigrationType = VirtualNetworkGatewayMigrationParameters.MigrationType;
+            migrationParams.MigrationType = this.MigrationType;
             WriteObject(migrationParams);
         }
     }
