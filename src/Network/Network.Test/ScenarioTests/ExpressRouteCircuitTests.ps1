@@ -255,6 +255,66 @@ function Test-ExpressRouteCircuitMultiCloudMutualExclusion
 
 <#
 .SYNOPSIS
+Tests provisioning an ExpressRouteCircuit on an ExpressRouteLag resource and verifies the
+circuit -> LAG reference and the read-only LAG -> circuits back-reference.
+#>
+function Test-ExpressRouteCircuitOnExpressRouteLagCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $lagName = Get-ResourceName
+    $circuitName = Get-ResourceName
+    $lagResourceType = "Microsoft.Network/expressRouteLags"
+    $lagLocation = Get-ProviderLocation $lagResourceType
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits"
+    $peeringLocation = "OnPrem"
+    $encapsulation = "QinQ"
+    $lagBandwidthInGbps = 10
+    $numberOfPorts = 3
+    $lacpTimer = "fast"
+    $minimumActivePortsRequired = 2
+    $circuitBandwidthInGbps = 5.0
+
+    try
+    {
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+      # Create the ExpressRouteLag the circuit will be provisioned on
+      $lag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $lagName -Location $lagLocation -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $lagBandwidthInGbps -NumberOfPorts $numberOfPorts -MinimumActivePortsRequired $minimumActivePortsRequired -LacpTimer $lacpTimer
+      Assert-NotNull $lag
+
+      # Create the ExpressRouteCircuit on the ExpressRouteLag
+      $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname `
+          -SkuTier Standard -SkuFamily MeteredData `
+          -ExpressRouteLag $lag -BandwidthInGbps $circuitBandwidthInGbps
+      Assert-NotNull $circuit
+
+      # Verify the circuit references the LAG
+      $getCircuit = Get-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+      Assert-NotNull $getCircuit.ExpressRouteLag
+      Assert-AreEqual $lag.Id $getCircuit.ExpressRouteLag.Id
+      Assert-AreEqual $circuitBandwidthInGbps $getCircuit.BandwidthInGbps
+
+      # Verify the LAG surfaces the read-only back-reference to the circuit
+      $getLag = Get-AzExpressRouteLag -ResourceGroupName $rgname -Name $lagName
+      Assert-NotNull $getLag.Circuits
+      Assert-True { ($getLag.Circuits | Where-Object { $_.Id -eq $getCircuit.Id }) -ne $null }
+
+      $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -Name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+
+      $delete = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $lagName -PassThru -Force
+      Assert-AreEqual true $delete
+    }
+    finally
+    {
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
 #>
 function Test-ExpressRouteCircuitCRUD

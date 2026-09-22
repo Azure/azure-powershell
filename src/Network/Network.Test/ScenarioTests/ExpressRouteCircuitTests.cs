@@ -69,6 +69,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitOnExpressRouteLagCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitOnExpressRouteLagCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
