@@ -1567,13 +1567,14 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 function Test-AzureVMCSBProtection
 {
 	# Test Owner - singhprab
-	# Enable CSB protection for a VM in a different subscription.
+	# Enable CSB protection, then switch the item to a different policy (modify protection).
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-prot-vault"
 	$location = "eastus2euap"
 	$vmName = "testCsbPS"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
+	$modifyPolicyName = "csb-modify-policy"
 	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
 
 	$vault = $null
@@ -1584,7 +1585,11 @@ function Test-AzureVMCSBProtection
 		New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag | Out-Null
 		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 
+		# Built-in Enhanced (V2) policy, plus a second one to switch to during modify protection.
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "EnhancedPolicy"
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Weekly
+		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		$modifyPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $modifyPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -VaultId $vault.ID
 
 		# Enable protection for the cross-sub VM via -ContainerSubscriptionId (skips discovery).
 		Enable-AzRecoveryServicesBackupProtection `
@@ -1605,6 +1610,22 @@ function Test-AzureVMCSBProtection
 		Assert-True { $item.SourceResourceId -match $vmResourceGroupName };
 		Assert-True { $item.ContainerSubscriptionId -eq $containerSubscriptionId };
 		Assert-True { $item.ProtectionPolicyName -eq "EnhancedPolicy" };
+
+		# Modify protection via the -Item parameter set (container derived from the item's ARM id).
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $modifyPolicy `
+			-Item $item;
+
+		$modifiedItem = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
+
+		Assert-NotNull $modifiedItem;
+
+		# Item now on the new policy and still a CSB item.
+		Assert-True { $modifiedItem.ProtectionPolicyName -eq $modifyPolicyName };
+		Assert-True { $modifiedItem.ContainerSubscriptionId -eq $containerSubscriptionId };
 	}
 	finally
 	{
