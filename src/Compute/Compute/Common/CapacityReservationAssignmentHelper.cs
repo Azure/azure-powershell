@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 {
     public static class CapacityReservationAssignmentHelper
     {
-        public const string ConflictErrorMessage = "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to $true.";
+        public const string ConflictErrorMessage = "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to $true. Omit -CapacityReservationGroupId or set -DisableCapacityReservationAssignment:$false to associate a capacity reservation group.";
 
         /// <summary>
         /// Validates the mutual exclusion rule for capacity reservation assignment parameters.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         {
             bool serializeCapacityReservationGroup = isCapacityReservationGroupIdBound &&
                 (!string.IsNullOrEmpty(capacityReservationGroupId) ||
-                    (capacityReservationGroupId == null && serializeEmptyCapacityReservationGroupForNullId));
+                    (string.IsNullOrEmpty(capacityReservationGroupId) && serializeEmptyCapacityReservationGroupForNullId));
 
             if (!serializeCapacityReservationGroup && disableCapacityReservationAssignment == null)
             {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             return new CapacityReservationProfile
             {
-                CapacityReservationGroup = serializeCapacityReservationGroup ? new SubResource(capacityReservationGroupId) : null,
+                CapacityReservationGroup = serializeCapacityReservationGroup ? new SubResource(string.IsNullOrEmpty(capacityReservationGroupId) ? null : capacityReservationGroupId) : null,
                 DisableCapacityReservationAssignment = disableCapacityReservationAssignment
             };
         }

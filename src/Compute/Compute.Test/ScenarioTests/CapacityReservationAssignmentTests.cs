@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Newtonsoft.Json;
 using System;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ArgumentException exception = Assert.Throws<ArgumentException>(() =>
                 CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(crgId, true, true));
 
-            Assert.Equal(CapacityReservationAssignmentHelper.ConflictErrorMessage, exception.Message);
+            Assert.Contains("-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to $true.", exception.Message);
         }
 
         [Fact]
@@ -60,6 +61,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             Assert.Contains(@"""capacityReservationGroup"":{}", payload);
             Assert.Contains(@"""disableCapacityReservationAssignment"":true", payload);
             Assert.DoesNotContain(@"""id"":null", payload);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateCapacityReservationProfileSerializesExplicitEmptyStringAsEmptySubResource()
+        {
+            var profile = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(string.Empty, true, null);
+
+            string payload = JsonConvert.SerializeObject(profile, SerializationSettings);
+
+            Assert.Contains(@"""capacityReservationGroup"":{}", payload);
+            Assert.DoesNotContain(@"""id"":""""", payload);
         }
 
         [Fact]
@@ -84,12 +97,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             string crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg";
             var profile = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(crgId, true, false);
-            Type profileType = profile.GetType().Assembly.GetType("Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdateVMProfile");
-            Type updateType = profile.GetType().Assembly.GetType("Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetUpdate");
-            var updateProfile = Activator.CreateInstance(profileType);
-            profileType.GetProperty("CapacityReservation").SetValue(updateProfile, profile);
-            var update = Activator.CreateInstance(updateType);
-            updateType.GetProperty("VirtualMachineProfile").SetValue(update, updateProfile);
+            var update = new VirtualMachineScaleSetUpdate
+            {
+                VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile
+                {
+                    CapacityReservation = profile
+                }
+            };
 
             string payload = JsonConvert.SerializeObject(update, SerializationSettings);
 

@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies the ID of the capacity reservation group to associate. For update cmdlets, explicitly passing null removes the existing association.")]
+            HelpMessage = "Specifies the ID of the capacity reservation group to associate. Explicitly passing null removes the existing capacity reservation group association.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
@@ -423,18 +423,20 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
                     }
 
+                    bool isCapacityReservationGroupIdBound = this.IsParameterBound(c => c.CapacityReservationGroupId);
+                    bool isDisableCapacityReservationAssignmentBound = this.IsParameterBound(c => c.DisableCapacityReservationAssignment);
+
                     CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
                         this.CapacityReservationGroupId,
-                        this.IsParameterBound(c => c.CapacityReservationGroupId),
+                        isCapacityReservationGroupIdBound,
                         this.DisableCapacityReservationAssignment.IsPresent);
 
-                    if (this.IsParameterBound(c => c.CapacityReservationGroupId) ||
-                        this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                    if (isCapacityReservationGroupIdBound || isDisableCapacityReservationAssignmentBound)
                     {
                         CapacityReservationProfile requestedCapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
                             this.CapacityReservationGroupId,
-                            this.IsParameterBound(c => c.CapacityReservationGroupId),
-                            this.IsParameterBound(c => c.DisableCapacityReservationAssignment) ? this.DisableCapacityReservationAssignment.IsPresent : (bool?)null);
+                            isCapacityReservationGroupIdBound,
+                            isDisableCapacityReservationAssignmentBound ? this.DisableCapacityReservationAssignment.IsPresent : (bool?)null);
 
                         if (requestedCapacityReservation != null)
                         {
@@ -442,11 +444,11 @@ namespace Microsoft.Azure.Commands.Compute
                             {
                                 parameters.CapacityReservation = new CapacityReservationProfile();
                             }
-                            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                            if (isCapacityReservationGroupIdBound)
                             {
                                 parameters.CapacityReservation.CapacityReservationGroup = requestedCapacityReservation.CapacityReservationGroup;
                             }
-                            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                            if (isDisableCapacityReservationAssignmentBound)
                             {
                                 parameters.CapacityReservation.DisableCapacityReservationAssignment = requestedCapacityReservation.DisableCapacityReservationAssignment;
                             }

@@ -250,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -CapacityReservationGroupId
-Specifies the ID of the capacity reservation group to associate. For update cmdlets, explicitly passing null removes the existing association.
+Specifies the ID of the capacity reservation group to associate. Explicitly passing `$null` removes the existing capacity reservation group association.
 
 ```yaml
 Type: System.String

@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
+                    CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                        this.CapacityReservationGroupId,
+                        this.IsParameterBound(c => c.CapacityReservationGroupId),
+                        this.DisableCapacityReservationAssignment.IsPresent);
+
                     if (this.VirtualMachineScaleSet == null)
                     {
                         BuildPatchObject();
@@ -339,7 +344,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies the ID of the capacity reservation group to associate. For update cmdlets, explicitly passing null removes the existing association.")]
+            HelpMessage = "Specifies the ID of the capacity reservation group to associate. Explicitly passing null removes the existing capacity reservation group association.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
@@ -1631,11 +1636,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
             }
 
-            CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
-                this.CapacityReservationGroupId,
-                this.IsParameterBound(c => c.CapacityReservationGroupId),
-                this.DisableCapacityReservationAssignment.IsPresent);
-
             if (this.IsParameterBound(c => c.CapacityReservationGroupId) ||
                 this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
@@ -1732,10 +1732,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
-                    this.CapacityReservationGroupId,
-                    this.IsParameterBound(c => c.CapacityReservationGroupId),
-                    this.DisableCapacityReservationAssignment.IsPresent);
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
