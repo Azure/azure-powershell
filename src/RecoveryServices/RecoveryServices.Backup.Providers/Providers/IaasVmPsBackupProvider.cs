@@ -877,17 +877,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
 
-            // Fail fast with the service-reported error if the provision operation did not succeed,
-            // instead of surfacing a downstream null when no mount scripts are returned.
+            // Fail fast unless the provision operation succeeded. GetOperationStatus blocks until a
+            // terminal state, so any non-Succeeded status (e.g. Failed or Canceled) is a failure; surface
+            // the service error when present, otherwise a generic message, instead of continuing to the
+            // list action and masking it with a downstream null or secondary error.
             if (provisionOperationStatus != null &&
-                provisionOperationStatus.Status == ServiceClientModel.OperationStatusValues.Failed &&
-                provisionOperationStatus.Error != null)
+                !string.Equals(
+                    provisionOperationStatus.Status,
+                    ServiceClientModel.OperationStatusValues.Succeeded,
+                    StringComparison.OrdinalIgnoreCase))
             {
+                var provisionError = provisionOperationStatus.Error;
                 throw new Exception(string.Format(
                     Resources.OperationFailed,
                     "Provision Item Level Recovery Access",
-                    provisionOperationStatus.Error.Code,
-                    provisionOperationStatus.Error.Message));
+                    provisionError != null ? provisionError.Code : provisionOperationStatus.Status,
+                    provisionError != null
+                        ? provisionError.Message
+                        : string.Format(
+                            "The provision operation ended in a non-successful terminal state '{0}'.",
+                            provisionOperationStatus.Status)));
             }
 
             // Always source the mount scripts from the dedicated listInstantItemRecoveryOperationResult
