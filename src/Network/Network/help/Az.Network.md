@@ -11,6 +11,12 @@ Locale: en-US
 This topic displays help topics for the Azure Network Cmdlets.
 
 ## Az.Network Cmdlets
+### [Add-AzApplicationGatewayAdvancedRoutingConditionSet](Add-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Adds an advanced routing condition set to an application gateway.
+
+### [Add-AzApplicationGatewayAdvancedRoutingMap](Add-AzApplicationGatewayAdvancedRoutingMap.md)
+Adds an advanced routing map to an application gateway.
+
 ### [Add-AzApplicationGatewayAuthenticationCertificate](Add-AzApplicationGatewayAuthenticationCertificate.md)
 Adds an authentication certificate to an application gateway.
 
@@ -199,6 +205,12 @@ Lists the Radius servers and corresponding radius secrets set on VpnServerConfig
 
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.
+
+### [Get-AzApplicationGatewayAdvancedRoutingConditionSet](Get-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Gets an advanced routing condition set from an application gateway.
+
+### [Get-AzApplicationGatewayAdvancedRoutingMap](Get-AzApplicationGatewayAdvancedRoutingMap.md)
+Gets an advanced routing map from an application gateway.
 
 ### [Get-AzApplicationGatewayAuthenticationCertificate](Get-AzApplicationGatewayAuthenticationCertificate.md)
 Gets an authentication certificate for an application gateway.
@@ -954,6 +966,18 @@ Moves an ExpressRoute circuit from the classic deployment model to the Resource 
 
 ### [New-AzApplicationGateway](New-AzApplicationGateway.md)
 Creates an application gateway.
+
+### [New-AzApplicationGatewayAdvancedRoutingCondition](New-AzApplicationGatewayAdvancedRoutingCondition.md)
+Creates a routing condition for an application gateway advanced routing condition set.
+
+### [New-AzApplicationGatewayAdvancedRoutingConditionSet](New-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Creates an advanced routing condition set for an application gateway.
+
+### [New-AzApplicationGatewayAdvancedRoutingMap](New-AzApplicationGatewayAdvancedRoutingMap.md)
+Creates an advanced routing map for an application gateway.
+
+### [New-AzApplicationGatewayAdvancedRoutingRuleConfig](New-AzApplicationGatewayAdvancedRoutingRuleConfig.md)
+Creates an advanced routing rule for an application gateway advanced routing map.
 
 ### [New-AzApplicationGatewayAuthenticationCertificate](New-AzApplicationGatewayAuthenticationCertificate.md)
 Creates an authentication certificate for an application gateway.
@@ -1764,6 +1788,12 @@ Creates an Azure VpnSiteLinkConnection object.
 ### [Remove-AzApplicationGateway](Remove-AzApplicationGateway.md)
 Removes an application gateway.
 
+### [Remove-AzApplicationGatewayAdvancedRoutingConditionSet](Remove-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Removes an advanced routing condition set from an application gateway.
+
+### [Remove-AzApplicationGatewayAdvancedRoutingMap](Remove-AzApplicationGatewayAdvancedRoutingMap.md)
+Removes an advanced routing map from an application gateway.
+
 ### [Remove-AzApplicationGatewayAuthenticationCertificate](Remove-AzApplicationGatewayAuthenticationCertificate.md)
 Removes an authentication certificate from an application gateway.
 
@@ -2261,6 +2291,12 @@ Restarts a virtual machine instance in the Network Virtual Appliance or all the 
 
 ### [Set-AzApplicationGateway](Set-AzApplicationGateway.md)
 Updates an application gateway.
+
+### [Set-AzApplicationGatewayAdvancedRoutingConditionSet](Set-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Modifies an advanced routing condition set on an application gateway.
+
+### [Set-AzApplicationGatewayAdvancedRoutingMap](Set-AzApplicationGatewayAdvancedRoutingMap.md)
+Modifies an advanced routing map on an application gateway.
 
 ### [Set-AzApplicationGatewayAuthenticationCertificate](Set-AzApplicationGatewayAuthenticationCertificate.md)
 Updates an authentication certificate for an application gateway.
