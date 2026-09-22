@@ -52,6 +52,13 @@ function Test-AvailableWafRuleSets
 	Assert-NotNull $result.Value[0].RuleGroups[0].Rules
 	Assert-True { $result.Value[0].RuleGroups[0].Rules.Count -gt 0 }
 	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
+
+	$ruleSetWithDisplayName = $result.Value | Where-Object { -not [string]::IsNullOrEmpty($_.DisplayName) } | Select-Object -First 1
+	Assert-NotNull $ruleSetWithDisplayName
+
+	$ruleWithParanoiaLevel = $result.Value.RuleGroups.Rules | Where-Object { -not [string]::IsNullOrEmpty($_.ParanoiaLevel) } | Select-Object -First 1
+	Assert-NotNull $ruleWithParanoiaLevel
+	Assert-True { @("PL1", "PL2", "PL3", "PL4") -contains $ruleWithParanoiaLevel.ParanoiaLevel }
 }
 
 function Test-WafDynamicManifest
@@ -71,6 +78,13 @@ function Test-WafDynamicManifest
 	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].Rules
 	Assert-True { $result.availableRuleSets[0].RuleGroups[0].Rules.Count -gt 0 }
 	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].Rules[0].RuleId
+
+	$ruleSetWithDisplayName = $result.availableRuleSets | Where-Object { -not [string]::IsNullOrEmpty($_.DisplayName) } | Select-Object -First 1
+	Assert-NotNull $ruleSetWithDisplayName
+
+	$ruleWithParanoiaLevel = $result.availableRuleSets.RuleGroups.Rules | Where-Object { -not [string]::IsNullOrEmpty($_.ParanoiaLevel) } | Select-Object -First 1
+	Assert-NotNull $ruleWithParanoiaLevel
+	Assert-True { @("PL1", "PL2", "PL3", "PL4") -contains $ruleWithParanoiaLevel.ParanoiaLevel }
 }
 
 <#
