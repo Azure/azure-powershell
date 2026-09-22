@@ -18,14 +18,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>Control plane actions necessary to execute capability type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<string> AzureRbacAction { get => this._azureRbacAction; set => this._azureRbacAction = value; }
+        public System.Collections.Generic.List<string> AzureRbacAction { get => this._azureRbacAction; }
 
         /// <summary>Backing field for <see cref="AzureRbacDataAction" /> property.</summary>
         private System.Collections.Generic.List<string> _azureRbacDataAction;
 
         /// <summary>Data plane actions necessary to execute capability type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<string> AzureRbacDataAction { get => this._azureRbacDataAction; set => this._azureRbacDataAction = value; }
+        public System.Collections.Generic.List<string> AzureRbacDataAction { get => this._azureRbacDataAction; }
 
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
@@ -48,6 +48,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string Kind { get => this._kind; }
 
+        /// <summary>Internal Acessors for AzureRbacAction</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.AzureRbacAction { get => this._azureRbacAction; set { {_azureRbacAction = value;} } }
+
+        /// <summary>Internal Acessors for AzureRbacDataAction</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.AzureRbacDataAction { get => this._azureRbacDataAction; set { {_azureRbacDataAction = value;} } }
+
         /// <summary>Internal Acessors for Description</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.Description { get => this._description; set { {_description = value;} } }
 
@@ -63,11 +69,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// <summary>Internal Acessors for Publisher</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.Publisher { get => this._publisher; set { {_publisher = value;} } }
 
+        /// <summary>Internal Acessors for RequiredAzureRoleDefinitionId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RequiredAzureRoleDefinitionId { get => this._requiredAzureRoleDefinitionId; set { {_requiredAzureRoleDefinitionId = value;} } }
+
         /// <summary>Internal Acessors for RuntimeProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RuntimeProperty { get => (this._runtimeProperty = this._runtimeProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CapabilityTypePropertiesRuntimeProperties()); set { {_runtimeProperty = value;} } }
 
         /// <summary>Internal Acessors for RuntimePropertyKind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RuntimePropertyKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.RuntimePropertyKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimePropertiesInternal)RuntimeProperty).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for TargetType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal.TargetType { get => this._targetType; set { {_targetType = value;} } }
@@ -89,12 +98,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string Publisher { get => this._publisher; }
 
+        /// <summary>Backing field for <see cref="RequiredAzureRoleDefinitionId" /> property.</summary>
+        private System.Collections.Generic.List<string> _requiredAzureRoleDefinitionId;
+
+        /// <summary>Required Azure Role Definition Ids to execute capability type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> RequiredAzureRoleDefinitionId { get => this._requiredAzureRoleDefinitionId; }
+
         /// <summary>Backing field for <see cref="RuntimeProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties _runtimeProperty;
 
         /// <summary>Runtime properties of this Capability Type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties RuntimeProperty { get => (this._runtimeProperty = this._runtimeProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CapabilityTypePropertiesRuntimeProperties()); set => this._runtimeProperty = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties RuntimeProperty { get => (this._runtimeProperty = this._runtimeProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CapabilityTypePropertiesRuntimeProperties()); }
 
         /// <summary>String of the kind of the resource's action type (continuous or discrete).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
@@ -127,25 +143,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// <summary>Control plane actions necessary to execute capability type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"Control plane actions necessary to execute capability type.",
         SerializedName = @"azureRbacActions",
         PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> AzureRbacAction { get; set; }
+        System.Collections.Generic.List<string> AzureRbacAction { get;  }
         /// <summary>Data plane actions necessary to execute capability type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"Data plane actions necessary to execute capability type.",
         SerializedName = @"azureRbacDataActions",
         PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> AzureRbacDataAction { get; set; }
+        System.Collections.Generic.List<string> AzureRbacDataAction { get;  }
         /// <summary>Localized string of the description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -201,6 +217,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
         string Publisher { get;  }
+        /// <summary>Required Azure Role Definition Ids to execute capability type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Required Azure Role Definition Ids to execute capability type.",
+        SerializedName = @"requiredAzureRoleDefinitionIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RequiredAzureRoleDefinitionId { get;  }
         /// <summary>String of the kind of the resource's action type (continuous or discrete).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -254,6 +281,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         string ParametersSchema { get; set; }
         /// <summary>String of the Publisher that this Capability Type extends.</summary>
         string Publisher { get; set; }
+        /// <summary>Required Azure Role Definition Ids to execute capability type.</summary>
+        System.Collections.Generic.List<string> RequiredAzureRoleDefinitionId { get; set; }
         /// <summary>Runtime properties of this Capability Type.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesRuntimeProperties RuntimeProperty { get; set; }
         /// <summary>String of the kind of the resource's action type (continuous or discrete).</summary>
