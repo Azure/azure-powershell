@@ -828,7 +828,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"testkey1\",\r\n  \"id\": \"/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps6157/providers/Microsoft.Network/expressRoutePorts/ps6859/authorizations/testkey1\",\r\n  \"etag\": \"W/\\\"77015d3c-4cf2-4717-9f3d-6b1f36213757\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"authorizationKey\": \"933d8911-582b-4733-b7fe-035cb590fd4b\",\r\n    \"authorizationUseStatus\": \"Available\"\r\n  },\r\n  \"type\": \"Microsoft.Network/expressRoutePorts/authorizations\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"testkey1\",\r\n  \"id\": \"/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps6157/providers/Microsoft.Network/expressRoutePorts/ps6859/authorizations/testkey1\",\r\n  \"etag\": \"W/\\\"77015d3c-4cf2-4717-9f3d-6b1f36213757\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"authorizationKey\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"authorizationUseStatus\": \"Available\"\r\n  },\r\n  \"type\": \"Microsoft.Network/expressRoutePorts/authorizations\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -906,7 +906,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"testkey1\",\r\n  \"id\": \"/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps6157/providers/Microsoft.Network/expressRoutePorts/ps6859/authorizations/testkey1\",\r\n  \"etag\": \"W/\\\"77015d3c-4cf2-4717-9f3d-6b1f36213757\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"authorizationKey\": \"933d8911-582b-4733-b7fe-035cb590fd4b\",\r\n    \"authorizationUseStatus\": \"Available\"\r\n  },\r\n  \"type\": \"Microsoft.Network/expressRoutePorts/authorizations\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"testkey1\",\r\n  \"id\": \"/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps6157/providers/Microsoft.Network/expressRoutePorts/ps6859/authorizations/testkey1\",\r\n  \"etag\": \"W/\\\"77015d3c-4cf2-4717-9f3d-6b1f36213757\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"authorizationKey\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"authorizationUseStatus\": \"Available\"\r\n  },\r\n  \"type\": \"Microsoft.Network/expressRoutePorts/authorizations\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -999,7 +999,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"testkey1\",\r\n  \"id\": \"/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps6157/providers/Microsoft.Network/expressRoutePorts/ps6859/authorizations/testkey1\",\r\n  \"etag\": \"W/\\\"0821b8f1-e916-4b4b-80fb-6208bd61cdb4\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"authorizationKey\": \"933d8911-582b-4733-b7fe-035cb590fd4b\",\r\n    \"authorizationUseStatus\": \"Available\"\r\n  },\r\n  \"type\": \"Microsoft.Network/expressRoutePorts/authorizations\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"testkey1\",\r\n  \"id\": \"/subscriptions/7d747eed-b44c-4257-8d43-df9ebd94546b/resourceGroups/ps6157/providers/Microsoft.Network/expressRoutePorts/ps6859/authorizations/testkey1\",\r\n  \"etag\": \"W/\\\"0821b8f1-e916-4b4b-80fb-6208bd61cdb4\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"authorizationKey\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"authorizationUseStatus\": \"Available\"\r\n  },\r\n  \"type\": \"Microsoft.Network/expressRoutePorts/authorizations\"\r\n}",
       "StatusCode": 201
     },
     {
@@ -1152,7 +1152,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"authorizationKey\": \"933d8911-582b-4733-b7fe-035cb590fd4b\"\r\n}",
+      "ResponseBody": "{\r\n  \"authorizationKey\": \"00000000-0000-0000-0000-000000000000\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1230,7 +1230,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"authorizationKey\": \"933d8911-582b-4733-b7fe-035cb590fd4b\"\r\n}",
+      "ResponseBody": "{\r\n  \"authorizationKey\": \"00000000-0000-0000-0000-000000000000\"\r\n}",
       "StatusCode": 200
     },
     {
