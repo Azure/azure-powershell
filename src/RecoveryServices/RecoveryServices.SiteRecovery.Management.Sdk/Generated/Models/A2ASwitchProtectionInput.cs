@@ -66,7 +66,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="diskEncryptionInfo">The recovery disk encryption information.
         /// </param>
-        public A2ASwitchProtectionInput(string recoveryContainerId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string policyId = default(string), string recoveryBootDiagStorageAccountId = default(string), string recoveryAvailabilityZone = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), int? platformFaultDomain = default(int?), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo))
+
+        /// <param name="recoveryConfidentialDataDiskEncryptionIdentity">The confidential data disk encryption user-assigned identity ARM Id.
+        /// Applicable to CMK confidential VM data disks.
+        /// </param>
+        public A2ASwitchProtectionInput(string recoveryContainerId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string policyId = default(string), string recoveryBootDiagStorageAccountId = default(string), string recoveryAvailabilityZone = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), int? platformFaultDomain = default(int?), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryConfidentialDataDiskEncryptionIdentity = default(string))
 
         {
             this.RecoveryContainerId = recoveryContainerId;
@@ -83,6 +87,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryCapacityReservationGroupId = recoveryCapacityReservationGroupId;
             this.PlatformFaultDomain = platformFaultDomain;
             this.DiskEncryptionInfo = diskEncryptionInfo;
+            this.RecoveryConfidentialDataDiskEncryptionIdentity = recoveryConfidentialDataDiskEncryptionIdentity;
             CustomInit();
         }
 
@@ -175,5 +180,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionInfo")]
         public DiskEncryptionInfo DiskEncryptionInfo {get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential data disk encryption user-assigned identity
+        /// ARM Id. Applicable to CMK confidential VM data disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryConfidentialDataDiskEncryptionIdentity")]
+        public string RecoveryConfidentialDataDiskEncryptionIdentity {get; set; }
     }
 }

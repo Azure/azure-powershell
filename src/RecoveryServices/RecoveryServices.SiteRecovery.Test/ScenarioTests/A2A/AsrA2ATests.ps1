@@ -596,6 +596,110 @@ function Test-NewA2AManagedDiskReplicationConfigurationWithCmk {
 }
 
 <#
+.SYNOPSIS
+    NewA2ADiskReplicationConfiguration for CMK confidential VM (CVM) creation test.
+    Verifies the disk replication configuration and enable protected item cmdlets accept the
+    per-disk confidential disk encryption sets and the VM-level confidential data disk
+    encryption (CDDE) user-assigned managed identity.
+#>
+function Test-NewA2AManagedDiskReplicationConfigurationWithConfidentialDes {
+    param([string] $seed = '106')
+
+    $primaryPolicyName = getPrimaryPolicy
+    $recoveryPolicyName = getRecoveryPolicy
+
+    $primaryContainerMappingName = getPrimaryContainerMapping
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+
+    $primaryContainerName = getPrimaryContainer
+    $recoveryContainerName = getRecoveryContainer
+    $vaultRgLocation = getVaultRgLocation
+    $vaultName = getVaultName
+    $vaultLocation = getVaultLocation
+    $vaultRg = getVaultRg
+    $primaryLocation = getPrimaryLocation
+    $recoveryLocation = getRecoveryLocation
+    $primaryFabricName = getPrimaryFabric
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "Premium_LRS"
+    $policyName = getPrimaryPolicy
+    $mappingName = getPrimaryContainerMapping
+    $primaryNetMapping = getPrimaryNetworkMapping
+
+    #create recovery side resources
+    $recRgName = getRecoveryResourceGroupName
+    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $RecoveryAzureNetworkId = createRecoveryNetworkId
+    $index = $RecoveryAzureNetworkId.IndexOf("/providers/")
+    $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
+
+    #create primary
+    $vmName = getAzureVmName
+    $v2VmId = createAzureVm
+    $logStg = createCacheStorageAccount
+    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
+    $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
+    $index = $v2VmId.IndexOf("/providers/")
+    $Rg = $v2VmId.Substring(0, $index)
+    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
+
+    # vault Creation
+    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+
+    # fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    #Container creation
+    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
+    WaitForJobCompletion -JobId $Job.Name
+    $pc = Get-asrProtectionContainer -name $primaryContainerName -Fabric $pf
+    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $recoveryContainerName -Fabric $rf
+    WaitForJobCompletion -JobId $Job.Name
+    $rc = Get-asrProtectionContainer -name $recoveryContainerName -Fabric $rf
+
+    #create policy and mapping
+    $job = New-AzRecoveryServicesAsrPolicy -Name $policyName  -RecoveryPointRetentionInHours 12  -AzureToAzure
+    WaitForJobCompletion -JobId $job.Name
+    $policy = Get-AzRecoveryServicesAsrPolicy  -Name $policyName
+    $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
+    WaitForJobCompletion -JobId $job.Name
+    $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc
+
+    #network mapping
+    $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
+    WaitForJobCompletion -JobId $job.Name
+
+    #enable Replication for a CMK confidential VM
+    $replicaConfidentialDesId = "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/cvmRg/providers/Microsoft.Compute/diskEncryptionSets/replicaCvmDes"
+    $targetConfidentialDesId = "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/cvmRg/providers/Microsoft.Compute/diskEncryptionSets/targetCvmDes"
+    $cddeIdentityId = "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/cvmRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cddeIdentity"
+
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType `
+        -ReplicaConfidentialDiskEncryptionSetId $replicaConfidentialDesId -TargetConfidentialDiskEncryptionSetId $targetConfidentialDesId
+
+    Assert-True { $v.ReplicaConfidentialDiskEncryptionSetId -eq $replicaConfidentialDesId }
+    Assert-True { $v.TargetConfidentialDiskEncryptionSetId -eq $targetConfidentialDesId }
+
+    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $v2VmId -Name $vmName -ProtectionContainerMapping $mapping `
+        -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryConfidentialDataDiskEncryptionIdentity $cddeIdentityId
+
+}
+
+<#
 .SYNOPSIS 
     Test GetAsrFabric new parametersets
 #>

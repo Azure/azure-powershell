@@ -2131,6 +2131,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryExtendedLocation = details.RecoveryExtendedLocation;
             this.LifecycleId = details.LifecycleId;
             this.PlatformFaultDomain = details.PlatformFaultDomain;
+            this.RecoveryConfidentialDataDiskEncryptionIdentity =
+                details.RecoveryConfidentialDataDiskEncryptionIdentity;
 
             if (details.LastHeartbeat != null)
             {
@@ -2178,6 +2180,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets A2A unprotected disk details.
         /// </summary>
         public List<AsrA2AUnprotectedDiskDetails> A2AUnprotectedDiskDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential data disk encryption user-assigned identity ARM Id.
+        /// Applicable to CMK confidential VM data disks.
+        /// </summary>
+        public string RecoveryConfidentialDataDiskEncryptionIdentity { get; set; }
 
         /// <summary>
         /// Fabric object ARM Id.
