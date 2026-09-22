@@ -1008,10 +1008,10 @@ function Test-VmssDisableCapacityReservationAssignment
         $vmInstanceView = Get-AzVmssVM -ResourceGroupName $vmssname -VMScaleSetName $vmssname -InstanceId $vm.InstanceId -InstanceView;
         Assert-NotNull $vmInstanceView.CapacityReservationType;
 
-        # Step 3: Update-AzVmss - toggle DisableCapacityReservationAssignment off, then back on via the PUT path
-        # (-VirtualMachineScaleSet), and verify merge semantics (other settings on the VMSS remain unaffected).
+        # Step 3: Update-AzVmss - toggle DisableCapacityReservationAssignment off through the direct path,
+        # then back on via the PUT path (-VirtualMachineScaleSet), and verify merge semantics.
         $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
-        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment:$false;
+        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -DisableCapacityReservationAssignment:$false;
         $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
         Assert-False { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
 
@@ -1026,15 +1026,19 @@ function Test-VmssDisableCapacityReservationAssignment
         Assert-NotNull $vmssConfig.VirtualMachineProfile.CapacityReservation;
         Assert-True { $vmssConfig.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
 
-        # Step 5: Negative test - -CapacityReservationGroupId and -DisableCapacityReservationAssignment are mutually exclusive.
-        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -CapacityReservationGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg" -DisableCapacityReservationAssignment } `
-            "cannot be used together";
-        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -CapacityReservationGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg" -DisableCapacityReservationAssignment } `
-            "cannot be used together";
+        $crgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg";
+        $vmssConfig = New-AzVmssConfig -Location $loc -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment:$false;
+        Assert-NotNull $vmssConfig.VirtualMachineProfile.CapacityReservation;
+        Assert-AreEqual $crgId $vmssConfig.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id;
+        Assert-False { $vmssConfig.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
 
-        # Negative: PATCH path (no -VirtualMachineScaleSet) must reject -DisableCapacityReservationAssignment.
-        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -DisableCapacityReservationAssignment } `
-            "CreateOrUpdate path";
+        # Step 5: Negative test - -CapacityReservationGroupId conflicts only with -DisableCapacityReservationAssignment:$true.
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment } `
+            "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to `$true.";
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment } `
+            "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to `$true.";
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -CapacityReservationGroupId $crgId -DisableCapacityReservationAssignment } `
+            "-CapacityReservationGroupId cannot be used when -DisableCapacityReservationAssignment is set to `$true.";
     }
     finally
     {
