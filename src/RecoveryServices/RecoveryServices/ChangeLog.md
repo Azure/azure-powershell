@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-11-01.
 * Added Confidential VM (CVM) support for Azure-to-Azure replication:
     - `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig` accepts `-ReplicaConfidentialDiskEncryptionSetId` and `-TargetConfidentialDiskEncryptionSetId` to specify the per-disk replica and target confidential disk encryption sets for customer-managed key (CMK) confidential VM disks.
     - `New-AzRecoveryServicesAsrReplicationProtectedItem` accepts `-RecoveryConfidentialDataDiskEncryptionIdentity` to specify the confidential data disk encryption (CDDE) user-assigned managed identity used at failover.
