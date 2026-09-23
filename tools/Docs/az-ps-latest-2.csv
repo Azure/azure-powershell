@@ -28,7 +28,7 @@ pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.2.0.zip;sourceType=sa]Az.Quota,0.2.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.14.1.zip;sourceType=sa]Az.RecoveryServices,7.14.1
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.12.0.zip;sourceType=sa]Az.RedisCache,1.12.0
-pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.2.0.0.zip;sourceType=sa]Az.RedisEnterpriseCache,2.0.0
+pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.3.0.0.zip;sourceType=sa]Az.RedisEnterpriseCache,3.0.0
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relationships.0.1.0.zip;sourceType=sa]Az.Relationships,0.1.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.3.0.0.zip;sourceType=sa]Az.Relay,3.0.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.14.1.zip;sourceType=sa]Az.Reservations,0.14.1
