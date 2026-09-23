@@ -25,10 +25,12 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='topLeft'>
-        /// The top left latitude,longitude pair of the rectangular viewport to query for.
+        /// The top left latitude,longitude pair of the rectangular viewport to query
+        /// for.
         /// </param>
         /// <param name='botRight'>
-        /// The bottom right latitude,longitude pair of the rectangular viewport to query for.
+        /// The bottom right latitude,longitude pair of the rectangular viewport to
+        /// query for.
         /// </param>
         public static HeatMapModel Get(this IHeatMapOperations operations, string resourceGroupName, string profileName, System.Collections.Generic.IList<double?> topLeft = default(System.Collections.Generic.IList<double?>), System.Collections.Generic.IList<double?> botRight = default(System.Collections.Generic.IList<double?>))
         {
@@ -48,10 +50,12 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='topLeft'>
-        /// The top left latitude,longitude pair of the rectangular viewport to query for.
+        /// The top left latitude,longitude pair of the rectangular viewport to query
+        /// for.
         /// </param>
         /// <param name='botRight'>
-        /// The bottom right latitude,longitude pair of the rectangular viewport to query for.
+        /// The bottom right latitude,longitude pair of the rectangular viewport to
+        /// query for.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

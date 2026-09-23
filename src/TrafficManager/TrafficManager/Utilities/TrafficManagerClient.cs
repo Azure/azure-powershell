@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             long? maxReturn,
             Hashtable tag,
             List<TrafficManagerCustomHeader> customHeaders,
-            List<TrafficManagerExpectedStatusCodeRange> expectedStatusCodeRanges)
+            List<TrafficManagerExpectedStatusCodeRange> expectedStatusCodeRanges,
+            string recordType)
         {
             Profile response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName,
@@ -92,6 +93,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     },
                     MaxReturn = maxReturn,
                     Tags = TagsConversionHelper.CreateTagDictionary(tag, validate: true),
+                    RecordType = recordType
                 });
 
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response);
@@ -310,6 +312,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 MonitorTimeoutInSeconds = (int?)sdkProfile.MonitorConfig.TimeoutInSeconds,
                 MonitorToleratedNumberOfFailures = (int?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
                 MaxReturn = sdkProfile.MaxReturn,
+                RecordType = sdkProfile.RecordType,
                 CustomHeaders = sdkProfile.MonitorConfig.CustomHeaders?.Select(
                     customHeader => TrafficManagerCustomHeader.FromSDKMonitorConfigCustomHeadersItem(customHeader)).ToList(),
                 ExpectedStatusCodeRanges = sdkProfile.MonitorConfig.ExpectedStatusCodeRanges?.Select(

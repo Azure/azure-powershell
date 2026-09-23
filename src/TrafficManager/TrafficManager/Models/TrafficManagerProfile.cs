@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public Hashtable Tags { get; set; }
 
+        public string RecordType { get; set; }
+
         public Profile ToSDKProfile()
         {
             var tags = TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true);
@@ -68,7 +70,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 this.Name,
                 Constants.ProfileType,
                 tags,
-                TrafficManagerClient.ProfileResourceLocation)
+                location: TrafficManagerClient.ProfileResourceLocation,
+                recordType: this.RecordType)
             {
                 ProfileStatus = this.ProfileStatus,
                 TrafficRoutingMethod = this.TrafficRoutingMethod,
