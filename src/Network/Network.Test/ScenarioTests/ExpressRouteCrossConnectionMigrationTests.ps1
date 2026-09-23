@@ -9,7 +9,7 @@ function Test-ExpressRouteCrossConnectionMigrationParameterBinding
     $actions = @(
         'Invoke-AzExpressRouteCrossConnectionPrepareMigration',
         'Invoke-AzExpressRouteCrossConnectionShutDownBgpForMigration',
-        'Invoke-AzExpressRouteCrossConnectionMigrate',
+        'Invoke-AzExpressRouteCrossConnectionMigration',
         'Invoke-AzExpressRouteCrossConnectionRestoreBgpForMigration',
         'Invoke-AzExpressRouteCrossConnectionCommitMigration',
         'Invoke-AzExpressRouteCrossConnectionRollbackMigration'
@@ -29,6 +29,9 @@ function Test-ExpressRouteCrossConnectionMigrationParameterBinding
         Assert-AreEqual ($actions -contains $name) $command.Parameters.ContainsKey('WhatIf')
     }
 
+    $legacyCommand = Get-Command 'Invoke-AzExpressRouteCrossConnectionMigrate' -Module Az.Network -ErrorAction SilentlyContinue
+    Assert-Null $legacyCommand
+
     Assert-Throws { New-AzExpressRouteCrossConnectionPortMapping -SourcePortId '' -TargetPortId 'target-port' }
     Assert-Throws { Test-AzExpressRouteCrossConnectionMigration -Name 'test' -ResourceGroupName 'test-rg' -TargetPeeringLocation '' -TargetPortMapping $mapping }
     Assert-Throws { Get-AzExpressRouteCrossConnectionMigrationInfo -Name 'test' -ResourceGroupName 'test-rg' -TargetPeeringLocation 'target' -TargetPortMapping @() }
@@ -45,7 +48,7 @@ function Test-ExpressRouteCrossConnectionMigrationWhatIf
     $actions = @(
         'Invoke-AzExpressRouteCrossConnectionPrepareMigration',
         'Invoke-AzExpressRouteCrossConnectionShutDownBgpForMigration',
-        'Invoke-AzExpressRouteCrossConnectionMigrate',
+        'Invoke-AzExpressRouteCrossConnectionMigration',
         'Invoke-AzExpressRouteCrossConnectionRestoreBgpForMigration',
         'Invoke-AzExpressRouteCrossConnectionCommitMigration',
         'Invoke-AzExpressRouteCrossConnectionRollbackMigration'

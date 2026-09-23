@@ -38,7 +38,7 @@ namespace Commands.Network.Test.UnitTests
         {
             yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionPrepareMigrationCommand), "prepareCircuitMigration", false };
             yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionShutDownBgpForMigrationCommand), "shutDownBgpForCircuitMigration", true };
-            yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionMigrateCommand), "migrateCircuit", true };
+            yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionMigrationCommand), "migrateCircuit", true };
             yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionRestoreBgpForMigrationCommand), "restoreBgpForCircuitMigration", true };
             yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionCommitMigrationCommand), "commitCircuitMigration", false };
             yield return new object[] { typeof(InvokeAzureRMExpressRouteCrossConnectionRollbackMigrationCommand), "rollbackCircuitMigration", true };
@@ -200,6 +200,9 @@ namespace Commands.Network.Test.UnitTests
         [Fact]
         public void MetadataMatchesPublicContract()
         {
+            var migrationAttribute = typeof(InvokeAzureRMExpressRouteCrossConnectionMigrationCommand).GetCustomAttribute<CmdletAttribute>();
+            Assert.Equal("AzExpressRouteCrossConnectionMigration", migrationAttribute.NounName);
+
             var types = Actions().Select(action => (Type)action[0]).Concat(new[]
             {
                 typeof(TestAzureRMExpressRouteCrossConnectionMigrationCommand),

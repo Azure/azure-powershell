@@ -5,9 +5,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "AzExpressRouteCrossConnectionMigrate", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzExpressRouteCrossConnectionMigration", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
     [OutputType(typeof(PSExpressRouteCircuitMigrationResult))]
-    public class InvokeAzureRMExpressRouteCrossConnectionMigrateCommand : ExpressRouteCrossConnectionMigrationPortActionBaseCmdlet
+    public class InvokeAzureRMExpressRouteCrossConnectionMigrationCommand : ExpressRouteCrossConnectionMigrationPortActionBaseCmdlet
     {
         protected override MigrateExpressRouteCircuitHealthCheckResponse SendMigrationRequest(MigrateExpressRouteCircuitRequest request)
         {

@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
+    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
     - Added `New-AzExpressRouteCrossConnectionPortMapping` to construct source-to-target port mappings. Migration actions support confirmation, WhatIf, and background jobs.
     - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 * Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/invoke-azexpressroutecrossconnectionmigrate
+online version: https://learn.microsoft.com/powershell/module/az.network/invoke-azexpressroutecrossconnectionmigration
 schema: 2.0.0
 ---
 
-# Invoke-AzExpressRouteCrossConnectionMigrate
+# Invoke-AzExpressRouteCrossConnectionMigration
 
 ## SYNOPSIS
 Invokes the migration action for a provider-owned ExpressRoute cross-connection.
@@ -14,7 +14,7 @@ Invokes the migration action for a provider-owned ExpressRoute cross-connection.
 
 ### ByName (Default)
 ```
-Invoke-AzExpressRouteCrossConnectionMigrate [-PortId <String>] [-TargetPeeringLocation <String>]
+Invoke-AzExpressRouteCrossConnectionMigration [-PortId <String>] [-TargetPeeringLocation <String>]
  [-TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]>] -Name <String> -ResourceGroupName <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
@@ -22,7 +22,7 @@ Invoke-AzExpressRouteCrossConnectionMigrate [-PortId <String>] [-TargetPeeringLo
 
 ### ByInputObject
 ```
-Invoke-AzExpressRouteCrossConnectionMigrate [-PortId <String>] [-TargetPeeringLocation <String>]
+Invoke-AzExpressRouteCrossConnectionMigration [-PortId <String>] [-TargetPeeringLocation <String>]
  [-TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]>] -InputObject <PSExpressRouteCrossConnection>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
@@ -30,14 +30,14 @@ Invoke-AzExpressRouteCrossConnectionMigrate [-PortId <String>] [-TargetPeeringLo
 
 ### ByResourceId
 ```
-Invoke-AzExpressRouteCrossConnectionMigrate [-PortId <String>] [-TargetPeeringLocation <String>]
+Invoke-AzExpressRouteCrossConnectionMigration [-PortId <String>] [-TargetPeeringLocation <String>]
  [-TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]>] -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Invoke-AzExpressRouteCrossConnectionMigrate cmdlet invokes the migrateCircuit service action. It executes only this action, not an end-to-end migration workflow. Preparation, BGP (Border Gateway Protocol) shutdown or restoration, health checks, commit, and rollback remain separate commands governed by the provider runbook.
+The Invoke-AzExpressRouteCrossConnectionMigration cmdlet invokes the migrateCircuit service action. It executes only this action, not an end-to-end migration workflow. Preparation, BGP (Border Gateway Protocol) shutdown or restoration, health checks, commit, and rollback remain separate commands governed by the provider runbook.
 
 This operation can affect connectivity. Use an approved maintenance window and provider-authorized Azure context. Optional PortId, TargetPeeringLocation, and TargetPortMapping values are passed to the service without inferring migration phase requirements. The command prompts for confirmation and returns the final health response after polling completes. Review FailureReason, ShouldRollback, and Details before proceeding; no recovery action is taken automatically.
 
@@ -47,7 +47,7 @@ ResourceId and InputObject must identify a provider cross-connection in the curr
 
 ### Example 1: Invoke migration for a selected port
 ```powershell
-Invoke-AzExpressRouteCrossConnectionMigrate -ResourceGroupName 'provider-rg' -Name 'cross-connection' -PortId 'source-port'
+Invoke-AzExpressRouteCrossConnectionMigration -ResourceGroupName 'provider-rg' -Name 'cross-connection' -PortId 'source-port'
 ```
 
 Requests the migration action after confirmation for the provider-selected port. Run this action only after the service-specific prerequisites and health checks have been satisfied.
