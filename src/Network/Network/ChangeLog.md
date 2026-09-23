@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
+    - Added `New-AzExpressRouteCrossConnectionPortMapping` to construct source-to-target port mappings. Migration actions support confirmation, WhatIf, and background jobs.
+    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 * Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
 * Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the client certificate verification mode (`Strict` or `Passthrough`) for Application Gateway frontend mutual TLS (mTLS). In `Passthrough` mode the client certificate is forwarded to the backend without being verified by the application gateway.
 * Upgraded Network SDK to API version `2026-01-01`.
