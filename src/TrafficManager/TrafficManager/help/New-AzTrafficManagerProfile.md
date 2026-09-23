@@ -18,7 +18,7 @@ New-AzTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-Profile
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
  -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
  [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-MaxReturn <Int64>]
- [-Tag <Hashtable>]
+ [-RecordType <String>] [-Tag <Hashtable>]
  [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
  [-ExpectedStatusCodeRange <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -228,6 +228,27 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecordType
+Specifies the DNS record type used for the profile's synthesized DNS records.
+Valid values are:
+
+- A
+- AAAA
+- CNAME
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: A, AAAA, CNAME
 
 Required: False
 Position: Named

@@ -103,6 +103,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 8)]
         public List<TrafficManagerExpectedStatusCodeRange> ExpectedStatusCodeRange { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The record type of the profile.")]
+        [ValidateSet(Constants.A, Constants.AAAA, Constants.CNAME, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string RecordType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerProfile should not overwrite any existing profile.
@@ -134,7 +139,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MaxReturn,
                     this.Tag,
                     this.CustomHeader,
-                    this.ExpectedStatusCodeRange);
+                    this.ExpectedStatusCodeRange,
+                    this.RecordType);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);
