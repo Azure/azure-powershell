@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-ScheduleProfileStart` and `-MinimumCommitmentDayCount` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output.
 * Added `SpotPlus` as a supported value for the `-Priority` parameter of `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, and `New-AzVmssConfig`.
     - `SpotPlus` is the next generation of Azure Spot for VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) deployments, and offers higher reliability and longer running time than `Spot`.
     - `-EvictionPolicy` and `-MaxPrice` behave the same way as they do for `Spot`.
