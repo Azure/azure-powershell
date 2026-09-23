@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: fae30cdf5799e6c1323b2ecc24ba4e9669571ee4
+commit: 1e0a36787fbbd18548bdf24261afdc114d6d88ec
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/Legacy/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/Legacy/stable/2014-04-01-legacy/sql.core_legacy.json
@@ -60,7 +60,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceAzureADOnlyAuthentications.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceEncryptionProtectors.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceKeys.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceLongTermRetentionPolicies.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2026-08-01-preview/managedInstanceLongTermRetentionPolicies.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceOperations.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceTdeCertificates.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2020-11-01-preview/ManagedInstanceVulnerabilityAssessments.json
@@ -85,7 +85,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-02-01-preview/OutboundFirewallRules.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-02-01-preview/Usages.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2024-11-01-preview/LongTermRetentionBackups.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-05-01-preview/LongTermRetentionManagedInstanceBackups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2026-08-01-preview/longTermRetentionManagedInstanceBackups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2025-08-01-preview/distributedAvailabilityGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-11-01-preview/ServerTrustCertificates.json

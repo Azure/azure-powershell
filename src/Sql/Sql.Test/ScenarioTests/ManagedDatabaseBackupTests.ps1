@@ -168,36 +168,55 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 	.SYNOPSIS
 	Test long term retention for managed databases.
 #>
+# Re-recordable tests - these scenarios update only the LTR policy and do not require a backup.
 function Test-ManagedInstanceLongTermRetentionPolicy()
 {
 	# Setup
-	$resourceGroupName = "v-sntani-test-mi-rg"
-	$managedInstanceName = "managedinstancearm"
+	$resourceGroupName = "brandong-test"
+	$managedInstanceName = "brandong-mi-test-ps"
 	$weeklyRetention = "P1W"
 	$zeroRetention = "PT0S"
 
-	try
-	{
-		# create test database
-		$databaseName = "ps-ltr-policy-test-1"
-		$database = New-AzSqlInstanceDatabase -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -Name $databaseName
+	# create test database
+	$databaseName = "ps-ltr-policy-test-1"
+	$database = New-AzSqlInstanceDatabase -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -Name $databaseName
 
-		Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention
-		$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
-		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention
-		Assert-AreEqual $policy.MonthlyRetention $zeroRetention
-		Assert-AreEqual $policy.YearlyRetention $zeroRetention
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $resourceGroup
-	}
+	Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention
+	$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	Assert-AreEqual $policy.WeeklyRetention $weeklyRetention
+	Assert-AreEqual $policy.MonthlyRetention $zeroRetention
+	Assert-AreEqual $policy.YearlyRetention $zeroRetention
+	Assert-AreEqual $policy.TimeBasedImmutability "Disabled"
+
+	# Enable time-based immutability with the default mode.
+	Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention -TimeBasedImmutability "Enabled"
+	$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	Assert-AreEqual $policy.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $policy.TimeBasedImmutabilityMode "Unlocked"
+
+	# Enable time-based immutability with an explicit unlocked mode.
+	Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention -TimeBasedImmutability "Enabled" -TimeBasedImmutabilityMode "Unlocked"
+	$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	Assert-AreEqual $policy.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $policy.TimeBasedImmutabilityMode "Unlocked"
+
+	# Enable time-based immutability with a locked mode.
+	Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention -TimeBasedImmutability "Enabled" -TimeBasedImmutabilityMode "Locked"
+	$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	Assert-AreEqual $policy.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $policy.TimeBasedImmutabilityMode "Locked"
+
+	# Reset the policy so subsequent recordings do not create immutable backups.
+	Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention -TimeBasedImmutability "Disabled"
+	$policy = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resourceGroupName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	Assert-AreEqual $policy.TimeBasedImmutability "Disabled"
 }
 
 <#
 	.SYNOPSIS
 	Test long term retention backup commands for managed databases.
 #>
+# Backup tests - these scenarios require existing live LTR backups and do not create them.
 function Test-ManagedInstanceLongTermRetentionBackup
 {
 
@@ -207,11 +226,19 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	# Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroup $resourceGroup -InstanceName $managedInstanceName -DatabaseName $databaseName -WeeklyRetention P1W
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName
+	# The immutability scenarios assume the following live backups already exist:
+	# - $databaseWithUnlockedImmutableBackup has an LTR backup with time-based immutability enabled and unlocked.
+	# - $databaseWithLockedImmutableBackup has an LTR backup with time-based immutability enabled and locked.
+	# - $databaseWithLegalHoldBackup has an LTR backup with legal hold enabled.
+	# Provision these backups outside this test and update the names below before manual execution.
 	$resourceGroup = "v-sntani-test-mi-rg"
 	$locationName = "westcentralus"
 	$managedInstanceName = "managedinstancearm"
 	$databaseName = "ps-test-1"
 	$databaseWithRemovableBackup = "ps-test-2";
+	$databaseWithUnlockedImmutableBackup = "ps-test-immutable-unlocked"
+	$databaseWithLockedImmutableBackup = "ps-test-immutable-locked"
+	$databaseWithLegalHoldBackup = "ps-test-immutable-legal-hold"
 
 	# Basic Get Tests
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName
@@ -222,6 +249,28 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	Assert-AreNotEqual $backups.Count 0
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -BackupName $backups[0].BackupName
 	Assert-AreNotEqual $backups.Count 0
+
+	# Validate an existing backup with unlocked time-based immutability.
+	$backup = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithUnlockedImmutableBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
+	Assert-NotNull $backup
+	Assert-AreEqual $backup.IsBackupImmutable $true
+	Assert-AreEqual $backup.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backup.TimeBasedImmutabilityMode "Unlocked"
+	Assert-AreEqual $backup.LegalHoldImmutability "Disabled"
+
+	# Validate an existing backup with locked time-based immutability.
+	$backup = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockedImmutableBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
+	Assert-NotNull $backup
+	Assert-AreEqual $backup.IsBackupImmutable $true
+	Assert-AreEqual $backup.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backup.TimeBasedImmutabilityMode "Locked"
+	Assert-AreEqual $backup.LegalHoldImmutability "Disabled"
+
+	# Validate an existing backup protected by legal hold.
+	$backup = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
+	Assert-NotNull $backup
+	Assert-AreEqual $backup.IsBackupImmutable $true
+	Assert-AreEqual $backup.LegalHoldImmutability "Enabled"
 
 	# Test Get Optional Parameters
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -OnlyLatestPerDatabase

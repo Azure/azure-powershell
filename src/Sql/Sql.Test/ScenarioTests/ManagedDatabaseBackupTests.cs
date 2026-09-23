@@ -9,7 +9,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
+// limitations under the License.Remove-ResourceGroupForTest
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
@@ -42,21 +42,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedDeletedDatabaseShortTermRetentionPolicy");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionPolicy()
         {
             TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
             TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionBackup");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {

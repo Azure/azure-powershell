@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBackupModelMapsBackupStorageRedundancy()
+        public void GetBackupModelMapsBackupProperties()
         {
             const string resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/locations/westcentralus/longTermRetentionManagedInstances/test-mi/longTermRetentionDatabases/test-db/longTermRetentionManagedInstanceBackups/test-backup";
             var backup = new ManagedInstanceLongTermRetentionBackup(
@@ -31,11 +31,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                 name: "test-backup",
                 managedInstanceName: "test-mi",
                 databaseName: "test-db",
-                backupStorageRedundancy: "Geo");
+                backupStorageRedundancy: "Geo",
+                isBackupImmutable: true,
+                timeBasedImmutability: "Enabled",
+                timeBasedImmutabilityMode: "Locked",
+                legalHoldImmutability: "Enabled");
 
             var result = AzureSqlManagedDatabaseBackupAdapter.GetBackupModel(backup, "westcentralus");
 
             Assert.Equal("Geo", result.BackupStorageRedundancy);
+            Assert.True(result.IsBackupImmutable);
+            Assert.Equal("Enabled", result.TimeBasedImmutability);
+            Assert.Equal("Locked", result.TimeBasedImmutabilityMode);
+            Assert.Equal("Enabled", result.LegalHoldImmutability);
             Assert.Equal("test-rg", result.ResourceGroupName);
         }
     }
