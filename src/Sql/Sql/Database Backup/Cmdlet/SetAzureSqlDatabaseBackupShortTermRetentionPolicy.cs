@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     OutputType(typeof(AzureSqlDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy : AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase
     {
+        private bool _operationCancelled;
+
         /// <summary>
         /// Gets or sets backup retention days.
         /// </summary>
@@ -80,6 +82,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> model)
         {
+            _operationCancelled = false;
+
             return new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>()
             {
                 new AzureSqlDatabaseBackupShortTermRetentionPolicyModel(
@@ -107,6 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 "Locking backup immutability cannot be reverted.",
                 "Confirm locking backup immutability"))
             {
+                _operationCancelled = true;
                 return null;
             }
 
@@ -114,6 +119,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ModelAdapter.SetDatabaseBackupShortTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
             };
         }
+
+        /// <summary>
+        /// Returns whether the updated policy should be written to the pipeline.
+        /// </summary>
+        protected override bool WriteResult()
+        {
+            return base.WriteResult() && !_operationCancelled;
+        }
     }
 }
-

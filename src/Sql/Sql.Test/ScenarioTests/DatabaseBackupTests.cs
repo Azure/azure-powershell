@@ -224,13 +224,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShortTermRetentionLockImmutability()
         {
+            // There's a delay between a database creation and the enabling of short term retention lock immutability.
+            // The test may fail if run immediately after database creation due to this delay.
+            // Once a fix for this is in place, the test can be enabled for Playback.
             if (TestMockSupport.RunningMocked)
             {
                 TestRunner.RunTestScript("Test-ShortTermRetentionLockImmutability");
-            }
-            else
-            {
-                TestRunner.RunTestScript("Test-ShortTermRetentionLockImmutability -isRecording");
             }
         }
 

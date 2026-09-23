@@ -90,58 +90,71 @@ function Test-ManagedDatabaseShortTermRetentionLockImmutability
 	# These resources must exist before recording the test.
 	$rgName = "anehetestrg"
 	$managedInstanceName = "anehetestmi"
-	$managedDatabaseName = "anehetestmi3"
 	$rg = Get-AzResourceGroup -ResourceGroupName $rgName
 	$managedInstance = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName
-	$db = Get-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	# $managedDatabaseName = "anehetestmi3"
+	# $db = Get-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName
+	$managedDatabaseName = Get-ManagedDatabaseName
+	$db = $null
 
-	Assert-AreEqual $db.Name $managedDatabaseName
+	try
+	{
+		$collation = "SQL_Latin1_General_CP1_CI_AS"
+		$db = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation
+		Assert-AreEqual $db.Name $managedDatabaseName
 
-	# Test default values
-	$defaultRetention = 7
-	$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db[0]
-	Assert-AreEqual 1 $policy.Count
-	Assert-AreEqual "Enabled" $policy.ImmutabilityStatus
-	Assert-AreEqual $defaultRetention $policy.RetentionDays
+		# Test default values
+		$defaultRetention = 7
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual "Enabled" $policy.ImmutabilityStatus
+		Assert-AreEqual $defaultRetention $policy.RetentionDays
 
-	# Test retention days can be increased before locking immutability
-	$updatedRetention = 14
-	$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $updatedRetention
-	Assert-AreEqual 1 $policy.Count
-	Assert-AreEqual $updatedRetention $policy.RetentionDays
+		# Test retention days can be increased before locking immutability
+		$updatedRetention = 14
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $updatedRetention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $updatedRetention $policy.RetentionDays
 
-	# Test retention days can be decreased before locking immutability
-	$decreasedRetention = 7
-	$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $decreasedRetention
-	Assert-AreEqual 1 $policy.Count
-	Assert-AreEqual $decreasedRetention $policy.RetentionDays
+		# Test retention days can be decreased before locking immutability
+		$decreasedRetention = 7
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $decreasedRetention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $decreasedRetention $policy.RetentionDays
 
-	# Test Get returns the correct retention days before locking immutability
-	$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db[0]
-	Assert-AreEqual 1 $policy.Count
-	$currentRetention = $policy.RetentionDays
-	Assert-AreEqual $decreasedRetention $currentRetention
-	Assert-AreEqual "Enabled" $policy.ImmutabilityStatus
+		# Test Get returns the correct retention days before locking immutability
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db
+		Assert-AreEqual 1 $policy.Count
+		$currentRetention = $policy.RetentionDays
+		Assert-AreEqual $decreasedRetention $currentRetention
+		Assert-AreEqual "Enabled" $policy.ImmutabilityStatus
 
-	# Test ImmutabilityStatus is Locked after setting the LockImmutability flag to true
-	$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $currentRetention -LockImmutability $true -Force
-	Assert-AreEqual 1 $policy.Count
-	Assert-AreEqual "Locked" $policy.ImmutabilityStatus
+		# Test ImmutabilityStatus is Locked after setting the LockImmutability flag to true
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $currentRetention -LockImmutability $true -Force
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual "Locked" $policy.ImmutabilityStatus
 
-	# Test ImmutabilityStatus is Locked in GET response
-	$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db[0]
-	Assert-AreEqual 1 $policy.Count
-	Assert-AreEqual "Locked" $policy.ImmutabilityStatus
-	Assert-AreEqual $currentRetention $policy.RetentionDays
+		# Test ImmutabilityStatus is Locked in GET response
+		$policy = Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -AzureInstanceDatabaseObject $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual "Locked" $policy.ImmutabilityStatus
+		Assert-AreEqual $currentRetention $policy.RetentionDays
 
-	# Test retention days can be increased after locking immutability
-	$updatedRetention = 10
-	$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $updatedRetention -LockImmutability $true -Force
-	Assert-AreEqual 1 $policy.Count
-	Assert-AreEqual $updatedRetention $policy.RetentionDays
+		# Test retention days can be increased after locking immutability
+		$updatedRetention = 10
+		$policy = Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName -RetentionDays $updatedRetention -LockImmutability $true -Force
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $updatedRetention $policy.RetentionDays
+	}
+	finally
+	{
+		if ($null -ne $db)
+		{
+			Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
+		}
+	}
 
-	# Drop the database and verify LockImmutability is rejected for the restorable dropped database.
-	Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
+	# Verify LockImmutability is rejected for the restorable dropped database.
 	$deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName | Select-Object -First 1
 	Assert-NotNull $deletedDatabase
 	Assert-ThrowsContains `

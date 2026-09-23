@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         OutputType(typeof(AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureSqlManagedDatabaseBackupShortTermRetentionPolicy : AzureSqlManagedDatabaseBackupCmdletBase<AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel>
     {
+        private bool _operationCancelled;
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -160,6 +161,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel ApplyUserInputToModel(AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel model)
         {
+            _operationCancelled = false;
             model.RetentionDays = RetentionDays;
             model.LockImmutability = this.IsParameterBound(c => c.LockImmutability) ? LockImmutability : null;
             return model;
@@ -176,6 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 "Locking backup immutability cannot be reverted.",
                 "Confirm locking backup immutability"))
             {
+                _operationCancelled = true;
                 return null;
             }
 
@@ -185,6 +188,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             }
 
             return ModelAdapter.UpsertManagedDatabaseRetentionPolicy(this.ResourceGroupName, this.InstanceName, this.DatabaseName, entity);
+        }
+
+        /// <summary>
+        /// Returns whether the updated policy should be written to the pipeline.
+        /// </summary>
+        protected override bool WriteResult()
+        {
+            return base.WriteResult() && !_operationCancelled;
         }
     }
 }
