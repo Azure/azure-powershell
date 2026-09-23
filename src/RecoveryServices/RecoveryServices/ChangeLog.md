@@ -24,6 +24,7 @@
     - `Restore-AzRecoveryServicesBackupItem` accepts `-IsSystemAssignedIdentity` and `-UserAssignedIdentityArmUrl` for identity-based Azure File Share restore, and `-TargetSubscriptionId` to enable Cross Subscription Restore (CSR).
     - Azure File Share Cross Region Restore can target a storage account in another subscription by combining `-RestoreToSecondaryRegion` and `-TargetSubscriptionId`.
 * Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
+* Fixed cross-subscription Azure VM protection for virtual machines with user-assigned managed identities.
 * Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
     - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.
     - Added support in `Set-AzRecoveryServicesBackupItemSourceScanConfiguration`, or its `Set-AzRecoveryServicesBISourceScanConfiguration` alias, to enable or disable Source Scan for a protected item.
