@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added support for provisioning an ExpressRoute circuit on an `ExpressRouteLag` resource (Microsoft.Network 2026-01-01 API).
+    - Added `-ExpressRouteLag` to `New-AzExpressRouteCircuit` to reference the target `ExpressRouteLag` resource when creating the circuit.
+    - Added the read-only `Circuits` property to the `PSExpressRouteLag` output, listing the ExpressRoute circuit(s) provisioned on the ExpressRouteLag.
 * Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
 * Added support for Application Gateway advanced routing, which routes requests based on conditions evaluated against request headers, query string arguments, path, client IP address, or HTTP method.
     - Added `New-AzApplicationGatewayAdvancedRoutingCondition` to define a single match condition.
