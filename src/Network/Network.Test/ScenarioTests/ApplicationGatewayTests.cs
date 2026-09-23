@@ -420,5 +420,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayAdvancedRouting()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayAdvancedRouting");
+        }
     }
 }
