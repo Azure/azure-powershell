@@ -20,6 +20,14 @@
 
 ## Upcoming Release
 * Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
+* Added support for Application Gateway advanced routing, which routes requests based on conditions evaluated against request headers, query string arguments, path, client IP address, or HTTP method.
+    - Added `New-AzApplicationGatewayAdvancedRoutingCondition` to define a single match condition.
+    - Added `New/Add/Get/Set/Remove-AzApplicationGatewayAdvancedRoutingConditionSet` to manage the condition sets referenced by advanced routing rules.
+    - Added `New-AzApplicationGatewayAdvancedRoutingRuleConfig` to define an advanced routing rule.
+    - Added `New/Add/Get/Set/Remove-AzApplicationGatewayAdvancedRoutingMap` to manage advanced routing maps.
+    - Added `-AdvancedRoutingMaps` and `-AdvancedRoutingConditionSets` to `New-AzApplicationGateway`.
+* Added `AdvancedRouting` as a supported value for `-RuleType` on `New-AzApplicationGatewayRequestRoutingRule`, `Add-AzApplicationGatewayRequestRoutingRule`, and `Set-AzApplicationGatewayRequestRoutingRule`.
+    - Added `-AdvancedRoutingMap` and `-AdvancedRoutingMapId` to those cmdlets to associate the rule with an advanced routing map.
 * Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the client certificate verification mode (`Strict` or `Passthrough`) for Application Gateway frontend mutual TLS (mTLS). In `Passthrough` mode the client certificate is forwarded to the backend without being verified by the application gateway.
 * Upgraded Network SDK to API version `2026-01-01`.
 * Fixed `-EnableOnlyIpv6Peering` on `New-AzVirtualHubVnetConnection` so that the `Enabled` and `Disabled` values are correctly translated to the boolean `enableOnlyIPv6Peering` property expected by the service.
