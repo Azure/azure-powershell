@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
            HelpMessage = "The migration type for the virtual network gateway.")]
         [ValidateSet(
         MNM.VirtualNetworkGatewayMigrationType.UpgradeDeploymentToStandardIP,
+        MNM.VirtualNetworkGatewayMigrationType.MigrateGatewayForPointToSiteProfile,
+        // MNM.VirtualNetworkGatewayMigrationType.UpgradeGatewayToDualStack temporarily unsupported pending a fix for the underlying IPv6 (dual stack) migration bug.
         IgnoreCase = true)]
         public String MigrationType { get; set; }
 
