@@ -4,7 +4,9 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Network.Models;
@@ -318,6 +320,48 @@ namespace Commands.Network.Test.UnitTests
 
                 var ex = Assert.Throws<PSArgumentException>(() => command.NewObject());
                 Assert.Contains("Pattern is not applicable", ex.Message);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAdvancedRoutingRuleConfigSupportsRedirect()
+        {
+            const string redirectId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/applicationGateways/appgw/redirectConfigurations/redirect01";
+            var command = new NewAzureApplicationGatewayAdvancedRoutingRuleConfigCommand
+            {
+                Name = "rule01",
+                Priority = 100,
+                RedirectConfigurationId = redirectId
+            };
+
+            var rule = command.NewObject();
+
+            Assert.Equal(redirectId, rule.RedirectConfiguration.Id);
+            Assert.Null(rule.BackendAddressPool);
+            Assert.Null(rule.BackendHttpSettings);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AdvancedRoutingRuleConfigSeparatesBackendAndRedirectParameterSets()
+        {
+            var cmdletType = typeof(NewAzureApplicationGatewayAdvancedRoutingRuleConfigCommand);
+
+            var setsFor = new Func<string, string[]>(parameterName =>
+                cmdletType.GetProperty(parameterName)
+                    .GetCustomAttributes(typeof(ParameterAttribute), true)
+                    .Cast<ParameterAttribute>()
+                    .Select(a => a.ParameterSetName)
+                    .ToArray());
+
+            // Backend and redirect parameters must never share a set, otherwise they could be combined.
+            foreach (var backendParam in new[] { "BackendAddressPool", "BackendHttpSettings", "BackendAddressPoolId", "BackendHttpSettingsId" })
+            {
+                foreach (var redirectParam in new[] { "RedirectConfiguration", "RedirectConfigurationId" })
+                {
+                    Assert.Empty(setsFor(backendParam).Intersect(setsFor(redirectParam)));
+                }
             }
         }
 

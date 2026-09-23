@@ -32,61 +32,79 @@ namespace Microsoft.Azure.Commands.Network
         public int Priority { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                HelpMessage = "ID of the application gateway AdvancedRoutingConditionSet evaluated by this rule")]
+        [Parameter(
+                ParameterSetName = "RedirectSetByResourceId",
                 HelpMessage = "ID of the application gateway AdvancedRoutingConditionSet evaluated by this rule")]
         [ValidateNotNullOrEmpty]
         public string AdvancedRoutingConditionSetId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                HelpMessage = "Application gateway AdvancedRoutingConditionSet evaluated by this rule")]
+        [Parameter(
+                ParameterSetName = "RedirectSetByResource",
                 HelpMessage = "Application gateway AdvancedRoutingConditionSet evaluated by this rule")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayAdvancedRoutingConditionSet AdvancedRoutingConditionSet { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                Mandatory = true,
                 HelpMessage = "ID of the application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public string BackendAddressPoolId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                Mandatory = true,
                 HelpMessage = "Application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendAddressPool BackendAddressPool { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                Mandatory = true,
                 HelpMessage = "ID of the application gateway BackendHttpSettings")]
         [ValidateNotNullOrEmpty]
         public string BackendHttpSettingsId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                Mandatory = true,
                 HelpMessage = "Application gateway BackendHttpSettings")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendHttpSettings BackendHttpSettings { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway RedirectConfiguration. Cannot be combined with BackendAddressPoolId or BackendHttpSettingsId")]
+                ParameterSetName = "RedirectSetByResourceId",
+                Mandatory = true,
+                HelpMessage = "ID of the application gateway RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public string RedirectConfigurationId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway RedirectConfiguration. Cannot be combined with BackendAddressPool or BackendHttpSettings")]
+                ParameterSetName = "RedirectSetByResource",
+                Mandatory = true,
+                HelpMessage = "Application gateway RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRedirectConfiguration RedirectConfiguration { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                HelpMessage = "ID of the application gateway RewriteRuleSet")]
+        [Parameter(
+                ParameterSetName = "RedirectSetByResourceId",
                 HelpMessage = "ID of the application gateway RewriteRuleSet")]
         [ValidateNotNullOrEmpty]
         public string RewriteRuleSetId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                HelpMessage = "Application gateway RewriteRuleSet")]
+        [Parameter(
+                ParameterSetName = "RedirectSetByResource",
                 HelpMessage = "Application gateway RewriteRuleSet")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRewriteRuleSet RewriteRuleSet { get; set; }
@@ -95,7 +113,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (ParameterSetName.EndsWith(Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (AdvancedRoutingConditionSet != null)
                 {

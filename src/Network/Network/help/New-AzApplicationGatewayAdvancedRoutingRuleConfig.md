@@ -12,22 +12,38 @@ Creates an advanced routing rule for an application gateway advanced routing map
 
 ## SYNTAX
 
-### SetByResource (Default)
+### BackendSetByResource (Default)
 ```
 New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name <String> -Priority <Int32>
  [-AdvancedRoutingConditionSet <PSApplicationGatewayAdvancedRoutingConditionSet>]
- [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
- [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
+ -BackendAddressPool <PSApplicationGatewayBackendAddressPool>
+ -BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### BackendSetByResourceId
 ```
 New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name <String> -Priority <Int32>
- [-AdvancedRoutingConditionSetId <String>] [-BackendAddressPoolId <String>] [-BackendHttpSettingsId <String>]
- [-RedirectConfigurationId <String>] [-RewriteRuleSetId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AdvancedRoutingConditionSetId <String>] -BackendAddressPoolId <String> -BackendHttpSettingsId <String>
+ [-RewriteRuleSetId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### RedirectSetByResourceId
+```
+New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name <String> -Priority <Int32>
+ [-AdvancedRoutingConditionSetId <String>] -RedirectConfigurationId <String> [-RewriteRuleSetId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### RedirectSetByResource
+```
+New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name <String> -Priority <Int32>
+ [-AdvancedRoutingConditionSet <PSApplicationGatewayAdvancedRoutingConditionSet>]
+ -RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -59,7 +75,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -69,7 +85,7 @@ Application gateway AdvancedRoutingConditionSet evaluated by this rule
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingConditionSet
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource, RedirectSetByResource
 Aliases:
 
 Required: False
@@ -84,7 +100,7 @@ ID of the application gateway AdvancedRoutingConditionSet evaluated by this rule
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId, RedirectSetByResourceId
 Aliases:
 
 Required: False
@@ -99,10 +115,10 @@ Application gateway BackendAddressPool
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,10 +130,10 @@ ID of the application gateway BackendAddressPool
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,10 +145,10 @@ Application gateway BackendHttpSettings
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,10 +160,10 @@ ID of the application gateway BackendHttpSettings
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,10 +237,10 @@ Cannot be combined with BackendAddressPool or BackendHttpSettings
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
-Parameter Sets: SetByResource
+Parameter Sets: RedirectSetByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -237,10 +253,10 @@ Cannot be combined with BackendAddressPoolId or BackendHttpSettingsId
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: RedirectSetByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -252,7 +268,7 @@ Application gateway RewriteRuleSet
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource, RedirectSetByResource
 Aliases:
 
 Required: False
@@ -267,7 +283,7 @@ ID of the application gateway RewriteRuleSet
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId, RedirectSetByResourceId
 Aliases:
 
 Required: False
@@ -283,11 +299,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingRule
-
 ## NOTES
 
 ## RELATED LINKS

@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAdvancedRoutingRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSApplicationGatewayAdvancedRoutingRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAdvancedRoutingRuleConfig", DefaultParameterSetName = "BackendSetByResource"), OutputType(typeof(PSApplicationGatewayAdvancedRoutingRule))]
     public class NewAzureApplicationGatewayAdvancedRoutingRuleConfigCommand : AzureApplicationGatewayAdvancedRoutingRuleConfigBase
     {
         public override void ExecuteCmdlet()
