@@ -206,6 +206,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Provide TargetStorageAccountName when using TargetSubscriptionId for Azure File Share restore.
+        /// </summary>
+        public static string AzureFileTargetSubscriptionRequiresStorageAccount
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileTargetSubscriptionRequiresStorageAccount", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetSubscriptionId cannot be null or empty for Azure File Share restore.
+        /// </summary>
+        public static string AzureFileTargetSubscriptionCannotBeEmpty
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileTargetSubscriptionCannotBeEmpty", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles..
         /// </summary>
         public static string AzureFileUnsupportedBackupManagementTypeException
@@ -1960,6 +1982,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
+        ///   Looks up a localized string similar to Managed identity parameters are not supported with -RestoreToSecondaryRegion for Azure File Share because the cross-region restore API does not support identity information.
+        /// </summary>
+        public static string AzureFileShareCrossRegionRestoreIdentityNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileShareCrossRegionRestoreIdentityNotSupported", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   Looks up a localized string similar to The Azure File Share item &apos;{0}&apos; is not in a soft-deleted state. Undo-AzRecoveryServicesBackupItemDeletion can only be run on an item whose DeleteState is &apos;ToBeDeleted&apos;.
         /// </summary>
         public static string AzureFileShareUndeleteItemNotInSoftDeletedState
@@ -1967,6 +1999,97 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("AzureFileShareUndeleteItemNotInSoftDeletedState", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Both -IsSystemAssignedIdentity and -UserAssignedIdentityArmUrl were specified. Specify only one identity for identity-based Azure Files access.
+        /// </summary>
+        public static string AFSIdentityBothSpecified
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSIdentityBothSpecified", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Files registration requires -StorageAccountName with -BackupManagementType AzureStorage and -WorkloadType AzureFiles.
+        /// </summary>
+        public static string AFSRegisterParameterCombinationInvalid
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSRegisterParameterCombinationInvalid", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to -StorageAccountName supports Azure Files registration only. Specify -BackupManagementType AzureStorage and -WorkloadType AzureFiles.
+        /// </summary>
+        public static string AFSRegisterStorageAccountRequiresAzureFileTypes
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSRegisterStorageAccountRequiresAzureFileTypes", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to -AccessType &apos;IdentityBased&apos; requires an identity.
+        /// </summary>
+        public static string AFSIdentityBasedRequiresIdentity
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSIdentityBasedRequiresIdentity", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to An identity was specified without -AccessType. Specify -AccessType 'IdentityBased' when using -IsSystemAssignedIdentity or -UserAssignedIdentityArmUrl.
+        /// </summary>
+        public static string AFSIdentityRequiresAccessType
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSIdentityRequiresAccessType", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to -AccessType &apos;KeyBased&apos; cannot be combined with an identity.
+        /// </summary>
+        public static string AFSKeyBasedWithIdentity
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSKeyBasedWithIdentity", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to The storage account &apos;{0}&apos; is already registered with a different access type / identity. Re-registering will change how backup accesses the storage account. Do you want to continue?
+        /// </summary>
+        public static string AFSReregisterIdentityChangeWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSReregisterIdentityChangeWarning", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Re-register storage account with new access type / identity.
+        /// </summary>
+        public static string AFSReregisterIdentityChangeCaption
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSReregisterIdentityChangeCaption", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Re-registration of the storage account was canceled by the user.
+        /// </summary>
+        public static string AFSReregisterCanceled
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSReregisterCanceled", resourceCulture);
             }
         }
         /// <summary>
