@@ -243,6 +243,12 @@
   <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
     <value>urlPathMaps</value>
   </data>
+  <data name="ApplicationGatewayAdvancedRoutingMapName" xml:space="preserve">
+    <value>advancedRoutingMaps</value>
+  </data>
+  <data name="ApplicationGatewayAdvancedRoutingConditionSetName" xml:space="preserve">
+    <value>advancedRoutingConditionSets</value>
+  </data>
   <data name="SetByIpConfiguration" xml:space="preserve">
     <value>SetByIpConfiguration</value>
   </data>
