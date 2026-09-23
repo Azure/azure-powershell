@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool EnableInternetSecurity { get; set; }
 
         [Ps1Xml(Label = "Enable Only IPv6 Peering", Target = ViewControl.Table)]
-        public bool? EnableOnlyIPv6Peering { get; set; }
+        public string EnableOnlyIpv6Peering { get; set; }
 
         public PSRoutingConfiguration RoutingConfiguration { get; set; }
 

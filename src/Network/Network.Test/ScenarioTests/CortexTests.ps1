@@ -2200,11 +2200,11 @@ function Test-VirtualHubEnableOnlyIpv6PeeringCRUD
         # Create a remote VNet
         $remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix @("10.0.1.0/24", "2001:db8:1::/48")
 
-        # Create a Hub Virtual Network Connection with EnableOnlyIPv6Peering
-        New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -EnableOnlyIPv6Peering $true
+        # Create a Hub Virtual Network Connection with EnableOnlyIpv6Peering
+        New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork -EnableOnlyIpv6Peering "Enabled"
         $hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName
         Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
-        Assert-AreEqual $true $hubVnetConnection.EnableOnlyIPv6Peering
+        Assert-AreEqual "Enabled" $hubVnetConnection.EnableOnlyIpv6Peering
 
         $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
         Assert-AreEqual $True $delete

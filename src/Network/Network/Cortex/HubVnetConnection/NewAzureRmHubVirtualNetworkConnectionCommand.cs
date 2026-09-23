@@ -138,7 +138,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable only IPv6 peering for this connection.")]
-        public bool? EnableOnlyIPv6Peering { get; set; }
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string EnableOnlyIpv6Peering { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -196,9 +198,9 @@ namespace Microsoft.Azure.Commands.Network
                 hubVnetConnection.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
             }
 
-            if (this.EnableOnlyIPv6Peering.HasValue)
+            if (!string.IsNullOrWhiteSpace(this.EnableOnlyIpv6Peering))
             {
-                hubVnetConnection.EnableOnlyIPv6Peering = this.EnableOnlyIPv6Peering;
+                hubVnetConnection.EnableOnlyIPv6Peering = this.EnableOnlyIpv6Peering.Equals("Enabled", StringComparison.OrdinalIgnoreCase);
             }
 
             List<string> resourceIds = new List<string>();
