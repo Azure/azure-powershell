@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RuleSetType { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string RuleSetVersion { get; set; }
+        public string DisplayName { get; set; }
         public List<PSApplicationGatewayFirewallRuleGroup> RuleGroups { get; set; }
 
         [JsonIgnore]
