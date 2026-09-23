@@ -19,6 +19,41 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.1
+* Updated the Function App stacks parser to handle a runtime definition that does not include a `FUNCTIONS_WORKER_RUNTIME` app setting. [#29630]
+* Added support in `New-AzFunctionApp` to create Go function apps hosted in Flex Consumption plans.
+
+## Version 5.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Validated SKU in `Update-AzFunctionApp`
+* Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
+* Fixed `Update-AzFunctionApp`
+
+## Version 4.3.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Fixed an issue where New-AzFunctionApp fails due to duplicate -Name parameter binding. [#29166]
+
+## Version 4.3.1
+
+* Fixed cloud portability by using dynamic endpoints for storage [#29034]
+
+## Version 4.3.0
+* Added FlexConsumption support to Get-AzFunctionAppAvailableLocation, which returns a list of regions that supported Flex Consumption, including locations supporting zone redundancy (currently applied only to Flex Consumption)
+* Added a new cmdlet Get-AzFunctionAppFlexConsumptionRuntime to retrieve Flex Consumption runtimes for a specified location
+* Added a new parameter set to New-AzFunctionApp to support Flex Consumption function apps [#24349]
+* Refreshed stack definitions
+
+## Version 4.2.1
+* Updated API client to latest commit for version 2023-12-01
+* Refreshed stack definitions
+* Enforced runtime EOL policy for function app creation: block expired, warn if within 6 months
+
+## Version 4.2.0
+* Upgraded nuget package to signed package.
+
+## Version 4.1.1
+* Used `Get-AzAccessToken -AsSecureString` inside the `Functions` for the plain text version is going to be deprecate in the next release.
+
 ## Version 4.1.0
 * Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
 * Added support for creating function apps on container app [#22736]

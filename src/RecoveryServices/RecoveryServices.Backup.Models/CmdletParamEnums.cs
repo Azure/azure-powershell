@@ -85,7 +85,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetVNetResourceGroup,
         TargetSubnetName,
         TargetSubscriptionId,
-        RestoreToEdgeZone
+        RestoreToEdgeZone,
+        DiskAccessOption,
+        TargetDiskAccessId,
+        CVMOsDiskEncryptionSetId
     }
 
     public enum RestoreFSBackupItemParams
@@ -96,7 +99,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetStorageAccountName,
         TargetFileShareName,
         TargetFolder,
-        MultipleSourceFilePath
+        MultipleSourceFilePath,
+        IsSystemAssignedIdentity,
+        UserAssignedIdentityArmUrl,
+        TargetSubscriptionId
     }
     public enum RestoreWLBackupItemParams
     {
@@ -137,7 +143,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         IsSmartTieringEnabled,
         BackupSnapshotResourceGroup,
         BackupSnapshotResourceGroupSuffix,
-        SnapshotConsistencyType
+        SnapshotConsistencyType,
+        BackupTier
     }
 
     public enum ItemParams
@@ -164,7 +171,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         InclusionDisksList,
         ExclusionDisksList,
         ResetExclusionSettings,
-        ExcludeAllDataDisks
+        ExcludeAllDataDisks,
+        ContainerSubscriptionId,
+        AccessType,
+        IsSystemAssignedIdentity,
+        UserAssignedIdentityArmUrl,
+        ForceReregister,
+        ConfirmReregister
     }
 
     public enum ProtectionCheckParams

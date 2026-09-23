@@ -21,6 +21,7 @@
 	<ProjectReference Include="..\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj" />
     <ProjectReference Include="..\RecoveryServices\RecoveryServices.csproj" />
     <ProjectReference Include="..\RecoveryServices.Backup.Helpers\RecoveryServices.Backup.Helpers.csproj" />
+	<ProjectReference Include="..\RecoveryServices.Helper\RecoveryServices.Helper.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

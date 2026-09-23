@@ -17,7 +17,7 @@ Creates a Redis Cache.
 New-AzRedisCache -ResourceGroupName <String> -Name <String> -Location <String> [-Size <String>] [-Sku <String>]
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
  [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-DisableAccessKeyAuthentication <Boolean>] [-SubnetId <String>] [-StaticIP <String>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-RedisVersion <String>] [-UpdateChannel <String>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-RedisVersion <String>] [-UpdateChannel <String>] [-ZonalAllocationPolicy <String>]
  [-IdentityType <String>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -111,7 +111,7 @@ New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central
           Zone               : {1, 2}
 ```
 
-This command creates Azure cache for Redis instance in mutliple zones.
+This command creates Azure cache for Redis instance in multiple zones.
 
 ### Example 4: Create a Virtual Network enable Cache
 
@@ -586,8 +586,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ZonalAllocationPolicy
+Optional: Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -UserAssignedIdentity
-Specifies one or more comma seperated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+Specifies one or more comma separated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
 Type: System.String[]

@@ -16,55 +16,62 @@ The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection
 ```
 Update-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -Name <String>
  -PeerIp <String> -PeerAsn <UInt32> -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubNameByHubVirtualNetworkConnectionResourceId
 ```
 Update-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -Name <String>
  -PeerIp <String> -PeerAsn <UInt32> -VirtualHubVnetConnectionId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByHubVirtualNetworkConnectionObject
 ```
 Update-AzVirtualHubBgpConnection -Name <String> -PeerIp <String> -PeerAsn <UInt32>
  -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> -VirtualHub <PSVirtualHub> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByHubVirtualNetworkConnectionResourceId
 ```
 Update-AzVirtualHubBgpConnection -Name <String> -PeerIp <String> -PeerAsn <UInt32>
  -VirtualHubVnetConnectionId <String> -VirtualHub <PSVirtualHub> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionObject
 ```
 Update-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32>
  -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionResourceId
 ```
 Update-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -VirtualHubVnetConnectionId <String>
- -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByHubBgpConnectionObjectByHubVirtualNetworkConnectionObject
 ```
 Update-AzVirtualHubBgpConnection [-PeerIp <String>] [-PeerAsn <UInt32>]
  -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> -InputObject <PSBgpConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByHubBgpConnectionObjectByHubVirtualNetworkConnectionResourceId
 ```
 Update-AzVirtualHubBgpConnection [-PeerIp <String>] [-PeerAsn <UInt32>] -VirtualHubVnetConnectionId <String>
- -InputObject <PSBgpConnection> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -InputObject <PSBgpConnection> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -72,7 +79,8 @@ Update-AzVirtualHubBgpConnection [-PeerIp <String>] [-PeerAsn <UInt32>] -Virtual
 ```
 Update-AzVirtualHubBgpConnection [-PeerIp <String>] [-PeerAsn <UInt32>]
  [-VirtualHubVnetConnection <PSHubVirtualNetworkConnection>] [-VirtualHubVnetConnectionId <String>]
- -InputObject <PSBgpConnection> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -InputObject <PSBgpConnection> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -106,11 +114,41 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual WA
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

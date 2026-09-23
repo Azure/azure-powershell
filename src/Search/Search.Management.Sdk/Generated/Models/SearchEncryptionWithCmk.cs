@@ -15,17 +15,20 @@ namespace Microsoft.Azure.Management.Search.Models
     public enum SearchEncryptionWithCmk
     {
         /// <summary>
-        /// No enforcement will be made and the search service can have non customer encrypted resources.
+        /// No enforcement of customer-managed key encryption will be made. Only the
+        /// built-in service-managed encryption is used.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Disabled")]
         Disabled,
         /// <summary>
-        /// Search service will be marked as non-compliant if there are one or more non customer encrypted resources.
+        /// Search service will be marked as non-compliant if one or more objects
+        /// aren&#39;t encrypted with a customer-managed key.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Enabled")]
         Enabled,
         /// <summary>
-        /// Enforcement policy is not explicitly specified, with the behavior being the same as if it were set to 'Disabled'.
+        /// Enforcement policy is not explicitly specified, with the behavior being the
+        /// same as if it were set to &#39;Disabled&#39;.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Unspecified")]
         Unspecified

@@ -14,7 +14,8 @@ Updates the destinations or nexthop for the specified Routing Policy of a Routin
 
 ```
 Set-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Destination <String[]> -NextHop <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,36 @@ Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Mic
 ```
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -113,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingIntent
-The routing intent resource to which this rouing policy has to be added. 
+The routing intent resource to which this routing policy has to be added. 
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent

@@ -15,24 +15,28 @@ Creates a virtual network subnet configuration.
 
 ### SetByResource (Default)
 ```
-New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
- [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
- [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzVirtualNetworkSubnetConfig -Name <String> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
+ [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>] [-ServiceEndpoint <String[]>]
+ [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
+ [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]> [-NetworkSecurityGroupId <String>]
+New-AzVirtualNetworkSubnetConfig -Name <String> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-NetworkSecurityGroupId <String>]
  [-RouteTableId <String>] [-ResourceId <String>] [-ServiceEndpoint <String[]>]
  [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>]
  [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
  [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
  [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +84,21 @@ This example creates two new subnet configurations using the
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddressPrefix
 Specifies a range of IP addresses for a subnet configuration.
 
@@ -88,7 +107,22 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,6 +201,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpamPoolPrefixAllocation
+IpamPool to auto allocate from for subnet address prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

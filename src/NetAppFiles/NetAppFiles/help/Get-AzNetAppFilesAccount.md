@@ -14,7 +14,7 @@ Gets details of an Azure NetApp Files (ANF) account.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesAccount -ResourceGroupName <String> [-Name <String>]
+Get-AzNetAppFilesAccount [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

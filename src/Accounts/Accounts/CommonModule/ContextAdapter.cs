@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Collections.Generic;
+using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Utilities;
 using Microsoft.Azure.Commands.Profile.Models;
-using System.Globalization;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Properties;
-using Azure.Identity;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -123,6 +124,43 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
+        /// Change safety pipeline hook, exposed as its own VTable delegate and invoked by the generated
+        /// module right after OnNewRequest. Conditionally appends a step that acquires an Azure Policy
+        /// token and stamps it onto outgoing write requests, based on the -AcquirePolicyToken /
+        /// -ChangeReference bound parameters. When the feature is off, no step is added (zero added cost).
+        /// The write-verb gate lives inside <c>StampPolicyTokenAsync</c>, so GET sub-requests are skipped
+        /// even though the step is added for the cmdlet.
+        /// </summary>
+        internal void AddChangeSafetyPolicyTokenHandler(InvocationInfo invocationInfo, PipelineChangeDelegate appendStep)
+        {
+            var boundParameters = invocationInfo?.BoundParameters;
+            if (boundParameters == null) { return; }
+
+            bool acquire = boundParameters.TryGetValue(Microsoft.WindowsAzure.Commands.Common.ChangeSafetyParameters.AcquirePolicyTokenParamName, out var acquireVal)
+                && acquireVal is SwitchParameter sp && sp.ToBool();
+            string changeReference = boundParameters.TryGetValue(Microsoft.WindowsAzure.Commands.Common.ChangeSafetyParameters.ChangeReferenceParamName, out var crVal)
+                ? crVal as string : null;
+            // Treat a whitespace-only change reference as not provided, so it doesn't trigger acquisition.
+            if (string.IsNullOrWhiteSpace(changeReference)) { changeReference = null; }
+            bool shouldAcquire = acquire || changeReference != null;
+            if (!shouldAcquire) { return; } // feature off -> no added pipeline step (zero cost)
+
+            var acquirer = new Microsoft.WindowsAzure.Commands.Common.PolicyTokenAcquirer();
+            appendStep(
+                async (request, cancelToken, cancelAction, signal, next) =>
+                {
+                    await acquirer.StampPolicyTokenAsync(
+                        request,
+                        shouldAcquire: shouldAcquire,
+                        changeReference: changeReference,
+                        debugMessages: null,
+                        tokenHttpClient: null,
+                        cancellationToken: cancelToken).ConfigureAwait(false);
+                    return await next(request, cancelToken, cancelAction, signal).ConfigureAwait(false);
+                });
+        }
+
+        /// <summary>
         ///  Called for well-known parameters that require argument completers
         ///  </summary>
         /// <param name="completerName">string - the type of completer requested (Resource, Location)</param>
@@ -200,14 +238,13 @@ namespace Microsoft.Azure.Commands.Common
             {
                 var response = await next(request, cancelToken, cancelAction, signal);
 
-                if (response.MatchClaimsChallengePattern())
+                if (response.MatchClaimsChallengePattern(out var claimsChallenge))
                 {
                     //get token again with claims challenge
                     if (accessToken is IClaimsChallengeProcessor processor)
                     {
                         try
                         {
-                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
                             if (!string.IsNullOrEmpty(claimsChallenge))
                             {
                                 await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
@@ -219,7 +256,7 @@ namespace Microsoft.Azure.Commands.Common
                         }
                         catch (AuthenticationFailedException e)
                         {
-                            throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
+                            throw new AzPSAuthenticationFailedException(ClaimsChallengeUtilities.FormatClaimsChallengeErrorMessage(claimsChallenge, await response?.Content?.ReadAsStringAsync()), null, e);
                         }
                     }
                 }

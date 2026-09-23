@@ -15,14 +15,14 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using global::Azure.Storage.Files.Shares;
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using System;
     using System.Globalization;
     using System.Management.Automation;
 
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFileDirectory), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFileDirectory from deprecated v11 SDK will be removed. Use child property ShareDirectoryClient instead.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileDirectory))]
     public class NewAzureStorageDirectory : AzureStorageFileCmdletBase
     {
@@ -34,20 +34,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and ShareClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share where the directory would be created.")]
-        [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
@@ -55,20 +44,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Directory", "13.0.0", "8.0.0", ChangeDescription = "The parameter Directory (alias CloudFileDirectory) will be deprecated, and ShareDirectoryClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.DirectoryParameterSetName,
-            HelpMessage = "CloudFileDirectory object indicated the base folder where the new directory would be created.")]
-        [ValidateNotNull]
-        [Alias("CloudFileDirectory")]
-        public CloudFileDirectory Directory { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.DirectoryParameterSetName,
@@ -85,6 +63,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The mode permissions to be set on the directory. Symbolic (rwxrw-rw-) is supported.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern("([r-][w-][xsS-]){2}([r-][w-][xtT-])")]
+        public string FileMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The owner user identifier (UID) to be set on the directory. The default value is 0 (root).")]
+        [ValidateNotNullOrEmpty]
+        public string Owner { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The owner group identifier (GID) to be set on the directory. The default value is 0 (root group).")]
+        [ValidateNotNullOrEmpty]
+        public string Group { get; set; }
+
         public override void ExecuteCmdlet()
         {
 
@@ -92,22 +83,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
-                    if (this.ShareDirectoryClient != null)
-                    {
-                        baseDirClient = this.ShareDirectoryClient;
-                    }
-                    else
-                    {
-
-                        baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-
-                        // Build and set storage context for the output object when
-                        // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                        if (ShouldSetContext(this.Context, this.Directory.ServiceClient))
-                        {
-                            this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
-                        }
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirClient = this.ShareDirectoryClient;
                     break;
 
                 case Constants.ShareNameParameterSetName:
@@ -117,22 +94,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
-                    if (this.ShareClient != null)
-                    {
-                        baseDirClient = this.ShareClient.GetRootDirectoryClient();
-                    }
-                    else
-                    {
-
-                        baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-
-                        // Build and set storage context for the output object when
-                        // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                        if (ShouldSetContext(this.Context, this.Share.ServiceClient))
-                        {
-                            this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                        }
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    baseDirClient = this.ShareClient.GetRootDirectoryClient();
                     break;
 
                 default:
@@ -140,8 +103,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             ShareDirectoryClient directoryToBeCreated = baseDirClient.GetSubdirectoryClient(this.Path);
-            directoryToBeCreated.Create(cancellationToken: this.CmdletCancellationToken);
-            WriteObject(new AzureStorageFileDirectory(directoryToBeCreated, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));           
+
+            ShareDirectoryCreateOptions createOptions = new ShareDirectoryCreateOptions();
+
+            // set nfs properties
+            if (this.FileMode != null || this.Owner != null || this.Group != null)
+            {
+                createOptions.PosixProperties = new FilePosixProperties()
+                {
+                    FileMode = this.FileMode is null ? null : NfsFileMode.ParseSymbolicFileMode(this.FileMode),
+                    Group = this.Group,
+                    Owner = this.Owner
+                };
+            }
+
+            directoryToBeCreated.Create(createOptions, cancellationToken: this.CmdletCancellationToken);
+            WriteObject(new AzureStorageFileDirectory(directoryToBeCreated, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));
         }
     }
 }

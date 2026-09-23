@@ -37,19 +37,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-SnapshotPipelines");
         }
 
-        [Fact]
+        [Fact(Skip = "Doesn't work at the moment due to service side issue")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVolumeFromSnapshot()
         {
             TestRunner.RunTestScript("Test-CreateVolumeFromSnapshot");
         }
-               
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreVolumeFromSnapshot()
         {
             TestRunner.RunTestScript("Test-RestoreVolumeFromSnapshot");
+        }
+
+        [Fact(Skip = "Doesn't work at the moment due to service side issue")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSplitCloneFromParent()
+        {
+            TestRunner.RunTestScript("Test-SplitCloneFromParent");
         }
     }
 }

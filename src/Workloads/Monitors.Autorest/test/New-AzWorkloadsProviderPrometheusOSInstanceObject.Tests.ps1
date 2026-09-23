@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderPromet
 
 Describe 'New-AzWorkloadsProviderPrometheusOSInstanceObject' {
     It '__AllParameterSets' {
-        $providerSetting = New-AzWorkloadsProviderPrometheusOSInstanceObject -PrometheusUrl "http://10.1.0.4:9100/metrics" -SapSid X00 -SslPreference Disabled
+        $providerSetting = New-AzWorkloadsProviderPrometheusOSInstanceObject -PrometheusUrl "http://10.8.1.37:9100/metrics" -SapSid CHA -SslPreference Disabled
         $providerSetting.ProviderType | Should -Be "PrometheusOS"
 
         $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.osProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting $providerSetting

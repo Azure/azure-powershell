@@ -19,11 +19,12 @@ New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> [-Subscrip
  [-ClusterName <String>] [-CpuCoreCount <Int32>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
  [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
  [-DataStoragePercentage <Int32>] [-DataStorageSizeInTb <Double>] [-DbNodeStorageSizeInGb <Int32>]
- [-DbServer <String[]>] [-DisplayName <String>] [-Domain <String>] [-GiVersion <String>] [-Hostname <String>]
- [-IsLocalBackupEnabled] [-IsSparseDiskgroupEnabled] [-LicenseModel <String>] [-MemorySizeInGb <Int32>]
- [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>] [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>]
- [-SshPublicKey <String[]>] [-SubnetId <String>] [-SystemVersion <String>] [-Tag <Hashtable>]
- [-TimeZone <String>] [-VnetId <String>] [-ZoneId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DbServer <String[]>] [-DisplayName <String>] [-Domain <String>] [-ExascaleDbStorageVaultId <String>]
+ [-GiVersion <String>] [-Hostname <String>] [-IsLocalBackupEnabled] [-IsSparseDiskgroupEnabled]
+ [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>]
+ [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>] [-SshPublicKey <String[]>]
+ [-SubnetId <String>] [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>]
+ [-ZoneId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -338,6 +339,21 @@ Accept wildcard characters: False
 
 ### -Domain
 The domain name for the cloud VM cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExascaleDbStorageVaultId
+Exadata Database Storage Vault ID
 
 ```yaml
 Type: System.String

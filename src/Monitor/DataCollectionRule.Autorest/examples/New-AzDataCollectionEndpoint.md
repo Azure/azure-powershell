@@ -38,9 +38,9 @@ Tag                                 : {
 Type                                : Microsoft.Insights/dataCollectionEndpoints
 ```
 
-This command creates the endpiont with given values.
+This command creates the endpoint with given values.
 
-### Example 2: Create enpoint with json file
+### Example 2: Create endpoint with json file
 ```powershell
 New-AzDataCollectionEndpoint -Name myCollectionEndpoint2 -ResourceGroupName AMCS-TEST -JsonFilePath .\test\jsonfile\endpointTest1.json
 # Note: content of .\test\jsonfile\endpointTest1.json
@@ -89,4 +89,4 @@ Tag                                 : {
 Type                                : Microsoft.Insights/dataCollectionEndpoints
 ```
 
-This command creates enpoint with given json file path.
+This command creates endpoint with given json file path.

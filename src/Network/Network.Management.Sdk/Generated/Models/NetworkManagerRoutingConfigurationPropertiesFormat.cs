@@ -28,16 +28,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public NetworkManagerRoutingConfigurationPropertiesFormat(string description = default(string), string provisioningState = default(string), string resourceGuid = default(string))
+
+        /// <param name="routeTableUsageMode">Route table usage mode defines which route table will be used by the
+        /// configuration. If not defined, this will default to &#39;ManagedOnly&#39;.
+        /// Possible values include: &#39;ManagedOnly&#39;, &#39;UseExisting&#39;</param>
+        public NetworkManagerRoutingConfigurationPropertiesFormat(string description = default(string), string provisioningState = default(string), string resourceGuid = default(string), string routeTableUsageMode = default(string))
 
         {
             this.Description = description;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
+            this.RouteTableUsageMode = routeTableUsageMode;
             CustomInit();
         }
 
@@ -54,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Description {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -64,5 +70,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets route table usage mode defines which route table will be used
+        /// by the configuration. If not defined, this will default to &#39;ManagedOnly&#39;. Possible values include: &#39;ManagedOnly&#39;, &#39;UseExisting&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "routeTableUsageMode")]
+        public string RouteTableUsageMode {get; set; }
     }
 }

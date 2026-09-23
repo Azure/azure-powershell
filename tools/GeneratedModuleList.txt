@@ -33,7 +33,6 @@ Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
 Az.Kusto
-Az.Logz
 Az.ManagedServices
 Az.Maps
 Az.MariaDb
@@ -43,7 +42,6 @@ Az.MySql
 Az.NetworkFunction
 Az.Nginx
 Az.Portal
-Az.PostgreSql
 Az.ProviderHub
 Az.Purview
 Az.RedisEnterpriseCache

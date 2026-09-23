@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaultLocation">Vault location</param>
         /// <param name="vaultName">Vault name</param>
         /// <param name="resourceId">Resource Id</param>
-        /// <returns>AAD auduence</returns>
+        /// <returns>AAD audience</returns>
         private string GetAadAudience(string vaultLocation, string vaultName, long? resourceId)
         {
             //Code taken from Ibiza code

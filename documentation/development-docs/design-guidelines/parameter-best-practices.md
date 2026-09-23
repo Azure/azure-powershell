@@ -1,5 +1,32 @@
 # Parameter Best Practices
 
+- [Parameter Guidelines](#parameter-guidelines)
+  - [Parameter Naming Conventions](#parameter-naming-conventions)
+    - [Standard Parameter Name](#standard-parameter-name)
+    - [Pascal Case](#pascal-case)
+    - [Acronyms](#acronyms)
+    - [Singularity](#singularity)
+    - [Parameter Alias](#parameter-alias)
+  - [Parameter Types](#parameter-types)
+    - [Valid Parameter Types](#valid-parameter-types)
+    - [Consistent Parameter Types](#consistent-parameter-types)
+    - [Array vs. Enumerable Types](#array-vs-enumerable-types)
+    - [Secret Parameters](#secret-parameters)
+    - [Bool vs. SwitchParameter](#bool-vs-switchparameter)
+  - [Argument Completers](#argument-completers)
+    - [Resource Group Completer](#resource-group-completer)
+    - [Resource Name Completer](#resource-name-completer)
+    - [Location Completer](#location-completer)
+    - [Generic Argument Completer](#generic-argument-completer)
+- [Parameter Set Guidelines](#parameter-set-guidelines)
+  - [Parameter Set Naming Conventions](#parameter-set-naming-conventions)
+    - [Pascal Case](#pascal-case-1)
+  - [Attribute Guidelines](#attribute-guidelines)
+    - [Mutually Exclusive Parameter Sets](#mutually-exclusive-parameter-sets)
+    - [Positional Parameters Limit](#positional-parameters-limit)
+    - [ValueFromPipeline Limit](#valuefrompipeline-limit)
+- [Appendix: Parameter Syntax](#appendix-parameter-syntax)
+
 ## Parameter Guidelines
 
 ### Parameter Naming Conventions
@@ -33,6 +60,8 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 >
 > _Plural parameter names should be used only in those cases where the value of the parameter is always a multiple-element value. In these cases, the cmdlet should verify that multiple elements are supplied, and the cmdlet should display a warning to the user if multiple elements are not supplied._
 
+A common exception to this guideline is with units, e.g. `-IntervalInSeconds`, `-MaxSizeInMegabytes`.
+
 #### Parameter Alias
 
 If you there is a separate nomenclature for the parameter name, or if you would like to shorten the name of the parameter so it's easier to remember, you can add an alias attribute to your parameter to allow for this functionality.
@@ -61,7 +90,7 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 
 For parameters whose type is string and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be [SecureString](https://learn.microsoft.com/dotnet/api/system.security.securestring) to limit the exposure of sensitive string data from unexpected leakage during cmdlet execution. The practice also applies to output properties whose type is string and that should be kept in secret.
 
-Please notice that DO NOT use `SecureString` for encryption purposes. We only recommend to use `SecureString` as a wrapper of string to prevent unexpected leakage of information as string may still be exposed to any process or operation that has access to raw memory. 
+Please notice that DO NOT use `SecureString` for encryption purposes. We only recommend to use `SecureString` as a wrapper of string to prevent unexpected leakage of information as string may still be exposed to any process or operation that has access to raw memory.
 
 From [How secure is SecureString?](https://learn.microsoft.com/dotnet/api/system.security.securestring#how-secure-is-securestring)
 
@@ -170,8 +199,8 @@ Allowing the user to pipe an object from one cmdlet to another is a major scenar
 
 ## Appendix: Parameter Syntax
 
-In PowerShell documentation, square brackets (`[]`) indicate optional. 
-Convention is as follows: 
+In PowerShell documentation, square brackets (`[]`) indicate optional.
+Convention is as follows:
 
 ```powershell
 command-name
@@ -181,18 +210,18 @@ command-name
     [-OptionalParameterName] <RequiredParameterValue>
 ```
 
-Using `New-Alias` cmdlet as an example: 
+Using `New-Alias` cmdlet as an example:
 
 ```powershell
-New-Alias 
-    [-Name] <string>                                                     -required 'positional' parameter
-    [-Value] <string>                                                 
-    [-Description <string>]                                              -optional parameter
-    [-Force]                                                             -optional switch parameter (all switch parameters are optional, non-positional)
+New-Alias
+    [-Name] <string>             # required 'positional' parameter
+    [-Value] <string>
+    [-Description <string>]      # optional parameter
+    [-Force]                     # optional switch parameter (all switch parameters are optional, non-positional)
     [-Option {None | ReadOnly | Constant | Private | AllScope}]
-    [-PassThru] 
-    [-Scope <string>] 
-    [-Confirm] 
-    [-WhatIf] 
+    [-PassThru]
+    [-Scope <string>]
+    [-Confirm]
+    [-WhatIf]
     [<CommonParameters>]
 ```

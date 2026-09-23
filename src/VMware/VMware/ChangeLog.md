@@ -19,6 +19,42 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.0
+* Fixed missing `New-AzVMwareVcf5LicenseObject` and `-VcfLicense` on `New-AzVMwarePrivateCloud` in package `0.9.1`; both are now generated and exported.
+
+## Version 0.9.1
+* Added `-VcfLicense` parameter to `New-AzVMwarePrivateCloud` to support setting a VMware Cloud Foundation (VCF) license during private cloud provisioning
+    - Added `New-AzVMwareVcf5LicenseObject` helper cmdlet to construct a VCF 5.0 license object for use with `-VcfLicense`
+
+## Version 0.9.0
+* Updated the AVS VMware cmdlets api version to `2025-09-01`. 
+* Added cmdlet:
+    - `Get-AzVMwareLicense`
+    - `Get-AzVMwareLicenseProperty`
+    - `Get-AzVMwareMaintenance`
+    - `Get-AzVMwarePrivateCloudVcfLicense`
+    - `Invoke-AzVMwareInitiateMaintenanceCheck`
+    - `Invoke-AzVMwareRescheduleMaintenance`
+    - `Invoke-AzVMwareScheduleMaintenance`
+    - `New-AzVMwareLicense`
+    - `Remove-AzVMwareLicense`
+    - `Update-AzVMwareLicense`
+    - `Test-AzVMwareServiceComponentAvailability`
+
+## Version 0.8.0
+* Updated the AVS VMware cmdlets api version to `2024-09-01`. 
+* Added cmdlet:
+    - `Get-AzVMwareHost`
+    - `Get-AzVMwareSku`
+    - `Get-AzVMwareProvisionedNetwork`
+    - `Get-AzVMwarePureStoragePolicy`
+    - `New-AzVMwarePureStoragePolicy`
+    - `Update-AzVMwarePureStoragePolicy`
+    - `Remove-AzVMwarePureStoragePolicy`
+
+## Version 0.7.2
+* Upgraded nuget package to signed package.
+
 ## Version 0.7.1
 * Fixed secrets exposure in example documentation.
 
@@ -69,4 +105,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.VMWare
-

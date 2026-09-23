@@ -62,7 +62,7 @@ $VirtualMachine = Set-AzVMSecurityProfile -VM $VirtualMachine -SecurityType $Sec
 $VirtualMachine = Set-AzVMUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
 # Set the Disk Encryption Type. 
-$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSEcurityEncryptionType;
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSecurityEncryptionType;
 
 $vm = New-AzVM -ResourceGroupName $rgname -Location $LocationName -VM $VirtualMachine;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;

@@ -59,7 +59,11 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new InvalidOperationException(Resources.ContextCannotBeNull);
             }
 
-            _client = new RMProfileClient(profile);
+            _client = new RMProfileClient(profile)
+            {
+                WarningLog = (s) => WriteWarning(s),
+                CmdletContext = _cmdletContext
+            };
             _client.WarningLog = (s) => WriteWarning(s);
         }
 
@@ -118,6 +122,10 @@ namespace Microsoft.Azure.Commands.Profile
                             var subscriptions = _client.ListSubscriptions(TenantId);
                             WriteSubscriptions(subscriptions);
                         }
+                        else
+                        {
+                            ThrowMSITenantMismatchError(DefaultContext.Tenant.Id, TenantId);
+                        }
                     }
                     else
                     {
@@ -136,6 +144,13 @@ namespace Microsoft.Azure.Commands.Profile
         private void ThrowSubscriptionNotFoundError(string tenant, string subscription)
         {
             PSArgumentException exception = new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+            exception.Data[AzurePSErrorDataKeys.ErrorKindKey] = ErrorKind.UserError;
+            throw exception;
+        }
+
+        private void ThrowMSITenantMismatchError(string defaultTenant, string requestedTenant)
+        {
+            PSInvalidOperationException exception = new PSInvalidOperationException(string.Format(Resources.MSITenantMismatch, defaultTenant, requestedTenant));
             exception.Data[AzurePSErrorDataKeys.ErrorKindKey] = ErrorKind.UserError;
             throw exception;
         }

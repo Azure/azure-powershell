@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public ScheduledEventsProfile ScheduledEventsProfile { get; set; }
         public CapacityReservationProfile CapacityReservation { get; set; }
         public string UserData { get; set; }
+        public VirtualMachineScaleSetHardwareProfile HardwareProfile { get; set; }
         public PSApplicationProfile ApplicationProfile { get; set; }
+        public SecurityPostureReference SecurityPostureReference { get; set; }
         public System.DateTime? TimeCreated { get; private set; }
+        public bool? AddProxyAgentExtension { get; set; }
     }
 }

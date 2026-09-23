@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppManagedEnvDapr
 
 ## SYNOPSIS
-Update a Dapr Component in a Managed Environment.
+update a Dapr Component in a Managed Environment.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-ComponentType 
 ```
 
 ## DESCRIPTION
-Update a Dapr Component in a Managed Environment.
+update a Dapr Component in a Managed Environment.
 
 ## EXAMPLES
 

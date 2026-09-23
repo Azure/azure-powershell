@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnect
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnector
 #>
 function New-AzHealthcareIotConnector {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotConnector])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -43,91 +43,123 @@ function New-AzHealthcareIotConnector {
         # The name of IoT Connector resource.
         ${Name},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [System.String]
         # The name of the resource group that contains the service instance.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
-        [System.String]
-        # The name of workspace resource.
-        ${WorkspaceName},
-
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+        [Parameter(ParameterSetName='CreateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The subscription identifier.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [System.String]
+        # The name of workspace resource.
+        ${WorkspaceName},
+
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
+        # Identity Parameter
+        ${WorkspaceInputObject},
+
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotMappingPropertiesContent]))]
         [System.Collections.Hashtable]
         # The mapping.
         ${DeviceMappingContent},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Determines whether to enable a system-assigned identity for the resource.
+        ${EnableSystemAssignedIdentity},
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # An etag associated with the resource, used for optimistic concurrency when editing it.
         ${Etag},
 
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType]
-        # Type of identity being specified, currently SystemAssigned and None are allowed.
-        ${IdentityType},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
-
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Consumer group of the event hub to connected to.
         ${IngestionEndpointConfigurationConsumerGroup},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Event Hub name to connect to.
         ${IngestionEndpointConfigurationEventHubName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # Fully qualified namespace of the Event Hub to connect to.
         ${IngestionEndpointConfigurationFullyQualifiedEventHubNamespace},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
         [System.String]
         # The resource location.
         ${Location},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
+
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Parameter(ParameterSetName='CreateViaIdentityWorkspaceExpanded')]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String[]]
+        # The array of user assigned identities associated with the resource.
+        # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        ${UserAssignedIdentity},
+
+        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Create operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
+        [System.String]
+        # Json string supplied to the Create operation
+        ${JsonString},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

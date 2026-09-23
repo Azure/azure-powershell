@@ -15,7 +15,8 @@ Lists all the restorable Azure Cosmos DB Tables available for a specific databas
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBTableRestorableTable -Location <String> -DatabaseAccountInstanceId <String> [-StartTime <String>]
- [-EndTime <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EndTime <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

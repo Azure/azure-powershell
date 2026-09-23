@@ -1,0 +1,105 @@
+{
+  "resourceType": "organizations/projects/clusters",
+  "apiVersion": "2026-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mongodb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMongoDBCluster",
+      "description": "Get a Cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}/projects/{projectName}/clusters/{clusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mongodb/get-azmongodbcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Cluster",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMongoDBCluster",
+      "description": "Delete a Cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}/projects/{projectName}/clusters/{clusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodbcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Cluster",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

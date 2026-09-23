@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         WorkerNode,
 
         /// <summary>
-        /// The zookeper nodes of the cluster.
+        /// The zookeeper nodes of the cluster.
         /// </summary>
         ZookeeperNode,
 

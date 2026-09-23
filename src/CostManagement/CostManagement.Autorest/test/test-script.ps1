@@ -22,7 +22,7 @@ New-AzCostManagementExport -Debug -Scope "subscriptions/9e223dbe-3399-4e19-88eb-
 -DatasetGranularity "Daily"
 #>
 
-<# custom colum pass
+<# custom column pass
 New-AzCostManagementExport -Debug -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f" -Name "ps-customcolum-t" `
 -ScheduleStatus "Active" -ScheduleRecurrence "Daily" -RecurrencePeriodFrom "2020-06-29T13:00:00Z" `
 -RecurrencePeriodTo "2020-07-01T00:00:00Z" -Format "Csv" `

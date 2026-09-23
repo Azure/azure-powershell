@@ -23,8 +23,9 @@ Get-AzAppConfigurationKeyValue -Endpoint <String> [-Key <String>] [-Label <Strin
 ### List
 ```
 Get-AzAppConfigurationKeyValue -Endpoint <String> [-Key <String>] [-Label <String>]
- [-Select <System.Collections.Generic.List`1[System.String]>] [-After <String>] [-AcceptDatetime <String>]
- [-SyncToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Select <System.Collections.Generic.List`1[System.String]>] [-After <String>] [-Snapshot <String>]
+ [-AcceptDatetime <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,6 +206,23 @@ Used to select what fields are present in the returned resource(s).
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Snapshot
+A filter used get key-values for a snapshot.
+The value should be the name of the snapshot.
+Not valid when used with 'key' and 'label' filters.
+
+```yaml
+Type: System.String
+Parameter Sets: List
 Aliases:
 
 Required: False

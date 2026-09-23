@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public bool? SelfContainedInteractiveAuthoringEnabled => SelfHostedIntegrationRuntime.SelfContainedInteractiveAuthoringEnabled;
+
         protected SelfHostedIntegrationRuntime SelfHostedIntegrationRuntime => IntegrationRuntime.Properties as SelfHostedIntegrationRuntime;
     }
 }

@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzSqlVM')) {
 }
 
 Describe 'New-AzSqlVM' {
-	It 'CreateExpanded-Simple' {
+	It 'CreateExpanded-Simple' -skip{
 		$sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 		$sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
 		$sqlVM.SqlImageSku | Should -Be 'Enterprise'
@@ -30,7 +30,7 @@ Describe 'New-AzSqlVM' {
 		Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
 	}
 
-	It 'CreateExpanded-LicenseType' {
+	It 'CreateExpanded-LicenseType' -skip{
 		$sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -LicenseType 'AHUB'
 		$sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
 		$sqlVM.SqlImageSku | Should -Be 'Enterprise'

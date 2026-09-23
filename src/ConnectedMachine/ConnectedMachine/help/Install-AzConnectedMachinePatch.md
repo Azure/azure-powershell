@@ -20,20 +20,20 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-Sub
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
  [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InstallViaJsonString
 ```
 Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InstallViaJsonFilePath
 ```
 Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-Sub
 ```
 Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InstallViaIdentityExpanded
@@ -52,14 +52,14 @@ Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -Maximu
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
  [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InstallViaIdentity
 ```
 Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
  -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -262,21 +262,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

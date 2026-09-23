@@ -63,6 +63,10 @@ body:
   id: documentVersionIndependentId
   attributes:
     label: Document Id
+- type: input
+  id: platformId
+  attributes:
+    label: Platform Id
 - type: markdown
   attributes:
     value: >

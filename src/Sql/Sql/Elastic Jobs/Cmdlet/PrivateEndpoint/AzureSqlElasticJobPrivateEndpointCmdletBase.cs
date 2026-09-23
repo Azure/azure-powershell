@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
     public abstract class AzureSqlElasticJobPrivateEndpointCmdletBase<TInputObject> : AzureSqlElasticJobsCmdletBase<TInputObject, IEnumerable<AzureSqlElasticJobPrivateEndpointModel>, AzureSqlElasticJobAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The Azure Elastic Job adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()

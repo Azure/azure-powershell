@@ -66,7 +66,7 @@ Test2 True    containername Blob       Parquet Weekly   True                    
 Test3 True    containername Blob       Parquet Weekly   True                                 True           {blockBlob, appendBlob} {aaa, bbb}   {ccc, ddd}    {Name, Last-Modified, BlobType, AccessTier...}
 ```
 
-This first 3 commands create 3 BlobInventoryPolicy rule objects: rule "Test1" for contaienr inventory; rule "Test2" for blob inventory; rule "Test3" for blob inventory with more schema fields, excludePrefix specified, and IncludeDeleted enabled.
+This first 3 commands create 3 BlobInventoryPolicy rule objects: rule "Test1" for container inventory; rule "Test2" for blob inventory; rule "Test3" for blob inventory with more schema fields, excludePrefix specified, and IncludeDeleted enabled.
 The following command sets blob inventory policy to a Storage account with the 3 rule objects, then show the updated policy and rules properties.
 
 ## PARAMETERS

@@ -40,7 +40,7 @@ Restore-AzNetAppFilesVolume -InputObject <PSNetAppFilesVolume> [-PassThru]
 ```
 
 ## DESCRIPTION
-Restore/Revert a volume to the snapshot specified in the SnapshotId paramter
+Restore/Revert a volume to the snapshot specified in the SnapshotId parameter
 
 ## EXAMPLES
 

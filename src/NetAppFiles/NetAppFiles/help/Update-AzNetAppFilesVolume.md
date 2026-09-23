@@ -20,9 +20,10 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
- [-SmbNonBrowsable <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -32,8 +33,9 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
- [-SmbNonBrowsable <String>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
+ [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,9 +46,10 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
- [-SmbNonBrowsable <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -56,8 +59,9 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
  [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
- [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-ProtocolType <String[]>]
- [-SmbNonBrowsable <String>] -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
+ [-CoolAccessTieringPolicy <String>] [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>]
+ [-ProtocolType <String[]>] [-SmbNonBrowsable <String>] [-DesiredRansomwareProtectionState <String>]
+ -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -152,6 +156,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CoolAccessTieringPolicy
+CoolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: 
+ Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default.
+ SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CoolnessPeriod
 Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).
 
@@ -202,6 +223,21 @@ Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the mini
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DesiredRansomwareProtectionState
+The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

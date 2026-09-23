@@ -20,7 +20,8 @@ New-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <
  [-SqlSetting <PSAzureFirewallPolicySqlSetting>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
@@ -30,7 +31,8 @@ New-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-Threat
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>]
- [-Snat <PSAzureFirewallPolicySNAT>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Snat <PSAzureFirewallPolicySNAT>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -119,6 +121,21 @@ This example creates a firewall policy with explicit proxy settings
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
@@ -161,6 +178,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

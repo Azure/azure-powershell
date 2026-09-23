@@ -148,7 +148,7 @@ Properties not provided in the update request will not be changed.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalogUpdate
 Parameter Sets: Patch, PatchViaIdentity
 Aliases:
 
@@ -393,13 +393,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalogUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalogUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
 
 ## NOTES
 

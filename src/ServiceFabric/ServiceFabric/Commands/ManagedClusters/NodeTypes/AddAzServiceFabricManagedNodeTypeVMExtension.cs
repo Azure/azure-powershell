@@ -117,12 +117,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             NodeType currentNodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
 
-            if (currentNodeType.VmExtensions == null)
+            if (currentNodeType.VMExtensions == null)
             {
-                currentNodeType.VmExtensions = new List<VmssExtension>();
+                currentNodeType.VMExtensions = new List<VmssExtension>();
             }
 
-            currentNodeType.VmExtensions.Add(new VmssExtension()
+            currentNodeType.VMExtensions.Add(new VmssExtension()
             {
                 Name = this.Name,
                 Publisher = this.Publisher,

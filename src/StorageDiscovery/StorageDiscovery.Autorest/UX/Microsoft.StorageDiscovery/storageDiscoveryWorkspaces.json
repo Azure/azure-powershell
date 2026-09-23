@@ -1,0 +1,85 @@
+{
+  "resourceType": "storageDiscoveryWorkspaces",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storagediscovery"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageDiscoveryWorkspace",
+      "description": "Get a StorageDiscoveryWorkspace",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagediscovery/get-azstoragediscoveryworkspace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StorageDiscoveryWorkspace",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.storageDiscoveryWorkspaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageDiscoveryWorkspace",
+      "description": "Delete a StorageDiscoveryWorkspace",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagediscovery/remove-azstoragediscoveryworkspace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a StorageDiscoveryWorkspace",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.storageDiscoveryWorkspaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,618 @@
+{
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"namespace\": \"sr-update-ns-001\",\n    \"displayName\": \"Schema Registry namespace 001\",\n    \"description\": \"This is a sample Schema Registry\",\n    \"storageAccountContainerUrl\": \"https://mystorageacc.blob.core.windows.net/mycontainer\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "285" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"ea02c553-0000-0200-0000-6882caf40000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/c470c317-46f4-411a-a972-37e626b215fe" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "bdfd6ec1-df85-44e5-bd61-ab1f7da09596" ],
+        "x-envoy-upstream-service-time": [ "620" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250725T000819Z-157d4df6468dcmp8hC1BN1ba5n0000000d10000000005g5b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "03b52c91-0937-434a-a304-50f611266ba3" ],
+        "x-ms-correlation-request-id": [ "a5b4a6ec-f201-4f16-8a0b-79251b8c81ea" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000820Z:a5b4a6ec-f201-4f16-8a0b-79251b8c81ea" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: BFCE62568012499286F1AF5A829FF519 Ref B: MWH011020806029 Ref C: 2025-07-25T00:08:19Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:08:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:19.4013021Z\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "ca49b45d-b62d-4b78-b136-cf01ee43114b" ],
+        "CommandName": [ "New-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "New-AzDeviceRegistrySchemaRegistry_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea02c553-0000-0200-0000-6882caf40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "885a87bf-0723-4aa9-b09c-30f8d96480d3" ],
+        "x-ms-correlation-request-id": [ "0f99c143-adad-49f0-b441-1ae7969acfdf" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000850Z:0f99c143-adad-49f0-b441-1ae7969acfdf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1A900EF59AAC4C62B187027ED2CDE391 Ref B: MWH011020806029 Ref C: 2025-07-25T00:08:50Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:08:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:19.4013021Z\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "ca49b45d-b62d-4b78-b136-cf01ee43114b" ],
+        "CommandName": [ "New-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "New-AzDeviceRegistrySchemaRegistry_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea02c553-0000-0200-0000-6882caf40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5e52de29-35a3-4874-b3d4-e06ba037e1e6" ],
+        "x-ms-correlation-request-id": [ "8698ead4-6b09-4048-b4ff-4779125fc89c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000850Z:8698ead4-6b09-4048-b4ff-4779125fc89c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BB54FECC52D3493A9B6EAE6F57E89A37 Ref B: MWH011020806029 Ref C: 2025-07-25T00:08:50Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:08:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:19.4013021Z\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "941e3eb3-0ad1-48f1-bd09-fa84edc38935" ],
+        "CommandName": [ "Update-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "Update-AzDeviceRegistrySchemaRegistry_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea02c553-0000-0200-0000-6882caf40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "08a60279-c9ec-439f-b08e-9424ea8e3b88" ],
+        "x-ms-correlation-request-id": [ "ce17791c-9e46-46e3-aca0-4ce186823495" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000850Z:ce17791c-9e46-46e3-aca0-4ce186823495" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CD71131ABB8740CBBACE1536D92CB3F8 Ref B: MWH011020806029 Ref C: 2025-07-25T00:08:50Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:08:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "814" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:19.4013021Z\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"namespace\": \"sr-update-ns-001\",\n    \"displayName\": \"Updated schema registry display name\",\n    \"description\": \"Updated schema registry description\",\n    \"storageAccountContainerUrl\": \"https://mystorageacc.blob.core.windows.net/mycontainer\"\n  },\n  \"identity\": {\n    \"type\": \"None\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "335" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"ea022054-0000-0200-0000-6882cb130000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/33b52c5c-62a4-458b-9703-adb8f0020e2a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "e158f8e1-138a-473f-9c60-ebc0897b13b7" ],
+        "x-envoy-upstream-service-time": [ "8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250725T000851Z-157d4df6468pqvkghC1BN1mn1w0000000hm000000000hc48" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "abfd05aa-631b-4a71-8c4b-7d189ccd0005" ],
+        "x-ms-correlation-request-id": [ "6cf9a1a5-5490-41e4-8ede-4e65b23f848e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000851Z:6cf9a1a5-5490-41e4-8ede-4e65b23f848e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: C3A84D27F9E2409B9F12A97A80EA8BE2 Ref B: MWH011020806029 Ref C: 2025-07-25T00:08:50Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:08:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "851" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:51.3661494Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Updated schema registry display name\",\"description\":\"Updated schema registry description\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "941e3eb3-0ad1-48f1-bd09-fa84edc38935" ],
+        "CommandName": [ "Update-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "Update-AzDeviceRegistrySchemaRegistry_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea022054-0000-0200-0000-6882cb130000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "021ebaaf-b32f-48d5-a3e7-657b8f7daae5" ],
+        "x-ms-correlation-request-id": [ "0606cbe1-9f0b-4e1f-97bd-f9cc23850d57" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000921Z:0606cbe1-9f0b-4e1f-97bd-f9cc23850d57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E4D18B8364614493BD832EE973626ED0 Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:21Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "851" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:51.3661494Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Updated schema registry display name\",\"description\":\"Updated schema registry description\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "941e3eb3-0ad1-48f1-bd09-fa84edc38935" ],
+        "CommandName": [ "Update-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "Update-AzDeviceRegistrySchemaRegistry_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea022054-0000-0200-0000-6882cb130000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "863a95b8-d822-4556-bf1c-331dca5297b5" ],
+        "x-ms-correlation-request-id": [ "2c3983bd-6d29-4369-8384-8d5077f6917e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000922Z:2c3983bd-6d29-4369-8384-8d5077f6917e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 84E1BB2AA5014174AC5C1A09994CD1B6 Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:21Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "851" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update\",\"name\":\"test-schema-registry-update\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:08:19.4013021Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:08:51.3661494Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"uuid\":\"27ddbdbd-7788-467f-81c2-1806577f4399\",\"namespace\":\"sr-update-ns-001\",\"displayName\":\"Updated schema registry display name\",\"description\":\"Updated schema registry description\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"namespace\": \"sr-update-ns-002\",\n    \"displayName\": \"Schema Registry namespace 001\",\n    \"description\": \"This is a sample Schema Registry\",\n    \"storageAccountContainerUrl\": \"https://mystorageacc.blob.core.windows.net/mycontainer\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "285" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"ea029454-0000-0200-0000-6882cb340000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/9e28c6c1-a325-4ad5-8da8-d2186b2515e2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6076689c-8fd8-4b67-92ca-65bf666e6f56" ],
+        "x-envoy-upstream-service-time": [ "536" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250725T000922Z-157d4df6468624lthC1BN136b800000003eg00000000ftnh" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "56fec89c-2ca1-44b9-a148-e1f3d1aa64a9" ],
+        "x-ms-correlation-request-id": [ "9f3f3ad8-5574-4d77-9838-3c746c2eb110" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000924Z:9f3f3ad8-5574-4d77-9838-3c746c2eb110" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: EA118F893C214D90A377226DBCF3CC8A Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:22Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "858" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:22.5586008Z\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "3f433b06-1f40-4c38-a2e3-927e389b1454" ],
+        "CommandName": [ "New-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "New-AzDeviceRegistrySchemaRegistry_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea029454-0000-0200-0000-6882cb340000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "93d0ffa2-cc31-43e9-ae78-5addfa26a2b6" ],
+        "x-ms-correlation-request-id": [ "acb07e89-5513-4497-bcca-2207048800f1" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000954Z:acb07e89-5513-4497-bcca-2207048800f1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AA25ED8C69C44455AE35B035F63C39D5 Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:54Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "858" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:22.5586008Z\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "3f433b06-1f40-4c38-a2e3-927e389b1454" ],
+        "CommandName": [ "New-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "New-AzDeviceRegistrySchemaRegistry_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea029454-0000-0200-0000-6882cb340000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "75a0571b-667c-4518-afb8-b222eafea7a7" ],
+        "x-ms-correlation-request-id": [ "1040c5e0-ff3d-4ca7-ad45-2b389f95bb57" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000954Z:1040c5e0-ff3d-4ca7-ad45-2b389f95bb57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A93FBC04DEFF4DA69C1A0FEC91D69A68 Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:54Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "858" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:22.5586008Z\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "a72fd3fe-f938-47ba-b6ca-c84b55beca26" ],
+        "CommandName": [ "Update-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "Update-AzDeviceRegistrySchemaRegistry_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea029454-0000-0200-0000-6882cb340000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e4169b6a-7032-4800-9293-b5c7b46a575f" ],
+        "x-ms-correlation-request-id": [ "e34fa095-477b-42fe-9370-316397c6caab" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000954Z:e34fa095-477b-42fe-9370-316397c6caab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BAF396D395854ECCBE7599D017EBD09D Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:54Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "858" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:22.5586008Z\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Schema Registry namespace 001\",\"description\":\"This is a sample Schema Registry\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": "{\n  \"location\": \"eastus2\",\n  \"properties\": {\n    \"namespace\": \"sr-update-ns-002\",\n    \"displayName\": \"Updated schema registry display name\",\n    \"description\": \"Updated schema registry description\",\n    \"storageAccountContainerUrl\": \"https://mystorageacc.blob.core.windows.net/mycontainer\"\n  },\n  \"identity\": {\n    \"type\": \"None\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "335" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "ETag": [ "\"ea02e654-0000-0200-0000-6882cb530000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=e3029257-ff30-403c-a905-c87ef1aa933a/eastus2/a7b45122-7f05-455c-8e5b-037652c5a941" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "dffae929-8479-4358-90d7-b0a06355ae42" ],
+        "x-envoy-upstream-service-time": [ "7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20250725T000955Z-157d4df64686vjhqhC1BN11uwn0000000hp000000000960x" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "ee5d2dc4-3dbd-4704-af70-7eec0b695c70" ],
+        "x-ms-correlation-request-id": [ "f32285d0-9a28-47c8-9c48-fe61b9bc56f9" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T000955Z:f32285d0-9a28-47c8-9c48-fe61b9bc56f9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 949CEE6F48DD4D7CAC1E22568C1FF253 Ref B: MWH011020806029 Ref C: 2025-07-25T00:09:55Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:09:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "895" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:55.2257983Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Updated schema registry display name\",\"description\":\"Updated schema registry description\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "a72fd3fe-f938-47ba-b6ca-c84b55beca26" ],
+        "CommandName": [ "Update-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "Update-AzDeviceRegistrySchemaRegistry_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea02e654-0000-0200-0000-6882cb530000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f537c9c3-2996-486b-9bf6-d27c470a59ec" ],
+        "x-ms-correlation-request-id": [ "76043772-9716-429c-ab20-a3b3d8dd6418" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T001026Z:76043772-9716-429c-ab20-a3b3d8dd6418" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1814188A038048C79D5728642CDBA421 Ref B: MWH011020806029 Ref C: 2025-07-25T00:10:25Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:10:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "895" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:55.2257983Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Updated schema registry display name\",\"description\":\"Updated schema registry description\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDeviceRegistrySchemaRegistry+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded?api-version=2025-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "a72fd3fe-f938-47ba-b6ca-c84b55beca26" ],
+        "CommandName": [ "Update-AzDeviceRegistrySchemaRegistry" ],
+        "FullCommandName": [ "Update-AzDeviceRegistrySchemaRegistry_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.24", "Az.DeviceRegistry/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"ea02e654-0000-0200-0000-6882cb530000\"" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "98871adb-f0dc-4222-8e73-25a8d8afdfb0" ],
+        "x-ms-correlation-request-id": [ "c9a23473-2d0b-44e2-90bd-e6affcb83d45" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20250725T001026Z:c9a23473-2d0b-44e2-90bd-e6affcb83d45" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F173C2233B8649689C3342E19B616D69 Ref B: MWH011020806029 Ref C: 2025-07-25T00:10:26Z" ],
+        "Date": [ "Fri, 25 Jul 2025 00:10:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "895" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/schemaRegistries/test-schema-registry-update-via-identity-expanded\",\"name\":\"test-schema-registry-update-via-identity-expanded\",\"type\":\"microsoft.deviceregistry/schemaregistries\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"rylo@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-07-25T00:09:22.5586008Z\",\"lastModifiedBy\":\"rylo@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-07-25T00:09:55.2257983Z\"},\"identity\":{\"type\":\"None\"},\"properties\":{\"uuid\":\"0638ba20-0235-422f-95b7-49cfeb606cb4\",\"namespace\":\"sr-update-ns-002\",\"displayName\":\"Updated schema registry display name\",\"description\":\"Updated schema registry description\",\"storageAccountContainerUrl\":\"https://mystorageacc.blob.core.windows.net/mycontainer\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

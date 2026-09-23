@@ -13,18 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFileShare), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFileShare from deprecated v11 SDK will be removed. Use child property ShareClient instead.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
@@ -37,17 +34,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and a new mandatory parameter ShareClient will be added.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareParameterSetName,
-            HelpMessage = "CloudFileShare object indicated the share whose quota to set.")]
+            HelpMessage = "ShareClient object indicated the share whose quota to set.")]
         [ValidateNotNull]
-        [Alias("CloudFileShare")]
-        public CloudFileShare Share { get; set; }
+        public ShareClient ShareClient { get; set; }
 
         [Alias("QuotaGiB")]
         [Parameter(Position = 1, Mandatory = true,
@@ -76,14 +71,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
-                    share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);
-
-                    // Build and set storage context for the output object when
-                    // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                    if (ShouldSetContext(this.Context, this.Share.ServiceClient))
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                    }
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
+                    share = this.ShareClient;
                     break;
 
                 default:
@@ -94,8 +83,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (shareProperties.QuotaInGB != this.Quota)
             {
-                //fileShare.Properties.Quota = this.Quota;
-                //this.Channel.SetShareProperties(fileShare, null, this.RequestOptions, this.OperationContext);
                 share.SetQuota(this.Quota);
                 shareProperties = share.GetProperties(this.CmdletCancellationToken).Value;
             }

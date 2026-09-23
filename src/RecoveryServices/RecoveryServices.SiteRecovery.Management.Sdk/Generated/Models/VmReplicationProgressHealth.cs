@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class VmReplicationProgressHealth
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// InProgress
+        /// </summary>
         public const string InProgress = "InProgress";
+        /// <summary>
+        /// SlowProgress
+        /// </summary>
         public const string SlowProgress = "SlowProgress";
+        /// <summary>
+        /// NoProgress
+        /// </summary>
         public const string NoProgress = "NoProgress";
     }
 }

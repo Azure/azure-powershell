@@ -14,7 +14,7 @@ Clear-AzConfig -DisableErrorRecordsPersistence
 ```
 #### After
 ```powershell
-error record will be disabled by default. New parameter 'EnableErrorRecordsPersistence' added to enable erro record.
+error record will be disabled by default. New parameter 'EnableErrorRecordsPersistence' added to enable error record.
 ```
 
 
@@ -30,7 +30,7 @@ Get-AzConfig -DisableErrorRecordsPersistence
 ```
 #### After
 ```powershell
-error record will be disabled by default. New parameter 'EnableErrorRecordsPersistence' added to enable erro record.
+error record will be disabled by default. New parameter 'EnableErrorRecordsPersistence' added to enable error record.
 ```
 
 
@@ -46,7 +46,7 @@ Update-AzConfig -DisableErrorRecordsPersistence
 ```
 #### After
 ```powershell
-error record will be disabled by default. New parameter 'EnableErrorRecordsPersistence' added to enable erro record.
+error record will be disabled by default. New parameter 'EnableErrorRecordsPersistence' added to enable error record.
 ```
 
 
@@ -1668,7 +1668,7 @@ $exemptionCategory = $policyExemption.Properties.ExemptionCategory
 $policyExemption = Update-AzPolicyExemption -Name MyExemption -ExemptionCategory Waiver
 $exemptionCategory = $policyExemption.ExemptionCategory
 
-Compatbile option:
+Compatible option:
 $policyExemption = Update-AzPolicyExemption -Name MyExemption -ExemptionCategory Waiver -BackwardCompatible
 $exemptionCategory = $policyExemption.Properties.ExemptionCategory
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresynapseworkspacemsiscanobject
 schema: 2.0.0
 ---
 
@@ -13,12 +13,10 @@ Create an in-memory object for AzureSynapseWorkspaceMsiScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSynapseWorkspaceMsiScanObject -Kind <ScanAuthorizationType>
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
- [-CredentialReferenceName <String>] [-CredentialType <CredentialType>]
+New-AzPurviewAzureSynapseWorkspaceMsiScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>] [-CredentialType <String>]
  [-ResourceType <IExpandingResourceScanPropertiesResourceTypes>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>]
- [<CommonParameters>]
+ [-ScanRulesetType <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +26,7 @@ Create an in-memory object for AzureSynapseWorkspaceMsiScan.
 
 ### Example 1: Create Azure Synapse Workspace Msi scan object
 ```powershell
-New-AzPurviewAzureSynapseWorkspaceMsiScanObject -Kind 'AzureSynapseWorkspaceMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
+New-AzPurviewAzureSynapseWorkspaceMsiScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
 ```
 
 ```output
@@ -114,7 +112,7 @@ Accept wildcard characters: False
 ### -CredentialType
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,25 +123,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceType
-To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +154,7 @@ Accept wildcard characters: False
 ### -ScanRulesetType
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceMsiScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSynapseWorkspaceMsiScan
 
 ## NOTES
 

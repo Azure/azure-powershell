@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterData
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azperfcounterdatasourceobject
 #>
 function New-AzPerfCounterDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

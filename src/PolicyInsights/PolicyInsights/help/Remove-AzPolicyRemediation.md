@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/remove-azpolicyremediation
 schema: 2.0.0
@@ -12,27 +12,49 @@ Deletes a policy remediation.
 
 ## SYNTAX
 
-### ByName (Default)
+### DeleteBySubscriptionId (Default)
 ```
-Remove-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
- [-ResourceGroupName <String>] [-AllowStop] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Remove-AzPolicyRemediation -ResourceId <String> [-AllowStop] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyRemediation -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-AllowStop] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByInputObject
+### DeleteByResourceGroup
 ```
-Remove-AzPolicyRemediation -InputObject <PSRemediation> [-AllowStop] [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyRemediation -Name <String> [-SubscriptionId <String>] -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-AllowStop] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByResourceId
+```
+Remove-AzPolicyRemediation [-Name <String>] -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-AllowStop] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByScope
+```
+Remove-AzPolicyRemediation -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-AsJob] [-AllowStop]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByManagementGroup
+```
+Remove-AzPolicyRemediation -Name <String> -ManagementGroupId <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-AllowStop] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzPolicyRemediation -InputObject <IPolicyInsightsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-AllowStop] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Remove-AzPolicyRemediation** cmdlet deletes a policy remediation.
+
+The remediation must be in a terminal state in order to be deleted.
+
+However, this cmdlet has a switch that allows it to force a remediation to stop if it's still in progress and then will proceed to delete it.
 
 ## EXAMPLES
 
@@ -45,23 +67,27 @@ This command deletes the remediation named 'remediation1' in resource group 'myR
 
 ### Example 2: Delete a management group remediation via piping
 ```powershell
-$remediation = Get-AzPolicyRemediation -ManagementGroupName "mg1" -Name "remediation1"
+$remediation = Get-AzPolicyRemediation -ManagementGroupId "mg1" -Name "remediation1"
 $remediation | Remove-AzPolicyRemediation -Confirm
 ```
 
-This command deletes the remediation named 'remediation1' from management group 'mg1'. A confirmation prompt will be presented before deleting the resource.
+This command deletes the remediation named 'remediation1' from management group 'mg1'.
+A confirmation prompt will be presented before deleting the resource.
 
 ### Example 3: Cancel and delete a policy remediation
 ```powershell
 Remove-AzPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1" -AllowStop
 ```
 
-This command deletes the remediation named 'remediation1' in resource group 'myRG'. If the remediation is in-progress it will be canceled before being deleted.
+This command deletes the remediation named 'remediation1' in resource group 'myRG'.
+If the remediation is in-progress it will be canceled before being deleted.
 
 ## PARAMETERS
 
 ### -AllowStop
 Allow the remediation to be canceled if it is in-progress.
+Harmless if the remediation is already in a terminal state.
+Without this switch, the cmdlet will throw an error if the remediation is not in a terminal state.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -91,12 +117,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -106,11 +133,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Remediation object.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -120,38 +147,50 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupName
+### -ManagementGroupId
 Management group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: DeleteByManagementGroup
+Aliases: ManagementGroupName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the remediation.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteBySubscriptionId, DeleteByResourceGroup, DeleteByScope, DeleteByManagementGroup
+Aliases: RemediationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceId
+Aliases: RemediationName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return True if the command completes successfully.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -170,45 +209,61 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: DeleteByResourceGroup
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ID of the resource that the remediation was made for or full Resource ID of the remediation.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Scope
 Scope of the resource.
 E.g.
-'/subscriptions/{subscriptionId}/resourceGroups/{rgName}'.
+'/subscriptions/\{subscriptionId}/resourceGroups/\{rgName}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: DeleteByScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+Uses current subscription if one isn't provided.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteBySubscriptionId, DeleteByResourceGroup
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -248,9 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
 
 ## OUTPUTS
 

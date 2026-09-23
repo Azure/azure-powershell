@@ -1,0 +1,808 @@
+{
+  "Get-AzSite+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "8e2473d6-c6f3-4c71-b97b-8f4cb64458e5" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Get-AzSiteSitesBySubscription_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/9c3168bc-3c3e-4d7f-ae51-bedf9a4d6f03" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3ed7a8ff-130c-4651-98c5-c24b5af0201f" ],
+        "x-ms-correlation-request-id": [ "f342822a-663a-4cfb-8213-14adee6fbe43" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091546Z:f342822a-663a-4cfb-8213-14adee6fbe43" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C8E2972F01B648FE949FD3A2545AF58E Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:45Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "38500" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abhimishra-site-test/providers/microsoft.edge/sites/AbhishekSite\",\"name\":\"AbhishekSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"abhimishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-04-23T10:41:25.5885796Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T00:25:36.5258485Z\"},\"properties\":{\"displayName\":\"Abhishek\u0027s Site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"stateOrProvince\":\"\",\"country\":\"GB\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/edge-sites-common/providers/microsoft.edge/sites/AbhishekSite\",\"name\":\"AbhishekSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"abhimishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-05T07:01:20.1611866Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T01:15:49.8128999Z\"},\"properties\":{\"displayName\":\"Abhishek Site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"stateOrProvince\":\"\",\"country\":\"GB\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/BasavarajSitesRG/providers/microsoft.edge/sites/BasavarajSite\",\"name\":\"BasavarajSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-14T05:16:45.7330072Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T06:24:34.3482253Z\"},\"properties\":{\"displayName\":\"BasavarajSite\",\"provisioningState\":\"Succeeded\",\"labels\":{\"key1\":\"Value1\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/datalabs-test-rg/providers/microsoft.edge/sites/Testcmadala\",\"name\":\"Testcmadala\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"cmadala@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-25T05:56:02.6706749Z\",\"lastModifiedBy\":\"cmadala@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-25T05:56:02.6706749Z\"},\"properties\":{\"displayName\":\"TestCmadala\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/nbtoclean/providers/Microsoft.Edge/sites/Rome\",\"name\":\"Rome\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"nikhilbajaj@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-01T05:39:19.9933702Z\",\"lastModifiedBy\":\"nikhilbajaj@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-01T05:39:19.9933702Z\"},\"properties\":{\"displayName\":\"Rome\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/nbtoclean/providers/Microsoft.Edge/sites/Rome1\",\"name\":\"Rome1\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"nikhilbajaj@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-01T05:40:05.4076927Z\",\"lastModifiedBy\":\"nikhilbajaj@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-01T05:40:05.4076927Z\"},\"properties\":{\"displayName\":\"Rome\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/amrawat-test/providers/microsoft.edge/sites/TestSite\",\"name\":\"TestSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-03T09:24:19.8939686Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:41:17.0805884Z\"},\"properties\":{\"displayName\":\"TestSite\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/akanksha-test/providers/Microsoft.Edge/Sites/akanksha-test2\",\"name\":\"akanksha-test2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"akankshapai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-11T08:03:55.5654761Z\",\"lastModifiedBy\":\"akankshapai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-11T08:03:55.5654761Z\"},\"properties\":{\"displayName\":\"akanksha-test2\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/akanksha-test/providers/Microsoft.Edge/Sites/akanksha-test3\",\"name\":\"akanksha-test3\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"akankshapai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-11T08:07:38.3710599Z\",\"lastModifiedBy\":\"akankshapai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-11T08:07:38.3710599Z\"},\"properties\":{\"displayName\":\"akanksha-test3\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/aupmanyu-test-rg/providers/microsoft.edge/sites/ayushi-test-site\",\"name\":\"ayushi-test-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"aupmanyu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-12T09:13:23.4154951Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:48:20.0133766Z\"},\"properties\":{\"displayName\":\"ayushi-test-site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/EdgeSites_geneva_auto_create_rg/providers/microsoft.edge/sites/testrg1site\",\"name\":\"testrg1site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-13T09:24:28.1617093Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:50:33.8597178Z\"},\"properties\":{\"displayName\":\"testrg1site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"testrg1site\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AR\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/microsoft.edge/sites/testsubs1site\",\"name\":\"testsubs1site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-13T09:26:44.2418479Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:50:34.4672403Z\"},\"properties\":{\"displayName\":\"testsubs1site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"testsubs1site\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AR\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/aupmanyu-test-rg2/providers/microsoft.edge/sites/ayushi-test-site\",\"name\":\"ayushi-test-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"aupmanyu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-17T06:48:30.371194Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:52:44.6786823Z\"},\"properties\":{\"displayName\":\"ayushi-test-site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site717\",\"name\":\"site717\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T08:54:15.7942514Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T08:54:15.7942514Z\"},\"properties\":{\"displayName\":\"site717\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site8765\",\"name\":\"site8765\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T08:54:53.7578068Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T08:54:53.7578068Z\"},\"properties\":{\"displayName\":\"site8765\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site3792\",\"name\":\"site3792\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:30:22.8801694Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:30:28.0391794Z\"},\"properties\":{\"displayName\":\"updatedSite5777\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site6658\",\"name\":\"site6658\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:31:11.4165114Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:31:17.9496874Z\"},\"properties\":{\"displayName\":\"updatedSite8680\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site5039\",\"name\":\"site5039\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:49:59.8090298Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:50:03.7664602Z\"},\"properties\":{\"displayName\":\"updatedSite4592\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site6436\",\"name\":\"site6436\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:50:53.4345941Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:50:56.7949842Z\"},\"properties\":{\"displayName\":\"updatedSite6267\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site5554\",\"name\":\"site5554\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:58:09.1575817Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:58:14.7659557Z\"},\"properties\":{\"displayName\":\"updatedSite487\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site4743\",\"name\":\"site4743\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:58:59.9630708Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:59:09.9734395Z\"},\"properties\":{\"displayName\":\"updatedSite715\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site4400\",\"name\":\"site4400\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T10:05:26.0761734Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T10:05:33.6596605Z\"},\"properties\":{\"displayName\":\"updatedSite6930\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1073\",\"name\":\"site1073\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T10:13:37.1870224Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T10:13:39.5217895Z\"},\"properties\":{\"displayName\":\"updatedSite7280\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg3861/providers/Microsoft.Edge/sites/site3904\",\"name\":\"site3904\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:14:55.4444145Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:14:59.632989Z\"},\"properties\":{\"displayName\":\"updatedSite1777\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg4978/providers/Microsoft.Edge/sites/site5244\",\"name\":\"site5244\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:15:15.169431Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:15:17.8144135Z\"},\"properties\":{\"displayName\":\"updatedSite785\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg3917/providers/Microsoft.Edge/sites/site4261\",\"name\":\"site4261\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:16:16.2357795Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:16:20.0178777Z\"},\"properties\":{\"displayName\":\"updatedSite8734\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg6198/providers/Microsoft.Edge/sites/site8484\",\"name\":\"site8484\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:16:32.9316134Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:16:34.5913736Z\"},\"properties\":{\"displayName\":\"updatedSite6901\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg7271/providers/Microsoft.Edge/sites/site4937\",\"name\":\"site4937\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T13:03:00.2136568Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T13:03:00.2136568Z\"},\"properties\":{\"displayName\":\"site4937\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/BasavarajRGTest/providers/microsoft.edge/sites/BasavarajSite\",\"name\":\"BasavarajSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-02-24T07:40:27.8886096Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T05:25:14.5782642Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site\",\"labels\":{\"as\":\"asdad1\"},\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"stateOrProvince\":\"\",\"country\":\"GB\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/basavarajNoAddressId\",\"name\":\"basavarajNoAddressId\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-04T06:03:54.137328Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-01T12:41:32.4213114Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s latest Site resource\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"city\":\"\",\"country\":\"au\",\"postalCode\":\"\",\"stateOrProvince\":\"\",\"streetAddress1\":\"\",\"streetAddress2\":\"\"},\"labels\":{\"UpdatedBy\":\"darshana\",\"type\":\"line\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/basavarajnewaddrprop\",\"name\":\"basavarajnewaddrprop\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-07T05:25:10.8812825Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-07T05:30:05.1665133Z\"},\"properties\":{\"displayName\":\"SiteWithAddrProps\",\"siteAddress\":{\"streetAddress1\":\"15 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\",\"city\":\"San Francisco\",\"stateOrProvince\":\"CA\",\"country\":\"US\",\"postalCode\":\"94107\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/sitecreatedwithv1\",\"name\":\"sitecreatedwithv1\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T09:18:29.2551643Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T05:45:31.7828752Z\"},\"properties\":{\"displayName\":\"SiteWithAddrProps\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"country\":\"GB\",\"postalCode\":\"\",\"stateOrProvince\":\"\"},\"labels\":{\"NewAPI\":\"2025-03-01-preview\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1004\",\"name\":\"site1004\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-10T08:01:00.867816Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.3311563Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site resource\",\"labels\":{\"type\":\"line\",\"name\":\"Basavaraj S\",\"UpdatedBy\":\"Kartik\"},\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1404\",\"name\":\"site1404\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-14T03:34:30.5274919Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.4059973Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site resource\",\"labels\":{\"type\":\"line\",\"name\":\"Basavaraj S\",\"UpdatedBy\":\"Kartik\"},\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/Darshita-resource/providers/microsoft.edge/sites/new-site\",\"name\":\"new-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"t-dapatil@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-15T08:54:06.1146298Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T06:21:53.20199Z\"},\"properties\":{\"displayName\":\"new-site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"edjfn\",\"streetAddress2\":\"fefjn\",\"city\":\"jaipur\",\"stateOrProvince\":\"\",\"country\":\"IN\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abc-resource/providers/microsoft.edge/sites/test\",\"name\":\"test\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T03:32:27.9523017Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T03:36:03.1189508Z\"},\"properties\":{\"displayName\":\"testsite\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"\",\"country\":\"dz\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/AzSecPackAutoConfigRG/providers/microsoft.edge/sites/test2\",\"name\":\"test2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T03:37:46.7523779Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T03:37:46.7523779Z\"},\"properties\":{\"displayName\":\"testsite2\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"abc\",\"city\":\"983\",\"stateOrProvince\":\"2309\",\"country\":\"AT\",\"postalCode\":\"133\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/BvtCloudTestAccounts/providers/microsoft.edge/sites/test3\",\"name\":\"test3\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T03:39:33.4816786Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T03:39:33.4816786Z\"},\"properties\":{\"displayName\":\"testsite3\",\"description\":\"\",\"siteAddress\":{\"country\":\"AR\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abc-resource/providers/microsoft.edge/sites/Test_123\",\"name\":\"Test_123\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T10:43:54.8417661Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T10:43:54.8417661Z\"},\"properties\":{\"displayName\":\"Test_123\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"pune\",\"city\":\"pune\",\"stateOrProvince\":\"Maharashtra\",\"country\":\"IN\",\"postalCode\":\"411021\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg9287/providers/Microsoft.Edge/sites/SeattleSite7153\",\"name\":\"SeattleSite7153\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:18:02.5360451Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:18:02.5360451Z\"},\"properties\":{\"displayName\":\"Seattle Site\",\"description\":\"Seattle Site Description\",\"siteAddress\":{\"streetAddress1\":\" Apt 4B\",\"streetAddress2\":\"123 Main St\",\"city\":\"Seattle\",\"stateOrProvince\":\"WA\",\"country\":\"USA\",\"postalCode\":\"98101\"},\"labels\":{\"city\":\"Seattle\",\"country\":\"USA\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg530/providers/Microsoft.Edge/sites/SeattleSite6303\",\"name\":\"SeattleSite6303\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:21:31.8430327Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:21:31.8430327Z\"},\"properties\":{\"displayName\":\"Seattle Site\",\"description\":\"Seattle Site Description\",\"siteAddress\":{\"streetAddress1\":\" Apt 4B\",\"streetAddress2\":\"123 Main St\",\"city\":\"Seattle\",\"stateOrProvince\":\"WA\",\"country\":\"USA\",\"postalCode\":\"98101\"},\"labels\":{\"city\":\"Seattle\",\"country\":\"USA\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg6366/providers/Microsoft.Edge/sites/SeattleSite4276\",\"name\":\"SeattleSite4276\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:44:46.738625Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:44:54.1548089Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Seattle Site\",\"description\":\"Seattle Site Description\",\"siteAddress\":{\"streetAddress1\":\" Apt 4B\",\"streetAddress2\":\"123 Main St\",\"city\":\"Seattle\",\"stateOrProvince\":\"WA\",\"country\":\"USA\",\"postalCode\":\"98101\"},\"labels\":{\"city\":\"Seattle\",\"country\":\"USA\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg2939/providers/Microsoft.Edge/sites/SeattleSite3523\",\"name\":\"SeattleSite3523\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:46:09.9542318Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:46:12.0789199Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"New York Site\",\"description\":\"New York Site Description\",\"siteAddress\":{\"city\":\"New York\",\"country\":\"USA\"},\"labels\":{\"city\":\"New York\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1405\",\"name\":\"site1405\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-14T04:04:45.5570928Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.3459485Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site resource\",\"labels\":{\"type\":\"line\",\"name\":\"Basavaraj S\",\"UpdatedBy\":\"Kartik\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/siteclirg/providers/Microsoft.Edge/sites/clirgsite\",\"name\":\"clirgsite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:24:35.9140956Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-28T13:24:35.9140956Z\"},\"properties\":{\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisubssite\",\"name\":\"clisubssite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:25:31.5018995Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-01T12:42:12.2844728Z\"},\"properties\":{\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"darshana\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisgsite\",\"name\":\"clisgsite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:27:14.9086592Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.4309122Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"Kartik\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisgsite2\",\"name\":\"clisgsite2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:30:45.082122Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.3769911Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"Kartik\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisgsite3\",\"name\":\"clisgsite3\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-29T03:42:33.8265987Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-03T12:54:13.59982Z\"},\"properties\":{\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"darshana\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abc-resource/providers/Microsoft.Edge/sites/pythonsdktesting\",\"name\":\"pythonsdktesting\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"udaybhardwaj@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-29T10:19:48.5431938Z\",\"lastModifiedBy\":\"udaybhardwaj@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-29T10:20:44.5601223Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_uyro7ozv235ouflh3jfxeksnaznzhjh6ss6edcojwpssp5kjnxprqbsr2/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:21:04.0845954Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:21:04.0845954Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94107\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"16 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_za6ebtqlizxktj2g63tngf3qc745if7mxmrcyfsymcajwagvwe7ekgpan/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:22:16.9670446Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:22:16.9670446Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94107\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"16 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_ge72pyhszjmi5qzivk5d5umt5rwqxxunhb47ek4gahagwflacnn5glsfn/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:55:24.1131229Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:55:29.4691428Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94108\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"18 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_ltcjpfsvowok53hsw7aozvcxjxbbfgero5cefivdqipu4zosyj5ofntmi/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:56:52.0192761Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:56:57.5687721Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94108\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"18 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_rh3b4xjz2lftzg2uhlea3ywg62uaggkhh734pwwaqu6t346gl75j73lv3/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T09:03:06.9832201Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T09:03:13.4891315Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94108\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"18 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cloud-shell-storage-southeastasia/providers/microsoft.edge/sites/test1234\",\"name\":\"test1234\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T14:32:15.8483267Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T14:32:15.8483267Z\"},\"properties\":{\"displayName\":\"test1234\",\"description\":\"\",\"siteAddress\":{\"country\":\"US\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/NetworkWatcherRG/providers/microsoft.edge/sites/test12345\",\"name\":\"test12345\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-20T14:15:06.6084492Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-20T14:15:06.6084492Z\"},\"properties\":{\"displayName\":\"test12345\",\"description\":\"\",\"siteAddress\":{\"country\":\"US\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/EdgeSitesRG/providers/microsoft.edge/sites/test123456\",\"name\":\"test123456\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-24T04:19:25.3365309Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-24T04:19:25.3365309Z\"},\"properties\":{\"displayName\":\"test123456\",\"description\":\"\",\"siteAddress\":{\"country\":\"US\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/SitesRGBased/providers/microsoft.edge/sites/labels_test\",\"name\":\"labels_test\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-26T05:00:07.4052942Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T06:12:47.2384237Z\"},\"properties\":{\"displayName\":\"labels_test\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"Bellandur\",\"city\":\"Bengaluru\",\"stateOrProvince\":\"KA\",\"country\":\"IN\",\"postalCode\":\"560016\"},\"labels\":{\"Env\":\"ProjectCostAllocationTrackingForEnterpriseResourcePlanningAndFinancialForecastingAcrossMultipleDepartmentsIncludingMarketingSalesOperationsHumanResourcesLegalComplianceAndInformationTechnologyWithAdditionalConsiderationsForCloudMigrationSecurityProtocolsDataGovernanceAndSustainabilityInitiativesInAlignmentWithGlobalExpansionStrategiesAndQuarterlyPerformanceMetricsReviewCycleIncludingStakeholderEngagementAndRegulatoryReportingRequirementsVersion2025Q3AlphaReleaseCandidateExtendedSupportPhaseOne\",\"ProjectCostAllocationTrackingForEnterpriseResourcePlanningAndFinancialForecastingAcrossMultipleDepartmentsIncludingMarketingSalesOperationsHumanResourcesLegalComplianceAndInformationTechnologyWithAdditionalConsiderationsForCloudMigrationSecurityProtocolsDataGovernanceAndSustainabilityInitiativesInAlignmentWithGlobalExpansionStrategiesAndQuarterlyPerformanceMetricsReviewCycleIncludingStakeholderEngagementAndRegulatoryReportingRequirementsVersion2025Q3AlphaReleaseCandidateExtendedSupportPhaseOne\":\"Test\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/PSRG/providers/Microsoft.Edge/sites/SubsSitePS2\",\"name\":\"SubsSitePS2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T11:42:44.3482838Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-08T11:55:46.7192645Z\"},\"properties\":{\"siteAddress\":{\"streetAddress1\":\"123 Main Street\",\"streetAddress2\":\"Suite 200\",\"city\":\"Seattle\",\"stateOrProvince\":\"Washington\",\"country\":\"United States\",\"postalCode\":\"98101\"},\"displayName\":\"My Test Site\",\"description\":\"My test site description\",\"labels\":{\"Environment\":\"Production\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/test-site\",\"name\":\"test-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T08:32:00.8105466Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T08:32:00.8105466Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-02\",\"name\":\"site-test-02\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:13.4903675Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:13.4903675Z\"},\"properties\":{\"displayName\":\"Test Site 02\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+List by ResourceGroup+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "c28f1133-f4d7-43f6-9228-52ae6a855b1a" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/centralindia/4df340ae-0c49-476b-afde-11f46389e285" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b2bfafb7-3ca3-4970-868c-34eaff10db6e" ],
+        "x-ms-correlation-request-id": [ "0e194078-95a0-4955-9ab6-f6532396654e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T091548Z:0e194078-95a0-4955-9ab6-f6532396654e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 039BD14DEAA14F929DDB83EF82AD6E72 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:46Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1119" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-02\",\"name\":\"site-test-02\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:13.4903675Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:13.4903675Z\"},\"properties\":{\"displayName\":\"Test Site 02\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "61d53c49-5113-48bf-8c8d-8fb10aa1e931" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"15021d37-0000-0500-0000-68e77d010000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/903c2231-5d6d-451f-a93d-5c4101532a10" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6384068f-69f3-4d17-a525-b08df6d86520" ],
+        "x-ms-correlation-request-id": [ "59a54627-8ca8-417d-8ac9-b471f3698f94" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091549Z:59a54627-8ca8-417d-8ac9-b471f3698f94" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A7EAE8720B434A5B944C118E197F8F95 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:49Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get non-existent site should throw+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/non-existent-site?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/non-existent-site?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "a06ad4ec-87a6-4498-ba79-1425813cf425" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/a71317be-ae82-423d-99ec-a70ff29de53e" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "70d04820-0061-407d-b7c2-6b42ac4f816b" ],
+        "x-ms-correlation-request-id": [ "d0ae2600-a9f7-4bf7-a772-094467d0dd09" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091549Z:d0ae2600-a9f7-4bf7-a772-094467d0dd09" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1A6B24D469EA41EF9057CD0CF4149339 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:49Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "123" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.Edge/sites/non-existent-site\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "3e5f01af-1655-4362-975a-96f981ddb2b4" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"15021d37-0000-0500-0000-68e77d010000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/b57082fe-45a2-45b5-9220-1602d294de3a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b28fd7b1-5d80-409d-ab80-e2b82f812fcd" ],
+        "x-ms-correlation-request-id": [ "aec7e1f1-12b1-4fa6-8771-c601eb44153e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091550Z:aec7e1f1-12b1-4fa6-8771-c601eb44153e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 39385A2DC4594595BEBE4B6A5ABF997E Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:49Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "ae4002d2-f3a1-4ebf-b031-99d28d61efd0" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"15021d37-0000-0500-0000-68e77d010000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/9604df30-acff-4784-a13d-a72b8e64180a" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7614dd0d-f20a-453b-a403-c07f03c56624" ],
+        "x-ms-correlation-request-id": [ "e049da67-e650-4fd9-b2fd-c1c6f63a147b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091550Z:e049da67-e650-4fd9-b2fd-c1c6f63a147b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8CAD005B8FD444B4A6025AC043E06631 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:50Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Validate site properties structure+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "cb58f3e5-20c1-4c84-aca5-1130adb1cdfe" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSite" ],
+        "FullCommandName": [ "Get-AzSite_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"15021d37-0000-0500-0000-68e77d010000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/af850e79-7295-4d57-b1bc-38e1fe046fe5" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "709cdcd2-d718-4c5c-ab83-82214582ab8d" ],
+        "x-ms-correlation-request-id": [ "4c2acb69-1525-4304-b112-3cd706624ee9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091550Z:4c2acb69-1525-4304-b112-3cd706624ee9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1323C54561DB4D55866C161EBA3FBC9B Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:50Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+List sites by Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "abf3f16e-4fac-4194-97fa-5a719095b5d0" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Get-AzSiteSitesBySubscription_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/eastus/8363824e-2a42-4fe0-aa67-bea880ff1a6b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1e09f0ae-0e97-40c9-85c8-fdf4c127f51e" ],
+        "x-ms-correlation-request-id": [ "43656d7c-f29b-47aa-ba11-96b592024eaa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251009T091551Z:43656d7c-f29b-47aa-ba11-96b592024eaa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1CE411B6227D49D080AF867F07E5FED2 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:51Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "38500" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abhimishra-site-test/providers/microsoft.edge/sites/AbhishekSite\",\"name\":\"AbhishekSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"abhimishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-04-23T10:41:25.5885796Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T00:25:36.5258485Z\"},\"properties\":{\"displayName\":\"Abhishek\u0027s Site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"stateOrProvince\":\"\",\"country\":\"GB\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/edge-sites-common/providers/microsoft.edge/sites/AbhishekSite\",\"name\":\"AbhishekSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"abhimishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-05T07:01:20.1611866Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T01:15:49.8128999Z\"},\"properties\":{\"displayName\":\"Abhishek Site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"stateOrProvince\":\"\",\"country\":\"GB\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/BasavarajSitesRG/providers/microsoft.edge/sites/BasavarajSite\",\"name\":\"BasavarajSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-14T05:16:45.7330072Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T06:24:34.3482253Z\"},\"properties\":{\"displayName\":\"BasavarajSite\",\"provisioningState\":\"Succeeded\",\"labels\":{\"key1\":\"Value1\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/datalabs-test-rg/providers/microsoft.edge/sites/Testcmadala\",\"name\":\"Testcmadala\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"cmadala@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-25T05:56:02.6706749Z\",\"lastModifiedBy\":\"cmadala@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-25T05:56:02.6706749Z\"},\"properties\":{\"displayName\":\"TestCmadala\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/nbtoclean/providers/Microsoft.Edge/sites/Rome\",\"name\":\"Rome\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"nikhilbajaj@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-01T05:39:19.9933702Z\",\"lastModifiedBy\":\"nikhilbajaj@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-01T05:39:19.9933702Z\"},\"properties\":{\"displayName\":\"Rome\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/nbtoclean/providers/Microsoft.Edge/sites/Rome1\",\"name\":\"Rome1\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"nikhilbajaj@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-01T05:40:05.4076927Z\",\"lastModifiedBy\":\"nikhilbajaj@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-01T05:40:05.4076927Z\"},\"properties\":{\"displayName\":\"Rome\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/amrawat-test/providers/microsoft.edge/sites/TestSite\",\"name\":\"TestSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-03T09:24:19.8939686Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:41:17.0805884Z\"},\"properties\":{\"displayName\":\"TestSite\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/akanksha-test/providers/Microsoft.Edge/Sites/akanksha-test2\",\"name\":\"akanksha-test2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"akankshapai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-11T08:03:55.5654761Z\",\"lastModifiedBy\":\"akankshapai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-11T08:03:55.5654761Z\"},\"properties\":{\"displayName\":\"akanksha-test2\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/akanksha-test/providers/Microsoft.Edge/Sites/akanksha-test3\",\"name\":\"akanksha-test3\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"akankshapai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-11T08:07:38.3710599Z\",\"lastModifiedBy\":\"akankshapai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-11T08:07:38.3710599Z\"},\"properties\":{\"displayName\":\"akanksha-test3\",\"description\":\"Demo site, not any description.\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/aupmanyu-test-rg/providers/microsoft.edge/sites/ayushi-test-site\",\"name\":\"ayushi-test-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"aupmanyu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-12T09:13:23.4154951Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:48:20.0133766Z\"},\"properties\":{\"displayName\":\"ayushi-test-site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/EdgeSites_geneva_auto_create_rg/providers/microsoft.edge/sites/testrg1site\",\"name\":\"testrg1site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-13T09:24:28.1617093Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:50:33.8597178Z\"},\"properties\":{\"displayName\":\"testrg1site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"testrg1site\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AR\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/microsoft.edge/sites/testsubs1site\",\"name\":\"testsubs1site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-13T09:26:44.2418479Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:50:34.4672403Z\"},\"properties\":{\"displayName\":\"testsubs1site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"testsubs1site\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AR\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/aupmanyu-test-rg2/providers/microsoft.edge/sites/ayushi-test-site\",\"name\":\"ayushi-test-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"aupmanyu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-17T06:48:30.371194Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T02:52:44.6786823Z\"},\"properties\":{\"displayName\":\"ayushi-test-site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site717\",\"name\":\"site717\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T08:54:15.7942514Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T08:54:15.7942514Z\"},\"properties\":{\"displayName\":\"site717\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site8765\",\"name\":\"site8765\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T08:54:53.7578068Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T08:54:53.7578068Z\"},\"properties\":{\"displayName\":\"site8765\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site3792\",\"name\":\"site3792\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:30:22.8801694Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:30:28.0391794Z\"},\"properties\":{\"displayName\":\"updatedSite5777\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site6658\",\"name\":\"site6658\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:31:11.4165114Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:31:17.9496874Z\"},\"properties\":{\"displayName\":\"updatedSite8680\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site5039\",\"name\":\"site5039\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:49:59.8090298Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:50:03.7664602Z\"},\"properties\":{\"displayName\":\"updatedSite4592\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site6436\",\"name\":\"site6436\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:50:53.4345941Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:50:56.7949842Z\"},\"properties\":{\"displayName\":\"updatedSite6267\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site5554\",\"name\":\"site5554\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:58:09.1575817Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:58:14.7659557Z\"},\"properties\":{\"displayName\":\"updatedSite487\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site4743\",\"name\":\"site4743\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T09:58:59.9630708Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T09:59:09.9734395Z\"},\"properties\":{\"displayName\":\"updatedSite715\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site4400\",\"name\":\"site4400\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T10:05:26.0761734Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T10:05:33.6596605Z\"},\"properties\":{\"displayName\":\"updatedSite6930\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1073\",\"name\":\"site1073\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-05T10:13:37.1870224Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-05T10:13:39.5217895Z\"},\"properties\":{\"displayName\":\"updatedSite7280\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg3861/providers/Microsoft.Edge/sites/site3904\",\"name\":\"site3904\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:14:55.4444145Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:14:59.632989Z\"},\"properties\":{\"displayName\":\"updatedSite1777\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg4978/providers/Microsoft.Edge/sites/site5244\",\"name\":\"site5244\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:15:15.169431Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:15:17.8144135Z\"},\"properties\":{\"displayName\":\"updatedSite785\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg3917/providers/Microsoft.Edge/sites/site4261\",\"name\":\"site4261\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:16:16.2357795Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:16:20.0178777Z\"},\"properties\":{\"displayName\":\"updatedSite8734\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg6198/providers/Microsoft.Edge/sites/site8484\",\"name\":\"site8484\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T09:16:32.9316134Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T09:16:34.5913736Z\"},\"properties\":{\"displayName\":\"updatedSite6901\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg7271/providers/Microsoft.Edge/sites/site4937\",\"name\":\"site4937\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-11-06T13:03:00.2136568Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-11-06T13:03:00.2136568Z\"},\"properties\":{\"displayName\":\"site4937\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/BasavarajRGTest/providers/microsoft.edge/sites/BasavarajSite\",\"name\":\"BasavarajSite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-02-24T07:40:27.8886096Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T05:25:14.5782642Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site\",\"labels\":{\"as\":\"asdad1\"},\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"stateOrProvince\":\"\",\"country\":\"GB\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/basavarajNoAddressId\",\"name\":\"basavarajNoAddressId\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-04T06:03:54.137328Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-01T12:41:32.4213114Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s latest Site resource\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"city\":\"\",\"country\":\"au\",\"postalCode\":\"\",\"stateOrProvince\":\"\",\"streetAddress1\":\"\",\"streetAddress2\":\"\"},\"labels\":{\"UpdatedBy\":\"darshana\",\"type\":\"line\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/basavarajnewaddrprop\",\"name\":\"basavarajnewaddrprop\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-07T05:25:10.8812825Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-07T05:30:05.1665133Z\"},\"properties\":{\"displayName\":\"SiteWithAddrProps\",\"siteAddress\":{\"streetAddress1\":\"15 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\",\"city\":\"San Francisco\",\"stateOrProvince\":\"CA\",\"country\":\"US\",\"postalCode\":\"94107\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/sitecreatedwithv1\",\"name\":\"sitecreatedwithv1\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T09:18:29.2551643Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T05:45:31.7828752Z\"},\"properties\":{\"displayName\":\"SiteWithAddrProps\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"221B Baker Street\",\"streetAddress2\":\"\",\"city\":\"London\",\"country\":\"GB\",\"postalCode\":\"\",\"stateOrProvince\":\"\"},\"labels\":{\"NewAPI\":\"2025-03-01-preview\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1004\",\"name\":\"site1004\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-10T08:01:00.867816Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.3311563Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site resource\",\"labels\":{\"type\":\"line\",\"name\":\"Basavaraj S\",\"UpdatedBy\":\"Kartik\"},\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1404\",\"name\":\"site1404\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-14T03:34:30.5274919Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.4059973Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site resource\",\"labels\":{\"type\":\"line\",\"name\":\"Basavaraj S\",\"UpdatedBy\":\"Kartik\"},\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"AL1\",\"streetAddress2\":\"\",\"city\":\"\",\"stateOrProvince\":\"\",\"country\":\"AU\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/Darshita-resource/providers/microsoft.edge/sites/new-site\",\"name\":\"new-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"t-dapatil@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-15T08:54:06.1146298Z\",\"lastModifiedBy\":\"17962ed5-6318-422b-b607-83385030b63d\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-05-13T06:21:53.20199Z\"},\"properties\":{\"displayName\":\"new-site\",\"provisioningState\":\"Succeeded\",\"siteAddress\":{\"streetAddress1\":\"edjfn\",\"streetAddress2\":\"fefjn\",\"city\":\"jaipur\",\"stateOrProvince\":\"\",\"country\":\"IN\",\"postalCode\":\"\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abc-resource/providers/microsoft.edge/sites/test\",\"name\":\"test\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T03:32:27.9523017Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T03:36:03.1189508Z\"},\"properties\":{\"displayName\":\"testsite\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"\",\"country\":\"dz\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/AzSecPackAutoConfigRG/providers/microsoft.edge/sites/test2\",\"name\":\"test2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T03:37:46.7523779Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T03:37:46.7523779Z\"},\"properties\":{\"displayName\":\"testsite2\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"abc\",\"city\":\"983\",\"stateOrProvince\":\"2309\",\"country\":\"AT\",\"postalCode\":\"133\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/BvtCloudTestAccounts/providers/microsoft.edge/sites/test3\",\"name\":\"test3\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T03:39:33.4816786Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T03:39:33.4816786Z\"},\"properties\":{\"displayName\":\"testsite3\",\"description\":\"\",\"siteAddress\":{\"country\":\"AR\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abc-resource/providers/microsoft.edge/sites/Test_123\",\"name\":\"Test_123\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-04-22T10:43:54.8417661Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-04-22T10:43:54.8417661Z\"},\"properties\":{\"displayName\":\"Test_123\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"pune\",\"city\":\"pune\",\"stateOrProvince\":\"Maharashtra\",\"country\":\"IN\",\"postalCode\":\"411021\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg9287/providers/Microsoft.Edge/sites/SeattleSite7153\",\"name\":\"SeattleSite7153\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:18:02.5360451Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:18:02.5360451Z\"},\"properties\":{\"displayName\":\"Seattle Site\",\"description\":\"Seattle Site Description\",\"siteAddress\":{\"streetAddress1\":\" Apt 4B\",\"streetAddress2\":\"123 Main St\",\"city\":\"Seattle\",\"stateOrProvince\":\"WA\",\"country\":\"USA\",\"postalCode\":\"98101\"},\"labels\":{\"city\":\"Seattle\",\"country\":\"USA\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg530/providers/Microsoft.Edge/sites/SeattleSite6303\",\"name\":\"SeattleSite6303\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:21:31.8430327Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:21:31.8430327Z\"},\"properties\":{\"displayName\":\"Seattle Site\",\"description\":\"Seattle Site Description\",\"siteAddress\":{\"streetAddress1\":\" Apt 4B\",\"streetAddress2\":\"123 Main St\",\"city\":\"Seattle\",\"stateOrProvince\":\"WA\",\"country\":\"USA\",\"postalCode\":\"98101\"},\"labels\":{\"city\":\"Seattle\",\"country\":\"USA\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg6366/providers/Microsoft.Edge/sites/SeattleSite4276\",\"name\":\"SeattleSite4276\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:44:46.738625Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:44:54.1548089Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Seattle Site\",\"description\":\"Seattle Site Description\",\"siteAddress\":{\"streetAddress1\":\" Apt 4B\",\"streetAddress2\":\"123 Main St\",\"city\":\"Seattle\",\"stateOrProvince\":\"WA\",\"country\":\"USA\",\"postalCode\":\"98101\"},\"labels\":{\"city\":\"Seattle\",\"country\":\"USA\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/sites-rg2939/providers/Microsoft.Edge/sites/SeattleSite3523\",\"name\":\"SeattleSite3523\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-08T09:46:09.9542318Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-08T09:46:12.0789199Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"New York Site\",\"description\":\"New York Site Description\",\"siteAddress\":{\"city\":\"New York\",\"country\":\"USA\"},\"labels\":{\"city\":\"New York\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site1405\",\"name\":\"site1405\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-14T04:04:45.5570928Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.3459485Z\"},\"properties\":{\"displayName\":\"Basavaraj\u0027s Site resource\",\"labels\":{\"type\":\"line\",\"name\":\"Basavaraj S\",\"UpdatedBy\":\"Kartik\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/siteclirg/providers/Microsoft.Edge/sites/clirgsite\",\"name\":\"clirgsite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:24:35.9140956Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-28T13:24:35.9140956Z\"},\"properties\":{\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisubssite\",\"name\":\"clisubssite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:25:31.5018995Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-01T12:42:12.2844728Z\"},\"properties\":{\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"darshana\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisgsite\",\"name\":\"clisgsite\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:27:14.9086592Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.4309122Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"Kartik\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisgsite2\",\"name\":\"clisgsite2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-28T13:30:45.082122Z\",\"lastModifiedBy\":\"kamancha@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T03:56:09.3769911Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"Kartik\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"}}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/clisgsite3\",\"name\":\"clisgsite3\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-29T03:42:33.8265987Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-09-03T12:54:13.59982Z\"},\"properties\":{\"description\":\"cli based sites creation\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\",\"UpdatedBy\":\"darshana\"},\"siteAddress\":{\"city\":\"newyork\",\"country\":\"usa\",\"postalCode\":\"56797\",\"streetAddress1\":\"15 2nd street\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/abc-resource/providers/Microsoft.Edge/sites/pythonsdktesting\",\"name\":\"pythonsdktesting\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"udaybhardwaj@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-29T10:19:48.5431938Z\",\"lastModifiedBy\":\"udaybhardwaj@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-29T10:20:44.5601223Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_uyro7ozv235ouflh3jfxeksnaznzhjh6ss6edcojwpssp5kjnxprqbsr2/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:21:04.0845954Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:21:04.0845954Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94107\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"16 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_za6ebtqlizxktj2g63tngf3qc745if7mxmrcyfsymcajwagvwe7ekgpan/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:22:16.9670446Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:22:16.9670446Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94107\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"16 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_ge72pyhszjmi5qzivk5d5umt5rwqxxunhb47ek4gahagwflacnn5glsfn/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:55:24.1131229Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:55:29.4691428Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94108\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"18 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_ltcjpfsvowok53hsw7aozvcxjxbbfgero5cefivdqipu4zosyj5ofntmi/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T08:56:52.0192761Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T08:56:57.5687721Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94108\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"18 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cli_test_edgesite_rh3b4xjz2lftzg2uhlea3ywg62uaggkhh734pwwaqu6t346gl75j73lv3/providers/Microsoft.Edge/sites/TestSiteName\",\"name\":\"TestSiteName\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-05-30T09:03:06.9832201Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-05-30T09:03:13.4891315Z\"},\"properties\":{\"description\":\"Test Site\",\"labels\":{\"key1\":\"value1\",\"key2\":\"value2\"},\"siteAddress\":{\"city\":\"San Francisco\",\"country\":\"US\",\"postalCode\":\"94108\",\"stateOrProvince\":\"CA\",\"streetAddress1\":\"18 TOWNSEND ST\",\"streetAddress2\":\"UNIT 1\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/cloud-shell-storage-southeastasia/providers/microsoft.edge/sites/test1234\",\"name\":\"test1234\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-19T14:32:15.8483267Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-19T14:32:15.8483267Z\"},\"properties\":{\"displayName\":\"test1234\",\"description\":\"\",\"siteAddress\":{\"country\":\"US\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/NetworkWatcherRG/providers/microsoft.edge/sites/test12345\",\"name\":\"test12345\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-20T14:15:06.6084492Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-20T14:15:06.6084492Z\"},\"properties\":{\"displayName\":\"test12345\",\"description\":\"\",\"siteAddress\":{\"country\":\"US\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/EdgeSitesRG/providers/microsoft.edge/sites/test123456\",\"name\":\"test123456\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"dawagle@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-24T04:19:25.3365309Z\",\"lastModifiedBy\":\"dawagle@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-24T04:19:25.3365309Z\"},\"properties\":{\"displayName\":\"test123456\",\"description\":\"\",\"siteAddress\":{\"country\":\"US\"},\"labels\":{},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/SitesRGBased/providers/microsoft.edge/sites/labels_test\",\"name\":\"labels_test\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-08-26T05:00:07.4052942Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-08-26T06:12:47.2384237Z\"},\"properties\":{\"displayName\":\"labels_test\",\"description\":\"\",\"siteAddress\":{\"streetAddress1\":\"Bellandur\",\"city\":\"Bengaluru\",\"stateOrProvince\":\"KA\",\"country\":\"IN\",\"postalCode\":\"560016\"},\"labels\":{\"Env\":\"ProjectCostAllocationTrackingForEnterpriseResourcePlanningAndFinancialForecastingAcrossMultipleDepartmentsIncludingMarketingSalesOperationsHumanResourcesLegalComplianceAndInformationTechnologyWithAdditionalConsiderationsForCloudMigrationSecurityProtocolsDataGovernanceAndSustainabilityInitiativesInAlignmentWithGlobalExpansionStrategiesAndQuarterlyPerformanceMetricsReviewCycleIncludingStakeholderEngagementAndRegulatoryReportingRequirementsVersion2025Q3AlphaReleaseCandidateExtendedSupportPhaseOne\",\"ProjectCostAllocationTrackingForEnterpriseResourcePlanningAndFinancialForecastingAcrossMultipleDepartmentsIncludingMarketingSalesOperationsHumanResourcesLegalComplianceAndInformationTechnologyWithAdditionalConsiderationsForCloudMigrationSecurityProtocolsDataGovernanceAndSustainabilityInitiativesInAlignmentWithGlobalExpansionStrategiesAndQuarterlyPerformanceMetricsReviewCycleIncludingStakeholderEngagementAndRegulatoryReportingRequirementsVersion2025Q3AlphaReleaseCandidateExtendedSupportPhaseOne\":\"Test\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/PSRG/providers/Microsoft.Edge/sites/SubsSitePS2\",\"name\":\"SubsSitePS2\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-08T11:42:44.3482838Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-08T11:55:46.7192645Z\"},\"properties\":{\"siteAddress\":{\"streetAddress1\":\"123 Main Street\",\"streetAddress2\":\"Suite 200\",\"city\":\"Seattle\",\"stateOrProvince\":\"Washington\",\"country\":\"United States\",\"postalCode\":\"98101\"},\"displayName\":\"My Test Site\",\"description\":\"My test site description\",\"labels\":{\"Environment\":\"Production\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/test-site\",\"name\":\"test-site\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T08:32:00.8105466Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T08:32:00.8105466Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-01\",\"name\":\"site-test-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:14:40.9471531Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:14:40.9471531Z\"},\"properties\":{\"siteAddress\":{\"country\":\"US\",\"postalCode\":\"12345\"},\"displayName\":\"Test Site 01\",\"description\":\"Test site for automated testing\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/resourceGroups/rg-sites-test/providers/Microsoft.Edge/sites/site-test-02\",\"name\":\"site-test-02\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:13.4903675Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:13.4903675Z\"},\"properties\":{\"displayName\":\"Test Site 02\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Subscription Scope+$PUT+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test Sub Scope\",\r\n    \"description\": \"Test subscription scope\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "112" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502be3a-0000-0500-0000-68e77d4c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/westindia/d2c62119-3118-42f4-ba6d-bbd1b0c234a0" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8617ce3a-997e-4c03-840c-c0cac69018ff" ],
+        "x-ms-correlation-request-id": [ "4692f720-53f1-467a-92db-fd5e447a7934" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T091556Z:4692f720-53f1-467a-92db-fd5e447a7934" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 40406A9DAA8542C69A13A5526C22B337 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:15:51Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:15:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:53.4540034Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:53.4540034Z\"},\"properties\":{\"displayName\":\"Test Sub Scope\",\"description\":\"Test subscription scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "b8829b2e-294a-4317-8bb6-ef2e83ddaf62" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "New-AzSiteSitesBySubscription_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502be3a-0000-0500-0000-68e77d4c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/southindia/50d4768f-2720-43fa-9296-fb71df36851e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e3e8381e-4e0d-4d9e-8a63-0383002cd3a9" ],
+        "x-ms-correlation-request-id": [ "b8802d70-21e5-43e3-aa5e-7fc7822144cf" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251009T091627Z:b8802d70-21e5-43e3-aa5e-7fc7822144cf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6CE3909E5D7240A3A68ECDBBB814CBBC Ref B: PNQ231110906023 Ref C: 2025-10-09T09:16:26Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:16:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:53.4540034Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:53.4540034Z\"},\"properties\":{\"displayName\":\"Test Sub Scope\",\"description\":\"Test subscription scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "b8829b2e-294a-4317-8bb6-ef2e83ddaf62" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "New-AzSiteSitesBySubscription_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502be3a-0000-0500-0000-68e77d4c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/centralindia/e878a244-a60d-4596-9040-bf30f6444624" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ab1e0055-08e3-4fc8-8c0a-0c34d2b0fbb2" ],
+        "x-ms-correlation-request-id": [ "91d5f66c-627d-4853-be03-0b4d519928c5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T091631Z:91d5f66c-627d-4853-be03-0b4d519928c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 71AA000734584FA293069AB94C9879B3 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:16:27Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:16:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:53.4540034Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:53.4540034Z\"},\"properties\":{\"displayName\":\"Test Sub Scope\",\"description\":\"Test subscription scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Subscription Scope+$GET+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "7f0aa5c5-e3dd-4453-9f9a-cf60fbd646d4" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Get-AzSiteSitesBySubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502be3a-0000-0500-0000-68e77d4c0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/southindia/95472aea-c358-49b8-8d02-623630df5ba0" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "58d735bd-15fa-4f86-89e6-f87ce05df0a5" ],
+        "x-ms-correlation-request-id": [ "449d5026-3c11-49ce-9517-947054521c6b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251009T091631Z:449d5026-3c11-49ce-9517-947054521c6b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F5EAC518E35442188F3041D9839340AB Ref B: PNQ231110906023 Ref C: 2025-10-09T09:16:31Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:16:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01\",\"name\":\"site-sub-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:15:53.4540034Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:15:53.4540034Z\"},\"properties\":{\"displayName\":\"Test Sub Scope\",\"description\":\"Test subscription scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Subscription Scope+$DELETE+https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/f8a30ed0-310b-4f90-9435-d7e8a5cc0c91/providers/Microsoft.Edge/sites/site-sub-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "071ee063-f468-4755-bafb-ce0c78742e9d" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSiteSitesBySubscription" ],
+        "FullCommandName": [ "Remove-AzSiteSitesBySubscription_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=45f75482-df7a-47c1-9ff8-61b072ef97cb/centralindia/d2954b7d-d766-4678-92af-329fd80fae96" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "e0438006-641d-4a0d-8da7-b49d7de91f12" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20251009T091633Z:e0438006-641d-4a0d-8da7-b49d7de91f12" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CA8F0B65A0FF444EA71873DF25A98AFA Ref B: PNQ231110906023 Ref C: 2025-10-09T09:16:31Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:16:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Service Group Scope+$PUT+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test SG Scope\",\r\n    \"description\": \"Test service group scope\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "112" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502c13c-0000-0500-0000-68e77d780000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5a0716eb-4b7c-4c14-91bc-f4f41fa916e9" ],
+        "x-ms-correlation-request-id": [ "e5a1d73e-bc41-42bd-8461-bc62c0f0fc72" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "799" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T091641Z:e5a1d73e-bc41-42bd-8461-bc62c0f0fc72" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ABF0A0532E8948FABC4DCEBE1D1D6FA0 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:16:33Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:16:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "524" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:16:40.4194622Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:16:40.4194622Z\"},\"properties\":{\"displayName\":\"Test SG Scope\",\"description\":\"Test service group scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "b7f267af-d837-497c-9d58-5b7155737a4d" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "New-AzSiteSitesByServiceGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502c13c-0000-0500-0000-68e77d780000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8ce83319-94a9-4f07-a6ce-8cce46467214" ],
+        "x-ms-correlation-request-id": [ "89a19e96-ba45-4087-b53d-fec3bafc541e" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T091712Z:89a19e96-ba45-4087-b53d-fec3bafc541e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 21BD80C9E2404BDB85525EE9DA68ACE2 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:17:11Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:17:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "524" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:16:40.4194622Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:16:40.4194622Z\"},\"properties\":{\"displayName\":\"Test SG Scope\",\"description\":\"Test service group scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "b7f267af-d837-497c-9d58-5b7155737a4d" ],
+        "CommandName": [ "Az.Site.internal\\New-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "New-AzSiteSitesByServiceGroup_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502c13c-0000-0500-0000-68e77d780000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "bdf5453e-58fd-46e1-87dd-41df3efb17ba" ],
+        "x-ms-correlation-request-id": [ "48084903-f51e-4ef3-b9a3-7f2961b5b492" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T091713Z:48084903-f51e-4ef3-b9a3-7f2961b5b492" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3E2DA6983C9A4183AB1288E5818713FA Ref B: PNQ231110906023 Ref C: 2025-10-09T09:17:12Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:17:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "524" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:16:40.4194622Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:16:40.4194622Z\"},\"properties\":{\"displayName\":\"Test SG Scope\",\"description\":\"Test service group scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Service Group Scope+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "01c45fea-371b-481d-a44c-515bf677a0f4" ],
+        "CommandName": [ "Az.Site.internal\\Get-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "Get-AzSiteSitesByServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1502c13c-0000-0500-0000-68e77d780000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "abcf2f20-140e-494d-acd8-11586575af18" ],
+        "x-ms-correlation-request-id": [ "2e077bcc-549e-442d-ad66-a84b5575617e" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20251009T091713Z:2e077bcc-549e-442d-ad66-a84b5575617e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F751179A7C3B42A4B34F40E03F7BDF55 Ref B: PNQ231110906023 Ref C: 2025-10-09T09:17:13Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:17:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "524" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01\",\"name\":\"site-sg-scope-01\",\"type\":\"microsoft.edge/sites\",\"systemData\":{\"createdBy\":\"bsomeshekar@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-09T09:16:40.4194622Z\",\"lastModifiedBy\":\"bsomeshekar@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-09T09:16:40.4194622Z\"},\"properties\":{\"displayName\":\"Test SG Scope\",\"description\":\"Test service group scope\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSite+[NoContext]+Get site by Service Group Scope+$DELETE+https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/clisg/providers/Microsoft.Edge/sites/site-sg-scope-01?api-version=2025-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "ff9f8403-46e4-4109-8256-3e0139765eef" ],
+        "CommandName": [ "Az.Site.internal\\Remove-AzSiteSitesByServiceGroup" ],
+        "FullCommandName": [ "Remove-AzSiteSitesByServiceGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.Site/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "1a77581e-9c20-41d2-a6c4-eee4d55384e5" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20251009T091717Z:1a77581e-9c20-41d2-a6c4-eee4d55384e5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5ADA3AC733E04E0893D84CE395E4FCAD Ref B: PNQ231110906023 Ref C: 2025-10-09T09:17:13Z" ],
+        "Date": [ "Thu, 09 Oct 2025 09:17:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

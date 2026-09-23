@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Management.DataFactory
         /// </summary>
         public virtual IIntegrationRuntimeNodesOperations IntegrationRuntimeNodes { get; private set; }
         /// <summary>
+        /// Gets the IIntegrationRuntimeOperations
+        /// </summary>
+        public virtual IIntegrationRuntimeOperations IntegrationRuntime { get; private set; }
+        /// <summary>
         /// Gets the ILinkedServicesOperations
         /// </summary>
         public virtual ILinkedServicesOperations LinkedServices { get; private set; }
@@ -357,6 +361,9 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -394,6 +401,7 @@ namespace Microsoft.Azure.Management.DataFactory
             this.IntegrationRuntimes = new IntegrationRuntimesOperations(this);
             this.IntegrationRuntimeObjectMetadata = new IntegrationRuntimeObjectMetadataOperations(this);
             this.IntegrationRuntimeNodes = new IntegrationRuntimeNodesOperations(this);
+            this.IntegrationRuntime = new IntegrationRuntimeOperations(this);
             this.LinkedServices = new LinkedServicesOperations(this);
             this.Datasets = new DatasetsOperations(this);
             this.Pipelines = new PipelinesOperations(this);
@@ -494,10 +502,10 @@ namespace Microsoft.Azure.Management.DataFactory
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<CopySink>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<TabularSource>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<TabularSource>("type"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ExportSettings>("type"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ExportSettings>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ImportSettings>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ImportSettings>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ExportSettings>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ExportSettings>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<CopyTranslator>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<CopyTranslator>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<MultiplePipelineTrigger>("type"));

@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudStorageApplianceConfigurationDataObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudstorageapplianceconfigurationdataobject
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Create an in-memory object for StorageApplianceConfigurationData.
 
 ### Example 1: Create an in-memory object for StorageApplianceConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 
 New-AzNetworkCloudStorageApplianceConfigurationDataObject -AdminCredentialsPassword $password -AdminCredentialsUsername username -RackSlot 1 -SerialNumber serialNumber -StorageApplianceName storageApplianceName
 ```
@@ -122,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.StorageApplianceConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.StorageApplianceConfigurationData
 
 ## NOTES
 

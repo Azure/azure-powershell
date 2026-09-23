@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability for module Az.FirmwareAnalysis
+* Upgraded API support to include 2025-08-02
+* Added usage metric support via the Get-AzFirmwareAnalysisUsageMetric cmdlet
+
+## Version 0.1.4
+* Upgraded nuget package to signed package.
+
 ## Version 0.1.3
 * Fixed the placeholder in psd1 file.
 

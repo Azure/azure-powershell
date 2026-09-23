@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// The name of the sku supported by Azure Cognitive Search.
+    /// The name of the SKU supported by Azure AI Search.
     /// </summary>
     public partial class QuotaUsageResultName
     {
@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the QuotaUsageResultName class.
         /// </summary>
 
-        /// <param name="value">The sku name supported by Azure Cognitive Search.
+        /// <param name="value">The SKU name supported by Azure AI Search.
         /// </param>
 
-        /// <param name="localizedValue">The localized string value for the sku supported by Azure Cognitive Search.
+        /// <param name="localizedValue">The localized string value for the SKU name.
         /// </param>
         public QuotaUsageResultName(string value = default(string), string localizedValue = default(string))
 
@@ -44,14 +44,13 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets the sku name supported by Azure Cognitive Search.
+        /// Gets or sets the SKU name supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public string Value {get; set; }
 
         /// <summary>
-        /// Gets or sets the localized string value for the sku supported by Azure
-        /// Cognitive Search.
+        /// Gets or sets the localized string value for the SKU name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "localizedValue")]
         public string LocalizedValue {get; set; }

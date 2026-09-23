@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string BlobPipelineParameterSet = "BlobPipeline";
 
         /// <summary>
-        /// container pipeline paremeter set name
+        /// container pipeline parameter set name
         /// </summary>
         private const string ContainerPipelineParameterSet = "ContainerPipeline";
 
@@ -384,7 +384,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, localChannel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, null,
                     this.SnapshotTime is null? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions);
-                // Skip check blob existance, as Server will report error is necessary
+                // Skip check blob existence, as Server will report error is necessary
 
                 await RemoveAzureBlobTrack2(taskId, localChannel, blobClient, true).ConfigureAwait(false);
             }

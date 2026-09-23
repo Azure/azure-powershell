@@ -55,13 +55,8 @@ Describe 'Invoke-AzReservationCalculateRefund' {
 
     It 'Post'  {
         $orderId = "50000000-aaaa-bbbb-cccc-100000000003"
-        $body = @{
-            Id = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
-            ReservationToReturnQuantity = 1
-            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
-            Scope = "Reservation"
-        }
-        $response = Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -Body $body
+        $json = "Id=/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003;ReservationToReturnQuantity=1;ReservationToReturnReservationId=/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003;Scope=Reservation"
+        $response = Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -JsonString $json
         ExecuteTestCases($response)
     }
 
@@ -72,20 +67,6 @@ Describe 'Invoke-AzReservationCalculateRefund' {
         $fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
         $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
         $response = Invoke-AzReservationCalculateRefund -InputObject $param -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
-        ExecuteTestCases($response)
-    }
-
-    It 'PostViaIdentity' {
-        $param = @{
-                    ReservationOrderId = "50000000-aaaa-bbbb-cccc-100000000003" 
-        }
-        $body = @{
-            Id = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
-            ReservationToReturnQuantity = 1
-            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
-            Scope = "Reservation"
-        }
-        $response = Invoke-AzReservationCalculateRefund -InputObject $param -Body $body
         ExecuteTestCases($response)
     }
 }

@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = this.Access;
                     grantAccessData.DurationInSeconds = this.DurationInSecond;
+                    grantAccessData.GetSecureVMGuestStateSAS = this.SecureVMGuestStateSAS;
 
                     var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
                     var psObject = new PSAccessUri();
@@ -85,6 +86,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             Mandatory = false)]
         public int DurationInSecond { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Set this flag to true to get additional SAS for VM guest state.",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter SecureVMGuestStateSAS { get; set; }
+
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

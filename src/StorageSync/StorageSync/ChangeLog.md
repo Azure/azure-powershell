@@ -18,6 +18,37 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved help for the `ChangeEnumerationIntervalDay` parameter
+* Fixed `Set-AzStorageSyncServer` to retrieve the registered server using the validated server ID
+* Added `ChangeEnumerationIntervalDay` parameter to `New-AzStorageSyncCloudEndpoint` cmdlet
+    - Allows customers to configure the interval in days between change enumeration operations for cloud endpoints
+    - Optional parameter that provides control over change detection frequency
+    - Valid range: 1 to 20 days
+* Added `Set-AzStorageSyncCloudEndpoint` cmdlet
+    - Allows customers to update the `ChangeEnumerationIntervalDay` property of an existing cloud endpoint
+    - Valid range: 1 to 20 days
+
+## Version 2.6.0
+* Added ChangeSafety Support
+
+## Version 2.5.2
+* Fixed security bug in checking tenant id for MI server registration
+
+## Version 2.5.1
+* Fixed security bug in token acquisition for MI server registration
+
+## Version 2.5.0
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+* Added RoleAssignmentExists check
+* Added AssignIdentity to Set-AzStorageSyncServer
+* Added a default behavior of system assigned identity to StorageSyncService provisioning
+
+## Version 2.4.1
+* Removed "Microsoft.Azure.Management.Authorization" Version "2.13.0-preview" package reference
+
+## Version 2.4.0
+* Upgraded nuget package to signed package.
 
 ## Version 2.3.1
 * Fixed the bug in server registration
@@ -82,7 +113,6 @@
 * Update references in .psd1 to use relative path
 
 ## Version 1.2.1
-
 * Fix Issue 9810 in Reset-AzStorageSyncServerCertificate.
 
 ## Version 1.2.0

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeQuotaRule",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolume))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeQuotaRule))]
     [Alias("Get-AnfVolumeQuotaRule")]
     [CmdletPreview(PreviewMessage)]
     public class GetAzureRmNetAppFilesVolumeQuotaRule : AzureNetAppFilesCmdletBase
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];

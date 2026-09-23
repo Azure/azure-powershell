@@ -1,0 +1,181 @@
+{
+  "resourceType": "connections/flows",
+  "apiVersion": "2025-05-21",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.datatransfer"
+  },
+  "commands": [
+    {
+      "name": "Disable-AzDataTransferFlow",
+      "description": "Disables the specified flow",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/disable-azdatatransferflow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConnectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disables the specified flow",
+          "parameters": [
+            {
+              "name": "-ConnectionName",
+              "value": "[Path.connectionName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.flowName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enable-AzDataTransferFlow",
+      "description": "Enables the specified flow.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/enable-azdatatransferflow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConnectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Enables the specified flow.",
+          "parameters": [
+            {
+              "name": "-ConnectionName",
+              "value": "[Path.connectionName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.flowName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDataTransferFlow",
+      "description": "Gets flow resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/get-azdatatransferflow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConnectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets flow resource.",
+          "parameters": [
+            {
+              "name": "-ConnectionName",
+              "value": "[Path.connectionName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.flowName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDataTransferFlow",
+      "description": "Deletes the flow resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datatransfer/remove-azdatatransferflow"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConnectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the flow resource.",
+          "parameters": [
+            {
+              "name": "-ConnectionName",
+              "value": "[Path.connectionName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.flowName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -19,16 +19,16 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Get-AzLabServicesSchedule' {
     It 'List' {
-        Get-AzLabServicesSchedule -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesSchedule -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
-        Get-AzLabServicesSchedule -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:ScheduleName  | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesSchedule -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.ScheduleName  | Should -Not -BeNullOrEmpty
     }
 
     It 'Pipeline' {
-        $lab = Get-AzLabServicesLab -Name $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName
-        $schedule = Get-AzLabServicesSchedule -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:ScheduleName 
+        $lab = Get-AzLabServicesLab -Name $env.LabName -ResourceGroupName $env.ResourceGroupName
+        $schedule = Get-AzLabServicesSchedule -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.ScheduleName 
         Get-AzLabServicesSchedule -Lab $lab -Name $schedule.Name | Select-Object -Property Note | Should -BeExactly "@{Note=Automated schedule}"
     }
 }

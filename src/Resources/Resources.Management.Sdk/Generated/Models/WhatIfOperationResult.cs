@@ -34,12 +34,20 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="changes">List of resource changes predicted by What-If operation.
         /// </param>
-        public WhatIfOperationResult(string status = default(string), ErrorResponse error = default(ErrorResponse), System.Collections.Generic.IList<WhatIfChange> changes = default(System.Collections.Generic.IList<WhatIfChange>))
+
+        /// <param name="potentialChanges">List of resource changes predicted by What-If operation.
+        /// </param>
+
+        /// <param name="diagnostics">List of resource diagnostics detected by What-If operation.
+        /// </param>
+        public WhatIfOperationResult(string status = default(string), ErrorResponse error = default(ErrorResponse), System.Collections.Generic.IList<WhatIfChange> changes = default(System.Collections.Generic.IList<WhatIfChange>), System.Collections.Generic.IList<WhatIfChange> potentialChanges = default(System.Collections.Generic.IList<WhatIfChange>), System.Collections.Generic.IList<DeploymentDiagnosticsDefinition> diagnostics = default(System.Collections.Generic.IList<DeploymentDiagnosticsDefinition>))
 
         {
             this.Status = status;
             this.Error = error;
             this.Changes = changes;
+            this.PotentialChanges = potentialChanges;
+            this.Diagnostics = diagnostics;
             CustomInit();
         }
 
@@ -66,5 +74,17 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changes")]
         public System.Collections.Generic.IList<WhatIfChange> Changes {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of resource changes predicted by What-If operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.potentialChanges")]
+        public System.Collections.Generic.IList<WhatIfChange> PotentialChanges {get; set; }
+
+        /// <summary>
+        /// Gets list of resource diagnostics detected by What-If operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.diagnostics")]
+        public System.Collections.Generic.IList<DeploymentDiagnosticsDefinition> Diagnostics {get; private set; }
     }
 }

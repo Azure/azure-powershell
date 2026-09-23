@@ -34,12 +34,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryPointId">The recovery point id to be passed to test failover to a particular
         /// recovery point. In case of latest recovery point, null should be passed.
         /// </param>
-        public HyperVReplicaAzureTestFailoverInput(string primaryKekCertificatePfx = default(string), string secondaryKekCertificatePfx = default(string), string recoveryPointId = default(string))
+
+        /// <param name="osUpgradeVersion">A value indicating the inplace OS Upgrade version.
+        /// </param>
+        public HyperVReplicaAzureTestFailoverInput(string primaryKekCertificatePfx = default(string), string secondaryKekCertificatePfx = default(string), string recoveryPointId = default(string), string osUpgradeVersion = default(string))
 
         {
             this.PrimaryKekCertificatePfx = primaryKekCertificatePfx;
             this.SecondaryKekCertificatePfx = secondaryKekCertificatePfx;
             this.RecoveryPointId = recoveryPointId;
+            this.OSUpgradeVersion = osUpgradeVersion;
             CustomInit();
         }
 
@@ -68,5 +72,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPointId")]
         public string RecoveryPointId {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the inplace OS Upgrade version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "osUpgradeVersion")]
+        public string OSUpgradeVersion {get; set; }
     }
 }

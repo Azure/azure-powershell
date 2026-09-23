@@ -26,18 +26,18 @@ Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetInSite
+```
+Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
+ [-SubscriptionId <String[]>] -ApplianceName <String> -Name <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
  [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### GetInSite
-```
-Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31
 ```
 
 Get a server in a migrate project by name.
-Name is a unique paramenter for a server.
+Name is a unique parameter for a server.
 
 ### Example 3: List VMware machines in an appliance
 ```powershell
@@ -115,7 +115,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31
 ```
 
 Get a server for an appliance in a project.
-Name is a unique paramenter for a server.
+Name is a unique parameter for a server.
 
 ### Example 5: List and filter VMware machines by display name
 ```powershell
@@ -213,7 +213,7 @@ For users, use display name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetInSite
+Parameter Sets: GetInSite, Get
 Aliases:
 
 Required: True
@@ -322,9 +322,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 
 ## NOTES
 

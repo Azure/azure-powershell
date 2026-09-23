@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -92,6 +92,96 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<LoadBalancingRule> GetAsync(this ILoadBalancerLoadBalancingRulesOperations operations, string resourceGroupName, string loadBalancerName, string loadBalancingRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, loadBalancingRuleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get health details of a load balancing rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='groupName'>
+        /// 
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='loadBalancingRuleName'>
+        /// The name of the load balancing rule.
+        /// </param>
+        public static LoadBalancerHealthPerRule Health(this ILoadBalancerLoadBalancingRulesOperations operations, string groupName, string loadBalancerName, string loadBalancingRuleName)
+        {
+                return ((ILoadBalancerLoadBalancingRulesOperations)operations).HealthAsync(groupName, loadBalancerName, loadBalancingRuleName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get health details of a load balancing rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='groupName'>
+        /// 
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='loadBalancingRuleName'>
+        /// The name of the load balancing rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<LoadBalancerHealthPerRule> HealthAsync(this ILoadBalancerLoadBalancingRulesOperations operations, string groupName, string loadBalancerName, string loadBalancingRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.HealthWithHttpMessagesAsync(groupName, loadBalancerName, loadBalancingRuleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get health details of a load balancing rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='groupName'>
+        /// 
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='loadBalancingRuleName'>
+        /// The name of the load balancing rule.
+        /// </param>
+        public static LoadBalancerHealthPerRule BeginHealth(this ILoadBalancerLoadBalancingRulesOperations operations, string groupName, string loadBalancerName, string loadBalancingRuleName)
+        {
+                return ((ILoadBalancerLoadBalancingRulesOperations)operations).BeginHealthAsync(groupName, loadBalancerName, loadBalancingRuleName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get health details of a load balancing rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='groupName'>
+        /// 
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='loadBalancingRuleName'>
+        /// The name of the load balancing rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<LoadBalancerHealthPerRule> BeginHealthAsync(this ILoadBalancerLoadBalancingRulesOperations operations, string groupName, string loadBalancerName, string loadBalancingRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginHealthWithHttpMessagesAsync(groupName, loadBalancerName, loadBalancingRuleName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

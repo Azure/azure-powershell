@@ -55,7 +55,7 @@ Invoke-LiveTestScenario -Name "Update bot service" -Description "Test Updating o
     Assert-AreEqual "bot" $actual.Kind
 }
 
-Invoke-LiveTestScenario -Name "Remove bot servcie" -Description "Test Removing a bot service" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Remove bot service" -Description "Test Removing a bot service" -ScenarioScript `
 {
     param ($rg)
 

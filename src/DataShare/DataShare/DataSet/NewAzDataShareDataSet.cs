@@ -285,12 +285,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                     if (this.FilePath != null)
                     {
 
-                        var newDataSet = (ADLSGen2FileDataSet)this.DataShareManagementClient.DataSets.Create(
+                        var newDataSet = (AdlsGen2FileDataSet)this.DataShareManagementClient.DataSets.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareName,
                             this.Name,
-                            new ADLSGen2FileDataSet()
+                            new AdlsGen2FileDataSet()
                             {
                                 FileSystem = this.FileSystem,
                                 FilePath = this.FilePath,
@@ -305,12 +305,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                     else if (this.FolderPath != null)
                     {
 
-                        var newDataSet = (ADLSGen2FolderDataSet)this.DataShareManagementClient.DataSets.Create(
+                        var newDataSet = (AdlsGen2FolderDataSet)this.DataShareManagementClient.DataSets.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareName,
                             this.Name,
-                            new ADLSGen2FolderDataSet()
+                            new AdlsGen2FolderDataSet()
                             {
                                 FileSystem = this.FileSystem,
                                 FolderPath = this.FolderPath,
@@ -325,12 +325,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                     else
                     {
 
-                        var newDataSet = (ADLSGen2FileSystemDataSet)this.DataShareManagementClient.DataSets.Create(
+                        var newDataSet = (AdlsGen2FileSystemDataSet)this.DataShareManagementClient.DataSets.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareName,
                             this.Name,
-                            new ADLSGen2FileSystemDataSet()
+                            new AdlsGen2FileSystemDataSet()
                             {
                                 FileSystem = this.FileSystem,
                                 ResourceGroup = storageResourceGroup,
@@ -353,12 +353,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 {
                     if (this.FileName != null)
                     {
-                        var newDataSet = (ADLSGen1FileDataSet)this.DataShareManagementClient.DataSets.Create(
+                        var newDataSet = (AdlsGen1FileDataSet)this.DataShareManagementClient.DataSets.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareName,
                             this.Name,
-                            new ADLSGen1FileDataSet()
+                            new AdlsGen1FileDataSet()
                             {
                                 FileName = this.FileName,
                                 FolderPath = this.AdlsGen1FolderPath,
@@ -371,12 +371,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                     }
                     else
                     {
-                        var newDataSet = (ADLSGen1FolderDataSet)this.DataShareManagementClient.DataSets.Create(
+                        var newDataSet = (AdlsGen1FolderDataSet)this.DataShareManagementClient.DataSets.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareName,
                             this.Name,
-                            new ADLSGen1FolderDataSet()
+                            new AdlsGen1FolderDataSet()
                             {
                                 FolderPath = this.AdlsGen1FolderPath,
                                 ResourceGroup = storageResourceGroup,

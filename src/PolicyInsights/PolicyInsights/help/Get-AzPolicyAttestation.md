@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicyattestation
 schema: 2.0.0
@@ -12,33 +12,52 @@ Gets policy attestations.
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
+### ListBySubscriptionId (Default)
 ```
-Get-AzPolicyAttestation [-Top <Int32>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPolicyAttestation [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByResourceGroup
+```
+Get-AzPolicyAttestation [-SubscriptionId <String[]>] -ResourceGroupName <String> [-Filter <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetBySubscriptionId
+```
+Get-AzPolicyAttestation [-SubscriptionId <String[]>] -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ByName
+### GetByResourceGroup
 ```
-Get-AzPolicyAttestation -Name <String> [-Scope <String>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GenericScope
-```
-Get-AzPolicyAttestation -Scope <String> [-Top <Int32>] [-Filter <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyAttestation [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ResourceGroupScope
+### GetOrListByResourceId
 ```
-Get-AzPolicyAttestation -ResourceGroupName <String> [-Top <Int32>] [-Filter <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyAttestation [-Name <String>] -ResourceId <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
+### GetByScope
 ```
-Get-AzPolicyAttestation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyAttestation -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ScopeList
+```
+Get-AzPolicyAttestation -Scope <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPolicyAttestation -InputObject <IPolicyInsightsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,154 +67,159 @@ The **Get-AzPolicyAttestation** cmdlet gets all policy attestations in a scope o
 
 ### Example 1: Get all policy attestations in the current subscription
 ```powershell
-Set-AzContext -Subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4"
-Get-AzPolicyAttestation
+Get-AzPolicyAttestation | fl
 ```
 
 ```output
-Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.policyinsights/attestations/
-                              attestation-subscription
-Name                        : attestation-subscription
-Type                        : Microsoft.PolicyInsights/attestations
-PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
-                              nts/psattestationsubassignment
-PolicyDefinitionReferenceId :
-ComplianceState             : NonCompliant
-ExpiresOn                   :
-Owner                       :
-Comment                     : Setting the state to non compliant
-Evidence                    :
-ProvisioningState           : Succeeded
-LastComplianceStateChangeAt : 1/27/2023 4:00:04 PM
-AssessmentDate              :
-Metadata                    :
-SystemData                  :
+AssessmentDate               :
+Comment                      :
+ComplianceState              : Compliant
+Evidence                     :
+ExpiresOn                    :
+Id                           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/resourcegroups/ps-attestation-test-rg/providers/microsoft.policyinsights/attestations/attestation-rgscope-crud
+LastComplianceStateChangeAt  : 3/26/2026 9:28:05 PM
+Metadata                     : {
+                               }
+Name                         : Attestation-RGScope-Crud
+Owner                        :
+PolicyAssignmentId           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.authorization/policyassignments/psattestationrgassignment
+PolicyDefinitionReferenceId  :
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps-attestation-test-rg
+SystemDataCreatedAt          : 3/26/2026 9:28:05 PM
+SystemDataCreatedBy          : username@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 3/26/2026 9:28:05 PM
+SystemDataLastModifiedBy     : username@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.PolicyInsights/attestations
 
-Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
-                              microsoft.policyinsights/attestations/attestation-rg
-Name                        : attestation-rg
-Type                        : Microsoft.PolicyInsights/attestations
-PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
-                              nts/psattestationrgassignment
-PolicyDefinitionReferenceId :
-ComplianceState             :
-ExpiresOn                   : 1/27/2024 4:04:24 PM
-Owner                       :
-Comment                     :
-Evidence                    :
-ProvisioningState           : Succeeded
-LastComplianceStateChangeAt : 1/27/2023 4:04:11 PM
-AssessmentDate              :
-Metadata                    :
-SystemData                  :
+AssessmentDate               :
+Comment                      :
+ComplianceState              : Compliant
+Evidence                     :
+ExpiresOn                    :
+Id                           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/resourcegroups/ps-attestation-test-rg/providers/microsoft.network/networksecuritygroups/pstests0/providers/microsoft.policyins
+                               ights/attestations/attestation-resourcescope-crud
+LastComplianceStateChangeAt  : 3/26/2026 9:28:50 PM
+Metadata                     : {
+                               }
+Name                         : Attestation-ResourceScope-Crud
+Owner                        :
+PolicyAssignmentId           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.authorization/policyassignments/psattestationresourceassignment
+PolicyDefinitionReferenceId  :
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps-attestation-test-rg
+SystemDataCreatedAt          : 3/26/2026 9:28:50 PM
+SystemDataCreatedBy          : username@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 3/26/2026 9:28:50 PM
+SystemDataLastModifiedBy     : username@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.PolicyInsights/attestations
 
-Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
-                              microsoft.network/networksecuritygroups/pstests0/providers/microsoft.policyinsights/attestations/att
-                              estation-resource
-Name                        : attestation-resource
-Type                        : Microsoft.PolicyInsights/attestations
-PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
-                              nts/psattestationresourceassignment
-PolicyDefinitionReferenceId :
-ComplianceState             : NonCompliant
-ExpiresOn                   :
-Owner                       : Test Owner 2
-Comment                     :
-Evidence                    :
-ProvisioningState           : Succeeded
-LastComplianceStateChangeAt : 1/27/2023 2:38:17 AM
-AssessmentDate              :
-Metadata                    :
-SystemData                  :
-
-Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
-                              microsoft.policyinsights/attestations/attestationrgallprops
-Name                        : attestationRGAllProps
-Type                        : Microsoft.PolicyInsights/attestations
-PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
-                              nts/psattestationinitiativergassignment
-PolicyDefinitionReferenceId : pstestattestationrg_1
-ComplianceState             :
-ExpiresOn                   : 1/27/2024 2:51:54 AM
-Owner                       : Test Owner
-Comment                     :
-Evidence                    : {Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence}
-ProvisioningState           : Succeeded
-LastComplianceStateChangeAt : 1/27/2023 2:51:57 AM
-AssessmentDate              : 1/25/2024 2:51:54 AM
-Metadata                    : {
-                                "TestKey": "TestValue"
-                              }
-SystemData                  :
+AssessmentDate               :
+Comment                      :
+ComplianceState              : Compliant
+Evidence                     :
+ExpiresOn                    :
+Id                           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.policyinsights/attestations/attestation-subscriptionscope-crud
+LastComplianceStateChangeAt  : 3/26/2026 9:01:05 PM
+Metadata                     : {
+                               }
+Name                         : Attestation-SubscriptionScope-Crud
+Owner                        :
+PolicyAssignmentId           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.authorization/policyassignments/psattestationsubassignment
+PolicyDefinitionReferenceId  :
+ProvisioningState            : Succeeded
+ResourceGroupName            :
+SystemDataCreatedAt          : 3/26/2026 9:01:05 PM
+SystemDataCreatedBy          : username@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 3/26/2026 9:01:05 PM
+SystemDataLastModifiedBy     : username@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.PolicyInsights/attestations
 ```
 
-This command gets all the attestations created at or underneath a subscription with id d1acb22b-c876-44f7-b08e-3fcf9f6767f4.
+This command gets all the attestations created at or underneath the subscription of the current context.
 
 ### Example 2: Get a specific policy attestation
 ```powershell
-Get-AzPolicyAttestation -ResourceGroupName "ps-attestation-test-rg" -Name "attestation-RG"
+Get-AzPolicyAttestation -ResourceGroupName "ps-attestation-test-rg" -Name "Attestation-RGScope-Crud"
 ```
 
 ```output
-Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
-                              microsoft.policyinsights/attestations/attestation-rg
-Name                        : attestation-rg
-Type                        : Microsoft.PolicyInsights/attestations
-PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
-                              nts/psattestationrgassignment
-PolicyDefinitionReferenceId :
-ComplianceState             :
-ExpiresOn                   : 1/27/2024 4:04:24 PM
-Owner                       :
-Comment                     :
-Evidence                    :
-ProvisioningState           : Succeeded
-LastComplianceStateChangeAt : 1/27/2023 4:04:11 PM
-AssessmentDate              :
-Metadata                    :
-SystemData                  :
+AssessmentDate               :
+Comment                      :
+ComplianceState              : Compliant
+Evidence                     :
+ExpiresOn                    :
+Id                           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/resourcegroups/ps-attestation-test-rg/providers/microsoft.policyinsights/attestations/attestation-rgscope-crud
+LastComplianceStateChangeAt  : 3/26/2026 9:28:05 PM
+Metadata                     : {
+                               }
+Name                         : Attestation-RGScope-Crud
+Owner                        :
+PolicyAssignmentId           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.authorization/policyassignments/psattestationrgassignment
+PolicyDefinitionReferenceId  :
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps-attestation-test-rg
+SystemDataCreatedAt          : 3/26/2026 9:28:05 PM
+SystemDataCreatedBy          : username@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 3/26/2026 9:28:05 PM
+SystemDataLastModifiedBy     : username@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.PolicyInsights/attestations
 ```
 
-This command gets the attestation named 'attestation-RG' at the resource group 'ps-attestation-test-rg'.
+This command gets the attestation named 'Attestation-RGScope-Crud' at the resource group 'ps-attestation-test-rg'.
 
 ### Example 3: Get 5 policy attestations in a subscription with optional filters
 ```powershell
-Set-AzContext -Subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4"
-Get-AzPolicyAttestation -Top 5 -Filter "PolicyAssignmentId eq '/subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignments/psattestationresourceassignment'"
+Get-AzPolicyAttestation -Top 5 -Filter "PolicyAssignmentId eq '/subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.authorization/policyassignments/PSAttestationResourceAssignment'"
 ```
 
 ```output
-Id                          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/resourcegroups/ps-attestation-test-rg/providers/
-                              microsoft.network/networksecuritygroups/pstests0/providers/microsoft.policyinsights/attestations/att
-                              estation-resource
-Name                        : attestation-resource
-Type                        : Microsoft.PolicyInsights/attestations
-PolicyAssignmentId          : /subscriptions/d1acb22b-c876-44f7-b08e-3fcf9f6767f4/providers/microsoft.authorization/policyassignme
-                              nts/psattestationresourceassignment
-PolicyDefinitionReferenceId :
-ComplianceState             : NonCompliant
-ExpiresOn                   :
-Owner                       : Test Owner 2
-Comment                     :
-Evidence                    :
-ProvisioningState           : Succeeded
-LastComplianceStateChangeAt : 1/27/2023 2:38:17 AM
-AssessmentDate              :
-Metadata                    :
-SystemData                  :
+AssessmentDate               :
+Comment                      :
+ComplianceState              : Compliant
+Evidence                     :
+ExpiresOn                    :
+Id                           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/resourcegroups/ps-attestation-test-rg/providers/microsoft.network/networksecuritygroups/pstests0/providers/microsoft.policyins
+                               ights/attestations/attestation-resourcescope-crud
+LastComplianceStateChangeAt  : 3/26/2026 9:28:50 PM
+Metadata                     : {
+                               }
+Name                         : Attestation-ResourceScope-Crud
+Owner                        :
+PolicyAssignmentId           : /subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/microsoft.authorization/policyassignments/psattestationresourceassignment
+PolicyDefinitionReferenceId  :
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps-attestation-test-rg
+SystemDataCreatedAt          : 3/26/2026 9:28:50 PM
+SystemDataCreatedBy          : username@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 3/26/2026 9:28:50 PM
+SystemDataLastModifiedBy     : username@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.PolicyInsights/attestations
 ```
 
-This command gets a max of 5 policy attestations underneath the subscription with id d1acb22b-c876-44f7-b08e-3fcf9f6767f4. Only policy attestations for the given policy assignment will be retrieved.
+This command gets a max of 5 policy attestations underneath the current context's subscription.
+Only policy attestations for the given policy assignment will be retrieved.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -209,7 +233,7 @@ Filter expression using OData notation.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionScope, GenericScope, ResourceGroupScope
+Parameter Sets: ListBySubscriptionId, ListByResourceGroup, GetOrListByResourceId, ScopeList
 Aliases:
 
 Required: False
@@ -219,89 +243,110 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Resource name.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
+Type: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
+### -Name
+The name of the attestation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: GetBySubscriptionId, GetByResourceGroup, GetByScope
+Aliases: AttestationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetOrListByResourceId
+Aliases: AttestationName
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupScope
+Parameter Sets: ListByResourceGroup, GetByResourceGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+ID of the resource that an attestation or attestations were made against or an ID of an attestation.
+Cmdlet will return a single attestation if this is an ID of an attestation or will return a list of attestations if this is a resource ID that attestations were made against.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases: Id
+Parameter Sets: GetOrListByResourceId
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Scope
 Scope of the resource.
 E.g.
-'/subscriptions/{subscriptionId}/resourceGroups/{rgName}'.
+'subscriptions/\{subscriptionId}/resourceGroups/\{rgName}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GenericScope
+Parameter Sets: GetByScope, ScopeList
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+Uses current subscription if one isn't provided.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ListBySubscriptionId, ListByResourceGroup, GetBySubscriptionId, GetByResourceGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -311,7 +356,7 @@ If not provided, the maximum number of records returned is determined by the Azu
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SubscriptionScope, GenericScope, ResourceGroupScope
+Parameter Sets: ListBySubscriptionId, ListByResourceGroup, GetOrListByResourceId, ScopeList
 Aliases:
 
 Required: False
@@ -326,15 +371,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IAttestation
 
 ## NOTES
 
 ## RELATED LINKS
-[New-AzPolicyAttestation](./New-AzPolicyAttestation.md)
-
-[Remove-AzPolicyAttestation](./Remove-AzPolicyAttestation.md)

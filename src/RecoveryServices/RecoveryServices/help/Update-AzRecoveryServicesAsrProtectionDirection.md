@@ -77,6 +77,8 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  [-RecoveryCapacityReservationGroupId <String>] [-RecoveryBootDiagStorageAccountId <String>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RecoveryAvailabilityZone <String>]
+ [-PlatformFaultDomain <Integer>]
  [<CommonParameters>]
 ```
 
@@ -91,6 +93,8 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  [-RecoveryCapacityReservationGroupId <String>] [-RecoveryBootDiagStorageAccountId <String>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RecoveryAvailabilityZone <String>]
+ [-PlatformFaultDomain <Integer>]
  [<CommonParameters>]
 ```
 
@@ -138,7 +142,7 @@ Start the update direction operation for the specified replication protected ite
 ```powershell
 $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $B2ApcmMapping `
  -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 -ReplicationProtectedItem  $rpi `
- -DiskEncryptionVaultId  $DiskEncryptionVaultId -DiskEncryptionSecretUrl $DiskEncryptionSecertUrl `
+ -DiskEncryptionVaultId  $DiskEncryptionVaultId -DiskEncryptionSecretUrl $DiskEncryptionSecretUrl `
  -KeyEncryptionVaultId $KeyEncryptionVaultId  -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
 ```
 
@@ -463,6 +467,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PlatformFaultDomain
+Specify the platform fault domain to used by the failover Vm in target recovery region.
+
+```yaml
+Type: System.int32
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProcessServer
 Process Server to be used for replication.
 
@@ -499,6 +518,21 @@ The availability set that the virtual machine should be created in upon failover
 ```yaml
 Type: System.String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAvailabilityZone
+Specify the availability zone to used by the failover Vm in target recovery region.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False
@@ -614,7 +648,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryVirtualMachineScaleSetId
-Specifies the reccovery virtual machine scale set id.
+Specifies the recovery virtual machine scale set id.
 
 ```yaml
 Type: System.String

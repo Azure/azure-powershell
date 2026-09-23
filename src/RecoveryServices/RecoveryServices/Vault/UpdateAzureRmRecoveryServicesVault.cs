@@ -20,6 +20,7 @@ using cmdletModel = Microsoft.Azure.Commands.RecoveryServices;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -123,10 +124,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ImmutabilityState? ImmutabilityState { get; set; }
 
         /// <summary>
+        /// Gets or sets the cost management granularity for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Cost Management Granularity for the vault. Allowed values are \"VaultLevel\", \"ProtectedItemLevel\", \"ProtectedItemWithParentTag\".")]
+        [ValidateSet("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        public CostManagementGranularity? CostManagementGranularity { get; set; }
+
+        /// <summary>
         /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant")]        
+        [Parameter(Mandatory = false, HelpMessage = "Parameter deprecated. Please use SecureToken instead")]        
         public string Token;
+
+        /// <summary>
+        /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant")]
+        public System.Security.SecureString SecureToken;
 
         /// <summary>
         /// Enables or disables cross subscription restore state for RS vault. Allowed values are Enabled, Disabled, PermanentlyDisabled.
@@ -134,6 +148,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Cross subscription restore state of the vault. Allowed values are \"Enabled\", \"Disabled\", \"PermanentlyDisabled\".")]
         [ValidateSet("Enabled", "Disabled", "PermanentlyDisabled")]
         public CrossSubscriptionRestoreState? CrossSubscriptionRestoreState { get; set; }
+
+        /// <summary>
+        /// Enables or disables Source Scan for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Source Scan state of the vault. Allowed values are \"Enabled\", \"Disabled\".")]
+        [ValidateSet("Enabled", "Disabled")]
+        public SourceScanState? SourceScanState { get; set; }
 
         #endregion
 
@@ -162,7 +183,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             else
                             {
                                 MSI.Type = MSIdentity.SystemAssigned.ToString();
-                            }                            
+                            }
                         }
                         else if (IdentityType == MSIdentity.None)
                         {
@@ -263,7 +284,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         }
                         
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null)
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null && CostManagementGranularity == null && SourceScanState == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
@@ -279,7 +300,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         patchVault.Identity = MSI;
                     }
 
-                    // alerts V1 changes 
+                    // alerts V1 changes
                     if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null || DisableAzureMonitorAlertsForAllReplicationIssue != null || DisableAzureMonitorAlertsForAllFailoverIssue != null || DisableEmailNotificationsForSiteRecovery != null)
                     {                        
                         MonitoringSettings alerts = (vault.Properties!= null && vault.Properties.MonitoringSettings != null) ? vault.Properties.MonitoringSettings : new MonitoringSettings();
@@ -350,7 +371,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {
                             throw new ArgumentException(Resources.ImmutabilityCantBeLocked);
                         }
-                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();                                               
+                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
+
+                        if (ImmutabilityState != cmdletModel.ImmutabilityState.Disabled)
+                        {
+                            patchVault.Properties.SecuritySettings.ImmutabilitySettings.Configuration =
+                                vault.Properties?.SecuritySettings?.ImmutabilitySettings?.Configuration ??
+                                new ServiceClientModel.ImmutabilityConfiguration
+                                {
+                                    Type = ServiceClientModel.ImmutabilityType.AsPerPolicy
+                                };
+                        }
                     }
 
                     // update cross subscription restore state of the vault
@@ -364,9 +395,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         patchVault.Properties.RestoreSettings = csrSetting;
                     }
 
+                    // update cost management granularity of the vault
+                    if(CostManagementGranularity != null)
+                    {
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.CostManagementSettings == null) { patchVault.Properties.CostManagementSettings = new CostManagementSettings(); }
+                        patchVault.Properties.CostManagementSettings.GranularityLevel = CostManagementGranularity.ToString();
+                    }
+
+                    // update source scan configuration of the vault
+                    if (SourceScanState != null)
+                    {
+                        ServiceClientModel.SourceScanConfiguration sourceScanConfiguration = new ServiceClientModel.SourceScanConfiguration();
+                        sourceScanConfiguration.State = SourceScanState.ToString();
+
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.SecuritySettings == null) { patchVault.Properties.SecuritySettings = new SecuritySettings(); }
+                        patchVault.Properties.SecuritySettings.SourceScanConfiguration = sourceScanConfiguration;
+                    }
+
                     #endregion
 
-                    vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault, Token, isMUAProtected);                                                         
+                    string plainToken = GetPlainToken(Token, SecureToken);
+                    vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault, plainToken, isMUAProtected);                                                         
                     WriteObject(new ARSVault(vault));
                 }
                 catch (Exception exception)
@@ -375,5 +426,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
             }
         }
+
+        /// <summary>
+        /// Helper function to return one of Token or SecureToken after decryption
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="secureToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string GetPlainToken(string token, System.Security.SecureString secureToken)
+        {
+            bool hasToken = !string.IsNullOrEmpty(token);
+            bool hasSecureToken = secureToken != null && secureToken.Length > 0;
+
+            if (hasToken || hasSecureToken)
+            {
+                if (hasToken && hasSecureToken)
+                {
+                    throw new ArgumentException(Resources.BothTokenProvided);
+                }
+                else if (hasToken)
+                {
+                    Logger.Instance.WriteWarning(Resources.TokenParameterDepricate);
+                    return token;
+                }
+                else
+                {
+                    var plainToken = secureToken.ConvertToString();
+                    Logger.Instance.WriteDebug("Converted secure token");
+                    return plainToken;
+                }
+            }
+            Logger.Instance.WriteDebug("plainToken returning empty");
+            return "";
+        }
+
     }
 }

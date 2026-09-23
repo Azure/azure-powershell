@@ -2,8 +2,6 @@
 using Commands.StorageSync.Interop.Interfaces;
 using Hyak.Common;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
-using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
-using Microsoft.Azure.Commands.StorageSync.Interop.Interfaces;
 using System;
 using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
@@ -13,9 +11,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
     /// <summary>
     /// ServerManagedIdentityProvider provides info about the Server -- the type/if server MI is enabled
     /// </summary>
-    public class ServerManagedIdentityProvider : IServerManagedIdentityProvider , IDisposable
+    public class ServerManagedIdentityProvider : IServerManagedIdentityProvider
     {
-        private IServerManagedIdentityTokenProvider serverManagedIdentityTokenProvider;
+        private const string ResourceStorageUri = "https://storage.azure.com/";
 
         public bool EnableMIChecking { get; set; }
 
@@ -23,7 +21,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
         public ServerManagedIdentityProvider(Action<string, EventLevel> traceLog = null)
         {
-            EnableMIChecking = false;
+            EnableMIChecking = true;
             this.TraceLog = new Action<string, EventLevel>((message, e) => {
                 if (traceLog != null)
                 {
@@ -42,12 +40,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         public LocalServerType GetServerType(IEcsManagement ecsManagement)
         {
             TraceLog($"{nameof(EnableMIChecking)} is {EnableMIChecking}.", EventLevel.Informational);
-
-            // TODO: this should be removed once MI is fully functional
-            if (!EnableMIChecking)
-            {
-                return LocalServerType.HybridServer;
-            }
             ManagedIdentityConfigurationInfo serverInfo = GetManagedIdentityConfigurationStatus(ecsManagement);
             return serverInfo.ServerType;
         }
@@ -57,11 +49,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// </summary>
         /// <param name="localServerType">ServerType: Hybrid or Azure</param>
         /// <param name="throwIfNotFound">Whether to throw an exception if an Application ID is not available</param>
-        /// <param name="validateSAMI">Whether to validate that the Application Id belongs to a System-Assigned Managed Identity</param>
+        /// <param name="validateSystemAssignedManagedIdentity">Whether to validate that the Application Id belongs to a System-Assigned Managed Identity</param>
         /// <returns>Server's applicationId if it's available, Guid.Empty otherwise</returns>
-        public Guid GetServerApplicationId(LocalServerType localServerType, bool throwIfNotFound = true, bool validateSAMI = true)
+        public async Task<ServerApplicationIdentity> GetServerApplicationIdentityAsync(LocalServerType localServerType, bool throwIfNotFound = true, bool validateSystemAssignedManagedIdentity = true)
         {
-            var applicationId = Guid.Empty;
+            Guid applicationId = Guid.Empty;
+            Guid tenantId = Guid.Empty;
 
             if (EnableMIChecking)
             {
@@ -69,32 +62,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                 {
                     if (localServerType == LocalServerType.HybridServer)
                     {
-                        return applicationId;
+                        return new ServerApplicationIdentity(applicationId, tenantId);
                     }
 
-                    serverManagedIdentityTokenProvider = serverManagedIdentityTokenProvider ?? new ServerManagedIdentityTokenProvider(localServerType, traceLog: this.TraceLog);
+                    // We need to use the https://storage.azure.com resource, as this provides us the x-ms-rid header to use for validation.
+                    // Application id should be from real time token getting from the IMDS endpoint instead of cached token. Also we noticed 
+                    // an issue that PowerShell Core(5+) doesn't work with ProtectedMemory: https://github.com/PSKeePass/PoShKeePass/issues/170
+                    // When we cache token in ServerManagedIdentityTokenProvider, it will use ProtectedMemory to encrypt/decrypt the token,
+                    // and this GetServerApplicationId can be triggered from server registration using PowerShell Core which causes that issue.
+                    // So this is another reason we need to get the token from IMDS endpoint directly via ServerManagedIdentityUtils, not ServerManagedIdentityTokenProvider.
+                    ServerManagedIdentityTokenResponse tokenResponse = await ServerManagedIdentityUtils.GetManagedIdentityTokenResponseAsync(resource: ResourceStorageUri);
 
-                    // We need to use the https://storage.azure.com resource, as this provides us the x-ms-rid header to use for validation
-                    var token = Task.Run(() => serverManagedIdentityTokenProvider.GetManagedIdentityAccessToken(resource: "https://storage.azure.com/")).GetAwaiter().GetResult();
-
-                    try
-                    {
-                        if (validateSAMI)
-                        {
-                            ServerManagedIdentityTokenHelper.ValidateMIToken(token);
-                        }
-                    }
-                    catch (ServerManagedIdentityTokenException ex) when (ex.ErrorCode == ManagedIdentityErrorCodes.ServerManagedIdentitySystemIdentityNotFound)
-                    {
-                        if (throwIfNotFound)
-                        {
-                            throw;
-                        }
-
-                        return applicationId;
-                    }
+                    var token = tokenResponse.AccessToken;
 
                     applicationId = ServerManagedIdentityTokenHelper.GetTokenOid(token);
+                    tenantId = ServerManagedIdentityTokenHelper.GetTokenTenantId(token);
                 }
                 catch (Exception)
                 {
@@ -109,7 +91,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                 TraceLog($"{nameof(EnableMIChecking)} is off.", EventLevel.Informational);
             }
 
-            return applicationId;
+            return new ServerApplicationIdentity(applicationId, tenantId);
         }
 
         /// <summary>
@@ -135,16 +117,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             catch (Exception ex)
             {
                 TraceLog(ex.ToString(), EventLevel.Error);
-                throw;
+                //throw;
+                serverInfo = new ManagedIdentityConfigurationInfo(LocalServerType.HybridServer, RegisteredServerAuthType.Certificate);
             }
 
             return serverInfo;
         }
-
-        public void Dispose()
-        {
-            this.serverManagedIdentityTokenProvider?.Dispose();
-        }
     }
-
 }

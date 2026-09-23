@@ -18,6 +18,8 @@ Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Descr
  [-Tag <Hashtable>] [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>]
  [-RemoveSubscription <String[]>] [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset]
  [-PublisherUri <String>] [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -28,6 +30,8 @@ Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
  [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -38,6 +42,8 @@ Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-T
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
  [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
+ [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -60,6 +66,52 @@ Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission Group
 ```
 
 Update a gallery to be shared and add two subscriptions it is to be shared with.
+
+### Example 3
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSystemAssignedIdentity
+```
+
+Update a gallery to enable a system-assigned managed identity.
+
+### Example 4
+```powershell
+$uid = Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName
+Get-AzGallery -ResourceGroupName $rgname -Name $galleryName | Update-AzGallery -UserAssignedIdentity $uid.Id
+```
+
+Update a gallery to add a user-assigned managed identity using pipeline input.
+
+### Example 5
+```powershell
+$uid1 = (Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName1).Id
+$uid2 = (Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName2).Id
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($uid1, $uid2)
+```
+
+Update a gallery to add the two specified user-assigned managed identities. These are appended to any previously assigned identities.
+
+### Example 6
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSystemAssignedIdentity
+```
+
+Update a gallery to disable its system-assigned managed identity.
+
+### Example 7
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveUserAssignedIdentity "All"
+```
+
+Update a gallery to remove all user-assigned managed identities.
+
+### Example 8
+```powershell
+$uid = (Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName).Id
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveUserAssignedIdentity @($uid)
+```
+
+Update a gallery to remove a specific user-assigned managed identity.
 
 ## PARAMETERS
 
@@ -120,6 +172,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisableSystemAssignedIdentity
+Disables system-assigned managed identity on the gallery. Cannot be used together with -EnableSystemAssignedIdentity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Enables system-assigned managed identity on the gallery. Cannot be used together with -DisableSystemAssignedIdentity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -258,6 +340,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RemoveUserAssignedIdentity
+The list of user-assigned managed identity resource IDs to remove from the gallery. Alternatively, specify 'All' to remove all user-assigned identities. If 'All' is provided, it must be the only value in -RemoveUserAssignedIdentity, and any use of 'All' causes all user-assigned identities to be removed. Cannot use 'All' together with -UserAssignedIdentity.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Reset
 Resets the sharing permission of the gallery to 'Private'.
 
@@ -363,6 +460,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The list of user-assigned managed identity resource IDs to add to the gallery. Identities are appended to any existing user-assigned identities. Cannot use together with '-RemoveUserAssignedIdentity All'. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -404,6 +516,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSGallery
 
 ### System.Collections.Hashtable
+
+### System.String[]
 
 ## OUTPUTS
 

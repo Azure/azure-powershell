@@ -65,7 +65,7 @@ $ErrorActionPreference = “Stop”;
             }  
             else
             {
-                Write-Host "Sleeping 10 seconds to actiavate AzureDiskEncryption-VMSS feature . Retry count :  ($i)";
+                Write-Host "Sleeping 10 seconds to activate AzureDiskEncryption-VMSS feature . Retry count :  ($i)";
                 Start-TestSleep -Seconds 10
             }         
         }
@@ -117,7 +117,7 @@ $ErrorActionPreference = “Stop”;
         Write-Host "Created a new KeyVault named $keyVaultName to store encryption keys";
     }
 
-    #Set EnabledForDiskEncryption accesspolicy on KeyVault for AzureDiskEncrypiton to perform set secret, get secret, wrap key and unwrap key operations
+    #Set EnabledForDiskEncryption accesspolicy on KeyVault for AzureDiskEncryption to perform set secret, get secret, wrap key and unwrap key operations
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
     
     $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;

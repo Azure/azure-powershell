@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetAppFilesVolumeQuotaRule
 
 ## SYNOPSIS
-Gets details of an Azure NetApp Files (ANF) Volume Quouta Rule.
+Gets details of an Azure NetApp Files (ANF) Volume Quota Rule.
 
 ## SYNTAX
 
@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeQuotaRule
 
 ## NOTES
 

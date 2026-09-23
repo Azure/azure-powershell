@@ -1,15 +1,13 @@
 Describe 'Update-AzKustoDataConnection' {
     BeforeAll{
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not(Test-Path -Path $loadEnvPath))
-        {
+        if (-Not(Test-Path -Path $loadEnvPath)) {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzKustoDataConnection.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not$mockingPath)
-        {
+        while (-not$mockingPath) {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }

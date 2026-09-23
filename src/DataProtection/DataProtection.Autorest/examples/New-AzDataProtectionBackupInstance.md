@@ -61,7 +61,7 @@ aks-cluster-aks-cluster-117bd668-4t5h-4f3a-947c-ea71304cb4d7 aks-cluster-aks-clu
 The First command gets the AzureKubernetesService policy in a given vault. The second, third command initializes the AKS cluster and snapshot resource group Id.
 The fourth command backup configuration object needed for AzureKubernetesService. The fifth command initializes the client object for backup instance.
 The sixth command assigns the necessary permissions for configure backup. 
-The sevnth and eight command initializes custom tags and configure backup finally by creating a backup instance.
+The seventh and eight command initializes custom tags and configure backup finally by creating a backup instance.
 
 ### Example 4: Configure protection for AzureBlob with vault policy
 ```powershell
@@ -75,7 +75,7 @@ $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
 While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Status -eq "Inprogress"){
     Start-Sleep -Seconds 10
 }
-$backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$backupinstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
 ```
 
 ```output
@@ -104,7 +104,7 @@ $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
 While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Status -eq "Inprogress"){
     Start-Sleep -Seconds 10
 }
-$backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$backupinstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
 ```
 
 ```output
@@ -119,3 +119,24 @@ The fifth command assigns the necessary permissions for configure backup.
 The sixth command validates if the backup instance object is valid for configure protection (validate backup). This command runs in async way using parameter -NoWait.
 Next we fetch the operation in a while loop until it succeeds.
 The last command is used to configure protection for the backup instance.
+
+### Example 6: Configure protection for AzureCosmosDB
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where-Object { $_.DatasourceType -match "documentdb" }
+$cosmosDbAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/source-cosmos-account"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureCosmosDB -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $cosmosDbAccountId
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
+$biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$biCreate
+```
+
+```output
+Name                                                                              BackupInstanceName
+----                                                                              ------------------
+source-cosmos-account-source-cosmos-account-64f7399a-b024-4d61-8f16-c424c5fd2564 source-cosmos-account-source-cosmos-account-64f7399a-b024-4d61-8f16-c424c5fd2564
+```
+
+The first command gets the backup vault. The second command gets the AzureCosmosDB policy.
+The third command initializes the Cosmos DB account ARM id. The fourth command initializes the backup instance client object for AzureCosmosDB.
+The fifth command assigns the necessary permissions for configure backup. The last command configures protection for the AzureCosmosDB account in the backup vault.

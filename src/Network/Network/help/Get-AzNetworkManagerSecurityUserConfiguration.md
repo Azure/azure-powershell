@@ -21,7 +21,8 @@ Get-AzNetworkManagerSecurityUserConfiguration -NetworkManagerName <String> -Reso
 ### ByName
 ```
 Get-AzNetworkManagerSecurityUserConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId

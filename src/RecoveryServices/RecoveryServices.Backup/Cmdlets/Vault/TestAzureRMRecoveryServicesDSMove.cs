@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Used for  validtaing Data Source Move operation. The command runs successfully if the DS move is feasible.
+    /// Used for  validating Data Source Move operation. The command runs successfully if the DS move is feasible.
     /// </summary>
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesDSMove", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class TestAzureRMRecoveryServicesDSMove : RecoveryServicesBackupCmdletBase

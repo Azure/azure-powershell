@@ -20,13 +20,13 @@ Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DefaultProfile <PSObject>]
 
 ### Get1
 ```
-Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DataSourceType <DataSourceType>] -Version <Int32>
+Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DataSourceType <String>] -Version <Int32>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPurviewSystemScanRuleset -Endpoint <String> -DataSourceType <DataSourceType> [-DefaultProfile <PSObject>]
+Get-AzPurviewSystemScanRuleset -Endpoint <String> -DataSourceType <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ Get system scanruleset for a data source type and specific version
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Type: System.String
 Parameter Sets: Get1
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -193,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ISystemScanRuleset
 
 ## NOTES
 

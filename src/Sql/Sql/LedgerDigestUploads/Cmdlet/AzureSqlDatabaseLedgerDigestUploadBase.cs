@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override AzureSqlDatabaseLedgerDigestUploadAdapter InitModelAdapter()

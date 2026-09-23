@@ -197,10 +197,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzDataFactoryV2Trigger]()
+[Get-AzDataFactoryV2Trigger](Get-AzDataFactoryV2Trigger.md)
 
-[Start-AzDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger](Start-AzDataFactoryV2Trigger.md)
 
-[Stop-AzDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger](Stop-AzDataFactoryV2Trigger.md)
 
-[Remove-AzDataFactoryV2Trigger]()
+[Remove-AzDataFactoryV2Trigger](Remove-AzDataFactoryV2Trigger.md)

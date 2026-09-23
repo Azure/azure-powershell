@@ -45,6 +45,30 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMultiCloudWithPartnerAccountIdCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMultiCloudWithActivationKeyCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMultiCloudWithActivationKeyCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMultiCloudMutualExclusion()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMultiCloudMutualExclusion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
@@ -56,6 +80,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
         {
             TestRunner.RunTestScript("Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitMicrosoftPeeringPrefixValidationCRUD()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitMicrosoftPeeringPrefixValidationCRUD");
         }
 
         [Fact]

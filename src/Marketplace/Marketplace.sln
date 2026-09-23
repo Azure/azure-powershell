@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Marketplace", "Marketplace.Autorest\Az.Marketplace.csproj", "{7FC23BD5-5EA8-4DE7-B537-F083750034F9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E2AFE775-9330-4955-B7E6-45C52566CB48}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marketplace.Test", "Marketplace.Test\Marketplace.Test.csproj", "{CC255CC3-582B-4E84-91A6-9F596B75DBC9}"
@@ -28,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{874EAA39-034D-4232-A1F3-B5584ED20E07}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marketplace.Management.Sdk", "Marketplace.Management.Sdk\Marketplace.Management.Sdk.csproj", "{716D96C3-F553-46D5-AA0C-D736218623FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Marketplace", "..\..\generated\Marketplace\Marketplace.Autorest\Az.Marketplace.csproj", "{FF2B7D7B-60C0-4375-BB34-8F86917299BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,6 @@ Global
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,6 +75,10 @@ Global
 		{716D96C3-F553-46D5-AA0C-D736218623FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{716D96C3-F553-46D5-AA0C-D736218623FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{716D96C3-F553-46D5-AA0C-D736218623FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2B7D7B-60C0-4375-BB34-8F86917299BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

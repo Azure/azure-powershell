@@ -76,5 +76,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the current backup storage redundancy for the database
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting for whether or not time-based immutability is
+        /// enabled for the LTR backup. When time-based immutability is enabled and
+        /// locked, the backup cannot be deleted until BackupExpirationTime. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        public string TimeBasedImmutability { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time-based immutability mode. Only applicable if
+        /// time-based immutability is enabled. Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;
+        /// </summary>
+        public string TimeBasedImmutabilityMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting for whether LegalHold is enabled or disabled on
+        /// the LTR backup. When LegalHold is enabled, the backup cannot be deleted
+        /// until the LegalHold is removed. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        public string LegalHoldImmutability { get; set; }
     }
 }

@@ -14,9 +14,9 @@ Updates an Azure NetApp Files (ANF) account with the new data set. Useful for de
 
 ### ByFieldsParameterSet (Default)
 ```
-Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
+ [-NfsV4IdDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceActiveDirectory
@@ -112,6 +112,21 @@ Parameter Sets: (All)
 Aliases: AccountName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NfsV4IdDomain
+Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

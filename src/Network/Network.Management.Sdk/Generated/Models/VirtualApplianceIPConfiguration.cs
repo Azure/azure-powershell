@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VirtualApplianceIPConfiguration class.
         /// </summary>
 
-        /// <param name="name">Name of the IP configuration.
+        /// <param name="name">For hub NVAs, primary IP configs must be named &#39;privatenicipconfig&#39; and
+        /// &#39;publicnicipconfig&#39;, with non-primary configs using these prefixes; no
+        /// naming restrictions apply for NVAs in VNets. Maximum 80 character are
+        /// allowed.
         /// </param>
 
         /// <param name="properties">Represents a single IP configuration properties.
@@ -44,7 +47,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of the IP configuration.
+        /// Gets or sets for hub NVAs, primary IP configs must be named
+        /// &#39;privatenicipconfig&#39; and &#39;publicnicipconfig&#39;, with non-primary configs
+        /// using these prefixes; no naming restrictions apply for NVAs in VNets.
+        /// Maximum 80 character are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }

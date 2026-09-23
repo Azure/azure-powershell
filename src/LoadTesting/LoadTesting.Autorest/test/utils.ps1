@@ -38,6 +38,7 @@ if ($UsePreviousConfigForRecord) {
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
+
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
@@ -76,20 +77,20 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     # Deploy managed identity for test
-    Write-Host -ForegroundColor Green "Deloying Managed identities -" $identityName1 "," $identityName2
+    Write-Host -ForegroundColor Green "Deploying Managed identities -" $identityName1 "," $identityName2
     $miPara = Get-Content .\test\deployment-templates\managed-identity\parameters.json | ConvertFrom-Json
     $miPara.parameters.idname1.value = $identityName1
     $miPara.parameters.idname2.value = $identityName2
     $miPara.parameters.location.value = $location
     set-content -Path .\test\deployment-templates\managed-identity\parameters.json -Value (ConvertTo-Json $miPara)
     $null = New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\managed-identity\template.json -TemplateParameterFile .\test\deployment-templates\managed-identity\parameters.json -ResourceGroupName $resourceGroup
-    Write-Host -ForegroundColor Green "Deloyment of Managed identity succeeded."
+    Write-Host -ForegroundColor Green "Deployment of Managed identity succeeded."
 
     $mi1 = Get-AzUserAssignedIdentity -Name $identityName1 -ResourceGroupName $env.resourceGroup
     $mi2 = Get-AzUserAssignedIdentity -Name $identityName2 -ResourceGroupName $env.resourceGroup
 
     # Deploy keyvault for test
-    Write-Host -ForegroundColor Green "Deloying Key Vault:" $pwshKeyVault
+    Write-Host -ForegroundColor Green "Deploying Key Vault:" $pwshKeyVault
     $kvPara = Get-Content .\test\deployment-templates\key-vault\parameters.json | ConvertFrom-Json
     $kvPara.parameters.name.value = $pwshKeyVault
     $kvPara.parameters.location.value = $location

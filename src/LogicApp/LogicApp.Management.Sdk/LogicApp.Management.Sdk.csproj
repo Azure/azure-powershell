@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <PsModuleName>LogicApp</PsModuleName>
+    </PropertyGroup>
+    <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Microsoft.Azure.PowerShell.LogicApp.Management.Sdk</AssemblyName>
+        <RootNamespace>Microsoft.Azure.Management.LogicApp</RootNamespace>
+        <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
+    </PropertyGroup>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+</Project>

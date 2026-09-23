@@ -27,13 +27,13 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 81562c6c057a510ddde50ff40720d254bd5f6dbf
+commit: 400510ae981419169f35012c3a217b268e779b2b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/containerInstance.json 
+  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2024-05-01-preview/containerInstance.json 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -42,24 +42,17 @@ module-version: 1.0.3
 # Normally, title is the service name
 title: ContainerInstance
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-nested-object-to-string: true
-resourcegroup-append: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correctiEXon-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+enable-change-safety: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Execute$|^ExecuteViaIdentity$|^ExecuteViaIdentityExpanded$|^AttachViaIdentity$
+      variant: ^(Create|Update|Execute)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^ExecuteViaIdentityExpanded$|^AttachViaIdentity$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -95,13 +88,6 @@ directive:
       parameter-name: ImageRegistryCredentials
     set:
       parameter-name: ImageRegistryCredential
-  # Sets OSType equal Linux by default
-  - where:
-      parameter-name: OSType
-    set:
-      default:
-        description: Sets OSType equal Linux by default.
-        script: '"Linux"'
   # 1. Set IPAddressPort equals $Container.Port
   # 2. Set Location mandatory
   - where:
@@ -123,6 +109,16 @@ directive:
       verb: Invoke
       subject: Command
     hide: true
+  # Breaking change for OSType parameter
+  - where:
+      parameter-name: OSType
+    set:
+      breaking-change:
+        become-mandatory: false
+        change-description: Removing the default value of OSType parameter.
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2025/05/21
   # Alias long name: Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
   - where:
       verb: Get
@@ -150,8 +146,6 @@ directive:
         "type": "object",
         "additionalProperties": true
       }
-  # - model-cmdlet:
-  #   - Volume # Hide to customize AzureFileStorageAccountKey from string to securestring
 
   # Fix Typo: Parameters starting with PreviouState will be corrected as PreviousState.
   - where:
@@ -165,4 +159,27 @@ directive:
       property-name: ^PreviouState
     set:
       property-name: PreviousState
+
+# Hide to customize AzureFileStorageAccountKey from string to securestring
+  - model-cmdlet:
+      # - model-name: ImageRegistryCredential
+      #   cmdlet-name: New-AzContainerGroupImageRegistryCredentialObject
+      # - model-name: Port
+      #   cmdlet-name: New-AzContainerGroupPortObject
+      # - model-name: Volume
+      #   cmdlet-name: New-AzContainerGroupVolumeObject
+      # - model-name: EnvironmentVariable
+      #   cmdlet-name: New-AzContainerInstanceEnvironmentVariableObject
+      - model-name: HttpHeader
+        cmdlet-name: New-AzContainerInstanceHttpHeaderObject
+      # - model-name: InitContainerDefinition
+      #   cmdlet-name: New-AzContainerInstanceInitDefinitionObject
+      # - model-name: Container
+      #   cmdlet-name: New-AzContainerInstanceNoDefaultObject
+      # - model-name: Container
+      #   cmdlet-name: New-AzContainerInstanceObject
+      - model-name: ContainerPort
+        cmdlet-name: New-AzContainerInstancePortObject
+      - model-name: VolumeMount
+        cmdlet-name: New-AzContainerInstanceVolumeMountObject
 ```

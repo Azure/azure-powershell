@@ -37,6 +37,13 @@ Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Exchange <String> -Preferenc
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### NAPTR
+```
+Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Preference <UInt16> -Order <UInt16> -Flags <String>
+ -Services <String> -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### PTR
 ```
 Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Ptrdname <String>
@@ -242,6 +249,17 @@ This example removes a TLSA record from an existing record set.
 If this is the only record in the record set, the result is an empty record set.
 To remove a record set entirely, see Remove-AzDnsRecordSet.
 
+### Example 11: Remove an NAPTR record from a record set
+```powershell
+$RecordSet = Get-AzDnsRecordSet -Name "www" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+Remove-AzDnsRecordConfig -Order 100 -Preference 100 -Flags "s" -Services "http" -Regexp "" -Replacement "www.contoso.com"
+Set-AzDnsRecordSet -RecordSet $RecordSet
+
+# The above sequence can also be piped:
+
+Get-AzDnsRecordSet -Name "www" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" | Remove-AzDnsRecordConfig -Order 100 -Preference 100 -Flags "s" -Services "http" -Regexp "" -Replacement "www.contoso.com"  | Set-AzDnsRecordSet
+```
+
 ## PARAMETERS
 
 ### -Algorithm
@@ -394,6 +412,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Flags
+The flags value of the NAPTR record to remove.
+
+```yaml
+Type: System.String
+Parameter Sets: NAPTR
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Ipv4Address
 Specifies an IPv4 address for an A record.
 
@@ -469,6 +502,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Order
+Specifies the order for a named authority pointer (NAPTR) record.
+
+```yaml
+Type: System.UInt16
+Parameter Sets: NAPTR
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Port
 Specifies the port for a service (SRV) record.
 
@@ -485,11 +533,11 @@ Accept wildcard characters: False
 ```
 
 ### -Preference
-Specifies the preference for an MX record.
+Specifies the preference for an MX/NAPTR record.
 
 ```yaml
 Type: System.UInt16
-Parameter Sets: MX
+Parameter Sets: MX, NAPTR
 Aliases:
 
 Required: True
@@ -544,12 +592,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Regexp
+Specifies the regexp of the named authority pointer (NAPTR) record.
+
+```yaml
+Type: System.String
+Parameter Sets: NAPTR
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Replacement
+Specifies the replacement for a named authority pointer (NAPTR) record.
+
+```yaml
+Type: System.String
+Parameter Sets: NAPTR
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Selector
 The selector field of the TLSA record to remove.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: TLSA
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Services
+Specifies the services of the named authority pointer (NAPTR) record.
+
+```yaml
+Type: System.String
+Parameter Sets: NAPTR
 Aliases:
 
 Required: True

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR" + "NetworkAcl", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRNetworkAcls))]
     public class UpdateAzureRmSignalRNetworkAcl : SignalRCmdletBase,
-IWithResourceId, IWithInputObject
+IWithResourceId, IWithSignalRInputObject
     {
         private const string ClientConnection = "ClientConnection";
         private const string ServerConnection = "ServerConnection";
@@ -116,7 +116,7 @@ IWithResourceId, IWithInputObject
                         this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        this.LoadFromInputObject();
+                        this.LoadFromSignalRInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
@@ -126,7 +126,7 @@ IWithResourceId, IWithInputObject
                     PromptParameter(nameof(ResourceGroupName), ResourceGroupName);
                     PromptParameter(nameof(Name), Name);
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
-                    var networkACLs = signalr.NetworkACLs;
+                    var networkACLs = signalr.NetworkAcLs;
                     var publicNetwork = networkACLs.PublicNetwork;
                     var privateEndpoints = networkACLs.PrivateEndpoints;
                     if (PublicNetwork)
@@ -145,8 +145,8 @@ IWithResourceId, IWithInputObject
                     }
                     networkACLs.DefaultAction = DefaultAction ?? networkACLs.DefaultAction;
                     PromptParameter(nameof(networkACLs), networkACLs == null ? null : JsonConvert.SerializeObject(networkACLs));
-                    signalr = Client.SignalR.Update(signalr, ResourceGroupName, Name);
-                    WriteObject(new PSSignalRNetworkAcls(signalr.NetworkACLs));
+                    signalr = Client.SignalR.Update(ResourceGroupName, Name, signalr);
+                    WriteObject(new PSSignalRNetworkAcls(signalr.NetworkAcLs));
                 }
             });
         }

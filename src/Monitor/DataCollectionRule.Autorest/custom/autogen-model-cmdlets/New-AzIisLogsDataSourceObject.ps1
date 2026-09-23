@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSour
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-aziislogsdatasourceobject
 #>
 function New-AzIisLogsDataSourceObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -25,7 +25,7 @@ Get-AzDataShareProviderShareSubscription [-ShareSubscriptionId <String>] -Resour
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShareProviderSubscription** cmdlet gets information about consumer share subscriptions on provider side. If you specify the share subscrption id, this cmdlet gets information about the share subscription. If you do not specify the share subscription id, this cmdlet gets information about all the consumer share subscriptions in associated with the share.
+The **Get-AzDataShareProviderSubscription** cmdlet gets information about consumer share subscriptions on provider side. If you specify the share subscription id, this cmdlet gets information about the share subscription. If you do not specify the share subscription id, this cmdlet gets information about all the consumer share subscriptions in associated with the share.
 
 ## EXAMPLES
 

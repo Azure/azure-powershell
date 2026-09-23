@@ -18,5 +18,5 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command updates a Windows Virtual Desktop Application in an applicaton Group.
+This command updates a Windows Virtual Desktop Application in an application Group.
 

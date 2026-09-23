@@ -1,0 +1,368 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+// Changes may cause incorrect behavior and will be lost if the code is regenerated.
+namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Extensions;
+
+    /// <summary>The policy definition properties.</summary>
+    public partial class PolicyDefinitionProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal
+    {
+
+        /// <summary>Backing field for <see cref="Description" /> property.</summary>
+        private string _description;
+
+        /// <summary>The policy definition description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string Description { get => this._description; set => this._description = value; }
+
+        /// <summary>Backing field for <see cref="DisplayName" /> property.</summary>
+        private string _displayName;
+
+        /// <summary>The display name of the policy definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string DisplayName { get => this._displayName; set => this._displayName = value; }
+
+        /// <summary>The details of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny EndpointSettingDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingDetail = value ?? null /* model class */; }
+
+        /// <summary>The kind of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string EndpointSettingKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSettingKind = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ExternalEvaluationEnforcementSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings _externalEvaluationEnforcementSetting;
+
+        /// <summary>
+        /// The details of the source of external evaluation results required by the policy during enforcement evaluation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings ExternalEvaluationEnforcementSetting { get => (this._externalEvaluationEnforcementSetting = this._externalEvaluationEnforcementSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettings()); set => this._externalEvaluationEnforcementSetting = value; }
+
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string ExternalEvaluationEnforcementSettingMissingTokenAction { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).MissingTokenAction; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).MissingTokenAction = value ?? null; }
+
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public string ExternalEvaluationEnforcementSettingResultLifespan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).ResultLifespan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).ResultLifespan = value ?? null; }
+
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).RoleDefinitionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).RoleDefinitionId = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="Metadata" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny _metadata;
+
+        /// <summary>
+        /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Any()); set => this._metadata = value; }
+
+        /// <summary>Internal Acessors for ExternalEvaluationEnforcementSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal.ExternalEvaluationEnforcementSetting { get => (this._externalEvaluationEnforcementSetting = this._externalEvaluationEnforcementSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettings()); set { {_externalEvaluationEnforcementSetting = value;} } }
+
+        /// <summary>Internal Acessors for ExternalEvaluationEnforcementSettingEndpointSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal.ExternalEvaluationEnforcementSettingEndpointSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettingsInternal)ExternalEvaluationEnforcementSetting).EndpointSetting = value ?? null /* model class */; }
+
+        /// <summary>Backing field for <see cref="Mode" /> property.</summary>
+        private string _mode;
+
+        /// <summary>
+        /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string Mode { get => this._mode; set => this._mode = value; }
+
+        /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters _parameter;
+
+        /// <summary>
+        /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionPropertiesParameters()); set => this._parameter = value; }
+
+        /// <summary>Backing field for <see cref="PolicyRule" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny _policyRule;
+
+        /// <summary>The policy rule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get => (this._policyRule = this._policyRule ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Any()); set => this._policyRule = value; }
+
+        /// <summary>Backing field for <see cref="PolicyType" /> property.</summary>
+        private string _policyType;
+
+        /// <summary>
+        /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string PolicyType { get => this._policyType; set => this._policyType = value; }
+
+        /// <summary>Backing field for <see cref="Version" /> property.</summary>
+        private string _version;
+
+        /// <summary>The policy definition version in #.#.# format.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string Version { get => this._version; set => this._version = value; }
+
+        /// <summary>Backing field for <see cref="Versions" /> property.</summary>
+        private System.Collections.Generic.List<string> _versions;
+
+        /// <summary>A list of available versions for this policy definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> Versions { get => this._versions; set => this._versions = value; }
+
+        /// <summary>Creates an new <see cref="PolicyDefinitionProperties" /> instance.</summary>
+        public PolicyDefinitionProperties()
+        {
+
+        }
+    }
+    /// The policy definition properties.
+    public partial interface IPolicyDefinitionProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable
+    {
+        /// <summary>The policy definition description.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy definition description.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
+        /// <summary>The display name of the policy definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The display name of the policy definition.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get; set; }
+        /// <summary>The details of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The details of the endpoint.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny EndpointSettingDetail { get; set; }
+        /// <summary>The kind of the endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The kind of the endpoint.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointSettingKind { get; set; }
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.",
+        SerializedName = @"missingTokenAction",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalEvaluationEnforcementSettingMissingTokenAction { get; set; }
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.",
+        SerializedName = @"resultLifespan",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalEvaluationEnforcementSettingResultLifespan { get; set; }
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.",
+        SerializedName = @"roleDefinitionIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get; set; }
+        /// <summary>
+        /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.",
+        SerializedName = @"metadata",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        /// <summary>
+        /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        string Mode { get; set; }
+        /// <summary>
+        /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The parameter definitions for parameters used in the policy rule. The keys are the parameter names.",
+        SerializedName = @"parameters",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters Parameter { get; set; }
+        /// <summary>The policy rule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy rule.",
+        SerializedName = @"policyRule",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get; set; }
+        /// <summary>
+        /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.",
+        SerializedName = @"policyType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "BuiltIn", "Custom", "Static")]
+        string PolicyType { get; set; }
+        /// <summary>The policy definition version in #.#.# format.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy definition version in #.#.# format.",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        string Version { get; set; }
+        /// <summary>A list of available versions for this policy definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of available versions for this policy definition.",
+        SerializedName = @"versions",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Versions { get; set; }
+
+    }
+    /// The policy definition properties.
+    internal partial interface IPolicyDefinitionPropertiesInternal
+
+    {
+        /// <summary>The policy definition description.</summary>
+        string Description { get; set; }
+        /// <summary>The display name of the policy definition.</summary>
+        string DisplayName { get; set; }
+        /// <summary>The details of the endpoint.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny EndpointSettingDetail { get; set; }
+        /// <summary>The kind of the endpoint.</summary>
+        string EndpointSettingKind { get; set; }
+        /// <summary>
+        /// The details of the source of external evaluation results required by the policy during enforcement evaluation.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEnforcementSettings ExternalEvaluationEnforcementSetting { get; set; }
+        /// <summary>The settings of an external endpoint providing evaluation results.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExternalEvaluationEndpointSettings ExternalEvaluationEnforcementSettingEndpointSetting { get; set; }
+        /// <summary>
+        /// What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible
+        /// values are Audit and Deny and language expressions are supported.
+        /// </summary>
+        string ExternalEvaluationEnforcementSettingMissingTokenAction { get; set; }
+        /// <summary>
+        /// The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601
+        /// duration format and language expressions are supported.
+        /// </summary>
+        string ExternalEvaluationEnforcementSettingResultLifespan { get; set; }
+        /// <summary>
+        /// An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
+        /// </summary>
+        System.Collections.Generic.List<string> ExternalEvaluationEnforcementSettingRoleDefinitionId { get; set; }
+        /// <summary>
+        /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        /// <summary>
+        /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+        /// </summary>
+        string Mode { get; set; }
+        /// <summary>
+        /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesParameters Parameter { get; set; }
+        /// <summary>The policy rule.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny PolicyRule { get; set; }
+        /// <summary>
+        /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "BuiltIn", "Custom", "Static")]
+        string PolicyType { get; set; }
+        /// <summary>The policy definition version in #.#.# format.</summary>
+        string Version { get; set; }
+        /// <summary>A list of available versions for this policy definition.</summary>
+        System.Collections.Generic.List<string> Versions { get; set; }
+
+    }
+}

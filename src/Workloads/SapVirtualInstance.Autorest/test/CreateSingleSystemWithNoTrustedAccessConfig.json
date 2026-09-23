@@ -22,8 +22,8 @@
           "disablePasswordAuthentication": true,
           "osType": "Linux",
           "sshKeyPair": {
-              "publicKey": "PublicKey",
-              "privateKey": "PrivateKey"
+              "publicKey": "publicKey",
+              "privateKey": "privateKey"
             }
         }
       },

@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter TreatFailureAsDeploymentFailure { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If true, the underlying VMSS should automatically update when a new version of the Gallery Application becomes available in PIR or SIG. Defaults to false if not specified.")]
+        public SwitchParameter EnableAutomaticUpgrade { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         public int Order { get; set; }
 
@@ -65,6 +71,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.TreatFailureAsDeploymentFailure.IsPresent)
             {
                 GalleryApplication.TreatFailureAsDeploymentFailure = true;
+            }
+
+            if (this.EnableAutomaticUpgrade.IsPresent)
+            {
+                GalleryApplication.EnableAutomaticUpgrade = true;
             }
 
             VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications.Add(GalleryApplication);

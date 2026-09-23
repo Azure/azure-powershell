@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster to disable monitroing.",
+            HelpMessage = "Gets or sets the name of the cluster to disable monitoring.",
             ValueFromPipelineByPropertyName = true)]
         [Alias("ClusterName")]
         public string Name { get; set; }

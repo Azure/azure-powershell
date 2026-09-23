@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     public enum RecommendedActionState
     {
         /// <summary>
-        /// To cancel the inititiated recommended action while it's not yet applied, or to un-ignore an ignored recommended action.
+        /// To cancel the initiated recommended action while it's not yet applied, or to un-ignore an ignored recommended action.
         /// </summary>
         Active,
 

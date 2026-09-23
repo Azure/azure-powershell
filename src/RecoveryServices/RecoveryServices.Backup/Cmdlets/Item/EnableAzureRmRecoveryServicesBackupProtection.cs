@@ -24,6 +24,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using static Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ParamHelpMsgs;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -98,11 +100,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ItemBase Item { get; set; }
 
         /// <summary>
+        /// Parameter deprecated. Please use SecureToken instead
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public string Token;
+
+        /// <summary>
         /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = ModifyProtectionParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
-        public string Token;
+        public System.Security.SecureString SecureToken;
 
         /// <summary>
         /// List of Disk LUNs to include in backup
@@ -144,6 +153,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Item.excludeAllDataDisks)]
         public SwitchParameter ExcludeAllDataDisks { get; set; }
 
+        /// <summary>
+        /// VM's subscription id, when the VM is in a different subscription than the vault (CSB).
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.containerSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$")]
+        public string ContainerSubscriptionId { get; set; }
+
+        /// <summary>
+        /// Access type used by backup to reach the storage account for Azure Files (KeyBased / IdentityBased).
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.AccessType)]
+        [ValidateSet("KeyBased", "IdentityBased")]
+        public string AccessType { get; set; }
+
+        /// <summary>
+        /// Use the vault's system-assigned managed identity for identity-based Azure Files backup.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.IsSystemAssignedIdentity)]
+        public SwitchParameter IsSystemAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// ARM url of the user-assigned managed identity for identity-based Azure Files backup.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.UserAssignedIdentityArmUrl)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityArmUrl { get; set; }
+
+        /// <summary>
+        /// Forces re-registration of the storage account when the access type / identity changes.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.ForceReregister)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -162,6 +210,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     shouldProcessName = Item.Name;
                     isMUAOperation = true;
                 }
+                
+                string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+
+                // Azure Files identity-based access (MSI) parameter validation.
+                if (ParameterSetName == AzureFileShareParameterSet)
+                {
+                    ValidateAfsIdentityParameters();
+                }
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
                 {
@@ -171,6 +227,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string.Compare(((AzureWorkloadProtectableItem)ProtectableItem).ProtectableItemType,
                     ProtectableItemType.SQLInstance.ToString()) == 0))
                     {
+                        WriteDebug("Executing AzureWorkloadParameterSet");
+
                         string backupManagementType = ProtectableItem.BackupManagementType.ToString();
                         string workloadType = ConversionUtils.GetServiceClientWorkloadType(ProtectableItem.WorkloadType.ToString());
                         string containerName = "VMAppContainer;" + ((AzureWorkloadProtectableItem)ProtectableItem).ContainerName;
@@ -220,7 +278,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                     IPsBackupProvider psBackupProvider = (Item != null) ?
                                         providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                                         : providerManager.GetProviderInstance(Policy.WorkloadType);
-
                                     var itemResponse = psBackupProvider.EnableProtection();
 
                                     // Track Response and display job details
@@ -236,6 +293,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else
                     {
+                        WriteDebug("Executing parameter set: " + ParameterSetName);
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<Enum, object>()
                             {
@@ -253,15 +312,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
                                 { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
-                                { ResourceGuardParams.Token, Token },
+                                { ItemParams.ContainerSubscriptionId, ContainerSubscriptionId },
+                                { ItemParams.AccessType, AccessType },
+                                { ItemParams.IsSystemAssignedIdentity, IsSystemAssignedIdentity.IsPresent },
+                                { ItemParams.UserAssignedIdentityArmUrl, UserAssignedIdentityArmUrl },
+                                { ItemParams.ForceReregister, Force.IsPresent },
+                                { ItemParams.ConfirmReregister, new Func<bool>(() =>
+                                    ShouldContinue(
+                                        string.Format(Resources.AFSReregisterIdentityChangeWarning, StorageAccountName),
+                                        Resources.AFSReregisterIdentityChangeCaption)) },
+                                { ResourceGuardParams.Token, plainToken },
                                 { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);
+
+                        WriteDebug("Initialized provider manager");
 
                         IPsBackupProvider psBackupProvider = (Item != null) ?
                             providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
                             : providerManager.GetProviderInstance(Policy.WorkloadType);
 
+                        WriteDebug("policy workload type: " + Policy.WorkloadType.ToString());
+
+                        if (Policy.WorkloadType == Models.WorkloadType.AzureFiles)
+                        {
+                            // if item & policy are not null and both have ids
+                            AzureFileShareItem afsItem = (Item != null) ? (AzureFileShareItem)Item : null;
+                     
+                         
+                            if (afsItem != null && Policy != null && afsItem.PolicyId != null && Policy.Id != null)
+                            {
+                                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(afsItem.PolicyId);
+                                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, afsItem.PolicyId);
+
+                                keyValueDict = HelperUtils.ParseUri(Policy.Id);
+                                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, Policy.Id);
+
+                                ProtectionPolicyResource oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                                    oldPolicyName,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
+                                ProtectionPolicyResource newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                                    newPolicyName,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
+
+                                ServiceClientModel.AzureFileShareProtectionPolicy oldAFSPolicy =
+                                    (ServiceClientModel.AzureFileShareProtectionPolicy)oldPolicy.Properties;
+                                ServiceClientModel.AzureFileShareProtectionPolicy newAFSPolicy =
+                                    (ServiceClientModel.AzureFileShareProtectionPolicy)newPolicy.Properties;
+
+                                if (oldAFSPolicy != null && newAFSPolicy != null)
+                                {
+                                   
+                                    if (oldAFSPolicy.VaultRetentionPolicy != null && newAFSPolicy.RetentionPolicy != null)
+                                    {
+                                        throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateNotAllowed));
+                                    }
+
+                                    if (oldAFSPolicy.RetentionPolicy != null && newAFSPolicy.VaultRetentionPolicy != null)
+                                    {
+
+                                        if (!ShouldContinue(string.Format(Resources.AFSPolicyUpdateWarning), string.Format(Resources.AFSPolicyUpdate)))
+                                        {
+                                            throw new ArgumentException(string.Format(Resources.AFSPolicyUpdateCanceled));
+                                        }
+                                    }
+                                } 
+                            }
+                        }
+                                   
                         var itemResponse = psBackupProvider.EnableProtection();
+
+                        WriteDebug("Enabled protection successfully, going to handle the backup job");
 
                         // Track Response and display job details
                         HandleCreatedJob(
@@ -272,6 +394,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 }
             });
+        }
+
+        /// <summary>
+        /// Validates the Azure Files identity-based access (MSI) parameters supplied to Enable-Protection.
+        /// Enforces mutually-consistent AccessType + identity selection. Role-assignment existence and vault-MI
+        /// checks are validated by the backend service when the (re)registration request is sent.
+        /// </summary>
+        private void ValidateAfsIdentityParameters()
+        {
+            bool hasUami = !string.IsNullOrEmpty(UserAssignedIdentityArmUrl);
+            bool hasSami = IsSystemAssignedIdentity.IsPresent;
+
+            if (hasSami && hasUami)
+            {
+                throw new ArgumentException(Resources.AFSIdentityBothSpecified);
+            }
+
+            if (string.IsNullOrEmpty(AccessType) && (hasSami || hasUami))
+            {
+                throw new ArgumentException(Resources.AFSIdentityRequiresAccessType);
+            }
+
+            if (string.Equals(AccessType, ServiceClientModel.AccessType.IdentityBased, StringComparison.OrdinalIgnoreCase))
+            {
+                if (!hasSami && !hasUami)
+                {
+                    throw new ArgumentException(Resources.AFSIdentityBasedRequiresIdentity);
+                }
+            }
+            else if (string.Equals(AccessType, ServiceClientModel.AccessType.KeyBased, StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasSami || hasUami)
+                {
+                    throw new ArgumentException(Resources.AFSKeyBasedWithIdentity);
+                }
+            }
         }
     }
 }

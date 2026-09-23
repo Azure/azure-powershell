@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="database">Database name for connection. Type: string.
         /// </param>
 
+        /// <param name="authenticationType">The authentication type to use. Type: string.
+        /// </param>
+
         /// <param name="sslMode">SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3:
         /// require, 4: verify-ca, 5: verify-full. Type: integer.
         /// </param>
@@ -113,7 +116,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public PostgreSqlV2LinkedService(object server, object username, object database, object sslMode, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), object schema = default(object), object pooling = default(object), object connectionTimeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object sslCertificate = default(object), object sslKey = default(object), object sslPassword = default(object), object readBufferSize = default(object), object logParameters = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public PostgreSqlV2LinkedService(object server, object username, object database, object authenticationType, object sslMode, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), object schema = default(object), object pooling = default(object), object connectionTimeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object sslCertificate = default(object), object sslKey = default(object), object sslPassword = default(object), object readBufferSize = default(object), object logParameters = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
@@ -121,6 +124,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Port = port;
             this.Username = username;
             this.Database = database;
+            this.AuthenticationType = authenticationType;
             this.SslMode = sslMode;
             this.Schema = schema;
             this.Pooling = pooling;
@@ -168,6 +172,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.database")]
         public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication type to use. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
+        public object AuthenticationType {get; set; }
 
         /// <summary>
         /// Gets or sets sSL mode for connection. Type: integer. 0: disable, 1:allow,
@@ -294,10 +304,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Database");
             }
+            if (this.AuthenticationType == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AuthenticationType");
+            }
             if (this.SslMode == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "SslMode");
             }
+
 
 
 

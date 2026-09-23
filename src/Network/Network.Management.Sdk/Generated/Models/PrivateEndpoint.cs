@@ -50,11 +50,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the private endpoint resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="networkInterfaces">An array of references to the network interfaces created for this private
         /// endpoint.
         /// </param>
+
+        /// <param name="ipVersionType">Specifies the IP version type for the private IPs of the private endpoint.
+        /// If not defined, this defaults to IPv4.
+        /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;, &#39;DualStack&#39;</param>
 
         /// <param name="privateLinkServiceConnections">A grouping of information about the connection to the remote resource.
         /// </param>
@@ -77,7 +82,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="customNetworkInterfaceName">The custom name of the network interface attached to the private endpoint.
         /// </param>
-        public PrivateEndpoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string))
+
+        /// <param name="billingSku">The billing sku of the private endpoint.
+        /// Possible values include: &#39;PayAsYouGo&#39;, &#39;Fixed&#39;</param>
+        public PrivateEndpoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string ipVersionType = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string), string billingSku = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -86,12 +94,14 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Subnet = subnet;
             this.ProvisioningState = provisioningState;
             this.NetworkInterfaces = networkInterfaces;
+            this.IPVersionType = ipVersionType;
             this.PrivateLinkServiceConnections = privateLinkServiceConnections;
             this.ManualPrivateLinkServiceConnections = manualPrivateLinkServiceConnections;
             this.CustomDnsConfigs = customDnsConfigs;
             this.ApplicationSecurityGroups = applicationSecurityGroups;
             this.IPConfigurations = ipConfigurations;
             this.CustomNetworkInterfaceName = customNetworkInterfaceName;
+            this.BillingSku = billingSku;
             CustomInit();
         }
 
@@ -122,7 +132,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public Subnet Subnet {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the private endpoint resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the private endpoint resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -133,6 +143,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkInterfaces")]
         public System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces {get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies the IP version type for the private IPs of the
+        /// private endpoint. If not defined, this defaults to IPv4. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;, &#39;DualStack&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipVersionType")]
+        public string IPVersionType {get; set; }
 
         /// <summary>
         /// Gets or sets a grouping of information about the connection to the remote
@@ -175,5 +192,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customNetworkInterfaceName")]
         public string CustomNetworkInterfaceName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the billing sku of the private endpoint. Possible values include: &#39;PayAsYouGo&#39;, &#39;Fixed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.billingSku")]
+        public string BillingSku {get; set; }
     }
 }

@@ -18,13 +18,13 @@ Get a CommunicationsGateway
 Get a TestLine
 
 ### [New-AzVoiceServicesCommunicationsGateway](New-AzVoiceServicesCommunicationsGateway.md)
-Create a CommunicationsGateway
+create a CommunicationsGateway
 
 ### [New-AzVoiceServicesCommunicationsGatewayServiceRegionObject](New-AzVoiceServicesCommunicationsGatewayServiceRegionObject.md)
 Create an in-memory object for ServiceRegionProperties.
 
 ### [New-AzVoiceServicesCommunicationsTestLine](New-AzVoiceServicesCommunicationsTestLine.md)
-Create a TestLine
+create a TestLine
 
 ### [Remove-AzVoiceServicesCommunicationsGateway](Remove-AzVoiceServicesCommunicationsGateway.md)
 Delete a CommunicationsGateway
@@ -36,8 +36,8 @@ Delete a TestLine
 Check whether the resource name is available in the given region.
 
 ### [Update-AzVoiceServicesCommunicationsGateway](Update-AzVoiceServicesCommunicationsGateway.md)
-Update a CommunicationsGateway
+update a CommunicationsGateway
 
 ### [Update-AzVoiceServicesCommunicationsTestLine](Update-AzVoiceServicesCommunicationsTestLine.md)
-Update a TestLine
+update a TestLine
 

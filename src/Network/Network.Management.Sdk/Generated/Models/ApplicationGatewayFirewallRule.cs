@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;None&#39;, &#39;AnomalyScoring&#39;, &#39;Allow&#39;, &#39;Block&#39;, &#39;Log&#39;</param>
 
         /// <param name="sensitivity">The string representation of the web application firewall rule sensitivity.
-        /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
+        /// Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="description">The description of the web application firewall rule.
         /// </param>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the string representation of the web application firewall rule
-        /// sensitivity. Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
+        /// sensitivity. Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sensitivity")]
         public string Sensitivity {get; set; }

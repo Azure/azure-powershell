@@ -11,16 +11,16 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Set-AzMigrateServerReplication' {
-    It 'ByIDVMwareCbt' -skip {
-       $output = Set-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -TargetVMName $env.srsTgtVMName -SubscriptionId $env.srsSubscriptionId
+Describe 'Set-AzMigrateServerReplication'  -Tag 'LiveOnly' {
+    It 'ByIDVMwareCbt' {
+       $output = Set-AzMigrateServerReplication -TargetObjectID $env.srsMachineId2 -SubscriptionId $env.srsSubscriptionId2
        $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'ByInputObjectVMwareCbt' -skip {
-        $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachinetempz -SubscriptionId $env.srsSubscriptionId
+    It 'ByInputObjectVMwareCbt' {
+        $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId2 -SubscriptionId $env.srsSubscriptionId2 -SqlServerLicenseType $env.sqlServerLicenseType
         $obj.Count | Should -BeGreaterOrEqual 1
-        $output = Set-AzMigrateServerReplication -InputObject $obj -TargetVMName $env.srsTgtVMName -SubscriptionId $env.srsSubscriptionId
+        $output = Set-AzMigrateServerReplication -InputObject $obj -SubscriptionId $env.srsSubscriptionId2 -SqlServerLicenseType $env.sqlServerLicenseType
         $output.Count | Should -BeGreaterOrEqual 1
     }
 }

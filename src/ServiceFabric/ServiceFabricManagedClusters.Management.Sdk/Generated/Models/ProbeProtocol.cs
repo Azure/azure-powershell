@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class ProbeProtocol
     {
+        /// <summary>
+        /// Probe protocol is TCP.
+        /// </summary>
         public const string Tcp = "tcp";
+        /// <summary>
+        /// Probe protocol is HTTP.
+        /// </summary>
         public const string Http = "http";
+        /// <summary>
+        /// Probe protocol is HTTPS.
+        /// </summary>
         public const string Https = "https";
     }
 }

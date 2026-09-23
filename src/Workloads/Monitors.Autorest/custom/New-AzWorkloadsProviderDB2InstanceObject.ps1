@@ -21,12 +21,13 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 Create an in-memory object for DB2ProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.DB2ProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.DB2ProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderdb2instanceobject
 #>
 function New-AzWorkloadsProviderDB2InstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.DB2ProviderInstanceProperties')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.DB2ProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -55,13 +56,13 @@ function New-AzWorkloadsProviderDB2InstanceObject {
         [string]
         $SslCertificateUri,
         [Parameter(HelpMessage="Gets or sets certificate preference if secure communication is enabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.PSArgumentCompleterAttribute("Disabled", "RootCertificate", "ServerCertificate")]
+        [string]
         $SslPreference
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.DB2ProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.DB2ProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.DbName = $Name
@@ -90,8 +91,6 @@ function New-AzWorkloadsProviderDB2InstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-
-        $Object.ProviderType = 'Db2'
         return $Object
     }
 }

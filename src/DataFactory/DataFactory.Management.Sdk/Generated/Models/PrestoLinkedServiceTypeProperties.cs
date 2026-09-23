@@ -27,14 +27,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="host">The IP address or host name of the Presto server. (i.e. 192.168.222.160)
         /// </param>
 
-        /// <param name="serverVersion">The version of the Presto server. (i.e. 0.148-t)
+        /// <param name="serverVersion">The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
         /// </param>
 
         /// <param name="catalog">The catalog context for all request against the server.
         /// </param>
 
         /// <param name="port">The TCP port that the Presto server uses to listen for client connections.
-        /// The default value is 8080.
+        /// The default value is 8080 when disable SSL, default value is 443 when
+        /// enable SSL.
         /// </param>
 
         /// <param name="authenticationType">The authentication mechanism used to connect to the Presto server.
@@ -47,37 +48,44 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </param>
 
         /// <param name="enableSsl">Specifies whether the connections to the server are encrypted using SSL.
-        /// The default value is false.
+        /// The default value for legacy version is False. The default value for
+        /// version 2.0 is True.
+        /// </param>
+
+        /// <param name="enableServerCertificateValidation">Specifies whether the connections to the server will validate server
+        /// certificate, the default value is True. Only used for Version 2.0
         /// </param>
 
         /// <param name="trustedCertPath">The full path of the .pem file containing trusted CA certificates for
         /// verifying the server when connecting over SSL. This property can only be
         /// set when using SSL on self-hosted IR. The default value is the cacerts.pem
-        /// file installed with the IR.
+        /// file installed with the IR. Only used for Version 1.0.
         /// </param>
 
         /// <param name="useSystemTrustStore">Specifies whether to use a CA certificate from the system trust store or
-        /// from a specified PEM file. The default value is false.
+        /// from a specified PEM file. The default value is false. Only used for
+        /// Version 1.0.
         /// </param>
 
         /// <param name="allowHostNameCnMismatch">Specifies whether to require a CA-issued SSL certificate name to match the
         /// host name of the server when connecting over SSL. The default value is
-        /// false.
+        /// false. Only used for Version 1.0.
         /// </param>
 
         /// <param name="allowSelfSignedServerCert">Specifies whether to allow self-signed certificates from the server. The
-        /// default value is false.
+        /// default value is false. Only used for Version 1.0.
         /// </param>
 
         /// <param name="timeZoneId">The local time zone used by the connection. Valid values for this option
-        /// are specified in the IANA Time Zone Database. The default value is the
-        /// system time zone.
+        /// are specified in the IANA Time Zone Database. The default value for Version
+        /// 1.0 is the client system time zone. The default value for Version 2.0 is
+        /// server system timeZone
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public PrestoLinkedServiceTypeProperties(object host, object serverVersion, object catalog, string authenticationType, object port = default(object), object username = default(object), SecretBase password = default(SecretBase), object enableSsl = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), object allowHostNameCnMismatch = default(object), object allowSelfSignedServerCert = default(object), object timeZoneId = default(object), string encryptedCredential = default(string))
+        public PrestoLinkedServiceTypeProperties(object host, object catalog, string authenticationType, object serverVersion = default(object), object port = default(object), object username = default(object), SecretBase password = default(SecretBase), object enableSsl = default(object), object enableServerCertificateValidation = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), object allowHostNameCnMismatch = default(object), object allowSelfSignedServerCert = default(object), object timeZoneId = default(object), string encryptedCredential = default(string))
 
         {
             this.Host = host;
@@ -88,6 +96,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Username = username;
             this.Password = password;
             this.EnableSsl = enableSsl;
+            this.EnableServerCertificateValidation = enableServerCertificateValidation;
             this.TrustedCertPath = trustedCertPath;
             this.UseSystemTrustStore = useSystemTrustStore;
             this.AllowHostNameCnMismatch = allowHostNameCnMismatch;
@@ -111,7 +120,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object Host {get; set; }
 
         /// <summary>
-        /// Gets or sets the version of the Presto server. (i.e. 0.148-t)
+        /// Gets or sets the version of the Presto server. (i.e. 0.148-t) Only used for
+        /// Version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serverVersion")]
         public object ServerVersion {get; set; }
@@ -124,7 +134,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the TCP port that the Presto server uses to listen for client
-        /// connections. The default value is 8080.
+        /// connections. The default value is 8080 when disable SSL, default value is
+        /// 443 when enable SSL.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "port")]
         public object Port {get; set; }
@@ -150,23 +161,33 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets specifies whether the connections to the server are encrypted
-        /// using SSL. The default value is false.
+        /// using SSL. The default value for legacy version is False. The default value
+        /// for version 2.0 is True.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableSsl")]
         public object EnableSsl {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies whether the connections to the server will validate
+        /// server certificate, the default value is True. Only used for Version 2.0
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableServerCertificateValidation")]
+        public object EnableServerCertificateValidation {get; set; }
+
+        /// <summary>
         /// Gets or sets the full path of the .pem file containing trusted CA
         /// certificates for verifying the server when connecting over SSL. This
         /// property can only be set when using SSL on self-hosted IR. The default
-        /// value is the cacerts.pem file installed with the IR.
+        /// value is the cacerts.pem file installed with the IR. Only used for Version
+        /// 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "trustedCertPath")]
         public object TrustedCertPath {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether to use a CA certificate from the system
-        /// trust store or from a specified PEM file. The default value is false.
+        /// trust store or from a specified PEM file. The default value is false. Only
+        /// used for Version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "useSystemTrustStore")]
         public object UseSystemTrustStore {get; set; }
@@ -174,14 +195,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Gets or sets specifies whether to require a CA-issued SSL certificate name
         /// to match the host name of the server when connecting over SSL. The default
-        /// value is false.
+        /// value is false. Only used for Version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowHostNameCNMismatch")]
         public object AllowHostNameCnMismatch {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether to allow self-signed certificates from the
-        /// server. The default value is false.
+        /// server. The default value is false. Only used for Version 1.0.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowSelfSignedServerCert")]
         public object AllowSelfSignedServerCert {get; set; }
@@ -189,7 +210,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Gets or sets the local time zone used by the connection. Valid values for
         /// this option are specified in the IANA Time Zone Database. The default value
-        /// is the system time zone.
+        /// for Version 1.0 is the client system time zone. The default value for
+        /// Version 2.0 is server system timeZone
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeZoneID")]
         public object TimeZoneId {get; set; }
@@ -213,10 +235,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Host");
             }
-            if (this.ServerVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServerVersion");
-            }
             if (this.Catalog == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Catalog");
@@ -225,6 +243,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AuthenticationType");
             }
+
 
 
 

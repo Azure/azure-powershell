@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DeleteExistingPeering
     {
+        /// <summary>
+        /// False
+        /// </summary>
         public const string False = "False";
+        /// <summary>
+        /// True
+        /// </summary>
         public const string True = "True";
     }
 }

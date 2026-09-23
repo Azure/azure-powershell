@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the backend HTTP settings resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="port">The destination port on the backend.
         /// </param>
@@ -83,7 +84,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="path">Path which should be used as a prefix for all HTTP requests. Null means no
         /// path will be prefixed. Default value is null.
         /// </param>
-        public ApplicationGatewayBackendHttpSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), string cookieBasedAffinity = default(string), int? requestTimeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> authenticationCertificates = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string))
+
+        /// <param name="dedicatedBackendConnection">Enable or disable dedicated connection per backend server. Default is set
+        /// to false.
+        /// </param>
+
+        /// <param name="validateCertChainAndExpiry">Verify or skip both chain and expiry validations of the certificate on the
+        /// backend server. Default is set to true.
+        /// </param>
+
+        /// <param name="validateSni">When enabled, verifies if the Common Name of the certificate provided by
+        /// the backend server matches the Server Name Indication (SNI) value. Default
+        /// value is true.
+        /// </param>
+
+        /// <param name="sniName">Specify an SNI value to match the common name of the certificate on the
+        /// backend. By default, the application gateway uses the incoming request’s
+        /// host header as the SNI. Default value is null.
+        /// </param>
+        public ApplicationGatewayBackendHttpSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), string cookieBasedAffinity = default(string), int? requestTimeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> authenticationCertificates = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), bool? dedicatedBackendConnection = default(bool?), bool? validateCertChainAndExpiry = default(bool?), bool? validateSni = default(bool?), string sniName = default(string))
 
         : base(id)
         {
@@ -104,6 +123,10 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AffinityCookieName = affinityCookieName;
             this.ProbeEnabled = probeEnabled;
             this.Path = path;
+            this.DedicatedBackendConnection = dedicatedBackendConnection;
+            this.ValidateCertChainAndExpiry = validateCertChainAndExpiry;
+            this.ValidateSni = validateSni;
+            this.SniName = sniName;
             CustomInit();
         }
 
@@ -134,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the backend HTTP settings resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the backend HTTP settings resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -222,6 +245,36 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.path")]
         public string Path {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable or disable dedicated connection per backend server.
+        /// Default is set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dedicatedBackendConnection")]
+        public bool? DedicatedBackendConnection {get; set; }
+
+        /// <summary>
+        /// Gets or sets verify or skip both chain and expiry validations of the
+        /// certificate on the backend server. Default is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.validateCertChainAndExpiry")]
+        public bool? ValidateCertChainAndExpiry {get; set; }
+
+        /// <summary>
+        /// Gets or sets when enabled, verifies if the Common Name of the certificate
+        /// provided by the backend server matches the Server Name Indication (SNI)
+        /// value. Default value is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.validateSNI")]
+        public bool? ValidateSni {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify an SNI value to match the common name of the
+        /// certificate on the backend. By default, the application gateway uses the
+        /// incoming request’s host header as the SNI. Default value is null.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sniName")]
+        public string SniName {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -243,6 +296,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.ConnectionDraining.Validate();
             }
+
 
 
 

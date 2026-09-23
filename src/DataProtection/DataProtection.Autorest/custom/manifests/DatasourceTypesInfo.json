@@ -13,6 +13,10 @@
       "clientDatasourceType": "AzureBlob"
     },
     {
+      "serviceDatasourceType": "Microsoft.Storage/storageAccounts/adlsBlobServices",
+      "clientDatasourceType": "AzureDataLakeStorage"
+    },
+    {
       "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
       "clientDatasourceType": "AzureKubernetesService"
     },
@@ -23,6 +27,14 @@
     {
       "serviceDatasourceType": "Microsoft.DBforMySQL/flexibleServers",
       "clientDatasourceType": "AzureDatabaseForMySQL"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DocumentDB/databaseAccounts",
+      "clientDatasourceType": "AzureCosmosDB"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",
+      "clientDatasourceType": "AzureElasticSAN"
     }
   ]
 }

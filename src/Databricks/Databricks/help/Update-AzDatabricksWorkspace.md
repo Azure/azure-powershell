@@ -15,45 +15,41 @@ Updates a workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-PrepareEncryption] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
+ [-PrepareEncryption] [-EncryptionKeySource <String>] [-EncryptionKeyVaultUri <String>]
  [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>]
  [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>] [-AmlWorkspaceId <String>] [-SkuTier <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <InitialType>]
- [-ManagedDiskKeySource <EncryptionKeySource>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <String>]
+ [-ManagedDiskKeySource <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
- [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServiceKeySource <EncryptionKeySource>]
+ [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServiceKeySource <String>]
  [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-UiDefinitionUri <String>] [-Tag <Hashtable>]
- [-RequiredNsgRule <RequiredNsgRules>] [-PublicNetworkAccess <PublicNetworkAccess>] [-EnableNoPublicIP]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
- [-AccessConnectorIdentityType <IdentityType>] [-AccessConnectorUserAssignedIdentityId <String>]
- [-DefaultStorageFirewall <DefaultStorageFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RequiredNsgRule <String>] [-PublicNetworkAccess <String>] [-EnableNoPublicIP]
+ [-EnhancedSecurityMonitoring <String>] [-AutomaticClusterUpdate <String>] [-ComplianceStandard <String[]>]
+ [-EnhancedSecurityCompliance <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <String>]
+ [-AccessConnectorUserAssignedIdentityId <String>] [-DefaultStorageFirewall <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-PrepareEncryption]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyName <String>]
+ [-EncryptionKeySource <String>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyName <String>]
  [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>]
  [-KeyVaultUri <String>] [-AmlWorkspaceId <String>] [-SkuTier <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <InitialType>]
- [-ManagedDiskKeySource <EncryptionKeySource>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <String>]
+ [-ManagedDiskKeySource <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
- [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServiceKeySource <EncryptionKeySource>]
+ [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServiceKeySource <String>]
  [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-UiDefinitionUri <String>] [-Tag <Hashtable>]
- [-RequiredNsgRule <RequiredNsgRules>] [-PublicNetworkAccess <PublicNetworkAccess>] [-EnableNoPublicIP]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
- [-AccessConnectorIdentityType <IdentityType>] [-AccessConnectorUserAssignedIdentityId <String>]
- [-DefaultStorageFirewall <DefaultStorageFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RequiredNsgRule <String>] [-PublicNetworkAccess <String>] [-EnableNoPublicIP]
+ [-EnhancedSecurityMonitoring <String>] [-AutomaticClusterUpdate <String>] [-ComplianceStandard <String[]>]
+ [-EnhancedSecurityCompliance <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <String>]
+ [-AccessConnectorUserAssignedIdentityId <String>] [-DefaultStorageFirewall <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +142,7 @@ Accept wildcard characters: False
 The identity type of the Access Connector Resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -205,10 +201,9 @@ Accept wildcard characters: False
 
 ### -Authorization
 The workspace provider authorizations.
-To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspaceProviderAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -219,13 +214,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomaticClusterUpdateValue
-Status of automated cluster updates feature.
+### -AutomaticClusterUpdate
+Status of the Automatic Cluster Update feature.
+Allowed values: 'Enabled', 'Disabled'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AutomaticClusterUpdateValue
 
 Required: False
 Position: Named
@@ -234,28 +230,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileComplianceStandard
+### -ComplianceStandard
 Compliance standards associated with the workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ComplianceSecurityProfileValue
-Status of Compliance Security Profile feature.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
-Parameter Sets: (All)
-Aliases:
+Aliases: ComplianceSecurityProfileComplianceStandard
 
 Required: False
 Position: Named
@@ -269,7 +250,7 @@ Defines the initial type of the default catalog.
 Possible values (case-insensitive): HiveMetastore, UnityCatalog
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +280,7 @@ Accept wildcard characters: False
 Gets or Sets Default Storage Firewall configuration information
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionKeyName
-The name of Key Vault key.
+The name of KeyVault key.
 
 ```yaml
 Type: System.String
@@ -345,7 +326,7 @@ The encryption keySource (provider).
 Possible values (case-insensitive): Default, Microsoft.Keyvault
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -357,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionKeyVaultUri
-The URI (DNS name) of the Key Vault.
+The Uri of KeyVault.
 
 ```yaml
 Type: System.String
@@ -386,13 +367,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnhancedSecurityMonitoringValue
-Status of Enhanced Security Monitoring feature.
+### -EnhancedSecurityCompliance
+Status of the Compliance Security Profile feature.
+Allowed values: 'Enabled', 'Disabled'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ComplianceSecurityProfileValue
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnhancedSecurityMonitoring
+Status of the Enhanced Security Monitoring feature.
+Allowed values: 'Enabled', 'Disabled'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: EnhancedSecurityMonitoringValue
 
 Required: False
 Position: Named
@@ -402,8 +400,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity parameter.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -467,7 +464,7 @@ The encryption keySource (provider).
 Possible values (case-insensitive): Microsoft.Keyvault
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -543,7 +540,7 @@ The encryption keySource (provider).
 Possible values (case-insensitive): Microsoft.Keyvault
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -650,7 +647,7 @@ The network access type for accessing workspace.
 Set value to disabled to access workspace only via private link.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -667,7 +664,7 @@ Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
 'NoAzureServiceRules' value is for internal use only.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -711,6 +708,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -794,7 +792,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace
 
 ## NOTES
 

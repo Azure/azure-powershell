@@ -23,15 +23,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using System.Management.Automation;
+using System.Xml;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using CM = Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -207,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("Regular", "Spot")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -266,6 +265,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = true)]
+        public string EncryptionIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public SwitchParameter EncryptionAtHost { get; set; }
 
@@ -281,6 +286,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -329,6 +339,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
 
         [Parameter(
+           HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
+
+        [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
@@ -347,6 +364,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest")]
+        public string SecurityPostureId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "List of virtual machine extensions to exclude when applying the security posture.")]
+        public string[] SecurityPostureExcludeExtension { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -369,6 +398,83 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
         public SwitchParameter EnableResilientVMDelete { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.")]
+        public SwitchParameter EnableAutomaticZoneRebalance { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the strategy for Automatic Zone Rebalance.")]
+        [PSArgumentCompleter("Recreate")]
+        public string AutomaticZoneRebalanceStrategy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            //ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the behavior for Automatic Zone Rebalance.")]
+        [PSArgumentCompleter("CreateBeforeDelete")]
+        public string AutomaticZoneRebalanceBehavior { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
+        [PSArgumentCompleter("Any", "Auto")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.")]
+        public int MaxZoneCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.")]
+        public SwitchParameter EnableMaxInstancePercentPerZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
+        public int MaxInstancePercentPerZoneValue { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
+        [PSArgumentCompleter("None", "Trunk")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the lifecycle hooks profile for the virtual machine scale set. Use Set-AzVmssLifecycleHooksProfile or create a LifecycleHooksProfile object directly.")]
+        public LifecycleHooksProfile LifecycleHooksProfile { get; set; }
+        
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -418,6 +524,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             //ResiliencyPolicy
             ResiliencyPolicy vResiliencyPolicy = null;
 
+            // Placement
+            Placement vPlacement = null;
+
             if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
@@ -443,6 +552,45 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vResiliencyPolicy = new ResiliencyPolicy();
                 }
                 vResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete.ToBool());
+            }
+
+            if (this.EnableAutomaticZoneRebalance.IsPresent)
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    vResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+                vResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled = this.EnableAutomaticZoneRebalance.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceStrategy))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    vResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+                vResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy = this.AutomaticZoneRebalanceStrategy;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceBehavior))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    vResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+                vResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
             }
 
             if (this.IsParameterBound(c => c.SkuTier))
@@ -565,6 +713,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
             }
 
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                {
+                    throw new PSArgumentException(
+                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
+                }
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.CapacityReservation == null)
+                {
+                    vVirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                vVirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
+            }
+
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
             {
                 if (vAutomaticRepairsPolicy == null)
@@ -656,6 +822,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
+            }
+
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.HardwareProfile == null)
+                {
+                    vVirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                vVirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
             }
 
             if (this.IsParameterBound(c => c.EnableVtpm))
@@ -842,6 +1021,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.EncryptionIdentity))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+
+                if (vVirtualMachineProfile.SecurityProfile.EncryptionIdentity == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+                }
+
+                if (String.IsNullOrEmpty(vVirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) ||
+                    !vVirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(
+                        this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
+                {
+                    vVirtualMachineProfile.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
+                }
+            }
+
             if (this.IsParameterBound(c => c.EdgeZone))
             {
                 vExtendedLocation = new CM.PSExtendedLocation(this.EdgeZone);
@@ -995,6 +1198,93 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
+            if (this.IsParameterBound(c => c.SecurityPostureId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    vVirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
+                }
+                vVirtualMachineProfile.SecurityPostureReference.Id = this.SecurityPostureId;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityPostureExcludeExtension))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    vVirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
+                }
+                vVirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
+            }
+
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.IncludeZone))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.IncludeZones = this.IncludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.ExcludeZone))
+            {
+                if (vPlacement == null)
+                {
+                    vPlacement = new Placement();
+                }
+                vPlacement.ExcludeZones = this.ExcludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                vResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.EnableMaxInstancePercentPerZone.IsPresent)
+            {
+                if (vResiliencyPolicy == null)
+                {
+                    vResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+                if (vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone.IsPresent;
+
+                if (this.IsParameterBound(c => c.MaxInstancePercentPerZoneValue))
+                {
+                    vResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+                }
+            }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
@@ -1020,7 +1310,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
                 PriorityMixPolicy = vPriorityMixPolicy,
                 SkuProfile = vSkuProfile,
-                ResiliencyPolicy = vResiliencyPolicy
+                ResiliencyPolicy = vResiliencyPolicy,
+                Placement = vPlacement,
+                HighSpeedInterconnectPlacement = this.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? this.HighSpeedInterconnectPlacement : null,
+                ZonalPlatformFaultDomainAlignMode = this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? this.ZonalPlatformFaultDomainAlignMode : null,
+                LifecycleHooksProfile = this.IsParameterBound(c => c.LifecycleHooksProfile) ? this.LifecycleHooksProfile : null
             };
 
             WriteObject(vVirtualMachineScaleSet);

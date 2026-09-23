@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the P2SConnectionConfiguration resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public P2SConnectionConfigurationProperties(AddressSpace vpnClientAddressPool = default(AddressSpace), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), bool? enableInternetSecurity = default(bool?), System.Collections.Generic.IList<SubResource> configurationPolicyGroupAssociations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup> previousConfigurationPolicyGroupAssociations = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup>), string provisioningState = default(string))
 
         {
@@ -86,11 +87,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? EnableInternetSecurity {get; set; }
 
         /// <summary>
-        /// Gets list of Configuration Policy Groups that this
+        /// Gets or sets list of Configuration Policy Groups that this
         /// P2SConnectionConfiguration is attached to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "configurationPolicyGroupAssociations")]
-        public System.Collections.Generic.IList<SubResource> ConfigurationPolicyGroupAssociations {get; private set; }
+        public System.Collections.Generic.IList<SubResource> ConfigurationPolicyGroupAssociations {get; set; }
 
         /// <summary>
         /// Gets list of previous Configuration Policy Groups that this
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup> PreviousConfigurationPolicyGroupAssociations {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the P2SConnectionConfiguration resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the P2SConnectionConfiguration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

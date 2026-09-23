@@ -19,6 +19,27 @@ Stop-AzConnectedNetworkVendorFunctionRoleInstance -LocationName <String> -Name <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### StopViaIdentityVendor
+```
+Stop-AzConnectedNetworkVendorFunctionRoleInstance -Name <String> -ServiceKey <String>
+ -VendorInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaIdentityNetworkFunction
+```
+Stop-AzConnectedNetworkVendorFunctionRoleInstance -Name <String>
+ -NetworkFunctionInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaIdentityLocation
+```
+Stop-AzConnectedNetworkVendorFunctionRoleInstance -Name <String> -ServiceKey <String> -VendorName <String>
+ -LocationInputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### StopViaIdentity
 ```
 Stop-AzConnectedNetworkVendorFunctionRoleInstance -InputObject <IConnectedNetworkIdentity>
@@ -36,7 +57,7 @@ Powers off (stop) a role instance of a vendor network function.
 Stop-AzConnectedNetworkVendorFunctionRoleInstance -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor -Name role1
 ```
 
-Stoping a role instance of a vendor network function with the specified serviceKey, location centraluseuap, vendor name myVendor and role instance name role1.
+Stopping a role instance of a vendor network function with the specified serviceKey, location centraluseuap, vendor name myVendor and role instance name role1.
 
 ### Example 2: Stop-AzConnectedNetworkVendorFunctionRoleInstance via Identity
 ```powershell
@@ -82,11 +103,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 Parameter Sets: StopViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LocationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: StopViaIdentityLocation
 Aliases:
 
 Required: True
@@ -116,13 +151,28 @@ The name of the role instance of the vendor network function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentityVendor, StopViaIdentityNetworkFunction, StopViaIdentityLocation
 Aliases: RoleInstanceName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkFunctionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: StopViaIdentityNetworkFunction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -161,7 +211,7 @@ The GUID for the vendor network function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentityVendor, StopViaIdentityLocation
 Aliases:
 
 Required: True
@@ -186,12 +236,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
+Parameter Sets: StopViaIdentityVendor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentityLocation
 Aliases:
 
 Required: True

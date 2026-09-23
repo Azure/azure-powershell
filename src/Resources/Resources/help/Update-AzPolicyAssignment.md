@@ -19,8 +19,8 @@ For example, when you assign a policy at resource group scope, that policy appli
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterObject
@@ -28,8 +28,8 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameterObject <PSObject>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterString
@@ -37,8 +37,8 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameter <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
@@ -46,8 +46,8 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterObject
@@ -55,8 +55,8 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameterObject <PSObject>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterString
@@ -64,8 +64,8 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -PolicyParameter <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -73,8 +73,8 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
 Update-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
- [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -InputObject <IPolicyAssignment>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceSelector <IResourceSelector[]>] -InputObject <IPolicyAssignment> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +88,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName 'Do not allow VM creation'
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -DisplayName 'Do not allow VM creation'
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -100,7 +100,7 @@ The final command updates the display name on the policy assignment on the resou
 ### Example 2: Add a system assigned managed identity to the policy assignment
 ```powershell
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'SystemAssigned' -Location 'westus'
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -IdentityType 'SystemAssigned' -Location 'westus'
 ```
 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
@@ -111,7 +111,7 @@ The final command assigns a system assigned managed identity to the policy assig
 ```powershell
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
 $UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName 'ResourceGroup1' -Name 'UserAssignedIdentity1'
- Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
+ Update-AzPolicyAssignment -Id $PolicyAssignment.Id -IdentityType 'UserAssigned' -Location 'westus' -IdentityId $UserAssignedIdentity.Id
 ```
 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
@@ -124,7 +124,7 @@ The final command assigns the user assigned managed identity identified by the *
 $Locations = Get-AzLocation | Where-Object {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -PolicyParameterObject $AllowedLocations
 ```
 
 The first and second commands create an object containing all Azure regions whose names start with "france" or "uk".
@@ -155,7 +155,7 @@ The command updates the policy assignment named 'PolicyAssignment' using the pol
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -EnforcementMode Default
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
@@ -167,7 +167,7 @@ The final command updates the enforcementMode property on the policy assignment 
 ### Example 7: Update non-compliance messages
 ```powershell
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
-Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+Update-AzPolicyAssignment -Id $PolicyAssignment.Id -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
 ```
 
 The first command gets the policy assignment named VirtualMachinePolicy by using the Get-AzPolicyAssignment cmdlet and stores it in the $PolicyAssignment variable.
@@ -193,35 +193,7 @@ The first command creates a location selector specifying locations other than Ea
 The second command creates an override object that will be used to specify that the assigned definition should have a Disabled effect in the locations identified by $Selector.
 The final command updates the policy assignment named VirtualMachinePolicyAssignment with the override specified by $Override.
 
-### Example 10: [Backcompat] Update an enforcementMode
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
-```
-
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-The second command gets the policy assignment named PolicyAssignment by using the Get-AzPolicyAssignment cmdlet.
-The command stores that object in the $PolicyAssignment variable.
-The final command updates the enforcementMode property on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
-
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -271,7 +243,7 @@ Accept wildcard characters: False
 
 ### -EnforcementMode
 The policy assignment enforcement mode.
-Possible values are Default and DoNotEnforce.
+Possible values are Default, DoNotEnforce, and Enroll.
 
 ```yaml
 Type: System.String
@@ -472,21 +444,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceSelector
 The resource selector list to filter policies by resource properties.
 
@@ -504,7 +461,7 @@ Accept wildcard characters: False
 
 ### -Scope
 The scope of the policy assignment.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

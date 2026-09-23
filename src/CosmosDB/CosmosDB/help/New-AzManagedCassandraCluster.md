@@ -18,7 +18,8 @@ New-AzManagedCassandraCluster -Location <String> -DelegatedManagementSubnetId <S
  -ResourceGroupName <String> -ClusterName <String> [-Tag <Hashtable>] [-ExternalGossipCertificate <String[]>]
  [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>] [-TimeBetweenBackupInHours <Int32>]
  [-AuthenticationMethod <String>] [-CassandraVersion <String>] [-ExternalSeedNode <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

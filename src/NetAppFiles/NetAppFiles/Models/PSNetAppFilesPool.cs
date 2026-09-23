@@ -118,6 +118,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string EncryptionType { get; set; }
 
         /// <summary>
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by this pool
+        /// and this will be accepted as input only for manual qosType pool with
+        /// Flexible service level
+        /// </summary>        
+        public double? CustomThroughputMibps { get; set; }
+
+        /// <summary>
         /// Gets or sets System Data
         /// </summary>
         public PSSystemData SystemData { get; set; }

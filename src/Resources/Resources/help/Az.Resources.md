@@ -65,6 +65,12 @@ Lists key credentials and password credentials for an service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Lists entities from users or get entity from users by key
 
+### [Get-AzDataBoundaryScope](Get-AzDataBoundaryScope.md)
+Get data boundary at specified scope
+
+### [Get-AzDataBoundaryTenant](Get-AzDataBoundaryTenant.md)
+Get data boundary of tenant.
+
 ### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
 Lists Azure RBAC deny assignments at the specified scope.
 By default it lists all deny assignments in the selected Azure subscription.
@@ -111,6 +117,9 @@ Get deployment operation for management group deployment
 ### [Get-AzManagementGroupDeploymentStack](Get-AzManagementGroupDeploymentStack.md)
 Gets Management Group scoped Deployment Stacks.
 
+### [Get-AzManagementGroupDeploymentStackWhatIfResult](Get-AzManagementGroupDeploymentStackWhatIfResult.md)
+Gets a management group scoped deployment stack WhatIf result.
+
 ### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at management group scope. 
 
@@ -136,6 +145,9 @@ Gets policy assignments.
 
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 Gets policy set definitions.
+
+### [Get-AzPolicyEnrollment](Get-AzPolicyEnrollment.md)
+Gets policy enrollments.
 
 ### [Get-AzPolicyExemption](Get-AzPolicyExemption.md)
 Gets policy exemptions.
@@ -169,6 +181,9 @@ Gets the resource group deployment operation
 
 ### [Get-AzResourceGroupDeploymentStack](Get-AzResourceGroupDeploymentStack.md)
 Gets Resource Group scoped Deployment Stacks.
+
+### [Get-AzResourceGroupDeploymentStackWhatIfResult](Get-AzResourceGroupDeploymentStackWhatIfResult.md)
+Gets a resource group scoped deployment stack WhatIf result.
 
 ### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at resource group scope. 
@@ -230,6 +245,9 @@ Get the specified role management policy assignment for a resource scope
 ### [Get-AzSubscriptionDeploymentStack](Get-AzSubscriptionDeploymentStack.md)
 Gets Subscription scoped Deployment Stacks.
 
+### [Get-AzSubscriptionDeploymentStackWhatIfResult](Get-AzSubscriptionDeploymentStackWhatIfResult.md)
+Gets a subscription scoped deployment stack WhatIf result.
+
 ### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
 
@@ -281,6 +299,11 @@ Creates key credentials or password credentials for an service principal.
 ### [New-AzADUser](New-AzADUser.md)
 Adds new entity to users
 
+### [New-AzDenyAssignment](New-AzDenyAssignment.md)
+Creates a user-assigned deny assignment at the specified scope.
+By default, the deny assignment targets Everyone and requires at least one excluded principal.
+Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal.
+
 ### [New-AzDeployment](New-AzDeployment.md)
 Create a deployment at the current subscription scope.
 
@@ -299,6 +322,9 @@ Create a deployment at a management group
 ### [New-AzManagementGroupDeploymentStack](New-AzManagementGroupDeploymentStack.md)
 Creates a new Management Group scoped Deployment Stack.
 
+### [New-AzManagementGroupDeploymentStackWhatIfResult](New-AzManagementGroupDeploymentStackWhatIfResult.md)
+Creates a management group scoped deployment stack WhatIf result.
+
 ### [New-AzManagementGroupHierarchySetting](New-AzManagementGroupHierarchySetting.md)
 Creates Hierarchy Settings under the current tenant
 
@@ -310,6 +336,9 @@ Creates or updates a policy assignment.
 
 ### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
 Creates or updates a policy definition.
+
+### [New-AzPolicyEnrollment](New-AzPolicyEnrollment.md)
+Creates a policy enrollment.
 
 ### [New-AzPolicyExemption](New-AzPolicyExemption.md)
 Creates or updates a policy exemption.
@@ -332,6 +361,9 @@ Adds an Azure deployment to a resource group.
 ### [New-AzResourceGroupDeploymentStack](New-AzResourceGroupDeploymentStack.md)
 Creates a new Resource Group scoped Deployment Stack.
 
+### [New-AzResourceGroupDeploymentStackWhatIfResult](New-AzResourceGroupDeploymentStackWhatIfResult.md)
+Creates a resource group scoped deployment stack WhatIf result.
+
 ### [New-AzResourceLock](New-AzResourceLock.md)
 Creates a resource lock.
 
@@ -351,7 +383,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
 
 ### [New-AzRoleAssignmentScheduleRequest](New-AzRoleAssignmentScheduleRequest.md)
-Creates a role assignment schedule request.
+Create a role assignment schedule request.
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates a custom role in Azure RBAC.
@@ -361,13 +393,16 @@ Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
 ### [New-AzRoleEligibilityScheduleRequest](New-AzRoleEligibilityScheduleRequest.md)
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 
 ### [New-AzRoleManagementPolicyAssignment](New-AzRoleManagementPolicyAssignment.md)
 Create a role management policy assignment
 
 ### [New-AzSubscriptionDeploymentStack](New-AzSubscriptionDeploymentStack.md)
 Creates a new Subscription scoped Deployment Stack.
+
+### [New-AzSubscriptionDeploymentStackWhatIfResult](New-AzSubscriptionDeploymentStackWhatIfResult.md)
+Creates a subscription scoped deployment stack WhatIf result.
 
 ### [New-AzTag](New-AzTag.md)
 Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
@@ -427,6 +462,9 @@ Removes key credentials or password credentials for an service principal.
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
 
+### [Remove-AzDenyAssignment](Remove-AzDenyAssignment.md)
+Removes a user-assigned deny assignment at the specified scope.
+
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations
 
@@ -448,6 +486,9 @@ Removes a deployment at a management group and any associated operations
 ### [Remove-AzManagementGroupDeploymentStack](Remove-AzManagementGroupDeploymentStack.md)
 Removes a Management Group scoped Deployment Stack.
 
+### [Remove-AzManagementGroupDeploymentStackWhatIfResult](Remove-AzManagementGroupDeploymentStackWhatIfResult.md)
+Removes a management group scoped deployment stack WhatIf result.
+
 ### [Remove-AzManagementGroupHierarchySetting](Remove-AzManagementGroupHierarchySetting.md)
 Deletes all Hierarchy Settings under the current tenant
 
@@ -461,12 +502,15 @@ The scope of a policy assignment is the part of its ID preceding '/providers/Mic
 ### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
 This operation deletes the policy definition in the given subscription with the given name.
 
+### [Remove-AzPolicyEnrollment](Remove-AzPolicyEnrollment.md)
+Deletes a policy enrollment.
+
 ### [Remove-AzPolicyExemption](Remove-AzPolicyExemption.md)
 This operation deletes a policy exemption, given its name and the scope it was created in.
 The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ### [Remove-AzPrivateLinkAssociation](Remove-AzPrivateLinkAssociation.md)
 Delete a specific azure private link association.
@@ -483,11 +527,14 @@ Removes a resource group deployment and any associated operations.
 ### [Remove-AzResourceGroupDeploymentStack](Remove-AzResourceGroupDeploymentStack.md)
 Removes a Resource Group scoped Deployment Stack.
 
+### [Remove-AzResourceGroupDeploymentStackWhatIfResult](Remove-AzResourceGroupDeploymentStackWhatIfResult.md)
+Removes a resource group scoped deployment stack WhatIf result.
+
 ### [Remove-AzResourceLock](Remove-AzResourceLock.md)
 Removes a resource lock.
 
 ### [Remove-AzResourceManagementPrivateLink](Remove-AzResourceManagementPrivateLink.md)
-Deletes the Resource Manangement Private Link.
+Deletes the Resource Management Private Link.
 
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
@@ -515,6 +562,9 @@ Delete a role management policy assignment
 
 ### [Remove-AzSubscriptionDeploymentStack](Remove-AzSubscriptionDeploymentStack.md)
 Removes a Subscription scoped Deployment Stack.
+
+### [Remove-AzSubscriptionDeploymentStackWhatIfResult](Remove-AzSubscriptionDeploymentStackWhatIfResult.md)
+Removes a subscription scoped deployment stack WhatIf result.
 
 ### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
@@ -549,6 +599,9 @@ Saves a Subscription scoped Deployment Stack Template.
 ### [Save-AzTenantDeploymentTemplate](Save-AzTenantDeploymentTemplate.md)
 Saves a deployment template to a file.
 
+### [Set-AzDataBoundary](Set-AzDataBoundary.md)
+Opt-in tenant to data boundary.
+
 ### [Set-AzManagedApplication](Set-AzManagedApplication.md)
 Updates managed application
 
@@ -558,6 +611,9 @@ Updates managed application definition
 ### [Set-AzManagementGroupDeploymentStack](Set-AzManagementGroupDeploymentStack.md)
 Sets a new Management Group scoped Deployment Stack.
 
+### [Set-AzManagementGroupDeploymentStackWhatIfResult](Set-AzManagementGroupDeploymentStackWhatIfResult.md)
+Updates a management group scoped deployment stack WhatIf result.
+
 ### [Set-AzResource](Set-AzResource.md)
 Modifies a resource.
 
@@ -566,6 +622,9 @@ Modifies a resource group.
 
 ### [Set-AzResourceGroupDeploymentStack](Set-AzResourceGroupDeploymentStack.md)
 Sets a new Resource Group scoped Deployment Stack.
+
+### [Set-AzResourceGroupDeploymentStackWhatIfResult](Set-AzResourceGroupDeploymentStackWhatIfResult.md)
+Updates a resource group scoped deployment stack WhatIf result.
 
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
@@ -592,6 +651,9 @@ Finally, save the role definition using this command.
 
 ### [Set-AzSubscriptionDeploymentStack](Set-AzSubscriptionDeploymentStack.md)
 Sets a new Subscription scoped Deployment Stack.
+
+### [Set-AzSubscriptionDeploymentStackWhatIfResult](Set-AzSubscriptionDeploymentStackWhatIfResult.md)
+Updates a subscription scoped deployment stack WhatIf result.
 
 ### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
 Modifies a Template Spec.
@@ -679,14 +741,26 @@ For example, when you assign a policy at resource group scope, that policy appli
 ### [Update-AzPolicyDefinition](Update-AzPolicyDefinition.md)
 This operation updates an existing policy definition in the given subscription or management group with the given name.
 
+### [Update-AzPolicyEnrollment](Update-AzPolicyEnrollment.md)
+This operation updates a policy enrollment with the newly provided properties.
+
 ### [Update-AzPolicyExemption](Update-AzPolicyExemption.md)
 This operation updates a policy exemption with the given scope and name.
 
 ### [Update-AzPolicySetDefinition](Update-AzPolicySetDefinition.md)
 This operation updates an existing policy set definition in the given subscription or management group with the given name.
 
+### [Update-AzRoleAssignmentScheduleRequest](Update-AzRoleAssignmentScheduleRequest.md)
+Update a role assignment schedule request.
+
+### [Update-AzRoleEligibilityScheduleRequest](Update-AzRoleEligibilityScheduleRequest.md)
+Update a role eligibility schedule request.
+
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy
+
+### [Update-AzRoleManagementPolicyAssignment](Update-AzRoleManagementPolicyAssignment.md)
+Update a role management policy assignment
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.

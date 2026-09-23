@@ -50,7 +50,7 @@ param(
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The resource Id of the policy definition to update.
+    # The resource Id of the policy set definition to update.
     ${Id},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -64,18 +64,21 @@ param(
     [System.String]
     # The policy set definition description.
     ${Description},
-
-    [Parameter()]
+    
+    [Parameter(ParameterSetName='Name')]
+    [Parameter(ParameterSetName='ManagementGroupName')]
+    [Parameter(ParameterSetName='SubscriptionId')]
+    [Parameter(ParameterSetName='Id')]
+    [Parameter(ParameterSetName='InputObject')]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReference[]]))]
     [System.String]
-    # The policy definition array in JSON string form.
+    # The policy set definition array in JSON string form.
     ${PolicyDefinition},
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionPropertiesMetadata]))]
     [System.String]
     # The policy set definition metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -88,12 +91,22 @@ param(
     # The keys are the parameter names.
     ${Parameter},
 
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Alias('PolicySetDefinitionVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy set definition version in #.#.# format.
+    ${Version},
+    
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
@@ -115,12 +128,6 @@ param(
     [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition]
     ${InputObject},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -188,12 +195,23 @@ process {
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
+    } elseif ($InputObject.Id) {
         $thisId = $InputObject.Id
+    } else {
+        $thisId = $_.Id
     }
 
     # construct id for definition to update
-    $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+    $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupId $thisId
+
+    # handle disallowed cases not handled by PS parameter attributes
+    if ($resolved.Version) {
+        throw 'Old versions are immutable.'
+    }
+
+    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['PolicyDefinition']) {
+        throw 'Version is only allowed if PolicyDefinition is provided.'
+    }
 
     $getParameters = Get-ExtraParameters @PSBoundParameters
     $getParameters['Id'] = $resolved.ResourceId
@@ -240,6 +258,73 @@ process {
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 
+    # the versions API should be called when updating with version parameter
+    if ($PSBoundParameters['Version']) {
+        if ($writeln) {
+            Write-Host -ForegroundColor Cyan "begin:New-AzPolicySetDefinitionVersion(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
+        }
+
+        $calledParameters = $PSBoundParameters
+
+        # populate the version property in the path
+        $calledParameters.PolicyDefinitionVersion = $calledParameters.Version
+        
+        # convert input/legacy policy parameter to correct set of parameters and remove
+        if ($PolicyDefinition) {
+            $calledParameters.PolicyDefinition = (GetFileUriOrStringParameterValue $PolicyDefinition)
+            $calledParameters.PolicyDefinition = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinition -AsHashtable)
+        }
+
+        # resolve [string] 'metadata' input parameter to [hashtable]
+        if ($Metadata) {
+            $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        }
+        elseif ($calledParameters.Metadata) {
+            $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        }
+
+        # resolve [string] 'parameter' input parameter (could be a path)
+        if ($Parameter) {
+            $calledParameters.Parameter = (GetFileUriOrStringParameterValue $Parameter)
+        }
+
+        # rename [string] 'parameter' parameter to 'parametertable' (needs to be string to construct properly)
+        if ($calledParameters.Parameter) {
+            $calledParameters.ParameterTable = (ConvertFrom-JsonSafe $calledParameters.Parameter -AsHashtable)
+            $null = $calledParameters.Remove('Parameter')
+        }
+
+        # resolve [string] 'PolicyDefinitionGroup' input parameter to [hashtable]
+        if ($PolicyDefinitionGroup) {
+            $calledParameters.PolicyDefinitionGroup = (GetFileUriOrStringParameterValue $PolicyDefinitionGroup)
+        }
+        if ($calledParameters.PolicyDefinitionGroup) {
+            $calledParameters.PolicyDefinitionGroup = (ConvertFrom-JsonSafe $calledParameters.PolicyDefinitionGroup -AsHashtable)
+        }
+
+        # ensure that the subscriptionId is set for the called cmdlet, if not provided by the user
+        if (!$calledParameters.ManagementGroupId) {
+            if (!$SubscriptionId) {
+                $calledParameters.SubscriptionId = (Get-SubscriptionId)
+            }
+        }
+
+        if ($PSBoundParameters['Name']) {
+            $PSBoundParameters['PolicySetDefinitionName'] = $PSBoundParameters['Name']
+            $null = $PSBoundParameters.Remove('Name')
+        }
+
+        # call internal generated cmdlet, convert generic JSON output properties to PSCustomObject
+        $item = Az.Policy.internal\New-AzPolicySetDefinitionVersion @calledParameters
+
+        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinition' -Value (ConvertObjectToPSObject $item.PolicyDefinition) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionGroup' -Value (ConvertObjectToPSObject $item.PolicyDefinitionGroup) -Force
+        $PSCmdlet.WriteObject($item)
+        return
+    }
+
     if (!$Metadata -and $existing.Metadata) {
         $calledParameters.Metadata = ConvertTo-Json -Depth 100 $existing.Metadata
     }
@@ -266,10 +351,6 @@ process {
 
     if (!$calledParameters.Metadata) {
         $calledParameters.Metadata = $existing.Metadata
-    }
-
-    if ($BackwardCompatible) {
-        $calledParameters.BackwardCompatible = $true
     }
 
     if ($writeln) {

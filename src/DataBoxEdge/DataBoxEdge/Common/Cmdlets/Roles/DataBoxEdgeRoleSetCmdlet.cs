@@ -120,8 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         {
             return this.DataBoxEdgeManagementClient.Roles.CreateOrUpdate(DeviceName,
                 Name,
-                resourceModel,
-                ResourceGroupName);
+                ResourceGroupName,
+                resourceModel);
         }
 
         public override void ExecuteCmdlet()

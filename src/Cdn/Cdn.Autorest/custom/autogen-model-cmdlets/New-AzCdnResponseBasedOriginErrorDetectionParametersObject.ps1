@@ -21,21 +21,22 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnresponsebasedoriginerrordetectionparametersobject
 #>
 function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHttpErrorRangeParameters[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters[]]
         $HttpErrorRange,
         [Parameter(HelpMessage="Type of response errors for real user requests for which origin will be deemed unhealthy.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "TcpErrorsOnly", "TcpAndHttpErrors")]
+        [string]
         $ResponseBasedDetectedErrorType,
         [Parameter(HelpMessage="The percentage of failed requests in the sample where failover should trigger.")]
         [int]
@@ -43,7 +44,7 @@ function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('HttpErrorRange')) {
             $Object.HttpErrorRange = $HttpErrorRange

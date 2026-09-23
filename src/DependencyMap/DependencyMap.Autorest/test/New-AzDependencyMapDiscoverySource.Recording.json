@@ -1,0 +1,133 @@
+{
+  "New-AzDependencyMapDiscoverySource+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"sourceType\": \"OffAzure\",\r\n    \"sourceId\": \"testSourceId\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "116" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f202cf47-0000-0100-0000-6847a9600000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ce74a389-b5e8-4f16-89c7-787031ddd903/southindia/70149ea2-ad02-48ae-bf54-57d81bc5c99b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "35efef19-72d5-44e9-b057-60b418150132" ],
+        "x-ms-correlation-request-id": [ "4b4240bc-ebb3-443f-985b-49767b45431f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034121Z:4b4240bc-ebb3-443f-985b-49767b45431f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 910DA0FB7E9B4101BACD9AD53D4AAD1C Ref B: MAA201060515051 Ref C: 2025-06-10T03:41:17Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:41:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5\",\"name\":\"autoTestSourcea5\",\"type\":\"microsoft.dependencymap/maps/discoverysources\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"test@abc.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-10T03:41:20.2609648Z\",\"lastModifiedBy\":\"test@abc.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-10T03:41:20.2609648Z\"},\"properties\":{\"sourceType\":\"OffAzure\",\"sourceId\":\"testSourceId\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDependencyMapDiscoverySource+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "8bca3199-0495-4bd1-b260-e53fbca603d7" ],
+        "CommandName": [ "New-AzDependencyMapDiscoverySource" ],
+        "FullCommandName": [ "New-AzDependencyMapDiscoverySource_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.DependencyMap/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f202cf47-0000-0100-0000-6847a9600000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a538e429-d44a-45ff-964b-730264fb90ff" ],
+        "x-ms-correlation-request-id": [ "89dda5ed-1a2e-4766-a30f-9aefc56063df" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034152Z:89dda5ed-1a2e-4766-a30f-9aefc56063df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 04A5CB255C484840BAFA3D1D47F8BD40 Ref B: MAA201060515051 Ref C: 2025-06-10T03:41:51Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:41:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5\",\"name\":\"autoTestSourcea5\",\"type\":\"microsoft.dependencymap/maps/discoverysources\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"test@abc.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-10T03:41:20.2609648Z\",\"lastModifiedBy\":\"test@abc.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-10T03:41:20.2609648Z\"},\"properties\":{\"sourceType\":\"OffAzure\",\"sourceId\":\"testSourceId\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDependencyMapDiscoverySource+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5?api-version=2025-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "8bca3199-0495-4bd1-b260-e53fbca603d7" ],
+        "CommandName": [ "New-AzDependencyMapDiscoverySource" ],
+        "FullCommandName": [ "New-AzDependencyMapDiscoverySource_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.DependencyMap/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f202cf47-0000-0100-0000-6847a9600000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "41b69fcf-eaad-4b2a-9063-98a908caef18" ],
+        "x-ms-correlation-request-id": [ "8649022e-de7e-4002-b43f-3eb778134bba" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034152Z:8649022e-de7e-4002-b43f-3eb778134bba" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 76A9A76A1680446F9E1E19727E4D8AC9 Ref B: MAA201060515051 Ref C: 2025-06-10T03:41:52Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:41:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSourcea5\",\"name\":\"autoTestSourcea5\",\"type\":\"microsoft.dependencymap/maps/discoverysources\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"test@abc.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-10T03:41:20.2609648Z\",\"lastModifiedBy\":\"test@abc.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-10T03:41:20.2609648Z\"},\"properties\":{\"sourceType\":\"OffAzure\",\"sourceId\":\"testSourceId\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

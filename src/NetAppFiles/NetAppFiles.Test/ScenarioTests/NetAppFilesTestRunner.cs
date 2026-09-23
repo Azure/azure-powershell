@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests
                 {
                     helper.RMProfileModule,
                     helper.RMNetworkModule,
+                    helper.RMKeyVaultModule,
                     helper.GetRMModulePath("Az.NetAppFiles.psd1"),
                     helper.GetRMModulePath("Az.ManagedServiceIdentity.psd1")
                 })

@@ -1,5 +1,6 @@
 function Update-AzFunctionAppPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*******************************************************************************************`n    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n    * At least one change applies to this cmdlet.                                                    *`n    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n    *******************************************************************************************")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app service plan.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -22,8 +23,8 @@ function Update-AzFunctionAppPlan {
         [System.String]
         ${Name},
 
-        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
+        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true, HelpMessage='The function app plan object.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -55,7 +56,7 @@ function Update-AzFunctionAppPlan {
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -70,7 +71,7 @@ function Update-AzFunctionAppPlan {
         [System.Management.Automation.SwitchParameter]
         ${AsJob},
 
-        [Parameter()]
+        [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
@@ -189,7 +190,7 @@ function Update-AzFunctionAppPlan {
         }
 
         $shouldUpdateFunctionAppPlan = $false;
-        $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.AppServicePlan
+        $servicePlan = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.AppServicePlan
         
         # Plan settings
         $servicePlan.Location = $existingPlan.Location

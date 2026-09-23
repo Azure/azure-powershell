@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Custom propeties for the storage context
+        /// Custom properties for the storage context
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
@@ -202,7 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Proivides a private constructor for building empty instance which
+        /// Provides a private constructor for building empty instance which
         /// contains no account information.
         /// </summary>
         protected AzureStorageContext()

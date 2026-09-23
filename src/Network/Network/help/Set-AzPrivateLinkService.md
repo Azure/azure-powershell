@@ -14,7 +14,8 @@ Updates a private link service.
 
 ```
 Set-AzPrivateLinkService -PrivateLinkService <PSPrivateLinkService> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,15 +37,45 @@ $privateLinkService.IpConfigurations[0] = $newIPConfig
 $privateLinkService | Set-AzPrivateLinkService
 ```
 
-This example creates a private link service called mypls. Then it replace its ipConfigurations from the in-memory ipConfiguratiuon object. The Set-AzPrivateLinkService cmdlet is then used to write the modified private link service state on the service side. 
+This example creates a private link service called mypls. Then it replace its ipConfigurations from the in-memory ipConfiguration object. The Set-AzPrivateLinkService cmdlet is then used to write the modified private link service state on the service side. 
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,5 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPrivateLinkService](./New-AzPrivateLinkService.md)
 
 [Remove-AzPrivateLinkService](./Remove-AzPrivateLinkService.md)
-
-

@@ -108,17 +108,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
-            HelpMessage = "The id of Vpn server configuraiton object this Virtual wan will be associated with.")]
+            HelpMessage = "The id of Vpn server configuration object this Virtual wan will be associated with.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
-            HelpMessage = "The id of Vpn server configuraiton object this Virtual wan will be associated with.")]
+            HelpMessage = "The id of Vpn server configuration object this Virtual wan will be associated with.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
-            HelpMessage = "The id of Vpn server configuraiton object this Virtual wan will be associated with.")]
+            HelpMessage = "The id of Vpn server configuration object this Virtual wan will be associated with.")]
         [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
         public string VpnServerConfigurationId { get; set; }
 

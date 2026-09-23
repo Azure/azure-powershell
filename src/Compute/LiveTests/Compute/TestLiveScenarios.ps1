@@ -1,45 +1,59 @@
-Invoke-LiveTestScenario -Name "Creates a virtual machine." -Description "Test create new VM" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Operate a virtual machine." -Description "Test creating and removing a virtual machine" -ScenarioScript `
 {
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $name = New-LiveTestResourceName
+    $location = "eastus2"
+    $vmName = New-LiveTestResourceName
+    $vnetName = New-LiveTestResourceName
+    $snetName = New-LiveTestResourceName
+    $nicName = New-LiveTestResourceName
+    $nsgName = New-LiveTestResourceName
+    $computerName = New-LiveTestResourceName
+    $osDiskName = New-LiveTestResourceName
 
-    $VMLocalAdminUser = New-LiveTestResourceName
-    $VMLocalAdminSecurePassword = ConvertTo-SecureString (New-LiveTestPassword) -AsPlainText -Force
-    $domainNameLabel = New-LiveTestResourceName
-    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword)
-    $text = New-LiveTestResourceName
-    $bytes = [System.Text.Encoding]::Unicode.GetBytes($text)
-    $userData = [Convert]::ToBase64String($bytes)
+    $localAdminName = New-LiveTestResourceName
+    $localAdminPassword = ConvertTo-SecureString (New-LiveTestPassword) -AsPlainText -Force
+    $localAdminCred = New-Object System.Management.Automation.PSCredential ($localAdminName, $localAdminPassword)
 
-    $actual = New-AzVM -ResourceGroupName $rgName -Name $name -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData -OpenPorts @()
+    $snetCfg = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.10.1.0/24 -DefaultOutboundAccess $false
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.10.0.0/16 -Subnet $snetCfg
+    $nsgRuleHighRiskPorts = New-AzNetworkSecurityRuleConfig -Name "DenyHighRiskPorts" -Direction Inbound -Priority 101 -Protocol Tcp -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 22, 3389 -Access Deny
+    $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Name $nsgName -Location $location -SecurityRules $nsgRuleHighRiskPorts
+    $nic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
 
-    Assert-AreEqual $name $actual.Name
-    # Assert-AreEqual "Succeeded" Label $actual.ProvisioningState
-    # Assert-AreEqual $userData $actual.UserData
-}
+    $vmCfg = New-AzVMConfig -VMName $vmName -VMSize Standard_D2s_v3
+    $vmCfg | Set-AzVMSecurityProfile -SecurityType TrustedLaunch
+    $vmCfg | Set-AzVMOSDisk -Name $osDiskName -StorageAccountType StandardSSD_LRS -CreateOption FromImage -DeleteOption Delete
+    $vmCfg | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $localAdminCred -ProvisionVMAgent -EnableAutoUpdate
+    $vmCfg | Set-AzVMSourceImage -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-datacenter-azure-edition-core" -Version "latest"
+    $vmCfg | Add-AzVMNetworkInterface -Id $nic.Id -DeleteOption Delete
+    $vmCfg | Set-AzVMBootDiagnostic -Disable
+    New-AzVM -ResourceGroupName $rgName -Location $location -VM $vmCfg -DisableBginfoExtension
 
-Invoke-LiveTestScenario -Name "Removes a virtual machine from Azure" -Description "Test removes a virtual machine from Azure." -ScenarioScript `
-{
-    param ($rg)
+    $actual = Get-AzVM -ResourceGroupName $rgName -Name $vmName
 
-    $rgName = $rg.ResourceGroupName
-    $name = New-LiveTestResourceName
+    Assert-NotNull $actual
+    Assert-NotNull $actual.NetworkProfile.NetworkInterfaces
+    Assert-AreEqual $rgName $actual.ResourceGroupName
+    Assert-AreEqual $vmName $actual.Name
+    Assert-AreEqual "Succeeded" $actual.ProvisioningState
+    Assert-AreEqual "Standard_D2s_v3" $actual.HardwareProfile.VmSize
+    Assert-AreEqual $nic.Id $actual.NetworkProfile.NetworkInterfaces[0].Id
+    Assert-AreEqual "TrustedLaunch" $actual.SecurityProfile.SecurityType
+    Assert-AreEqual $computerName $actual.OSProfile.ComputerName
+    Assert-AreEqual "MicrosoftWindowsServer" $actual.StorageProfile.ImageReference.Publisher
+    Assert-AreEqual "WindowsServer" $actual.StorageProfile.ImageReference.Offer
+    Assert-AreEqual "2022-datacenter-azure-edition-core" $actual.StorageProfile.ImageReference.Sku
+    Assert-AreEqual "latest" $actual.StorageProfile.ImageReference.Version
+    Assert-AreEqual $osDiskName $actual.StorageProfile.OsDisk.Name
+    Assert-AreEqual "StandardSSD_LRS" $actual.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
+    Assert-AreEqual "FromImage" $actual.StorageProfile.OsDisk.CreateOption
+    Assert-AreEqual "Delete" $actual.StorageProfile.OsDisk.DeleteOption
 
-    $VMLocalAdminUser = New-LiveTestResourceName
-    $VMLocalAdminSecurePassword = ConvertTo-SecureString (New-LiveTestPassword) -AsPlainText -Force
-    $domainNameLabel = New-LiveTestResourceName
-    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword)
-    $text = New-LiveTestResourceName
-    $bytes = [System.Text.Encoding]::Unicode.GetBytes($text)
-    $userData = [Convert]::ToBase64String($bytes)
-
-    New-AzVM -ResourceGroupName $rgName -Name $name -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData -OpenPorts @()
-    Remove-AzVM -ResourceGroupName $rgName -Name $name -Force
-
-    $removedVM = Get-AzVM -ResourceGroupName $rgName -Name $name -ErrorAction SilentlyContinue
-    Assert-Null $removedVM
+    Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
+    $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName -ErrorAction SilentlyContinue
+    Assert-Null $vm
 }
 
 Invoke-LiveTestScenario -Name "Create a managed disk" -Description "Test creating a managed disk" -ScenarioScript `

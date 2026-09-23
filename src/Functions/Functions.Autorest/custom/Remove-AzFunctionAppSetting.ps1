@@ -1,5 +1,6 @@
 function Remove-AzFunctionAppSetting {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*******************************************************************************************`n    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n    * At least one change applies to this cmdlet.                                                    *`n    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n    *******************************************************************************************")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Removes app settings from a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -22,8 +23,8 @@ function Remove-AzFunctionAppSetting {
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true, HelpMessage='The function app object.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -37,12 +38,11 @@ function Remove-AzFunctionAppSetting {
         [System.Management.Automation.SwitchParameter]
         ${Force},
 
-        [Parameter()]
+        [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
 
         [Parameter(DontShow)]

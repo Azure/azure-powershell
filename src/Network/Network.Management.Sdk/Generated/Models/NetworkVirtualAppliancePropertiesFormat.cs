@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="addressPrefix">Address Prefix.
         /// </param>
 
+        /// <param name="addressPrefixV6">Address Prefix for Dual-Stack NVAs.
+        /// </param>
+
         /// <param name="bootStrapConfigurationBlobs">BootStrapConfigurationBlobs storage URLs.
         /// </param>
 
@@ -55,7 +58,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="networkProfile">Network Profile containing configurations for Public and Private NIC.
         /// </param>
 
-        /// <param name="additionalNics">Details required for Additional Network Interface.
+        /// <param name="additionalNics">Details required for Additional Network Interface. This property is not
+        /// compatible with the NVA deployed in VNets.
         /// </param>
 
         /// <param name="internetIngressPublicIps">List of Resource Uri of Public IPs for Internet Ingress Scenario.
@@ -71,21 +75,45 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="deploymentType">The deployment type. PartnerManaged for the SaaS NVA
         /// </param>
 
-        /// <param name="delegation">The delegation for the Virtual Appliance
+        /// <param name="delegation">The delegation for the Virtual Appliance. Only appliable for SaaS NVA.
         /// </param>
 
         /// <param name="partnerManagedResource">The delegation for the Virtual Appliance
         /// </param>
-        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties))
+
+        /// <param name="nvaInterfaceConfigurations">The NVA in VNet interface configurations
+        /// </param>
+
+        /// <param name="addressFamily">The address families to deploy the NVA in. [&#34;IPv4&#34;, &#34;IPv6&#34;] deploys a
+        /// dual-stack NVA (the vHub/VNet must also be dual-stack). [&#34;IPv4&#34;], an empty
+        /// array, or omitting the field deploys an IPv4-only NVA. The value &#34;IPv6&#34; may
+        /// only appear in combination with &#34;IPv4&#34;; standalone [&#34;IPv6&#34;] is reserved for
+        /// future use and is rejected by the service today.
+        /// </param>
+
+        /// <param name="privateIPAddress">A Internal Load Balancer&#39;s HA port frontend IP address. Can be used to set
+        /// routes &amp; UDR to load balance traffic between NVA instances
+        /// </param>
+
+        /// <param name="privateIPAddressV6">An Internal Load Balancer&#39;s HA port frontend IPv6 address. Can be used to
+        /// set routes &amp; UDR to load balance traffic between NVA instances. This field
+        /// appears in dual-stack NVAs.
+        /// </param>
+
+        /// <param name="migrationStatus">The migration status of the Network Virtual Appliance.
+        /// </param>
+        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), string addressPrefixV6 = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), System.Collections.Generic.IList<string> addressFamily = default(System.Collections.Generic.IList<string>), string privateIPAddress = default(string), string privateIPAddressV6 = default(string), NetworkVirtualApplianceMigrationStatus migrationStatus = default(NetworkVirtualApplianceMigrationStatus))
 
         {
             this.NvaSku = nvaSku;
             this.AddressPrefix = addressPrefix;
+            this.AddressPrefixV6 = addressPrefixV6;
             this.BootStrapConfigurationBlobs = bootStrapConfigurationBlobs;
             this.VirtualHub = virtualHub;
             this.CloudInitConfigurationBlobs = cloudInitConfigurationBlobs;
@@ -103,6 +131,11 @@ namespace Microsoft.Azure.Management.Network.Models
             this.DeploymentType = deploymentType;
             this.Delegation = delegation;
             this.PartnerManagedResource = partnerManagedResource;
+            this.NvaInterfaceConfigurations = nvaInterfaceConfigurations;
+            this.AddressFamily = addressFamily;
+            this.PrivateIPAddress = privateIPAddress;
+            this.PrivateIPAddressV6 = privateIPAddressV6;
+            this.MigrationStatus = migrationStatus;
             CustomInit();
         }
 
@@ -123,6 +156,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "addressPrefix")]
         public string AddressPrefix {get; private set; }
+
+        /// <summary>
+        /// Gets address Prefix for Dual-Stack NVAs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "addressPrefixV6")]
+        public string AddressPrefixV6 {get; private set; }
 
         /// <summary>
         /// Gets or sets bootStrapConfigurationBlobs storage URLs.
@@ -176,7 +215,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public NetworkVirtualAppliancePropertiesFormatNetworkProfile NetworkProfile {get; set; }
 
         /// <summary>
-        /// Gets or sets details required for Additional Network Interface.
+        /// Gets or sets details required for Additional Network Interface. This
+        /// property is not compatible with the NVA deployed in VNets.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "additionalNics")]
         public System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> AdditionalNics {get; set; }
@@ -207,7 +247,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<SubResource> InboundSecurityRules {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -219,7 +259,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string DeploymentType {get; private set; }
 
         /// <summary>
-        /// Gets or sets the delegation for the Virtual Appliance
+        /// Gets or sets the delegation for the Virtual Appliance. Only appliable for
+        /// SaaS NVA.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "delegation")]
         public DelegationProperties Delegation {get; set; }
@@ -229,6 +270,43 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "partnerManagedResource")]
         public PartnerManagedResourceProperties PartnerManagedResource {get; set; }
+
+        /// <summary>
+        /// Gets or sets the NVA in VNet interface configurations
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nvaInterfaceConfigurations")]
+        public System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> NvaInterfaceConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets the address families to deploy the NVA in. [&#34;IPv4&#34;, &#34;IPv6&#34;]
+        /// deploys a dual-stack NVA (the vHub/VNet must also be dual-stack). [&#34;IPv4&#34;],
+        /// an empty array, or omitting the field deploys an IPv4-only NVA. The value
+        /// &#34;IPv6&#34; may only appear in combination with &#34;IPv4&#34;; standalone [&#34;IPv6&#34;] is
+        /// reserved for future use and is rejected by the service today.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "addressFamily")]
+        public System.Collections.Generic.IList<string> AddressFamily {get; set; }
+
+        /// <summary>
+        /// Gets a Internal Load Balancer&#39;s HA port frontend IP address. Can be used to
+        /// set routes &amp; UDR to load balance traffic between NVA instances
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddress")]
+        public string PrivateIPAddress {get; private set; }
+
+        /// <summary>
+        /// Gets an Internal Load Balancer&#39;s HA port frontend IPv6 address. Can be used
+        /// to set routes &amp; UDR to load balance traffic between NVA instances. This
+        /// field appears in dual-stack NVAs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateIpAddressV6")]
+        public string PrivateIPAddressV6 {get; private set; }
+
+        /// <summary>
+        /// Gets the migration status of the Network Virtual Appliance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "migrationStatus")]
+        public NetworkVirtualApplianceMigrationStatus MigrationStatus {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -237,6 +315,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 
@@ -263,6 +342,34 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
+
+
+
+            if (this.NvaInterfaceConfigurations != null)
+            {
+                if (this.NvaInterfaceConfigurations.Count > 3)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxItems, "NvaInterfaceConfigurations", 3);
+                }
+                foreach (var element in this.NvaInterfaceConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.AddressFamily != null)
+            {
+                if (this.AddressFamily.Count > 2)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxItems, "AddressFamily", 2);
+                }
+                if (this.AddressFamily.Count != System.Linq.Enumerable.Count(System.Linq.Enumerable.Distinct(this.AddressFamily)))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.UniqueItems, "AddressFamily");
+                }
+            }
 
 
 

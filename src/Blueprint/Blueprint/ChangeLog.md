@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.1
+* Updated the deprecation message for Blueprint cmdlets.
+
+## Version 0.5.0
+* Added ChangeSafety Support
+
+## Version 0.4.6
+* Deprecation of Blueprint cmdlets.
+
+## Version 0.4.5
+* Upgraded nuget package to signed package.
+
 ## Version 0.4.4
 * Removed Microsoft.Azure.Management.Blueprint 0.20.7-preview dependencies
 * Added Microsoft.Azure.PowerShell.Blueprint.Management.Sdk

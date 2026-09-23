@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the load balancing rule.
-        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;</param>
+        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;</param>
 
         /// <param name="frontendPort">The port for the external endpoint. Port numbers for each rule must be
         /// unique within the Load Balancer. Acceptable values range from 1 to 65534.
@@ -75,7 +75,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the inbound NAT rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public InboundNatRulePropertiesFormat(SubResource frontendIPConfiguration = default(SubResource), NetworkInterfaceIPConfiguration backendIPConfiguration = default(NetworkInterfaceIPConfiguration), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), int? frontendPortRangeStart = default(int?), int? frontendPortRangeEnd = default(int?), SubResource backendAddressPool = default(SubResource), string provisioningState = default(string))
 
         {
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the reference to the transport protocol used by the load
-        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;
+        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; set; }
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource BackendAddressPool {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the inbound NAT rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the inbound NAT rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

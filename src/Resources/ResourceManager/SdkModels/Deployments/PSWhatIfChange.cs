@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
             (string scope, string relativeResourceId) = ResourceIdUtility.SplitResourceId(whatIfChange.ResourceId);
             this.Scope = scope;
             this.RelativeResourceId = relativeResourceId;
+            this.UnsupportedReason = whatIfChange.UnsupportedReason;
 
             this.apiVersion = new Lazy<string>(() =>
                 this.Before?["apiVersion"]?.Value<string>() ?? this.After?["apiVersion"]?.Value<string>());
@@ -53,6 +54,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public string Scope { get; }
 
         public string RelativeResourceId { get; }
+
+        public string UnsupportedReason { get; }
 
         public string FullyQualifiedResourceId => this.whatIfChange.ResourceId;
 

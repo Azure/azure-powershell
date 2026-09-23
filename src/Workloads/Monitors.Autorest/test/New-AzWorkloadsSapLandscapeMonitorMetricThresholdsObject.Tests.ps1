@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapLandscapeMo
 
 Describe 'New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject' {
     It '__AllParameterSets' {
-        $response = New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Green 90 -Name X00 -Red 50 -Yellow 80
-        $response.Name | Should -Be "X00"
+        $response = New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Green 90 -Name CHA -Red 50 -Yellow 80
+        $response.Name | Should -Be "CHA"
     }
 }

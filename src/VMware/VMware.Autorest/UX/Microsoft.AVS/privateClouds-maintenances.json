@@ -1,0 +1,95 @@
+{
+  "resourceType": "privateClouds/maintenances",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwareMaintenance",
+      "description": "Get a Maintenance",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwaremaintenance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Maintenance",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.maintenanceName]"
+            },
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzVMwareInitiateMaintenanceCheck",
+      "description": "Initiate maintenance readiness checks",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances/{maintenanceName}/initiateChecks",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/invoke-azvmwareinitiatemaintenancecheck"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MaintenanceName <String>",
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Initiate maintenance readiness checks",
+          "parameters": [
+            {
+              "name": "-MaintenanceName",
+              "value": "[Path.maintenanceName]"
+            },
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

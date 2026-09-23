@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AuthorizationKey { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string AuthorizationStatus { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PartnerAccountId { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ActivationKey { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ResiliencyLevel { get; set; }
 
         [JsonIgnore]
         public string SkuText

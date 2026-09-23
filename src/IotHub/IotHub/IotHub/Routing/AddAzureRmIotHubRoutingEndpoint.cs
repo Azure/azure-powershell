@@ -170,13 +170,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public new object GetDynamicParameters()
         {
+            var parameters = base.GetDynamicParameters();
+
             if (this.EndpointType.Equals(PSEndpointType.AzureStorageContainer))
             {
                 routingEndpointDynamicParameter = new RoutingEndpointDynamicParameter();
                 return routingEndpointDynamicParameter;
             }
 
-            return null;
+            return parameters;
         }
 
         private RoutingEndpointDynamicParameter routingEndpointDynamicParameter;

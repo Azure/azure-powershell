@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
                         bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?) true : null;
-                        result = VirtualMachineScaleSetsClient.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, skipShutdown, instanceIds).GetAwaiter().GetResult();
+                        result = VirtualMachineScaleSetsClient.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, skipShutdown).GetAwaiter().GetResult();
                     }
                     else
                     {
                         bool? hibernate = this.Hibernate.IsPresent ? (bool?)true : null;
-                        result = VirtualMachineScaleSetsClient.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, hibernate, instanceIds).GetAwaiter().GetResult();
+                        result = VirtualMachineScaleSetsClient.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, hibernate).GetAwaiter().GetResult();
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse

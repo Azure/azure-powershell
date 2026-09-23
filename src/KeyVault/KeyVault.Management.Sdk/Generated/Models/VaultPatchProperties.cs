@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="createMode">The vault&#39;s create mode to indicate whether the vault need to be recovered
         /// or not.
-        /// Possible values include: 'recover', 'default'</param>
+        /// Possible values include: &#39;recover&#39;, &#39;default&#39;</param>
 
         /// <param name="enablePurgeProtection">Property specifying whether protection against purge is enabled for this
         /// vault. Setting this property to true activates protection against purge for

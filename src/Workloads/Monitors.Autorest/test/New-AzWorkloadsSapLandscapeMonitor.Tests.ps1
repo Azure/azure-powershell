@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapLandscapeMo
 
 Describe 'New-AzWorkloadsSapLandscapeMonitor' {
     It 'CreateExpanded' {
-        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"Prod","topSid":["SID1","SID2"]}' -GroupingSapApplication '{"name":"ERP1","topSid":["SID1","SID2"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
+        $response = New-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -GroupingLandscape '{"name":"NonProd","topSid":["CHA"]}' -GroupingSapApplication '{"name":"NonProd","topSid":["CHA"]}' -TopMetricsThreshold '{"name":"Instance Availability","green":90,"yellow":75,"red":50}'
         $response.ProvisioningState | Should -Be "Succeeded"
     }
 }

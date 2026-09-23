@@ -74,6 +74,22 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2ForVMWithRingBuffer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestPacketCaptureVMSSWithRingBuffer()
+        {
+            TestRunner.RunTestScript("Test-PacketCaptureV2WithRingBuffer");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
@@ -112,14 +128,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestProvidersList()
         {
             TestRunner.RunTestScript("Test-ProvidersList");
-        }
-
-        [Fact(Skip = "Need to rewrite test after introduction of ConnectionMonitor V2")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
-        public void TestConnectionMonitor()
-        {
-            TestRunner.RunTestScript("Test-ConnectionMonitor");
         }
 
         [Fact]
@@ -216,6 +224,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVnetFlowLogWithEmptyFilteringCondition()
         {
             TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyFilteringCondition");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithRecordType()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithRecordType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestVnetFlowLogWithEmptyRecordTypeCondition()
+        {
+            TestRunner.RunTestScript("Test-VnetFlowLogWithEmptyRecordTypeCondition");
         }
     }
 }

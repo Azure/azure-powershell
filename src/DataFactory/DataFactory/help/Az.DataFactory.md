@@ -9,7 +9,9 @@ Locale: en-US
 # Az.DataFactory Module
 ## Description
 Azure Data Factory V2 is the data integration platform that goes beyond Azure Data Factory V1's orchestration and batch-processing of time-series log data, with a general purpose app model supporting modern data warehousing patterns and scenarios, lift-and-shift SSIS, and data-driven SaaS applications. Compose and manage reliable and secure data integration workflows at scale. Use native ADF data connectors and Integration Runtimes to move and transform cloud and on-premises data that can be unstructured, semi-structured, and structured with Hadoop, Azure Data Lake, Spark, SQL Server, Cosmos DB and many other data platforms.
-> [!NOTE] > APIs that do not have V2 in their signature apply to Azure Data Factory version 1.  Version 1 is maintenance mode. Current version is version 2
+
+> [!NOTE]
+> APIs that do not have V2 in their signature apply to Azure Data Factory version 1.  Version 1 is maintenance mode. Current version is version 2
 
 ## Az.DataFactory Cmdlets
 ### [Add-AzDataFactoryV2DataFlowDebugSessionPackage](Add-AzDataFactoryV2DataFlowDebugSessionPackage.md)

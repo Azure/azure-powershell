@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SkuInformation> List(this ISkusOperations operations)
+        public static Microsoft.Rest.Azure.IPage<SkuInformation> List(this ISkusOperations operations)
         {
                 return ((ISkusOperations)operations).ListAsync().GetAwaiter().GetResult();
         }
@@ -34,9 +34,44 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SkuInformation>> ListAsync(this ISkusOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SkuInformation>> ListAsync(this ISkusOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SkuInformation> ListNext(this ISkusOperations operations, string nextPageLink)
+        {
+                return ((ISkusOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SkuInformation>> ListNextAsync(this ISkusOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -1,17 +1,17 @@
 {
-  "Get-AzElasticDeploymentInfo+[NoContext]+List+$POST+https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/listDeploymentInfo?api-version=2020-07-01+1": {
+  "Get-AzElasticDeploymentInfo+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listDeploymentInfo?api-version=2025-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/listDeploymentInfo?api-version=2020-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/es-cloudtests-portal/providers/Microsoft.Elastic/monitors/PortalCloudTest-6939106/listDeploymentInfo?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "82f66db7-3414-4aea-b3c8-0900180f5c90" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "d2f5c9b2-0568-4abf-a1c1-126aeb6e89f2" ],
         "CommandName": [ "Get-AzElasticDeploymentInfo" ],
         "FullCommandName": [ "Get-AzElasticDeploymentInfo_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.3", "Az.Elastic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-operation-identifier": [ "tenantId=c9967a4f-613f-442b-88f6-1e46aad03123,objectId=a1cb3b7f-f1c0-4ef4-8929-2b7c856bf5f0/eastus/3fc1e12e-0218-474a-a93f-a4af8d8b4c79" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "c92c19eb-cc2d-494c-aa99-b8538eb26a5d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "326f771a-6aa5-4424-8f53-4adb130ee42c" ],
-        "x-ms-correlation-request-id": [ "3e4fc511-91ed-4ff4-b5c6-9b829a9589a7" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071627Z:3e4fc511-91ed-4ff4-b5c6-9b829a9589a7" ],
-        "Date": [ "Tue, 07 Sep 2021 07:16:27 GMT" ]
+        "x-ms-request-id": [ "8f6b89bd-9c2e-486a-a136-77680890fd7e" ],
+        "x-ms-correlation-request-id": [ "83797199-5f11-40d7-9c51-77b25ec0a6fa" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "197" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2997" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251017T030917Z:83797199-5f11-40d7-9c51-77b25ec0a6fa" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1379FFC831BD4758893EFC7F9F6F69FA Ref B: PNQ231110908052 Ref C: 2025-10-17T03:09:16Z" ],
+        "Date": [ "Fri, 17 Oct 2025 03:09:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "88" ],
+        "Content-Length": [ "834" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"status\":\"Healthy\",\"version\":\"7.14.1\",\"memoryCapacity\":\"16384\",\"diskCapacity\":\"491520\"}",
+      "Content": "{\"status\":\"Healthy\",\"version\":\"9.0.7\",\"memoryCapacity\":\"16384\",\"diskCapacity\":\"573440\",\"elasticsearchEndPoint\":\"https://portalcloudtest-6939106-c1d96e.es.westus2.azure.elastic-cloud.com/\",\"deploymentUrl\":\"/sso/v1/go/ec:1677795862:kibana-portalcloudtest-6939106-c1d96e?acs=https://portalcloudtest-6939106-c1d96e.kb.westus2.azure.elastic-cloud.com/api/security/saml/callback\u0026sp_login_url=https://portalcloudtest-6939106-c1d96e.kb.westus2.azure.elastic-cloud.com\",\"marketplaceSaasInfo\":{\"marketplaceSubscription\":{\"id\":\"6813f053-1853-4ff3-c7bd-ef4e31ab1c2a\",\"publisherId\":null,\"offerId\":null},\"marketplaceName\":\"AzElastic_cfd800df-ed75-4673-8c56-662c69ea0e96_PortalCloudTest-6\",\"marketplaceResourceId\":null,\"marketplaceStatus\":\"Subscribed\",\"billedAzureSubscriptionId\":null,\"subscribed\":false},\"projectType\":null,\"configurationType\":null}",
       "isContentBase64": false
     }
   }

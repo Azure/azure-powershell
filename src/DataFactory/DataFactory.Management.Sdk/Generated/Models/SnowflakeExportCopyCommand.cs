@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the SnowflakeExportCopyCommand class.
         /// </summary>
 
+        /// <param name="additionalProperties">Export command settings.
+        /// </param>
+
         /// <param name="additionalCopyOptions">Additional copy options directly passed to snowflake Copy Command. Type:
         /// key value pairs (value should be string type) (or Expression with
         /// resultType object). Example: &#34;additionalCopyOptions&#34;: { &#34;DATE_FORMAT&#34;:
@@ -40,8 +43,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="storageIntegration">The name of the snowflake storage integration to use for the copy
         /// operation. Type: string (or Expression with resultType string).
         /// </param>
-        public SnowflakeExportCopyCommand(System.Collections.Generic.IDictionary<string, object> additionalCopyOptions = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> additionalFormatOptions = default(System.Collections.Generic.IDictionary<string, object>), object storageIntegration = default(object))
+        public SnowflakeExportCopyCommand(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> additionalCopyOptions = default(System.Collections.Generic.IDictionary<string, object>), System.Collections.Generic.IDictionary<string, object> additionalFormatOptions = default(System.Collections.Generic.IDictionary<string, object>), object storageIntegration = default(object))
 
+        : base(additionalProperties)
         {
             this.AdditionalCopyOptions = additionalCopyOptions;
             this.AdditionalFormatOptions = additionalFormatOptions;

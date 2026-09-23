@@ -13,7 +13,7 @@ To acquire management certificate credentials, you must download  a PublishingPr
 The Add-AzureAccount command can be used to acquire a token based on user credentials, and if the associated user is authorized for RDFE access to a subscription (they must be a classic administrator or co-admin of the subscription), they will have access to those subscriptions authorized to their account for classic administrator access
 
 ## General Notes
-- Managemnt certificate authentication lasts for an entire TCP session.  User authentication is self-renewing, just as it is in ARM.
+- Management certificate authentication lasts for an entire TCP session.  User authentication is self-renewing, just as it is in ARM.
 
 ## Programmatic Authentication for PowerShell clients
 - Clients are still authenticated using an IAuthenticationFactory, and the following overload:
@@ -21,7 +21,7 @@ The Add-AzureAccount command can be used to acquire a token based on user creden
 ```c#
 SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
 ```
-Note that, the ARM token audience is different than the token audience used for RDFE, although the RDFE tolken audience is accepted by both endpoints.
+Note that, the ARM token audience is different than the token audience used for RDFE, although the RDFE token audience is accepted by both endpoints.
 
 Similarly, RDFE clients can be created using the IClientFactory interface: 
 

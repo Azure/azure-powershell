@@ -76,31 +76,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             }           
 
             return BmsAdapter.Client.BackupResourceVaultConfigs.UpdateWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), param, null, customHeaders).Result.Body;
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName(), param, null, customHeaders).Result.Body;
         }
 
         public BackupResourceVaultConfigResource GetVaultProperty(string vaultName, string resourceGroupName)
         {
             return BmsAdapter.Client.BackupResourceVaultConfigs.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName()).Result.Body;
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName()).Result.Body;
         }
 
         /// <summary>  
         /// Method to Get Azure Recovery Services Vault Backup Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Storage response object.</returns>  
         public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
         {
             return BmsAdapter.Client.BackupResourceStorageConfigsNonCrr.GetWithHttpMessagesAsync(
-                vaultName, resouceGroupName).Result.Body;
+                resouceGroupName, vaultName).Result.Body;
         }
 
         /// <summary>  
         /// Method to Get Azure Recovery Services Vault Encryption Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
         public BackupResourceEncryptionConfigExtendedResource GetVaultEncryptionConfig(string resouceGroupName, string vaultName)
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to Update Azure Recovery Services Vault Encryption Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="encryptionConfigResource">update encryption config</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             BackupResourceEncryptionConfigResource encryptionConfigResource)
         {
             return BmsAdapter.Client.BackupResourceEncryptionConfigs.UpdateWithHttpMessagesAsync(
-                vaultName, resouceGroupName, encryptionConfigResource).Result;
+                resouceGroupName, vaultName, encryptionConfigResource).Result;
         }
 
         /// <summary>  
         /// Method to Update Azure Recovery Services Vault Encryption Properties  
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="encryptionConfigResource">update encryption config</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
@@ -149,13 +149,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             BackupResourceEncryptionConfigResource encryptionConfigResource)
         {
             return BmsAdapter.Client.BackupResourceEncryptionConfigs.UpdateWithHttpMessagesAsync(
-                vaultName, resouceGroupName, encryptionConfigResource).Result;
+                resouceGroupName, vaultName, encryptionConfigResource).Result;
         }
 
         /// <summary>  
         /// Method to get Recovery Services Vault.
         /// </summary>  
-        /// <param name="resouceGroupName">Name of the resouce group</param>  
+        /// <param name="resouceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Recovery Services Vault</returns> 
         public ARSVault GetVault(string resouceGroupName, string vaultName)
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <summary>  
         /// Method to create or update Recovery Services Vault.
         /// </summary>  
-        /// <param name="resourceGroupName">Name of the resouce group</param>  
+        /// <param name="resourceGroupName">Name of the resource group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <param name="patchVault">patch vault object to patch the recovery services Vault</param>
         /// <param name="auxiliaryAccessToken">Auxiliary access token for authorization</param>  
@@ -236,6 +236,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 queryParams = new ODataQuery<CrrModel.BmsaadPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
             }
+            else if (backupManagementType == BackupManagementType.AzureStorage)
+            {
+                queryParams = new ODataQuery<CrrModel.BmsaadPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureStorage);
+            }
 
             CrrModel.AADPropertiesResource aadProperties = CrrAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
             return aadProperties;
@@ -251,18 +255,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             // prepare move
             var prepareMoveOperationResponse = BmsAdapter.Client.BeginBMSPrepareDataMoveWithHttpMessagesAsync(
-                           vaultName, resourceGroupName, prepareMoveRequest).Result;
+                           resourceGroupName, vaultName, prepareMoveRequest).Result;
 
             // track prepare-move operation to success
             var operationStatus = TrackingHelpers.GetOperationStatusDataMove(
-                prepareMoveOperationResponse,
+                ToAzureOperationResponse(prepareMoveOperationResponse),
                 operationId => GetDataMoveOperationStatus(operationId, vaultName, resourceGroupName));
 
             Logger.Instance.WriteDebug("Prepare move operation: " + operationStatus.Body.Status);
 
             // get the correlation Id and return it for trigger data move
             var operationResult = TrackingHelpers.GetCorrelationId(
-                prepareMoveOperationResponse,
+                ToAzureOperationResponse(prepareMoveOperationResponse),
                 operationId => GetPrepareDataMoveOperationResult(operationId, vaultName, resourceGroupName));
 
             Logger.Instance.WriteDebug("Prepare move - correlationId:" + operationResult.CorrelationId);
@@ -280,11 +284,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             //trigger move 
             var triggerMoveOperationResponse = BmsAdapter.Client.BeginBMSTriggerDataMoveWithHttpMessagesAsync(
-                           vaultName, resourceGroupName, triggerMoveRequest).Result;
+                           resourceGroupName, vaultName, triggerMoveRequest).Result;
 
             // track trigger-move operation to success
             var operationStatus = TrackingHelpers.GetOperationStatusDataMove(
-                triggerMoveOperationResponse,
+                ToAzureOperationResponse(triggerMoveOperationResponse),
                 operationId => GetDataMoveOperationStatus(operationId, vaultName, resourceGroupName));
 
             Logger.Instance.WriteDebug("Trigger move operation: " + operationStatus.Body.Status);
@@ -302,7 +306,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns></returns>
         public ResourceGuardProxyBaseResource GetResourceGuardMapping(string vaultName, string resourceGroupName, string resourceGuardProxyName)
         {
-            return BmsAdapter.Client.ResourceGuardProxy.GetWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName).Result.Body;
+            return BmsAdapter.Client.ResourceGuardProxy.GetWithHttpMessagesAsync(resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName(), resourceGuardProxyName).Result.Body;
         }
 
         /// <summary>
@@ -322,7 +326,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
             }
 
-            return BmsAdapter.Client.ResourceGuardProxy.PutWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName, param, customHeaders).Result.Body;
+            return BmsAdapter.Client.ResourceGuardProxy.PutWithHttpMessagesAsync(resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName(), resourceGuardProxyName, param, customHeaders).Result.Body;
         }
 
         /// <summary>
@@ -360,7 +364,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     unlockDeleteRequest.ResourceGuardOperationRequests = new List<string>();
                     unlockDeleteRequest.ResourceGuardOperationRequests.Add(operationRequest);
 
-                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName, unlockDeleteRequest.ResourceGuardOperationRequests, unlockDeleteRequest.ResourceToBeDeleted, customHeaders).Result.Body;
+                    UnlockDeleteResponse unlockDeleteResponse = BmsAdapter.Client.ResourceGuardProxy.UnlockDeleteWithHttpMessagesAsync(resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName(), resourceGuardProxyName, unlockDeleteRequest.ResourceGuardOperationRequests, unlockDeleteRequest.ResourceToBeDeleted, customHeaders).Result.Body;
                 }
             }
             else if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
@@ -368,7 +372,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 throw new ArgumentException(String.Format(Resources.ResourceGuardMappingNotFound));
             }
 
-            return BmsAdapter.Client.ResourceGuardProxy.DeleteWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(), resourceGuardProxyName).Result;
+            return BmsAdapter.Client.ResourceGuardProxy.DeleteWithHttpMessagesAsync(resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName(), resourceGuardProxyName).Result;
         }
 
         /// <summary>
@@ -379,7 +383,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns></returns>
         public List<ResourceGuardProxyBaseResource> ListResourceGuardMapping(string vaultName, string resourceGroupName)
         {
-            Func<RestAzureNS.IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => BmsAdapter.Client.ResourceGuardProxies.GetWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName()).Result.Body;
+            Func<RestAzureNS.IPage<ResourceGuardProxyBaseResource>> proxyPagedList = () => BmsAdapter.Client.ResourceGuardProxies.GetWithHttpMessagesAsync(resourceGroupName ?? BmsAdapter.GetResourceGroupName(), vaultName ?? BmsAdapter.GetResourceName()).Result.Body;
             
             Func<string, RestAzureNS.IPage<ResourceGuardProxyBaseResource>> proxyPagedListNext = nextLink => BmsAdapter.Client.ResourceGuardProxies.GetNextWithHttpMessagesAsync(
                     nextLink, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;

@@ -16,16 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAksMaintenanceConfig
 
 Describe 'Remove-AzAksMaintenanceConfiguration' {
     It 'Delete' {
-        $MaintenanceConfigName = 'aks_maintenance_config'
-        $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
-        $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek
+        $MaintenanceConfigName = 'aksManagedAutoUpgradeSchedule'
+        New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -WeeklyDayOfWeek Friday -WeeklyIntervalWeek 2 -MaintenanceWindowStartTime 01:00 -MaintenanceWindowDurationHour 6
         Remove-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName
     }
 
     It 'DeleteViaIdentity' {
-        $MaintenanceConfigName = 'aks_maintenance_config'
-        $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
-        $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek
+        $MaintenanceConfigName = 'aksManagedAutoUpgradeSchedule'
+        $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -WeeklyDayOfWeek Friday -WeeklyIntervalWeek 2 -MaintenanceWindowStartTime 01:00 -MaintenanceWindowDurationHour 6
         Remove-AzAksMaintenanceConfiguration -InputObject $MaintenanceConfig
     }
 }

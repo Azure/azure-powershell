@@ -27,7 +27,7 @@ Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -Registr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +58,7 @@ INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryreplication
 #>
 function Get-AzContainerRegistryReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -102,7 +102,7 @@ param(
 
     [Parameter(ParameterSetName='GetByRegistry', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry]
     # The Registry Object.
     ${Registry},
 

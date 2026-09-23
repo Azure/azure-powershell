@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all the outbound rules in a load balancer.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified load balancer outbound rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.

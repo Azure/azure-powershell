@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 jobSchedule.Metadata = new List<MetadataItem>();
                 foreach (DictionaryEntry d in parameters.Metadata)
                 {
-                    MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value.ToString());
+                    MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value?.ToString());
                     jobSchedule.Metadata.Add(metadata);
                 }
             }

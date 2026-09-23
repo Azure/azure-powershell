@@ -21,12 +21,13 @@ Create an in-memory object for SapLandscapeMonitorMetricThresholds.
 Create an in-memory object for SapLandscapeMonitorMetricThresholds.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorMetricThresholds
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorMetricThresholds
 .Link
-https://learn.microsoft.com/powershell/module/Az.Workloads/new-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadssaplandscapemonitormetricthresholdsobject
 #>
 function New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorMetricThresholds')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorMetricThresholds')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +46,7 @@ function New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorMetricThresholds]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorMetricThresholds]::New()
 
         if ($PSBoundParameters.ContainsKey('Green')) {
             $Object.Green = $Green

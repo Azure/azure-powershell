@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecretcustomercertificateparametersobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for CustomerCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -Type <SecretType> [-SecretSourceId <String>]
- [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>]
+New-AzFrontDoorCdnSecretCustomerCertificateParametersObject [-SecretSourceId <String>]
+ [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>] [-Type <String>]
  [<CommonParameters>]
 ```
 
@@ -85,14 +85,14 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-The type of the secret resource.
+The Type of Certificate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters
 
 ## NOTES
 

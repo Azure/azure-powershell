@@ -8,26 +8,32 @@ schema: 2.0.0
 # Update-AzWorkloadsMonitor
 
 ## SYNOPSIS
-Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AppLocation <String>] [-EnableSystemAssignedIdentity <Boolean>] [-LogAnalyticsWorkspaceArmId <String>]
+ [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-IdentityType <ManagedServiceIdentityType>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzWorkloadsMonitor -InputObject <IMonitorsIdentity> [-AppLocation <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-LogAnalyticsWorkspaceArmId <String>]
+ [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-ZoneRedundancyPreference <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
+Update a SAP monitor for the specified subscription, resource group, and resource name.
 
 ## EXAMPLES
 
@@ -59,6 +65,37 @@ Update AMS Monitor Instance by Arm Id
 
 ## PARAMETERS
 
+### -AppLocation
+The SAP monitor resources will be deployed in the SAP monitoring region.
+The subnet region should be same as the SAP monitoring region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -75,11 +112,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of manage identity
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
@@ -103,6 +139,51 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LogAnalyticsWorkspaceArmId
+The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedResourceGroupName
+Managed resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorSubnet
+The subnet which the SAP monitor will be deployed in
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -121,6 +202,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -131,6 +227,22 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutingPreference
+Sets the routing preference of the SAP monitor.
+By default only RFC1918 traffic is routed to the customer VNET.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Gets or sets the Resource tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -168,10 +280,27 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-User assigned identities dictionary
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneRedundancyPreference
+Sets the preference for zone redundancy on resources created for the SAP monitor.
+By default resources will be created which do not support zone redundancy.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +351,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitor
 
 ## NOTES
 

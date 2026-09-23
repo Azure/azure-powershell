@@ -63,14 +63,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="match">Criterion for classifying a healthy probe response.
         /// </param>
 
+        /// <param name="enableProbeProxyProtocolHeader">Whether to send Proxy Protocol header along with the Health Probe over TCP
+        /// or TLS protocol. Default value is false.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the probe resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="port">Custom port which will be used for probing the backend servers. The valid
         /// value ranges from 1 to 65535. In case not set, port from http settings will
         /// be used. This property is valid for Basic, Standard_v2 and WAF_v2 only.
         /// </param>
-        public ApplicationGatewayProbePropertiesFormat(string protocol = default(string), string host = default(string), string path = default(string), int? interval = default(int?), int? timeout = default(int?), int? unhealthyThreshold = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), bool? pickHostNameFromBackendSettings = default(bool?), int? minServers = default(int?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), string provisioningState = default(string), int? port = default(int?))
+        public ApplicationGatewayProbePropertiesFormat(string protocol = default(string), string host = default(string), string path = default(string), int? interval = default(int?), int? timeout = default(int?), int? unhealthyThreshold = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), bool? pickHostNameFromBackendSettings = default(bool?), int? minServers = default(int?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), bool? enableProbeProxyProtocolHeader = default(bool?), string provisioningState = default(string), int? port = default(int?))
 
         {
             this.Protocol = protocol;
@@ -83,6 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.PickHostNameFromBackendSettings = pickHostNameFromBackendSettings;
             this.MinServers = minServers;
             this.Match = match;
+            this.EnableProbeProxyProtocolHeader = enableProbeProxyProtocolHeader;
             this.ProvisioningState = provisioningState;
             this.Port = port;
             CustomInit();
@@ -165,7 +171,14 @@ namespace Microsoft.Azure.Management.Network.Models
         public ApplicationGatewayProbeHealthResponseMatch Match {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the probe resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets or sets whether to send Proxy Protocol header along with the Health
+        /// Probe over TCP or TLS protocol. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableProbeProxyProtocolHeader")]
+        public bool? EnableProbeProxyProtocolHeader {get; set; }
+
+        /// <summary>
+        /// Gets the provisioning state of the probe resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

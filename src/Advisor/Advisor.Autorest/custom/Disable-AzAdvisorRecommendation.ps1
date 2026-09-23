@@ -22,7 +22,7 @@ Disable an Azure Advisor recommendation.
 https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 #>
 function Disable-AzAdvisorRecommendation{
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='IdParameterSet', SupportsShouldProcess, PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='IdParameterSet', Mandatory, HelpMessage='Id of the recommendation to be suppressed.')]

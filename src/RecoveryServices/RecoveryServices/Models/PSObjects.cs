@@ -131,8 +131,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.Properties.PrivateEndpointConnections.Add(pec);
                 }                
             }
-            
-            if(vault.Properties.MonitoringSettings != null)
+
+            if(vault.Properties.CostManagementSettings != null)
+            {
+                this.Properties.CostManagementSettings = new CostManagementSettings();
+                this.Properties.CostManagementSettings.GranularityLevel = vault.Properties.CostManagementSettings.GranularityLevel;
+            }
+
+            if (vault.Properties.MonitoringSettings != null)
             {
                 this.Properties.AlertSettings = new AlertSettings();
 
@@ -186,6 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 this.Properties.SoftDeleteSettings = vault.Properties.SecuritySettings.SoftDeleteSettings;
                 this.Properties.MultiUserAuthorization = vault.Properties.SecuritySettings.MultiUserAuthorization;
+                this.Properties.SourceScanConfiguration = vault.Properties.SecuritySettings.SourceScanConfiguration;
             }
         }
 
@@ -213,7 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets Resouce group name.
+        /// Gets or sets Resource group name.
         /// </summary>
         public string ResourceGroupName { get; set; }
 
@@ -284,6 +291,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public VaultPropertiesRedundancySettings RedundancySettings { get; set; }
         public SoftDeleteSettings SoftDeleteSettings {get; set; }
         public string MultiUserAuthorization { get; set; }
+
+        /// <summary>
+        /// Gets or sets SourceScanConfiguration.
+        /// </summary>
+        public SourceScanConfiguration SourceScanConfiguration { get; set; }
+        public CostManagementSettings CostManagementSettings { get; set; }
 
         public string SecureScore { get; set; }
         public string BcdrSecurityLevel { get; set; }
@@ -488,6 +501,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Enum to define the Cost management granularity.
+    /// </summary>
+    public enum CostManagementGranularity
+    {
+        /// <summary>
+        /// Costs rolled up to vault resource (default)
+        /// </summary>
+        VaultLevel = 1,
+
+        /// <summary>
+        /// Costs shown per backup instance inside vault
+        /// </summary>
+        ProtectedItemLevel = 2,
+
+        /// <summary>
+        /// Costs shown per backup instance with parent resource tag
+        /// </summary>
+        ProtectedItemWithParentTag = 3
+    }
+
+    /// <summary>
     /// Enum to define the cross subscription restore state of the vault.
     /// </summary>
     public enum CrossSubscriptionRestoreState
@@ -498,6 +532,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     public enum PublicNetworkAccess
+    {
+        Enabled = 1,
+        Disabled
+    }
+
+    /// <summary>
+    /// Enum to define the vault Source Scan state.
+    /// </summary>
+    public enum SourceScanState
     {
         Enabled = 1,
         Disabled
@@ -583,4 +626,114 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         #endregion
     }
+
+    /// <summary>
+    /// Azure Recovery Services Soft Deleted Vault object.
+    /// </summary>
+    public class ARSSoftDeletedVault
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ARSSoftDeletedVault" /> class.
+        /// </summary>
+        public ARSSoftDeletedVault()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ARSSoftDeletedVault" /> class.
+        /// </summary>
+        /// <param name="deletedVault">deleted vault object</param>
+        public ARSSoftDeletedVault(DeletedVault deletedVault)
+        {
+            if(deletedVault != null)
+            {
+                this.ID = deletedVault.Id;
+                this.Name = deletedVault.Name;
+                this.Type = deletedVault.Type;
+                this.Location = PSRecoveryServicesClient.GetLocationFromDeletedVaultId(deletedVault.Id);
+                this.Properties = new ARSSoftDeletedVaultProperties();
+
+                if (deletedVault.Properties != null)
+                {
+                    this.Properties.VaultId = deletedVault.Properties.VaultId;
+                    this.Properties.VaultDeletionTime = deletedVault.Properties.VaultDeletionTime;
+                    this.Properties.PurgeAt = deletedVault.Properties.PurgeAt;
+
+                    if (!string.IsNullOrEmpty(deletedVault.Properties.VaultId))
+                    {
+                        this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(deletedVault.Properties.VaultId);
+                        this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(deletedVault.Properties.VaultId);
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets Vault name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Vault ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets type.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets Resource group name.
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Subscription.
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Location of the Recovery services vault.
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets Properties.
+        /// </summary>
+        public ARSSoftDeletedVaultProperties Properties { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Soft Deleted Vault properties.
+    /// </summary>
+    public class ARSSoftDeletedVaultProperties
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the original vault ID.
+        /// </summary>
+        public string VaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets vault deletion time.
+        /// </summary>
+        public DateTime? VaultDeletionTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets purge time.
+        /// </summary>
+        public DateTime? PurgeAt { get; set; }
+
+        #endregion
+    }    
 }

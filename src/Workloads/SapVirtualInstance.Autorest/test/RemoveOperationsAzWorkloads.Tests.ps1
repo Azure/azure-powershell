@@ -21,7 +21,7 @@ Describe 'RemoveOperationsAzWorkloads' {
     }
 
     It 'RemoveOperationsAzWorkloadsAlias' {
-        $RemoveOperationsAzWorkloadsAliasResponse = Remove-AzVIS -Name $env.DeletionVIS -ResourceGroupName $env.DeletionRG
+        $RemoveOperationsAzWorkloadsAliasResponse = Remove-AzVIS -Name $env.DeletionVISAlias -ResourceGroupName $env.DeletionRG
         $RemoveOperationsAzWorkloadsAliasResponse.Status | Should -Be $null
     }
 }

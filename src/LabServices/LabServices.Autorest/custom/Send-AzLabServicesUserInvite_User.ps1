@@ -12,16 +12,32 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Operation to invite a user to a lab.
+.Description
+Operation to invite a user to a lab.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+#>
 function Send-AzLabServicesUserInvite_Users {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+        # The object of lab service user to invite.
         ${User},
 
         [Parameter()]
         [System.String]
+        # Custom text for the invite email.
         ${Text},
 
         [Parameter()]

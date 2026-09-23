@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Occur InternalServerError from backend, test temporarily skip.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseSqlPoolV3()
         {

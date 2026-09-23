@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
                 catch
                 {
-                    throw new AzPSInvalidOperationException(string.Format("Invalud token for {0}", scope));
+                    throw new AzPSInvalidOperationException(string.Format("Invalid token for {0}", scope));
                 }
 
                 cache.Set(key, value);

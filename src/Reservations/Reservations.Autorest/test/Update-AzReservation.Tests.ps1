@@ -31,12 +31,8 @@ Describe 'Update-AzReservation' {
     It 'Update' {
         $reservation = Get-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007"
         $newName = GetNewName($reservation.DisplayName)
-        $newRi = @{
-            Name = $newName;
-            AppliedScopeType = $reservation.AppliedScopeType;
-            InstanceFlexibility = $reservation.InstanceFlexibility;
-            }
-        $res = Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -Reservation $newRi
+        $jsonString = "Name=$newName;AppliedScopeType=$reservation.AppliedScopeType;InstanceFlexibility=$reservation.InstanceFlexibility"
+        $res = Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -JsonString $jsonString
 
         $res.DisplayName | Should -Not -Be reservation.DisplayName
     }
@@ -49,23 +45,6 @@ Describe 'Update-AzReservation' {
         $reservation = Get-AzReservation -InputObject $input
         $newName = GetNewName($reservation.DisplayName)
         $res = Update-AzReservation -InputObject $input -Name $newName
-
-        $res.DisplayName | Should -Not -Be reservation.DisplayName
-    }
-
-    It 'UpdateViaIdentity' {
-        $input = @{
-            ReservationId = "10000000-aaaa-bbbb-cccc-200000000007"
-            ReservationOrderId = "30000000-aaaa-bbbb-cccc-200000000013"
-        }
-        $reservation = Get-AzReservation -InputObject $input
-        $newName = GetNewName($reservation.DisplayName)
-        $newRi = @{
-            Name = $newName;
-            AppliedScopeType = $reservation.AppliedScopeType;
-            InstanceFlexibility = $reservation.InstanceFlexibility;
-            }
-        $res = Update-AzReservation -InputObject $input -Reservation $newRi
 
         $res.DisplayName | Should -Not -Be reservation.DisplayName
     }

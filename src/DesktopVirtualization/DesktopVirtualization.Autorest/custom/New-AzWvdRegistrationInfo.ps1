@@ -20,7 +20,7 @@ Create Windows virtual desktop registration info.
 Create Windows virtual desktop registration info.
 #>
 function New-AzWvdRegistrationInfo {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
@@ -95,22 +95,10 @@ function New-AzWvdRegistrationInfo {
     process {
         $saveExpirationTime = $PSBoundParameters["ExpirationTime"]
         $null = $PSBoundParameters.Remove("ExpirationTime")
-        $hostpool = Az.DesktopVirtualization\Get-AzWvdHostPool @PSBoundParameters
-        $hostpool = Az.DesktopVirtualization\New-AzWvdHostPool @PSBoundParameters `
-            -Location $hostpool.Location `
-            -HostPoolType $hostpool.HostPoolType `
-            -LoadBalancerType $hostpool.LoadBalancerType `
-            -RegistrationTokenOperation "Update" `
-            -ExpirationTime $saveExpirationTime `
-            -Description $hostpool.Description `
-            -FriendlyName $hostpool.FriendlyName `
-            -MaxSessionLimit $hostpool.MaxSessionLimit `
-            -VMTemplate $hostpool.VMTemplate `
-            -CustomRdpProperty $hostpool.CustomRdpProperty `
-            -Ring $hostpool.Ring `
-            -ValidationEnvironment:$hostpool.ValidationEnvironment `
-            -PreferredAppGroupType $hostpool.PreferredAppGroupType
-        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo' `
+        $hostpool = Az.DesktopVirtualization\Update-AzWvdHostPool @PSBoundParameters `
+            -RegistrationInfoRegistrationTokenOperation "Update" `
+            -RegistrationInfoExpirationTime $saveExpirationTime
+        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.RegistrationInfo' `
             -Property @{ `
                 ExpirationTime = $hostpool.RegistrationInfoExpirationTime; `
                 RegistrationTokenOperation = $hostpool.RegistrationInfoRegistrationTokenOperation; `

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzSynapseNotebook
 
 ## SYNOPSIS
-Exports notbooks.
+Exports notebooks.
 
 ## SYNTAX
 

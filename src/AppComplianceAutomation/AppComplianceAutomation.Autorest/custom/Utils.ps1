@@ -62,7 +62,8 @@ function Get-Token {
     [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.DoNotExportAttribute()]
     param()
     try {
-        return "Bearer " + (Get-AzAccessToken).Token
+        $token = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
+        return "Bearer " + $token
     }
     catch {}
     return ""

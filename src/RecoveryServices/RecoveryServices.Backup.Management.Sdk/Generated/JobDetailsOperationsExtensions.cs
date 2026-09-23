@@ -18,19 +18,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='jobName'>
         /// Name of the job whose details are to be fetched.
         /// </param>
-        public static JobResource Get(this IJobDetailsOperations operations, string vaultName, string resourceGroupName, string jobName)
+        public static JobResource Get(this IJobDetailsOperations operations, string resourceGroupName, string vaultName, string jobName)
         {
-                return ((IJobDetailsOperations)operations).GetAsync(vaultName, resourceGroupName, jobName).GetAwaiter().GetResult();
+                return ((IJobDetailsOperations)operations).GetAsync(resourceGroupName, vaultName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -39,12 +38,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='jobName'>
         /// Name of the job whose details are to be fetched.
@@ -52,9 +50,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<JobResource> GetAsync(this IJobDetailsOperations operations, string vaultName, string resourceGroupName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<JobResource> GetAsync(this IJobDetailsOperations operations, string resourceGroupName, string vaultName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

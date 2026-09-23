@@ -15,20 +15,32 @@ Get the Update run for a specified update
 ### List (Default)
 ```
 Get-AzStackHciUpdateRun -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -UpdateName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -UpdateName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -UpdateName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityUpdate
+```
+Get-AzStackHciUpdateRun -Name <String> -UpdateInputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityCluster
+```
+Get-AzStackHciUpdateRun -Name <String> -UpdateName <String> -ClusterInputObject <IStackHciIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzStackHciUpdateRun -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +56,21 @@ Get-AzStackHciUpdateRun -ClusterName 'test-cluster' -ResourceGroupName 'test-rg'
 Gets the Update Run for the cluster update.
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the cluster.
@@ -78,7 +105,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -97,25 +123,10 @@ The name of the Update Run
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityUpdate, GetViaIdentityCluster
 Aliases: UpdateRunName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,12 +165,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UpdateInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+Parameter Sets: GetViaIdentityUpdate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -UpdateName
 The name of the Update
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetViaIdentityCluster
 Aliases:
 
 Required: True
@@ -178,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun
 
 ## NOTES
 

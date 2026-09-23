@@ -215,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Approve-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
-[Inititialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
+[Initialize-AzNetAppFilesReplication](./Approve-AzNetAppFilesReplication.md)
 [Suspend-AzNetAppFilesReplication](./Suspend-AzNetAppFilesReplication.md)
 [Remove-AzNetAppFilesReplication](./Remove-AzNetAppFilesReplication.md)
 [Get-AzNetAppFilesReplicationStatus](./Get-AzNetAppFilesReplicationStatus.md)

@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         }
 
         /// <summary>
-        /// Directorieses the with given parameters recursive.
+        /// Directories the with given parameters recursive.
         /// </summary>
         /// <param name="root">The root.</param>
         /// <param name="level">The level.</param>

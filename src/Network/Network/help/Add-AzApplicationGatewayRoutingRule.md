@@ -17,14 +17,16 @@ Adds a routing rule to an application gateway.
 Add-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RuleType <String> -Priority <Int32> [-BackendSettings <PSApplicationGatewayBackendSettings>]
  [-Listener <PSApplicationGatewayListener>] [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RuleType <String> -Priority <Int32> [-BackendSettingsId <String>] [-ListenerId <String>]
- [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +44,21 @@ The first command gets the application gateway and stores it in the $AppGw varia
 The second command adds the routing rule to the application gateway.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGateway
 The applicationGateway
@@ -109,6 +126,21 @@ ID of the application gateway BackendSettings
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

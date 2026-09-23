@@ -34,8 +34,8 @@ Disable-AzIotSecurityAnalyticsAggregatedAlert -ResourceId <String> [-PassThru]
 ```
 
 ## DESCRIPTION
-The Disable-AzIotSecurityAnalyticsAggregatedAlert cmdlet dismisses a specific aggragated alert on devices of iot hub. 
-The name of the aggregated alerts is a combination of the alert type and the alert aggragted date, separated by '/'.
+The Disable-AzIotSecurityAnalyticsAggregatedAlert cmdlet dismisses a specific aggregated alert on devices of iot hub. 
+The name of the aggregated alerts is a combination of the alert type and the alert aggregated date, separated by '/'.
 
 ## EXAMPLES
 

@@ -21,12 +21,13 @@ Create an in-memory object for NginxPrivateIPAddress.
 Create an in-memory object for NginxPrivateIPAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.NginxPrivateIPAddress
 .Link
-https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPrivateIPAddressObject
+https://learn.microsoft.com/powershell/module/Az.Nginx/new-aznginxprivateipaddressobject
 #>
 function New-AzNginxPrivateIPAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.NginxPrivateIPAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,8 +35,8 @@ function New-AzNginxPrivateIPAddressObject {
         [string]
         $PrivateIPAddress,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod]
+        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.PSArgumentCompleterAttribute("Static", "Dynamic")]
+        [string]
         $PrivateIPAllocationMethod,
         [Parameter()]
         [string]
@@ -43,7 +44,7 @@ function New-AzNginxPrivateIPAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.NginxPrivateIPAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('PrivateIPAddress')) {
             $Object.PrivateIPAddress = $PrivateIPAddress

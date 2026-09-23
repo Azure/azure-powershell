@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
-using StorageSync.Test.Common;
+using Microsoft.Azure.Commands.StorageSync.Test.Common;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Azure.Commands.TestFx;

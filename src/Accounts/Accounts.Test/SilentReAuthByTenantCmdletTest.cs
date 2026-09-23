@@ -36,8 +36,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -57,9 +56,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         private const string fakeToken = "fakertoken";
 
         private const string body200 = @"{{""value"":[{{""id"":""/tenants/{0}"",""tenantId"":""{0}"",""countryCode"":""US"",""displayName"":""AzureSDKTeam"",""domains"":[""AzureSDKTeam.onmicrosoft.com"",""azdevextest.com""],""tenantCategory"":""Home""}}]}}";
-        private const string body401 = @"{""error"":{""code"":""AuthenticationFailed"",""message"":""Authentication failed.""}}";
-        private const string WwwAuthenticateIP = @"Bearer authorization_uri=""https://login.windows.net/"", error=""invalid_token"", error_description=""Tenant IP Policy validate failed."", claims=""eyJhY2Nlc3NfdG9rZW4iOnsibmJmIjp7ImVzc2VudGlhbCI6dHJ1ZSwidmFsdWUiOiIxNjEzOTgyNjA2In0sInhtc19ycF9pcGFkZHIiOnsidmFsdWUiOiIxNjcuMjIwLjI1NS40MSJ9fX0=""";
-
+        private const string bodyErrorMessage401 = "Authentication failed.";
+        private const string body401 = @"{""error"":{""code"":""AuthenticationFailed"",""message"":"""+bodyErrorMessage401+@"""}}";
+        private const string claimsChallengeBase64 = "eyJhY2Nlc3NfdG9rZW4iOnsibmJmIjp7ImVzc2VudGlhbCI6dHJ1ZSwidmFsdWUiOiIxNjEzOTgyNjA2In0sInhtc19ycF9pcGFkZHIiOnsidmFsdWUiOiIxNjcuMjIwLjI1NS40MSJ9fX0=";
+        private const string WwwAuthenticateIP = @"Bearer authorization_uri=""https://login.windows.net/"", error=""invalid_token"", error_description=""Tenant IP Policy validate failed."", claims="""+ claimsChallengeBase64+@"""";
+        private const string identityExceptionMessage = "Exception from Azure Identity.";
         XunitTracingInterceptor xunitLogger;
 
         public class GetAzureRMTenantCommandMock : GetAzureRMTenantCommand
@@ -166,6 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 // Setup
                 InitializeSession();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // Type or member is obsolete
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
@@ -173,9 +175,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         {
                             return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                         }
-                        throw new CredentialUnavailableException("Exception from Azure Identity.");
+                        throw new CredentialUnavailableException(identityExceptionMessage);
                     }
                     ));
+#pragma warning restore CS0618 // Type or member is obsolete
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
                     (times) =>
@@ -192,9 +195,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
                 // Act
                 cmdlet.InvokeBeginProcessing();
-                AuthenticationFailedException e = Assert.Throws<AuthenticationFailedException>(() => cmdlet.ExecuteCmdlet());
-                string errorMessage = $"Exception from Azure Identity.{Environment.NewLine}authorization_uri: https://login.windows.net/{Environment.NewLine}error: invalid_token{Environment.NewLine}error_description: Tenant IP Policy validate failed.{Environment.NewLine}claims: eyJhY2Nlc3NfdG9rZW4iOnsibmJmIjp7ImVzc2VudGlhbCI6dHJ1ZSwidmFsdWUiOiIxNjEzOTgyNjA2In0sInhtc19ycF9pcGFkZHIiOnsidmFsdWUiOiIxNjcuMjIwLjI1NS40MSJ9fX0={Environment.NewLine}";
-                Assert.Equal(errorMessage, e.Message);
+                AzPSAuthenticationFailedException e = Assert.Throws<AzPSAuthenticationFailedException>(() => cmdlet.ExecuteCmdlet());
+                Assert.DoesNotContain(identityExceptionMessage, e.Message); // cause it's misleading
+                Assert.Contains(bodyErrorMessage401, e.Message);
+                Assert.Contains("Connect-AzAccount", e.Message);
+                Assert.Contains(claimsChallengeBase64, e.Message);
                 cmdlet.InvokeEndProcessing();
             }
             finally
@@ -214,11 +219,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 InitializeSession();
                 cmdlet.TenantId = Guid.NewGuid().ToString();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // Type or member is obsolete
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
                     (firstTime) =>
                     {
                         return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                     }));
+#pragma warning restore CS0618 // Type or member is obsolete
 
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
@@ -273,11 +280,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 InitializeSession();
                 cmdlet.TenantId = Guid.NewGuid().ToString();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // Type or member is obsolete
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
                         return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                     }));
+#pragma warning restore CS0618 // Type or member is obsolete
 
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
@@ -326,6 +335,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 DefaultContext = defaultContext
             };
             cmdlet.profileClient = new RMProfileClient(profile);
+
+            AzureSession.Instance.RegisterComponent<AuthenticationTelemetry>(AuthenticationTelemetry.Name, () => new AuthenticationTelemetry());
         }
 
         ~SilentReAuthByTenantCmdletTest()

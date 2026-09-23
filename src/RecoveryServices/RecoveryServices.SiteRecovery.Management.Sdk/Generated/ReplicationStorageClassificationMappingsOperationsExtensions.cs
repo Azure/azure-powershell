@@ -18,15 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
         /// <param name='storageClassificationName'>
         /// Storage classification name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<StorageClassificationMapping> ListByReplicationStorageClassifications(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName)
+        public static Microsoft.Rest.Azure.IPage<StorageClassificationMapping> ListByReplicationStorageClassifications(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName)
         {
-                return ((IReplicationStorageClassificationMappingsOperations)operations).ListByReplicationStorageClassificationsAsync(fabricName, storageClassificationName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).ListByReplicationStorageClassificationsAsync(resourceGroupName, resourceName, fabricName, storageClassificationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -35,6 +41,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -44,9 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>> ListByReplicationStorageClassificationsAsync(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>> ListByReplicationStorageClassificationsAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationStorageClassificationsWithHttpMessagesAsync(fabricName, storageClassificationName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationStorageClassificationsWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -57,6 +69,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -66,9 +84,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static StorageClassificationMapping Get(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName)
+        public static StorageClassificationMapping Get(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
         {
-                return ((IReplicationStorageClassificationMappingsOperations)operations).GetAsync(fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -77,6 +95,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -89,9 +113,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageClassificationMapping> GetAsync(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageClassificationMapping> GetAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -102,6 +126,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -111,9 +141,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static StorageClassificationMapping Create(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties))
+        public static StorageClassificationMapping Create(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties))
         {
-                return ((IReplicationStorageClassificationMappingsOperations)operations).CreateAsync(fabricName, storageClassificationName, storageClassificationMappingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).CreateAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -121,6 +151,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -134,9 +170,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageClassificationMapping> CreateAsync(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageClassificationMapping> CreateAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(fabricName, storageClassificationName, storageClassificationMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -147,6 +183,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -156,9 +198,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static void Delete(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName)
+        public static ReplicationStorageClassificationMappingsDeleteHeaders Delete(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
         {
-                ((IReplicationStorageClassificationMappingsOperations)operations).DeleteAsync(fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -166,6 +208,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -179,9 +227,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationStorageClassificationMappingsDeleteHeaders> DeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists the storage classification mappings in the vault.
@@ -189,9 +240,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<StorageClassificationMapping> List(this IReplicationStorageClassificationMappingsOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StorageClassificationMapping> List(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationStorageClassificationMappingsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -200,12 +257,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>> ListAsync(this IReplicationStorageClassificationMappingsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StorageClassificationMapping>> ListAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -216,6 +279,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -225,9 +294,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static StorageClassificationMapping BeginCreate(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties))
+        public static StorageClassificationMapping BeginCreate(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties))
         {
-                return ((IReplicationStorageClassificationMappingsOperations)operations).BeginCreateAsync(fabricName, storageClassificationName, storageClassificationMappingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -235,6 +304,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -248,9 +323,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageClassificationMapping> BeginCreateAsync(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageClassificationMapping> BeginCreateAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, StorageMappingInputProperties properties = default(StorageMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(fabricName, storageClassificationName, storageClassificationMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -261,6 +336,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
         /// </param>
@@ -270,9 +351,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static void BeginDelete(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName)
+        public static ReplicationStorageClassificationMappingsDeleteHeaders BeginDelete(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
         {
-                ((IReplicationStorageClassificationMappingsOperations)operations).BeginDeleteAsync(fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -280,6 +361,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -293,9 +380,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationStorageClassificationMappingsDeleteHeaders> BeginDeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists the storage classification mappings for the fabric.

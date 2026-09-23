@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the OrcSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -47,9 +50,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// objects(AdditionalColumns) (or Expression with resultType array of
         /// objects).
         /// </param>
-        public OrcSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreReadSettings storeSettings = default(StoreReadSettings), object additionalColumns = default(object))
+        public OrcSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), StoreReadSettings storeSettings = default(StoreReadSettings), object additionalColumns = default(object))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.StoreSettings = storeSettings;
             this.AdditionalColumns = additionalColumns;

@@ -1,13 +1,30 @@
 ### Example 1: Create or update data container
 ```powershell
-New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-test01 -Name datacontainer-pwsh01 -DataType 'uri_file'
+New-AzMLWorkspaceDataContainer -ResourceGroupName ml-test -WorkspaceName mlworkspace-test2 -Name datacontainer-pwsh01 -DataType 'uri_file'
 ```
 
 ```output
-Name                 SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----                 ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-datacontainer-pwsh01 6/1/2022 3:03:56 PM UserName (Example)         User                    6/1/2022 3:03:56 PM                                                            ml-rg-test
+DataType                     : uri_file
+Description                  : 
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/data/datacontainer-pwsh01
+IsArchived                   : False
+LatestVersion                : 
+Name                         : datacontainer-pwsh01
+NextVersion                  : 1
+ResourceBaseProperty         : {
+                               }
+ResourceGroupName            : ml-test
+SystemDataCreatedAt          : 11/5/2025 8:38:23 AM
+SystemDataCreatedBy          : User Name (Example)
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/5/2025 8:38:23 AM
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+Type                         : Microsoft.MachineLearningServices/workspaces/data
+XmsAsyncOperationTimeout     : 
 ```
 
-Create or update data container
+This command creates data container.
 

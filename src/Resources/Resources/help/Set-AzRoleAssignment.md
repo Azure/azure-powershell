@@ -25,21 +25,21 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 ### RoleAssignmentParameterSet (Default)
 ```
 Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-SkipClientSideScopeValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 Set-AzRoleAssignment -InputFile <String> [-SkipClientSideScopeValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Use the Set-AzRoleAssignment command to modify an existing assignment.  
-Descriptions can be any valid string, use that to diferentiate from one another.  
-if Condition is set Condition Version has to be set as well but if you're updating a Condition that is not necesary.
+Descriptions can be any valid string, use that to differentiate from one another.  
+if Condition is set Condition Version has to be set as well but if you're updating a Condition that is not necessary.
 Condition Version can be upgraded from 1.0 to 2.0 but it can't not be downgraded back. Be cautious as 2.0 is not retrocompatible with 1.0.
 
 ## EXAMPLES
@@ -103,6 +103,36 @@ Update an existing role assignment by using a file
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -155,21 +185,6 @@ If specified, displays the updated role assignment
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

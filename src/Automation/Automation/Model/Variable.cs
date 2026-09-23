@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Initializes a new instance of the <see cref="Variable"/> class.
         /// </summary>
         /// <param name="variable">
-        /// The varaiable.
+        /// The variable.
         /// </param>
         /// <param name="automationAccoutName">
         /// The automation account name.
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.Name = variable.Name;
-            this.CreationTime = variable.CreationTime.ToLocalTime();
-            this.LastModifiedTime = variable.LastModifiedTime.ToLocalTime();
+            this.CreationTime = variable.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = variable.LastModifiedTime.GetValueOrDefault().ToLocalTime();
 
             if (variable.Value == null || (variable.IsEncrypted.HasValue && variable.IsEncrypted.Value))
             {

@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "If true, any failure for any operation in the VmApplication will fail the deployment. Defaults to false if not specified.")]
         public SwitchParameter TreatFailureAsDeploymentFailure { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If true, the underlying VM should automatically update when a new version of the Gallery Application becomes available in PIR or SIG. Defaults to false if not specified.")]
+        public SwitchParameter EnableAutomaticUpgrade { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (VM.ApplicationProfile == null)
@@ -66,6 +72,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.TreatFailureAsDeploymentFailure.IsPresent)
             {
                 GalleryApplication.TreatFailureAsDeploymentFailure = true;
+            }
+
+            if (this.EnableAutomaticUpgrade.IsPresent)
+            {
+                GalleryApplication.EnableAutomaticUpgrade = true;
             }
 
             VM.ApplicationProfile.GalleryApplications.Add(GalleryApplication);

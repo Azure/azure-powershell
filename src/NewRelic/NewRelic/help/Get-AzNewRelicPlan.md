@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicPlan
 
 ## SYNOPSIS
-List plans data
+Lists the plans data linked to your organization, providing an overview of the available plans
 
 ## SYNTAX
 
@@ -18,13 +18,13 @@ Get-AzNewRelicPlan [-SubscriptionId <String[]>] [-AccountId <String>] [-Organiza
 ```
 
 ## DESCRIPTION
-List plans data
+Lists the plans data linked to your organization, providing an overview of the available plans
 
 ## EXAMPLES
 
 ### Example 1: List plans data associated with specified organization
 ```powershell
-Get-AzNewRelicPlan -SubscriptionId 00001111-aaaa-2222-bbbb-3333cccc4444 -OrganizationId 11111111-2222-3333-4444-123456789104
+Get-AzNewRelicPlan -SubscriptionId 11111111-2222-3333-4444-123456789101 -OrganizationId 11111111-2222-3333-4444-123456789104
 ```
 
 ```output
@@ -37,7 +37,7 @@ List plans data associated with specified Organization Id
 
 ### Example 2: Link plans account with specified organization in different subscription
 ```powershell
-Get-AzNewRelicPlan -SubscriptionId 00001111-aaaa-2222-bbbb-3333cccc4444 -OrganizationId 11111111-2222-3333-4444-123456789104 -AccountId 1234567
+Get-AzNewRelicPlan -SubscriptionId 11111111-2222-3333-4444-123456789101 -OrganizationId 11111111-2222-3333-4444-123456789104 -AccountId 1234567
 ```
 
 Link plans account with specified organization in different subscription

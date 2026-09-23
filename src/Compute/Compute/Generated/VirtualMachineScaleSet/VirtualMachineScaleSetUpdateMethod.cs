@@ -23,15 +23,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml;
 using System.Management.Automation;
+using System.Xml;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -345,6 +344,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity. This parameter is only supported when updating a Virtual Machine Scale Set via the -VirtualMachineScaleSet object parameter (e.g. piping the output of Get-AzVmss).")]
+        public SwitchParameter DisableCapacityReservationAssignment { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] VhdContainer { get; set; }
@@ -388,6 +392,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies processor frequency behavior for VM instances in the scale set model.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [PSArgumentCompleter("Deterministic", "Opportunistic")]
+        public string ProcessorMode { get; set; }
 
         [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
@@ -443,6 +454,63 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
         public bool EnableResilientVMDelete { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether Automatic Zone Rebalance should be enabled on the virtual machine scale set. The default value is false.")]
+        public bool EnableAutomaticZoneRebalance { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the strategy for Automatic Zone Rebalance.")]
+        [PSArgumentCompleter("Recreate")]
+        public string AutomaticZoneRebalanceStrategy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the behavior for Automatic Zone Rebalance.")]
+        [PSArgumentCompleter("CreateBeforeDelete")]
+        public string AutomaticZoneRebalanceBehavior { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum number of availability zones to use if the ZonePlacementPolicy is 'Auto'. If not specified, all availability zones will be used.")]
+        public int MaxZoneCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether maxInstancePercentPerZonePolicy should be enabled on the virtual machine scale set.")]
+        public bool EnableMaxInstancePercentPerZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
+        public int MaxInstancePercentPerZoneValue { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
 
         private void BuildPatchObject()
         {
@@ -1308,6 +1376,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.HardwareProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
+            }
+
             if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1365,15 +1450,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
+                    if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                    {
+                        this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+                else
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = null;
                 }
             }
             // Only used for SecurityType == TrustedLaunch
@@ -1454,6 +1543,112 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
             }
+
+            void InitializeAutomaticZoneRebalancingPolicy()
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutomaticZoneRebalance))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled = this.EnableAutomaticZoneRebalance;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceStrategy))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy = this.AutomaticZoneRebalanceStrategy;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceBehavior))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
+            }
+
+            void InitializeZoneAllocationPolicy()
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.IsParameterBound(c => c.EnableMaxInstancePercentPerZone))
+            {
+                InitializeZoneAllocationPolicy();
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone;
+            }
+
+            if (this.IsParameterBound(c => c.MaxInstancePercentPerZoneValue))
+            {
+                InitializeZoneAllocationPolicy();
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+            }
+
+            // ScheduledEventsPolicy is not supported in VirtualMachineScaleSetUpdate (PATCH) model.
+            // When using the PATCH path (VirtualMachineScaleSet is null), ScheduledEventsApiVersion and
+            // EnableAllInstancesDown parameters are not applied and are therefore rejected at runtime.
+            if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) ||
+                this.IsParameterBound(c => c.EnableAllInstancesDown))
+            {
+                throw new PSArgumentException(
+                    "The -ScheduledEventsApiVersion and -EnableAllInstancesDown parameters are only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
+                    "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
+            }
+
+            // CapacityReservation is not supported in VirtualMachineScaleSetUpdate (PATCH) model.
+            // When using the PATCH path (VirtualMachineScaleSet is null), DisableCapacityReservationAssignment
+            // is not applied and is therefore rejected at runtime.
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                throw new PSArgumentException(
+                    "The -DisableCapacityReservationAssignment parameter is only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
+                    "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring capacity reservation.");
+            }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                this.VirtualMachineScaleSetUpdate.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
+            }
         }
 
         private void BuildPutObject()
@@ -1520,6 +1715,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id = this.CapacityReservationGroupId;
+            }
+
+            if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+            {
+                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                {
+                    throw new PSArgumentException(
+                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
             }
 
             if (this.IsParameterBound(c => c.CustomData))
@@ -2140,6 +2353,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.ProcessorMode))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.HardwareProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.HardwareProfile = new VirtualMachineScaleSetHardwareProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.HardwareProfile.ProcessorMode = this.ProcessorMode;
+            }
+
             if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
             {
                 if (this.VirtualMachineScaleSet.PriorityMixPolicy == null)
@@ -2163,8 +2389,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (this.VirtualMachineScaleSet.SkuProfile == null)
                 {
                     this.VirtualMachineScaleSet.SkuProfile = new SkuProfile();
-                    this.VirtualMachineScaleSet.SkuProfile.VmSizes = new List<SkuProfileVMSize>();
                 }
+                this.VirtualMachineScaleSet.SkuProfile.VmSizes = new List<SkuProfileVMSize>();
                 foreach (string vmSize in this.SkuProfileVmSize)
                 {
                     this.VirtualMachineScaleSet.SkuProfile.VmSizes.Add(new SkuProfileVMSize()
@@ -2202,6 +2428,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+                else
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = null;
                 }
             }
             // Only used for SecurityType == TrustedLaunch
@@ -2272,6 +2502,109 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
                 }
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
+            }
+
+            void InitializeAutomaticZoneRebalancingPolicy()
+            {
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.AutomaticZoneRebalancingPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.AutomaticZoneRebalancingPolicy = new AutomaticZoneRebalancingPolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutomaticZoneRebalance))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.Enabled = this.EnableAutomaticZoneRebalance;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceStrategy))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceStrategy = this.AutomaticZoneRebalanceStrategy;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticZoneRebalanceBehavior))
+            {
+                InitializeAutomaticZoneRebalancingPolicy();
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.AutomaticZoneRebalancingPolicy.RebalanceBehavior = this.AutomaticZoneRebalanceBehavior;
+            }
+
+            void InitializeZoneAllocationPolicy()
+            {
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy = new ZoneAllocationPolicy();
+                }
+            }
+
+            if (this.IsParameterBound(c => c.MaxZoneCount))
+            {
+                InitializeZoneAllocationPolicy();
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxZoneCount = this.MaxZoneCount;
+            }
+
+            if (this.IsParameterBound(c => c.EnableMaxInstancePercentPerZone))
+            {
+                InitializeZoneAllocationPolicy();
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Enabled = this.EnableMaxInstancePercentPerZone;
+            }
+
+            if (this.IsParameterBound(c => c.MaxInstancePercentPerZoneValue))
+            {
+                InitializeZoneAllocationPolicy();
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
+                }
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+            }
+
+            if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+            {
+                if (this.VirtualMachineScaleSet.ScheduledEventsPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy = new ScheduledEventsPolicy();
+                }
+
+                if (this.IsParameterBound(c => c.ScheduledEventsApiVersion))
+                {
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets = new ScheduledEventsAdditionalPublishingTargets();
+                    }
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph = new EventGridAndResourceGraph();
+                    }
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
+                }
+
+                if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                {
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
+                    }
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                this.VirtualMachineScaleSet.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
             }
         }
     }

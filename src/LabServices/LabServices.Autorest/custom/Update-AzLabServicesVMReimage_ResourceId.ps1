@@ -12,12 +12,25 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Re-image a lab virtual machine.
+The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+.Description
+Re-image a lab virtual machine.
+The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesvmreimage
+#>
 function Update-AzLabServicesVMReimage_ResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [System.String]
+    # The resource ID of lab service virtual machine.
     ${ResourceId},
 
     [Parameter()]
@@ -87,7 +100,8 @@ param(
 )
 
 process {
-    $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+    $HandleVMResourceId = Join-Path $PSScriptRoot 'Utilities' 'HandleVMResourceId.ps1'
+    $resourceHash = . $HandleVMResourceId -ResourceId $ResourceId
     $PSBoundParameters.Remove("SubscriptionId") > $null
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Commands.TestFx.DelegatingHandlers;
 using Microsoft.Azure.Commands.TestFx.Recorder;
@@ -84,6 +86,24 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             return Start(type.Name, methodName);
         }
 
+        public ServiceClientCredentials GetClientCredentials(string targetEndpoint)
+        {
+            ServiceClientCredentials credentials;
+            if (TestFxEnvironment.IsRunningMocked)
+            {
+                credentials = TestFxEnvironment.TokenInfo[TokenAudience.Management];
+            }
+            else
+            {
+                credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext,
+                    targetEndpoint
+                );
+            }
+
+            return credentials;
+        }
+
         /// <summary>
         /// Get a test environment using default options
         /// </summary>
@@ -102,14 +122,12 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <returns></returns>
         public T GetServiceClient<T>(TestEnvironment currentEnvironment, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
-            if (!currentEnvironment.TokenInfo.ContainsKey(TokenAudience.Management))
-            {
-                throw new ArgumentNullException(
-                    "currentEnvironment.TokenInfo[TokenAudience.Management]",
-                    $"Unable to create Service Client because {nameof(T)} authentication token was not acquired during Login.");
-            }
-
-            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.BaseUri, currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
+            object credentials = currentEnvironment.IsRunningMocked ?
+                currentEnvironment.TokenInfo[TokenAudience.Management] :
+                AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
+                AzureRmProfileProvider.Instance.Profile.DefaultContext,
+                AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.BaseUri, credentials, internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -131,14 +149,12 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <returns></returns>
         public T GetGraphServiceClient<T>(TestEnvironment currentEnvironment, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
-            if (!currentEnvironment.TokenInfo.ContainsKey(TokenAudience.Graph))
-            {
-                throw new ArgumentNullException(
-                    "currentEnvironment.TokenInfo[TokenAudience.Graph]",
-                    "Unable to create Graph Client because Graph authentication token was not acquired during Login.");
-            }
-
-            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.Endpoints.GraphUri, currentEnvironment.TokenInfo[TokenAudience.Graph], internalBaseUri, handlers);
+            object credentials = currentEnvironment.IsRunningMocked ?
+                currentEnvironment.TokenInfo[TokenAudience.Graph] :
+                AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(
+                AzureRmProfileProvider.Instance.Profile.DefaultContext,
+                AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.GraphUri, credentials, internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -152,7 +168,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         public T GetServiceClientWithCredentials<T>(TestEnvironment currentEnvironment, Uri baseUri, object credentials, bool internalBaseUri, params DelegatingHandler[] handlers) where T : class
         {
             T client;
-            handlers = AddHandlers(currentEnvironment, handlers);
+            handlers = AddHandlers(credentials as ServiceClientCredentials, handlers);
             var constructors = typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.NonPublic);
 
             Uri uri = baseUri ?? currentEnvironment.BaseUri;
@@ -237,7 +253,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             }
         }
 
-        public DelegatingHandler[] AddHandlers(TestEnvironment currentEnvironment, params DelegatingHandler[] existingHandlers)
+        public DelegatingHandler[] AddHandlers(ServiceClientCredentials credentials, params DelegatingHandler[] existingHandlers)
         {
             HttpMockServer server;
 
@@ -258,7 +274,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 handlers.Add(server);
             }
 
-            ResourceCleanerDelegatingHandler cleaner = new ResourceCleanerDelegatingHandler(currentEnvironment.TokenInfo[TokenAudience.Management]);
+            ResourceCleanerDelegatingHandler cleaner = new ResourceCleanerDelegatingHandler(credentials);
             handlers.Add(cleaner);
             _undoHandlers.Add(cleaner);
 

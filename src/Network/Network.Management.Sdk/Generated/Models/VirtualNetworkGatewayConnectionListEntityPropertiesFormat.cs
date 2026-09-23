@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionMode">The connection mode for this connection.
         /// Possible values include: &#39;Default&#39;, &#39;ResponderOnly&#39;, &#39;InitiatorOnly&#39;</param>
 
-        /// <param name="sharedKey">The IPSec shared key.
+        /// <param name="sharedKey">The IPSec shared key. We will no longer return sharedKey in
+        /// VirtualNetworkGatewayConnection Create/Update/Get/List/UpdateTags APIs
+        /// response. Please use VirtualNetworkGatewayConnection GetSharedKey API to
+        /// fetch connection sharedKey.
         /// </param>
 
         /// <param name="connectionStatus">Virtual Network Gateway connection status.
@@ -88,7 +91,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the virtual network gateway connection resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="expressRouteGatewayBypass">Bypass ExpressRoute Gateway for data forwarding.
         /// </param>
@@ -96,7 +100,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="enablePrivateLinkFastPath">Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute
         /// FastPath (expressRouteGatewayBypass) must be enabled.
         /// </param>
-        public VirtualNetworkGatewayConnectionListEntityPropertiesFormat(VirtualNetworkConnectionGatewayReference virtualNetworkGateway1, string connectionType, string authorizationKey = default(string), VirtualNetworkConnectionGatewayReference virtualNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), VirtualNetworkConnectionGatewayReference localNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), string connectionProtocol = default(string), int? routingWeight = default(int?), string connectionMode = default(string), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), string provisioningState = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?))
+
+        /// <param name="routingConfiguration">The routing configuration indicating the associated and propagated route
+        /// tables for this connection.
+        /// </param>
+        public VirtualNetworkGatewayConnectionListEntityPropertiesFormat(VirtualNetworkConnectionGatewayReference virtualNetworkGateway1, string connectionType, string authorizationKey = default(string), VirtualNetworkConnectionGatewayReference virtualNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), VirtualNetworkConnectionGatewayReference localNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), string connectionProtocol = default(string), int? routingWeight = default(int?), string connectionMode = default(string), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), string provisioningState = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration))
 
         {
             this.AuthorizationKey = authorizationKey;
@@ -122,6 +130,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.ExpressRouteGatewayBypass = expressRouteGatewayBypass;
             this.EnablePrivateLinkFastPath = enablePrivateLinkFastPath;
+            this.RoutingConfiguration = routingConfiguration;
             CustomInit();
         }
 
@@ -180,7 +189,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ConnectionMode {get; set; }
 
         /// <summary>
-        /// Gets or sets the IPSec shared key.
+        /// Gets or sets the IPSec shared key. We will no longer return sharedKey in
+        /// VirtualNetworkGatewayConnection Create/Update/Get/List/UpdateTags APIs
+        /// response. Please use VirtualNetworkGatewayConnection GetSharedKey API to
+        /// fetch connection sharedKey.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sharedKey")]
         public string SharedKey {get; set; }
@@ -256,7 +268,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets the provisioning state of the virtual network gateway connection
-        /// resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -273,6 +285,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enablePrivateLinkFastPath")]
         public bool? EnablePrivateLinkFastPath {get; set; }
+
+        /// <summary>
+        /// Gets or sets the routing configuration indicating the associated and
+        /// propagated route tables for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "routingConfiguration")]
+        public RoutingConfiguration RoutingConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -339,6 +358,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     }
                 }
             }
+
 
 
         }

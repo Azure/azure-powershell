@@ -54,20 +54,12 @@ namespace Microsoft.Azure.Management.Dns
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// set to true a unique x-ms-client-request-id value is generated and
         /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
-        /// <summary>
-        /// Gets the IDnssecConfigsOperations
-        /// </summary>
-        public virtual IDnssecConfigsOperations DnssecConfigs { get; private set; }
-        /// <summary>
-        /// Gets the IRecordSetsOperations
-        /// </summary>
-        public virtual IRecordSetsOperations RecordSets { get; private set; }
         /// <summary>
         /// Gets the IZonesOperations
         /// </summary>
@@ -76,6 +68,14 @@ namespace Microsoft.Azure.Management.Dns
         /// Gets the IDnsResourceReferenceOperations
         /// </summary>
         public virtual IDnsResourceReferenceOperations DnsResourceReference { get; private set; }
+        /// <summary>
+        /// Gets the IRecordSetsOperations
+        /// </summary>
+        public virtual IRecordSetsOperations RecordSets { get; private set; }
+        /// <summary>
+        /// Gets the IDnssecConfigsOperations
+        /// </summary>
+        public virtual IDnssecConfigsOperations DnssecConfigs { get; private set; }
         /// <summary>
         /// Initializes a new instance of the DnsManagementClient class.
         /// </summary>
@@ -280,6 +280,9 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -311,10 +314,10 @@ namespace Microsoft.Azure.Management.Dns
         /// </summary>
         private void Initialize()
         {
-            this.DnssecConfigs = new DnssecConfigsOperations(this);
-            this.RecordSets = new RecordSetsOperations(this);
             this.Zones = new ZonesOperations(this);
             this.DnsResourceReference = new DnsResourceReferenceOperations(this);
+            this.RecordSets = new RecordSetsOperations(this);
+            this.DnssecConfigs = new DnssecConfigsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.ApiVersion = "2023-07-01-preview";
             this.AcceptLanguage = "en-US";

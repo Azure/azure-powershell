@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnvDapr
 
 ## SYNOPSIS
-Create a Dapr Component in a connected environment.
+create a Dapr Component in a connected environment.
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ New-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-ComponentType <
 ```
 
 ## DESCRIPTION
-Create a Dapr Component in a connected environment.
+create a Dapr Component in a connected environment.
 
 ## EXAMPLES
 

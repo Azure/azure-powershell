@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
 
         /// <param name="direction">Describes in which direction signature is being enforced: 0 - OutBound, 1 -
-        /// InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound
-        /// Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;</param>
+        /// InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 - InternalInbound
+        /// Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;</param>
 
         /// <param name="group">Describes the groups the signature belongs to
         /// </param>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="inheritedFromParentPolicy">Describes if this override is inherited from base policy or not
         /// </param>
-        public SingleQueryResult(int? signatureId = default(int?), int? mode = default(int?), int? severity = default(int?), int? direction = default(int?), string group = default(string), string description = default(string), string protocol = default(string), System.Collections.Generic.IList<string> sourcePorts = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPorts = default(System.Collections.Generic.IList<string>), string lastUpdated = default(string), bool? inheritedFromParentPolicy = default(bool?))
+        public SingleQueryResult(int? signatureId = default(int?), double? mode = default(double?), double? severity = default(double?), double? direction = default(double?), string group = default(string), string description = default(string), string protocol = default(string), System.Collections.Generic.IList<string> sourcePorts = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPorts = default(System.Collections.Generic.IList<string>), string lastUpdated = default(string), bool? inheritedFromParentPolicy = default(bool?))
 
         {
             this.SignatureId = signatureId;
@@ -88,21 +88,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the current mode enforced, 0 - Disabled, 1 - Alert, 2 -Deny Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "mode")]
-        public int? Mode {get; set; }
+        public double? Mode {get; set; }
 
         /// <summary>
         /// Gets or sets describes the severity of signature: 1 - High, 2 - Medium, 3 -
         /// Low Possible values include: &#39;1&#39;, &#39;2&#39;, &#39;3&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "severity")]
-        public int? Severity {get; set; }
+        public double? Severity {get; set; }
 
         /// <summary>
         /// Gets or sets describes in which direction signature is being enforced: 0 -
-        /// OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;
+        /// OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 -
+        /// InternalInbound Possible values include: &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "direction")]
-        public int? Direction {get; set; }
+        public double? Direction {get; set; }
 
         /// <summary>
         /// Gets or sets describes the groups the signature belongs to

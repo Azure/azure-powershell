@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (NoWait.IsPresent)
                     {
-                        var result = LogAnalyticsClient.BeginExportThrottledRequests(parameters, location);
+                        var result = LogAnalyticsClient.BeginExportThrottledRequests(location, parameters);
                         var psObject = new PSLogAnalyticsOperationResult();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
-                        var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
+                        var result = LogAnalyticsClient.ExportThrottledRequests(location, parameters);
                         var psObject = new PSLogAnalyticsOperationResult();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
                         WriteObject(psObject);

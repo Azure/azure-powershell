@@ -25,6 +25,18 @@ Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -DiscoverSolutionRequest <IDisc
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### PostViaJsonFilePath
+```
+Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaJsonString
+```
+Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Solution discovery using natural language processing.
 
@@ -76,10 +88,9 @@ Accept wildcard characters: False
 
 ### -DiscoverSolutionRequest
 Discover NLP request.
-To construct, see NOTES section for DISCOVERSOLUTIONREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpRequest
 Parameter Sets: Post
 Aliases:
 
@@ -105,6 +116,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Post operation
+
+```yaml
+Type: System.String
+Parameter Sets: PostViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Provide resourceId of affected resource
 
@@ -122,7 +163,7 @@ Accept wildcard characters: False
 
 ### -ServiceId
 Service Classification id for the resource.
-You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/list Service Id is the GUID which can be found under name field in Services List response
+You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/list?tabs=HTTP Service Id is the GUID which can be found under name field in Services List response
 
 ```yaml
 Type: System.String
@@ -172,11 +213,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.IDiscoveryNlpResponse
 
 ## NOTES
 

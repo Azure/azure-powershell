@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the public IP prefix resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="natGateway">NatGateway of Public IP Prefix.
         /// </param>
@@ -83,7 +84,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the public IP prefix resource.
         /// </param>
-        public PublicIPPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPPrefixSku sku = default(PublicIPPrefixSku), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), NatGateway natGateway = default(NatGateway), string publicIPAddressVersion = default(string), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), System.Collections.Generic.IList<ReferencedPublicIpAddress> publicIPAddresses = default(System.Collections.Generic.IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIPConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string))
+
+        /// <param name="upgradedToV2">Whether the public IP prefix SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </param>
+        public PublicIPPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPPrefixSku sku = default(PublicIPPrefixSku), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), NatGateway natGateway = default(NatGateway), string publicIPAddressVersion = default(string), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), System.Collections.Generic.IList<ReferencedPublicIpAddress> publicIPAddresses = default(System.Collections.Generic.IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIPConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string), bool? upgradedToV2 = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -101,6 +106,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.LoadBalancerFrontendIPConfiguration = loadBalancerFrontendIPConfiguration;
             this.CustomIPPrefix = customIPPrefix;
             this.ResourceGuid = resourceGuid;
+            this.UpgradedToV2 = upgradedToV2;
             CustomInit();
         }
 
@@ -137,7 +143,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> Zones {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the public IP prefix resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the public IP prefix resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -196,5 +202,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets whether the public IP prefix SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upgradedToV2")]
+        public bool? UpgradedToV2 {get; private set; }
     }
 }

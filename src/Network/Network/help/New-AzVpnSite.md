@@ -20,7 +20,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>]
  [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>]
  [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanNameByVpnSiteLinkObject
@@ -29,7 +30,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String>
  -VirtualWanResourceGroupName <String> -VirtualWanName <String> [-AddressSpace <String[]>]
  [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite] -VpnSiteLink <PSVpnSiteLink[]>
  [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteIpAddress
@@ -38,7 +40,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteLinkObject
@@ -46,7 +49,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWan <PSVirtualWan>
  [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
  -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteIpAddress
@@ -55,7 +59,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
  -IpAddress <String> [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>]
  [-IsSecuritySite] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceIdByVpnSiteLinkObject
@@ -63,7 +68,8 @@ New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -Vir
 New-AzVpnSite -ResourceGroupName <String> -Name <String> -Location <String> -VirtualWanId <String>
  [-AddressSpace <String[]>] [-DeviceModel <String>] [-DeviceVendor <String>] [-IsSecuritySite]
  -VpnSiteLink <PSVpnSiteLink[]> [-O365Policy <PSO365PolicyProperties>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +138,21 @@ New-AzVpnSite -AddressSpace <String[]> -DeviceModel 'SomeDevice' -DeviceVendor '
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddressSpace
 The address prefixes of the virtual network.
 
@@ -198,6 +219,21 @@ The BGP Peering weight for this VpnSite.
 ```yaml
 Type: System.UInt32
 Parameter Sets: ByVirtualWanNameByVpnSiteIpAddress, ByVirtualWanObjectByVpnSiteIpAddress, ByVirtualWanResourceIdByVpnSiteIpAddress
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

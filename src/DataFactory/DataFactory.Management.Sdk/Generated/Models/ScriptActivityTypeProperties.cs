@@ -33,12 +33,24 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="logSettings">Log settings of script activity.
         /// </param>
-        public ScriptActivityTypeProperties(object scriptBlockExecutionTimeout = default(object), System.Collections.Generic.IList<ScriptActivityScriptBlock> scripts = default(System.Collections.Generic.IList<ScriptActivityScriptBlock>), ScriptActivityTypePropertiesLogSettings logSettings = default(ScriptActivityTypePropertiesLogSettings))
+
+        /// <param name="returnMultistatementResult">Enable to retrieve result sets from multiple SQL statements and the number
+        /// of rows affected by the DML statement. Supported connector: SnowflakeV2.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="treatDecimalAsString">Indicates whether to treat decimal values as strings to avoid value
+        /// overflow issue. This option is enabled for SnowflakeV2 connector only.
+        /// Type: boolean (or Expression with resultType boolean).
+        /// </param>
+        public ScriptActivityTypeProperties(object scriptBlockExecutionTimeout = default(object), System.Collections.Generic.IList<ScriptActivityScriptBlock> scripts = default(System.Collections.Generic.IList<ScriptActivityScriptBlock>), ScriptActivityTypePropertiesLogSettings logSettings = default(ScriptActivityTypePropertiesLogSettings), object returnMultistatementResult = default(object), object treatDecimalAsString = default(object))
 
         {
             this.ScriptBlockExecutionTimeout = scriptBlockExecutionTimeout;
             this.Scripts = scripts;
             this.LogSettings = logSettings;
+            this.ReturnMultistatementResult = returnMultistatementResult;
+            this.TreatDecimalAsString = treatDecimalAsString;
             CustomInit();
         }
 
@@ -67,6 +79,22 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "logSettings")]
         public ScriptActivityTypePropertiesLogSettings LogSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable to retrieve result sets from multiple SQL statements
+        /// and the number of rows affected by the DML statement. Supported connector:
+        /// SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "returnMultistatementResult")]
+        public object ReturnMultistatementResult {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether to treat decimal values as strings to avoid
+        /// value overflow issue. This option is enabled for SnowflakeV2 connector
+        /// only. Type: boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "treatDecimalAsString")]
+        public object TreatDecimalAsString {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -90,6 +118,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.LogSettings.Validate();
             }
+
+
         }
     }
 }

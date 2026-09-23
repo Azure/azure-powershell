@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/flexComponents",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleFlexComponent",
+      "description": "Get a FlexComponent",
+      "path": "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/flexComponents/{flexComponentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleflexcomponent"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a FlexComponent",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.flexComponentName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

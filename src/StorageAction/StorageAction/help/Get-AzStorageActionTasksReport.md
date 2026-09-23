@@ -14,7 +14,7 @@ Fetch the storage tasks run report summary for each assignment.
 
 ```
 Get-AzStorageActionTasksReport -ResourceGroupName <String> -StorageTaskName <String>
- [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <String>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

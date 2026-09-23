@@ -247,8 +247,8 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2Pipeline]()
+[Set-AzDataFactoryV2Pipeline](Set-AzDataFactoryV2Pipeline.md)
 
-[Remove-AzDataFactoryV2Pipeline]()
+[Remove-AzDataFactoryV2Pipeline](Remove-AzDataFactoryV2Pipeline.md)
 
-[Invoke-AzDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline](Invoke-AzDataFactoryV2Pipeline.md)

@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the request routing rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="ruleType">Rule type.
         /// Possible values include: &#39;Basic&#39;, &#39;PathBasedRouting&#39;</param>
@@ -67,7 +68,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="loadDistributionPolicy">Load Distribution Policy resource of the application gateway.
         /// </param>
-        public ApplicationGatewayRequestRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource))
+
+        /// <param name="entraJwtValidationConfig">Entra JWT validation configuration resource of the application gateway.
+        /// </param>
+        public ApplicationGatewayRequestRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource entraJwtValidationConfig = default(SubResource))
 
         : base(id)
         {
@@ -84,6 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.RewriteRuleSet = rewriteRuleSet;
             this.RedirectConfiguration = redirectConfiguration;
             this.LoadDistributionPolicy = loadDistributionPolicy;
+            this.EntraJwtValidationConfig = entraJwtValidationConfig;
             CustomInit();
         }
 
@@ -114,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the request routing rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the request routing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -173,6 +178,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.loadDistributionPolicy")]
         public SubResource LoadDistributionPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets entra JWT validation configuration resource of the application
+        /// gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.entraJWTValidationConfig")]
+        public SubResource EntraJwtValidationConfig {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -197,6 +209,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "Priority", 1);
                 }
             }
+
 
 
 

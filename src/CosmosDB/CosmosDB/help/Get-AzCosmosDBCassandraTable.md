@@ -15,7 +15,8 @@ Gets a CosmosDB Cassandra Table.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBCassandraTable -AccountName <String> -KeyspaceName <String> -ResourceGroupName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

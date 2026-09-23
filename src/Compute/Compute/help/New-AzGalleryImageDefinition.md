@@ -132,7 +132,7 @@ $endOfLifeDate = "2024-08-02T00:00:00+00:00"
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -EndOfLifeDate $endOfLifeDate
 ```
 
-This example has the end-of-life date for image definitions set to August 2, 2024 at mignight UTC. End-of-life dates can be specified for image definitions and image versions. Image definitions can still be used after the end-of-life dates.
+This example has the end-of-life date for image definitions set to August 2, 2024 at midnight UTC. End-of-life dates can be specified for image definitions and image versions. Image definitions can still be used after the end-of-life dates.
 
 ### Example 7: Create an image definition and recommend minimum and maximum CPU and memory (GB)
 
@@ -322,7 +322,7 @@ Accept wildcard characters: False
 ### -Feature
 
 A list of gallery image features.
-For SecurityType, acceptable inputs are: None, TrustedlaunchSupported, Trustedlaunch, ConfidentialVM, ConfidentialVMSupported, TrustedandConfidentialVMSupported
+For SecurityType, acceptable inputs are: None, TrustedlaunchSupported, Trustedlaunch, ConfidentialVM, ConfidentialVMSupported, TrustedLaunchAndConfidentialVmSupported
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]

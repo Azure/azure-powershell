@@ -91,7 +91,7 @@ function Get-AzDataMigrationPerformanceDataCollection
             #Downloading and extracting SqlAssessment Zip file
             if(-Not $TestExePath)
             {
-                $ZipSource = "https://sqlassess.blob.core.windows.net/app/SqlAssessment.zip";
+                $ZipSource = "https://aka.ms/sqlassessmentpackage";
                 $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "SqlAssessment.zip";
                 Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
 
@@ -137,7 +137,7 @@ function Get-AzDataMigrationPerformanceDataCollection
                     'staticQueryIntervalInSec'= $StaticQueryInterval
                     'numberOfIterations'= $NumberOfIterations
                     }
-                    # removing empty key,vallue pairs from $jsonHash
+                    # removing empty key,value pairs from $jsonHash
                     if($OutputFolder -eq "")
                     {
                         $jsonHash.Remove('outputfolder')

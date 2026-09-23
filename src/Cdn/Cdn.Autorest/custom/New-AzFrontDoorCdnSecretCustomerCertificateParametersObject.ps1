@@ -21,12 +21,13 @@ Create an in-memory object for CustomerCertificateParameters.
 Create an in-memory object for CustomerCertificateParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnsecretcustomercertificateparametersobject
 #>
 function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,19 +38,19 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         [string]
         $SecretVersion,
         [Parameter(HelpMessage="The list of SANs.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChangeAttribute("SubjectAlternativeName", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "The '-SubjectAlternativeName' parameter is being deprecated and will be removed in a future release, following the removal of the 'subjectAlternativeNames' property from the 'CustomerCertificateParameters' schema in the service contract.")]
         [string[]]
         $SubjectAlternativeName,
         [Parameter(HelpMessage="Whether to use the latest version for the certificate.")]
         [bool]
         $UseLatestVersion,
-        [Parameter(Mandatory, HelpMessage="The type of the secret resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType]
+        [Parameter(HelpMessage="The Type of Certificate.")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomerCertificateParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('SecretSourceId')) {
             $Object.SecretSourceId = $SecretSourceId

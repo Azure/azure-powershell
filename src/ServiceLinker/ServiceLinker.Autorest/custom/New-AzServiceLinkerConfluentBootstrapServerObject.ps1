@@ -21,27 +21,23 @@ Create an in-memory object for ConfluentBootstrapServer.
 Create an in-memory object for ConfluentBootstrapServer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentBootstrapServer
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentBootstrapServer
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
 #>
 function New-AzServiceLinkerConfluentBootstrapServerObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentBootstrapServer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentBootstrapServer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="The endpoint of service.")]
         [string]
-        $Endpoint,
-        [Parameter(DontShow, HelpMessage="The target service type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"ConfluentBootstrapServer"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType]
-        $Type
+        $Endpoint
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentBootstrapServer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentBootstrapServer]::New()
 
         if ($PSBoundParameters.ContainsKey('Endpoint')) {
             if($Endpoint -notmatch ".*confluent.cloud:[0-9]*") {
@@ -49,9 +45,6 @@ function New-AzServiceLinkerConfluentBootstrapServerObject {
             }
     
             $Object.Endpoint = $Endpoint
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

@@ -19,7 +19,7 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Remove-AzLabServicesUser' {
     It 'Delete' {
-        {Remove-AzLabServicesUser -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName -Name $ENV:UserName} | Should -Not -Throw
-        {Get-AzLabServicesUser -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName -Name $ENV:UserName} | Should -Throw
+        {Remove-AzLabServicesUser -ResourceGroupName $env.ResourceGroupName -LabName $env.LabName -Name $env.UserName} | Should -Not -Throw
+        {Get-AzLabServicesUser -ResourceGroupName $env.ResourceGroupName -LabName $env.LabName -Name $env.UserName} | Should -Throw
     }
 }

@@ -23,21 +23,21 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Recording blocked by long-poll (35-40 min) client cert-handle issue 'm_safeCertContext is an invalid handle'; test-framework infra gap, not a product bug.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRestoreAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Recording blocked by long-poll (35-40 min) client cert-handle issue 'm_safeCertContext is an invalid handle'; test-framework infra gap, not a product bug.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreAccountPublicNetworkAccessCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRestoreAccountPublicNetworkAccessCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Recording blocked by long-poll (35-40 min) client cert-handle issue 'm_safeCertContext is an invalid handle'; test-framework infra gap, not a product bug.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreFromNewAccountCmdlets()
         {
@@ -140,6 +140,20 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         public void TestProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets()
         {
             TestRunner.RunTestScript("Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrossRegionRestoreAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-CrossRegionRestoreAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrossRegionRestoreSingleRegionAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-CrossRegionRestoreSingleRegionAccountCmdlets");
         }
     }
 }

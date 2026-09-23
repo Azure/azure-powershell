@@ -10,9 +10,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Network sibling set update.
     /// </summary>
-    /// <remarks>
-    /// Network sibling set update.
-    /// </remarks>
     public partial class UpdateNetworkSiblingSetRequest
     {
         /// <summary>

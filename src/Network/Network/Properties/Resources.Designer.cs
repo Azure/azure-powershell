@@ -918,7 +918,18 @@ namespace Microsoft.Azure.Commands.Network.Properties
                 return ResourceManager.GetString("FlowLogFilteringCriteriaExceedsLimit", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to RecordType string can be maximum of 20 characters in length..
+        /// </summary>
+        internal static string FlowLogRecordTypeExceedsLimit
+        {
+            get
+            {
+                return ResourceManager.GetString("FlowLogRecordTypeExceedsLimit", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A hub is required for HubAndSpoke connectivity topology..
         /// </summary>
@@ -1822,6 +1833,17 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to The Route Server to update could not be found..
+        /// </summary>
+        internal static string RouteServerToUpdateNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("RouteServerToUpdateNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
         /// </summary>
         internal static string RouteTableNotFound
@@ -1840,6 +1862,28 @@ namespace Microsoft.Azure.Commands.Network.Properties
             get
             {
                 return ResourceManager.GetString("RoutingIntentNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The connection policy resource could not be found.
+        /// </summary>
+        internal static string ConnectionPolicyNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ConnectionPolicyNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to InputObject.Id cannot be null or empty.
+        /// </summary>
+        internal static string ConnectionPolicyInputObjectIdEmpty
+        {
+            get
+            {
+                return ResourceManager.GetString("ConnectionPolicyInputObjectIdEmpty", resourceCulture);
             }
         }
 
@@ -1965,7 +2009,7 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to No test configuraiton is provided.
+        ///   Looks up a localized string similar to No test configuration is provided.
         /// </summary>
         internal static string TestConfiguration
         {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerRegistration
 
 ## SYNOPSIS
-Create a new partner registration with the specified parameters.
+create a new partner registration with the specified parameters.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzEventGridPartnerRegistration -InputObject <IEventGridIdentity> -Location <
 ```
 
 ## DESCRIPTION
-Create a new partner registration with the specified parameters.
+create a new partner registration with the specified parameters.
 
 ## EXAMPLES
 

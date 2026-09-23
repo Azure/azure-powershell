@@ -12,24 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Sql;
-using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Xunit.Abstractions;
-using Microsoft.Azure.Management.EventHub;
-using Microsoft.Azure.Management.OperationalInsights;
-using SDKMonitor = Microsoft.Azure.Management.Monitor;
-using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Commands.TestFx.Recorder;
+using System.Collections.Generic;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -43,7 +29,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             "Microsoft.Sql/servers/databases",
             "Microsoft.Sql/servers/elasticPools"
         };
-        private const string TenantIdKey = "TenantId";
 
         protected readonly ITestRunner TestRunner;
 
@@ -92,88 +77,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     }
                 )
                 .Build();
-        }
-
-        protected SqlManagementClient GetSqlClient(MockContext context)
-        {
-            return context.GetServiceClient<SqlManagementClient>();
-        }
-
-        protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>();
-        }
-
-        protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>();
-        }
-
-        protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<EventHubManagementClient>();
-        }
-
-        protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<OperationalInsightsManagementClient>();
-        }
-
-        protected ResourceManagementClient GetResourcesClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>();
-        }
-
-        protected GraphRbacManagementClient GetGraphClient(MockContext context)
-        {
-            GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>();
-            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
-            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().TenantId;
-            return graphClient;
-        }
-
-        protected Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient GetGraphClientVersion1_6(MockContext context)
-        {
-            Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient graphClient = context.GetServiceClient<Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient>();
-            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
-            string tenantId = null;
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                tenantId = TestEnvironmentFactory.GetTestEnvironment().TenantId;
-                HttpMockServer.Variables[TenantIdKey] = tenantId;
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
-                {
-                    tenantId = HttpMockServer.Variables[TenantIdKey];
-                }
-            }
-            graphClient.TenantID = tenantId;
-            if (AzureRmProfileProvider.Instance != null &&
-                AzureRmProfileProvider.Instance.Profile != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
-            {
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
-            }
-            return graphClient;
-        }
-
-        protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
-        {
-            return context.GetServiceClient<KeyVaultManagementClient>();
-        }
-
-        protected NetworkManagementClient GetNetworkClient(MockContext context)
-        {
-            return context.GetServiceClient<NetworkManagementClient>();
-        }
-
-        protected static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<CommonStorage.StorageManagementClient>();
         }
     }
 }

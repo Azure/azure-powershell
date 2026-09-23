@@ -13,22 +13,73 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class MigrationState
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// EnableMigrationInProgress
+        /// </summary>
         public const string EnableMigrationInProgress = "EnableMigrationInProgress";
+        /// <summary>
+        /// EnableMigrationFailed
+        /// </summary>
         public const string EnableMigrationFailed = "EnableMigrationFailed";
+        /// <summary>
+        /// DisableMigrationInProgress
+        /// </summary>
         public const string DisableMigrationInProgress = "DisableMigrationInProgress";
+        /// <summary>
+        /// DisableMigrationFailed
+        /// </summary>
         public const string DisableMigrationFailed = "DisableMigrationFailed";
+        /// <summary>
+        /// InitialSeedingInProgress
+        /// </summary>
         public const string InitialSeedingInProgress = "InitialSeedingInProgress";
+        /// <summary>
+        /// InitialSeedingFailed
+        /// </summary>
         public const string InitialSeedingFailed = "InitialSeedingFailed";
+        /// <summary>
+        /// Replicating
+        /// </summary>
         public const string Replicating = "Replicating";
+        /// <summary>
+        /// MigrationInProgress
+        /// </summary>
         public const string MigrationInProgress = "MigrationInProgress";
+        /// <summary>
+        /// MigrationSucceeded
+        /// </summary>
         public const string MigrationSucceeded = "MigrationSucceeded";
+        /// <summary>
+        /// MigrationFailed
+        /// </summary>
         public const string MigrationFailed = "MigrationFailed";
+        /// <summary>
+        /// ResumeInProgress
+        /// </summary>
         public const string ResumeInProgress = "ResumeInProgress";
+        /// <summary>
+        /// ResumeInitiated
+        /// </summary>
         public const string ResumeInitiated = "ResumeInitiated";
+        /// <summary>
+        /// SuspendingProtection
+        /// </summary>
         public const string SuspendingProtection = "SuspendingProtection";
+        /// <summary>
+        /// ProtectionSuspended
+        /// </summary>
         public const string ProtectionSuspended = "ProtectionSuspended";
+        /// <summary>
+        /// MigrationCompletedWithInformation
+        /// </summary>
         public const string MigrationCompletedWithInformation = "MigrationCompletedWithInformation";
+        /// <summary>
+        /// MigrationPartiallySucceeded
+        /// </summary>
         public const string MigrationPartiallySucceeded = "MigrationPartiallySucceeded";
     }
 }

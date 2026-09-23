@@ -105,7 +105,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.WhatIfResultFormat,
-            excludeChangeTypes: this.WhatIfExcludeChangeType);
+            excludeChangeTypes: this.WhatIfExcludeChangeType,
+            validationLevel: this.ValidationLevel);
 
         protected override bool ShouldSkipConfirmationIfNoChange() => this.ProceedIfNoChange;
     }

@@ -20,6 +20,21 @@
 
 ## Upcoming Release
 
+## Version 1.7.0
+* Added `Approve-AzScheduledEvent` and `Approve-AzScheduledEventList` to approve scheduled events.
+* Bumped API version to 2025-10-01-preview for all APIs.
+
+## Version 1.6.0
+* Added ChangeSafety Support
+
+## Version 1.5.1
+* Migrated SDK generation from autorest csharp to autorest powershell.
+
+## Version 1.5.0
+* Upgraded nuget package to signed package.
+* Added list of allowed classifications in description for Maintenance Configuration
+* Fixed incorrect parameter mapping in Get-AzApplyUpdate
+
 ## Version 1.4.3
 * Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]
 

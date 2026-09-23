@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        internal static string BothTokenProvided {
+            get {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///.
         /// </summary>
@@ -573,6 +582,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        internal static string TokenParameterDepricate {
+            get {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
             }
         }
         

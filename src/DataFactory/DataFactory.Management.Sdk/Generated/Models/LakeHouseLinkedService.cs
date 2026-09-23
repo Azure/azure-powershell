@@ -8,9 +8,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// Microsoft Fabric LakeHouse linked service.
+    /// Microsoft Fabric Lakehouse linked service.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("LakeHouse")]
+    [Newtonsoft.Json.JsonObject("Lakehouse")]
     [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class LakeHouseLinkedService : LinkedService
     {
@@ -49,16 +49,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// resultType string).
         /// </param>
 
-        /// <param name="artifactId">The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression
+        /// <param name="artifactId">The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression
         /// with resultType string).
         /// </param>
 
+        /// <param name="authenticationType">The authentication type to use.
+        /// Possible values include: &#39;ServicePrincipal&#39;,
+        /// &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;</param>
+
         /// <param name="servicePrincipalId">The ID of the application used to authenticate against Microsoft Fabric
-        /// LakeHouse. Type: string (or Expression with resultType string).
+        /// Lakehouse. Type: string (or Expression with resultType string).
         /// </param>
 
         /// <param name="servicePrincipalKey">The Key of the application used to authenticate against Microsoft Fabric
-        /// LakeHouse.
+        /// Lakehouse.
         /// </param>
 
         /// <param name="tenant">The name or ID of the tenant to which the service principal belongs. Type:
@@ -82,18 +86,23 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// &#39;ServicePrincipalCert&#39;, servicePrincipalCredential can only be
         /// AzureKeyVaultSecretReference.
         /// </param>
-        public LakeHouseLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object workspaceId = default(object), object artifactId = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), string encryptedCredential = default(string), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase))
+
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+        public LakeHouseLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object workspaceId = default(object), object artifactId = default(object), string authenticationType = default(string), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), string encryptedCredential = default(string), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), CredentialReference credential = default(CredentialReference))
 
         : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.WorkspaceId = workspaceId;
             this.ArtifactId = artifactId;
+            this.AuthenticationType = authenticationType;
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalKey = servicePrincipalKey;
             this.Tenant = tenant;
             this.EncryptedCredential = encryptedCredential;
             this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
             this.ServicePrincipalCredential = servicePrincipalCredential;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -111,15 +120,21 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object WorkspaceId {get; set; }
 
         /// <summary>
-        /// Gets or sets the ID of Microsoft Fabric LakeHouse artifact. Type: string
+        /// Gets or sets the ID of Microsoft Fabric Lakehouse artifact. Type: string
         /// (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.artifactId")]
         public object ArtifactId {get; set; }
 
         /// <summary>
+        /// Gets or sets the authentication type to use. Possible values include: &#39;ServicePrincipal&#39;, &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
+        public string AuthenticationType {get; set; }
+
+        /// <summary>
         /// Gets or sets the ID of the application used to authenticate against
-        /// Microsoft Fabric LakeHouse. Type: string (or Expression with resultType
+        /// Microsoft Fabric Lakehouse. Type: string (or Expression with resultType
         /// string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalId")]
@@ -127,7 +142,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the Key of the application used to authenticate against
-        /// Microsoft Fabric LakeHouse.
+        /// Microsoft Fabric Lakehouse.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey {get; set; }
@@ -166,6 +181,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalCredential")]
         public SecretBase ServicePrincipalCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -183,6 +205,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
         }
     }
 }

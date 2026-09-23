@@ -1,17 +1,17 @@
 {
-  "Get-AzStorageActionTaskAssignment+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/storageTaskAssignments?api-version=2023-01-01+1": {
+  "Get-AzStorageActionTaskAssignment+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.StorageActions/storageTasks/mytask1/storageTaskAssignments?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/storageTaskAssignments?api-version=2023-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.StorageActions/storageTasks/mytask1/storageTaskAssignments?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "488f7a38-9c56-4287-8996-e233c589bb02" ],
+        "x-ms-client-request-id": [ "24e6a25f-a17a-42d2-800a-891117882ab3" ],
         "CommandName": [ "Get-AzStorageActionTaskAssignment" ],
         "FullCommandName": [ "Get-AzStorageActionTaskAssignment_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.StorageAction/0.1.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e77e5bde-e091-41f0-b461-f4ad671a0d91" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/788ff4d5-0d83-4fc6-baae-860bbed52cb1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7b5407dc-8329-4540-879f-b265ac6cc58d" ],
+        "x-ms-correlation-request-id": [ "2c9d4014-ff51-49b5-9676-5c217f133bc0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250611T080509Z:2c9d4014-ff51-49b5-9676-5c217f133bc0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f1283ae9-d1ab-4882-8d7c-238d2533758e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083709Z:f1283ae9-d1ab-4882-8d7c-238d2533758e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F95C1331CA09450C86CBC1506889EE1F Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:07Z" ],
-        "Date": [ "Mon, 06 May 2024 08:37:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F634B7981969495CB122ADDD694E95E2 Ref B: MAA201060515023 Ref C: 2025-06-11T08:05:08Z" ],
+        "Date": [ "Wed, 11 Jun 2025 08:05:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "391" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "406" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign1\"},{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign2\"}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.Storage/storageAccounts/weiors3/storageTaskAssignments/weitaskassignementtest\",\"properties\":{}},{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.Storage/storageAccounts/weiors3/storageTaskAssignments/weitaskassignementtest2\",\"properties\":{}}]}",
       "isContentBase64": false
     }
   }

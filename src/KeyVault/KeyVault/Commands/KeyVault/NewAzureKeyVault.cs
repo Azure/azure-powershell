@@ -166,7 +166,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent ? true : null as bool?,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent ? true : null as bool?,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent ? true : null as bool?,
-                    EnableSoftDelete = null,
+                    // Explicitly set to satisfy Azure Policy checks that require
+                    // enableSoftDelete to be present in the request body.
+                    EnableSoftDelete = true,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
                     EnableRbacAuthorization = DisableRbacAuthorization.IsPresent ? false : true,
                     /*

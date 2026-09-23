@@ -192,6 +192,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2Dataset]()
+[Set-AzDataFactoryV2Dataset](Set-AzDataFactoryV2Dataset.md)
 
-[Remove-AzDataFactoryV2Dataset]()
+[Remove-AzDataFactoryV2Dataset](Remove-AzDataFactoryV2Dataset.md)

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkGatewayConnectionProtocol
     {
+        /// <summary>
+        /// IKEv2
+        /// </summary>
         public const string IKEv2 = "IKEv2";
+        /// <summary>
+        /// IKEv1
+        /// </summary>
         public const string IKEv1 = "IKEv1";
     }
 }

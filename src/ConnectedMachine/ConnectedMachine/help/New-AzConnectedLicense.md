@@ -18,28 +18,28 @@ New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-Subscription
  [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
  [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
  [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Parameter <ILicense> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Parameter <ILicense> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,14 +49,14 @@ New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> -Location <Strin
  [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
  [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
  [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> -Parameter <ILicense>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -341,21 +341,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

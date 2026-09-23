@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
@@ -158,6 +159,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Soft-delete retention days for the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "[Public Preview] Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-7. A value of 0 disables soft-delete retention.")]
+        public int? SoftDeleteRetentionDays { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -172,6 +180,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
             }
 
+            ValidateSoftDeleteRetentionDays(SoftDeleteRetentionDays);
+
             base.ExecuteCmdlet();
         }
 
@@ -185,7 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             {
                 ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -237,7 +247,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }              
+                },
+                SoftDeleteRetentionDays = this.SoftDeleteRetentionDays
             });
             return newEntity;
         }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             var extendedLocation = new ExtendedLocation(EdgeZone);
 
             this.Name = extendedLocation.Name;
-            this.Type = ExtendedLocationTypes.EdgeZone;
+            this.Type = ExtendedLocationType.EdgeZone;
         }
 
         public string Name { get; set; }

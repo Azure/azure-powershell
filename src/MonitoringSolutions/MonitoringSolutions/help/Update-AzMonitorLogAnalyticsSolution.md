@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMonitorLogAnalyticsSolution
 
 ## SYNOPSIS
-Update the tags of a solution.
+update the tags of a solution.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzMonitorLogAnalyticsSolution -InputObject <IMonitoringSolutionsIdentity>
 ```
 
 ## DESCRIPTION
-Update the tags of a solution.
+update the tags of a solution.
 
 ## EXAMPLES
 
@@ -77,7 +77,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.IMonitoringSolutionsIdentity
@@ -193,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
+### Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution
 
 ## NOTES
 

@@ -26,10 +26,14 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="smb">Setting for SMB protocol
         /// </param>
-        public ProtocolSettings(SmbSetting smb = default(SmbSetting))
+
+        /// <param name="nfs">Setting for NFS protocol
+        /// </param>
+        public ProtocolSettings(SmbSetting smb = default(SmbSetting), NfsSetting nfs = default(NfsSetting))
 
         {
             this.Smb = smb;
+            this.Nfs = nfs;
             CustomInit();
         }
 
@@ -44,5 +48,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "smb")]
         public SmbSetting Smb {get; set; }
+
+        /// <summary>
+        /// Gets or sets setting for NFS protocol
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nfs")]
+        public NfsSetting Nfs {get; set; }
     }
 }

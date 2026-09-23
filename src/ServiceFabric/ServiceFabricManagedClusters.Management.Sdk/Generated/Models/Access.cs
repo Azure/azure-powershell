@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class Access
     {
+        /// <summary>
+        /// The network traffic is allowed.
+        /// </summary>
         public const string Allow = "allow";
+        /// <summary>
+        /// The network traffic is denied.
+        /// </summary>
         public const string Deny = "deny";
     }
 }

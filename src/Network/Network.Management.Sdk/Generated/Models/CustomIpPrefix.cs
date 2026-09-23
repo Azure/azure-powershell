@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="zones">A list of availability zones denoting the IP allocated for the resource
-        /// needs to come from.
+        /// <param name="zones">A list of availability zones denoting where the resource needs to come
+        /// from.
         /// </param>
 
         /// <param name="commissionedState">The commissioned state of the Custom IP Prefix.
@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;ME&#39;, &#39;OCEANIA&#39;, &#39;AQ&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the custom IP prefix resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="asn">The ASN for CIDR advertising. Should be an integer as string.
         /// </param>
@@ -143,8 +144,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets or sets a list of availability zones denoting the IP allocated for the
-        /// resource needs to come from.
+        /// Gets or sets a list of availability zones denoting where the resource needs
+        /// to come from.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
         public System.Collections.Generic.IList<string> Zones {get; set; }
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Geo {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the custom IP prefix resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the custom IP prefix resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }

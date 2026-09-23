@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " Azure Backup service (for example: resource name of the VM).";
             public const string ResourceId = "ID of the Azure Resource containing items to be protected by Azure Backup service. Currently, only Azure VM resource IDs are supported.";
             public const string ContainerObj = "Container object that needs to be re registered.";
-            public const string ForceOption = "Force registers container (prevents confirmation dialog). This parameter is optional.";
+            public const string ForceOption = "Force registers or re-registers the container (prevents confirmation dialog). This parameter is optional.";
             public const string ForceUnregister = "Force unregisters container (prevents confirmation dialog). This parameter is optional.";
         }
 
@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
             public const string UseSecondaryReg = "Filters from Secondary Region for Cross Region Restore";
             public const string HybridBackupSecurity = "Optional flag ($true/$false) to disable/enable security setting for hybrid backups against accidental deletes and add additional layer of authentication for critical operations. Provide $false to enable the security.";
+            public const string BackupTierType = "Backup tier for the resource. The current supported values are Snapshot, VaultStandard";
         }
 
         internal static class Policy
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Container = "Container where the item resides";
             public const string RemoveProtectionOption = "If this option is used, all the recovery points for this item will also be deleted and restoring will not be possible.";
             public const string SuspendBackupOption = "If this option is used, all the recovery points for this item will expire as per the retention policy.";
-            public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
+            public const string ExpiryDate = "Retention period for the recovery points created by this backup operation";
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
             public const string ForceSuspend = "Force suspends backup.";
             public const string ExpiryDateTimeUTC = "Specifies an expiry time for the Recovery point as a DateTime object, " + 
@@ -121,6 +122,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string resetExclusionSettings = "Specifies to reset disk exclusion setting associated with the item";
             public const string excludeAllDataDisks = "Option to specify to backup OS disks only";
             public const string ReprotectItem = "Specifies the backup item for which this cmdlet reverts the deletion."; 
+            public const string containerSubscriptionId = "Subscription ID of the Azure Virtual Machine to be protected. Use this parameter to configure backup for a VM that resides in a different subscription than the Recovery Services vault (Cross Subscription Backup).";
+            public const string AccessType = "Specifies how backup accesses the storage account for Azure Files backup. Allowed values: 'KeyBased' (shared key, default) or 'IdentityBased' (vault managed identity via RBAC). When 'IdentityBased', an identity must be provided via -IsSystemAssignedIdentity or -UserAssignedIdentityArmUrl.";
+            public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files backup.";
+            public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files backup.";
+            public const string ForceReregister = "Forces re-registration of the storage account when the access type or identity changes (prevents the confirmation prompt).";
+            public const string SourceScanItem = "Specifies the backup item for which Source Scan (Microsoft Defender for Cloud) is to be configured.";
+            public const string SourceScanState = "Specifies the Source Scan state to set for the item. Allowed values are Enabled, Disabled.";
+            public const string SourceScanForceOption = "Forces the Source Scan configuration change (prevents confirmation dialog). This parameter is optional.";
+            public const string SourceScanPassThru = "Returns the updated backup item after the Source Scan configuration operation completes.";
         }
 
         internal static class ProtectableItem
@@ -172,7 +182,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoreDiskList = "Specify which disks to recover of the backed up VM";
             public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
             public const string TargetZone = "Target zone to restore the disks";
-            public const string EdgeZone = "Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and corss subscription restore scenario";
+            public const string EdgeZone = "Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and cross subscription restore scenario";
             public const string RestoreAsManagedDisk = "Use this switch to specify to restore as managed disks.";
             public const string UseSystemAssignedIdentity = "Use this switch to trigger MSI based restore with SystemAssigned Identity";
             public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity";            
@@ -181,6 +191,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetVNetResourceGroup = "Name of the resource group which contains the target VNet, in the case of Alternate Location restore to a new VM";
             public const string TargetSubnetName = "Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
             public const string TargetSubscriptionId = "ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore";
+            public const string DiskAccessOption = "Specifies the disk access option for target disks";
+            public const string TargetDiskAccessId = "Specifies the target disk access ID when DiskAccessOption set to EnablePrivateAccessForAllDisks";
         }
 
         internal static class RestoreFS
@@ -192,6 +204,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
             public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
             public const string MultipleSourceFilePath = "Used for Multiple files restore from a file share. The paths of the items to be restored within the file share.";
+            public const string IsSystemAssignedIdentity = "Switch to use the vault's system-assigned managed identity to access the storage account for identity-based Azure Files restore. The restore identity may differ from the identity registered on the storage account.";
+            public const string UserAssignedIdentityArmUrl = "The ARM resource id (ARM URL) of the user-assigned managed identity used to access the storage account for identity-based Azure Files restore. The restore identity may differ from the identity registered on the storage account.";
+            public const string TargetSubscriptionId = "ID of the target subscription to which the file share should be restored. Use this parameter for Cross Subscription Restore (CSR) of Azure Files.";
         }
 
         internal static class ProtectionCheck
@@ -237,12 +252,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " used to encrypt newly created disks.";
             public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
             public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
+            public const string CVMOsDiskEncryptionSetId = "Specify the Disk Encryption Set ID to use for OS disk encryption during restore of a Confidential VM. This is applicable only for Confidential VMs with managed disks. Please ensure that Disk Encryption Set has access to the Key vault.";
         }
 
         internal static class ResourceGuard
         {
             public const string ResourceGuardMappingName = "Resource guard mapping Name to be fetched";
             public const string AuxiliaryAccessToken = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant";
+            public const string TokenDepricated = "Parameter deprecated. Please use SecureToken instead.";
             public const string ResourceGuardId = "ResourceGuardId of the ResourceGuard to be mapped with RecoveryServicesVault";
         }
     }

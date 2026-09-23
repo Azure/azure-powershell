@@ -21,48 +21,49 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRouteConfigurationOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulerouteconfigurationoverrideactionobject
 #>
 function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRouteConfigurationOverrideAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Caching behavior for the requests.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleCacheBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleCacheBehavior]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HonorOrigin", "OverrideAlways", "OverrideIfOriginMissing")]
+        [string]
         $CacheConfigurationCacheBehavior,
         [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss.")]
         [string]
         $CacheConfigurationCacheDuration,
         [Parameter(HelpMessage="Indicates whether content compression is enabled. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleIsCompressionEnabled])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleIsCompressionEnabled]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
         $CacheConfigurationIsCompressionEnabled,
         [Parameter(HelpMessage="query parameters to include or exclude (comma separated).")]
         [string]
         $CacheConfigurationQueryParameter,
         [Parameter(HelpMessage="Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleQueryStringCachingBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleQueryStringCachingBehavior]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "UseQueryString", "IgnoreSpecifiedQueryStrings", "IncludeSpecifiedQueryStrings")]
+        [string]
         $CacheConfigurationQueryStringCachingBehavior,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $OriginGroupId,
         [Parameter(HelpMessage="Protocol this rule will use when forwarding traffic to backends.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
+        [string]
         $OriginGroupOverrideForwardingProtocol,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RouteConfigurationOverride")]
+        [string]
         $Name
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRouteConfigurationOverrideAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRouteConfigurationOverrideAction]::New()
 
         if ($PSBoundParameters.ContainsKey('CacheConfigurationCacheBehavior')) {
             $Object.CacheConfigurationCacheBehavior = $CacheConfigurationCacheBehavior
@@ -84,6 +85,9 @@ function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
         }
         if ($PSBoundParameters.ContainsKey('OriginGroupOverrideForwardingProtocol')) {
             $Object.OriginGroupOverrideForwardingProtocol = $OriginGroupOverrideForwardingProtocol
+        }
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

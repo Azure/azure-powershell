@@ -22,11 +22,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureFileShareContainer : AzureContainer
     {
         /// <summary>
+        ///  Gets resource Id represents the complete path to the resource.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///  Gets or sets ARM ID of the storage account
+        /// </summary>
+        public string SourceResourceId { get; set; }
+
+        /// <summary>
+        ///  Gets or sets status of health of the container.
+        /// </summary>
+        public string HealthStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets number of items backed up in this container.
+        /// </summary>
+        public long? ProtectedItemCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether storage account lock is to be acquired for this
+        /// container or not. Possible values include: Acquire, NotAcquire
+        /// </summary>
+        public string AcquireStorageAccountLock { get; set; }
+
+        /// <summary>
+        /// Gets or sets how Azure Backup accesses the storage account.
+        /// </summary>
+        public string AccessType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed identity used to access the storage account.
+        /// </summary>
+        public IdentityInfo IdentityInfo { get; set; }
+
+        /// <summary>
         /// Constructor. Takes the service client object representing the container 
         /// and converts it in to the PS container model
         /// </summary>
         /// <param name="protectionContainerResource">Service client object representing the container</param>
         public AzureFileShareContainer(ProtectionContainerResource protectionContainerResource)
-            : base(protectionContainerResource) { }
+            : base(protectionContainerResource) {
+
+            var protectionContainer = (AzureStorageContainer)protectionContainerResource.Properties;
+
+            Id = protectionContainerResource.Id;
+            SourceResourceId = protectionContainer.SourceResourceId;
+            HealthStatus = protectionContainer.HealthStatus;
+            ProtectedItemCount = protectionContainer.ProtectedItemCount;
+            AcquireStorageAccountLock = protectionContainer.AcquireStorageAccountLock;
+            AccessType = protectionContainer.AccessType;
+            IdentityInfo = protectionContainer.IdentityInfo;
+
+        }
     }
 }

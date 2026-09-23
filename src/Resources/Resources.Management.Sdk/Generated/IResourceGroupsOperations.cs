@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string forceDeletionTypes = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ResourceGroupsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string forceDeletionTypes = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a resource group.
@@ -98,6 +98,10 @@ namespace Microsoft.Azure.Management.Resources
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group to get. The name is case insensitive.
+        /// </param>
+        /// <param name='expand'>
+        /// Comma-separated list of additional properties to be included in the
+        /// response. Valid values include createdTime, changedTime.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -111,7 +115,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGroup>> GetWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGroup>> GetWithHttpMessagesAsync(string resourceGroupName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Resource groups can be updated through a simple PATCH operation to a group
@@ -190,7 +194,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ResourceGroup>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilter>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ResourceGroup>>> ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ResourceGroupFilterWithExpand>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// When you delete a resource group, all of its resources are also deleted.
@@ -219,7 +223,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string forceDeletionTypes = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ResourceGroupsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string forceDeletionTypes = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Captures the specified resource group as a template.

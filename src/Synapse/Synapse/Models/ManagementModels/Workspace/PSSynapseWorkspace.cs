@@ -14,6 +14,7 @@
 
 
 using Microsoft.Azure.Management.Synapse.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,11 +37,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 ? workspace.PrivateEndpointConnections.Select(e => new PSPrivateEndpointConnection(e)).ToList()
                 : null;
             this.WorkspaceUID = workspace?.WorkspaceUID != null ? workspace.WorkspaceUID.Value.ToString() : null;
-            this.ExtraProperties = workspace.ExtraProperties;
+            var extraPropertiesJson = JsonConvert.SerializeObject(workspace.ExtraProperties);
+            this.ExtraProperties = JsonConvert.DeserializeObject<IDictionary<string, object>>(extraPropertiesJson);
             this.ManagedVirtualNetworkSettings = workspace?.ManagedVirtualNetworkSettings != null ? new PSManagedVirtualNetworkSettings(workspace?.ManagedVirtualNetworkSettings) : null;
             this.Encryption = workspace?.Encryption != null ? new PSEncryptionDetails(workspace?.Encryption) : null;
             this.WorkspaceRepositoryConfiguration = workspace.WorkspaceRepositoryConfiguration != null ? new PSWorkspaceRepositoryConfiguration(workspace?.WorkspaceRepositoryConfiguration) : null;
-            this.CspWorkspaceAdminProperties = workspace?.CspWorkspaceAdminProperties != null? new PSCspWorkspaceAdminProperties(workspace?.CspWorkspaceAdminProperties) : null;
+            this.CspWorkspaceAdminProperties = workspace?.CspWorkspaceAdminProperties != null ? new PSCspWorkspaceAdminProperties(workspace?.CspWorkspaceAdminProperties) : null;
             this.PublicNetworkAccess = workspace?.PublicNetworkAccess;
             this.PurviewConfiguration = workspace?.PurviewConfiguration != null ? new PSPurviewConfiguration(workspace?.PurviewConfiguration) : null;
         }

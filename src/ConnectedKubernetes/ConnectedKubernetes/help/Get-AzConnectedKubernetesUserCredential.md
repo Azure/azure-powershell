@@ -15,15 +15,29 @@ Gets cluster user credentials of the connected cluster with a specified resource
 ### ListExpanded (Default)
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -AuthenticationMethod <AuthenticationMethod> [-ClientProxy]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -AuthenticationMethod <String> [-ClientProxy] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -Property <IListClusterUserCredentialProperties> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +87,7 @@ Gets cluster user credentials of the connected cluster with a specified resource
 The mode of client authentication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AuthenticationMethod
+Type: System.String
 Parameter Sets: ListExpanded
 Aliases:
 
@@ -130,15 +144,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -JsonFilePath
+Path of Json file supplied to the List operation
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,10 +176,9 @@ Accept wildcard characters: False
 
 ### -Property
 .
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IListClusterUserCredentialProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IListClusterUserCredentialProperties
 Parameter Sets: List
 Aliases:
 
@@ -228,11 +256,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IListClusterUserCredentialProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IListClusterUserCredentialProperties
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ICredentialResults
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ICredentialResults
 
 ## NOTES
 

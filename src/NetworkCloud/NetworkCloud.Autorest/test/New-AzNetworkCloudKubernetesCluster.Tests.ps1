@@ -18,10 +18,11 @@ Describe 'New-AzNetworkCloudKubernetesCluster' {
         {
             $kubernetesClusterConfig = $global:config.AzNetworkCloudKubernetesCluster
             $common = $global:config.common
-            $password = ConvertTo-SecureString "*******" -AsPlainText
-            $sshPublicKey = @{
-                KeyData = $kubernetesClusterConfig.sshPublicKey
+            $password = New-Object System.Security.SecureString
+            "********".ToCharArray() | ForEach-Object {
+                $password.AppendChar($_)
             }
+            $password.MakeReadOnly()
 
             $agentPoolConfiguration = New-AzNetworkCloudInitialAgentPoolConfigurationObject `
                 -Count $kubernetesClusterConfig.nodeCount `
@@ -51,7 +52,6 @@ Describe 'New-AzNetworkCloudKubernetesCluster' {
 
             $bgpAdvertisement = New-AzNetworkCloudBgpAdvertisementObject `
                 -IPAddressPool $kubernetesClusterConfig.bgpIpAddressPool `
-                -AdvertiseToFabric $kubernetesClusterConfig.bgpAdvertiseToFabric `
                 -Community $kubernetesClusterConfig.bgpCommunity `
                 -Peer $kubernetesClusterConfig.bgpPeer
 
@@ -63,7 +63,7 @@ Describe 'New-AzNetworkCloudKubernetesCluster' {
 
             New-AzNetworkCloudKubernetesCluster -ResourceGroupName $kubernetesClusterConfig.resourceGroup `
                 -KubernetesClusterName $kubernetesClusterConfig.kubernetesClusterName -Location  $common.location `
-                -ExtendedLocationName $common.extendedLocation `
+                -ExtendedLocationName $kubernetesClusterConfig.extendedLocation `
                 -ExtendedLocationType $common.customLocationType `
                 -KubernetesVersion $kubernetesClusterConfig.kubernetesVersion `
                 -AadConfigurationAdminGroupObjectId $kubernetesClusterConfig.adminGroupObjectIds `
@@ -76,8 +76,7 @@ Describe 'New-AzNetworkCloudKubernetesCluster' {
                 -ControlPlaneNodeConfigurationVMSkuName $kubernetesClusterConfig.vmSkuName `
                 -SubscriptionId $kubernetesClusterConfig.subscriptionId `
                 -Tag @{tags = $kubernetesClusterConfig.tags } `
-                -BgpAdvertisement $bgpAdvertisement `
-                -BgpPeer $bgpPeer
+                -BgpAdvertisement $bgpAdvertisement 
         } | Should -Not -Throw
     }
 }

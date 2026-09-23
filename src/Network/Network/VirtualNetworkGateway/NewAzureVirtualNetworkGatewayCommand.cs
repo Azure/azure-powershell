@@ -119,6 +119,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable advanced connectivity feature on virtual network gateway")]
+        public SwitchParameter EnableAdvancedConnectivityFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
         public SwitchParameter EnablePrivateIpAddress { get; set; }
 
@@ -308,7 +313,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+            HelpMessage = "P2S Client Connection Configuration that associate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -318,20 +323,38 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
-        [ValidateSet(
-            "Enabled",
-            "Disabled",
-            IgnoreCase = true)]
         [PSArgumentCompleter(
             "Enabled",
             "Disabled")]
         public string AdminState  { get; set; }
+
+		[Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate the resiliency model of Express Route Gateway: SingleHomed / MultiHomed")]
+        [PSArgumentCompleter(
+            "SingleHomed",
+            "MultiHomed")]
+        public string ResiliencyModel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")]
         public Int32 MinScaleUnit { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")]
         public Int32 MaxScaleUnit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The managed identity configuration for the virtual network gateway.")]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         public override void Execute()
         {
@@ -435,6 +458,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
+            vnetGateway.EnableAdvancedConnectivity = this.EnableAdvancedConnectivityFeature.IsPresent;
             vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
 
             if (this.VirtualNetworkGatewayPolicyGroup != null && this.VirtualNetworkGatewayPolicyGroup.Length > 0)
@@ -637,6 +661,22 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.NatRules = this.NatRule?.ToList();
             }
 
+            if (this.UserAssignedIdentityId != null)
+            {
+                vnetGateway.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                vnetGateway.Identity = this.Identity;
+            }
+
             if (this.AdminState != null)
             {
                 if (!GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase))
@@ -645,6 +685,16 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 vnetGateway.AdminState = this.AdminState;
+            }
+
+			if (this.ResiliencyModel != null)
+            {
+                if (!GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new ArgumentException("ResiliencyModel parameter is only supported for Express Route gateways.");
+                }
+
+                vnetGateway.ResiliencyModel = this.ResiliencyModel;
             }
 
             if (!string.IsNullOrEmpty(this.GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
@@ -676,6 +726,14 @@ namespace Microsoft.Azure.Commands.Network
 
             var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
 
+            if (getVirtualNetworkGateway != null && getVirtualNetworkGateway.GatewayType == MNM.VirtualNetworkGatewayType.ExpressRoute.ToString())
+            {
+                if (getVirtualNetworkGateway.ResiliencyModel != null && getVirtualNetworkGateway.ResiliencyModel.Equals("MultiHomed", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    WriteWarning("The ExpressRoute Virtual Network Gateway with Resiliency Model as Multi-Homed is required to have connections from two ExpressRoute circuits in different peering locations or " +
+                        "a single connection with a circuit in metro location. Connectivity on the Virtual Network Gateway will be disabled until the required number of connections are created.");
+                }
+            }
             return getVirtualNetworkGateway;
         }
     }

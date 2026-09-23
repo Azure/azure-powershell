@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,10 +47,11 @@ function Test-SqlOperationsCmdlets
   $TriggerType = "Pre"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $capabilities = @("EnableNoSQLVectorSearch")
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -Capabilities $capabilities -DisableLocalAuth $true
 
       # create a new database
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -72,8 +73,16 @@ function Test-SqlOperationsCmdlets
       $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
       $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
+      $VectorIndex1 = New-AzCosmosDBSqlVectorIndex -Path "/vector1" -Type "flat" 
+      $VectorIndex2 = New-AzCosmosDBSqlVectorIndex -Path "/vector2" -Type "quantizedFlat" -QuantizationByteSize 128 
+      $VectorIndex3 = New-AzCosmosDBSqlVectorIndex -Path "/vector3" -Type "diskANN" -QuantizationByteSize 128 -IndexingSearchListSize 50
 
-      $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+      $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent -VectorIndex $VectorIndex1,$VectorIndex2,$VectorIndex3
+
+      $VectorEmbedding1 = New-AzCosmosDBSqlVectorEmbedding -Path "/vector1" -DataType "float32" -DistanceFunction "dotproduct" -Dimensions 200
+      $VectorEmbedding2 = New-AzCosmosDBSqlVectorEmbedding -Path "/vector2" -DataType "int8" -DistanceFunction "euclidean" -Dimensions 200
+      $VectorEmbedding3 = New-AzCosmosDBSqlVectorEmbedding -Path "/vector3" -DataType "uint8" -DistanceFunction "cosine" -Dimensions 200
+      $VectorEmbeddingPolicy = New-AzCosmosDBSqlVectorEmbeddingPolicy -VectorEmbedding $VectorEmbedding1,$VectorEmbedding2,$VectorEmbedding3
 
       # UniqueKey Creation
       $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
@@ -83,7 +92,7 @@ function Test-SqlOperationsCmdlets
 
       $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
       # create a new container
-      $NewContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy -UniqueKeyPolicy $uk1
+      $NewContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy -UniqueKeyPolicy $uk1 -VectorEmbeddingPolicy $VectorEmbeddingPolicy       
       Assert-AreEqual $NewContainer.Name $ContainerName
       Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
       Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
@@ -91,6 +100,8 @@ function Test-SqlOperationsCmdlets
       Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
       Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
       Assert-AreEqual $NewContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.VectorIndex.Path $IndexingPolicy.VectorIndex.Path
+      Assert-AreEqual $NewContainer.Resource.VectorEmbeddingPolicy.VectorEmbedding.Path $IndexingPolicy.IncludedPath.Path
 
       # create an existing container
       Try {
@@ -292,8 +303,8 @@ function Test-SqlInAccountRestoreOperationsCmdlets
   $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
 
   Try{
-      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous -DisableLocalAuth $true
 
       # create a new database
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -478,13 +489,13 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 #>
 function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "dbaccount49-sql-ntbr"
-    $rgName = "CosmosDBResourceGroup63"
-    $DatabaseName = "sqldbName6"
-    $ContainerName = "container1"
+    $AccountName = "dbaccount49-sql-ntbr-st"
+    $rgName = "CosmosDBResourceGroup63-st"
+    $DatabaseName = "sqldbName6-st"
+    $ContainerName = "container1-st"
     $location = "West US"
-    $DatabaseName2 = "dbName2"
-    $ContainerName2 = "container2"
+    $DatabaseName2 = "dbName2-st"
+    $ContainerName2 = "container2-st"
     $apiKind = "Sql"
     $PartitionKeyPathValue = "/foo/bar"
     $PartitionKeyKindValue = "Hash"
@@ -495,7 +506,7 @@ function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 
     Try {
         $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
-        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous -DisableLocalAuth $true
 
         # 1. Create a new database
         $NewDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -640,7 +651,7 @@ function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous -DisableLocalAuth $true
 
       # create a new database
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -796,7 +807,7 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -DisableLocalAuth $true
 
       # create a new database
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ThroughputValue
@@ -937,7 +948,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
   Try{
       
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       # get the database account object
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
@@ -1055,7 +1066,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       $UpdatedDatabase2 =  Update-AzCosmosDBSqlDatabase -InputObject $UpdatedDatabase
       Assert-AreEqual $UpdatedDatabase2.Name $DatabaseName
 
-      # update container using inpu object
+      # update container using input object
       $UpdatedContainer2 = Update-AzCosmosDBSqlContainer -InputObject $UpdatedContainer
       Assert-AreEqual $UpdatedContainer2.Name $ContainerName
       Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
@@ -1157,7 +1168,7 @@ function Test-SqlThroughputCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -1243,7 +1254,7 @@ function Test-SqlMigrateThroughputCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -1336,7 +1347,7 @@ function Test-SqlRoleCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
       $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
@@ -1436,21 +1447,21 @@ function Test-SqlRoleCmdlets
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
-      # update role assignmnent by parent object
+      # update role assignment by parent object
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -Id $RoleAssignmentId -ParentObject $UpdatedRoleDefinition
       Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
-      # update role assignmnent by role definition id
+      # update role assignment by role definition id
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -RoleDefinitionId $RoleDefinitionId -Id $FullyQualifiedRoleAssignmentId2 -AccountName $AccountName -ResourceGroupName $rgName
       Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
 
-      # update role assignmnent by input object
+      # update role assignment by input object
       $UpdatedRoleAssignment.RoleDefinitionId = $FullyQualifiedRoleDefinitionId2
 
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -InputObject $UpdatedRoleAssignment
@@ -1545,7 +1556,7 @@ function Test-ClientEncryptionKeyCmdlets
 
   Try{ 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location  $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       # new user-assigned identity
       $objectId = Get-PrincipalObjectId
@@ -1689,7 +1700,7 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
 
   Try{ 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location  $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
 
       # new user-assigned identity
       $objectId = Get-PrincipalObjectId

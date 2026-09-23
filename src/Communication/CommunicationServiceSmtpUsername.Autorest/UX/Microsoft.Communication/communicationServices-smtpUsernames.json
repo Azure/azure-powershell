@@ -1,0 +1,95 @@
+{
+  "resourceType": "communicationServices/smtpUsernames",
+  "apiVersion": "2024-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.communication"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCommunicationServiceSmtpUsername",
+      "description": "Get a SmtpUsernameResource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicesmtpusername"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunicationServiceName <String>",
+              "-ResourceGroupName <String>",
+              "-SmtpUsername <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SmtpUsernameResource.",
+          "parameters": [
+            {
+              "name": "-CommunicationServiceName",
+              "value": "[Path.communicationServiceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SmtpUsername",
+              "value": "[Path.smtpUsername]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCommunicationServiceSmtpUsername",
+      "description": "Operation to delete a single SmtpUsername resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames/{smtpUsername}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/remove-azcommunicationservicesmtpusername"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CommunicationServiceName <String>",
+              "-ResourceGroupName <String>",
+              "-SmtpUsername <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to delete a single SmtpUsername resource.",
+          "parameters": [
+            {
+              "name": "-CommunicationServiceName",
+              "value": "[Path.communicationServiceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SmtpUsername",
+              "value": "[Path.smtpUsername]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "resourceType": "trafficControllers/securityPolicies",
+  "apiVersion": "2025-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.alb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAlbSecurityPolicy",
+      "description": "Get a SecurityPolicy",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.alb/get-azalbsecuritypolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AlbName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a SecurityPolicy",
+          "parameters": [
+            {
+              "name": "-AlbName",
+              "value": "[Path.trafficControllerName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.securityPolicyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAlbSecurityPolicy",
+      "description": "Delete a SecurityPolicy",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.alb/remove-azalbsecuritypolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AlbName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a SecurityPolicy",
+          "parameters": [
+            {
+              "name": "-AlbName",
+              "value": "[Path.trafficControllerName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.securityPolicyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "resourceType": "codeSigningAccounts/certificateProfiles",
+  "apiVersion": "2025-10-13",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning"
+  },
+  "commands": [
+    {
+      "name": "Get-AzArtifactSigningCertificateProfile",
+      "description": "Get details of a certificate profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning/get-azartifactsigningcertificateprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get details of a certificate profile.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzArtifactSigningCertificateProfile",
+      "description": "Delete a certificate profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.artifactsigning/remove-azartifactsigningcertificateprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a certificate profile.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

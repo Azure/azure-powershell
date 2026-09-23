@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="recoveryPointSyncType">A value indicating whether the recovery point is multi VM consistent.
-        /// Possible values include: 'MultiVmSyncRecoveryPoint', 'PerVmRecoveryPoint'</param>
+        /// Possible values include: &#39;MultiVmSyncRecoveryPoint&#39;, &#39;PerVmRecoveryPoint&#39;</param>
 
         /// <param name="disks">List of disk ids representing a recovery point.
         /// </param>

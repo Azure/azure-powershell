@@ -18,44 +18,97 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### RoleDefinitionIdParameterSet (Default)
 ```
 Remove-AzRoleDefinition -Id <Guid> [-Scope <String>] [-SkipClientSideScopeValidation] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionNameParameterSet
 ```
 Remove-AzRoleDefinition [-Name] <String> [-Scope <String>] [-SkipClientSideScopeValidation] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzRoleDefinition -InputObject <PSRoleDefinition> [-SkipClientSideScopeValidation] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Remove-AzRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
-        Provide the Id parameter of an existing custom role to delete that custom role.
+Provide the Id parameter of an existing custom role to delete that custom role.
 By default, Remove-AzRoleDefinition prompts you for confirmation.
 To suppress the prompt, use the Force parameter.
 If there are existing role assignments made to the custom role to be deleted, the delete will fail.
 
+When using the -PassThru parameter, the cmdlet returns the deleted PSRoleDefinition object.
+The returned object contains a Permissions collection with Actions, NotActions, DataActions, NotDataActions, and any Attribute-Based Access Control (ABAC) conditions (Condition and ConditionVersion) for each permission entry.
+
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a custom role by piping from Get-AzRoleDefinition
 ```powershell
 Get-AzRoleDefinition -Name "Virtual Machine Operator" | Remove-AzRoleDefinition
 ```
 
-### Example 2
+Retrieves the "Virtual Machine Operator" custom role and pipes it to Remove-AzRoleDefinition for deletion.
+You will be prompted for confirmation before the role is deleted.
+
+### Example 2: Remove a custom role by Id
 ```powershell
 Remove-AzRoleDefinition -Id "00001111-aaaa-2222-bbbb-3333cccc4444"
 ```
 
+Deletes the custom role with the specified Id. You will be prompted for confirmation.
+
+### Example 3: Remove a custom role without confirmation
+```powershell
+Remove-AzRoleDefinition -Name "Custom Reader Role" -Force
+```
+
+Deletes the custom role named "Custom Reader Role" without prompting for confirmation.
+
+### Example 4: Remove and return the deleted role definition
+```powershell
+$deletedRole = Remove-AzRoleDefinition -Name "Custom Writer Role" -Force -PassThru
+$deletedRole.Permissions[0].Actions
+```
+
+Deletes the role and returns the PSRoleDefinition object, then displays the actions from the first permission entry.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -137,21 +190,6 @@ Accept wildcard characters: False
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

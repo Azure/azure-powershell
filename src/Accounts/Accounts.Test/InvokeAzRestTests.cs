@@ -31,5 +31,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             TestRunner.RunTestScript("Test-InvokeAzRest");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInvokeAzRestWithPagination()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzRest-Pagination");
+        }
     }
 }

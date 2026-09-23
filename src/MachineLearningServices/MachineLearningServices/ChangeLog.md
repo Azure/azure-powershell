@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 1.3.0
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.2.0
+* Upgraded nuget package to signed package.
+
 ## Version 1.1.0
 * Updated API version to 2024-04-01
 * Added Kind and HubResourceId parameters for Workspace cmdlets

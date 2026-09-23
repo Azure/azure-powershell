@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact]
+        [Fact(Skip = "Setup issue to be fixed in upcoming release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSProtection()
@@ -93,6 +93,138 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
                 $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
                 "Test-AzureFSRestoreToAnotherRegion"
+            );
+        }
+                
+        [Fact(Skip = "Todo ianna: to be fixed in upcoming release")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSVaultRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSVaultRestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSStopAndResumeProtection()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSStopAndResumeProtection"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSSoftDelete()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSSoftDelete"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSGetItemSecondaryRegion()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSGetItemSecondaryRegion"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSGetRPsSecondaryRegion()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSGetRPsSecondaryRegion"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSRestoreToSecondaryRegion()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSRestoreToSecondaryRegion"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSUamiBackupAndRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSUamiBackupAndRestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSSamiBackupAndRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSSamiBackupAndRestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSManagedIdentityEnableProtection()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSManagedIdentityEnableProtection"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSCrossSubscriptionRestoreTargetLookup()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSCrossSubscriptionRestoreTargetLookup"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSCrossRegionCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSCrossRegionCrossSubscriptionRestore"
             );
         }
     }

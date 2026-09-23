@@ -26,18 +26,11 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: b1b2bb2d054227fd0db8976b75c2b59a8461eedc
-apiversion: "2024-08-15"
+commit: 4d1741c4c55f304a60681522a9453597a435c547
+apiversion: "2026-03-15"
+previewapiversion: "2026-04-01-preview"
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/cosmos-db.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/managedCassandra.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/mongorbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/notebook.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/privateEndpointConnection.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/privateLinkResources.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/rbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/restorable.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/services.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/openapi.json
 
 output-folder: Generated
 

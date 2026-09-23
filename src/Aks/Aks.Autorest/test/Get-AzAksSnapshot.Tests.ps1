@@ -25,9 +25,10 @@ Describe 'Get-AzAksSnapshot' {
 
     It 'List1' {
         $Snapshot = Get-AzAksSnapshot -ResourceGroupName $env.ResourceGroupName
-        $Snapshot.Count | Should -Be 2
+        $Snapshot.Count | Should -Be 3
         $Snapshot.Name.Contains('snapshot1') | Should -Be $true
         $Snapshot.Name.Contains('snapshot2') | Should -Be $true
+        $Snapshot.Name.Contains('snapshot3') | Should -Be $true
     }
 
     It 'Get' {
@@ -37,7 +38,7 @@ Describe 'Get-AzAksSnapshot' {
     }
 
     It 'GetViaIdentity' {
-        $InputObject = @{Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1" }
+        $InputObject = @{Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.ContainerService/snapshots/snapshot1" }
         $Snapshot = Get-AzAksSnapshot -InputObject $InputObject
         $Snapshot.Count | Should -Be 1
         $Snapshot.Name.Contains('snapshot1') | Should -Be $true

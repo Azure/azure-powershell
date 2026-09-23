@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the CassandraSource class.
         /// </summary>
 
+        /// <param name="additionalProperties">A copy activity source.
+        /// </param>
+
         /// <param name="sourceRetryCount">Source retry count. Type: integer (or Expression with resultType integer).
         /// </param>
 
@@ -61,9 +64,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// default value is &#39;ONE&#39;. It is case-insensitive.
         /// Possible values include: &#39;ALL&#39;, &#39;EACH_QUORUM&#39;, &#39;QUORUM&#39;, &#39;LOCAL_QUORUM&#39;,
         /// &#39;ONE&#39;, &#39;TWO&#39;, &#39;THREE&#39;, &#39;LOCAL_ONE&#39;, &#39;SERIAL&#39;, &#39;LOCAL_SERIAL&#39;</param>
-        public CassandraSource(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object), string consistencyLevel = default(string))
+        public CassandraSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object query = default(object), string consistencyLevel = default(string))
 
-        : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
+        : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.Query = query;
             this.ConsistencyLevel = consistencyLevel;

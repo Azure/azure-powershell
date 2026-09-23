@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.EdgeZone))
             {
-                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationType.EdgeZone };
             }
 
             if (this.IsParameterBound(c => c.DiskEncryptionKey))

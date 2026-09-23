@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class NextStep
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Continue
+        /// </summary>
         public const string Continue = "Continue";
+        /// <summary>
+        /// Terminate
+        /// </summary>
         public const string Terminate = "Terminate";
     }
 }

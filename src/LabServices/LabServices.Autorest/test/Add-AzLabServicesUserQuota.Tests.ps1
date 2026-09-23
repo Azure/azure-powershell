@@ -20,14 +20,14 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 Describe 'Add-AzLabServicesUserQuota' {
     It 'Add User Quota Email' {
         #$addTime = New-TimeSpan -Hours 12
-        Add-AzLabServicesUserQuota -SubscriptionId $($ENV:SubscriptionId) -ResourceGroupName $($ENV:ResourceGroupName) -LabName $($ENV:LabName) -Email $($ENV:UserEmail) -UsageQuotaToAddToExisting "12:00:00" | Should -Not -BeNullOrEmpty
-        Get-AzLabServicesUser -SubscriptionId $($ENV:SubscriptionId) -LabName $($ENV:LabName) -ResourceGroupName $($ENV:ResourceGroupName) -UserName $($ENV:UserName) | Select -ExpandProperty additionalUsageQuota | Should -BeExactly "12:00:00"
+        Add-AzLabServicesUserQuota -SubscriptionId $($env.SubscriptionId) -ResourceGroupName $($env.ResourceGroupName) -LabName $($env.LabName) -Email $($env.UserEmail) -UsageQuotaToAddToExisting "12:00:00" | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesUser -SubscriptionId $($env.SubscriptionId) -LabName $($env.LabName) -ResourceGroupName $($env.ResourceGroupName) -UserName $($env.UserName) | Select -ExpandProperty additionalUsageQuota | Should -BeExactly "12:00:00"
     }
 
     It 'Add User Quota Object' {
         #$addTime = New-TimeSpan -Hours 13
-        $user = Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -UserName $ENV:UserName
+        $user = Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -UserName $env.UserName
         Add-AzLabServicesUserQuota -User $user -UsageQuotaToAddToExisting "13:00:00" | Should -Not -BeNullOrEmpty
-        Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -UserName $ENV:UserName | Select -ExpandProperty additionalUsageQuota | Should -BeExactly "1.01:00:00"
+        Get-AzLabServicesUser -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -UserName $env.UserName | Select -ExpandProperty additionalUsageQuota | Should -BeExactly "1.01:00:00"
     }
 }

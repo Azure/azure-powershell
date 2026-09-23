@@ -28,59 +28,72 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 #>
 function Set-AzPurviewDefaultAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The name of the account that is set as the default.
     ${AccountName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The resource group name of the account that is set as the default.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The scope object ID.
     # For example, sub ID or tenant ID.
     ${Scope},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [System.String]
     # The scope tenant in which the default account is set.
     ${ScopeTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType])]
+    [Parameter(ParameterSetName='SetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.PSArgumentCompleterAttribute("Tenant", "Subscription")]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType]
+    [System.String]
     # The scope where the default account is set.
     ${ScopeType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription ID of the account that is set as the default.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='SetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Set operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
+    [System.String]
+    # Json string supplied to the Set operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

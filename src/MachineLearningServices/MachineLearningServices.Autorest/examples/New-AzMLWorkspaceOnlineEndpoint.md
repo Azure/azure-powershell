@@ -1,6 +1,6 @@
 ### Example 1: Create or update Online Endpoint (asynchronous)
 ```powershell
-New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-cli01 -Location eastus -AuthMode 'Key' -IdentityType 'SystemAssigned'
+New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-cli01 -Location eastus -AuthMode 'Key' -EnableSystemAssignedIdentity
 ```
 
 ```output

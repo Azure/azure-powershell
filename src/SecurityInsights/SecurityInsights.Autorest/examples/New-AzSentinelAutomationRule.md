@@ -1,7 +1,7 @@
 ### Example 1: Create an Automation Rule using Run Playbook
 ```powershell
  $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "RunPlaybook"
  $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
@@ -13,7 +13,7 @@ This command creates an Automation Rule that has an Action of Run Playbook.
 
 ### Example 2: Creates an Automation Rule that has an Action of changing the severity
 ```powershell
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleModifyPropertiesAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "ModifyProperties"
  $automationRuleAction.ActionConfigurationSeverity = "Low"

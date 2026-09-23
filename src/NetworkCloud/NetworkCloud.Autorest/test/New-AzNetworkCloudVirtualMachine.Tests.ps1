@@ -19,13 +19,10 @@ Describe 'New-AzNetworkCloudVirtualMachine' {
             $networkAttachment = New-AzNetworkCloudNetworkAttachmentObject `
                 -AttachedNetworkId $global:config.AzNetworkCloudVirtualMachine.networkAttachmentId `
                 -IpAllocationMethod $global:config.AzNetworkCloudVirtualMachine.ipAllocationMethod `
-                -DefaultGateway $global:config.AzNetworkCloudVirtualMachine.attachmentDefaultGateway `
-                -Ipv4Address $global:config.AzNetworkCloudVirtualMachine.attachmentIpv4Address `
-                -Ipv6Address $global:config.AzNetworkCloudVirtualMachine.attachmentIpv6Address `
                 -Name $global:config.AzNetworkCloudVirtualMachine.attachmentName
 
             $hint = New-AzNetworkCloudVirtualMachinePlacementHintObject `
-                -HintType global:config.AzNetworkCloudVirtualMachine.placementHint `
+                -HintType $global:config.AzNetworkCloudVirtualMachine.placementHint `
                 -SchedulingExecution $global:config.AzNetworkCloudVirtualMachine.placementExecution `
                 -ResourceId $global:config.AzNetworkCloudVirtualMachine.placementResourceId `
                 -Scope $global:config.AzNetworkCloudVirtualMachine.placementScope
@@ -34,14 +31,18 @@ Describe 'New-AzNetworkCloudVirtualMachine' {
                 KeyData = $global:config.AzNetworkCloudVirtualMachine.sshPublicKey
             }
 
-            $securePassword = ConvertTo-SecureString $global:config.AzNetworkCloudVirtualMachine.registryPassword -asplaintext -force
+            $securePassword = New-Object System.Security.SecureString
+            $global:config.AzNetworkCloudVirtualMachine.registryPassword.ToCharArray() | ForEach-Object {
+                $securePassword.AppendChar($_)
+            }
+            $securePassword.MakeReadOnly()
             New-AzNetworkCloudVirtualMachine -Name $global:config.AzNetworkCloudVirtualMachine.vmName `
                 -ResourceGroupName $global:config.AzNetworkCloudVirtualMachine.vmResourceGroup `
                 -AdminUsername $global:config.AzNetworkCloudVirtualMachine.adminUsername `
                 -CloudServiceNetworkAttachmentAttachedNetworkId $global:config.AzNetworkCloudVirtualMachine.csnAttachedNetworkId `
                 -CloudServiceNetworkAttachmentIPAllocationMethod $global:config.AzNetworkCloudVirtualMachine.ipAllocationMethod `
                 -CpuCore $global:config.AzNetworkCloudVirtualMachine.cpuCore `
-                -ExtendedLocationName $global:config.common.extendedLocation ` -ExtendedLocationType $global:config.common.customLocationType `
+                -ExtendedLocationName $global:config.AzNetworkCloudVirtualMachine.extendedLocation ` -ExtendedLocationType $global:config.AzNetworkCloudVirtualMachine.customLocationType `
                 -Location $global:config.common.location `
                 -SubscriptionId $global:config.AzNetworkCloudVirtualMachine.subscriptionId `
                 -MemorySizeGb $global:config.AzNetworkCloudVirtualMachine.memorySizeGb `

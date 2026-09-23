@@ -38,6 +38,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified, all network traffic will be logged.
         /// </param>
 
+        /// <param name="recordTypes">Optional field to filter network traffic logs based on flow states. Value
+        /// of this field could be any comma separated combination string of letters
+        /// B,C,E or D. B represents Begin, when a flow is created. C represents
+        /// Continue for an ongoing flow generated at every five-minute interval. E
+        /// represents End, when a flow is terminated. D represents Deny, when a flow
+        /// is denied. If not specified, all network traffic will be logged.
+        /// </param>
+
         /// <param name="enabled">Flag to enable/disable flow logging.
         /// </param>
 
@@ -51,14 +59,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the flow log.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
-        public FlowLogPropertiesFormat(string targetResourceId, string storageId, string targetResourceGuid = default(string), string enabledFilteringCriteria = default(string), bool? enabled = default(bool?), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters), TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), string provisioningState = default(string))
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
+        public FlowLogPropertiesFormat(string targetResourceId, string storageId, string targetResourceGuid = default(string), string enabledFilteringCriteria = default(string), string recordTypes = default(string), bool? enabled = default(bool?), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters), TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), string provisioningState = default(string))
 
         {
             this.TargetResourceId = targetResourceId;
             this.TargetResourceGuid = targetResourceGuid;
             this.StorageId = storageId;
             this.EnabledFilteringCriteria = enabledFilteringCriteria;
+            this.RecordTypes = recordTypes;
             this.Enabled = enabled;
             this.RetentionPolicy = retentionPolicy;
             this.Format = format;
@@ -101,6 +111,18 @@ namespace Microsoft.Azure.Management.Network.Models
         public string EnabledFilteringCriteria {get; set; }
 
         /// <summary>
+        /// Gets or sets optional field to filter network traffic logs based on flow
+        /// states. Value of this field could be any comma separated combination string
+        /// of letters B,C,E or D. B represents Begin, when a flow is created. C
+        /// represents Continue for an ongoing flow generated at every five-minute
+        /// interval. E represents End, when a flow is terminated. D represents Deny,
+        /// when a flow is denied. If not specified, all network traffic will be
+        /// logged.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recordTypes")]
+        public string RecordTypes {get; set; }
+
+        /// <summary>
         /// Gets or sets flag to enable/disable flow logging.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
@@ -125,7 +147,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public TrafficAnalyticsProperties FlowAnalyticsConfiguration {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the flow log. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the flow log. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -145,6 +167,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "StorageId");
             }
+
 
 
 

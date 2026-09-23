@@ -18,6 +18,33 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.
+
+## Version 4.1.0
+* Added App Service Environment plan create and update support for Isolated v4 and memory-optimized Isolated v4 SKUs.
+
+## Version 4.0.0
+* Added ChangeSafety Support
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 3.4.3
+* Updated preannouncement breaking changes date to May 2026.
+
+## Version 3.4.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 3.4.1
+* Added AppServicePlan management support for Pv4 and Pmv4 tiers.
+
+## Version 3.4.0
+* Add support for pull based deployments from a URL with MSI authentication in `Publish-AzWebApp`
+
+## Version 3.3.1
+* Migrated Websites.Helper generation from autorest csharp to autorest powershell.
+
+## Version 3.3.0
+* Fixed the source app retrieval from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
+* Upgraded nuget package to signed package.
 
 ## Version 3.2.2
 * Fix bug where parameters could not be set to false for `Publish-AzWebApp`

@@ -18,15 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkMapping> ListByReplicationNetworks(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName)
+        public static Microsoft.Rest.Azure.IPage<NetworkMapping> ListByReplicationNetworks(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName)
         {
-                return ((IReplicationNetworkMappingsOperations)operations).ListByReplicationNetworksAsync(fabricName, networkName).GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).ListByReplicationNetworksAsync(resourceGroupName, resourceName, fabricName, networkName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -35,8 +41,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -44,9 +56,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkMapping>> ListByReplicationNetworksAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkMapping>> ListByReplicationNetworksAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByReplicationNetworksWithHttpMessagesAsync(fabricName, networkName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByReplicationNetworksWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -57,8 +69,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -66,9 +84,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='networkMappingName'>
         /// Network mapping name.
         /// </param>
-        public static NetworkMapping Get(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName)
+        public static NetworkMapping Get(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
         {
-                return ((IReplicationNetworkMappingsOperations)operations).GetAsync(fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).GetAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -77,8 +95,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -89,9 +113,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkMapping> GetAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkMapping> GetAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -102,8 +126,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -111,9 +141,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='networkMappingName'>
         /// Network mapping name.
         /// </param>
-        public static NetworkMapping Create(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties)
+        public static NetworkMapping Create(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties)
         {
-                return ((IReplicationNetworkMappingsOperations)operations).CreateAsync(fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).CreateAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -122,8 +152,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -134,9 +170,66 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkMapping> CreateAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkMapping> CreateAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// The operation to update an ASR network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        public static NetworkMapping Update(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties))
+        {
+                return ((IReplicationNetworkMappingsOperations)operations).UpdateAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to update an ASR network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkMapping> UpdateAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -147,18 +240,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
         /// </param>
         /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
+        /// Network mapping name.
         /// </param>
-        public static void Delete(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName)
+        public static ReplicationNetworkMappingsDeleteHeaders Delete(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
         {
-                ((IReplicationNetworkMappingsOperations)operations).DeleteAsync(fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -167,50 +266,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// The operation to update an ASR network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
-        /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// Network mapping name.
-        /// </param>
-        public static NetworkMapping Update(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties))
-        {
-                return ((IReplicationNetworkMappingsOperations)operations).UpdateAsync(fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to update an ASR network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -221,11 +284,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkMapping> UpdateAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationNetworkMappingsDeleteHeaders> DeleteAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -234,9 +297,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkMapping> List(this IReplicationNetworkMappingsOperations operations)
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<NetworkMapping> List(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName)
         {
-                return ((IReplicationNetworkMappingsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).ListAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -245,12 +314,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the recovery services vault.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkMapping>> ListAsync(this IReplicationNetworkMappingsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkMapping>> ListAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -261,8 +336,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -270,9 +351,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='networkMappingName'>
         /// Network mapping name.
         /// </param>
-        public static NetworkMapping BeginCreate(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties)
+        public static NetworkMapping BeginCreate(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties)
         {
-                return ((IReplicationNetworkMappingsOperations)operations).BeginCreateAsync(fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).BeginCreateAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -281,8 +362,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -293,9 +380,66 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkMapping> BeginCreateAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkMapping> BeginCreateAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, CreateNetworkMappingInputProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// The operation to update an ASR network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        public static NetworkMapping BeginUpdate(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties))
+        {
+                return ((IReplicationNetworkMappingsOperations)operations).BeginUpdateAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// The operation to update an ASR network mapping.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='networkName'>
+        /// Primary network name.
+        /// </param>
+        /// <param name='networkMappingName'>
+        /// Network mapping name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkMapping> BeginUpdateAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -306,18 +450,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
         /// </param>
         /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
+        /// Network mapping name.
         /// </param>
-        public static void BeginDelete(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName)
+        public static ReplicationNetworkMappingsDeleteHeaders BeginDelete(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName)
         {
-                ((IReplicationNetworkMappingsOperations)operations).BeginDeleteAsync(fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
+                return ((IReplicationNetworkMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -326,50 +476,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// ARM Resource Name for network mapping.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// The operation to update an ASR network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
+        /// <param name='resourceName'>
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Primary fabric name.
-        /// </param>
-        /// <param name='networkName'>
-        /// Primary network name.
-        /// </param>
-        /// <param name='networkMappingName'>
-        /// Network mapping name.
-        /// </param>
-        public static NetworkMapping BeginUpdate(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties))
-        {
-                return ((IReplicationNetworkMappingsOperations)operations).BeginUpdateAsync(fabricName, networkName, networkMappingName, properties).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// The operation to update an ASR network mapping.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Primary fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='networkName'>
         /// Primary network name.
@@ -380,11 +494,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkMapping> BeginUpdateAsync(this IReplicationNetworkMappingsOperations operations, string fabricName, string networkName, string networkMappingName, UpdateNetworkMappingInputProperties properties = default(UpdateNetworkMappingInputProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationNetworkMappingsDeleteHeaders> BeginDeleteAsync(this IReplicationNetworkMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string networkName, string networkMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(fabricName, networkName, networkMappingName, properties, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, networkName, networkMappingName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>

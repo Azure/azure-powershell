@@ -20,62 +20,85 @@ Finally, save the role definition using this command.
 ### InputFileParameterSet
 ```
 Set-AzRoleDefinition -InputFile <String> [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
 Set-AzRoleDefinition -Role <PSRoleDefinition> [-SkipClientSideScopeValidation]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes. NotActions, DataActions, NotDataActions are optional.
+The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
+Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
+
+The role definition for the updated custom role MUST contain:
+- Id: the unique identifier of the role definition to update
+- Name: the name of the custom role
+- Description: a short description of the role
+- Permissions: an array of permission objects containing Actions and/or DataActions
+- AssignableScopes: the scopes where the role can be assigned
+
+Each permission object in the Permissions array can contain Actions, NotActions, DataActions, NotDataActions, and optionally Condition and ConditionVersion for Attribute-Based Access Control (ABAC) conditions.
+
+> [!IMPORTANT]
+> The shape of `PSRoleDefinition` and of the `-InputFile` JSON has changed. Both `-Role` (PSRoleDefinition) and `-InputFile` (JSON) now use a `Permissions` array of permission objects instead of flattened top-level `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties. Scripts that pipe `Get-AzRoleDefinition` into `Set-AzRoleDefinition -Role` must read and modify actions and conditions through `$role.Permissions[n]` rather than directly on the role object. JSON files used with `-InputFile` must likewise nest permissions under a `Permissions` array.
+
+> [!NOTE]
+> The Azure RBAC API currently supports only a single element in the Permissions array when updating custom roles. While the data model supports multiple permission entries, update operations must use exactly one permission object.
 
 ## EXAMPLES
 
 ### Example 1: Update using PSRoleDefinitionObject
 ```powershell
 $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+$roleDef.Permissions[0].Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
 $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
 $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 Set-AzRoleDefinition -Role $roleDef
 ```
 
-### Example 2: Create using JSON file
+### Example 2: Update using JSON file
 ```powershell
 Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
-<#
-Following is a sample updated role definition json for Set-AzRoleDefinition:
-{
-        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-        "Name": "Updated Role",
-        "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        [
-            "*/read",
-            "Microsoft.ClassicCompute/virtualmachines/restart/action",
-            "Microsoft.ClassicCompute/virtualmachines/start/action"
-        ],
-        "NotActions":
-        [
-            "*/write"
-        ],
-        "DataActions":
-        [
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-        ],
-        "NotDataActions":
-        [
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-        ],
-        "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
-}
-#>
 ```
 
+Updates a custom role definition from a JSON file. The JSON file must include the role's Id property.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -103,21 +126,6 @@ Parameter Sets: InputFileParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

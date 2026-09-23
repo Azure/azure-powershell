@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBareMetalMachineConfigurationDataObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudbaremetalmachineconfigurationdataobject
 schema: 2.0.0
 ---
 
@@ -15,8 +15,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 ```
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword <SecureString>
  -BmcCredentialsUsername <String> -BmcMacAddress <String> -BootMacAddress <String> -RackSlot <Int64>
- -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>]
- [<CommonParameters>]
+ -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +25,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 
 ### Example 1: Create an in-memory object for BareMetalMachineConfigurationData.
 ```powershell
-$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$password = ConvertTo-SecureString "********" -AsPlainText -Force
 
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername username -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber serialNumber -MachineDetail machineDetail -MachineName machineName
 ```
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 
 ### -MachineName
 The user-provided name for the bare metal machine created from this specification.
-        If not provided, the machine name will be generated programmatically.
+If not provided, the machine name will be generated programmatically.
 
 ```yaml
 Type: System.String
@@ -172,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20230701.BareMetalMachineConfigurationData
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.BareMetalMachineConfigurationData
 
 ## NOTES
 

@@ -181,13 +181,17 @@ namespace Microsoft.Azure.Commands.Common
                 AzurePSQoSEvent qos;
                 if (_telemetry.TryGetValue(processRecordId, out qos) && null != response?.Headers)
                 {
-                    IEnumerable<string> headerValues;
-                    foreach (var headerName in ClientHeaders)
+                    // Only set ClientRequestId if it hasn't been set already by OnBeforeCall from request headers
+                    if (string.IsNullOrEmpty(qos.ClientRequestId))
                     {
-                        if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                        IEnumerable<string> headerValues;
+                        foreach (var headerName in ClientHeaders)
                         {
-                            qos.ClientRequestId = headerValues.First();
-                            break;
+                            if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                            {
+                                qos.ClientRequestId = headerValues.First();
+                                break;
+                            }
                         }
                     }
                 }
@@ -296,7 +300,7 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     if(!response.IsSuccessStatusCode && qos.Exception == null)
                     {
-                        // add "InternalException" as message because it is just for telemtry tracking.
+                        // add "InternalException" as message because it is just for telemetry tracking.
                         AzPSCloudException ex = (response.StatusCode == HttpStatusCode.NotFound) ?
                             new AzPSResourceNotFoundCloudException("InternalException") : new AzPSCloudException("InternalException");
                         try
@@ -385,10 +389,10 @@ namespace Microsoft.Azure.Commands.Common
             Dictionary<string, string> telemetryInfo = null;
             if (_telemetry.TryGetValue(telemetryId, out var qos))
             {
-                if (qos?.SanitizerInfo?.DetectedProperties?.Count > 0)
+                if (qos?.SanitizerInfo?.DetectedProperties.IsEmpty == false)
                 {
                     var showSecretsWarning = qos.SanitizerInfo.ShowSecretsWarning && qos.SanitizerInfo.SecretsDetected;
-                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties);
+                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties.PropertyNames);
                     var invocationName = qos.InvocationName;
                     telemetryInfo = new Dictionary<string, string>
                     {

@@ -56,7 +56,7 @@ function assertNamespaceUpdates{
 
 Describe 'Set-AzEventHubNamespaceV2' {
         # TODO REVERT SKIP BEFORE MERGING TO MAIN
-        It 'SetExpanded' -Skip {
+        It 'SetExpanded' {
         # Add Encryption Config to NamespaceV5 which was created in New-AzEventHubNamespaceV2
         $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi -UserAssignedIdentity $env.msi1
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
@@ -107,6 +107,17 @@ Describe 'Set-AzEventHubNamespaceV2' {
 
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
         $eventhubNamespace.IdentityType | Should -Be $null
+
+        # Remove Replica 
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
+        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -GeoDataReplicationLocation $primaryReplica
+        $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 1
+
+        # Add Replica
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
+        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName southcentralus -RoleType Secondary
+        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -GeoDataReplicationLocation $primaryReplica,$secondaryReplica
+        $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
     }
     It 'SetViaIdentityExpanded' {
         $expectedNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3

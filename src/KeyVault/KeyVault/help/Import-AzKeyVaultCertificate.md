@@ -80,7 +80,7 @@ Updated     : 2/8/2016 11:50:43 PM
 
 The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
 stores it in the $Password variable.
-The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
+The second command imports the certificate named ImportCert01 into the ContosoKV01 key vault.
 
 ### Example 2: Import a key vault certificate by CertificateString
 ```powershell
@@ -119,7 +119,7 @@ Updated     : 2/8/2016 11:50:43 PM
 The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
 stores it in the $Password variable.
 The second command reads a certificate as a Base64 encoded representation.
-The third command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
+The third command imports the certificate named ImportCert01 into the ContosoKV01 key vault.
 
 ### Example 3: Import a key vault certificate with PolicyFile
 ```powershell
@@ -171,7 +171,7 @@ Id            : https://ContosoKV01.vault.azure.net/certificates/ImportCert01/XX
 
 The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
 stores it in the $Password variable.
-The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault with
+The second command imports the certificate named ImportCert01 into the ContosoKV01 key vault with
 a policy defined by file.
 
 ## PARAMETERS

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         private const string NetWorkRuleStringParameterSet = "NetWorkRuleString";
 
         /// <summary>
-        /// IpRule in String paremeter set name
+        /// IpRule in String parameter set name
         /// </summary>
         private const string IpRuleStringParameterSet = "IpRuleString";
 
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         /// </summary>
         /// <param name="ruleList">The IpRule List</param>
         /// <param name="ruleToRemove">The IP Rule to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <returns>true if remove success</returns>
         public bool RemoveIpRule(IList<IpRule> ruleList, IpRule ruleToRemove)
         {
             foreach (IpRule rule in ruleList)
@@ -203,8 +203,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         /// Remove one NetworkRule from NetworkRule List
         /// </summary>
         /// <param name="ruleList">The NetworkRule List</param>
-        /// <param name="ruleToRemove">The NetworkRulee to remove</param>
-        /// <returns>true if reove success</returns>
+        /// <param name="ruleToRemove">The NetworkRule to remove</param>
+        /// <returns>true if remove success</returns>
         public bool RemoveNetworkRule(IList<VirtualNetworkRule> ruleList, VirtualNetworkRule ruleToRemove)
         {
             foreach (VirtualNetworkRule rule in ruleList)

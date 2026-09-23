@@ -135,8 +135,8 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string Description = "Detailed string that will help users to understand the meaning of this assessment and how it was calculated.";
         public const string RemediationDescription = "Detailed string that will help users to understand the different ways to mitigate or fix the security issue.";
         public const string Severity = "Indicates the importance of the security risk if the assessment is unhealthy.";
-        public const string StatusCode = "Progremmatic code for the result of the assessment. can be \"Healthy\", \"Unhealthy\" or \"NotApplicable\"";
-        public const string StatusCause = "Progremmatic code for the cause of the assessment's result.";
+        public const string StatusCode = "Programmatic code for the result of the assessment. can be \"Healthy\", \"Unhealthy\" or \"NotApplicable\"";
+        public const string StatusCause = "Programmatic code for the cause of the assessment's result.";
         public const string StatusDescription = "Human readable description of the cause of the assessment's result.";
         public const string AdditionalData = "Data that is attached to the assessment result for better investigations or status clarity.";
         public const string AssessmentsName = "Name of the assessment resource.";

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerDestination
 
 ## SYNOPSIS
-Asynchronously creates a new partner destination with the specified parameters.
+Asynchronously create a new partner destination with the specified parameters.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzEventGridPartnerDestination -InputObject <IEventGridIdentity> -Location <S
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new partner destination with the specified parameters.
+Asynchronously create a new partner destination with the specified parameters.
 
 ## EXAMPLES
 

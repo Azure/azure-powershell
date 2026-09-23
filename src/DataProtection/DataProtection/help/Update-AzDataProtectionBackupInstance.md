@@ -13,10 +13,12 @@ Updates a given backup instance
 ## SYNTAX
 
 ```
-Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
- -BackupInstanceName <String> [-SubscriptionId <String>] [-PolicyId <String>]
- [-VaultedBackupContainer <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String> -Name <String>
+ [-SubscriptionId <String>] [-PolicyId <String>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-VaultedBackupContainer <String[]>]
+ [-ResourceGuardOperationRequest <String[]>] [-Token <String>] [-SecureToken <SecureString>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +49,22 @@ Third command fetches the list of vaulted containers which are currently backed 
 Fourth command update the backup instance with new policy and new list of container (which is currently a subset of the existing backed up containers).
 Fifth and sixth command shows the updated policy and containers list in the backu instance.
 
+### Example 2: Update UAMI in Backup Instance
+```powershell
+$bi = Get-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+$updateBI = Update-AzDataProtectionBackupInstance -ResourceGroupName "myResourceGroup" -VaultName "myBackupVault" -BackupInstanceName $bi.Name -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -UserAssignedIdentityArmId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUami" -UseSystemAssignedIdentity $false
+```
+
+```output
+Name                                                   BackupInstanceName
+----                                                   ------------------
+psDiskBI-psDiskBI-81234567-6171-4d88-ada3-ec1fc5e6c027 psDiskBI-psDiskBI-81234567-6171-4d88-ada3-ec1fc5e6c027
+```
+
+First command fetches the backup instance which needs to be updated.
+Second command updates the backup instance with the new User Assigned Managed Identity (UAMI) and disables the use of System Assigned Identity.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -63,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupInstanceName
-Unique Name of protected backup instance
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 
 ```yaml
@@ -86,6 +89,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Unique Name of protected backup instance
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BackupInstanceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,6 +154,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppModifyPolicy/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the vault
 
@@ -151,9 +201,55 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Token
+Parameter deprecate.
+Please use SecureToken instead.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityArmId
+User assigned identity ARM Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AssignUserIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentity
+Use system assigned identity
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultedBackupContainer
 List of containers to be backed up inside the VaultStore.
-Use this parameter for DatasourceType AzureBlob.
+Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.
 
 ```yaml
 Type: System.String[]
@@ -220,7 +316,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 
 ## NOTES
 

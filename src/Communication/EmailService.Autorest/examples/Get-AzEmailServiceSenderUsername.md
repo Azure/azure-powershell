@@ -1,4 +1,4 @@
-### Example 1: Get infomation on specified Azure Email services senderusername resource.
+### Example 1: Get information on specified Azure Email services senderusername resource.
 ```powershell
 Get-AzEmailServiceSenderUsername -SenderUsername donotreply -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```

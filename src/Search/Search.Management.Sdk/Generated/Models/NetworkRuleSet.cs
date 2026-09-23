@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Network specific rules that determine how the Azure Cognitive Search
-    /// service may be reached.
+    /// Network specific rules that determine how the Azure AI Search service may
+    /// be reached.
     /// </summary>
     public partial class NetworkRuleSet
     {
@@ -33,10 +33,15 @@ namespace Microsoft.Azure.Management.Search.Models
         /// with any public IP rules, and private endpoint connections would be the
         /// exclusive access method.
         /// </param>
-        public NetworkRuleSet(System.Collections.Generic.IList<IpRule> ipRules = default(System.Collections.Generic.IList<IpRule>))
+
+        /// <param name="bypass">Possible origins of inbound traffic that can bypass the rules defined in
+        /// the &#39;ipRules&#39; section.
+        /// Possible values include: &#39;None&#39;, &#39;AzureServices&#39;</param>
+        public NetworkRuleSet(System.Collections.Generic.IList<IpRule> ipRules = default(System.Collections.Generic.IList<IpRule>), string bypass = default(string))
 
         {
             this.IPRules = ipRules;
+            this.Bypass = bypass;
             CustomInit();
         }
 
@@ -57,5 +62,12 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipRules")]
         public System.Collections.Generic.IList<IpRule> IPRules {get; set; }
+
+        /// <summary>
+        /// Gets or sets possible origins of inbound traffic that can bypass the rules
+        /// defined in the &#39;ipRules&#39; section. Possible values include: &#39;None&#39;, &#39;AzureServices&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "bypass")]
+        public string Bypass {get; set; }
     }
 }

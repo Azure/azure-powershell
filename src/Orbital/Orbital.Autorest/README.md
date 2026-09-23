@@ -37,14 +37,6 @@ module-version: 0.1.0
 title: Orbital
 subject-prefix: $(service-name)
 
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document 
     where: $.definitions.SpacecraftsProperties.properties.provisioningState
@@ -85,9 +77,17 @@ directive:
         ],
         "description": "The current state of the resource's creation, deletion, or modification."
       }
+  # Following are common directives which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required
+  # Following two directives are v4 specific
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
@@ -134,11 +134,16 @@ directive:
     set:
       parameter-name: Name
       alias: GroundStationName
-  # The following are commented out and their generated cmdlets may be renamed and custom logic
-  # - model-cmdlet:
-  #     - ContactProfileLinkChannel
-  #     - SpacecraftLink
-  #     - ContactProfileLink
+  # Remove contact update cmdlet, if need please add back
+  # - where:
+  #     subject: SpacecraftContact
+  #     verb: Update
+  #   remove: true
+  # SpacecraftLink required properties customized to Mandatory.
+  - model-cmdlet:
+    - model-name: ContactProfileLinkChannel
+    - model-name: ContactProfileLink
+    # - model-name: SpacecraftLink
   - where:
       model-name: Spacecraft
     set:

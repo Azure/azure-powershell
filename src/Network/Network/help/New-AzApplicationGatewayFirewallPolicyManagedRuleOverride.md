@@ -14,7 +14,8 @@ Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>] [-Action <String>]
- [-Sensitivity <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Sensitivity <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,21 @@ Creates a ruleOverride Entry with RuleId as $ruleId, State as Enabled, Action as
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Action
 Specify the Action in override rule entry.
 
@@ -52,7 +68,22 @@ Specify the Action in override rule entry.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AnomalyScoring, Allow, Block, Log
+Accepted values: AnomalyScoring, Allow, Block, Log, CAPTCHA
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +129,7 @@ Describes the override sensitivity to be applied when rule matches.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Low, Medium, High
+Accepted values: Low, Medium, High
 
 Required: False
 Position: Named

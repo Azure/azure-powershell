@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DynamicRoutingEnrichment
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgriddynamicroutingenrichmentobject
 #>
 function New-AzEventGridDynamicRoutingEnrichmentObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DynamicRoutingEnrichment')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

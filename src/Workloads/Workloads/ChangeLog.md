@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 1.0.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.0.0
+* General availability for module Az.Workloads
+* Upgraded API version to 2024-09-01
+
+## Version 0.4.0
+* Upgraded nuget package to signed package.
+
 ## Version 0.3.0
 * Split Az.Workloads into two sub-modules
 
@@ -36,4 +49,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.Workloads
-

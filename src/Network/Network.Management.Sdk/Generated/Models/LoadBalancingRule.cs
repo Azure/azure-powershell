@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A load balancing rule for a load balancer.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LoadBalancingRule : SubResource
+    public partial class LoadBalancingRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the LoadBalancingRule class.
@@ -28,22 +28,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of load balancing
-        /// rules used by the load balancer. This name can be used to access the
-        /// resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="loadDistribution">The load distribution policy for this rule.
         /// Possible values include: &#39;Default&#39;, &#39;SourceIP&#39;, &#39;SourceIPProtocol&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the load balancing rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="frontendIPConfiguration">A reference to frontend IP addresses.
         /// </param>
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the load balancing rule.
-        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;</param>
+        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;</param>
 
         /// <param name="frontendPort">The port for the external endpoint. Port numbers for each rule must be
         /// unique within the Load Balancer. Acceptable values are between 0 and 65534.
@@ -89,13 +88,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="disableOutboundSnat">Configures SNAT for the VMs in the backend pool to use the publicIP address
         /// specified in the frontend of the load balancing rule.
         /// </param>
-        public LoadBalancingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?))
 
-        : base(id)
+        /// <param name="enableConnectionTracking">Enables UDP flow tracking for the load balancing rule. This property is
+        /// retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
+        /// </param>
+        public LoadBalancingRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?))
+
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.LoadDistribution = loadDistribution;
             this.ProvisioningState = provisioningState;
             this.FrontendIPConfiguration = frontendIPConfiguration;
@@ -109,6 +112,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableFloatingIP = enableFloatingIP;
             this.EnableTcpReset = enableTcpReset;
             this.DisableOutboundSnat = disableOutboundSnat;
+            this.EnableConnectionTracking = enableConnectionTracking;
             CustomInit();
         }
 
@@ -119,25 +123,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of load
-        /// balancing rules used by the load balancer. This name can be used to access
-        /// the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the load distribution policy for this rule. Possible values include: &#39;Default&#39;, &#39;SourceIP&#39;, &#39;SourceIPProtocol&#39;
@@ -146,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string LoadDistribution {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -179,7 +169,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the reference to the transport protocol used by the load
-        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;
+        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.protocol")]
         public string Protocol {get; set; }
@@ -231,5 +221,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableOutboundSnat")]
         public bool? DisableOutboundSnat {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables UDP flow tracking for the load balancing rule. This
+        /// property is retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableConnectionTracking")]
+        public bool? EnableConnectionTracking {get; set; }
     }
 }

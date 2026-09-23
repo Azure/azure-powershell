@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -544,6 +544,497 @@ function Test-SimpleNewVmssSkipExtOverprovision
                    -SkipExtensionsOnOverprovisionedVMs;
         $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
         Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVmss (SimpleParameterSet) with ScheduledEventsPolicy parameters
+
+Note: ScheduledEventsPolicy is only supported in regions where the feature is
+enabled. This test pins to 'eastus2euap'. Re-record against a subscription
+where the feature is enabled.
+#>
+function Test-SimpleNewVmssScheduledEventsPolicy
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $loc = 'eastus2euap';
+        $username = 'admin01';
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object -typename System.Management.Automation.PSCredential -ArgumentList $username, $password;
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower();
+        $stnd = 'Standard';
+        $apiVersion = '2020-07-01';
+
+        # Create VMSS with ScheduledEventsPolicy (SimpleParameterSet)
+        $vmss = New-AzVmss -Name $vmssname -Location $loc -Credential $cred `
+            -DomainNameLabel $domainNameLabel -SecurityType $stnd `
+            -ScheduledEventsApiVersion $apiVersion `
+            -EnableAllInstancesDown $true;
+
+        Assert-NotNull $vmss;
+        Assert-NotNull $vmss.ScheduledEventsPolicy;
+        Assert-NotNull $vmss.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $vmss.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $vmss.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $vmss.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $vmss.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVmssLifecycleHookConfig creates an in-memory lifecycle hook config object.
+#>
+function Test-VmssLifecycleHookConfig
+{
+    # Test creating a lifecycle hook config object in memory (no Azure calls needed)
+    $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
+    Assert-NotNull $hook
+    Assert-AreEqual 'UpgradeAutoOSScheduling' $hook.Type
+    Assert-AreEqual ([System.TimeSpan]::FromHours(8)) $hook.WaitDuration
+    # When -DefaultAction is omitted, the cmdlet leaves it null so the SDK omits the field
+    # from the request and the service applies its own default.
+    Assert-Null $hook.DefaultAction
+
+    # With explicit default action
+    $hook2 = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSRollingBatchStarting' -WaitDuration 'PT30M' -DefaultAction 'Approve'
+    Assert-NotNull $hook2
+    Assert-AreEqual 'UpgradeAutoOSRollingBatchStarting' $hook2.Type
+    Assert-AreEqual ([System.TimeSpan]::FromMinutes(30)) $hook2.WaitDuration
+    Assert-AreEqual 'Approve' $hook2.DefaultAction
+
+    # Without wait duration
+    $hook3 = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling'
+    Assert-NotNull $hook3
+    Assert-Null $hook3.WaitDuration
+    Assert-Null $hook3.DefaultAction
+}
+
+<#
+.SYNOPSIS
+Test Set-AzVmssLifecycleHooksProfile attaches hooks to a VMSS config and round-trips through the service.
+#>
+function Test-SetVmssLifecycleHooksProfile
+{
+    # Tests the Set-AzVmssLifecycleHooksProfile builder cmdlet end-to-end:
+    # Build VMSS config -> attach hook via Set-AzVmssLifecycleHooksProfile -> deploy -> verify hook round-tripped from service.
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = "eastus2euap"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $subnetId = $vnet.Subnets[0].Id
+
+        $vmssName       = 'vmss' + $rgname
+        $adminUsername  = 'Foo12'
+        $adminPassword  = $PLACEHOLDER
+        $ipCfg          = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -Primary
+
+        # Build a basic VMSS config WITHOUT hooks
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName 'Standard_DS1_v2' -UpgradePolicyMode 'Automatic' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+                -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2022-Datacenter' `
+                -ImageReferenceVersion 'latest' -ImageReferencePublisher 'MicrosoftWindowsServer'
+
+        # Attach hook via the builder cmdlet under test
+        $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H' -DefaultAction 'Approve'
+        $vmss = Set-AzVmssLifecycleHooksProfile -VirtualMachineScaleSet $vmss -LifecycleHook $hook
+
+        # Pre-deploy assertion: hook is on the in-memory object
+        Assert-NotNull $vmss.LifecycleHooksProfile
+        Assert-AreEqual 1 $vmss.LifecycleHooksProfile.LifecycleHooks.Count
+
+        # Deploy
+        $created = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+        Assert-NotNull $created
+
+        # Read back from service and verify the hook round-tripped
+        $read = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        Assert-NotNull $read.LifecycleHooksProfile
+        Assert-AreEqual 1 $read.LifecycleHooksProfile.LifecycleHooks.Count
+        Assert-AreEqual 'UpgradeAutoOSScheduling' $read.LifecycleHooksProfile.LifecycleHooks[0].Type
+        Assert-AreEqual ([System.TimeSpan]::FromHours(8)) $read.LifecycleHooksProfile.LifecycleHooks[0].WaitDuration
+        Assert-AreEqual 'Approve' $read.LifecycleHooksProfile.LifecycleHooks[0].DefaultAction
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Update-AzVmss with ScheduledEventsPolicy parameters
+
+Note: ScheduledEventsPolicy is only supported in regions where the feature is
+enabled. This test pins to 'eastus2euap'. Re-record against a subscription
+where the feature is enabled.
+#>
+function Test-UpdateVmssScheduledEventsPolicy
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $loc = 'eastus2euap';
+        $username = 'admin01';
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object -typename System.Management.Automation.PSCredential -ArgumentList $username, $password;
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower();
+        $stnd = 'Standard';
+        $apiVersion = '2020-07-01';
+
+        # Create a basic VMSS (no ScheduledEvents on create)
+        $vmss = New-AzVmss -Name $vmssname -Location $loc -Credential $cred `
+            -DomainNameLabel $domainNameLabel -SecurityType $stnd;
+        Assert-NotNull $vmss;
+
+        # Negative: PATCH path must reject the ScheduledEvents params
+        Assert-ThrowsContains {
+            Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname `
+                -ScheduledEventsApiVersion $apiVersion;
+        } "CreateOrUpdate path";
+
+        Assert-ThrowsContains {
+            Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname `
+                -EnableAllInstancesDown $true;
+        } "CreateOrUpdate path";
+
+        # Positive: PUT path via -VirtualMachineScaleSet
+        $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname `
+            -VirtualMachineScaleSet $current `
+            -ScheduledEventsApiVersion $apiVersion `
+            -EnableAllInstancesDown $true;
+
+        $updated = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-NotNull $updated.ScheduledEventsPolicy;
+        Assert-NotNull $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $updated.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $updated.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test processor mode support in New-AzVmssConfig, New-AzVmss, and Update-AzVmss.
+#>
+function Test-SimpleNewVmssProcessorMode
+{
+    $vmssname = Get-ResourceName
+    $loc = "eastus2euap"
+
+    try
+    {
+        # Step 1: Validate New-AzVmssConfig values and omission behavior
+        $vmssConfigDeterministic = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Deterministic"
+        Assert-AreEqual "Deterministic" $vmssConfigDeterministic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigOpportunistic = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual" -ProcessorMode "Opportunistic"
+        Assert-AreEqual "Opportunistic" $vmssConfigOpportunistic.VirtualMachineProfile.HardwareProfile.ProcessorMode
+
+        $vmssConfigDefault = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_E2pds_v8" -UpgradePolicyMode "Manual"
+        Assert-Null $vmssConfigDefault.VirtualMachineProfile.HardwareProfile
+
+        # Step 2: Record the service validation response for the requested preview configuration
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower()
+
+        Assert-ThrowsContains {
+            New-AzVmss -Name $vmssname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest" -VmSize "Standard_E2pds_v8" -ProcessorMode "Deterministic"
+        } "No registered resource provider found"
+    }
+    finally
+    {
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVmssConfig with -LifecycleHooksProfile parameter round-trips through the service.
+#>
+function Test-NewVmssConfigWithLifecycleHooksProfile
+{
+    # Tests the inline -LifecycleHooksProfile parameter on New-AzVmssConfig end-to-end:
+    # Build profile -> New-AzVmssConfig -LifecycleHooksProfile -> deploy -> verify hook round-tripped from service.
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = "eastus2euap"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $subnetId = $vnet.Subnets[0].Id
+
+        $vmssName       = 'vmss' + $rgname
+        $adminUsername  = 'Foo12'
+        $adminPassword  = $PLACEHOLDER
+        $ipCfg          = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -Primary
+
+        # Build a LifecycleHooksProfile inline and pass it directly to New-AzVmssConfig
+        $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H' -DefaultAction 'Approve'
+        $hooksProfile = [Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile]::new()
+        $hooksProfile.LifecycleHooks = [System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.LifecycleHook]]::new()
+        $hooksProfile.LifecycleHooks.Add($hook)
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName 'Standard_DS1_v2' -UpgradePolicyMode 'Automatic' -LifecycleHooksProfile $hooksProfile `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+                -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2022-Datacenter' `
+                -ImageReferenceVersion 'latest' -ImageReferencePublisher 'MicrosoftWindowsServer'
+
+        # Pre-deploy assertion: profile is on the in-memory object
+        Assert-NotNull $vmss.LifecycleHooksProfile
+        Assert-AreEqual 1 $vmss.LifecycleHooksProfile.LifecycleHooks.Count
+
+        # Deploy
+        $created = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+        Assert-NotNull $created
+
+        # Read back from service and verify
+        $read = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        Assert-NotNull $read.LifecycleHooksProfile
+        Assert-AreEqual 1 $read.LifecycleHooksProfile.LifecycleHooks.Count
+        Assert-AreEqual 'UpgradeAutoOSScheduling' $read.LifecycleHooksProfile.LifecycleHooks[0].Type
+        Assert-AreEqual ([System.TimeSpan]::FromHours(8)) $read.LifecycleHooksProfile.LifecycleHooks[0].WaitDuration
+        Assert-AreEqual 'Approve' $read.LifecycleHooksProfile.LifecycleHooks[0].DefaultAction
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+End-to-end test for Get-AzVmssLifecycleHookEvent (List + Get-single) and Update-AzVmssLifecycleHookEvent
+(WaitUntil delay + ActionState=Approved).
+
+Uses the seekAutoOSUpgradeApproval admin REST endpoint (via Invoke-AzRestMethod) to synthesize a
+lifecycle hook event on demand, instead of waiting for the platform's AutoOSUpgrade scheduler.
+
+Flow:
+  1. Deploy a 1-instance Uniform VMSS with AutomaticOSUpgrade enabled, Application Health (Linux)
+     extension, and a UpgradeAutoOSScheduling lifecycle hook attached.
+  2. POST to /seekAutoOSUpgradeApproval with the same platformImageReference used for the VMSS.
+  3. LIST events -- should now contain exactly 1.
+  4. GET the event by name.
+  5. UPDATE -WaitUntil by +10 min.
+  6. UPDATE -ActionState 'Approved'.
+  7. GET the event again -- assert both updates persisted.
+#>
+function Test-VmssLifecycleHookEventEndToEnd
+{
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = "eastus2euap"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+        # NRP (subnet must be defaultOutboundAccess=$false for the sub's policy)
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $subnetId = $vnet.Subnets[0].Id
+
+        # Image reference (must match the body of seekAutoOSUpgradeApproval below)
+        $publisher = 'canonical'
+        $offer     = '0001-com-ubuntu-server-focal'
+        $sku       = '20_04-lts-gen2'
+        $version   = 'latest'
+
+        $vmssName       = 'vmss' + $rgname
+        $adminUsername  = 'foo12'
+        $adminPassword  = $PLACEHOLDER
+        $ipCfg          = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -Primary
+
+        # 1-instance Uniform VMSS with AutoOSUpgrade + Application Health extension + lifecycle hook attached.
+        $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT1H' -DefaultAction 'Approve'
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName 'Standard_DS1_v2' `
+                -OrchestrationMode 'Uniform' -UpgradePolicyMode 'Automatic' -EnableAutomaticOSUpgrade `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+                -ImageReferenceOffer $offer -ImageReferenceSku $sku `
+                -ImageReferenceVersion $version -ImageReferencePublisher $publisher
+
+        # AutoOSUpgrade requires a health probe or health extension.
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
+            -Name 'AppHealth' `
+            -Publisher 'Microsoft.ManagedServices' `
+            -Type 'ApplicationHealthLinux' `
+            -TypeHandlerVersion '1.0' `
+            -Setting @{ protocol = 'http'; port = 80; requestPath = '/' } `
+            -AutoUpgradeMinorVersion $true | Out-Null
+
+        $vmss = Set-AzVmssLifecycleHooksProfile -VirtualMachineScaleSet $vmss -LifecycleHook $hook
+
+        New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
+
+        # Synthesize a lifecycle hook event via the admin REST endpoint.
+        # The platformImageReference must match the image used to deploy the VMSS.
+        $subId = (Get-AzContext).Subscription.Id
+        $apiPath = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssName/seekAutoOSUpgradeApproval?api-version=2025-11-01"
+        $body = @{
+            platformImageReference = @{
+                publisher = $publisher
+                offer     = $offer
+                sku       = $sku
+                version   = $version
+            }
+        } | ConvertTo-Json -Depth 5
+        $approval = Invoke-AzRestMethod -Method POST -Path $apiPath -Payload $body
+        Assert-True { $approval.StatusCode -ge 200 -and $approval.StatusCode -lt 300 } "seekAutoOSUpgradeApproval returned HTTP $($approval.StatusCode): $($approval.Content)"
+
+        # Bounded short poll for the synthesized event to materialize (event count must reach 1).
+        $events = $null
+        for ($i = 0; $i -lt 10; $i++)
+        {
+            $events = Get-AzVmssLifecycleHookEvent -ResourceGroupName $rgname -VMScaleSetName $vmssName
+            if ($events -and @($events).Count -gt 0) { break }
+            Start-TestSleep -Seconds 30
+        }
+        Assert-NotNull $events "Expected Get-AzVmssLifecycleHookEvent to return at least one event after seekAutoOSUpgradeApproval"
+        Assert-AreEqual 1 @($events).Count
+        $event = @($events)[0]
+
+        # GET single event by name and verify
+        $fetched = Get-AzVmssLifecycleHookEvent -ResourceGroupName $rgname -VMScaleSetName $vmssName -Name $event.Name
+        Assert-NotNull $fetched
+        Assert-AreEqual $event.Name $fetched.Name
+
+        # UPDATE WaitUntil: delay by 10 min
+        $currentWaitUntil = [DateTime]::Parse($fetched.Properties.WaitUntil).ToUniversalTime()
+        $newWaitUntilStr  = $currentWaitUntil.AddMinutes(10).ToString("yyyy-MM-ddTHH:mm:ssZ")
+        Update-AzVmssLifecycleHookEvent -ResourceGroupName $rgname -VMScaleSetName $vmssName -Name $event.Name -WaitUntil $newWaitUntilStr
+
+        # UPDATE ActionState: mark the single target resource Approved
+        Update-AzVmssLifecycleHookEvent -ResourceGroupName $rgname -VMScaleSetName $vmssName -Name $event.Name -ActionState 'Approved'
+
+        # Re-GET and verify both updates persisted
+        $fetched2 = Get-AzVmssLifecycleHookEvent -ResourceGroupName $rgname -VMScaleSetName $vmssName -Name $event.Name
+        Assert-NotNull $fetched2
+        Assert-AreEqual 1 $fetched2.Properties.TargetResources.Count
+        Assert-AreEqual 'Approved' $fetched2.Properties.TargetResources[0].ActionState
+        $updatedWaitUntil = [DateTime]::Parse($fetched2.Properties.WaitUntil).ToUniversalTime()
+        Assert-True { $updatedWaitUntil -gt $currentWaitUntil } "Expected WaitUntil to be updated to a later timestamp"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests -DisableCapacityReservationAssignment on New-AzVmssConfig/New-AzVmss (both the simple
+parameter set and the config+New-AzVmss pipeline), on Update-AzVmss, verifies the resulting
+CapacityReservation/CapacityReservationType properties surfaced by Get-AzVmssVM, and validates
+that -DisableCapacityReservationAssignment and -CapacityReservationGroupId are mutually exclusive.
+#>
+function Test-VmssDisableCapacityReservationAssignment
+{
+    # Setup
+    $vmssname = Get-ResourceName
+    $loc = Get-ComputeVMLocation
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Step 1: Simple parameter set - New-AzVmss with -DisableCapacityReservationAssignment directly.
+        $vmss = New-AzVmss -ResourceGroupName $vmssname -Name $vmssname -Location $loc -Credential $cred `
+            -DomainNameLabel $domainNameLabel -DisableCapacityReservationAssignment;
+        Assert-NotNull $vmss.VirtualMachineProfile.CapacityReservation;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+        Assert-Null $vmss.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup;
+
+        # Re-read the VMSS to confirm the setting persisted server-side.
+        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        # Step 2: Verify the VMSS VM (Get-AzVmssVM) surfaces the inherited CapacityReservation property.
+        $vms = Get-AzVmssVM -ResourceGroupName $vmssname -VMScaleSetName $vmssname;
+        Assert-True { @($vms).Count -gt 0 };
+        $vm = @($vms)[0];
+        Assert-NotNull $vm.CapacityReservation;
+        Assert-True { $vm.CapacityReservation.DisableCapacityReservationAssignment };
+
+        # Verify the instance view surfaces CapacityReservationType.
+        $vmInstanceView = Get-AzVmssVM -ResourceGroupName $vmssname -VMScaleSetName $vmssname -InstanceId $vm.InstanceId -InstanceView;
+        Assert-NotNull $vmInstanceView.CapacityReservationType;
+
+        # Step 3: Update-AzVmss - toggle DisableCapacityReservationAssignment off, then back on via the PUT path
+        # (-VirtualMachineScaleSet), and verify merge semantics (other settings on the VMSS remain unaffected).
+        $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment:$false;
+        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-False { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -DisableCapacityReservationAssignment;
+        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-True { $vmss.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        # Step 4: New-AzVmssConfig + New-AzVmss pipeline scenario.
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 1 -SkuName "Standard_DS1_v2" -UpgradePolicyMode "Manual" `
+            -DisableCapacityReservationAssignment;
+        Assert-NotNull $vmssConfig.VirtualMachineProfile.CapacityReservation;
+        Assert-True { $vmssConfig.VirtualMachineProfile.CapacityReservation.DisableCapacityReservationAssignment };
+
+        # Step 5: Negative test - -CapacityReservationGroupId and -DisableCapacityReservationAssignment are mutually exclusive.
+        Assert-ThrowsContains { New-AzVmssConfig -Location $loc -CapacityReservationGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg" -DisableCapacityReservationAssignment } `
+            "cannot be used together";
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -VirtualMachineScaleSet $current -CapacityReservationGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Compute/capacityReservationGroups/crg" -DisableCapacityReservationAssignment } `
+            "cannot be used together";
+
+        # Negative: PATCH path (no -VirtualMachineScaleSet) must reject -DisableCapacityReservationAssignment.
+        Assert-ThrowsContains { Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname -DisableCapacityReservationAssignment } `
+            "CreateOrUpdate path";
     }
     finally
     {

@@ -85,5 +85,26 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzApplyUpdateCancelConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzApplyUpdateWithParentResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzApplyUpdateWithParentResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzApplyUpdateWithoutParentResource()
+        {
+            TestRunner.RunTestScript("Test-GetAzApplyUpdateWithoutParentResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApproveAzScheduledEvents()
+        {
+            TestRunner.RunTestScript("Test-ApproveAzScheduledEvents");
+        }
     }
 }

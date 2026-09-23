@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rule
-List of items which need to be included into endpont scope.
+List of items which need to be included into endpoint scope.
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]

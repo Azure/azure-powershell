@@ -29,6 +29,9 @@ Retrieves all access keys for a Redis Enterprise database.
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
 
+### [Get-AzRedisEnterpriseCacheSku](Get-AzRedisEnterpriseCacheSku.md)
+Lists the available SKUs for scaling the Redis Enterprise cluster.
+
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 
@@ -46,7 +49,7 @@ Forcibly removes the link to the specified database resource.
 Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
-Creates/Updates a particular access policy assignment for a database
+Creates or updates a particular access policy assignment for a database
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -70,5 +73,5 @@ Updates an existing Redis Enterprise cluster
 Updates an existing Redis Enterprise database
 
 ### [Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion](Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion.md)
-Upgrades the database Redis version to the latest available.
+Updates the database Redis version to the latest available.
 

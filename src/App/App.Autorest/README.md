@@ -62,11 +62,11 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 auto-switch-view: false
-disable-transform-identity-type: true
+# Disable transform IdentityType as GET+PUT can not replace patch(https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#managed-identity-best-practice-alignment)
+# 1. ContainerApps_CreateOrUpdate and Jobs_CreateOrUpdate can not update resources
+# 2. the input schemas of PUT and PATCH are different
 flatten-userassignedidentity: false
-
-use-extension: 
-  "@autorest/powershell": "4.x"
+disable-transform-identity-type: true
 
 directive:
   - from: swagger-document 
@@ -666,30 +666,22 @@ directive:
           - ResourceGroupName
           - DomainControlValidation
 
+  - where:
+      verb: New|Update
+      subject: ContainerApp
+    hide: true
+  - where:
+      verb: New|Update
+      subject: ContainerAppJob
+    hide: true
+  - from: UserAssignedIdentities.dictionary.cs
+    where: $
+    transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
+
   # This command requires the user to provide the github token, but the command is missing this parameter, 
   # so the command cannot be used normally. Wait for the next version to fix the problem
   - where:
       verb: Remove
       subject: ContainerAppSourceControl
     remove: true
-
-##### announce upcoming MI-related breaking changes
-  - where:
-      parameter-name: IdentityType
-    set:
-      breaking-change:
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 13.0.0
-        change-effective-date: 2024/11/19
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      breaking-change:
-        old-parameter-type: Hashtable
-        new-parameter-type: string[]
-        change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 13.0.0
-        change-effective-date: 2024/11/19
 ```

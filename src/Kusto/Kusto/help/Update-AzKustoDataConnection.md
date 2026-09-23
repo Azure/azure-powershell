@@ -8,37 +8,38 @@ schema: 2.0.0
 # Update-AzKustoDataConnection
 
 ## SYNOPSIS
-Updates a data connection.
+Update a data connection.
 
 ## SYNTAX
 
 ### UpdateExpandedEventHub (Default)
 ```
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-Compression <Compression>] [-ManagedIdentityResourceId <String>]
- [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -EventHubResourceId <String>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ [-MappingRuleName <String>] [-TableName <String>] [-Compression <String>]
+ [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
 ```
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-MappingRuleName <String>]
- [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] -StorageAccountResourceId <String>
- [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-EventGridResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -EventHubResourceId <String>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-MappingRuleName <String>]
+ [-TableName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>]
+ -StorageAccountResourceId <String> [-BlobStorageEventType <String>] [-IgnoreFirstRecord]
+ [-EventGridResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedIotHub
 ```
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -ConsumerGroup <String>
+ -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
  -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -46,59 +47,73 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
 ### UpdateExpandedCosmosDb
 ```
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
- [-MappingRuleName <String>] -ManagedIdentityResourceId <String> [-RetrievalStartDate <DateTime>]
- -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String> -CosmosDbContainer <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <String> -Location <String>
+ [-MappingRuleName <String>] -TableName <String> -ManagedIdentityResourceId <String>
+ [-RetrievalStartDate <DateTime>] -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String>
+ -CosmosDbContainer <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventHub
 ```
-Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-TableName <String>] -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>]
- [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-Compression <Compression>]
- [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>]
+Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <String> -EventHubResourceId <String>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ [-MappingRuleName <String>] [-TableName <String>] [-Compression <String>]
+ [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventGrid
 ```
-Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-TableName <String>] -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>]
- [-MappingRuleName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>]
- -StorageAccountResourceId <String> [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord]
+Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <String> -EventHubResourceId <String>
+ -ConsumerGroup <String> -Location <String> [-DataFormat <String>] [-MappingRuleName <String>]
+ [-TableName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <String>]
+ -StorageAccountResourceId <String> [-BlobStorageEventType <String>] [-IgnoreFirstRecord]
  [-EventGridResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedIotHub
 ```
-Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-TableName <String>] -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>]
- -IotHubResourceId <String> -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <String> -ConsumerGroup <String>
+ -Location <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-DatabaseRouting <String>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
+ -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedCosmosDb
 ```
-Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Location <String>
- [-TableName <String>] [-MappingRuleName <String>] -ManagedIdentityResourceId <String>
+Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <String> -Location <String>
+ [-MappingRuleName <String>] -TableName <String> -ManagedIdentityResourceId <String>
  [-RetrievalStartDate <DateTime>] -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String>
  -CosmosDbContainer <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a data connection.
+Update a data connection.
 
 ## EXAMPLES
 
 ### Example 1: Update an existing EventHub data connection
 ```powershell
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -111,7 +126,7 @@ The above command updates the existing EventHub data connection named "myeventhu
 
 ### Example 2: Update an existing EventGrid data connection
 ```powershell
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -124,7 +139,7 @@ The above command updates the existing EventGrid data connection named "myeventg
 
 ### Example 3: Update an existing IotHub data connection
 ```powershell
-Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -138,7 +153,7 @@ The above command updates the existing IotHub data connection named "myiothubdc"
 ### Example 4: Update an existing EventHub data connection via identity
 ```powershell
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -152,7 +167,7 @@ The above command updates the existing EventHub data connection named "myeventhu
 ### Example 5: Update an existing EventGrid data connection via identity
 ```powershell
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -166,7 +181,7 @@ The above command updates the existing EventGrid data connection named "myeventg
 ### Example 6: Update an existing IotHub data connection via identity
 ```powershell
 $dataConnection = Get-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" 
-Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
+Update-AzKustoDataConnection -InputObject $dataConnection -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "MULTIJSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "NewEventsMapping"
 ```
 
 ```output
@@ -198,7 +213,7 @@ Accept wildcard characters: False
 The name of blob storage event type to process.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
+Type: System.String
 Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
 Aliases:
 
@@ -214,7 +229,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -228,7 +243,7 @@ Accept wildcard characters: False
 The event hub messages compression type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression
+Type: System.String
 Parameter Sets: UpdateExpandedEventHub, UpdateViaIdentityExpandedEventHub
 Aliases:
 
@@ -304,7 +319,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -318,7 +333,7 @@ Accept wildcard characters: False
 Indication for database routing information from the data connection, by default only database routing information is allowed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting
+Type: System.String
 Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedIotHub
 Aliases:
 
@@ -346,7 +361,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -451,12 +467,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Kind of the endpoint for the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedIotHub, UpdateViaIdentityExpandedCosmosDb
 Aliases:
 
 Required: True
@@ -471,7 +517,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedIotHub, UpdateViaIdentityExpandedCosmosDb
 Aliases:
 
 Required: True
@@ -514,7 +560,7 @@ Optionally the mapping information can be added to each message.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedIotHub, UpdateViaIdentityExpandedCosmosDb
 Aliases:
 
 Required: False
@@ -529,7 +575,7 @@ The name of the data connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: DataConnectionName
 
 Required: True
@@ -555,11 +601,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -616,12 +663,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateExpandedCosmosDb, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -637,10 +683,22 @@ Optionally the table information can be added to each message.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpandedEventHub, UpdateExpandedEventGrid, UpdateExpandedIotHub, UpdateViaIdentityExpandedEventHub, UpdateViaIdentityExpandedEventGrid, UpdateViaIdentityExpandedIotHub
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpandedCosmosDb, UpdateViaIdentityExpandedCosmosDb
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -687,7 +745,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection
 
 ## NOTES
 

@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Action of the Rule.")]
-        [ValidateSet("AnomalyScoring", "Allow", "Block", "Log", IgnoreCase = true)]
+        [ValidateSet("AnomalyScoring", "Allow", "Block", "Log", "CAPTCHA", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Action { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Sensitivity of the Rule.")]
-        [ValidateSet("None", "Low", "Medium", "High", IgnoreCase = true)]
+        [ValidateSet("Low", "Medium", "High", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Sensitivity { get; set; }
 

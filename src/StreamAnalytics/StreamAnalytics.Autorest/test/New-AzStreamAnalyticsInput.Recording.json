@@ -1,9 +1,9 @@
 {
-  "New-AzStreamAnalyticsInput+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview+1": {
+  "New-AzStreamAnalyticsInput+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz/inputs/inputqf47vo?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubn0lj1p\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"sharedAccessPolicyKey\": \"jmCxPVMQC1Fp4tGJh4Kz70mIXPfG5rsf8j7qP0kqIsY=\",\r\n        \"consumerGroupName\": \"$Default\",\r\n        \"endpoint\": \"messages/events\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz/inputs/inputqf47vo?api-version=2017-04-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubpsmaqx\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"sharedAccessPolicyKey\": \"REDACTED\",\r\n        \"consumerGroupName\": \"$Default\",\r\n        \"endpoint\": \"messages/events\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,40 +17,40 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "27b822a8-5633-4bd4-bcf8-e43a9fa0dce9" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "7e43fa4a-8dc7-480b-bd01-0e0285ebcfa1" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "5ff92792-f048-481d-b718-1fbc934e98c3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032011Z:5ff92792-f048-481d-b718-1fbc934e98c3" ],
+        "ETag": [ "03479f29-402d-444c-ad43-db9dcdc57ea5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "922454a2-8e5a-4928-8f90-ca9e1e920c29" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/5ab113c4-61b8-46e1-81dc-bf70f1e957d6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "d7ae9e77-a2fe-473a-81b2-06f00cb61677" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T093421Z:d7ae9e77-a2fe-473a-81b2-06f00cb61677" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:20:10 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AA5BD1B26BC74C588DD8D92A1E492E1B Ref B: MAA201060513019 Ref C: 2025-08-21T09:34:19Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:34:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "598" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "866" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c\",\"name\":\"inputnlga1c\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/inputs\",\"properties\":{\"type\":\"Stream\",\"datasource\":{\"type\":\"Microsoft.Devices/IotHubs\",\"properties\":{\"iotHubNamespace\":\"iothubn0lj1p\",\"sharedAccessPolicyName\":\"iothubowner\",\"endpoint\":\"messages/events\",\"consumerGroupName\":\"$Default\"}},\"compression\":{\"type\":\"None\"},\"partitionKey\":\"\",\"serialization\":{\"type\":\"Json\",\"properties\":{\"encoding\":\"UTF8\"}}}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz/inputs/inputqf47vo\",\r\n  \"name\": \"inputqf47vo\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs/inputs\",\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubpsmaqx\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"endpoint\": \"messages/events\",\r\n        \"consumerGroupName\": \"$Default\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"schemaRegistry\": null,\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"messagingCatalogConfiguration\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzStreamAnalyticsInput+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview+2": {
+  "New-AzStreamAnalyticsInput+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz/inputs/inputqf47vo?api-version=2017-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz/inputs/inputqf47vo?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "f9a86a9e-9eaa-4d62-ad32-524d38293476" ],
+        "x-ms-unique-id": [ "238" ],
+        "x-ms-client-request-id": [ "dadeb0f5-b8c4-482d-8ca1-70b649c481ee" ],
         "CommandName": [ "Get-AzStreamAnalyticsInput" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsInput_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -61,24 +61,23 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "27b822a8-5633-4bd4-bcf8-e43a9fa0dce9" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "f9a86a9e-9eaa-4d62-ad32-524d38293476" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11933" ],
-        "x-ms-correlation-request-id": [ "8c1e79b9-887f-44e5-b1e0-b15e088e3c14" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032011Z:8c1e79b9-887f-44e5-b1e0-b15e088e3c14" ],
+        "ETag": [ "03479f29-402d-444c-ad43-db9dcdc57ea5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "dadeb0f5-b8c4-482d-8ca1-70b649c481ee" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/e910d82d-1e40-4477-87b9-48ba0598f814" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "ecfa172b-5a65-4b05-827e-b07b0d513c65" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T093422Z:ecfa172b-5a65-4b05-827e-b07b0d513c65" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:20:11 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EB62E4E104FB4632B93620ACE4674B3B Ref B: MAA201060513019 Ref C: 2025-08-21T09:34:21Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:34:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "598" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "866" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c\",\"name\":\"inputnlga1c\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/inputs\",\"properties\":{\"type\":\"Stream\",\"datasource\":{\"type\":\"Microsoft.Devices/IotHubs\",\"properties\":{\"iotHubNamespace\":\"iothubn0lj1p\",\"sharedAccessPolicyName\":\"iothubowner\",\"endpoint\":\"messages/events\",\"consumerGroupName\":\"$Default\"}},\"compression\":{\"type\":\"None\"},\"partitionKey\":\"\",\"serialization\":{\"type\":\"Json\",\"properties\":{\"encoding\":\"UTF8\"}}}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz/inputs/inputqf47vo\",\r\n  \"name\": \"inputqf47vo\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs/inputs\",\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubpsmaqx\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"endpoint\": \"messages/events\",\r\n        \"consumerGroupName\": \"$Default\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"schemaRegistry\": null,\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"messagingCatalogConfiguration\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

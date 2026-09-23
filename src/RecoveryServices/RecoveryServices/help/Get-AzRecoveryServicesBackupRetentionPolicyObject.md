@@ -15,8 +15,9 @@ Gets a base retention policy object.
 
 ```
 Get-AzRecoveryServicesBackupRetentionPolicyObject [-WorkloadType] <WorkloadType>
- [[-BackupManagementType] <BackupManagementType>] [-DefaultProfile <IAzureContextContainer>]
- [[-ScheduleRunFrequency] <ScheduleRunType>] [<CommonParameters>]
+ [[-BackupManagementType] <BackupManagementType>] [[-BackupTier] <BackupTierType>]
+ [-DefaultProfile <IAzureContextContainer>] [[-ScheduleRunFrequency] <ScheduleRunType>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +65,22 @@ Accepted values: AzureVM, AzureStorage, AzureWorkload
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupTier
+Backup tier for the resource. The current supported values are Snapshot, VaultStandard
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupTierType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Snapshot, VaultStandard
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

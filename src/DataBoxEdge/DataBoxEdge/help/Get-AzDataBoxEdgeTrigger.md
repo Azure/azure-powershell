@@ -37,7 +37,7 @@ Get-AzDataBoxEdgeTrigger [[-Name] <String>] [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The **Get-AzDataBoxEdgeTriger** cmdlet gets the triggers for a device. You can specify the name as a parameter in the cmdlet to fetch the details of a specific  specific Triggers
+The **Get-AzDataBoxEdgeTrigger** cmdlet gets the triggers for a device. You can specify the name as a parameter in the cmdlet to fetch the details of a specific  specific Triggers
  
 
 ## EXAMPLES

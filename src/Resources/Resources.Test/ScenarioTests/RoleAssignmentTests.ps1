@@ -435,7 +435,7 @@ function Test-RaPropertiesValidation
     $roleDef = Get-AzRoleDefinition -Name "Reader"
     $roleDef.Id = "ff9cd1ab-d763-486f-b253-51a816c92aaf"
     $roleDef.Name = "Reader vm For Test"
-    $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
+    $roleDef.Permissions[0].Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = '/subscriptions/'+$subscription[0].Id
 
@@ -549,6 +549,31 @@ function Test-RaGetByScope
     # Assert-AreEqual $users[0].DisplayName $newAssignment1.DisplayName
 
     VerifyRoleAssignmentDeleted $newAssignment1
+}
+
+<#
+.SYNOPSIS
+Tests verifies get of RoleAssignment With AtScope
+#>
+function Test-RaGetWithAtScope
+{
+    # Setup
+    $subscription = $(Get-AzContext).Subscription
+    $resourceGroups = Get-AzResourceGroup | Select-Object -Last 9 -Wait
+    $scope1 = '/subscriptions/'+ $subscription[0].Id
+    $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    
+    $ras_scope_list = @()
+    $ras_atscope_list = @()
+    
+    $ras_scope = Get-AzRoleAssignment -Scope $scope1
+    $ras_scope | Select-Object -ExpandProperty Scope -Unique | ForEach-Object { $ras_scope_list += $_ }
+
+    $ras_atscope = Get-AzRoleAssignment -Scope $scope1 -AtScope
+    $ras_atscope | Select-Object -ExpandProperty Scope -Unique | ForEach-Object { $ras_atscope_list += $_ }
+
+    Assert-True { $ras_scope_list -contains $scope2 }
+    Assert-False { $ras_Atscope_list -contains $scope2 }
 }
 
 <#
@@ -893,10 +918,41 @@ function Test-CreateRAWhenIdNotExist
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
     $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
-    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Operation returned an invalid status code ''BadRequest''"'
+    $ExpectedError = "PrincipalNotFound: Principal $($PrincipalId.Replace('-','')) does not exist in the directory"
 
     #When
     $function = { New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 0f7b6fb6-a5f4-4046-83eb-dfd93c5e4b72 }
 
-    Assert-Throws $function $ExpectedError
+    Assert-ThrowsContains $function $ExpectedError
+}
+
+<#
+.SYNOPSIS
+Validates that Get-AzRoleAssignment can filter client-side the role assignments by ObjectId in different GUID formats.
+#>
+function Test-RAGuidFormatHandling
+{
+    $subscription = $(Get-AzContext).Subscription
+    $scope = '/subscriptions/'+ $subscription[0].Id
+    $principalId = "35e5fdfa-e80b-49b9-abf3-4c9a54f6b7a3"
+    
+    $expected = @(Get-AzRoleAssignment -ObjectId $principalId -Scope $scope -AtScope)
+    $expectedIds = $expected | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
+
+    # when non-Guid result should be empty
+    $res = @(Get-AzRoleAssignment -ObjectId "abc" -Scope $scope -AtScope)
+    Assert-AreEqual ($res.Count) 0
+
+    $guid = [guid]::Parse($principalId)
+    $formats = @('N', 'D', 'B', 'P', 'X')
+    foreach ($format in $formats) {
+        $principalIdFormat = $guid.ToString($format)
+        $actual = @(Get-AzRoleAssignment -ObjectId $principalIdFormat -Scope $scope -AtScope)
+        Assert-AreEqual $expected.Count $actual.Count
+        
+        if ($actual) {
+            $actualIds = $actual | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
+            Assert-AreEqual (@($expectedIds) -join ',') (@($actualIds) -join ',')
+        }
+    }
 }

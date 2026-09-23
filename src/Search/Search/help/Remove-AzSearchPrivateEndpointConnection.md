@@ -8,36 +8,40 @@ schema: 2.0.0
 # Remove-AzSearchPrivateEndpointConnection
 
 ## SYNOPSIS
-Remove the private endpoint connection from the Azure Cognitive Search service.
+Remove the private endpoint connection from the Azure AI Search service.
 
 ## SYNTAX
 
 ### ResourceNameParameterSet (Default)
 ```
 Remove-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Remove-AzSearchPrivateEndpointConnection [-ParentObject] <PSSearchService> [-Name] <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzSearchPrivateEndpointConnection [-InputObject] <PSPrivateEndpointConnection> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzSearchPrivateEndpointConnection [-ResourceId] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSearchPrivateEndpointConnection** removes the private endpoint connection from the Azure Cognitive Search service.
+The **Remove-AzSearchPrivateEndpointConnection** removes the private endpoint connection from the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -96,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Service private endpoint connection name
+Azure AI Search Service private endpoint connection name
 
 ```yaml
 Type: System.String
@@ -111,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -172,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

@@ -29,7 +29,7 @@ To update other fields use the CreateOrUpdate method.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -87,7 +87,7 @@ PROFILE <IAutoscaleProfile[]>: the collection of automatic scaling profiles that
 https://learn.microsoft.com/powershell/module/az.monitor/update-azAutoscaleSetting
 #>
 function Update-AzAutoscaleSetting {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -129,7 +129,7 @@ function Update-AzAutoscaleSetting {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification[]]
         # the collection of notifications.
         # To construct, see NOTES section for NOTIFICATION properties and create a hash table.
         ${Notification},
@@ -142,16 +142,16 @@ function Update-AzAutoscaleSetting {
         ${PredictiveAutoscalePolicyScaleLookAheadTime},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Disabled", "ForecastOnly", "Enabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode]
+        [System.String]
         # the predictive autoscale mode
         ${PredictiveAutoscalePolicyScaleMode},
     
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile[]]
         # the collection of automatic scaling profiles that specify different scaling parameters for different time periods.
         # A maximum of 20 profiles can be specified.
         # To construct, see NOTES section for PROFILE properties and create a hash table.
@@ -159,7 +159,7 @@ function Update-AzAutoscaleSetting {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResourcePatchTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResourcePatchTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

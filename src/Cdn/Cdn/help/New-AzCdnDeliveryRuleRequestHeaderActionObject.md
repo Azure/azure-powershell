@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulerequestheaderactionobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for DeliveryRuleRequestHeaderAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleRequestHeaderActionObject -ParameterHeaderAction <HeaderAction>
- -ParameterHeaderName <String> -Name <DeliveryRuleAction> [-ParameterValue <String>]
+New-AzCdnDeliveryRuleRequestHeaderActionObject -ParameterHeaderAction <String> -ParameterHeaderName <String>
+ -ParameterTypeName <String> [-ParameterValue <String>]
  [<CommonParameters>]
 ```
 
@@ -38,26 +38,11 @@ Create an in-memory object for AzureCDN DeliveryRuleRequestHeaderAction
 
 ## PARAMETERS
 
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParameterHeaderAction
 Action to perform.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,6 +60,20 @@ Name of the header to modify.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParameterTypeName
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
 
 Required: True
 Position: Named
@@ -105,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestHeaderAction
 
 ## NOTES
 

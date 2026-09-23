@@ -14,21 +14,26 @@ Updates a network manager routing configuration.
 
 ### ByInputObject (Default)
 ```
-Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration>
+ [-RouteTableUsageMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Set-AzNetworkManagerRoutingConfiguration -Name <String> -ResourceGroupName <String>
- -NetworkManagerName <String> [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -NetworkManagerName <String> [-Description <String>] [-RouteTableUsageMode <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzNetworkManagerRoutingConfiguration -ResourceId <String> [-Description <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerRoutingConfiguration -ResourceId <String> [-Description <String>]
+ [-RouteTableUsageMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +41,7 @@ The **Set-AzNetworkManagerRoutingConfiguration** cmdlet updates a network manage
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update routing configuration using InputObject
 ```powershell
 $NetworkManagerRoutingConfiguration = Get-AzNetworkManagerRoutingConfiguration  -Name "psRoutingConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
 Set-AzNetworkManagerRoutingConfiguration -InputObject $NetworkManagerRoutingConfiguration
@@ -47,6 +52,7 @@ DisplayName                                 :
 Description                                 : TestDescription
 Type                                        : Microsoft.Network/networkManagers/routingConfigurations
 ProvisioningState                           : Succeeded
+RouteTableUsageMode                         : ManagedOnly
 SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText                              : {
                                                  "CreatedBy": "00000000-0000-0000-0000-000000000000",
@@ -63,13 +69,70 @@ Id                                          : /subscriptions/f0dc2b34-dfad-40e4-
 
 Updates a network manager routing configuration.
 
+### Example 2: Update RouteTableUsageMode using ByName parameter set
+```powershell
+Set-AzNetworkManagerRoutingConfiguration -Name "psRoutingConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -RouteTableUsageMode "UseExisting"
+```
+
+```output
+DisplayName                                 :
+Description                                 : TestDescription
+Type                                        : Microsoft.Network/networkManagers/routingConfigurations
+ProvisioningState                           : Succeeded
+RouteTableUsageMode                         : UseExisting
+SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                              : {
+                                                 "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                                                 "CreatedByType": "Application",
+                                                 "CreatedAt": "2021-10-18T04:05:57",
+                                                 "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                                                 "LastModifiedByType": "Application",
+                                                 "LastModifiedAt": "2021-10-18T04:06:59"
+                                              }
+Name                                        : psRoutingConfig
+Etag                                        :
+Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/routingConfigurations/psRoutingConfig
+```
+
+Updates the RouteTableUsageMode for an existing routing configuration to UseExisting.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,6 +242,21 @@ Parameter Sets: ByResourceId
 Aliases: RoutingConfigurationId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RouteTableUsageMode
+Specifies the route table usage mode for the configuration. Valid values are 'ManagedOnly' and 'UseExisting'. This parameter is optional and only updates the property if specified.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

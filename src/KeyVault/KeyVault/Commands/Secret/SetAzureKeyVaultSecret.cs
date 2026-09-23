@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string DefaultParameterSet = "Default";
         private const string InputObjectParameterSet = "InputObject";
+        private const string BySecretUriParameterSet = "BySecretUri";
 
         #endregion
 
@@ -56,6 +58,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// KeyVault Secret ID (uri of the secret)
+        /// </summary>
+        [Parameter(Mandatory = true,
+           Position = 0,
+           ParameterSetName = BySecretUriParameterSet,
+           HelpMessage = "The URI of the KeyVault Secret.")]
+        [Alias("SecretId")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         /// <summary>
         /// Secret object
@@ -120,6 +133,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
+            }
+
+            if (ParameterSetName == BySecretUriParameterSet)
+            {
+                SecretUriComponents splitUri = new SecretUriComponents(Id);
+
+                VaultName = splitUri.VaultName;
+                Name = splitUri.SecretName;
             }
 
             if (ShouldProcess(Name, Properties.Resources.SetSecret))

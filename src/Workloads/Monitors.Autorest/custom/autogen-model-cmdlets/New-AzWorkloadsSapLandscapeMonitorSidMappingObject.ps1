@@ -21,12 +21,13 @@ Create an in-memory object for SapLandscapeMonitorSidMapping.
 Create an in-memory object for SapLandscapeMonitorSidMapping.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorSidMapping
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorSidMapping
 .Link
-https://learn.microsoft.com/powershell/module/Az.Workloads/new-AzWorkloadsSapLandscapeMonitorSidMappingObject
+https://learn.microsoft.com/powershell/module/Az.Workloads/new-azworkloadssaplandscapemonitorsidmappingobject
 #>
 function New-AzWorkloadsSapLandscapeMonitorSidMappingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorSidMapping')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorSidMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +40,7 @@ function New-AzWorkloadsSapLandscapeMonitorSidMappingObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorSidMapping]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.SapLandscapeMonitorSidMapping]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

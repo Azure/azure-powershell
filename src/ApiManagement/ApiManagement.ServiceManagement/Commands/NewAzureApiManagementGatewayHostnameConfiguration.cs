@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
                    ValueFromPipelineByPropertyName = true,
                    Mandatory = false,
-                   HelpMessage = "Identifier of new gateway hostname confiuration. This parameter is optional. If not specified will be generated.")]
+                   HelpMessage = "Identifier of new gateway hostname configuration. This parameter is optional. If not specified will be generated.")]
         public String GatewayHostnameConfigurationId { get; set; }
 
         [Parameter(

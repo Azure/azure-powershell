@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public new object GetDynamicParameters()
         {
-            RuntimeDefinedParameterDictionary dynamicParams = null;
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary ?? new RuntimeDefinedParameterDictionary();
 
             if (commandTypeSet)
             {
@@ -108,10 +108,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         throw new PSArgumentException();
                 }
 
-                dynamicParams = commandCmdlet.RuntimeDefinedParams;
+                foreach (var pair in commandCmdlet.RuntimeDefinedParams)
+                {
+                    parameters.Add(pair.Key, pair.Value);
+                }
             }
 
-            return dynamicParams;
+            return parameters;
         }
 
         public override void ExecuteCmdlet()

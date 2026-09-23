@@ -15,7 +15,8 @@ Define Inbound Security Rules Property
 ```
 New-AzVirtualApplianceInboundSecurityRulesProperty -Name <String> -Protocol <String>
  -SourceAddressPrefix <String> [-DestinationPortRange <Int32>] [-DestinationPortRangeList <String[]>]
- -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +37,24 @@ Source Address Prefix: *
 Destination Port Range List: "80-120" & "121-124"
 Applies on: publicip1
 
-The rule with above property will configure a corresponding NSG rule and a Load Balancing rule on the SLB attached to the NVA, the LB rule will have the Frontned IP as publicip1
+The rule with above property will configure a corresponding NSG rule and a Load Balancing rule on the SLB attached to the NVA, the LB rule will have the Frontend IP as publicip1
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AppliesOn
 The Applies On value of the rule for the SLP IP/Interface
@@ -49,6 +65,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

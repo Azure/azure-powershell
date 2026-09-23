@@ -21,12 +21,13 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileNameConditionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleurlfilenameconditionobject
 #>
 function New-AzFrontDoorCdnRuleUrlFileNameConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,21 +38,22 @@ function New-AzFrontDoorCdnRuleUrlFileNameConditionObject {
         [bool]
         $ParameterNegateCondition,
         [Parameter(Mandatory, HelpMessage="Describes operator to be matched.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.UrlFileNameOperator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.UrlFileNameOperator]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Any", "Equal", "Contains", "BeginsWith", "EndsWith", "LessThan", "LessThanOrEqual", "GreaterThan", "GreaterThanOrEqual", "RegEx")]
+        [string]
         $ParameterOperator,
         [Parameter(HelpMessage="List of transforms.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
+        [string[]]
         $ParameterTransform,
-        [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
-        $Name
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
+        [string]
+        [alias('Name')]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileNameCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileNameCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -65,8 +67,8 @@ function New-AzFrontDoorCdnRuleUrlFileNameConditionObject {
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         return $Object
     }

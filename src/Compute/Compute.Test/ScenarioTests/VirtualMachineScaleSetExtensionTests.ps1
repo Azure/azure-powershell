@@ -230,3 +230,291 @@ function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
     Assert-AreEqual "NotEncrypted" (($result.DataVolumesEncryptionStatus | ConvertFrom-Json -AsHashtable).Values[0] | Out-String ).Trim();
     $output = $result | Out-String;
 }
+
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension with EncryptionIdentity Added in vmss security profile
+#>
+function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmssConfig{
+    $rgName = Get-ComputeTestResourceName;
+    try {
+        # create virtual machine Scale Set
+        $loc = "centraluseuap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmssName = "vmss" + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";         
+        $osVersion = "latest"
+        $vmssSize = 'Standard_D4s_v3'; 
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/anshademsitest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/anshjainmsitestuserassignedmanagedidentity"
+        $instances = 2
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType UserAssigned -IdentityId $encIdentity -EncryptionIdentity $encIdentity -OrchestrationMode Uniform
+
+        Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest" -AdminUsername $adminUserName -AdminPassword $adminPassword
+
+        $subnetName = 'default'
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnetName = ('{0}-vnet' -f $vmSSName)
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $loc -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        $subnetId = $vnet.Subnets[0].Id
+        $vmssConfigPublicIpName = ('{0}ip' -f $vmSSName)
+
+        $IPCfg = New-AzVmssIPConfig -Name $vmssConfigPublicIpName -SubnetId $subnetId
+        $vmssNetworkConfigName = ('{0}netconfig' -f $vmSSName)
+
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name $vmssNetworkConfigName -Primary $True -IPConfiguration $IPCfg
+
+        New-AzVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmssConfig
+
+        $vmssStatus = Get-AzVmss -VMScaleSetName $vmSSName -ResourceGroupName $rgName
+        
+        $vaultName = $rgname + '-kv';
+        $principalId = "7089a49e-00be-4313-b644-46a6294d0a91";
+        
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName $principalId;
+
+        Set-AzVmssDiskEncryptionExtension `
+            -ResourceGroupName $rgName `
+            -VMScaleSetName $vmssName `
+            -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
+            -VolumeType "All" `
+            -Force;
+
+        $status = Get-AzVmssDiskEncryptionStatus -ResourceGroupName $rgName -VMScaleSetName $vmssName;
+        Assert-NotNull $status;
+        Assert-NotNull $status.EncryptionSummary
+        Assert-NotNull $status.EncryptionSummary[0]
+        Assert-AreEqual "ProvisioningState/succeeded" $status.EncryptionSummary[0].Code
+        Assert-AreEqual $True $status.EncryptionEnabled
+    }
+    finally {
+        clean-ResourceGroup $rgName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMssDiskEncryptionExtension with EncryptionIdentity Added in vm security profile during Set ADE Cmdlet
+#>
+function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInSetADEVMssCmdlet{
+    $rgName = Get-ComputeTestResourceName;
+    try {
+        # create virtual machine Scale Set
+        $loc = "centraluseuap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmssName = "vmss" + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";         
+        $osVersion = "latest"
+        $vmssSize = 'Standard_D4s_v3'; 
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/anshademsitest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/anshjainmsitestuserassignedmanagedidentity"
+        $instances = 2
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType UserAssigned -IdentityId $encIdentity -OrchestrationMode Uniform
+
+        Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest" -AdminUsername $adminUserName -AdminPassword $adminPassword
+
+        $subnetName = 'default'
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnetName = ('{0}-vnet' -f $vmSSName)
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $loc -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        $subnetId = $vnet.Subnets[0].Id
+        $vmssConfigPublicIpName = ('{0}ip' -f $vmSSName)
+
+        $IPCfg = New-AzVmssIPConfig -Name $vmssConfigPublicIpName -SubnetId $subnetId
+        $vmssNetworkConfigName = ('{0}netconfig' -f $vmSSName)
+
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name $vmssNetworkConfigName -Primary $True -IPConfiguration $IPCfg
+
+        New-AzVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmssConfig
+
+        $vmssStatus = Get-AzVmss -VMScaleSetName $vmSSName -ResourceGroupName $rgName
+        
+        $vaultName = $rgname + '-kv';
+        $principalId = "7089a49e-00be-4313-b644-46a6294d0a91";
+        
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName $principalId;
+
+        Set-AzVmssDiskEncryptionExtension `
+            -ResourceGroupName $rgName `
+            -VMScaleSetName $vmssName `
+            -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
+            -EncryptionId $encIdentity -VolumeType "All" `
+            -Force;
+
+        $status = Get-AzVmssDiskEncryptionStatus -ResourceGroupName $rgName -VMScaleSetName $vmssName;
+        Assert-NotNull $status;
+        Assert-NotNull $status.EncryptionSummary
+        Assert-NotNull $status.EncryptionSummary[0]
+        Assert-AreEqual "ProvisioningState/succeeded" $status.EncryptionSummary[0].Code
+        Assert-AreEqual $True $status.EncryptionEnabled
+
+    }
+    finally {
+      clean-ResourceGroup $rgName;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMssDiskEncryptionExtension with EncryptionIdentity not added in vm security profile
+Throw Exception with message:Encryption Identity should be an ARM Resource ID of one of the 
+user assigned identities associated to the resource
+#>
+function Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachineScaleSet {
+    
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine Scale Set
+        $loc = "centraluseuap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmssName = "vmss" + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";         
+        $osVersion = "latest"
+        $vmssSize = 'Standard_D4s_v3'; 
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/anshademsitest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/anshjainmsitestuserassignedmanagedidentity"
+        $instances = 2
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType SystemAssigned -OrchestrationMode Uniform
+
+        Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest" -AdminUsername $adminUserName -AdminPassword $adminPassword
+
+        $subnetName = 'default'
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnetName = ('{0}-vnet' -f $vmSSName)
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $loc -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        $subnetId = $vnet.Subnets[0].Id
+        $vmssConfigPublicIpName = ('{0}ip' -f $vmSSName)
+
+        $IPCfg = New-AzVmssIPConfig -Name $vmssConfigPublicIpName -SubnetId $subnetId
+        $vmssNetworkConfigName = ('{0}netconfig' -f $vmSSName)
+
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name $vmssNetworkConfigName -Primary $True -IPConfiguration $IPCfg
+
+        New-AzVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmssConfig
+
+        $vmssStatus = Get-AzVmss -VMScaleSetName $vmSSName -ResourceGroupName $rgName
+        
+        $vaultName = $rgname + '-kv';
+        $principalId = "7089a49e-00be-4313-b644-46a6294d0a91";
+        
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName $principalId;
+
+        Assert-ThrowsContains {Set-AzVmssDiskEncryptionExtension `
+            -ResourceGroupName $rgName `
+            -VMScaleSetName $vmssName `
+            -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
+            -EncryptionId $encIdentity -VolumeType "All" `
+            -Force;} `
+        "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource";
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMssDiskEncryptionExtension with EncryptionIdentity added in vm security profile
+Encryption Identity not acled in the KeyVault
+Throw Exception with message:RUNTIME_E_KEYVAULT_SET_SECRET_FAILED  Failed to set secret to KeyVault
+#>
+function Test-AzureVmssDiskEncryptionWithIdentityNotAckledInKeyVault {
+    
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # create virtual machine Scale Set
+        $loc = "centraluseuap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmssName = "vmss" + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";         
+        $osVersion = "latest"
+        $vmssSize = 'Standard_D4s_v3'; 
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/anshademsitest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/anshjainmsitestuserassignedmanagedidentity"
+        $instances = 2
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity $instances -SkuName $vmssSize -UpgradePolicyMode Automatic -IdentityType UserAssigned -IdentityId $encIdentity -OrchestrationMode Uniform
+
+        Set-AzVmssStorageProfile $vmssConfig -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion $osVersion -OsDiskCreateOption "FromImage" -OsDiskCaching ReadWrite
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        Set-AzVmssOsProfile $vmssConfig -ComputerNamePrefix "adetest" -AdminUsername $adminUserName -AdminPassword $adminPassword
+
+        $subnetName = 'default'
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnetName = ('{0}-vnet' -f $vmSSName)
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $loc -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        $subnetId = $vnet.Subnets[0].Id
+        $vmssConfigPublicIpName = ('{0}ip' -f $vmSSName)
+
+        $IPCfg = New-AzVmssIPConfig -Name $vmssConfigPublicIpName -SubnetId $subnetId
+        $vmssNetworkConfigName = ('{0}netconfig' -f $vmSSName)
+
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name $vmssNetworkConfigName -Primary $True -IPConfiguration $IPCfg
+
+        New-AzVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmssConfig
+
+        $vmssStatus = Get-AzVmss -VMScaleSetName $vmSSName -ResourceGroupName $rgName
+
+        $vaultName = $rgname + '-kv';
+        
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName
+
+        Assert-ThrowsContains {Set-AzVMssDiskEncryptionExtension `
+            -ResourceGroupName $rgName `
+            -VMScaleSetName $vmssName `
+            -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
+            -EncryptionId $encIdentity -VolumeType "All" `
+            -Force; } `
+            "RUNTIME_E_KEYVAULT_SET_SECRET_FAILED  Failed to set secret to KeyVault"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

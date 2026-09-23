@@ -51,33 +51,33 @@ function Update-AzAksArcNodepool {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster on which get is called.
     ${ClusterName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # Parameter for the name of the agent pool in the provisioned cluster.
     ${Name},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity]
     # Identity Parameter
@@ -90,20 +90,26 @@ param(
     # The default value is 1.
     ${Count},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable auto-scaler.
     # Default value is false
     ${EnableAutoScaling},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The maximum number of pods that can run on a node.
+    ${MaxPod},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The maximum number of nodes for auto-scaling
     ${MaxCount},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The minimum number of nodes for auto-scaling
@@ -123,6 +129,22 @@ param(
     # Taints added to new nodes during node pool create and scale.
     # For example, key=value:NoSchedule.
     ${NodeTaint},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CBLMariner", "Windows2019", "Windows2022")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Specifies the OS SKU used by the agent pool.
+    # The default is CBLMariner if OSType is Linux.
+    # The default is Windows2019 when OSType is Windows.
+    ${OSSku},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("Windows", "Linux")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # The particular KubernetesVersion Image OS Type (Linux, Windows)
+    ${OSType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -188,16 +210,24 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
-
-process {
-
-    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
-    $null = $PSBoundParameters.Remove("SubscriptionId")
-    $null = $PSBoundParameters.Remove("ResourceGroupName")
-    $null = $PSBoundParameters.Remove("ClusterName")
-    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-
+  process {
+    $scope = $null
+    if ($PSCmdlet.ParameterSetName -eq "UpdateExpanded") {
+      $scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId `
+        -ResourceGroupName $ResourceGroupName `
+        -ClusterName $ClusterName
+      $null = $PSBoundParameters.Remove("SubscriptionId")
+      $null = $PSBoundParameters.Remove("ResourceGroupName")
+      $null = $PSBoundParameters.Remove("ClusterName")
+    } elseif ($PSCmdlet.ParameterSetName -eq "UpdateViaIdentityExpanded") {
+      # Parameter set CreateViaIdentityExpanded is broken because nodepool doesn't have a valid ARM ID, so work around 
+      # by parsing the resource ID for subscription ID, resource group name, cluster name, and nodepool name.
+      $scopeAndName = Get-NodePoolInfoFromURI -NodePoolResourceURI $InputObject.Id
+      $scope = $scopeAndName["scope"]
+      $null = $PSBoundParameters.Add("Name", $scopeAndName["name"])
+      $null = $PSBoundParameters.Remove("InputObject")
+    }
+    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $scope)
     Az.AksArc.internal\Update-AzAksArcNodepool @PSBoundParameters
-}
-
+  }
 }

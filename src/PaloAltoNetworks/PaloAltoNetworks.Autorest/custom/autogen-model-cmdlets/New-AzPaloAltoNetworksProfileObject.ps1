@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksprofileobject
 #>
 function New-AzPaloAltoNetworksProfileObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -41,6 +42,9 @@ function New-AzPaloAltoNetworksProfileObject {
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("VNET", "VWAN")]
         [string]
         $NetworkType,
+        [Parameter(HelpMessage="Array of ipv4 destination address for which source NAT is to be performed.")]
+        [string[]]
+        $PrivateSourceNatRulesDestination,
         [Parameter(Mandatory, HelpMessage="List of IPs associated with the Firewall.")]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]]
         $PublicIP,
@@ -83,7 +87,7 @@ function New-AzPaloAltoNetworksProfileObject {
         [Parameter(HelpMessage="Resource Id.")]
         [string]
         $VwanConfigurationIPOfTrustSubnetForUdrResourceId,
-        [Parameter(HelpMessage="Network Virtual Appliance resource ID .")]
+        [Parameter(HelpMessage="Network Virtual Appliance resource ID.")]
         [string]
         $VwanConfigurationNetworkVirtualApplianceId,
         [Parameter(HelpMessage="Address Space.")]
@@ -111,6 +115,9 @@ function New-AzPaloAltoNetworksProfileObject {
         }
         if ($PSBoundParameters.ContainsKey('NetworkType')) {
             $Object.NetworkType = $NetworkType
+        }
+        if ($PSBoundParameters.ContainsKey('PrivateSourceNatRulesDestination')) {
+            $Object.PrivateSourceNatRulesDestination = $PrivateSourceNatRulesDestination
         }
         if ($PSBoundParameters.ContainsKey('PublicIP')) {
             $Object.PublicIP = $PublicIP

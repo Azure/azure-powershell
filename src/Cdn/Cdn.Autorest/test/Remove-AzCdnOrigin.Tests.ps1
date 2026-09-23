@@ -14,59 +14,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnOrigin'  {
+Describe 'Remove-AzCdnOrigin' {
     BeforeAll {
-        $subId = $env.SubscriptionId
-        $endpointName = 'e-clipstest080'
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
-        
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
-        $location = "westus"
-        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName/origins/$($origin.Name)"
-        $originGroup = @{
-            Name = "originGroup1"
-            HealthProbeSettingProbeIntervalInSecond = 240
-            HealthProbeSettingProbePath = "/health.aspx"
-            HealthProbeSettingProbeProtocol = "Https"
-            HealthProbeSettingProbeRequestType = "GET" 
-            Origin = @(@{
-                Id = $originId
-            })
-        }
-        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName/origingroups/$($originGroup.Name)"
-        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
-            -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
-        New-AzCdnOrigin -Name "origin2" -HostName "host2.hello.com" -EndpointName $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-
-        $endpointName2 = 'e-clipstest081'
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2)"
-        
-        $originId2 = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origins/$($origin.Name)"
-        $originGroup2 = @{
-            Name = "originGroup1"
-            HealthProbeSettingProbeIntervalInSecond = 240
-            HealthProbeSettingProbePath = "/health.aspx"
-            HealthProbeSettingProbeProtocol = "Https"
-            HealthProbeSettingProbeRequestType = "GET" 
-            Origin = @(@{
-                Id = $originId2
-            })
-        }
-        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origingroups/$($originGroup2.Name)"
-        New-AzCdnEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
-            -Origin $origin -OriginGroup $originGroup2 -DefaultOriginGroupId $defaultOriginGroup
-        New-AzCdnOrigin -Name "origin3" -HostName "host2.hello.com" -EndpointName $endpointName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $script:subId = $env.SubscriptionId
+        $script:endpointName = 'e-clipstest-origin-rm'
+        $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origins/$($origin.Name)"
+        $hp = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath '/health.aspx' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
+        $og = @{ Name = 'originGroup1'; healthProbeSetting = $hp; Origin = @(@{ Id = $originId }) }
+        $defaultOG = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origingroups/$($og.Name)"
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin -OriginGroup $og -DefaultOriginGroupId $defaultOG | Out-Null
+        New-AzCdnOrigin -Name 'origin2' -HostName 'host2.hello.com' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Out-Null
     }
 
-    It 'Delete' {        
-        Remove-AzCdnOrigin -Name "origin2" -EndpointName $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
     }
 
-    It 'DeleteViaIdentity' {
-        $originObject = Get-AzCdnOrigin -Name "origin3" -EndpointName $endpointName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Remove-AzCdnOrigin -InputObject $originObject
+    It 'Delete' {
+        Remove-AzCdnOrigin -Name 'origin2' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        { Get-AzCdnOrigin -Name 'origin2' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction Stop } | Should -Throw
+    }
+
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentityEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -15,23 +15,27 @@ Removes a Resource Group scoped Deployment Stack.
 ### RemoveByNameAndResourceGroupName (Default)
 ```
 Remove-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String>
- -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru] [-Force] [-BypassStackOutOfSyncError] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru] [-Force] [-BypassStackOutOfSyncError]
+ [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
 Remove-AzResourceGroupDeploymentStack -ResourceId <String> -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru]
- [-Force] [-BypassStackOutOfSyncError] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RemoveByStackObject
 ```
-Remove-AzResourceGroupDeploymentStack [-InputObjet] <PSDeploymentStack> -ActionOnUnmanage <PSActionOnUnmanage>
- [-PassThru] [-Force] [-BypassStackOutOfSyncError] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzResourceGroupDeploymentStack [-InputObject] <PSDeploymentStack> -ActionOnUnmanage <PSActionOnUnmanage>
+ [-PassThru] [-Force] [-BypassStackOutOfSyncError]
+ [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +51,21 @@ Remove-AzResourceGroupDeploymentStack -ResourceGroupName MyResourceGroup -Name M
 Deletes a resource group scoped deployment stack named 'MyRGStack' in resource group 'MyResourceGroup,' with unmanaged resources and resource groups being detached on cleanup.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ActionOnUnmanage
 Action to take on resources that become unmanaged on deletion or update of the deployment stack. Possible values include: 'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs), and 'deleteAll' (delete every unmanaged resource).
@@ -69,6 +88,21 @@ Bypass errors for the stack being out of sync when running the operation. If the
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,13 +143,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
 Parameter Sets: RemoveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0
@@ -169,21 +203,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the Resource Group with the stack to delete
 
@@ -211,6 +230,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourcesWithoutDeleteSupport
+The action to take on resources that do not support deletion when they are removed from the deployment stack. Possible values include: 'Fail' (default) and 'Detach'.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSResourcesWithoutDeleteSupport
+Parameter Sets: (All)
+Aliases:
+Accepted values: Fail, Detach
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

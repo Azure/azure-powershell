@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            string processorMode = null,
             string imageReferenceId = null,
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
@@ -80,7 +81,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableSecureBoot = null,
             string securityType = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            string zonePlacementPolicy = null,
+            string[] includeZone = null,
+            string[] excludeZone = null,
+            bool? alignRegionalDisksToVMZone = null,
+            bool? enableProxyAgent = null,
+            bool? addProxyAgentExtension = null,
+            string scheduledEventsApiVersion = null,
+            bool? enableAllInstancesDown = null,
+            bool? disableCapacityReservationAssignment = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -110,6 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         HardwareProfile = new HardwareProfile
                         {
                             VmSize = size,
+                            ProcessorMode = processorMode,
                             VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                             {
                                 VCPUsPerCore = vCPUsPerCore,
@@ -140,7 +151,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 deleteOption: osDiskDeleteOption),
                             DataDisks = DataDiskStrategy.CreateDataDisks(
                                 imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption),
-                            DiskControllerType = diskControllerType
+                            DiskControllerType = diskControllerType,
+                            AlignRegionalDisksToVMZone = alignRegionalDisksToVMZone
                         },
                         AvailabilitySet = engine.GetReference(availabilitySet),
                         Zones = zones,
@@ -152,20 +164,41 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
-                    ? new SecurityProfile
-                    {
-                        EncryptionAtHost = encryptionAtHostPresent,
-                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
-                        SecurityType = securityType,
-                    } : null,
-                        CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                        SecurityProfile = new SecurityProfile
                         {
-                            CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                            EncryptionAtHost = encryptionAtHostPresent,
+                            UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                            SecurityType = securityType,
+                            ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension): null,
+                        },
+                        CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
+                        {
+                            CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
+                            DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                         },
                         UserData = userData,
                         PlatformFaultDomain = platformFaultDomain,
-                        ExtendedLocation = extendedLocation
+                        ExtendedLocation = extendedLocation,
+                        Placement = (zonePlacementPolicy == null && includeZone == null && excludeZone == null) ? null : new Placement
+                        {
+                            ZonePlacementPolicy = zonePlacementPolicy,
+                            IncludeZones = includeZone,
+                            ExcludeZones = excludeZone
+                        },
+                        ScheduledEventsPolicy = (string.IsNullOrEmpty(scheduledEventsApiVersion) && enableAllInstancesDown == null) ? null : new ScheduledEventsPolicy
+                        {
+                            ScheduledEventsAdditionalPublishingTargets = string.IsNullOrEmpty(scheduledEventsApiVersion) ? null : new ScheduledEventsAdditionalPublishingTargets
+                            {
+                                EventGridAndResourceGraph = new EventGridAndResourceGraph
+                                {
+                                    ScheduledEventsApiVersion = scheduledEventsApiVersion
+                                }
+                            },
+                            AllInstancesDown = enableAllInstancesDown == null ? null : new AllInstancesDown
+                            {
+                                AutomaticallyApprove = enableAllInstancesDown
+                            }
+                        }
                     };
                     if(auxAuthHeader != null)
                     {
@@ -208,10 +241,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            string processorMode = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
-            string securityType = null
+            string securityType = null,
+            bool? disableCapacityReservationAssignment = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -228,6 +263,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     HardwareProfile = new HardwareProfile
                     {
                         VmSize = size,
+                        ProcessorMode = processorMode,
                         VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                         {
                             VCPUsPerCore = vCPUsPerCore,
@@ -257,16 +293,17 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null)
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,
                         UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                         SecurityType = securityType,
                     } : null,
-                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    CapacityReservation = (string.IsNullOrEmpty(capacityReservationGroupId) && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                     {
-                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                        CapacityReservationGroup = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new SubResource(capacityReservationGroupId),
+                        DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                     },
                     UserData = userData,
                     PlatformFaultDomain = platformFaultDomain,

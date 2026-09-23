@@ -39,7 +39,7 @@ $NodeTypeName = "nt1"
 Add-AzServiceFabricManagedNodeTypeVMSecret -ResourceGroupName $rgName -ClusterName $clusterName -NodeTypeName $NodeTypeName -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
 ```
 
-This commad adds a certificate secret from the keyvault and secret identifier specified.
+This command adds a certificate secret from the keyvault and secret identifier specified.
 
 ### Example 2
 ```powershell
@@ -51,7 +51,7 @@ $nodeType = Get-AzServiceFabricManagedNodeType -ResourceGroupName $rgName -Clust
 $nodeType | Add-AzServiceFabricManagedNodeTypeVMSecret -SourceVaultId /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/testRG/providers/Microsoft.KeyVault/vaults/testkv -CertificateUrl https://testskv.vault.azure.net:443/secrets/TestCert/xxxxxxxxxxxxxxxxxxxxxxxx -CertificateStore My -Verbose
 ```
 
-This commad adds a certificate secret from the keyvault and secret identifier specified, with piping.
+This command adds a certificate secret from the keyvault and secret identifier specified, with piping.
 
 ## PARAMETERS
 

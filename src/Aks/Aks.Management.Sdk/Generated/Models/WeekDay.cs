@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class WeekDay
     {
+        /// <summary>
+        /// Represents Sunday.
+        /// </summary>
         public const string Sunday = "Sunday";
+        /// <summary>
+        /// Represents Monday.
+        /// </summary>
         public const string Monday = "Monday";
+        /// <summary>
+        /// Represents Tuesday.
+        /// </summary>
         public const string Tuesday = "Tuesday";
+        /// <summary>
+        /// Represents Wednesday.
+        /// </summary>
         public const string Wednesday = "Wednesday";
+        /// <summary>
+        /// Represents Thursday.
+        /// </summary>
         public const string Thursday = "Thursday";
+        /// <summary>
+        /// Represents Friday.
+        /// </summary>
         public const string Friday = "Friday";
+        /// <summary>
+        /// Represents Saturday.
+        /// </summary>
         public const string Saturday = "Saturday";
     }
 }

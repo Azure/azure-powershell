@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 
         /// <summary>
         /// Constructs AzureSTorageTable from track 2 TableClient.
-        /// Internally it construcs track 1 CloudTable for property display purpose only.
+        /// Internally it constructs track 1 CloudTable for property display purpose only.
         /// </summary>
         /// <param name="tableClient"></param>
         public AzureStorageTable(TableClient tableClient)

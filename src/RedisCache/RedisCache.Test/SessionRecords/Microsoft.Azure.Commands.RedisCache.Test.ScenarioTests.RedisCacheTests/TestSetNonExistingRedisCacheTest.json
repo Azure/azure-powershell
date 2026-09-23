@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/providers/Microsoft.Cache?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmI5YWM3ZDItN2Y2ZC00ZGU0LTk2MmMtNDNmZGE0NGJjM2YyL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/6364f508-1150-4431-b973-c3f133466e56/providers/Microsoft.Cache?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2NGY1MDgtMTE1MC00NDMxLWI5NzMtYzNmMTMzNDY2ZTU2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "728de9e3-661b-443e-81f0-ebfeb534b206"
+          "52bb21d7-8f7b-460a-b655-33be8b0457c0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3124.26714",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.98"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.102"
         ]
       },
       "RequestBody": "",
@@ -33,13 +33,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "d92e23a0-7c1c-4633-86d7-822a994427c9"
+          "84475f0a-d5a7-46c8-bb93-c2f541ffb4dc"
         ],
         "x-ms-correlation-request-id": [
-          "d92e23a0-7c1c-4633-86d7-822a994427c9"
+          "84475f0a-d5a7-46c8-bb93-c2f541ffb4dc"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20240707T184624Z:d92e23a0-7c1c-4633-86d7-822a994427c9"
+          "EASTASIA:20241218T054431Z:84475f0a-d5a7-46c8-bb93-c2f541ffb4dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,13 +51,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: AF0A14A613424061B0C2FD1AF5CA3E64 Ref B: MAA201060516017 Ref C: 2024-07-07T18:46:24Z"
+          "Ref A: B1CE15C6C9F94D39AE4A3C5FB68923CC Ref B: SEL221051801045 Ref C: 2024-12-18T05:44:31Z"
         ],
         "Date": [
-          "Sun, 07 Jul 2024 18:46:23 GMT"
+          "Wed, 18 Dec 2024 05:44:31 GMT"
         ],
         "Content-Length": [
-          "170"
+          "174"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,25 +66,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/7/2024 6:46:10 PM' is earlier than current UTC time '7/7/2024 6:46:24 PM'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '12/18/2024 5:43:57 AM' is earlier than current UTC time '12/18/2024 5:44:31 AM'.\"\r\n  }\r\n}",
       "StatusCode": 401
     },
     {
-      "RequestUri": "/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/redis/nonexistingrediscache?api-version=2024-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmI5YWM3ZDItN2Y2ZC00ZGU0LTk2MmMtNDNmZGE0NGJjM2YyL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9yZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAyNC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/6364f508-1150-4431-b973-c3f133466e56/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/redis/nonexistingrediscache?api-version=2024-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2NGY1MDgtMTE1MC00NDMxLWI5NzMtYzNmMTMzNDY2ZTU2L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9yZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAyNC0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b32ff8ca-9501-4ca1-b55e-b39bbd898a63"
+          "c8c03904-c001-4d86-b98c-a36c63fb1b37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3124.26714",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RedisCache.RedisManagementClient/1.9.1"
+          "Microsoft.Azure.Management.RedisCache.RedisManagementClient/1.10.0"
         ]
       },
       "RequestBody": "",
@@ -102,13 +102,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "f18562af-7382-4d54-9a86-135fb4ed2dd6"
+          "b7e31113-dc60-4752-b67e-e7a84e9205ba"
         ],
         "x-ms-correlation-request-id": [
-          "f18562af-7382-4d54-9a86-135fb4ed2dd6"
+          "b7e31113-dc60-4752-b67e-e7a84e9205ba"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20240707T184624Z:f18562af-7382-4d54-9a86-135fb4ed2dd6"
+          "EASTASIA:20241218T054431Z:b7e31113-dc60-4752-b67e-e7a84e9205ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,13 +120,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 912D9A21AEF64AD1BF8DCD524FCE372C Ref B: MAA201060515051 Ref C: 2024-07-07T18:46:24Z"
+          "Ref A: 4F3CE1B18FC141A08B7D034C63C38BF8 Ref B: SEL221051801019 Ref C: 2024-12-18T05:44:31Z"
         ],
         "Date": [
-          "Sun, 07 Jul 2024 18:46:24 GMT"
+          "Wed, 18 Dec 2024 05:44:30 GMT"
         ],
         "Content-Length": [
-          "170"
+          "174"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -135,12 +135,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '7/7/2024 6:46:10 PM' is earlier than current UTC time '7/7/2024 6:46:24 PM'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ExpiredAuthenticationToken\",\r\n    \"message\": \"The access token expiry UTC time '12/18/2024 5:43:57 AM' is earlier than current UTC time '12/18/2024 5:44:31 AM'.\"\r\n  }\r\n}",
       "StatusCode": 401
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2"
+    "SubscriptionId": "6364f508-1150-4431-b973-c3f133466e56"
   }
 }

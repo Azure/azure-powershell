@@ -1,2 +1,3 @@
 "Module","Sdk","Severity","ProblemId","Description","Remediation"
   "Az.Compute","src/Compute/Compute.Management.Sdk","1","9080","Do not support updating SDK using autorest csharp v3.","Please update the Readme.md to generate code by autorest powershell v4."
+  "Az.Compute","src/Compute/Compute.Management.Sdk","1","9080","Do not support updating SDK using autorest csharp.","Please update the Readme.md to generate code by autorest powershell v4."

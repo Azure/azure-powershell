@@ -22,15 +22,26 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 
 ## EXAMPLES
 
-### Example 1: Make disks
+### Example 1: Make Standard disks
 ```powershell
-New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
+New-AzMigrateDiskMapping -DiskID a -DiskType Standard_LRS -IsOSDisk 'true'
 ```
 
 ```output
-DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
-------------------- ------   --------  -------- ------------------- ------------------------------   
-                      a      Standard  true
+DiskEncryptionSetId DiskId DiskType     IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------ --------     -------- ------------------- ------------------------------   
+                    a      Standard_LRS true
+```
+
+### Example 2: Make Premium V2 disks
+```powershell
+New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
+```
+
+```output
+DiskEncryptionSetId DiskId DiskType      IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
+------------------- ------ --------      -------- ------------------- ------------------------------   
+                    b      PremiumV2_LRS false
 ```
 
 Get disks object to provide input for New-AzMigrateServerReplication
@@ -38,7 +49,7 @@ Get disks object to provide input for New-AzMigrateServerReplication
 ## PARAMETERS
 
 ### -DiskEncryptionSetID
-Specifies the disk encyption set to be used.
+Specifies the disk encryption set to be used.
 
 ```yaml
 Type: System.String
@@ -104,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput
 
 ## NOTES
 

@@ -1,0 +1,161 @@
+{
+  "resourceType": "stageMaps",
+  "apiVersion": "2026-01-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.changesafety"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChangeSafetyStageMap",
+      "description": "Get a StageMap",
+      "path": "/managementGroups/{managementGroupName}/providers/Microsoft.ChangeSafety/stageMaps/{stageMapName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.changesafety/get-azchangesafetystagemap"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ManagementGroupName <String>",
+              "-Name <String>"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StageMap",
+          "parameters": [
+            {
+              "name": "-ManagementGroupName",
+              "value": "[Path.managementGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.stageMapName]"
+            }
+          ]
+        },
+        {
+          "description": "Get a StageMap",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.stageMapName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Get a StageMap",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.stageMapName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzChangeSafetyStageMap",
+      "description": "Delete a StageMap",
+      "path": "/managementGroups/{managementGroupName}/providers/Microsoft.ChangeSafety/stageMaps/{stageMapName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.changesafety/remove-azchangesafetystagemap"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ManagementGroupName <String>",
+              "-Name <String>"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a StageMap",
+          "parameters": [
+            {
+              "name": "-ManagementGroupName",
+              "value": "[Path.managementGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.stageMapName]"
+            }
+          ]
+        },
+        {
+          "description": "Delete a StageMap",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.stageMapName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Delete a StageMap",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.stageMapName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

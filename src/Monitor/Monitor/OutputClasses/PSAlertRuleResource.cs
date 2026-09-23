@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the AlertRuleResource
+    /// Wraps around the AlertRuleResource
     /// </summary>
     public class PSAlertRuleResource : AlertRuleResource
     {

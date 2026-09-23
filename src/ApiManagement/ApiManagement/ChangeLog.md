@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the `Get-AzApiManagementNetworkStatus` example output to remove non-public service endpoints.
+
+## Version 4.2.0
+* Added ChangeSafety Support
+
+## Version 4.1.0
+* Upgraded nuget package to signed package.
+* Fixed model creation parameters of ApiCreateOrUpdateParameter, ProductContract, SubscriptionCreateParameters, GroupCreateParameters, OpenidConnectProviderContract, IdentityProviderCreateContract, BackendContract, CacheContract and DiagnosticContract with [#26672].
+
+## Version 4.0.5
+* Removed Microsoft.Azure.Management.ApiManagement 8.0.0.0-preview
+* Added ApiManagement.Management.Sdk
 
 ## Version 4.0.4
 * Fixed secrets exposure in example documentation.
@@ -158,7 +170,7 @@ https://github.com/Azure/azure-powershell/issues/9752
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/9307 and https://github.com/Azure/azure-powershell/issues/8432
     - **Import-AzApiManagementApi**
-        - Added support for specifiying `ApiVersion` and `ApiVersionSetId` when importing Apis
+        - Added support for specifying `ApiVersion` and `ApiVersionSetId` when importing Apis
 
 ## Version 1.1.0
 
@@ -187,7 +199,7 @@ https://github.com/Azure/azure-powershell/issues/9752
     - **New-AzApiManagementUserToken** - Generate a new User Token valid for 8 hours by default.Token for the `GIT` user can be generated using this cmdlet./
 
 * Created a new cmdlet to retrieving the Network Status
-    - **Get-AzApiManagementNetworkStatus** - Get the Network status connectivity of resources on which API Management service depends on. This is useful when deploying ApiManagement service into a Virtual Network and validing whether any of the dependencies are broken.
+    - **Get-AzApiManagementNetworkStatus** - Get the Network status connectivity of resources on which API Management service depends on. This is useful when deploying ApiManagement service into a Virtual Network and validating whether any of the dependencies are broken.
 
 * Updated cmdlet **New-AzApiManagement** to manage ApiManagement service
     - Added support for the new `Consumption` SKU
@@ -233,13 +245,13 @@ https://github.com/Azure/azure-powershell/issues/9752
     - To setup `SignupPolicy`, `SigninPolicy`, `ProfileEditingPolicy` and `PasswordResetPolicy`
 
 * Updated cmdlet **New-AzApiManagementSubscription**
-    - To account for the new SubscriptonModel using `Scope` and `UserId`
-    - To account for the old subscription model using `ProductId` and `UserId`
+    - To account for the new SubscriptionModel using `Scope` and `UserId`
+    - To account for the old Subscription model using `ProductId` and `UserId`
     - Add support to enable `AllowTracing` at the subscription level.
 
 * Updated cmdlet **Set-AzApiManagementSubscription**
-    - To account for the new SubscriptonModel using `Scope` and `UserId`
-    - To account for the old subscription model using `ProductId` and `UserId`
+    - To account for the new SubscriptionModel using `Scope` and `UserId`
+    - To account for the old Subscription model using `ProductId` and `UserId`
     - Add support to enable `AllowTracing` at the subscription level.
 
 * Updated following cmdlets to accept `ResourceId` as input
@@ -248,7 +260,7 @@ https://github.com/Azure/azure-powershell/issues/9752
     - 'Get-AzApiManagementApiRelease'
       - `Get-AzApiManagementApiRelease -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/apis/echo-api/releases/releaseId`
     - 'Get-AzApiManagementApiVersionSet'
-      - `Get-AzApiManagementApiVersionSet -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/constoso/apiversionsets/pathversionset`
+      - `Get-AzApiManagementApiVersionSet -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/apiversionsets/pathversionset`
     - 'Get-AzApiManagementAuthorizationServer'
     - 'Get-AzApiManagementBackend'
       - `Get-AzApiManagementBackend -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/backends/servicefabric`

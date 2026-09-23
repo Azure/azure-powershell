@@ -17,7 +17,8 @@ Update the Inbound Security Rule of a Network Virtual Appliance Resource
 Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
@@ -25,7 +26,8 @@ Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -Virtua
 Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
  [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -33,7 +35,8 @@ Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtual
 Update-AzVirtualApplianceInboundSecurityRule -VirtualApplianceResourceId <String> -Name <String>
  [-RuleType <String>]
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +59,36 @@ Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName InboundRuleRg -V
 The above command creates or updates the Inbound Security rule with the given Rule collection name: ruleCollection2 on the NVA: nva1 with rule type Auto Expire having rules as defined in the rules property. The Inbound Security Rule will created only an NSG rule.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

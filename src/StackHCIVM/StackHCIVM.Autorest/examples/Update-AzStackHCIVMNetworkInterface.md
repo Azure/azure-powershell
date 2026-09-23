@@ -9,4 +9,4 @@ Name            ResourceGroupName
 testNic       test-rg
 ```
 
-This command updates an exisiting network interface in the specified resource group.
+This command updates an existing network interface in the specified resource group.

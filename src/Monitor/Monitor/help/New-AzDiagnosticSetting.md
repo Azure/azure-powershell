@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzDiagnosticSetting
 
 ## SYNOPSIS
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthorizationRuleId <String>]
  [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
@@ -20,8 +21,20 @@ New-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthorizat
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzDiagnosticSetting -Name <String> -ResourceId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDiagnosticSetting -Name <String> -ResourceId <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ## EXAMPLES
 
@@ -72,7 +85,7 @@ The resource Id for the event hub authorization rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -88,7 +101,7 @@ If none is specified, the default event hub will be selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -98,13 +111,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Log
-The list of logs settings.
-To construct, see NOTES section for LOG properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ILogSettings[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Log
+The list of logs settings.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILogSettings[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -121,7 +163,7 @@ Possible values are: Dedicated and null (null is default.)
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -136,7 +178,7 @@ The full ARM resource ID of the Marketplace resource to which you would like to 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -148,11 +190,10 @@ Accept wildcard characters: False
 
 ### -Metric
 The list of metric settings.
-To construct, see NOTES section for METRIC properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IMetricSettings[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IMetricSettings[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -198,7 +239,7 @@ This is here to maintain backwards compatibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -213,7 +254,7 @@ The resource ID of the storage account to which you would like to send Diagnosti
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +270,7 @@ Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -277,7 +318,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource
 
 ## NOTES
 

@@ -18,7 +18,8 @@ Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAdd
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayNameByVpnServerConfigurationObject
@@ -28,7 +29,8 @@ Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAdd
  [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayNameByVpnServerConfigurationResourceId
@@ -37,7 +39,8 @@ Update-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> [-VpnClientAdd
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] -VpnServerConfigurationId <String>
  [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObjectNoVpnServerConfigurationUpdate
@@ -46,7 +49,8 @@ Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <St
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObjectByVpnServerConfigurationObject
@@ -56,7 +60,8 @@ Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <St
  [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObjectByVpnServerConfigurationResourceId
@@ -65,7 +70,8 @@ Update-AzP2sVpnGateway -InputObject <PSP2SVpnGateway> [-VpnClientAddressPool <St
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] -VpnServerConfigurationId <String>
  [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceIdNoVpnServerConfigurationUpdate
@@ -74,7 +80,8 @@ Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceIdByVpnServerConfigurationObject
@@ -84,7 +91,8 @@ Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
  [-VpnServerConfiguration <PSVpnServerConfiguration>] [-VpnGatewayScaleUnit <UInt32>]
  [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>] [-EnableInternetSecurityFlag]
  [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceIdByVpnServerConfigurationResourceId
@@ -93,7 +101,8 @@ Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
  [-P2SConnectionConfiguration <PSP2SConnectionConfiguration[]>] -VpnServerConfigurationId <String>
  [-VpnGatewayScaleUnit <UInt32>] [-CustomDnsServer <String[]>] [-RoutingConfiguration <PSRoutingConfiguration>]
  [-EnableInternetSecurityFlag] [-DisableInternetSecurityFlag] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,11 +180,41 @@ Update-AzP2sVpnGateway -AsJob -Name 00000000-0000-0000-0000-00000000000000000-we
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

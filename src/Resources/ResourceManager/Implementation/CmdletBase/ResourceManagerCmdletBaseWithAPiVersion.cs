@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -27,30 +25,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public virtual string ApiVersion { get; set; }
 
-        private Dictionary<string, string> GetCmdletHeaders()
-        {
-            return new Dictionary<string, string>
-            {
-                {"ParameterSetName", this.ParameterSetName },
-                {"CommandName", this.CommandRuntime.ToString() }
-            };
-        }
-
         /// <summary>
         /// Determines the API version.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
-        /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        protected Task<string> DetermineApiVersion(string resourceId, bool? pre = null)
+        protected string DetermineApiVersion(string resourceId)
         {
-            return string.IsNullOrWhiteSpace(this.ApiVersion)
-                ? Components.ApiVersionHelper.DetermineApiVersion(
-                    context: DefaultContext,
-                    resourceId: resourceId,
-                    cancellationToken: this.CancellationToken.Value,
-                    pre: pre ?? this.Pre,
-                    cmdletHeaderValues: this.GetCmdletHeaders())
-                : Task.FromResult(this.ApiVersion);
+            if (!string.IsNullOrWhiteSpace(ApiVersion))
+                return ApiVersion;
+
+            return Components.ApiVersionHelper.DetermineApiVersion(DefaultContext, resourceId, Pre);
         }
 
         /// <summary>
@@ -58,18 +42,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
-        /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        protected Task<string> DetermineApiVersion(string providerNamespace, string resourceType, bool? pre = null)
+        protected string DetermineApiVersion(string providerNamespace, string resourceType)
         {
-            return string.IsNullOrWhiteSpace(this.ApiVersion)
-                ? Components.ApiVersionHelper.DetermineApiVersion(
-                    DefaultContext,
-                    providerNamespace: providerNamespace,
-                    resourceType: resourceType,
-                    cancellationToken: this.CancellationToken.Value,
-                    pre: pre ?? this.Pre,
-                    cmdletHeaderValues: this.GetCmdletHeaders())
-                : Task.FromResult(this.ApiVersion);
+            if (!string.IsNullOrWhiteSpace(ApiVersion))
+                return ApiVersion;
+
+            return Components.ApiVersionHelper.DetermineApiVersion(DefaultContext, providerNamespace, resourceType, Pre);
         }
     }
 }

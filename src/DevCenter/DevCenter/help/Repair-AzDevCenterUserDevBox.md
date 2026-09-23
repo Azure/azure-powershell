@@ -47,7 +47,7 @@ The Dev Box may restart during this operation.
 
 ## EXAMPLES
 
-### Example 1: Reapir dev box by endpoint
+### Example 1: Repair dev box by endpoint
 ```powershell
 Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name myDevBox -ProjectName DevProject
 ```
@@ -69,7 +69,7 @@ Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b18
 
 This command repairs the dev box "myDevBox".
 
-### Example 4: Reapir dev box by dev center and InputObject
+### Example 4: Repair dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
 Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of a Dev Box.
+Display name for the Dev Box.
 
 ```yaml
 Type: System.String
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String
@@ -257,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 
 ## NOTES
 

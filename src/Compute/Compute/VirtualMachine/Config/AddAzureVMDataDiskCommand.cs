@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using CM = Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -152,6 +153,25 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the Read-Write IOPS for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
+        public long? DiskIOPSReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
+        public long? DiskMBpsReadWrite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the storage fault domain alignment type for the data disk. Valid values are 'Aligned' and 'BestEffortAligned'. Only valid for VMs within a VMSS Flex; CRP returns BadRequest for standalone VMs.")]
+        [PSArgumentCompleter("Aligned", "BestEffortAligned")]
+        public string StorageFaultDomainAlignment { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -187,7 +207,10 @@ namespace Microsoft.Azure.Commands.Compute
                     SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference 
                     { 
                         Id = this.SourceResourceId 
-                    }
+                    },
+                    DiskIOPSReadWrite = this.DiskIOPSReadWrite,
+                    DiskMBpsReadWrite = this.DiskMBpsReadWrite,
+                    StorageFaultDomainAlignment = this.IsParameterBound(c => c.StorageFaultDomainAlignment) ? this.StorageFaultDomainAlignment : null
                 });
 
                 this.VM.StorageProfile = storageProfile;
@@ -229,7 +252,10 @@ namespace Microsoft.Azure.Commands.Compute
                     SourceResource = string.IsNullOrEmpty(this.SourceResourceId) ? null : new ApiEntityReference
                     {
                         Id = this.SourceResourceId
-                    }
+                    },
+                    DiskIOPSReadWrite = this.DiskIOPSReadWrite,
+                    DiskMBpsReadWrite = this.DiskMBpsReadWrite,
+                    StorageFaultDomainAlignment = this.IsParameterBound(c => c.StorageFaultDomainAlignment) ? this.StorageFaultDomainAlignment : null
                 });
 
                 this.VM.StorageProfile = storageProfile;

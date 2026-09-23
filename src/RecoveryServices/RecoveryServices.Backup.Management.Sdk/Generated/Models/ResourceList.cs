@@ -24,8 +24,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the ResourceList class.
         /// </summary>
 
-        /// <param name="nextLink">The uri to fetch the next page of resources. Call ListNext() fetches next
-        /// page of resources.
+        /// <param name="nextLink">The URI to fetch the next page of resources, with each API call returning
+        /// up to 200 resources per page. Use ListNext() to fetch the next page if the
+        /// total number of resources exceeds 200.
         /// </param>
         public ResourceList(string nextLink = default(string))
 
@@ -41,8 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets or sets the uri to fetch the next page of resources. Call ListNext()
-        /// fetches next page of resources.
+        /// Gets or sets the URI to fetch the next page of resources, with each API
+        /// call returning up to 200 resources per page. Use ListNext() to fetch the
+        /// next page if the total number of resources exceeds 200.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; set; }

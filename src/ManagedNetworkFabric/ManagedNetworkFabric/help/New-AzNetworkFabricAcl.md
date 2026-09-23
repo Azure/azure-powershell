@@ -14,9 +14,11 @@ Implements Access Control List PUT method.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-AclsUrl <String>] [-Annotation <String>] [-ConfigurationType <String>] [-DefaultAction <String>]
- [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
+New-AzNetworkFabricAcl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ConfigurationType <String> -Location <String> [-AclType <String>] [-AclsUrl <String>] [-Annotation <String>]
+ [-ControlPlaneAclConfiguration <IControlPlaneAclProperties[]>] [-DefaultAction <String>]
+ [-DeviceRole <String>] [-DynamicMatchConfiguration <ICommonDynamicMatchConfiguration[]>]
+ [-GlobalAccessControlListActionEnableCount <String>]
  [-MatchConfiguration <IAccessControlListMatchConfiguration[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -115,6 +117,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AclType
+Access Control List (ACL) Type
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Annotation
 Switch configuration description.
 
@@ -150,6 +167,21 @@ Input method to configure Access Control List.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ControlPlaneAclConfiguration
+Access Control List (ACL) configurations.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IControlPlaneAclProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -192,11 +224,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeviceRole
+Device Role
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DynamicMatchConfiguration
 List of dynamic match configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GlobalAccessControlListActionEnableCount
+Configuration to enable or disable ACL action count.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

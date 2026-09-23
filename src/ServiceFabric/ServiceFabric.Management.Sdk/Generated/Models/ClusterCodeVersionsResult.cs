@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="environment">Indicates if this version is for Windows or Linux operating system.
-        /// Possible values include: 'Windows', 'Linux'</param>
+        /// Possible values include: &#39;Windows&#39;, &#39;Linux&#39;</param>
         public ClusterCodeVersionsResult(string id = default(string), string name = default(string), string type = default(string), string codeVersion = default(string), string supportExpiryUtc = default(string), string environment = default(string))
 
         {

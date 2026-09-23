@@ -44,15 +44,19 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="etag">Resource Etag.
         /// </param>
 
+        /// <param name="tags">Resource tags.
+        /// </param>
+
         /// <param name="properties">Properties of Cognitive Services account deployment.
         /// </param>
-        public Deployment(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), SystemData systemData = default(SystemData), string etag = default(string), DeploymentProperties properties = default(DeploymentProperties))
+        public Deployment(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), SystemData systemData = default(SystemData), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), DeploymentProperties properties = default(DeploymentProperties))
 
         : base(id, name, type)
         {
             this.Sku = sku;
             this.SystemData = systemData;
             this.Etag = etag;
+            this.Tags = tags;
             this.Properties = properties;
             CustomInit();
         }
@@ -82,6 +86,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public string Etag {get; private set; }
 
         /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
         /// Gets or sets properties of Cognitive Services account deployment.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
@@ -101,6 +111,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
 
 
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
         }
     }
 }

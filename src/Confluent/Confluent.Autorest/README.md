@@ -1,5 +1,5 @@
 <!-- region Generated -->
-# Az.Confluent
+# Az.confluent
 This directory contains the PowerShell module for the Confluent service.
 
 ---
@@ -20,7 +20,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Confluent`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.confluent`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -44,20 +44,17 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: a71245db9eb5b27e3d95f266422c65be4df8789e
+commit: 74cc90c49189a079b3cc93fde9c9ad76742f0184
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
+  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/preview/2025-08-18-preview/confluent.json
 
-module-version: 0.2.0
+module-version: 0.3.0
 title: Confluent
+service-name: confluent
 subject-prefix: $(service-name)
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
@@ -71,12 +68,27 @@ directive:
     hide: true
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
   # Hide the Remove-AzConfluentOrganization for ask user confirmation before Remove-AzConfluentOrganization been invoken
   - where:
       verb: Remove
       subject: Organization$
     hide: true
+
+  # Rename plural parameter to singular to comply with naming convention
+  - where:
+      parameter-name: PropertiesOfferDetailPrivateOfferIds
+    set:
+      parameter-name: PropertiesOfferDetailPrivateOfferId
+
+  # Rename ConnectorBasicInfoConnectorClass as it ends with 's' which triggers the plural noun check (8410)
+  - where:
+      parameter-name: ConnectorBasicInfoConnectorClass
+    set:
+      parameter-name: ConnectorBasicInfoConnectorClassName
 ```

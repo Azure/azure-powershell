@@ -13,7 +13,9 @@ namespace Microsoft.Azure.Management.Search
     public static partial class ServicesOperationsExtensions
     {
         /// <summary>
-        /// Creates or updates a search service in the given resource group. If the search service already exists, all properties will be updated with the given values.
+        /// Creates or updates a search service in the given resource group. If the
+        /// search service already exists, all properties will be updated with the
+        /// given values.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,10 +24,17 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net). You cannot change the service name after the service is created.
+        /// The name of the Azure AI Search service to create or update. Search service
+        /// names must only contain lowercase letters, digits or dashes, cannot use
+        /// dash as the first two or last one characters, cannot contain consecutive
+        /// dashes, and must be between 2 and 60 characters in length. Search service
+        /// names must be unique since they are part of the service URI
+        /// (https://&lt;name&gt;.search.windows.net). You cannot change the service name
+        /// after the service is created.
         /// </param>
         public static SearchService CreateOrUpdate(this IServicesOperations operations, string resourceGroupName, string searchServiceName, SearchService service, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -33,7 +42,9 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Creates or updates a search service in the given resource group. If the search service already exists, all properties will be updated with the given values.
+        /// Creates or updates a search service in the given resource group. If the
+        /// search service already exists, all properties will be updated with the
+        /// given values.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -42,10 +53,17 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net). You cannot change the service name after the service is created.
+        /// The name of the Azure AI Search service to create or update. Search service
+        /// names must only contain lowercase letters, digits or dashes, cannot use
+        /// dash as the first two or last one characters, cannot contain consecutive
+        /// dashes, and must be between 2 and 60 characters in length. Search service
+        /// names must be unique since they are part of the service URI
+        /// (https://&lt;name&gt;.search.windows.net). You cannot change the service name
+        /// after the service is created.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -67,10 +85,11 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service to update.
+        /// The name of the Azure AI Search service to update.
         /// </param>
         public static SearchService Update(this IServicesOperations operations, string resourceGroupName, string searchServiceName, SearchServiceUpdate service, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -87,10 +106,11 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service to update.
+        /// The name of the Azure AI Search service to update.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -112,10 +132,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         public static SearchService Get(this IServicesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -132,10 +154,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -148,7 +172,8 @@ namespace Microsoft.Azure.Management.Search
             }
         }
         /// <summary>
-        /// Deletes a search service in the given resource group, along with its associated resources.
+        /// Deletes a search service in the given resource group, along with its
+        /// associated resources.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -157,10 +182,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         public static void Delete(this IServicesOperations operations, string resourceGroupName, string searchServiceName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -168,7 +195,8 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Deletes a search service in the given resource group, along with its associated resources.
+        /// Deletes a search service in the given resource group, along with its
+        /// associated resources.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -177,10 +205,12 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -199,7 +229,8 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<SearchService> ListByResourceGroup(this IServicesOperations operations, string resourceGroupName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -216,7 +247,8 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -262,7 +294,9 @@ namespace Microsoft.Azure.Management.Search
             }
         }
         /// <summary>
-        /// Checks whether or not the given search service name is available for use. Search service names must be globally unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net).
+        /// Checks whether or not the given search service name is available for use.
+        /// Search service names must be globally unique since they are part of the
+        /// service URI (https://&lt;name&gt;.search.windows.net).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -276,7 +310,9 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Checks whether or not the given search service name is available for use. Search service names must be globally unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net).
+        /// Checks whether or not the given search service name is available for use.
+        /// Search service names must be globally unique since they are part of the
+        /// service URI (https://&lt;name&gt;.search.windows.net).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -295,7 +331,52 @@ namespace Microsoft.Azure.Management.Search
             }
         }
         /// <summary>
-        /// Creates or updates a search service in the given resource group. If the search service already exists, all properties will be updated with the given values.
+        /// Upgrades the Azure AI Search service to the latest version available.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        public static SearchService Upgrade(this IServicesOperations operations, string resourceGroupName, string searchServiceName)
+        {
+                return ((IServicesOperations)operations).UpgradeAsync(resourceGroupName, searchServiceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Upgrades the Azure AI Search service to the latest version available.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SearchService> UpgradeAsync(this IServicesOperations operations, string resourceGroupName, string searchServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpgradeWithHttpMessagesAsync(resourceGroupName, searchServiceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a search service in the given resource group. If the
+        /// search service already exists, all properties will be updated with the
+        /// given values.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -304,10 +385,17 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net). You cannot change the service name after the service is created.
+        /// The name of the Azure AI Search service to create or update. Search service
+        /// names must only contain lowercase letters, digits or dashes, cannot use
+        /// dash as the first two or last one characters, cannot contain consecutive
+        /// dashes, and must be between 2 and 60 characters in length. Search service
+        /// names must be unique since they are part of the service URI
+        /// (https://&lt;name&gt;.search.windows.net). You cannot change the service name
+        /// after the service is created.
         /// </param>
         public static SearchService BeginCreateOrUpdate(this IServicesOperations operations, string resourceGroupName, string searchServiceName, SearchService service, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions))
         {
@@ -315,7 +403,9 @@ namespace Microsoft.Azure.Management.Search
         }
 
         /// <summary>
-        /// Creates or updates a search service in the given resource group. If the search service already exists, all properties will be updated with the given values.
+        /// Creates or updates a search service in the given resource group. If the
+        /// search service already exists, all properties will be updated with the
+        /// given values.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -324,10 +414,17 @@ namespace Microsoft.Azure.Management.Search
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service to create or update. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length. Search service names must be globally unique since they are part of the service URI (https://&lt;name&gt;.search.windows.net). You cannot change the service name after the service is created.
+        /// The name of the Azure AI Search service to create or update. Search service
+        /// names must only contain lowercase letters, digits or dashes, cannot use
+        /// dash as the first two or last one characters, cannot contain consecutive
+        /// dashes, and must be between 2 and 60 characters in length. Search service
+        /// names must be unique since they are part of the service URI
+        /// (https://&lt;name&gt;.search.windows.net). You cannot change the service name
+        /// after the service is created.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -335,6 +432,49 @@ namespace Microsoft.Azure.Management.Search
         public static async System.Threading.Tasks.Task<SearchService> BeginCreateOrUpdateAsync(this IServicesOperations operations, string resourceGroupName, string searchServiceName, SearchService service, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, searchServiceName, service, searchManagementRequestOptions, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Upgrades the Azure AI Search service to the latest version available.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        public static SearchService BeginUpgrade(this IServicesOperations operations, string resourceGroupName, string searchServiceName)
+        {
+                return ((IServicesOperations)operations).BeginUpgradeAsync(resourceGroupName, searchServiceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Upgrades the Azure AI Search service to the latest version available.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='searchServiceName'>
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SearchService> BeginUpgradeAsync(this IServicesOperations operations, string resourceGroupName, string searchServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpgradeWithHttpMessagesAsync(resourceGroupName, searchServiceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

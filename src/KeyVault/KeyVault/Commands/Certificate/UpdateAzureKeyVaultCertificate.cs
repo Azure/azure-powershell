@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Certificate tags
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "A hashtable representing certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.")]
+            HelpMessage = "A hashtable representing certificate tags. If not specified, the existing tags of the certificate remain unchanged. Remove a tag by specifying an empty Hashtable.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,

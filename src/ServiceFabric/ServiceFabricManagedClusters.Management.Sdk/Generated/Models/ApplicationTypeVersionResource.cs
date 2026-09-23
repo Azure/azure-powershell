@@ -26,22 +26,25 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the ApplicationTypeVersionResource class.
         /// </summary>
 
-        /// <param name="id">Azure resource identifier.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Azure resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Azure resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location depends on the parent resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">Azure resource tags.
+        /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="provisioningState">The current deployment or provisioning state, which only appears in the
@@ -50,10 +53,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="appPackageUrl">The URL to the application package
         /// </param>
-        public ApplicationTypeVersionResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), string appPackageUrl = default(string))
+        public ApplicationTypeVersionResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string provisioningState = default(string), string appPackageUrl = default(string))
 
-        : base(id, name, type, location, tags, systemData)
+        : base(id, name, type, systemData)
         {
+            this.Tags = tags;
+            this.Location = location;
             this.ProvisioningState = provisioningState;
             this.AppPackageUrl = appPackageUrl;
             CustomInit();
@@ -64,6 +69,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
 
         /// <summary>
         /// Gets the current deployment or provisioning state, which only appears in

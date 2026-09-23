@@ -14,10 +14,10 @@ Enables disk encryption on a VM scale set.
 
 ```
 Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionKeyVaultId <String>] [-KeyEncryptionAlgorithm <String>] [-VolumeType <String>] [-ForceUpdate]
- [-TypeHandlerVersion <String>] [-ExtensionPublisherName <String>] [-ExtensionName <String>]
- [-ExtensionType <String>] [-EncryptFormatAll] [-Passphrase <String>] [-Force]
+ [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-EncryptionIdentity <String>]
+ [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionKeyVaultId <String>] [-KeyEncryptionAlgorithm <String>]
+ [-VolumeType <String>] [-ForceUpdate] [-TypeHandlerVersion <String>] [-ExtensionPublisherName <String>]
+ [-ExtensionName <String>] [-ExtensionType <String>] [-EncryptFormatAll] [-Passphrase <String>] [-Force]
  [-DisableAutoUpgradeMinorVersion] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -133,6 +133,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionIdentity
+Resource ID of the managed identity with access to keyvault for ADE operations.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

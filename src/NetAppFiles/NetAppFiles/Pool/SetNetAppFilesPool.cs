@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS", "Flexible")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -104,6 +104,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level")]
+        public double? CustomThroughput { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -170,7 +175,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Location = Location,
                 Tags = tagPairs,
                 QosType = QosType,
-                CoolAccess = CoolAccess
+                CoolAccess = CoolAccess,
+                CustomThroughputMibps = CustomThroughput.HasValue ? (int)CustomThroughput : (int?)null,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

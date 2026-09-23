@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerOutboundFirewallRulesAdapter InitModelAdapter()

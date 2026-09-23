@@ -8,33 +8,86 @@ schema: 2.0.0
 # New-AzMLWorkspaceOnlineDeployment
 
 ## SYNOPSIS
-Create or update Inference Endpoint Deployment (asynchronous).
+Create Inference Endpoint Deployment (asynchronous).
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzMLWorkspaceOnlineDeployment -EndpointName <String> -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] -EndpointComputeType <EndpointComputeType>
- -Location <String> [-AppInsightsEnabled] [-CodeId <String>] [-CodeScoringScript <String>]
- [-DataCollectorCollection <Hashtable>] [-DataCollectorRollingRate <RollingRateType>] [-Description <String>]
- [-EgressPublicNetworkAccess <EgressPublicNetworkAccessType>]
+New-AzMLWorkspaceOnlineDeployment -Name <String> -EndpointName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -WorkspaceName <String> -EndpointComputeType <String> -Location <String>
+ [-AppInsightsEnabled] [-CodeId <String>] [-CodeScoringScript <String>] [-DataCollectorCollection <Hashtable>]
+ [-DataCollectorRollingRate <String>] [-Description <String>] [-EgressPublicNetworkAccess <String>]
+ [-EnableSystemAssignedIdentity] [-EndpointDeploymentPropertiesBaseProperty <Hashtable>]
+ [-EnvironmentId <String>] [-EnvironmentVariable <Hashtable>] [-IdentityUserAssigned <Hashtable>]
+ [-InstanceType <String>] [-Kind <String>] [-LivenessProbeFailureThreshold <Int32>]
+ [-LivenessProbeInitialDelay <TimeSpan>] [-LivenessProbePeriod <TimeSpan>]
+ [-LivenessProbeSuccessThreshold <Int32>] [-LivenessProbeTimeout <TimeSpan>] [-Model <String>]
+ [-ModelMountPath <String>] [-ReadinessProbeFailureThreshold <Int32>] [-ReadinessProbeInitialDelay <TimeSpan>]
+ [-ReadinessProbePeriod <TimeSpan>] [-ReadinessProbeSuccessThreshold <Int32>]
+ [-ReadinessProbeTimeout <TimeSpan>] [-RequestLoggingCaptureHeader <String[]>]
+ [-RequestMaxConcurrentPerInstance <Int32>] [-RequestMaxQueueWait <TimeSpan>] [-RequestTimeout <TimeSpan>]
+ [-ScaleType <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMLWorkspaceOnlineDeployment -Name <String> -EndpointName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMLWorkspaceOnlineDeployment -Name <String> -EndpointName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzMLWorkspaceOnlineDeployment -Name <String> -EndpointName <String>
+ -WorkspaceInputObject <IMachineLearningServicesIdentity> -EndpointComputeType <String> -Location <String>
+ [-AppInsightsEnabled] [-CodeId <String>] [-CodeScoringScript <String>] [-DataCollectorCollection <Hashtable>]
+ [-DataCollectorRollingRate <String>] [-Description <String>] [-EgressPublicNetworkAccess <String>]
+ [-EnableSystemAssignedIdentity] [-EndpointDeploymentPropertiesBaseProperty <Hashtable>]
+ [-EnvironmentId <String>] [-EnvironmentVariable <Hashtable>] [-IdentityUserAssigned <Hashtable>]
+ [-InstanceType <String>] [-Kind <String>] [-LivenessProbeFailureThreshold <Int32>]
+ [-LivenessProbeInitialDelay <TimeSpan>] [-LivenessProbePeriod <TimeSpan>]
+ [-LivenessProbeSuccessThreshold <Int32>] [-LivenessProbeTimeout <TimeSpan>] [-Model <String>]
+ [-ModelMountPath <String>] [-ReadinessProbeFailureThreshold <Int32>] [-ReadinessProbeInitialDelay <TimeSpan>]
+ [-ReadinessProbePeriod <TimeSpan>] [-ReadinessProbeSuccessThreshold <Int32>]
+ [-ReadinessProbeTimeout <TimeSpan>] [-RequestLoggingCaptureHeader <String[]>]
+ [-RequestMaxConcurrentPerInstance <Int32>] [-RequestMaxQueueWait <TimeSpan>] [-RequestTimeout <TimeSpan>]
+ [-ScaleType <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityOnlineEndpointExpanded
+```
+New-AzMLWorkspaceOnlineDeployment -Name <String> -OnlineEndpointInputObject <IMachineLearningServicesIdentity>
+ -EndpointComputeType <String> -Location <String> [-AppInsightsEnabled] [-CodeId <String>]
+ [-CodeScoringScript <String>] [-DataCollectorCollection <Hashtable>] [-DataCollectorRollingRate <String>]
+ [-Description <String>] [-EgressPublicNetworkAccess <String>] [-EnableSystemAssignedIdentity]
  [-EndpointDeploymentPropertiesBaseProperty <Hashtable>] [-EnvironmentId <String>]
- [-EnvironmentVariable <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssigned <Hashtable>] [-InstanceType <String>] [-Kind <String>]
- [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeInitialDelay <TimeSpan>]
+ [-EnvironmentVariable <Hashtable>] [-IdentityUserAssigned <Hashtable>] [-InstanceType <String>]
+ [-Kind <String>] [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeInitialDelay <TimeSpan>]
  [-LivenessProbePeriod <TimeSpan>] [-LivenessProbeSuccessThreshold <Int32>] [-LivenessProbeTimeout <TimeSpan>]
  [-Model <String>] [-ModelMountPath <String>] [-ReadinessProbeFailureThreshold <Int32>]
  [-ReadinessProbeInitialDelay <TimeSpan>] [-ReadinessProbePeriod <TimeSpan>]
  [-ReadinessProbeSuccessThreshold <Int32>] [-ReadinessProbeTimeout <TimeSpan>]
  [-RequestLoggingCaptureHeader <String[]>] [-RequestMaxConcurrentPerInstance <Int32>]
- [-RequestMaxQueueWait <TimeSpan>] [-RequestTimeout <TimeSpan>] [-ScaleType <ScaleType>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ [-RequestMaxQueueWait <TimeSpan>] [-RequestTimeout <TimeSpan>] [-ScaleType <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update Inference Endpoint Deployment (asynchronous).
+Create Inference Endpoint Deployment (asynchronous).
 
 ## EXAMPLES
 
@@ -62,7 +115,7 @@ If true, enables Application Insights logging.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -92,7 +145,7 @@ ARM resource ID of the code asset.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -109,7 +162,7 @@ eg.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -126,7 +179,7 @@ Collection request and response are reserved for payload logging, others are for
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -140,8 +193,8 @@ Accept wildcard characters: False
 When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file.If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/.If it's day, all data will be collected in blob path /yyyy/MM/dd/.The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RollingRateType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -172,7 +225,7 @@ Description of the endpoint deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -188,8 +241,23 @@ If Disabled, this will create secure egress.
 Default: Enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EgressPublicNetworkAccessType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -203,8 +271,8 @@ Accept wildcard characters: False
 [Required] The compute type of the endpoint.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointComputeType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: True
@@ -220,7 +288,7 @@ Properties can be added, but not removed or altered.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -235,7 +303,7 @@ Inference endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -250,7 +318,7 @@ ARM resource ID or AssetId of the environment specification for the endpoint dep
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -265,22 +333,7 @@ Environment variables configuration for the deployment.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -297,7 +350,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -312,10 +365,40 @@ Compute instance type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -327,7 +410,7 @@ Metadata used by portal/tooling/etc to render different UX experiences for resou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -342,7 +425,7 @@ The number of failures to allow before returning an unhealthy status.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -357,7 +440,7 @@ The delay before the first probe in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -372,7 +455,7 @@ The length of time between probes in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -387,7 +470,7 @@ The number of successful probes before returning a healthy status.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -402,7 +485,7 @@ The probe timeout in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -417,7 +500,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: True
@@ -432,7 +515,7 @@ The URI path to the model.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -447,7 +530,7 @@ The path to mount the model in custom container.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -487,12 +570,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OnlineEndpointInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: CreateViaIdentityOnlineEndpointExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ReadinessProbeFailureThreshold
 The number of failures to allow before returning an unhealthy status.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -507,7 +605,7 @@ The delay before the first probe in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -522,7 +620,7 @@ The length of time between probes in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -537,7 +635,7 @@ The number of successful probes before returning a healthy status.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -552,7 +650,7 @@ The probe timeout in ISO 8601 format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -568,7 +666,7 @@ If customers also want to collect the specified headers, they can set them in ca
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -584,7 +682,7 @@ Defaults to 1.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -599,7 +697,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -614,7 +712,7 @@ The scoring timeout in ISO 8601 format.Defaults to 5000ms.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -630,7 +728,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -644,8 +742,8 @@ Accept wildcard characters: False
 [Required] Type of deployment scaling algorithm
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScaleType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -661,7 +759,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -676,7 +774,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -693,7 +791,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -709,7 +807,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -723,8 +821,8 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -739,7 +837,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -754,7 +852,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded, CreateViaIdentityOnlineEndpointExpanded
 Aliases:
 
 Required: False
@@ -764,12 +862,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -815,9 +928,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineDeployment
 
 ## NOTES
 

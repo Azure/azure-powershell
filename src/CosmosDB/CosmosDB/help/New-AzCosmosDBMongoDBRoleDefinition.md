@@ -15,36 +15,40 @@ Creates a new CosmosDB MongoDB Role Definition.
 ### ByFieldsDataActionsParameterSet (Default)
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
- -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNameParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
  -RoleName <String> -Type <String> -DatabaseName <String> -Privileges <PSMongoPrivilege[]>
- [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectDataActionsParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectPermissionsParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
  -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-ResourceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

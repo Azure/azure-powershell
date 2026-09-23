@@ -223,9 +223,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static RoutingRulesDeleteHeaders Delete(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
+        public static void Delete(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
         {
-                return ((IRoutingRulesOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
+                ((IRoutingRulesOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -257,12 +257,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RoutingRulesDeleteHeaders> DeleteAsync(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a routing rule.
@@ -290,9 +287,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static RoutingRulesDeleteHeaders BeginDelete(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
+        public static void BeginDelete(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?))
         {
-                return ((IRoutingRulesOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
+                ((IRoutingRulesOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -324,12 +321,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RoutingRulesDeleteHeaders> BeginDeleteAsync(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRoutingRulesOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, string ruleName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network manager routing configuration routing rules.

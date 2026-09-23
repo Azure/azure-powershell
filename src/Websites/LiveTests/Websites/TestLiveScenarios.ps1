@@ -4,7 +4,7 @@ Invoke-LiveTestScenario -Name "Create new web with service plan" -Description "T
 
     $rgName = $rg.ResourceGroupName
     $webAppName = New-LiveTestResourceName
-    $webLocation = "westus"
+    $webLocation = "eastus"
     $whpName = New-LiveTestResourceName
     $tier = "Shared"
 
@@ -22,7 +22,7 @@ Invoke-LiveTestScenario -Name "Get a webapp" -Description "Test getting a new we
 
     $rgName = $rg.ResourceGroupName
     $webAppName = New-LiveTestResourceName
-    $webLocation = "westus"
+    $webLocation = "eastus"
     $whpName = New-LiveTestResourceName
     $tier = "Shared"
 
@@ -42,7 +42,7 @@ Invoke-LiveTestScenario -Name "Update web app" -Description "Test updating servi
 
     $rgName = $rg.ResourceGroupName
     $webAppName = New-LiveTestResourceName
-    $webLocation = "westus"
+    $webLocation = "eastus"
     $appServicePlanName1 = New-LiveTestResourceName
 	$appServicePlanName2 = New-LiveTestResourceName
 	$tier1 = "Shared"
@@ -95,7 +95,7 @@ Invoke-LiveTestScenario -Name "Delete web app" -Description "Test deleting web a
 
     $rgName = $rg.ResourceGroupName
     $webAppName = New-LiveTestResourceName
-    $webLocation = "westus"
+    $webLocation = "eastus"
     $whpName = New-LiveTestResourceName
     $tier = "Shared"
 
@@ -114,7 +114,7 @@ Invoke-LiveTestScenario -Name "Start, Stop and Restart WebApp" -Description "Tes
 
     $rgName = $rg.ResourceGroupName
     $webAppName = New-LiveTestResourceName
-    $webLocation = "westus"
+    $webLocation = "eastus"
     $whpName = New-LiveTestResourceName
     $tier = "Shared"
 
@@ -142,7 +142,7 @@ Invoke-LiveTestScenario -Name "Start, Stop and Restart WebApp" -Description "Tes
     $webApp = Start-AzWebApp -ResourceGroupName $rgName -Name $webAppName
     Assert-AreEqual "Running" $webApp.State
 
-    # Retart web app
+    # Restart web app
     $webApp = Restart-AzWebApp -ResourceGroupName $rgName -Name $webAppName
     Assert-AreEqual "Running" $webApp.State
 }

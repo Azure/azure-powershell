@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the PrivateEndpointConnectionPropertiesPrivateEndpoint class.
         /// </summary>
 
-        /// <param name="id">The resource id of the private endpoint resource from Microsoft.Network
+        /// <param name="id">The resource ID of the private endpoint resource from Microsoft.Network
         /// provider.
         /// </param>
         public PrivateEndpointConnectionPropertiesPrivateEndpoint(string id = default(string))
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets the resource id of the private endpoint resource from
+        /// Gets or sets the resource ID of the private endpoint resource from
         /// Microsoft.Network provider.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Subnet in a virtual network resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Subnet : SubResource
+    public partial class Subnet : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the Subnet class.
@@ -28,21 +28,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="routeTable">The reference to the RouteTable resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the subnet resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="sharingScope">Set this property to Tenant to allow sharing subnet with other
         /// subscriptions in your AAD tenant. This property can only be set if
@@ -107,16 +107,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="defaultOutboundAccess">Set this property to false to disable default outbound connectivity for all
-        /// VMs in the subnet. This property can only be set at the time of subnet
-        /// creation and cannot be updated for an existing subnet.
+        /// VMs in the subnet.
         /// </param>
-        public Subnet(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), RouteTable routeTable = default(RouteTable), string provisioningState = default(string), string sharingScope = default(string), string addressPrefix = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), SubResource natGateway = default(SubResource), System.Collections.Generic.IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpointPropertiesFormat>), System.Collections.Generic.IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(System.Collections.Generic.IList<ServiceEndpointPolicy>), System.Collections.Generic.IList<PrivateEndpoint> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpoint>), System.Collections.Generic.IList<IPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<IPConfiguration>), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurationProfiles = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ResourceNavigationLink> resourceNavigationLinks = default(System.Collections.Generic.IList<ResourceNavigationLink>), System.Collections.Generic.IList<ServiceAssociationLink> serviceAssociationLinks = default(System.Collections.Generic.IList<ServiceAssociationLink>), System.Collections.Generic.IList<Delegation> delegations = default(System.Collections.Generic.IList<Delegation>), string purpose = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?))
 
-        : base(id)
+        /// <param name="ipamPoolPrefixAllocations">A list of IPAM Pools for allocating IP address prefixes.
+        /// </param>
+
+        /// <param name="serviceGateway">Reference to an existing service gateway.
+        /// </param>
+        public Subnet(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), RouteTable routeTable = default(RouteTable), string provisioningState = default(string), string sharingScope = default(string), string addressPrefix = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), SubResource natGateway = default(SubResource), System.Collections.Generic.IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpointPropertiesFormat>), System.Collections.Generic.IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(System.Collections.Generic.IList<ServiceEndpointPolicy>), System.Collections.Generic.IList<PrivateEndpoint> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpoint>), System.Collections.Generic.IList<IPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<IPConfiguration>), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurationProfiles = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ResourceNavigationLink> resourceNavigationLinks = default(System.Collections.Generic.IList<ResourceNavigationLink>), System.Collections.Generic.IList<ServiceAssociationLink> serviceAssociationLinks = default(System.Collections.Generic.IList<ServiceAssociationLink>), System.Collections.Generic.IList<Delegation> delegations = default(System.Collections.Generic.IList<Delegation>), string purpose = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?), System.Collections.Generic.IList<IpamPoolPrefixAllocation> ipamPoolPrefixAllocations = default(System.Collections.Generic.IList<IpamPoolPrefixAllocation>), SubResource serviceGateway = default(SubResource))
+
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.RouteTable = routeTable;
             this.ProvisioningState = provisioningState;
             this.SharingScope = sharingScope;
@@ -138,6 +141,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.PrivateLinkServiceNetworkPolicies = privateLinkServiceNetworkPolicies;
             this.ApplicationGatewayIPConfigurations = applicationGatewayIPConfigurations;
             this.DefaultOutboundAccess = defaultOutboundAccess;
+            this.IpamPoolPrefixAllocations = ipamPoolPrefixAllocations;
+            this.ServiceGateway = serviceGateway;
             CustomInit();
         }
 
@@ -148,24 +153,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets or sets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the RouteTable resource.
@@ -174,7 +166,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public RouteTable RouteTable {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the subnet resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the subnet resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -297,10 +289,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets set this property to false to disable default outbound
-        /// connectivity for all VMs in the subnet. This property can only be set at
-        /// the time of subnet creation and cannot be updated for an existing subnet.
+        /// connectivity for all VMs in the subnet.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultOutboundAccess")]
         public bool? DefaultOutboundAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of IPAM Pools for allocating IP address prefixes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipamPoolPrefixAllocations")]
+        public System.Collections.Generic.IList<IpamPoolPrefixAllocation> IpamPoolPrefixAllocations {get; set; }
+
+        /// <summary>
+        /// Gets or sets reference to an existing service gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceGateway")]
+        public SubResource ServiceGateway {get; set; }
     }
 }

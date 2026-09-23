@@ -21,12 +21,13 @@ Create an in-memory object for UrlRewriteAction.
 Create an in-memory object for UrlRewriteAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRewriteActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleurlrewriteactionobject
 #>
 function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,14 +40,15 @@ function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
         [Parameter(Mandatory, HelpMessage="define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.")]
         [string]
         $ParameterSourcePattern,
-        [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
-        $Name
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
+        [string]
+        [alias('Name')]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UrlRewriteAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterDestination')) {
             $Object.ParameterDestination = $ParameterDestination
@@ -57,8 +59,8 @@ function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
         if ($PSBoundParameters.ContainsKey('ParameterSourcePattern')) {
             $Object.ParameterSourcePattern = $ParameterSourcePattern
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         return $Object
     }

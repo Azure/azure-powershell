@@ -17,6 +17,7 @@ Updates an EventHub Entity
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CaptureEnabled] [-Encoding <String>] [-IntervalInSeconds <Int32>] [-SizeLimitInBytes <Int32>]
  [-SkipEmptyArchive] [-RetentionTimeInHour <Int64>] [-TombstoneRetentionTimeInHour <Int32>] [-Status <String>]
+ [-UserMetadata <String>] [-MinCompactionLagInMin <Int64>] [-TimestampType <String>]
  [-DestinationName <String>] [-IdentityType <String>] [-UserAssignedIdentityId <String>]
  [-PartitionCount <Int64>] [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>]
  [-BlobContainer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -27,7 +28,8 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-CaptureEnabled] [-Encoding <String>]
  [-IntervalInSeconds <Int32>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-RetentionTimeInHour <Int64>]
- [-TombstoneRetentionTimeInHour <Int32>] [-Status <String>] [-DestinationName <String>]
+ [-TombstoneRetentionTimeInHour <Int32>] [-Status <String>] [-UserMetadata <String>]
+ [-MinCompactionLagInMin <Int64>] [-TimestampType <String>] [-DestinationName <String>]
  [-IdentityType <String>] [-UserAssignedIdentityId <String>] [-PartitionCount <Int64>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -282,6 +284,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinCompactionLagInMin
+The minimum time a message will remain ineligible for compaction in the log.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of EventHub Entity.
 
@@ -451,6 +468,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TimestampType
+Denotes the type of timestamp the message will hold.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TombstoneRetentionTimeInHour
 Number of hours to retain the tombstone markers of a compacted Event Hub.
 This value is only used when cleanupPolicy is Compaction.
@@ -470,6 +502,21 @@ Accept wildcard characters: False
 
 ### -UserAssignedIdentityId
 Properties for User Assigned Identities
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserMetadata
+Gets and Sets Metadata of User.
 
 ```yaml
 Type: System.String

@@ -407,6 +407,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string KeyEncryptionVaultId { get; set; }
 
         /// <summary>
+        /// Gets or sets the recovery availability zone for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets platform fault domain for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public int? PlatformFaultDomain { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -783,7 +799,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                     RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                     RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
-                    RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId
+                    RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId,
+                    RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
+                    PlatformFaultDomain = this.PlatformFaultDomain
                 };
 
                 // Fetch the latest Protected item objects
@@ -885,20 +903,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
                 {
-                    a2aSwitchInput.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
-                    {
-                        DiskId = disk.DiskId,
-                        RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
-                        RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                        RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                        PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
-                        RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
-                        DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
-                            disk.DiskEncryptionSecretUrl,
-                            disk.DiskEncryptionVaultId,
-                            disk.KeyEncryptionKeyUrl,
-                            disk.KeyEncryptionVaultId)
-                    });
+                    a2aSwitchInput.VMManagedDisks.Add(
+                        Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: true));
                 }
             }
         }

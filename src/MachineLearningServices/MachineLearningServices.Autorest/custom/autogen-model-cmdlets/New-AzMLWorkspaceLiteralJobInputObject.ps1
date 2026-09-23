@@ -21,12 +21,13 @@ Create an in-memory object for LiteralJobInput.
 Create an in-memory object for LiteralJobInput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceLiteralJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceliteraljobinputobject
 #>
 function New-AzMLWorkspaceLiteralJobInputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,24 +36,17 @@ function New-AzMLWorkspaceLiteralJobInputObject {
         $Value,
         [Parameter(HelpMessage="Description for the input.")]
         [string]
-        $Description,
-        [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of job.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobInputType]
-        $Type
+        $Description
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.LiteralJobInput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.LiteralJobInput]::New()
 
         if ($PSBoundParameters.ContainsKey('Value')) {
             $Object.Value = $Value
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description
-        }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
         }
         return $Object
     }

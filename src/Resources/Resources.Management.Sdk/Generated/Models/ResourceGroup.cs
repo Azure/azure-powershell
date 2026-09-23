@@ -45,7 +45,15 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="tags">The tags attached to the resource group.
         /// </param>
-        public ResourceGroup(string location, string id = default(string), string name = default(string), string type = default(string), ResourceGroupProperties properties = default(ResourceGroupProperties), string managedBy = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="createdTime">The created time of the resource group. This is only present if requested
+        /// via the $expand query parameter.
+        /// </param>
+
+        /// <param name="changedTime">The changed time of the resource group. This is only present if requested
+        /// via the $expand query parameter.
+        /// </param>
+        public ResourceGroup(string location, string id = default(string), string name = default(string), string type = default(string), ResourceGroupProperties properties = default(ResourceGroupProperties), string managedBy = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? changedTime = default(System.DateTime?))
 
         {
             this.Id = id;
@@ -55,6 +63,8 @@ namespace Microsoft.Azure.Management.Resources.Models
             this.Location = location;
             this.ManagedBy = managedBy;
             this.Tags = tags;
+            this.CreatedTime = createdTime;
+            this.ChangedTime = changedTime;
             CustomInit();
         }
 
@@ -107,6 +117,20 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets the created time of the resource group. This is only present if
+        /// requested via the $expand query parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdTime")]
+        public System.DateTime? CreatedTime {get; private set; }
+
+        /// <summary>
+        /// Gets the changed time of the resource group. This is only present if
+        /// requested via the $expand query parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "changedTime")]
+        public System.DateTime? ChangedTime {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

@@ -13,9 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SensitivityType
     {
-        public const string None = "None";
+        /// <summary>
+        /// Low
+        /// </summary>
         public const string Low = "Low";
+        /// <summary>
+        /// Medium
+        /// </summary>
         public const string Medium = "Medium";
+        /// <summary>
+        /// High
+        /// </summary>
         public const string High = "High";
     }
 }

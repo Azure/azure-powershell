@@ -35,18 +35,25 @@ namespace Microsoft.Azure.Management.Search.Models
         /// values are between 1 and 3.
         /// </param>
 
+        /// <param name="endpoint">The endpoint of the Azure AI Search service.
+        /// </param>
+
         /// <param name="hostingMode">Applicable only for the standard3 SKU. You can set this property to enable
         /// up to 3 high density partitions that allow up to 1000 indexes, which is
         /// much higher than the maximum indexes allowed for any other SKU. For the
         /// standard3 SKU, the value is either &#39;default&#39; or &#39;highDensity&#39;. For all
         /// other SKUs, this value must be &#39;default&#39;.
-        /// Possible values include: 'default', 'highDensity'</param>
+        /// Possible values include: &#39;default&#39;, &#39;highDensity&#39;</param>
+
+        /// <param name="computeType">Configure this property to support the search service using either the
+        /// Default Compute or Azure Confidential Compute.
+        /// Possible values include: &#39;default&#39;, &#39;confidential&#39;</param>
 
         /// <param name="publicNetworkAccess">This value can be set to &#39;enabled&#39; to avoid breaking changes on existing
         /// customer resources and templates. If set to &#39;disabled&#39;, traffic over public
         /// interface is not allowed, and private endpoint connections would be the
         /// exclusive access method.
-        /// Possible values include: 'enabled', 'disabled'</param>
+        /// Possible values include: &#39;enabled&#39;, &#39;disabled&#39;, &#39;securedByPerimeter&#39;</param>
 
         /// <param name="status">The status of the search service. Possible values include: &#39;running&#39;: The
         /// search service is running and no provisioning operations are underway.
@@ -56,13 +63,14 @@ namespace Microsoft.Azure.Management.Search.Models
         /// are not healthy. The search service is most likely operational, but
         /// performance might be slow and some requests might be dropped. &#39;disabled&#39;:
         /// The search service is disabled. In this state, the service will reject all
-        /// API requests. &#39;error&#39;: The search service is in an error state. If your
-        /// service is in the degraded, disabled, or error states, it means the Azure
-        /// Cognitive Search team is actively investigating the underlying issue.
-        /// Dedicated services in these states are still chargeable based on the number
-        /// of search units provisioned.
-        /// Possible values include: 'running', 'provisioning', 'deleting', 'degraded',
-        /// 'disabled', 'error'</param>
+        /// API requests. &#39;error&#39;: The search service is in an error state. &#39;stopped&#39;:
+        /// The search service is in a subscription that&#39;s disabled. If your service is
+        /// in the degraded, disabled, or error states, it means the Azure AI Search
+        /// team is actively investigating the underlying issue. Dedicated services in
+        /// these states are still chargeable based on the number of search units
+        /// provisioned.
+        /// Possible values include: &#39;running&#39;, &#39;provisioning&#39;, &#39;deleting&#39;, &#39;degraded&#39;,
+        /// &#39;disabled&#39;, &#39;error&#39;, &#39;stopped&#39;</param>
 
         /// <param name="statusDetails">The details of the search service status.
         /// </param>
@@ -70,16 +78,22 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="provisioningState">The state of the last provisioning operation performed on the search
         /// service. Provisioning is an intermediate state that occurs while service
         /// capacity is being established. After capacity is set up, provisioningState
-        /// changes to either &#39;succeeded&#39; or &#39;failed&#39;. Client applications can poll
+        /// changes to either &#39;Succeeded&#39; or &#39;Failed&#39;. Client applications can poll
         /// provisioning status (the recommended polling interval is from 30 seconds to
         /// one minute) by using the Get Search Service operation to see when an
         /// operation is completed. If you are using the free service, this value tends
-        /// to come back as &#39;succeeded&#39; directly in the call to Create search service.
+        /// to come back as &#39;Succeeded&#39; directly in the call to Create search service.
         /// This is because the free service uses capacity that is already set up.
-        /// Possible values include: 'succeeded', 'provisioning', 'failed'</param>
+        /// Possible values include: &#39;succeeded&#39;, &#39;provisioning&#39;, &#39;failed&#39;</param>
 
-        /// <param name="networkRuleSet">Network specific rules that determine how the Azure Cognitive Search
-        /// service may be reached.
+        /// <param name="networkRuleSet">Network specific rules that determine how the Azure AI Search service may
+        /// be reached.
+        /// </param>
+
+        /// <param name="dataExfiltrationProtections">A list of data exfiltration scenarios that are explicitly disallowed for
+        /// the search service. Currently, the only supported value is &#39;All&#39; to disable
+        /// all possible data export scenarios with more fine grained controls planned
+        /// for the future.
         /// </param>
 
         /// <param name="encryptionWithCmk">Specifies any policy regarding encryption of resources (such as indexes)
@@ -96,35 +110,51 @@ namespace Microsoft.Azure.Management.Search.Models
         /// true.
         /// </param>
 
-        /// <param name="privateEndpointConnections">The list of private endpoint connections to the Azure Cognitive Search
+        /// <param name="semanticSearch">Sets options that control the availability of semantic search. This
+        /// configuration is only possible for certain Azure AI Search SKUs in certain
+        /// locations.
+        /// Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;</param>
+
+        /// <param name="privateEndpointConnections">The list of private endpoint connections to the Azure AI Search service.
+        /// </param>
+
+        /// <param name="sharedPrivateLinkResources">The list of shared private link resources managed by the Azure AI Search
         /// service.
         /// </param>
 
-        /// <param name="semanticSearch">Sets options that control the availability of semantic search. This
-        /// configuration is only possible for certain Azure Cognitive Search SKUs in
-        /// certain locations.
-        /// Possible values include: 'disabled', 'free', 'standard'</param>
-
-        /// <param name="sharedPrivateLinkResources">The list of shared private link resources managed by the Azure Cognitive
-        /// Search service.
+        /// <param name="eTag">A system generated property representing the service&#39;s etag that can be for
+        /// optimistic concurrency control during updates.
         /// </param>
-        public SearchServiceProperties(int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), PublicNetworkAccess? publicNetworkAccess = default(PublicNetworkAccess?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), bool? disableLocalAuth = default(bool?), DataPlaneAuthOptions authOptions = default(DataPlaneAuthOptions), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), string semanticSearch = default(string), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>))
+
+        /// <param name="upgradeAvailable">Indicates if the search service has an upgrade available.
+        /// Possible values include: &#39;notAvailable&#39;, &#39;available&#39;</param>
+
+        /// <param name="serviceUpgradedAt">The date and time the search service was last upgraded. This field will be
+        /// null until the service gets upgraded for the first time.
+        /// </param>
+        public SearchServiceProperties(int? replicaCount = default(int?), int? partitionCount = default(int?), string endpoint = default(string), HostingMode? hostingMode = default(HostingMode?), string computeType = default(string), string publicNetworkAccess = default(string), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), System.Collections.Generic.IList<string> dataExfiltrationProtections = default(System.Collections.Generic.IList<string>), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), bool? disableLocalAuth = default(bool?), DataPlaneAuthOptions authOptions = default(DataPlaneAuthOptions), string semanticSearch = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), string eTag = default(string), string upgradeAvailable = default(string), System.DateTime? serviceUpgradedAt = default(System.DateTime?))
 
         {
             this.ReplicaCount = replicaCount;
             this.PartitionCount = partitionCount;
+            this.Endpoint = endpoint;
             this.HostingMode = hostingMode;
+            this.ComputeType = computeType;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.Status = status;
             this.StatusDetails = statusDetails;
             this.ProvisioningState = provisioningState;
             this.NetworkRuleSet = networkRuleSet;
+            this.DataExfiltrationProtections = dataExfiltrationProtections;
             this.EncryptionWithCmk = encryptionWithCmk;
             this.DisableLocalAuth = disableLocalAuth;
             this.AuthOptions = authOptions;
-            this.PrivateEndpointConnections = privateEndpointConnections;
             this.SemanticSearch = semanticSearch;
+            this.PrivateEndpointConnections = privateEndpointConnections;
             this.SharedPrivateLinkResources = sharedPrivateLinkResources;
+            this.ETag = eTag;
+            this.UpgradeAvailable = upgradeAvailable;
+            this.ServiceUpgradedAt = serviceUpgradedAt;
             CustomInit();
         }
 
@@ -152,6 +182,12 @@ namespace Microsoft.Azure.Management.Search.Models
         public int? PartitionCount {get; set; }
 
         /// <summary>
+        /// Gets or sets the endpoint of the Azure AI Search service.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endpoint")]
+        public string Endpoint {get; set; }
+
+        /// <summary>
         /// Gets or sets applicable only for the standard3 SKU. You can set this
         /// property to enable up to 3 high density partitions that allow up to 1000
         /// indexes, which is much higher than the maximum indexes allowed for any
@@ -162,13 +198,20 @@ namespace Microsoft.Azure.Management.Search.Models
         public HostingMode? HostingMode {get; set; }
 
         /// <summary>
+        /// Gets or sets configure this property to support the search service using
+        /// either the Default Compute or Azure Confidential Compute. Possible values include: &#39;default&#39;, &#39;confidential&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "computeType")]
+        public string ComputeType {get; set; }
+
+        /// <summary>
         /// Gets or sets this value can be set to &#39;enabled&#39; to avoid breaking changes
         /// on existing customer resources and templates. If set to &#39;disabled&#39;, traffic
         /// over public interface is not allowed, and private endpoint connections
-        /// would be the exclusive access method. Possible values include: &#39;enabled&#39;, &#39;disabled&#39;
+        /// would be the exclusive access method. Possible values include: &#39;enabled&#39;, &#39;disabled&#39;, &#39;securedByPerimeter&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
-        public PublicNetworkAccess? PublicNetworkAccess {get; set; }
+        public string PublicNetworkAccess {get; set; }
 
         /// <summary>
         /// Gets the status of the search service. Possible values include: &#39;running&#39;:
@@ -179,11 +222,12 @@ namespace Microsoft.Azure.Management.Search.Models
         /// are not healthy. The search service is most likely operational, but
         /// performance might be slow and some requests might be dropped. &#39;disabled&#39;:
         /// The search service is disabled. In this state, the service will reject all
-        /// API requests. &#39;error&#39;: The search service is in an error state. If your
-        /// service is in the degraded, disabled, or error states, it means the Azure
-        /// Cognitive Search team is actively investigating the underlying issue.
-        /// Dedicated services in these states are still chargeable based on the number
-        /// of search units provisioned. Possible values include: &#39;running&#39;, &#39;provisioning&#39;, &#39;deleting&#39;, &#39;degraded&#39;, &#39;disabled&#39;, &#39;error&#39;
+        /// API requests. &#39;error&#39;: The search service is in an error state. &#39;stopped&#39;:
+        /// The search service is in a subscription that&#39;s disabled. If your service is
+        /// in the degraded, disabled, or error states, it means the Azure AI Search
+        /// team is actively investigating the underlying issue. Dedicated services in
+        /// these states are still chargeable based on the number of search units
+        /// provisioned. Possible values include: &#39;running&#39;, &#39;provisioning&#39;, &#39;deleting&#39;, &#39;degraded&#39;, &#39;disabled&#39;, &#39;error&#39;, &#39;stopped&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public SearchServiceStatus? Status {get; private set; }
@@ -198,22 +242,31 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Gets the state of the last provisioning operation performed on the search
         /// service. Provisioning is an intermediate state that occurs while service
         /// capacity is being established. After capacity is set up, provisioningState
-        /// changes to either &#39;succeeded&#39; or &#39;failed&#39;. Client applications can poll
+        /// changes to either &#39;Succeeded&#39; or &#39;Failed&#39;. Client applications can poll
         /// provisioning status (the recommended polling interval is from 30 seconds to
         /// one minute) by using the Get Search Service operation to see when an
         /// operation is completed. If you are using the free service, this value tends
-        /// to come back as &#39;succeeded&#39; directly in the call to Create search service.
+        /// to come back as &#39;Succeeded&#39; directly in the call to Create search service.
         /// This is because the free service uses capacity that is already set up. Possible values include: &#39;succeeded&#39;, &#39;provisioning&#39;, &#39;failed&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public ProvisioningState? ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets network specific rules that determine how the Azure Cognitive
-        /// Search service may be reached.
+        /// Gets or sets network specific rules that determine how the Azure AI Search
+        /// service may be reached.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkRuleSet")]
         public NetworkRuleSet NetworkRuleSet {get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of data exfiltration scenarios that are explicitly
+        /// disallowed for the search service. Currently, the only supported value is
+        /// &#39;All&#39; to disable all possible data export scenarios with more fine grained
+        /// controls planned for the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dataExfiltrationProtections")]
+        public System.Collections.Generic.IList<string> DataExfiltrationProtections {get; set; }
 
         /// <summary>
         /// Gets or sets specifies any policy regarding encryption of resources (such
@@ -239,26 +292,46 @@ namespace Microsoft.Azure.Management.Search.Models
         public DataPlaneAuthOptions AuthOptions {get; set; }
 
         /// <summary>
-        /// Gets the list of private endpoint connections to the Azure Cognitive Search
+        /// Gets or sets sets options that control the availability of semantic search.
+        /// This configuration is only possible for certain Azure AI Search SKUs in
+        /// certain locations. Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "semanticSearch")]
+        public string SemanticSearch {get; set; }
+
+        /// <summary>
+        /// Gets the list of private endpoint connections to the Azure AI Search
         /// service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpointConnections")]
         public System.Collections.Generic.IList<PrivateEndpointConnection> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
-        /// Gets or sets sets options that control the availability of semantic search.
-        /// This configuration is only possible for certain Azure Cognitive Search SKUs
-        /// in certain locations. Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "semanticSearch")]
-        public string SemanticSearch {get; set; }
-
-        /// <summary>
-        /// Gets the list of shared private link resources managed by the Azure
-        /// Cognitive Search service.
+        /// Gets the list of shared private link resources managed by the Azure AI
+        /// Search service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sharedPrivateLinkResources")]
         public System.Collections.Generic.IList<SharedPrivateLinkResource> SharedPrivateLinkResources {get; private set; }
+
+        /// <summary>
+        /// Gets a system generated property representing the service&#39;s etag that can
+        /// be for optimistic concurrency control during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "eTag")]
+        public string ETag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets indicates if the search service has an upgrade available. Possible values include: &#39;notAvailable&#39;, &#39;available&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradeAvailable")]
+        public string UpgradeAvailable {get; set; }
+
+        /// <summary>
+        /// Gets the date and time the search service was last upgraded. This field
+        /// will be null until the service gets upgraded for the first time.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceUpgradedAt")]
+        public System.DateTime? ServiceUpgradedAt {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -289,6 +362,11 @@ namespace Microsoft.Azure.Management.Search.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "PartitionCount", 1);
                 }
             }
+
+
+
+
+
 
 
 

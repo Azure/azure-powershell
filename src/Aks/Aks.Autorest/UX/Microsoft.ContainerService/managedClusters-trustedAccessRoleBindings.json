@@ -1,0 +1,95 @@
+{
+  "resourceType": "managedClusters/trustedAccessRoleBindings",
+  "apiVersion": "2025-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksTrustedAccessRoleBinding",
+      "description": "Get a trusted access role binding.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azakstrustedaccessrolebinding"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a trusted access role binding.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.trustedAccessRoleBindingName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAksTrustedAccessRoleBinding",
+      "description": "Delete a trusted access role binding.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/remove-azakstrustedaccessrolebinding"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a trusted access role binding.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.trustedAccessRoleBindingName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

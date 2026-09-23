@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSelfHelpSolution
 
 ## SYNOPSIS
-Update the requiredInputs or additional information needed to execute the solution
+update the requiredInputs or additional information needed to execute the solution
 
 ## SYNTAX
 
@@ -19,6 +19,20 @@ Update-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-Parameter <Ha
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzSelfHelpSolution -ResourceName <String> -Scope <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzSelfHelpSolution -ResourceName <String> -Scope <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-Parameter <Hashtable>]
@@ -27,7 +41,7 @@ Update-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-Parameter <Hashtabl
 ```
 
 ## DESCRIPTION
-Update the requiredInputs or additional information needed to execute the solution
+update the requiredInputs or additional information needed to execute the solution
 
 ## EXAMPLES
 
@@ -86,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
@@ -97,6 +110,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -120,7 +163,7 @@ Client input parameters to run Solution
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -135,7 +178,7 @@ Solution resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: SolutionResourceName
 
 Required: True
@@ -150,7 +193,7 @@ scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -162,11 +205,10 @@ Accept wildcard characters: False
 
 ### -TriggerCriterion
 Solution request trigger criteria
-To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITriggerCriterion[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -216,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResource
 
 ## NOTES
 

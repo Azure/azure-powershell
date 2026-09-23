@@ -20,6 +20,19 @@
 
 ## Upcoming Release
 
+## Version 0.4.2
+* Fixed module name in module metadata
+
+## Version 0.4.1
+* Removed extra empty lines in the output of `Invoke-AzCostManagementQuery`. [#27640]
+
+## Version 0.4.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+
+## Version 0.3.4
+* Upgraded nuget package to signed package.
+* Fixed bug tags in query filter cannot be properly serialized [#22326]
+
 ## Version 0.3.3
 * Fixed an error that values in row could be null when grouping by the value of TagKey in Invoke-AzCostManagementQuery cmdlet. Fix in 0.3.1 accidentally removed from 0.3.2, added it back. [#25948]
 

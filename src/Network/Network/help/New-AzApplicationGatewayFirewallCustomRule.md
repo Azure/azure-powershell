@@ -16,7 +16,8 @@ Creates a new custom rule for the application gateway firewall policy.
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration <String>]
  [-RateLimitThreshold <Int32>] -RuleType <String> -MatchCondition <PSApplicationGatewayFirewallCondition[]>
  [-GroupByUserSession <PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]>] -Action <String>
- [-State <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-State <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ The **New-AzApplicationGatewayFirewallCustomRule** creates a custom rule for fir
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow
+New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condition -Action Allow
 ```
 
 ```output
@@ -122,6 +123,21 @@ The command creates a new custom rule with name of RateLimitRule3, state as Disa
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Action
 Type of Actions.
 
@@ -129,9 +145,24 @@ Type of Actions.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Block, Log
+Accepted values: Allow, Block, Log, CAPTCHA
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -16,8 +16,9 @@ Enables or resumes backup for an item with a specified Backup protection policy.
 ### AzureVMComputeEnableProtection (Default)
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String> [-ResourceGroupName] <String>
- [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ExcludeAllDataDisks]
+ [-ContainerSubscriptionId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMClassicComputeEnableProtection
@@ -30,8 +31,9 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String
 ### AzureFileShareEnableProtection
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String>
- [-StorageAccountName] <String> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-StorageAccountName] <String> [-AccessType <String>] [-IsSystemAssignedIdentity]
+ [-UserAssignedIdentityArmUrl <String>] [-Force] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureWorkloadEnableProtection
@@ -45,7 +47,7 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableIt
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <ItemBase>
  [-InclusionDisksList <String[]>] [-ExclusionDisksList <String[]>] [-ResetExclusionSettings]
  [-ExcludeAllDataDisks] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +79,56 @@ Enables backup for an item with a specified Backup protection policy or resumes 
 Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
 ```
 
+### Example 3: Enable Backup protection for a Cross Subscription VM
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "vaultResourceGroup" -Name "vaultName"
+$Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy" -VaultId $vault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -ContainerSubscriptionId "00000000-0000-0000-0000-000000000000" -VaultId $vault.ID
+```
+
+This example configures backup for a virtual machine that resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). The **-ContainerSubscriptionId** parameter specifies the subscription of the virtual machine identified by **-Name** and **-ResourceGroupName**.
+
+### Example 4: Enable identity-based backup for an Azure file share
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "vaultResourceGroup" -Name "vaultName"
+$policy = Get-AzRecoveryServicesBackupProtectionPolicy -Name "AzureFilesPolicy" -VaultId $vault.ID
+Enable-AzRecoveryServicesBackupProtection -StorageAccountName "storageAccountName" -Name "fileShareName" -Policy $policy -AccessType IdentityBased -IsSystemAssignedIdentity -VaultId $vault.ID
+```
+
+This example registers the storage account, if necessary, and enables backup for the Azure file share by using the Recovery Services vault's system-assigned managed identity. Use **-UserAssignedIdentityArmUrl** instead of **-IsSystemAssignedIdentity** to select a user-assigned managed identity associated with the vault.
+
 ## PARAMETERS
+
+### -AccessType
+Specifies how Azure Backup accesses the storage account. Use `KeyBased` for shared-key access or `IdentityBased` for managed identity access.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileShareEnableProtection
+Aliases:
+Accepted values: KeyBased, IdentityBased
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerSubscriptionId
+Subscription ID of the Azure Virtual Machine to be protected. Use this parameter to configure backup for a VM that resides in a different subscription than the Recovery Services vault (Cross Subscription Backup).
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMComputeEnableProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -135,6 +186,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsSystemAssignedIdentity
+Indicates that Azure Backup uses the Recovery Services vault's system-assigned managed identity to access the storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureFileShareEnableProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -232,6 +298,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: ModifyProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServiceName
 Cloud Service Name for Azure Classic Compute VM.
 
@@ -259,6 +340,36 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityArmUrl
+Specifies the ARM resource ID of the user-assigned managed identity that Azure Backup uses to access the storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileShareEnableProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Skips confirmation when the storage account must be re-registered because the requested access type or managed identity differs from the existing registration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureFileShareEnableProtection
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -342,5 +453,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Disable-AzRecoveryServicesBackupProtection](./Disable-AzRecoveryServicesBackupProtection.md)
 
 [Get-AzRecoveryServicesBackupProtectionPolicy](./Get-AzRecoveryServicesBackupProtectionPolicy.md)
-
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridTopicSpace
 
 ## SYNOPSIS
-Create a topic space with the specified parameters.
+create a topic space with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzEventGridTopicSpace -InputObject <IEventGridIdentity> [-Description <Strin
 ```
 
 ## DESCRIPTION
-Create a topic space with the specified parameters.
+create a topic space with the specified parameters.
 
 ## EXAMPLES
 

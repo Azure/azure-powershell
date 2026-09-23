@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="recoveryPointType">The recovery point type.
-        /// Possible values include: 'ApplicationConsistent', 'CrashConsistent'</param>
+        /// Possible values include: &#39;ApplicationConsistent&#39;, &#39;CrashConsistent&#39;</param>
         public InMageRcmFailbackPlannedFailoverProviderInput(string recoveryPointType)
 
         {

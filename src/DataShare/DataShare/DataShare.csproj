@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataShare" Version="1.0.1" />
+    <ProjectReference Include="..\DataShare.Management.Sdk\DataShare.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

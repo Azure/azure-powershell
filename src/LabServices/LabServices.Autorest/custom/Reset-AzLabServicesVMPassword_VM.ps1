@@ -19,24 +19,27 @@ Resets a lab virtual machine password.
 Resets a lab virtual machine password.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword_VM {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+        # The object of lab service virtual machine.
         ${VM},
   
         [Parameter()]
         [System.String]
+        # The user name of the virtual machine.
         ${Username},
 
         [Parameter(Mandatory)]
         [SecureString]
+        # The password of the virtual machine.
         ${Password},
 
         [Parameter()]
@@ -112,7 +115,7 @@ function Reset-AzLabServicesVMPassword_VM {
     )
     
     process {
-        return Az.LabServices\Reset-AzLabServicesVMPassword -ResourceId $VM.Id -Username $Username -Password $Password
+        return Az.LabServices.custom\Reset-AzLabServicesVMPassword_ResourceId -ResourceId $VM.Id -Username $Username -Password $Password
     }
 }
     

@@ -1,0 +1,683 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+// Changes may cause incorrect behavior and will be lost if the code is regenerated.
+namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Extensions;
+
+    /// <summary>The policy assignment.</summary>
+    public partial class PolicyAssignment :
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment,
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IValidates
+    {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExtensionResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExtensionResource __extensionResource = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExtensionResource();
+
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string AssignmentType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).AssignmentType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).AssignmentType = value ?? null; }
+
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string DefinitionVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).DefinitionVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).DefinitionVersion = value ?? null; }
+
+        /// <summary>This message will be part of response in case of policy violation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Description = value ?? null; }
+
+        /// <summary>The display name of the policy assignment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 3)]
+        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).DisplayName = value ?? null; }
+
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string EffectiveDefinitionVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).EffectiveDefinitionVersion; }
+
+        /// <summary>
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 2)]
+        public string EnforcementMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).EnforcementMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).EnforcementMode = value ?? null; }
+
+        /// <summary>
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Id; }
+
+        /// <summary>Backing field for <see cref="Identity" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentity _identity;
+
+        /// <summary>The managed identity associated with the policy assignment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Identity()); set => this._identity = value; }
+
+        /// <summary>
+        /// The principal ID of the resource identity. This property will only be provided for a system assigned identity
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).PrincipalId; }
+
+        /// <summary>
+        /// The tenant ID of the resource identity. This property will only be provided for a system assigned identity
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).TenantId; }
+
+        /// <summary>
+        /// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+
+        /// <summary>
+        /// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string InstanceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).InstanceId; }
+
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string LatestDefinitionVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).LatestDefinitionVersion; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>
+        /// The location of the policy assignment. Only required when utilizing managed identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>
+        /// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny MetadataRaw { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for EffectiveDefinitionVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.EffectiveDefinitionVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).EffectiveDefinitionVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).EffectiveDefinitionVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for Identity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Identity()); set { {_identity = value;} } }
+
+        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityTenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
+
+        /// <summary>Internal Acessors for InstanceId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.InstanceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).InstanceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).InstanceId = value ?? null; }
+
+        /// <summary>Internal Acessors for LatestDefinitionVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.LatestDefinitionVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).LatestDefinitionVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).LatestDefinitionVersion = value ?? null; }
+
+        /// <summary>Internal Acessors for Property</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentProperties Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyAssignmentProperties()); set { {_property = value;} } }
+
+        /// <summary>Internal Acessors for Scope</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.Scope { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Scope; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Scope = value ?? null; }
+
+        /// <summary>Internal Acessors for SelfServeExemptionSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISelfServeExemptionSettings Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentInternal.SelfServeExemptionSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).SelfServeExemptionSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).SelfServeExemptionSetting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Type = value ?? null; }
+
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 0)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Name; }
+
+        /// <summary>The messages that describe why a resource is non-compliant with the policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage> NonComplianceMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).NonComplianceMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).NonComplianceMessage = value ?? null /* arrayOf */; }
+
+        /// <summary>The policy's excluded scopes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public System.Collections.Generic.List<string> NotScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).NotScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).NotScope = value ?? null /* arrayOf */; }
+
+        /// <summary>The policy property value override.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride> Override { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Override; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Override = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The parameter values for the assigned policy rule. The keys are the parameter names.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesParameters ParameterRaw { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Parameter = value ?? null /* model class */; }
+
+        /// <summary>The ID of the policy definition or policy set definition being assigned.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string PolicyDefinitionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).PolicyDefinitionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).PolicyDefinitionId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentProperties _property;
+
+        /// <summary>Properties for the policy assignment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyAssignmentProperties()); set => this._property = value; }
+
+        /// <summary>The resource selector list to filter policies by resource properties.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector> ResourceSelector { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).ResourceSelector; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).ResourceSelector = value ?? null /* arrayOf */; }
+
+        /// <summary>The scope for the policy assignment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 1)]
+        public string Scope { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).Scope; }
+
+        /// <summary>Indicates whether self-serve exemption is enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public bool? SelfServeExemptionSettingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).SelfServeExemptionSettingEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).SelfServeExemptionSettingEnabled = value ?? default(bool); }
+
+        /// <summary>The policy definition reference IDs for self-serve exemption.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public System.Collections.Generic.List<string> SelfServeExemptionSettingPolicyDefinitionReferenceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).SelfServeExemptionSettingPolicyDefinitionReferenceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)Property).SelfServeExemptionSettingPolicyDefinitionReferenceId = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceInternal)__extensionResource).Type; }
+
+        /// <summary>Creates an new <see cref="PolicyAssignment" /> instance.</summary>
+        public PolicyAssignment()
+        {
+
+        }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__extensionResource), __extensionResource);
+            await eventListener.AssertObjectIsValid(nameof(__extensionResource), __extensionResource);
+        }
+    }
+    /// The policy assignment.
+    public partial interface IPolicyAssignment :
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExtensionResource
+    {
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.",
+        SerializedName = @"assignmentType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+        string AssignmentType { get; set; }
+        /// <summary>The version of the policy definition to use.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The version of the policy definition to use.",
+        SerializedName = @"definitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string DefinitionVersion { get; set; }
+        /// <summary>This message will be part of response in case of policy violation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This message will be part of response in case of policy violation.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
+        /// <summary>The display name of the policy assignment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The display name of the policy assignment.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get; set; }
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.",
+        SerializedName = @"effectiveDefinitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string EffectiveDefinitionVersion { get;  }
+        /// <summary>
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll",
+        SerializedName = @"enforcementMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
+        string EnforcementMode { get; set; }
+        /// <summary>
+        /// The principal ID of the resource identity. This property will only be provided for a system assigned identity
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The principal ID of the resource identity.  This property will only be provided for a system assigned identity",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityPrincipalId { get;  }
+        /// <summary>
+        /// The tenant ID of the resource identity. This property will only be provided for a system assigned identity
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The tenant ID of the resource identity.  This property will only be provided for a system assigned identity",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityTenantId { get;  }
+        /// <summary>
+        /// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The identity type. This is the only required field when adding a system or user assigned identity to a resource.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "None")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>
+        /// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.",
+        SerializedName = @"instanceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string InstanceId { get;  }
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The latest version of the policy definition available. This is only present if requested via the $expand query parameter.",
+        SerializedName = @"latestDefinitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string LatestDefinitionVersion { get;  }
+        /// <summary>
+        /// The location of the policy assignment. Only required when utilizing managed identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The location of the policy assignment. Only required when utilizing managed identity.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
+        /// <summary>
+        /// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.",
+        SerializedName = @"metadata",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny MetadataRaw { get; set; }
+        /// <summary>The messages that describe why a resource is non-compliant with the policy.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The messages that describe why a resource is non-compliant with the policy.",
+        SerializedName = @"nonComplianceMessages",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage> NonComplianceMessage { get; set; }
+        /// <summary>The policy's excluded scopes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy's excluded scopes.",
+        SerializedName = @"notScopes",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> NotScope { get; set; }
+        /// <summary>The policy property value override.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy property value override.",
+        SerializedName = @"overrides",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride> Override { get; set; }
+        /// <summary>
+        /// The parameter values for the assigned policy rule. The keys are the parameter names.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The parameter values for the assigned policy rule. The keys are the parameter names.",
+        SerializedName = @"parameters",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesParameters) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesParameters ParameterRaw { get; set; }
+        /// <summary>The ID of the policy definition or policy set definition being assigned.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ID of the policy definition or policy set definition being assigned.",
+        SerializedName = @"policyDefinitionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PolicyDefinitionId { get; set; }
+        /// <summary>The resource selector list to filter policies by resource properties.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The resource selector list to filter policies by resource properties.",
+        SerializedName = @"resourceSelectors",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector> ResourceSelector { get; set; }
+        /// <summary>The scope for the policy assignment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The scope for the policy assignment.",
+        SerializedName = @"scope",
+        PossibleTypes = new [] { typeof(string) })]
+        string Scope { get;  }
+        /// <summary>Indicates whether self-serve exemption is enabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether self-serve exemption is enabled.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SelfServeExemptionSettingEnabled { get; set; }
+        /// <summary>The policy definition reference IDs for self-serve exemption.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The policy definition reference IDs for self-serve exemption.",
+        SerializedName = @"policyDefinitionReferenceIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> SelfServeExemptionSettingPolicyDefinitionReferenceId { get; set; }
+
+    }
+    /// The policy assignment.
+    internal partial interface IPolicyAssignmentInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IExtensionResourceInternal
+    {
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+        string AssignmentType { get; set; }
+        /// <summary>The version of the policy definition to use.</summary>
+        string DefinitionVersion { get; set; }
+        /// <summary>This message will be part of response in case of policy violation.</summary>
+        string Description { get; set; }
+        /// <summary>The display name of the policy assignment.</summary>
+        string DisplayName { get; set; }
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        string EffectiveDefinitionVersion { get; set; }
+        /// <summary>
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
+        string EnforcementMode { get; set; }
+        /// <summary>The managed identity associated with the policy assignment.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentity Identity { get; set; }
+        /// <summary>
+        /// The principal ID of the resource identity. This property will only be provided for a system assigned identity
+        /// </summary>
+        string IdentityPrincipalId { get; set; }
+        /// <summary>
+        /// The tenant ID of the resource identity. This property will only be provided for a system assigned identity
+        /// </summary>
+        string IdentityTenantId { get; set; }
+        /// <summary>
+        /// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "None")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>
+        /// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+        /// </summary>
+        string InstanceId { get; set; }
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        string LatestDefinitionVersion { get; set; }
+        /// <summary>
+        /// The location of the policy assignment. Only required when utilizing managed identity.
+        /// </summary>
+        string Location { get; set; }
+        /// <summary>
+        /// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny MetadataRaw { get; set; }
+        /// <summary>The messages that describe why a resource is non-compliant with the policy.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage> NonComplianceMessage { get; set; }
+        /// <summary>The policy's excluded scopes.</summary>
+        System.Collections.Generic.List<string> NotScope { get; set; }
+        /// <summary>The policy property value override.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride> Override { get; set; }
+        /// <summary>
+        /// The parameter values for the assigned policy rule. The keys are the parameter names.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesParameters ParameterRaw { get; set; }
+        /// <summary>The ID of the policy definition or policy set definition being assigned.</summary>
+        string PolicyDefinitionId { get; set; }
+        /// <summary>Properties for the policy assignment.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentProperties Property { get; set; }
+        /// <summary>The resource selector list to filter policies by resource properties.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector> ResourceSelector { get; set; }
+        /// <summary>The scope for the policy assignment.</summary>
+        string Scope { get; set; }
+        /// <summary>The self-serve exemption settings for the policy assignment.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISelfServeExemptionSettings SelfServeExemptionSetting { get; set; }
+        /// <summary>Indicates whether self-serve exemption is enabled.</summary>
+        bool? SelfServeExemptionSettingEnabled { get; set; }
+        /// <summary>The policy definition reference IDs for self-serve exemption.</summary>
+        System.Collections.Generic.List<string> SelfServeExemptionSettingPolicyDefinitionReferenceId { get; set; }
+
+    }
+}

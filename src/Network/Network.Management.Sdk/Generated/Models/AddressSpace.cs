@@ -28,10 +28,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="addressPrefixes">A list of address blocks reserved for this virtual network in CIDR
         /// notation.
         /// </param>
-        public AddressSpace(System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="ipamPoolPrefixAllocations">A list of IPAM Pools allocating IP address prefixes.
+        /// </param>
+        public AddressSpace(System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<IpamPoolPrefixAllocation> ipamPoolPrefixAllocations = default(System.Collections.Generic.IList<IpamPoolPrefixAllocation>))
 
         {
             this.AddressPrefixes = addressPrefixes;
+            this.IpamPoolPrefixAllocations = ipamPoolPrefixAllocations;
             CustomInit();
         }
 
@@ -47,5 +51,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "addressPrefixes")]
         public System.Collections.Generic.IList<string> AddressPrefixes {get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of IPAM Pools allocating IP address prefixes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipamPoolPrefixAllocations")]
+        public System.Collections.Generic.IList<IpamPoolPrefixAllocation> IpamPoolPrefixAllocations {get; set; }
     }
 }

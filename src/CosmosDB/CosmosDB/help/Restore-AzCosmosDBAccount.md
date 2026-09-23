@@ -16,8 +16,10 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
  -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
  [-DatabasesToRestore <PSDatabaseToRestore[]>] [-GremlinDatabasesToRestore <PSGremlinDatabaseToRestore[]>]
- [-TablesToRestore <PSTablesToRestore>] [-PublicNetworkAccess <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-DisableTtl <Boolean>] [-Confirm] [<CommonParameters>]
+ [-TablesToRestore <PSTablesToRestore>] [-AsJob] [-PublicNetworkAccess <String>] [-DisableTtl <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SourceBackupLocation <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,6 +118,8 @@ Accept wildcard characters: False
 
 ### -DisableTtl
 Bool to indicate if restored account is going to have Time-To-Live disabled.
+
+
 ```yaml
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
@@ -209,6 +213,20 @@ The list of PSTableToRestore objects which specify the subset of tables to resto
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSTablesToRestore
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceBackupLocation
+This is the location of the source account where backups are located. Provide this value if the source and target are in different locations.
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

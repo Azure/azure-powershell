@@ -15,7 +15,8 @@ Updates a network manager security user rule.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerSecurityUserRule -InputObject <PSNetworkManagerSecurityUserRule> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ByNameParameters
@@ -24,7 +25,8 @@ Set-AzNetworkManagerSecurityUserRule -Name <String> -ResourceGroupName <String> 
  -SecurityUserConfigurationName <String> -RuleCollectionName <String> [-Description <String>]
  -Protocol <String> -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
- [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +35,8 @@ Set-AzNetworkManagerSecurityUserRule -Name <String> -ResourceGroupName <String> 
 Set-AzNetworkManagerSecurityUserRule -ResourceId <String> [-Description <String>] -Protocol <String>
  -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
- [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -95,11 +98,41 @@ Updates a network manager security user rule's priority'.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

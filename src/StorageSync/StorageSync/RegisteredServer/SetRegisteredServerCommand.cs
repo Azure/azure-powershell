@@ -12,14 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -67,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name.</value>
         [Parameter(Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -132,6 +142,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 bool? identity = default;
 
+                string localServerId;
+                Guid localServerGuid;
+                using (IEcsManagement ecsManagement = StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement())
+                {
+                    int hr = ecsManagement.GetSyncServerId(out localServerId);
+                    if (hr != 0 || !Guid.TryParse(localServerId, out localServerGuid))
+                    {
+                        throw new PSArgumentException("Unable to retrieve the local ServerId. Ensure the Azure File Sync agent is installed and running.");
+                    }
+                }
+
                 if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.ServerId;
@@ -140,14 +161,147 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    resourceName = ServerId;
+                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
+                }
+
+                if (!Guid.TryParse(resourceName, out Guid resourceServerGuid))
+                {
+                    throw new PSArgumentException($"The ServerId '{resourceName}' is not a valid GUID.");
+                }
+                
+                if (resourceServerGuid != localServerGuid)
+                {
+                    throw new PSArgumentException($"The ServerId '{resourceName}' does not match the local machine's ServerId '{localServerGuid}'. Run this command on the correct server.");
                 }
 
                 if (this.IsParameterBound(c => c.Identity))
                 {
                     identity = Identity;
+                }
+
+                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, resourceServerGuid);
+                if (registeredServer == null)
+                {
+                    throw new PSArgumentException($"Server {resourceName} not found.");
+                }
+                if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterName.ToString())
+                {
+                    throw new PSArgumentException($"Please provide the current server resource id with ServerType as ClusterNode");
+                }
+                if(!identity.GetValueOrDefault())
+                {
+                    throw new NotSupportedException(ActionMessage + " requires Identity parameter to be set to true.");
+
+                }
+
+                // 1. Get the server's latest applicationId
+                var serverManagedIdentityProvider = new ServerManagedIdentityProvider
+                {
+                    EnableMIChecking = true
+                };
+
+                LocalServerType serverTypeFromRegistry = StorageSyncClientWrapper.StorageSyncResourceManager.GetServerTypeFromRegistry();
+                ServerApplicationIdentity serverApplicationIdentity = serverManagedIdentityProvider.GetServerApplicationIdentityAsync(serverTypeFromRegistry, throwIfNotFound: false).GetAwaiter().GetResult();
+                Guid applicationId = serverApplicationIdentity?.ApplicationId ?? Guid.Empty;
+
+                if (applicationId == Guid.Empty)
+                {
+                    StorageSyncClientWrapper.VerboseLogger.Invoke($"Unable to retrieve a managed identity to patch this server.");
+                    throw new PSArgumentException("Not able to set the server's identity. Please ensure this server has Azure Arc installed and connected or Azure VM has a system assigned managed identity enabled.");
+                }
+                else
+                {
+                    WriteVerbose($"Server ApplicationId to apply: {applicationId}");
+                }
+
+                // 2. RBAC permission set for Server Endpoints
+                string serverResourceId;
+
+                if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterNode.ToString())
+                {
+                    // this is unexpected scenario but can happen if the server is not registered properly
+                    if (!Guid.TryParse(registeredServer.ClusterId, out Guid custerId) || custerId == Guid.Empty)
+                    {
+                        throw new PSArgumentException($"Cluster Id is not available for cluster node server {registeredServer.Id}. Please contact administrator for further troubleshooting.");
+                    }
+
+                    RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, custerId);
+                    if (clusterNameServer == null)
+                    {
+                        throw new PSArgumentException($"Cluster  {registeredServer.ClusterName} not found.");
+                    }
+                    serverResourceId = clusterNameServer?.Id;
+                }
+                else
+                {
+                    serverResourceId = registeredServer.Id;
+                }
+
+                IEnumerable <StorageSyncModels.SyncGroup> syncGroups = StorageSyncClientWrapper.StorageSyncManagementClient.SyncGroups.ListByStorageSyncService(resourceGroupName, storageSyncServiceName);
+                Exception syncGroupFirstException = null;
+                if (syncGroups != null)
+                {
+                    foreach (StorageSyncModels.SyncGroup syncGroup in syncGroups)
+                    {
+                        try
+                        {
+                            IEnumerable<StorageSyncModels.CloudEndpoint> cloudEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                            StorageSyncModels.CloudEndpoint cloudEndpoint = cloudEndpoints.FirstOrDefault();
+
+                            if (cloudEndpoint == null)
+                            {
+                                StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping SyncGroup. No cloud Endpoint found for sync group {syncGroup.Name}");
+                                continue;
+                            }
+                            var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+
+                            IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroup.Name);
+                            Exception serverEndpointFirstException = null;
+                            foreach (StorageSyncModels.ServerEndpoint serverEndpoint in serverEndpoints)
+                            {
+                                try
+                                {
+                                    // if we found a matching ServerEndpoint for this server, create a role assignment for this file share/cep
+                                    if (serverEndpoint.ServerResourceId.Equals(serverResourceId, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        // Identity, RoleDef, Scope
+                                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                                        var identityRoleAssignmentForFileShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                            applicationId,
+                                            Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                                            scope);
+
+                                        // break because a given server (as an sep) can only participate once in each sync group/cep
+                                        break;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    StorageSyncClientWrapper.ErrorLogger.Invoke($"RBAC creation for ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
+                                    serverEndpointFirstException = serverEndpointFirstException ?? ex;
+                                }
+                            } // Iterating server endpoints
+                            if (serverEndpointFirstException != null)
+                            {
+                                throw serverEndpointFirstException;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            StorageSyncClientWrapper.ErrorLogger.Invoke($"SyncGroup {syncGroup.Name} has failed with an exception {ex.Message}.");
+                            syncGroupFirstException = syncGroupFirstException ?? ex;
+                        }
+                    } // Iterating sync groups
+                    if (syncGroupFirstException != null)
+                    {
+                        throw syncGroupFirstException;
+                    }
+                }
+                else
+                {
+                    StorageSyncClientWrapper.VerboseLogger.Invoke($"No SyncGroups found for StorageSyncService {storageSyncServiceName}");
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, resourceName);
@@ -156,8 +310,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     RegisteredServer resource = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(
                         resourceGroupName,
                         storageSyncServiceName,
-                        resourceName,
-                        identity
+                        resourceServerGuid,
+                        new RegisteredServerUpdateParameters()
+                        {
+                            Identity = identity,
+                            ApplicationId = applicationId.ToString()
+                        }
                         );
 
                     WriteObject(resource);

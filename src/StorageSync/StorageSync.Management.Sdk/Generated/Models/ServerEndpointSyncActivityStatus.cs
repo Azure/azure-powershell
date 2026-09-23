@@ -48,7 +48,40 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
         /// <param name="sessionMinutesRemaining">Session minutes remaining (if available)
         /// </param>
-        public ServerEndpointSyncActivityStatus(System.DateTime? timestamp = default(System.DateTime?), long? perItemErrorCount = default(long?), long? appliedItemCount = default(long?), long? totalItemCount = default(long?), long? appliedBytes = default(long?), long? totalBytes = default(long?), string syncMode = default(string), int? sessionMinutesRemaining = default(int?))
+
+        /// <param name="remainingFileCount">Remaining file count (if totals are final)
+        /// </param>
+
+        /// <param name="remainingDirectoryCount">Remaining directory count (if totals are final)
+        /// </param>
+
+        /// <param name="remainingDeleteCount">Remaining delete count (if totals are final)
+        /// </param>
+
+        /// <param name="remainingLogicalSizeBytes">Remaining logical size in bytes (if totals are final)
+        /// </param>
+
+        /// <param name="isRemainingFinal">Whether the remaining counts are final
+        /// </param>
+
+        /// <param name="recentItemsPerSecond">Recent throughput in items per second
+        /// </param>
+
+        /// <param name="recentMegabytesPerSecond">Recent throughput in megabytes per second
+        /// </param>
+
+        /// <param name="inProgressLargeFilePath">Path of large file currently in progress
+        /// </param>
+
+        /// <param name="inProgressLargeFileSizeBytes">Size in bytes of large file currently in progress
+        /// </param>
+
+        /// <param name="inProgressLargeFilePercentComplete">Percent complete (0-100) of large file currently in progress
+        /// </param>
+
+        /// <param name="warning">Warning type (if any)
+        /// Possible values include: &#39;NoWarning&#39;, &#39;BlockedByLargeFile&#39;</param>
+        public ServerEndpointSyncActivityStatus(System.DateTime? timestamp = default(System.DateTime?), long? perItemErrorCount = default(long?), long? appliedItemCount = default(long?), long? totalItemCount = default(long?), long? appliedBytes = default(long?), long? totalBytes = default(long?), string syncMode = default(string), int? sessionMinutesRemaining = default(int?), long? remainingFileCount = default(long?), long? remainingDirectoryCount = default(long?), long? remainingDeleteCount = default(long?), long? remainingLogicalSizeBytes = default(long?), bool? isRemainingFinal = default(bool?), double? recentItemsPerSecond = default(double?), double? recentMegabytesPerSecond = default(double?), string inProgressLargeFilePath = default(string), long? inProgressLargeFileSizeBytes = default(long?), int? inProgressLargeFilePercentComplete = default(int?), string warning = default(string))
 
         {
             this.Timestamp = timestamp;
@@ -59,6 +92,17 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             this.TotalBytes = totalBytes;
             this.SyncMode = syncMode;
             this.SessionMinutesRemaining = sessionMinutesRemaining;
+            this.RemainingFileCount = remainingFileCount;
+            this.RemainingDirectoryCount = remainingDirectoryCount;
+            this.RemainingDeleteCount = remainingDeleteCount;
+            this.RemainingLogicalSizeBytes = remainingLogicalSizeBytes;
+            this.IsRemainingFinal = isRemainingFinal;
+            this.RecentItemsPerSecond = recentItemsPerSecond;
+            this.RecentMegabytesPerSecond = recentMegabytesPerSecond;
+            this.InProgressLargeFilePath = inProgressLargeFilePath;
+            this.InProgressLargeFileSizeBytes = inProgressLargeFileSizeBytes;
+            this.InProgressLargeFilePercentComplete = inProgressLargeFilePercentComplete;
+            this.Warning = warning;
             CustomInit();
         }
 
@@ -115,6 +159,72 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sessionMinutesRemaining")]
         public int? SessionMinutesRemaining {get; private set; }
+
+        /// <summary>
+        /// Gets remaining file count (if totals are final)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "remainingFileCount")]
+        public long? RemainingFileCount {get; private set; }
+
+        /// <summary>
+        /// Gets remaining directory count (if totals are final)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "remainingDirectoryCount")]
+        public long? RemainingDirectoryCount {get; private set; }
+
+        /// <summary>
+        /// Gets remaining delete count (if totals are final)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "remainingDeleteCount")]
+        public long? RemainingDeleteCount {get; private set; }
+
+        /// <summary>
+        /// Gets remaining logical size in bytes (if totals are final)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "remainingLogicalSizeBytes")]
+        public long? RemainingLogicalSizeBytes {get; private set; }
+
+        /// <summary>
+        /// Gets whether the remaining counts are final
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isRemainingFinal")]
+        public bool? IsRemainingFinal {get; private set; }
+
+        /// <summary>
+        /// Gets recent throughput in items per second
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recentItemsPerSecond")]
+        public double? RecentItemsPerSecond {get; private set; }
+
+        /// <summary>
+        /// Gets recent throughput in megabytes per second
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recentMegabytesPerSecond")]
+        public double? RecentMegabytesPerSecond {get; private set; }
+
+        /// <summary>
+        /// Gets path of large file currently in progress
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "inProgressLargeFilePath")]
+        public string InProgressLargeFilePath {get; private set; }
+
+        /// <summary>
+        /// Gets size in bytes of large file currently in progress
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "inProgressLargeFileSizeBytes")]
+        public long? InProgressLargeFileSizeBytes {get; private set; }
+
+        /// <summary>
+        /// Gets percent complete (0-100) of large file currently in progress
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "inProgressLargeFilePercentComplete")]
+        public int? InProgressLargeFilePercentComplete {get; private set; }
+
+        /// <summary>
+        /// Gets warning type (if any) Possible values include: &#39;NoWarning&#39;, &#39;BlockedByLargeFile&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "warning")]
+        public string Warning {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -166,6 +276,54 @@ namespace Microsoft.Azure.Management.StorageSync.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "SessionMinutesRemaining", 0);
                 }
             }
+            if (this.RemainingFileCount != null)
+            {
+                if (this.RemainingFileCount < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "RemainingFileCount", 0);
+                }
+            }
+            if (this.RemainingDirectoryCount != null)
+            {
+                if (this.RemainingDirectoryCount < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "RemainingDirectoryCount", 0);
+                }
+            }
+            if (this.RemainingDeleteCount != null)
+            {
+                if (this.RemainingDeleteCount < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "RemainingDeleteCount", 0);
+                }
+            }
+            if (this.RemainingLogicalSizeBytes != null)
+            {
+                if (this.RemainingLogicalSizeBytes < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "RemainingLogicalSizeBytes", 0);
+                }
+            }
+
+            if (this.InProgressLargeFileSizeBytes != null)
+            {
+                if (this.InProgressLargeFileSizeBytes < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "InProgressLargeFileSizeBytes", 0);
+                }
+            }
+            if (this.InProgressLargeFilePercentComplete != null)
+            {
+                if (this.InProgressLargeFilePercentComplete > 100)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "InProgressLargeFilePercentComplete", 100);
+                }
+                if (this.InProgressLargeFilePercentComplete < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "InProgressLargeFilePercentComplete", 0);
+                }
+            }
+
         }
     }
 }

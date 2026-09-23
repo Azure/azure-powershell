@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public const string Invalid = "Invalid";
         public const string Register = "Register";
         public const string Reregister = "Reregister";
+        public const string Rehydrate = "Rehydrate";
     }
 }

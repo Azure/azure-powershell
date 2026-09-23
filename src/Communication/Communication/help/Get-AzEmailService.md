@@ -56,7 +56,7 @@ global   ContosoResource2                             06-12-2021 20:22:48 test@m
 
 Returns a list of all ACS resources under that subscription.
 
-### Example 2: Get infomation on specified Azure Email services resource
+### Example 2: Get information on specified Azure Email services resource
 ```powershell
 Get-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```

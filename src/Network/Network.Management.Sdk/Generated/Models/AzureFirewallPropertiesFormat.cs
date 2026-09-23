@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the Azure firewall resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="threatIntelMode">The operation mode for Threat Intelligence.
         /// Possible values include: &#39;Alert&#39;, &#39;Deny&#39;, &#39;Off&#39;</param>
@@ -66,7 +67,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="autoscaleConfiguration">Properties to provide a custom autoscale configuration to this azure
         /// firewall.
         /// </param>
-        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration))
+
+        /// <param name="afcConfiguration">AFC configuration for the Azure Firewall.
+        /// </param>
+        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration))
 
         {
             this.ApplicationRuleCollections = applicationRuleCollections;
@@ -83,6 +87,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Sku = sku;
             this.AdditionalProperties = additionalProperties;
             this.AutoscaleConfiguration = autoscaleConfiguration;
+            this.AfcConfiguration = afcConfiguration;
             CustomInit();
         }
 
@@ -125,7 +130,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public AzureFirewallIPConfiguration ManagementIPConfiguration {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the Azure firewall resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the Azure firewall resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -179,6 +184,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "autoscaleConfiguration")]
         public AzureFirewallAutoscaleConfiguration AutoscaleConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets aFC configuration for the Azure Firewall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "afcConfiguration")]
+        public AfcConfiguration AfcConfiguration {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -231,6 +242,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.AutoscaleConfiguration.Validate();
             }
+
         }
     }
 }

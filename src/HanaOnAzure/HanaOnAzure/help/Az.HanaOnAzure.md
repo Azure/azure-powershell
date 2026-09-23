@@ -18,7 +18,7 @@ Gets properties of a SAP monitor for the specified subscription, resource group,
 Gets properties of a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 
 ### [New-AzSapMonitor](New-AzSapMonitor.md)
-Creates a SAP monitor for the specified subscription, resource group, and resource name.
+create a SAP monitor for the specified subscription, resource group, and resource name.
 
 ### [New-AzSapMonitorProviderInstance](New-AzSapMonitorProviderInstance.md)
 Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
@@ -31,4 +31,7 @@ Deletes a provider instance for the specified subscription, resource group, SapM
 
 ### [Update-AzSapMonitor](Update-AzSapMonitor.md)
 Patches the Tags field of a SAP monitor for the specified subscription, resource group, and monitor name.
+
+### [Update-AzSapMonitorProviderInstance](Update-AzSapMonitorProviderInstance.md)
+update a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 

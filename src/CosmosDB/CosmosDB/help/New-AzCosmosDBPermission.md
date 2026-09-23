@@ -14,7 +14,8 @@ Creates a new CosmosDB Permission object to be used to create or update a Role D
 
 ```
 New-AzCosmosDBPermission -DataAction <System.Collections.Generic.List`1[System.String]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

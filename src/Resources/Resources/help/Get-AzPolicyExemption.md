@@ -15,19 +15,19 @@ Gets policy exemptions.
 ### Name (Default)
 ```
 Get-AzPolicyExemption [-Name <String>] [-Scope <String>] [-PolicyAssignmentIdFilter <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### IncludeDescendent
 ```
-Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyExemption [-PolicyAssignmentIdFilter <String>] -Id <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzPolicyExemption [-PolicyAssignmentIdFilter <String>] -Id <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,29 +54,15 @@ The second command gets the policy exemption named PolicyExemption07 for the sco
 
 ### Example 3: Get all policy exemptions associated with a policy assignment
 ```powershell
-$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07'
-Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.ResourceId
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$Assignment = Get-AzPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
+Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.Id
 ```
 
 The first command gets a policy assignment named PolicyAssignment07.
 The second command gets all of the policy exemptions that are assigned with the policy assignment.
 
 ## PARAMETERS
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -155,24 +141,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Scope
 The scope of the policy exemption.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
 
 ```yaml
 Type: System.String

@@ -1,0 +1,52 @@
+[
+    {
+        "name": "generate-autorest",
+        "type": "tool",
+        "text": "Generate and build successfully completed under {0}. Learn the generated folder structure. './custom': customized code and model cmdlets are under this directory. './docs': markdown helps for each cmdlet are under this directory. './examples': examples for each cmdlet are under this directory. './generated': generated csharp code are under this directory. './test': test stubs are under this directory. '../': module root and parent module."
+    },
+    {
+        "name": "no-inline",
+        "type": "tool",
+        "text": "Add no-inline directives for models: {0}. Please update README.md with the no-inline directive for each model. Use this description as value of this parameter."
+    },
+    {
+        "name": "model-cmdlet",
+        "type": "tool",
+        "text": "Add model-cmdlet directives for models: {0}. Please update README.md with the model-cmdlet directive for each model. Use this description as value of this parameter."
+    },
+    {
+        "name": "polymorphism",
+        "type": "tool",
+        "text": "1. Call MCP tool 'no-inline' for each parent: {0}. 2. Call MCP tool 'model-cmdlet' for each child: {1}, create cmdlet to create each child. 3. Call tool 'insert_edit_into_file' to add these directives to README.md under {2}, make sure directives are inside the yaml block. 4. regenerate code using autorest."
+    },
+    {
+        "name": "create-example",
+        "type": "tool",
+        "text": "@file:assets/example-instructions.md"
+    },
+    {
+        "name": "create-test",
+        "type": "tool",
+        "text": "@file:assets/test-instructions.md"
+    },
+    {
+        "name": "setup-module-structure",
+        "type": "tool",
+        "text": "Created the module structure under the folder: {0}."
+    },
+    {
+        "name": "partner-module-workflow",
+        "type": "prompt",
+        "text": "@file:assets/partner-module-workflow.md"
+    },
+    {
+        "name": "autorest-readme-template",
+        "type": "resource",
+        "text": "@file:assets/autorest-readme-template.md"
+    },
+    {
+        "name": "run-partner-module-workflow",
+        "type": "tool",
+        "text": "@file:assets/partner-module-workflow.md"
+    }
+]

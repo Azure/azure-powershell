@@ -22,10 +22,10 @@
   "friendlyNameRequired": true,
   "customFriendlyNameAllowed": false,
   "supportSecretStoreAuthentication": false,
-  "supportCrossRegionRestore": false,
+  "supportCrossRegionRestore": true,
   "policySettings": {
-    "supportedRetentionTags": [ "Daily", "Weekly" ],
-    "supportedDatastoreTypes": [ "OperationalStore" ],
+    "supportedRetentionTags": [ "Daily", "Weekly", "Monthly" ],
+    "supportedDatastoreTypes": [ "OperationalStore", "VaultStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": true,
     "backupScheduleSupported": true,

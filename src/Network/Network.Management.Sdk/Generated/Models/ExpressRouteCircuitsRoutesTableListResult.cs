@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRouteCircuitsRoutesTableListResult class.
         /// </summary>
 
-        /// <param name="value">The list of routes table.
+        /// <param name="value">The ExpressRouteCircuitRoutesTable items on this page
         /// </param>
 
-        /// <param name="nextLink">The URL to get the next set of results.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public ExpressRouteCircuitsRoutesTableListResult(System.Collections.Generic.IList<ExpressRouteCircuitRoutesTable> value = default(System.Collections.Generic.IList<ExpressRouteCircuitRoutesTable>), string nextLink = default(string))
+        public ExpressRouteCircuitsRoutesTableListResult(System.Collections.Generic.IList<ExpressRouteCircuitRoutesTable> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -45,15 +45,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the list of routes table.
+        /// Gets or sets the ExpressRouteCircuitRoutesTable items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<ExpressRouteCircuitRoutesTable> Value {get; set; }
 
         /// <summary>
-        /// Gets or sets the URL to get the next set of results.
+        /// Gets or sets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

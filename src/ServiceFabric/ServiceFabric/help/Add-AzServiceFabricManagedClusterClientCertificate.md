@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzServiceFabricManagedClusterClientCertificate
 
 ## SYNOPSIS
-Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
+Add certificate common name or thumbprint to the cluster. This will register the certificate against the cluster for client authentication purposes.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Add-AzServiceFabricManagedClusterClientCertificate [-InputObject] <PSManagedClus
 ```
 
 ## DESCRIPTION
-Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
+Add certificate common name or thumbprint to the cluster. This will register the certificate against the cluster for client authentication purposes.
 
 ## EXAMPLES
 

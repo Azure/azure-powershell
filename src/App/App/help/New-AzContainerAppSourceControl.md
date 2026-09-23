@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppSourceControl
 
 ## SYNOPSIS
-Create the SourceControl for a Container App.
+create the SourceControl for a Container App.
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ New-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureClientId <Str
 ```
 
 ## DESCRIPTION
-Create the SourceControl for a Container App.
+create the SourceControl for a Container App.
 
 ## EXAMPLES
 

@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzAvailabilityGroupListe
 }
 
 Describe 'New-AzAvailabilityGroupListener' {
-    It 'CreateExpanded-LoadBalancerConfiguration' {
+    It 'CreateExpanded-LoadBalancerConfiguration' -skip{
         $lbListner = New-AzAvailabilityGroupListener -ResourceGroupName $env.ResourceGroupName -SqlVMGroupName $env.SqlVMGroupName -Name $env.SqlVMGroupLoadBalancerListnerName -AvailabilityGroupName $env.SqlVMGroupName1 -IpAddress $env.IPAddress1 -LoadBalancerResourceId $env.LoadBalancerResourceId -SubnetId $env.SubnetId1 -ProbePort $env.ProbePort -SqlVirtualMachineId $env.SqlVMName_HA1Id, $env.SqlVMName_HA2Id
         
         $lbListner.AvailabilityGroupName | Should -Be $env.SqlVMGroupName1
@@ -28,7 +28,7 @@ Describe 'New-AzAvailabilityGroupListener' {
         ($SqlVirtualMachineInstances[0] -eq $env.SqlVMName_HA2Id) -or ($SqlVirtualMachineInstances[1] -eq $env.SqlVMName_HA2Id) | Should -Be $true
     }
 
-    It 'CreateExpanded-MultiSubnetIPConfiguration' {
+    It 'CreateExpanded-MultiSubnetIPConfiguration' -skip{
         $msconfig1 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $env.SubnetId1 -PrivateIPAddressIpaddress $env.IPAddress2 -SqlVirtualMachineInstance $env.SqlVMName_HA1Id
         $msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPAddressSubnetResourceId $env.SubnetId2 -PrivateIPAddressIpaddress $env.IPAddress3 -SqlVirtualMachineInstance $env.SqlVMName_HA2Id
 

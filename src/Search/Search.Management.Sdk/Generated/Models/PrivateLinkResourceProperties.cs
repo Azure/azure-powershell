@@ -9,8 +9,8 @@ namespace Microsoft.Azure.Management.Search.Models
 
     /// <summary>
     /// Describes the properties of a supported private link resource for the Azure
-    /// Cognitive Search service. For a given API version, this represents the
-    /// &#39;supported&#39; groupIds when creating a shared private link resource.
+    /// AI Search service. For a given API version, this represents the &#39;supported&#39;
+    /// groupIds when creating a shared private link resource.
     /// </summary>
     public partial class PrivateLinkResourceProperties
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </param>
 
         /// <param name="shareablePrivateLinkResourceTypes">The list of resources that are onboarded to private link service, that are
-        /// supported by Azure Cognitive Search.
+        /// supported by Azure AI Search.
         /// </param>
         public PrivateLinkResourceProperties(string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ShareablePrivateLinkResourceType> shareablePrivateLinkResourceTypes = default(System.Collections.Generic.IList<ShareablePrivateLinkResourceType>))
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
         /// <summary>
         /// Gets the list of resources that are onboarded to private link service, that
-        /// are supported by Azure Cognitive Search.
+        /// are supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "shareablePrivateLinkResourceTypes")]
         public System.Collections.Generic.IList<ShareablePrivateLinkResourceType> ShareablePrivateLinkResourceTypes {get; private set; }

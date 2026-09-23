@@ -13,7 +13,7 @@ Update tags or managed identities for a HDInsight cluster.
 ## SYNTAX
 
 ```
-Update-AzHDInsightCluster [-ClusterName] <String> [-IdentityType <String>] [-IdentityId <String>]
+Update-AzHDInsightCluster [-ClusterName] <String> [-IdentityType <String>] [-IdentityId <String[]>]
  [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ This **Update-AzHDInsightCluster** cmdlet update  the tags or managed identity o
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update tags for the cluster.
 ```powershell
 $clusterName = "your-hadoop-001"
 $tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.String]'
@@ -34,18 +34,44 @@ $tags.Add('Tag2', 'Value2')
 Update-AzHDInsightCluster -ClusterName $clusterName -Tag $tags
 ```
 
-Update tags for the cluster.
-
-### Example 2
+### Example 2: Update manage identity with single UserAssigned msi.
 ```powershell
 $clusterName = "your-hadoop-001"
-$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000
-/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+$identityType = "UserAssigned"
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft ManagedIdentity/userAssignedIdentities/hdi-msi"
 
-Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType UserAssigned -IdentityId $identityId
+Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityId
 ```
 
-Update UserAssigned identity for the cluster.
+### Example 3: Update manage identity with multiple UserAssigned msi.
+```powershell
+$clusterName = "your-hadoop-001"
+$identityType = "UserAssigned"
+$identityIds = @(
+ "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi",
+ "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi1"
+)
+
+Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityIds
+```
+
+### Example 4: Update SystemAssigned manage identity.
+```powershell
+$clusterName = "your-hadoop-001"
+$identityType = "SystemAssigned"
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+
+Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType
+```
+
+### Example 5: Update manage identity with SystemAssigned,UserAssigned msi.
+```powershell
+$clusterName = "your-hadoop-001"
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+$identityType = "SystemAssigned,UserAssigned"
+
+Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityId
+```
 
 ## PARAMETERS
 
@@ -83,7 +109,7 @@ Accept wildcard characters: False
 Gets or sets the list of user identities associated with the cluster.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

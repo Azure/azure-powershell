@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fabric", "Fabric\Fabric.csproj", "{D3C55D81-B42F-4817-B917-E3D41F65249D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Fabric", "Fabric.Autorest\Az.Fabric.csproj", "{3711FED8-CF65-432D-94AE-280382714DA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Fabric", "..\..\generated\Fabric\Fabric.Autorest\Az.Fabric.csproj", "{3F800267-9EC4-4B2C-BE31-88A3707FC768}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{D3C55D81-B42F-4817-B917-E3D41F65249D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3C55D81-B42F-4817-B917-E3D41F65249D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3C55D81-B42F-4817-B917-E3D41F65249D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3711FED8-CF65-432D-94AE-280382714DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3711FED8-CF65-432D-94AE-280382714DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3711FED8-CF65-432D-94AE-280382714DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3711FED8-CF65-432D-94AE-280382714DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F800267-9EC4-4B2C-BE31-88A3707FC768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F800267-9EC4-4B2C-BE31-88A3707FC768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F800267-9EC4-4B2C-BE31-88A3707FC768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F800267-9EC4-4B2C-BE31-88A3707FC768}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{94F1D948-EC64-40ED-B003-383E63CA798C} = {4BB6DEA9-FCF0-45C7-8AF5-25AE3DC3559D}

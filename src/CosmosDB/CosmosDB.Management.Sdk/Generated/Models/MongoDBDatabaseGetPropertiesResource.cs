@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class MongoDBDatabaseGetPropertiesResource
+    public partial class MongoDBDatabaseGetPropertiesResource : MongoDBDatabaseResource
     {
         /// <summary>
         /// Initializes a new instance of the MongoDBDatabaseGetPropertiesResource class.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="restoreParameters">Parameters to indicate the information about the restore
         /// </param>
 
-        /// <param name="createMode">Enum to indicate the mode of resource creation.
+        /// <param name="createMode">Enum to indicate the mode of account creation.
         /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
 
         /// <param name="rid">A system generated property. A unique identifier.
@@ -42,10 +42,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public MongoDBDatabaseGetPropertiesResource(string id, ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id, restoreParameters, createMode)
         {
-            this.Id = id;
-            this.RestoreParameters = restoreParameters;
-            this.CreateMode = createMode;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -57,24 +55,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the Cosmos DB MongoDB database
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets parameters to indicate the information about the restore
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "restoreParameters")]
-        public ResourceRestoreParameters RestoreParameters {get; set; }
-
-        /// <summary>
-        /// Gets or sets enum to indicate the mode of resource creation. Possible values include: &#39;Default&#39;, &#39;Restore&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "createMode")]
-        public string CreateMode {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -101,15 +81,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.Id == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
-            }
-
-
-
+            base.Validate();
 
 
         }

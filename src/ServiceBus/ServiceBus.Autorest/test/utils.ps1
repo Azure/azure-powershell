@@ -1,10 +1,36 @@
 function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
-        return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
-    } else {
-        return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
+        return -join ((33..126) | Get-Random -Count $len | % { [char]$_ })
+    }
+    else {
+        return -join ((48..57) + (97..122) | Get-Random -Count $len | % { [char]$_ })
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -12,7 +38,12 @@ if ($UsePreviousConfigForRecord) {
 }
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
-$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) {
+        return $this[$key] 
+    }
+    else {
+        $this[$key] = $val; return $val 
+    } } -Name 'AddWithCache'
 function setupEnv(
     $location = 'eastus',
     $secondaryLocation = 'southcentralus',
@@ -34,6 +65,10 @@ function setupEnv(
     $namespaceV7 = "namespaceV7" + (RandomString -allChars $false -len 6)
     $namespaceV8 = "namespaceV8" + (RandomString -allChars $false -len 6)
     $namespaceV9 = "namespaceV9" + (RandomString -allChars $false -len 6)
+    $namespaceV10 = "namespaceV10" + (RandomString -allChars $false -len 6)
+    $namespaceV11 = "namespaceV11" + (RandomString -allChars $false -len 6)
+    $namespaceV12 = "namespaceV12" + (RandomString -allChars $false -len 6)
+    $namespaceV13 = "namespaceV13" + (RandomString -allChars $false -len 6)
     $standardNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $systemAssignedNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $dependentResourcesPrefix = "sb-ps-" + (RandomString -allChars $false -len 6)
@@ -57,7 +92,7 @@ function setupEnv(
     $msi2ResourceId = "$resourceGroupArmId/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$dependentResourcesPrefix-msi2"
     $peName1 = "pe1" + (RandomString -allChars $false -len 6)
     $peName2 = "pe2" + (RandomString -allChars $false -len 6)
-    $alias = "alias" + (RandomString -allChars $false -len 6)
+    $alias = "alias32" + (RandomString -allChars $false -len 6)
     $postMigrationName = "postMigration" + (RandomString -allChars $false -len 6)
 
     $namespacePrimaryKey = GenerateSASKey
@@ -81,6 +116,10 @@ function setupEnv(
     $env.Add("namespaceV7", $namespaceV7)
     $env.Add("namespaceV8", $namespaceV8)
     $env.Add("namespaceV9", $namespaceV9)
+    $env.Add("namespaceV10", $namespaceV10)
+    $env.Add("namespaceV11", $namespaceV11)
+    $env.Add("namespaceV12", $namespaceV12)
+    $env.Add("namespaceV13", $namespaceV13)
     $env.Add('standardNamespace', $standardNamespaceName)
     $env.Add("systemAssignedNamespaceName", $systemAssignedNamespaceName)
     $env.Add("keyVaultUri", $keyVaultUri)
@@ -162,13 +201,13 @@ function setupEnv(
 }
 
 function GenerateSASKey {
-    [Reflection.Assembly]::LoadWithPartialName("System.Web")| out-null
-    $URI="myNamespace.servicebus.windows.net/myEventHub"
-    $Access_Policy_Name="RootManageSharedAccessKey"
-    $Access_Policy_Key="myPrimaryKey"
+    [Reflection.Assembly]::LoadWithPartialName("System.Web") | out-null
+    $URI = "myNamespace.servicebus.windows.net/myEventHub"
+    $Access_Policy_Name = "RootManageSharedAccessKey"
+    $Access_Policy_Key = "myPrimaryKey"
     #Token expires now+300
-    $Expires=([DateTimeOffset]::Now.ToUnixTimeSeconds())+300
-    $SignatureString=[System.Web.HttpUtility]::UrlEncode($URI)+ "`n" + [string]$Expires
+    $Expires = ([DateTimeOffset]::Now.ToUnixTimeSeconds()) + 300
+    $SignatureString = [System.Web.HttpUtility]::UrlEncode($URI) + "`n" + [string]$Expires
     $HMAC = New-Object System.Security.Cryptography.HMACSHA256
     $HMAC.key = [Text.Encoding]::ASCII.GetBytes($Access_Policy_Key)
     $Signature = $HMAC.ComputeHash([Text.Encoding]::ASCII.GetBytes($SignatureString))

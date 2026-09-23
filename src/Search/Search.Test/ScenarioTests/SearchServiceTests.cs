@@ -177,5 +177,26 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManageAzSearchSharedPrivateLinkResourceJob");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceComputeType()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceComputeType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceIpRulesWithBypass()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceIpRulesWithBypass");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceDataExfiltrationProtection()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceDataExfiltrationProtection");
+        }
     }
 }

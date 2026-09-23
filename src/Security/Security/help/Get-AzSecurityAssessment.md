@@ -37,7 +37,7 @@ Get-AzSecurityAssessment -ResourceId <String> [-DefaultProfile <IAzureContextCon
 ```
 
 ## DESCRIPTION
-Gets security assessment and their results on subscription. Security assessments will let you know which best practices are recommanded by Azure Security Center to be mitigated on your Azure subscription.
+Gets security assessment and their results on subscription. Security assessments will let you know which best practices are recommended by Azure Security Center to be mitigated on your Azure subscription.
 
 ## EXAMPLES
 

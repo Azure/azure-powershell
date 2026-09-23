@@ -3,6 +3,7 @@ param()
 
 function Set-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
     )
     process {
@@ -18,7 +19,9 @@ function Set-HelmClientLocation {
         if (!($env:Path.contains($HelmLocation)) -and (Test-Path $HelmLocation)) {
             Write-Debug "Updating PATH environment variable with Helm location."
             $PathStr = $HelmLocation + ";$env:Path"
-            Set-Item -Path Env:Path -Value $PathStr
+            if ($PSCmdlet.ShouldProcess($Env:Path)) {
+                Set-Item -Path Env:Path -Value $PathStr
+            }
         }
     }
 }
@@ -122,9 +125,65 @@ function IsAmd64 {
         return $isSupport
     }
 }
+function Get-AzureHelmPath {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+        [string]$ChildPath
+    )
+
+    # The top-level directory is always determined from HOME or USERPROFILE 
+    # and ".azure"
+    if (Test-Path Env:USERPROFILE) {
+        $Path = $Env:USERPROFILE
+    }
+    elseif (Test-Path Env:HOME) {
+        $Path = $Env:HOME
+    }
+    else {
+        throw "No environment to use as Azure/helm path root."
+    }
+
+    # In Powershell v5.1 (Desktop), Join-Path lacks the AdditionalChildPaths
+    # argument so we have to avoid using it.
+    $Path = Join-Path -Path $Path -ChildPath '.azure'
+    $Path = Join-Path -Path $Path -ChildPath $ChildPath
+
+    return $Path
+}
+function Get-HelmValue {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory)]
+        [string]$HelmClientLocation,
+        [Parameter(Mandatory)]
+        [string]$Namespace,
+        [string]$KubeConfig,
+        [string]$KubeContext,
+        [string]$ValuesFile = 'userValues.txt'
+    )
+
+    try {
+        $userValuesLocation = Get-AzureHelmPath -ChildPath $ValuesFile
+
+        $cmdHelmValuesPull = @($HelmClientLocation, "get", "values", "azure-arc", "--namespace", $ReleaseInstallNamespace)
+        if ($KubeConfig) {
+            $cmdHelmValuesPull += "--kubeconfig", $KubeConfig
+        }
+        if ($KubeContext) {
+            $cmdHelmValuesPull += "--kube-context", $KubeContext
+        }
+
+        Write-Debug "Pull helm values: $cmdHelmValuesPull[0] $cmdValuesPull[1..($cmdHelmValuesPull.Count - 1)]"
+        Invoke-ExternalCommand $cmdHelmValuesPull[0] $cmdHelmValuesPull[1..($cmdHelmValuesPull.Count - 1)] > $userValuesLocation
+    }
+    catch {
+        throw "Unable to get helm values: `n$_"
+    }
+    return $userValuesLocation
+}
 
 function Get-HelmChartPath {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -140,19 +199,7 @@ function Get-HelmChartPath {
 
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
-
-    # Exporting Helm chart; note that we might be one Windows or Linux.
-    if (Test-Path Env:USERPROFILE) {
-        $root = $Env:USERPROFILE
-    }
-    elseif (Test-Path Env:HOME) {
-        $root = $Env:HOME
-    }
-    else {
-        throw "No environment to use as root."
-    }
-    Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-    $ChartExportPath = Join-Path -Path $root -ChildPath '.azure' -AdditionalChildPath $ChartFolderName
+    $ChartExportPath = Get-AzureHelmPath -ChildPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
@@ -187,7 +234,7 @@ function Get-HelmChartPath {
 }
 
 function Get-HelmChart {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -249,7 +296,7 @@ function Get-HelmChart {
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
 function Invoke-ExternalCommand {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Command,
@@ -258,16 +305,13 @@ function Invoke-ExternalCommand {
     & $Command $Arguments
 }
 
-
-function Set-HelmRepositoryAndModules {
+function Set-HelmModulesAndRepository {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [string]$KubeConfig,
         [string]$KubeContext,
-        [string]$Location,
-        [string]$ProxyCert,
-        [bool]$DisableAutoUpgrade,
-        [string]$ContainerLogPath,
-        [string]$CustomLocationsOid
+        [string]$Location
     )
     Write-Debug "Setting Helm repository and checking for required modules."
     if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
@@ -325,11 +369,13 @@ function Set-HelmRepositoryAndModules {
             return
         }
     }
-    Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
+    if ($PSCmdlet.ShouldProcess($Env:HEML_EXPERIMENAL_OCI)) {
+        Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
+    }
     return $RegistryPath
 }
 
-function Get-HelmReleaseNamespaces {
+function Get-HelmReleaseNamespace {
     param (
         [string]$KubeConfig,
         [string]$KubeContext

@@ -222,14 +222,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestDatabaseCreateWithPerDBCMK()
         {
             TestRunner.RunTestScript("Test-DatabaseCreateWithPerDBCMK");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestDatabaseUpdateWithPerDBCMK()
         {
             TestRunner.RunTestScript("Test-DatabaseUpdateWithPerDBCMK");

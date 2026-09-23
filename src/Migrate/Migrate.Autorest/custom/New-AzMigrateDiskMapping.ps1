@@ -22,7 +22,13 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.ModelCmdletAttribute()]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessage("**********************************************************************************************`n
+  * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+  * At least one change applies to this cmdlet.                                                     *`n
+  * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+  ***************************************************************************************************")]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -40,8 +46,8 @@ function New-AzMigrateDiskMapping {
         ${IsOSDisk},
 
         [Parameter(Mandatory)]
-        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
+        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS")]
+        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS"})]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the type of disks to be used for the Azure VM.
@@ -50,18 +56,22 @@ function New-AzMigrateDiskMapping {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the disk encyption set to be used.
+        # Specifies the disk encryption set to be used.
         ${DiskEncryptionSetID}
     )
     
     process {
-        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtDiskInput]::new()
+        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtDiskInput]::new()
         $DiskObject.DiskId = $DiskID
 
         $validDiskTypeSpellings = @{ 
             Standard_LRS    = "Standard_LRS";
             Premium_LRS     = "Premium_LRS";
-            StandardSSD_LRS = "StandardSSD_LRS"
+            StandardSSD_LRS = "StandardSSD_LRS";
+            PremiumV2_LRS   = "PremiumV2_LRS";
+            UltraSSD_LRS    = "UltraSSD_LRS";
+            StandardSSD_ZRS = "StandardSSD_ZRS";
+            Premium_ZRS     = "Premium_ZRS"
         }
         $DiskObject.DiskType = $validDiskTypeSpellings[$DiskType]
 
@@ -73,6 +83,11 @@ function New-AzMigrateDiskMapping {
         if ($PSBoundParameters.ContainsKey('DiskEncryptionSetID')) {
             $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
         }
+
+        if ($DiskObject.IsOSDisk -eq "true" -and ($DiskObject.DiskType -eq $validDiskTypeSpellings["PremiumV2_LRS"] -or $DiskObject.DiskType -eq $validDiskTypeSpellings["UltraSSD_LRS"])) {
+            throw "$($DiskObject.DiskType) is not supported as an OS disk in Azure."
+        }
+
         return $DiskObject 
     }
 

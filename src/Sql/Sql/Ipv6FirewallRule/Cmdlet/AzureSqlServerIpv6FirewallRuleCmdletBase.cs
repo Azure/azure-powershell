@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Ipv6FirewallRule.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerIpv6FirewallRuleAdapter InitModelAdapter()

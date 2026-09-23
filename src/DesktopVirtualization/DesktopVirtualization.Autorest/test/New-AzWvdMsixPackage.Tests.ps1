@@ -19,8 +19,8 @@ Describe 'New-AzWvdMsixPackage' {
             $string1 = "some image"
             $data1 = $enc.GetBytes($string1) 
 
-            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
+            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
@@ -37,7 +37,7 @@ Describe 'New-AzWvdMsixPackage' {
                 -CustomRdpProperty $null `
                 -Ring $null `
                 -ValidationEnvironment:$false `
-                -PreferredAppGroupType 'Desktop'
+                -PreferredAppGroupType 'Desktop' 
 
             $package_created = New-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
                 -HostPoolName $env.HostPool `
@@ -62,6 +62,8 @@ Describe 'New-AzWvdMsixPackage' {
             ($package_created.PackageDependency | ConvertTo-Json) | Should -Be ($deps | ConvertTo-Json)
             $package_created.PackageName | Should -Be 'MsixUnitTest_Name'
             $package_created.PackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
+            # Test IsActive same time
+            $package_created.IsActive | Should -Be $True
         }
         finally{
             $package_created = Remove-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
@@ -72,42 +74,6 @@ Describe 'New-AzWvdMsixPackage' {
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
                 -Name $env.HostPool
-        }
-    }
-
-    It 'PackageAlias' {
-        try{
-            $removePackage_IfExists = Remove-AzWvdMsixPackage -FullName 'Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608' `
-                -HostPoolName $env.HostPoolPersistent2 `
-                -ResourceGroupName $env.ResourceGroupPersistent `
-                -SubscriptionId $env.SubscriptionId 
-
-            #image exists on specified hostpool
-            $package_created = New-AzWvdMsixPackage -PackageAlias 'mozillamozillafirefox' `
-                -ImagePath 'C:\AppAttach\Firefox20110.0.1.vhdx' `
-                -HostPoolName $env.HostPoolPersistent2 `
-                -ResourceGroupName $env.ResourceGroupPersistent `
-                -SubscriptionId $env.SubscriptionId  `
-                -DisplayName 'package-Alias-test' `
-                -IsActive 
-
-            $package_created = Get-AzWvdMsixPackage -FullName 'Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608' `
-                -HostPoolName $env.HostPoolPersistent2 `
-                -ResourceGroupName $env.ResourceGroupPersistent `
-                -SubscriptionId $env.SubscriptionId  
-
-            $package_created.PackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
-            $package_created.DisplayName | Should -Be 'package-Alias-test'
-            $package_created.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
-            $package_created.PackageName | Should -Be 'Mozilla.MozillaFirefox'
-            $package_created.PackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
-            $package_created.IsActive | Should -Be $True
-        }
-        finally{
-            $package_created = Remove-AzWvdMsixPackage -FullName 'Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608' `
-                -HostPoolName $env.HostPoolPersistent2 `
-                -ResourceGroupName $env.ResourceGroupPersistent `
-                -SubscriptionId $env.SubscriptionId 
         }
     }
 }

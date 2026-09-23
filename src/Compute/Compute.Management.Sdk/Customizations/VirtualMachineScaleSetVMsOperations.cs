@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Compute
     /// <summary>
     /// VirtualMachineScaleSetVMsOperations operations.
     /// </summary>
-    internal partial class VirtualMachineScaleSetVMsOperations : IServiceOperations<ComputeManagementClient>, IVirtualMachineScaleSetVMsOperations
+    internal partial class VirtualMachineScaleSetVMSOperations : IServiceOperations<ComputeManagementClient>, IVirtualMachineScaleSetVMsOperations
     {
         public async Task<AzureOperationResponse> ReimageWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, bool? tempDisk, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {

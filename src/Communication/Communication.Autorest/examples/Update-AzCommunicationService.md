@@ -28,4 +28,4 @@ Location Name                SystemDataCreatedAt  SystemDataCreatedBy        Sys
 Global   ContosoAcsResource1 7/10/2024 5:41:40 AM contosouser@microsoft.com  User                    7/16/2024 3:40:40 AM     contosouser@microsoft.com User
 ```
 
-Attaches the given tags and links the doamin to the specified ACS resource.
+Attaches the given tags and links the domain to the specified ACS resource.

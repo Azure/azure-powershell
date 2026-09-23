@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, 
+        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet,
             ValueFromPipeline = true, Mandatory = false, HelpMessage = "The pool object for which to get node counts.")]
         [ValidateNotNullOrEmpty]
         public PSCloudPool Pool { get; set; }

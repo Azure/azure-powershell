@@ -1,0 +1,12 @@
+{
+  "SubscriptionId": "82c4f715-0d39-4b14-bc1a-8d28a289472c",
+  "Name": "test-automation",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "NewResource": "ps-test-automation",
+  "RegistrationStatusRegistered": "Registered",
+  "ArtifactName": "thirdpartynotices",
+  "ResourceGroupName": "bvt-test-automation",
+  "Location": "westus3",
+  "RegistrationStatusUnregistered": "Unregistered",
+  "ImageName": "default"
+}

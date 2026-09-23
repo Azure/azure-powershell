@@ -67,3 +67,19 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults UserAssigned
 ```
 
 This command is used to change CmkIdentityType from SystemAssigned to UserAssgined. CmkIdenityId is a required parameter.
+
+### Example 6: Update vault to assign a User Assigned Managed Identity (UAMI)
+```powershell
+$UAMI = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userAssignedIdentityName"
+
+$vault = Update-AzDataProtectionBackupVault -EnableSystemAssignedIdentity -UserAssignedIdentity $UAMI -SubscriptionId "00000000-0000-0000-0000-000000000000" -VaultName "vaultName" -ResourceGroupName "resourceGroupName"
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned, UserAssigned
+```
+
+First, define the User Assigned Managed Identity (UAMI) ARM resource ID.
+Next, use the Update-AzDataProtectionBackupVault cmdlet to assign the UAMI to the backup vault while keeping the System Assigned Managed Identity. The -EnableSystemAssignedIdentity switch enables the system-assigned identity, and the -UserAssignedIdentity parameter specifies the user-assigned identity to associate with the vault.

@@ -9,4 +9,4 @@ ExpirationTime         RegistrationTokenOperation Token
 02/14/2050 12:00:00 PM Update                     <base64 encoded string>
 ```
 
-Creates a new Registration Info object for the selected HostPool
+Creates a new Registration Info object for the selected HostPool.

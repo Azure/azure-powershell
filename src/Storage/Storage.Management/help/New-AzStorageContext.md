@@ -70,6 +70,13 @@ New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String
  [<CommonParameters>]
 ```
 
+### OAuthAccountServiceEndpoint
+```
+New-AzStorageContext [[-StorageAccountName] <String>] [-UseConnectedAccount] [-BlobEndpoint <String>]
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
+```
+
 ### SasTokenServiceEndpoint
 ```
 New-AzStorageContext -SasToken <String> [-BlobEndpoint <String>] [-FileEndpoint <String>]
@@ -90,13 +97,6 @@ New-AzStorageContext [-Local] [<CommonParameters>]
 ```
 New-AzStorageContext [-Anonymous] [-BlobEndpoint <String>] [-FileEndpoint <String>] [-QueueEndpoint <String>]
  [-TableEndpoint <String>] [<CommonParameters>]
-```
-
-### OAuthAccountServiceEndpoint
-```
-New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +203,7 @@ This command creates a context for the account named myaccountname with a key fo
 New-AzStorageContext -Anonymous -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
 ```
 
-This command creates a context for anonymous use for the account named myaccountname, with specified blob enpoint. 
+This command creates a context for anonymous use for the account named myaccountname, with specified blob endpoint. 
 
 ### Example 13: Create a context by using an SAS token with specified endpoints
 ```powershell
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint, OAuthAccountServiceEndpoint
+Parameter Sets: OAuthAccountServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint
 Aliases:
 
 Required: False
@@ -352,7 +352,7 @@ Azure storage file service endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKeyServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint, OAuthAccountServiceEndpoint
+Parameter Sets: AccountNameAndKeyServiceEndpoint, OAuthAccountServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint
 Aliases:
 
 Required: False
@@ -398,7 +398,7 @@ Azure storage queue service endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKeyServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint, OAuthAccountServiceEndpoint
+Parameter Sets: AccountNameAndKeyServiceEndpoint, OAuthAccountServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint
 Aliases:
 
 Required: False
@@ -455,12 +455,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: OAuthAccountServiceEndpoint
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TableEndpoint
 Azure storage table service endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKeyServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint, OAuthAccountServiceEndpoint
+Parameter Sets: AccountNameAndKeyServiceEndpoint, OAuthAccountServiceEndpoint, SasTokenServiceEndpoint, AnonymousAccountServiceEndpoint
 Aliases:
 
 Required: False

@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     public static class RollingUpgradeMode
     {
         /// <summary>
-        /// Indicates the upgrade mode is invalid. All Service Fabric enumerations have the invalid type. The value is zero.
+        /// Indicates the upgrade mode is invalid. All Service Fabric enumerations have
+        /// the invalid type. The value is zero.
         /// </summary>
         public const string Invalid = "Invalid";
         /// <summary>
-        /// The upgrade will proceed automatically without performing any health monitoring. The value is 1
+        /// The upgrade will proceed automatically without performing any health
+        /// monitoring. The value is 1
         /// </summary>
         public const string UnmonitoredAuto = "UnmonitoredAuto";
         /// <summary>
-        /// The upgrade will stop after completing each upgrade domain, giving the opportunity to manually monitor health before proceeding. The value is 2
+        /// The upgrade will stop after completing each upgrade domain, giving the
+        /// opportunity to manually monitor health before proceeding. The value is 2
         /// </summary>
         public const string UnmonitoredManual = "UnmonitoredManual";
         /// <summary>
-        /// The upgrade will stop after completing each upgrade domain and automatically monitor health before proceeding. The value is 3
+        /// The upgrade will stop after completing each upgrade domain and
+        /// automatically monitor health before proceeding. The value is 3
         /// </summary>
         public const string Monitored = "Monitored";
     }

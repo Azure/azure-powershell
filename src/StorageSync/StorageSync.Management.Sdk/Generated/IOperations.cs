@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Management.StorageSync
     public partial interface IOperations
     {
         /// <summary>
-        /// Lists all of the available Storage Sync Rest API operations.
+        /// List the operations for the provider
         /// </summary>
         /// <remarks>
-        /// Lists all of the available Storage Sync Rest API operations.
+        /// List the operations for the provider
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Management.StorageSync
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<OperationEntity>,OperationsListHeaders>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all of the available Storage Sync Rest API operations.
+        /// List the operations for the provider
         /// </summary>
         /// <remarks>
-        /// Lists all of the available Storage Sync Rest API operations.
+        /// List the operations for the provider
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

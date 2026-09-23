@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventCategory'))
 }
 
 Describe 'Get-AzEventCategory' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzEventCategory | Should -Not -BeNullOrEmpty} | Should -Not -Throw
     }
 }

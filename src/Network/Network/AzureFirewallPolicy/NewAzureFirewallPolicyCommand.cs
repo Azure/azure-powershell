@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         [Alias("UserAssignedIdentity")]
-        public string UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -202,13 +203,20 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.UserAssignedIdentityId != null)
             {
+                var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var identityId in this.UserAssignedIdentityId)
+                {
+                    if (!userAssignedIdentities.ContainsKey(identityId))
+                    {
+                        userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                    }
+                }
+
                 firewallPolicy.Identity = new PSManagedServiceIdentity
                 {
                     Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
+                    UserAssignedIdentities = userAssignedIdentities
                 };
             }
             else if (this.Identity != null)

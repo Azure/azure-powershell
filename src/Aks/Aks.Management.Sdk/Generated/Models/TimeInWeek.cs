@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Possible values include: &#39;Sunday&#39;, &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;,
         /// &#39;Thursday&#39;, &#39;Friday&#39;, &#39;Saturday&#39;</param>
 
-        /// <param name="hourSlots">Each integer hour represents a time range beginning at 0m after the hour
-        /// ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23
-        /// corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC
-        /// time range.
+        /// <param name="hourSlots">A list of hours in the day used to identify a time range. Each integer hour
+        /// represents a time range beginning at 0m after the hour ending at the next
+        /// hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00
+        /// UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
         /// </param>
         public TimeInWeek(string day = default(string), System.Collections.Generic.IList<int?> hourSlots = default(System.Collections.Generic.IList<int?>))
 
@@ -54,10 +54,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string Day {get; set; }
 
         /// <summary>
-        /// Gets or sets each integer hour represents a time range beginning at 0m
-        /// after the hour ending at the next hour (non-inclusive). 0 corresponds to
-        /// 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 -
-        /// 02:00 UTC time range.
+        /// Gets or sets a list of hours in the day used to identify a time range. Each
+        /// integer hour represents a time range beginning at 0m after the hour ending
+        /// at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23
+        /// corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC
+        /// time range.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hourSlots")]
         public System.Collections.Generic.IList<int?> HourSlots {get; set; }

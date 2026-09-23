@@ -1,30 +1,30 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "94635096-e337-45c7-a658-75848e243774"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "148fbbf9-adcb-4451-8b42-c78a89424e9e"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "257"
+          "546"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      }\r\n    }\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -35,26 +35,29 @@
         "Retry-After": [
           "60"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/feefe39a-4505-43d4-bdf6-eee32e45e300"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MjA0NzswMjU2ZjA2YS04MzM1LTQ0MTctOWYxZi0xOGM4ZmQzNzQ1Yzc=?api-version=2024-04-01&t=638493880041605135&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=busF3aMJZ8TGlNQ4UNsc4duslS4aTia1Jg2ov4W8SJZuCTonh2jujhfUgeHcqJMpCEOyC3gV09HwAfDLbTWxW7zAOEyiocJMwiCMcjY2pAqYPmic21zMAT1AtSG7m8glaFFykOqL0lDZMODAZl1e07PX9V234vAJ4rlv_Kl4ytFhlXUTppkJ6IpFxeXRpJHYG1ODieOdox_XG0j6DB9CVQ7iuZlxaawBzaha9K_kkkgNRQJhDB8iTwmaM2-ZZIuMCjeq89mpFmTm2_c14vezzee4-qRoyN4Y1jiXcPWtUoKIJQhLHznM8oTvoj2rU9b5i5C82YXfWC_351IxmbN1_w&h=fiTqTzsVuJBk0meEHB4zN-x9as-g3oBL4CILrIyPvO4"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MjA0Nzs2OGI2NTk2OC1jN2MwLTQ1ZTktOGVhMy1mOTJlOGM4NTljZmQ=?api-version=2026-07-01&t=639237696148406739&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=oIV-GgDiZuy8yesHAtnPJBB0T8aZyBUkLpJ2Gz4lhC_RkczIx7s8WY33bKVAOoXSdaPLyegQlL6rIvSeDUjJ9UwiPNyRUZccPWH7ql7rNzCzQIROjLfEjDU0VWUHHDX80Y356XwgS4jekaCDUzRLclvWZ9BlqyMHki9V-nnk8UwADNXTrLEz3-aLz-Vwdmi0uDThB0kz7VCEJtxhcXfHbFGAd4fWYO6mRdgSLJ60qwVyGI-LikDblsaLWNcpqG2TXwShIc8Ece3iwu6tpnXfTk7iNqc0R1Gn5u4lXHjzbSLtKXsnWNyy-jmggr9J-Ci6Vu7EqT8idWlgQwqP93Cjfw&h=EIfvrT_RMDutWdG9UbDUOBs-Uf5SwsT-s-pjVXqc4zA"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "68e213d4-7294-44e2-9242-60334904954f"
+          "765b56c0-8eda-4973-8160-e11e103eb67c"
         ],
         "x-ms-client-request-id": [
-          "94635096-e337-45c7-a658-75848e243774"
+          "148fbbf9-adcb-4451-8b42-c78a89424e9e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "799"
         ],
         "x-ms-correlation-request-id": [
-          "68e213d4-7294-44e2-9242-60334904954f"
+          "765b56c0-8eda-4973-8160-e11e103eb67c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130644Z:68e213d4-7294-44e2-9242-60334904954f"
+          "EASTUS:20260831T104014Z:765b56c0-8eda-4973-8160-e11e103eb67c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,13 +66,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: BA640CEDCB814B1DB052B55536F2D56A Ref B: MAA201060516051 Ref C: 2024-04-22T13:06:39Z"
+          "Ref A: A360A191B9344106B483B8A4D0DA8552 Ref B: PNQ231110906052 Ref C: 2026-08-31T10:40:13Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:06:44 GMT"
+          "Mon, 31 Aug 2026 10:40:14 GMT"
         ],
         "Content-Length": [
-          "817"
+          "1154"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -78,22 +81,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T13%3A06%3A42.0017523Z'\\\"\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A40%3A14.6315451Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Invalid\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MjA0NzswMjU2ZjA2YS04MzM1LTQ0MTctOWYxZi0xOGM4ZmQzNzQ1Yzc=?api-version=2024-04-01&t=638493880041605135&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=busF3aMJZ8TGlNQ4UNsc4duslS4aTia1Jg2ov4W8SJZuCTonh2jujhfUgeHcqJMpCEOyC3gV09HwAfDLbTWxW7zAOEyiocJMwiCMcjY2pAqYPmic21zMAT1AtSG7m8glaFFykOqL0lDZMODAZl1e07PX9V234vAJ4rlv_Kl4ytFhlXUTppkJ6IpFxeXRpJHYG1ODieOdox_XG0j6DB9CVQ7iuZlxaawBzaha9K_kkkgNRQJhDB8iTwmaM2-ZZIuMCjeq89mpFmTm2_c14vezzee4-qRoyN4Y1jiXcPWtUoKIJQhLHznM8oTvoj2rU9b5i5C82YXfWC_351IxmbN1_w&h=fiTqTzsVuJBk0meEHB4zN-x9as-g3oBL4CILrIyPvO4",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTWpBME56c3dNalUyWmpBMllTMDRNek0xTFRRME1UY3RPV1l4WmkweE9HTTRabVF6TnpRMVl6Yz0/YXBpLXZlcnNpb249MjAyNC0wNC0wMSZ0PTYzODQ5Mzg4MDA0MTYwNTEzNSZjPU1JSUhBRENDQmVpZ0F3SUJBZ0lUSGdQci1PeW5wYzExbnVrcVB3QUFBLXY0N0RBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01EWXdIaGNOTWpRd01qQXhNVFV6TXpNeldoY05NalV3TVRJMk1UVXpNek16V2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUwwZlZwSnY5SGZaOWxEeUZzS1ZmMlBKZ3NaRE1GQTZraG5tXzY3a1VWMEtEYjh2VGQzYm1udzFVWWw3NWcyQ3A5R0R2dmFDcUtWbi1hdXgzVFdlMTFENjF2QXRGY1RQYk52ZXpFU002YkhSLVJWMWU0TGhYVUlsNlBaUmNJRTY1cmswYllGOFAxT196WjRtcFdIeDk5TWM5Z1NlNkUyc3FoX3NXUkl1RTRtU1hOeFZ6em1uZGtuTE9rY0RucU5sOUt0MVZwWHQ1b3JCU3dBVjc0c0NCSnV2elNFN01FVzJrSFVKdHF6R1dvWHZmNXBtLXJZZndxaFFhM0hMalVNajd4Ynd6c0JEdEVuMlpZSkxscUpxSXBzNWlWSGl4SFBuOGs2b3B4LTlGVlAydTAwOUJjY0ZSRHdpVmwxYjZ4V1hod3pxNThoWXRkWWMzU29NQ2NXTXRmMENBd0VBQWFPQ0EtMHdnZ1BwTUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hMQmdnckJnRUZCUWNCQVFTQ0FiMHdnZ0c1TUdNR0NDc0dBUVVGQnpBQ2hsZG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01pNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOaTVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXd4TG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREl1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSjBNRk1HQ0NzR0FRVUZCekFDaGtkb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeUxrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQTJMbU55ZERCVEJnZ3JCZ0VGQlFjd0FvWkhhSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNaTVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3Tmk1amNuUXdVd1lJS3dZQkJRVUhNQUtHUjJoMGRIQTZMeTlqY213MExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURJdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0owTUIwR0ExVWREZ1FXQkJSMWZxMk44a0FRbmx3SEZadXFSWVozbkl1NUxqQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRW1CZ05WSFI4RWdnRWRNSUlCR1RDQ0FSV2dnZ0VSb0lJQkRZWV9hSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNaTVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc01CY0dBMVVkSUFRUU1BNHdEQVlLS3dZQkJBR0NOM3NCQVRBZkJnTlZIU01FR0RBV2dCVHhSbWpHOGNQd0t5MTlpMnJoc3ZtLU5melJRVEFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFCd0NRMGhSZ1R6dU1paXE4UFVyVmREQk44X2MzSGNFWnN4ZGF6dnk0Uk5jd183V2pZQTNRZFJ6VnRhT0FFZlBxNkdyZkNGN244cWxwWGpNU09xNU9jLW1MNkV3dWxRQXlidHg0UnhZMHpJNXREVEhmSVREbzJGVlNhNnRoajlXVmxnT0YyVXhOYm9wWEJBWXBOLWZiZ1VUYW5Cc3BoV1kyRl9Lel9WS0Z2LTRVWEh3eU5pRGEzd3BhUXJtUTJ1cnVuV29zM2xFaHgwYVJLZE5UWndqSnRLNzhyZklhek5jY0pIVDFMSHBXVTdpOFhFQllQX1J6ZnRrR2hvRWhvZmRudGg0dDk5RzRDbHc5UkJPQzhLbTFTWjd6SlR0YVljQ1UtTlhTeldRZ1dUUWVHTXdvNUNudkFETjV1UFh6M2FVTXhBdWtEWS1lZDR3UGxkanp6SkZtemsmcz1idXNGM2FNSlo4VEdsTlE0VU5zYzRkdXNsUzRhVGlhMUpnMm92NFc4U0padUNUb25oMmp1amhmVWdlSGNxSk1wQ0VPeUMzZ1YwOUh3QWZETGJUV3hXN3pBT0V5aW9jSk13aUNNY2pZMnBBcVlQbWljMjF6TUFUMUF0U0c3bThnbGFGRnlrT3FMMGxEWk1PREFabDFlMDdQWDlWMjM0dkFKNHJsdl9LbDR5dEZobFhVVHBwa0o2SXBGeGVYUnBKSFlHMU9EaWVPZG94X1hHMGo2REI5Q1ZRN2l1Wmx4YWF3QnphaGE5S19ra2tnTlJRSmhEQjhpVHdtYU0yLVpaSXVNQ2plcTg5bXBGbVRtMl9jMTR2ZXp6ZWU0LXFSb3lONFkxamlYY1BXdFVvS0lKUWhMSHpuTThvVHZvajJyVTliNWk1QzgyWVhmV0NfMzUxSXhtYk4xX3cmaD1maVRxVHpzVnVKQmswbWVFSEI0ek4teDlhcy1nM29CTDRDSUxySXlQdk80",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MjA0Nzs2OGI2NTk2OC1jN2MwLTQ1ZTktOGVhMy1mOTJlOGM4NTljZmQ=?api-version=2026-07-01&t=639237696148406739&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=oIV-GgDiZuy8yesHAtnPJBB0T8aZyBUkLpJ2Gz4lhC_RkczIx7s8WY33bKVAOoXSdaPLyegQlL6rIvSeDUjJ9UwiPNyRUZccPWH7ql7rNzCzQIROjLfEjDU0VWUHHDX80Y356XwgS4jekaCDUzRLclvWZ9BlqyMHki9V-nnk8UwADNXTrLEz3-aLz-Vwdmi0uDThB0kz7VCEJtxhcXfHbFGAd4fWYO6mRdgSLJ60qwVyGI-LikDblsaLWNcpqG2TXwShIc8Ece3iwu6tpnXfTk7iNqc0R1Gn5u4lXHjzbSLtKXsnWNyy-jmggr9J-Ci6Vu7EqT8idWlgQwqP93Cjfw&h=EIfvrT_RMDutWdG9UbDUOBs-Uf5SwsT-s-pjVXqc4zA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTWpBME56czJPR0kyTlRrMk9DMWpOMk13TFRRMVpUa3RPR1ZoTXkxbU9USmxPR000TlRsalptUT0/YXBpLXZlcnNpb249MjAyNi0wNy0wMSZ0PTYzOTIzNzY5NjE0ODQwNjczOSZjPU1JSUhsVENDQm4yZ0F3SUJBZ0lSQU4weVp6TDhhUjQyVVp5c2JvajNjaW93RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlZUTWlCRFFTQXdNVEFlRncweU5qQTRNVFF3TURRd01UUmFGdzB5TnpBeU1Ea3dOalF3TVRSYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXpvU09rVlI3TU5qODdUZFpycTJ0c0w3ZUVXQloxVXhZVWpsSHMydDF4NlhuMzFvLTZlNXlNMUk3OVh3MTdIcEdfWlJDMDFzSDBEbUx1Y3VCRjZFR1FSNTBhVEo2bXgyMkhyRWU0WVFoUWlUaWVZYWJBcE5GRVc3QzFaM3NxaHdUVmFXR3ZWOS1udzlhblR4MUh6dFM1czJqak1lSm9lYnN0cS13Qkl2WUlPeU03aGoxMnZZWTV2ZFhUbjlTYXNrM1Y4UzNLQnhkUHBPRmhRNXBLRjZDZ1QtZlE5LXNjYnpnZUtlV3VQWFpUTzBFZUgwMnhBc2oxYy1sa2k1Vkd2MFJld3pEMmJlSnhHTzEtQ3hKRk9mSDlIM1VubFpNS0xnNmtULWFCVG42UnVZVnVMSm9NWVlDLWVIYll0YWhBM3g1cjN5dXRORzhnZWdJTWxMbGNkVEdBUUlEQVFBQm80SUVrakNDQkk0d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN25hRmZUd21Oa3NYNzBPakhPWVFQc1I1NUtJd0h3WURWUjBqQkJnd0ZvQVVfT3ctMjZwOEg0SWVCYmloQnZsRDV3S3pDcmt3Z2dHeUJnTlZIUjhFZ2dHcE1JSUJwVEJwb0dlZ1pZWmphSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekl2WTNKc2N5OWpZMjFsWldGemRIVnpNbkJyYVM5alkyMWxaV0Z6ZEhWek1tbGpZVEF4THpNNUwyTjFjbkpsYm5RdVkzSnNNR3VnYWFCbmhtVm9kSFJ3T2k4dmMyVmpiMjVrWVhKNUxXTmtiaTV3YTJrdVkyOXlaUzUzYVc1a2IzZHpMbTVsZEM5bFlYTjBkWE15TDJOeWJITXZZMk50WldWaGMzUjFjekp3YTJrdlkyTnRaV1ZoYzNSMWN6SnBZMkV3TVM4ek9TOWpkWEp5Wlc1MExtTnliREJhb0ZpZ1ZvWlVhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwyVmhjM1IxY3pJdlkzSnNjeTlqWTIxbFpXRnpkSFZ6TW5CcmFTOWpZMjFsWldGemRIVnpNbWxqWVRBeEx6TTVMMk4xY25KbGJuUXVZM0pzTUctZ2JhQnJobWxvZEhSd09pOHZZMk50WldWaGMzUjFjekp3YTJrdVpXRnpkSFZ6TWk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWpaWEowYVdacFkyRjBaVUYxZEdodmNtbDBhV1Z6TDJOamJXVmxZWE4wZFhNeWFXTmhNREV2TXprdlkzVnljbVZ1ZEM1amNtd3dnZ0czQmdnckJnRUZCUWNCQVFTQ0Fha3dnZ0dsTUd3R0NDc0dBUVVGQnpBQ2htQm9kSFJ3T2k4dmNISnBiV0Z5ZVMxalpHNHVjR3RwTG1OdmNtVXVkMmx1Wkc5M2N5NXVaWFF2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd2JnWUlLd1lCQlFVSE1BS0dZbWgwZEhBNkx5OXpaV052Ym1SaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pJdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1uQnJhUzlqWTIxbFpXRnpkSFZ6TW1sallUQXhMMk5sY25RdVkyVnlNRjBHQ0NzR0FRVUZCekFDaGxGb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd1pnWUlLd1lCQlFVSE1BS0dXbWgwZEhBNkx5OWpZMjFsWldGemRIVnpNbkJyYVM1bFlYTjBkWE15TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKcFkyRXdNVEFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBSnJSb0pXakl6c3ltQTBWcGlvNGUyaFJET1dsRzVQcFdtV29zM0dmbHQ4WGNRd1JzVS12dmRlV2stdVQtd0hZbjUyODQ2TjVVZTVjYnZNOE5WLWxhYk9BODUyVkwybXR1SG56N2Jra1JmV1RsUC10Qi1KWURTOGwweUdjVEVOcS1VTmxha2JsZUxndGZELVFyMDlsODUzamhlZ2lVUDN2SktMWE1DRkYxQzJtYVNOaHdaZzFNbHJFc3dOU1B6UkgwWGo5cTAtNDg3bEg0MlJuY3VSWENJcWQ4bGpmMV84di1JWE1sNld0RGRRRFlqUUVfcy1PSE4wQk5YdDB0NHdUZDVpa2VHNk5DSDJTSEMyd0ItUGNoQWlFNVA0b0hLNlZ4M00wcTNURWV4UDExVXA2STlrc25wTkJ3MjU2WktQYTBwWDN1cnhMYTIxNWZEaHRTY0E5UnpBJnM9b0lWLUdnRGladXk4eWVzSEF0blBKQkIwVDhhWnlCVWtMcEoyR3o0bGhDX1JrY3pJeDdzOFdZMzNiS1ZBT29YU2RhUEx5ZWdRbEw2ckl2U2VEVWpKOVV3aVBOeVJVWmNjUFdIN3FsN3JOekN6UUlST2pMZkVqRFUwVldVSEhEWDgwWTM1Nlh3Z1M0amVrYUNEVXpSTGNsdldaOUJscXlNSGtpOVYtbm5rOFV3QUROWFRyTEV6My1hTHotVndkbWkwdURUaEIwa3o3VkNFSnR4aGNYZkhiRkdBZDRmV1lPNm1SZGdTTEo2MHF3VnlHSS1MaWtEYmxzYUxXTmNwcUcyVFh3U2hJYzhFY2UzaXd1NnRwblhmVGs3aU5xYzBSMUduNXU0bFhIanpiU0x0S1hzbldOeXktam1nZ3I5Si1DaTZWdTdFcVQ4aWRXbGdRd3FQOTNDamZ3Jmg9RUlmdnJUX1JNRHV0V2RHOVViRFVPQnMtVWY1U3dzVC1zLXBqVlhxYzR6QQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "94635096-e337-45c7-a658-75848e243774"
+          "148fbbf9-adcb-4451-8b42-c78a89424e9e"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -108,19 +111,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "85b4907b-2874-49d8-8538-ea828ad23135"
+          "7d58a3c8-0fcf-4778-abbe-0d5faf58120f"
         ],
         "x-ms-client-request-id": [
-          "94635096-e337-45c7-a658-75848e243774"
+          "148fbbf9-adcb-4451-8b42-c78a89424e9e"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/9c27e464-974e-4aed-a2ca-cda00981b824"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "85b4907b-2874-49d8-8538-ea828ad23135"
+          "7d58a3c8-0fcf-4778-abbe-0d5faf58120f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130745Z:85b4907b-2874-49d8-8538-ea828ad23135"
+          "EASTUS:20260831T104115Z:7d58a3c8-0fcf-4778-abbe-0d5faf58120f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -129,10 +138,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 2DE3504D13AF445D91616EF310079962 Ref B: MAA201060516051 Ref C: 2024-04-22T13:07:44Z"
+          "Ref A: 25428FD53274417A84D62707DE423689 Ref B: PNQ231110906052 Ref C: 2026-08-31T10:41:15Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:07:45 GMT"
+          "Mon, 31 Aug 2026 10:41:14 GMT"
         ],
         "Content-Length": [
           "322"
@@ -144,22 +153,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MjA0NzswMjU2ZjA2YS04MzM1LTQ0MTctOWYxZi0xOGM4ZmQzNzQ1Yzc=\",\r\n  \"name\": \"MjA0NzswMjU2ZjA2YS04MzM1LTQ0MTctOWYxZi0xOGM4ZmQzNzQ1Yzc=\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MjA0Nzs2OGI2NTk2OC1jN2MwLTQ1ZTktOGVhMy1mOTJlOGM4NTljZmQ=\",\r\n  \"name\": \"MjA0Nzs2OGI2NTk2OC1jN2MwLTQ1ZTktOGVhMy1mOTJlOGM4NTljZmQ=\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "94635096-e337-45c7-a658-75848e243774"
+          "148fbbf9-adcb-4451-8b42-c78a89424e9e"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -171,22 +180,25 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "1098"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "90a8145e-fd47-485d-8e1a-46f99c0f7b9c"
+          "e2e0cc5b-41bc-42f0-92ff-1bbc1b30c019"
         ],
         "x-ms-client-request-id": [
-          "94635096-e337-45c7-a658-75848e243774"
+          "148fbbf9-adcb-4451-8b42-c78a89424e9e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16498"
         ],
         "x-ms-correlation-request-id": [
-          "90a8145e-fd47-485d-8e1a-46f99c0f7b9c"
+          "e2e0cc5b-41bc-42f0-92ff-1bbc1b30c019"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130746Z:90a8145e-fd47-485d-8e1a-46f99c0f7b9c"
+          "EASTUS:20260831T104115Z:e2e0cc5b-41bc-42f0-92ff-1bbc1b30c019"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -195,13 +207,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 2E5A8F61C61B46519FD86CB37885FC46 Ref B: MAA201060516051 Ref C: 2024-04-22T13:07:45Z"
+          "Ref A: F90694127C154032AA3D69325B8648B2 Ref B: PNQ231110906052 Ref C: 2026-08-31T10:41:15Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:07:46 GMT"
+          "Mon, 31 Aug 2026 10:41:15 GMT"
         ],
         "Content-Length": [
-          "1057"
+          "1188"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -210,25 +222,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T13%3A06%3A42.6667947Z'\\\"\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A40%3A16.3525099Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "61c344b6-84f4-4a4d-8c3d-4deb8a8bf8db"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "9966caf5-8865-4c70-9eba-37f6cdbef3ca"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -240,22 +252,25 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "76f04072-75d3-46c5-b796-0dec68f7dd0a"
+          "d68f045c-dce4-48dc-aa56-18fc888d3b9e"
         ],
         "x-ms-client-request-id": [
-          "61c344b6-84f4-4a4d-8c3d-4deb8a8bf8db"
+          "9966caf5-8865-4c70-9eba-37f6cdbef3ca"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "76f04072-75d3-46c5-b796-0dec68f7dd0a"
+          "d68f045c-dce4-48dc-aa56-18fc888d3b9e"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130748Z:76f04072-75d3-46c5-b796-0dec68f7dd0a"
+          "EASTUS:20260831T104116Z:d68f045c-dce4-48dc-aa56-18fc888d3b9e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -264,13 +279,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 7978ED6145504DAD8B1BCD9552966534 Ref B: MAA201060514031 Ref C: 2024-04-22T13:07:47Z"
+          "Ref A: 75D9F156085442BFAB082E8E6FAA8A00 Ref B: PNQ231110907031 Ref C: 2026-08-31T10:41:15Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:07:47 GMT"
+          "Mon, 31 Aug 2026 10:41:15 GMT"
         ],
         "Content-Length": [
-          "1057"
+          "1188"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -279,25 +294,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T13%3A06%3A42.6667947Z'\\\"\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A40%3A16.3525099Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -309,22 +324,25 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "bcd4a74e-eb42-4f3f-8b12-f708fca0a372"
+          "0b4df69f-b526-4224-bd40-d11c7e2aa968"
         ],
         "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "bcd4a74e-eb42-4f3f-8b12-f708fca0a372"
+          "0b4df69f-b526-4224-bd40-d11c7e2aa968"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130750Z:bcd4a74e-eb42-4f3f-8b12-f708fca0a372"
+          "EASTUS:20260831T104116Z:0b4df69f-b526-4224-bd40-d11c7e2aa968"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -333,13 +351,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1AB70203002B4EE6A83B8F08A6DC3AED Ref B: MAA201060516011 Ref C: 2024-04-22T13:07:49Z"
+          "Ref A: 0BBD6B871AF34733AEDE2C6CBC045AEC Ref B: PNQ231110908060 Ref C: 2026-08-31T10:41:16Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:07:49 GMT"
+          "Mon, 31 Aug 2026 10:41:16 GMT"
         ],
         "Content-Length": [
-          "1057"
+          "1188"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -348,22 +366,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T13%3A06%3A42.6667947Z'\\\"\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A40%3A16.3525099Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -375,22 +393,25 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "b4579fde-4bdf-482a-b4c4-420a27d17d2a"
+          "455db7ed-b757-4f6d-bfba-965539482a77"
         ],
         "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "b4579fde-4bdf-482a-b4c4-420a27d17d2a"
+          "455db7ed-b757-4f6d-bfba-965539482a77"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130855Z:b4579fde-4bdf-482a-b4c4-420a27d17d2a"
+          "EASTUS:20260831T104318Z:455db7ed-b757-4f6d-bfba-965539482a77"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -399,13 +420,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 12770AE8FBC240C797CBE8A45B198ACD Ref B: MAA201060516011 Ref C: 2024-04-22T13:08:53Z"
+          "Ref A: 9C905C4507D54ACC8F50AC1E63C43790 Ref B: PNQ231110908060 Ref C: 2026-08-31T10:43:18Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:08:54 GMT"
+          "Mon, 31 Aug 2026 10:43:18 GMT"
         ],
         "Content-Length": [
-          "1058"
+          "1189"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -414,25 +435,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T13%3A07%3A52.6841245Z'\\\"\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Disabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A42%3A18.6689858Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Disabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1e5f2566-965e-48c6-8bd4-1557dc5e46b8"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -444,22 +465,25 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1098"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "14d2bf0e-f8c1-43ad-b314-d3997235f130"
+          "6fdd2368-8314-42ac-baba-61425aa9693b"
         ],
         "x-ms-client-request-id": [
-          "1e5f2566-965e-48c6-8bd4-1557dc5e46b8"
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16498"
         ],
         "x-ms-correlation-request-id": [
-          "14d2bf0e-f8c1-43ad-b314-d3997235f130"
+          "6fdd2368-8314-42ac-baba-61425aa9693b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130856Z:14d2bf0e-f8c1-43ad-b314-d3997235f130"
+          "EASTUS:20260831T104318Z:6fdd2368-8314-42ac-baba-61425aa9693b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -468,13 +492,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 280717FE63844647A4B9A941C8B3586F Ref B: MAA201060515029 Ref C: 2024-04-22T13:08:55Z"
+          "Ref A: CF2600F36EDF42CDA4F867E5B62EB5AD Ref B: PNQ231110908060 Ref C: 2026-08-31T10:43:18Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:08:56 GMT"
+          "Mon, 31 Aug 2026 10:43:18 GMT"
         ],
         "Content-Length": [
-          "1058"
+          "1189"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -483,25 +507,97 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2024-04-22T13%3A07%3A52.6841245Z'\\\"\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"Testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"MABUsed\": \"Yes\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Disabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A42%3A18.6689858Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Disabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "331c63ee-1f25-496b-b061-d95effa1add3"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "fe247ec3-c0bf-403b-8056-3a1db96af5b3"
+        ],
+        "x-ms-client-request-id": [
+          "331c63ee-1f25-496b-b061-d95effa1add3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "fe247ec3-c0bf-403b-8056-3a1db96af5b3"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20260831T104319Z:fe247ec3-c0bf-403b-8056-3a1db96af5b3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1631D30ADBF44ED986BAA5A1FDCEAEB2 Ref B: PNQ231110908023 Ref C: 2026-08-31T10:43:18Z"
+        ],
+        "Date": [
+          "Mon, 31 Aug 2026 10:43:19 GMT"
+        ],
+        "Content-Length": [
+          "1189"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"hiagaPNAVault\",\r\n  \"etag\": \"W/\\\"datetime'2026-08-31T10%3A42%3A18.6689858Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"costManagementSettings\": {\r\n      \"granularityLevel\": \"VaultLevel\"\r\n    },\r\n    \"backupStorageVersion\": \"Unassigned\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Disabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
       "RequestMethod": "PATCH",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
-        ],
         "Accept-Language": [
           "en-US"
         ],
+        "x-ms-client-request-id": [
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -519,13 +615,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/NDA5NTsyOGJmMmYxYy03MDQ5LTRlODgtOTI0ZS1iMDlhZGZiODA4OGM=?api-version=2024-04-01&t=638493880724508855&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=A6Vl-cSPfjmIe-17WhW84ADl89krE9r2rHRYnoI5ia24ouxZFYY1VUjwCUSvTZzVtqUDdyzFvLI73A0g7pi_CB0FSNO2223pH00mkWWaN8iexvV1Gscp5KOy_iUTLyJSuzq8iZbTYAPEH5vR7vi2r19ac70NhcnKuXnAua-bQVaC0whRIaetJj13GMu_LvP4LBFRp04kbrrED_FMWmM4sRYMj9mpfHwL5pAQZ55VQMfa2FH8p1xUed7p06sm1g2-GW_oKrF0ceeDLRCglWDWYwue7kz7hYCufP_ga6olmwEKfsFlVdTZX3lvlKDenageL_gljHIW92RDd8whLpEFAw&h=57j4J-xnAMSDTxYaoDdpmPpB6xvRDreZo9peVH6TtwM"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=?api-version=2026-07-01&t=639237696773617858&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=YWAXE_OSRY7fHrJ_HPCuznfUVsZQNvxF_cnv2uGNykPkqkq6W-BHnbdjj7_q05-Re7QTq_mNcOLU9WuitZdqEFg71TKFpg04irr1NQz9EuzlMmC0-9aJ6marriqeOjGEVZdmhW7-BDjynAJ4nJjrzPcISHBXxG6J863T_6G0KBCdaMYWc5mX6JcMRrlbKksYtr5O51Rvb1nzyNFBu1icViXY0MuXcu5wBEBApdIERmwam6jGE1881fkn16zCg-TNm-k2Vjmbh6sny58AENP3rGHR6eIrRVsnRHCfGqSZ6AXoGnG3lF_K7eGMryPLMbSOt43q4FbMoWCAAwCjtEvLVg&h=kGcn2vk36wzMerWW_3ZfSjNFYmdoJptRBngnKwhZ7w4"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTsyOGJmMmYxYy03MDQ5LTRlODgtOTI0ZS1iMDlhZGZiODA4OGM=?api-version=2024-04-01&t=638493880724508855&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=RILusHFDS56gwoDQVTMYOrCWz1XtfakSsiEPOkW_apGELPQuTJ0xvnf4UmEk0HgQNZ6sT9KcJWu00wA2Zu73IK3i6CjYzBnNRyj_glMu6ucDXqXIf0Dg5Ka2MiZYleBJ8jb7-cRC0skb6xvgLpEACOQqoRH9Qd1KQ0AbZOQQNFD-HJME-Jgu_UqqnQajV4G0uHQBVjeS-FYKm4oWc_LAx4mh9pJMAkI5hIijt4rUoYgQbhTAu6MczG5TR9dPTUk5m1Ar4Tgmpdm05m9-CZluyk1VoYt407k6KTx-pkihGFZCKadrjoUd5nX9_4hibogXJJuR3A4KyIXMxPL1d9kAXg&h=YCkSdKgMq22JR3XgjhLVaBCD4055zxmJcdq_dLdrMGQ"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=?api-version=2026-07-01&t=639237696773461608&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=nswUXLwIdlhtZzePh5W5EqOx-kKCB8ZwYzfyIYGLIDX9QNO2dooQNF2dc_KUi6qn-lI7qfMOGzrVonKg6VP65fuvyR9OZRAkCyQTDervPDqYyVjTyNMJutMhXPCyr0mJawPy-Uqs2o0L2ETpzvCjPnBls68gZef6sc9vkxwOc5-cDm_Q7DYfX-0oav20P13RY5lDVJRsspCAvSMEC0JCm8OYNjFLi2zpqDNtDPU22WRf_QGt4puaQ_q3aOKCBayoQeCRbtZY5FAVD4KYOtbfdX1Va6qDTulne4P5FPee1LLDUeEpMcVHcPaNVFQeuUls5rIiS2GYYBUucvptazcxMw&h=WPgbtKdWeLD29LeVmJK_zci1qn5WKN3LrcHOSv-8BZk"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -536,14 +632,17 @@
         "x-ms-client-request-id": [
           "00000000-0000-0000-0000-000000000000"
         ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/68b3e279-9a66-445d-8808-0e99f70c5df1"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "298"
+          "799"
         ],
         "x-ms-correlation-request-id": [
-          "a24b88e4-f8cd-47e8-a336-cd2f6bda2ec2"
+          "b8f0f7a0-60e2-4271-8f7e-22c7b6b2950d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130752Z:a24b88e4-f8cd-47e8-a336-cd2f6bda2ec2"
+          "EASTUS:20260831T104117Z:b8f0f7a0-60e2-4271-8f7e-22c7b6b2950d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -552,10 +651,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 63502AD50B644467A91B4BED6A99C256 Ref B: MAA201060516011 Ref C: 2024-04-22T13:07:50Z"
+          "Ref A: D85BB090916841F4B5C8CCE639410487 Ref B: PNQ231110908060 Ref C: 2026-08-31T10:41:16Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:07:51 GMT"
+          "Mon, 31 Aug 2026 10:41:17 GMT"
         ],
         "Expires": [
           "-1"
@@ -568,87 +667,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTsyOGJmMmYxYy03MDQ5LTRlODgtOTI0ZS1iMDlhZGZiODA4OGM=?api-version=2024-04-01&t=638493880724508855&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=RILusHFDS56gwoDQVTMYOrCWz1XtfakSsiEPOkW_apGELPQuTJ0xvnf4UmEk0HgQNZ6sT9KcJWu00wA2Zu73IK3i6CjYzBnNRyj_glMu6ucDXqXIf0Dg5Ka2MiZYleBJ8jb7-cRC0skb6xvgLpEACOQqoRH9Qd1KQ0AbZOQQNFD-HJME-Jgu_UqqnQajV4G0uHQBVjeS-FYKm4oWc_LAx4mh9pJMAkI5hIijt4rUoYgQbhTAu6MczG5TR9dPTUk5m1Ar4Tgmpdm05m9-CZluyk1VoYt407k6KTx-pkihGFZCKadrjoUd5nX9_4hibogXJJuR3A4KyIXMxPL1d9kAXg&h=YCkSdKgMq22JR3XgjhLVaBCD4055zxmJcdq_dLdrMGQ",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTkRBNU5Uc3lPR0ptTW1ZeFl5MDNNRFE1TFRSbE9EZ3RPVEkwWlMxaU1EbGhaR1ppT0RBNE9HTT0/YXBpLXZlcnNpb249MjAyNC0wNC0wMSZ0PTYzODQ5Mzg4MDcyNDUwODg1NSZjPU1JSUhBRENDQmVpZ0F3SUJBZ0lUSGdQci1PeW5wYzExbnVrcVB3QUFBLXY0N0RBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01EWXdIaGNOTWpRd01qQXhNVFV6TXpNeldoY05NalV3TVRJMk1UVXpNek16V2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUwwZlZwSnY5SGZaOWxEeUZzS1ZmMlBKZ3NaRE1GQTZraG5tXzY3a1VWMEtEYjh2VGQzYm1udzFVWWw3NWcyQ3A5R0R2dmFDcUtWbi1hdXgzVFdlMTFENjF2QXRGY1RQYk52ZXpFU002YkhSLVJWMWU0TGhYVUlsNlBaUmNJRTY1cmswYllGOFAxT196WjRtcFdIeDk5TWM5Z1NlNkUyc3FoX3NXUkl1RTRtU1hOeFZ6em1uZGtuTE9rY0RucU5sOUt0MVZwWHQ1b3JCU3dBVjc0c0NCSnV2elNFN01FVzJrSFVKdHF6R1dvWHZmNXBtLXJZZndxaFFhM0hMalVNajd4Ynd6c0JEdEVuMlpZSkxscUpxSXBzNWlWSGl4SFBuOGs2b3B4LTlGVlAydTAwOUJjY0ZSRHdpVmwxYjZ4V1hod3pxNThoWXRkWWMzU29NQ2NXTXRmMENBd0VBQWFPQ0EtMHdnZ1BwTUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hMQmdnckJnRUZCUWNCQVFTQ0FiMHdnZ0c1TUdNR0NDc0dBUVVGQnpBQ2hsZG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01pNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOaTVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXd4TG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREl1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSjBNRk1HQ0NzR0FRVUZCekFDaGtkb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeUxrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQTJMbU55ZERCVEJnZ3JCZ0VGQlFjd0FvWkhhSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNaTVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3Tmk1amNuUXdVd1lJS3dZQkJRVUhNQUtHUjJoMGRIQTZMeTlqY213MExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURJdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0owTUIwR0ExVWREZ1FXQkJSMWZxMk44a0FRbmx3SEZadXFSWVozbkl1NUxqQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRW1CZ05WSFI4RWdnRWRNSUlCR1RDQ0FSV2dnZ0VSb0lJQkRZWV9hSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNaTVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc01CY0dBMVVkSUFRUU1BNHdEQVlLS3dZQkJBR0NOM3NCQVRBZkJnTlZIU01FR0RBV2dCVHhSbWpHOGNQd0t5MTlpMnJoc3ZtLU5melJRVEFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFCd0NRMGhSZ1R6dU1paXE4UFVyVmREQk44X2MzSGNFWnN4ZGF6dnk0Uk5jd183V2pZQTNRZFJ6VnRhT0FFZlBxNkdyZkNGN244cWxwWGpNU09xNU9jLW1MNkV3dWxRQXlidHg0UnhZMHpJNXREVEhmSVREbzJGVlNhNnRoajlXVmxnT0YyVXhOYm9wWEJBWXBOLWZiZ1VUYW5Cc3BoV1kyRl9Lel9WS0Z2LTRVWEh3eU5pRGEzd3BhUXJtUTJ1cnVuV29zM2xFaHgwYVJLZE5UWndqSnRLNzhyZklhek5jY0pIVDFMSHBXVTdpOFhFQllQX1J6ZnRrR2hvRWhvZmRudGg0dDk5RzRDbHc5UkJPQzhLbTFTWjd6SlR0YVljQ1UtTlhTeldRZ1dUUWVHTXdvNUNudkFETjV1UFh6M2FVTXhBdWtEWS1lZDR3UGxkanp6SkZtemsmcz1SSUx1c0hGRFM1Nmd3b0RRVlRNWU9yQ1d6MVh0ZmFrU3NpRVBPa1dfYXBHRUxQUXVUSjB4dm5mNFVtRWswSGdRTlo2c1Q5S2NKV3UwMHdBMlp1NzNJSzNpNkNqWXpCbk5SeWpfZ2xNdTZ1Y0RYcVhJZjBEZzVLYTJNaVpZbGVCSjhqYjctY1JDMHNrYjZ4dmdMcEVBQ09RcW9SSDlRZDFLUTBBYlpPUVFORkQtSEpNRS1KZ3VfVXFxblFhalY0RzB1SFFCVmplUy1GWUttNG9XY19MQXg0bWg5cEpNQWtJNWhJaWp0NHJVb1lnUWJoVEF1Nk1jekc1VFI5ZFBUVWs1bTFBcjRUZ21wZG0wNW05LUNabHV5azFWb1l0NDA3azZLVHgtcGtpaEdGWkNLYWRyam9VZDVuWDlfNGhpYm9nWEpKdVIzQTRLeUlYTXhQTDFkOWtBWGcmaD1ZQ2tTZEtnTXEyMkpSM1hnamhMVmFCQ0Q0MDU1enhtSmNkcV9kTGRyTUdR",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=?api-version=2026-07-01&t=639237696773461608&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=nswUXLwIdlhtZzePh5W5EqOx-kKCB8ZwYzfyIYGLIDX9QNO2dooQNF2dc_KUi6qn-lI7qfMOGzrVonKg6VP65fuvyR9OZRAkCyQTDervPDqYyVjTyNMJutMhXPCyr0mJawPy-Uqs2o0L2ETpzvCjPnBls68gZef6sc9vkxwOc5-cDm_Q7DYfX-0oav20P13RY5lDVJRsspCAvSMEC0JCm8OYNjFLi2zpqDNtDPU22WRf_QGt4puaQ_q3aOKCBayoQeCRbtZY5FAVD4KYOtbfdX1Va6qDTulne4P5FPee1LLDUeEpMcVHcPaNVFQeuUls5rIiS2GYYBUucvptazcxMw&h=WPgbtKdWeLD29LeVmJK_zci1qn5WKN3LrcHOSv-8BZk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTkRBNU5UczJOakV4WlRnMU1DMWlPRFEwTFRRMU1tVXRZV1JrTVMwMVlqWXlNV1kzTWpnM00yRT0/YXBpLXZlcnNpb249MjAyNi0wNy0wMSZ0PTYzOTIzNzY5Njc3MzQ2MTYwOCZjPU1JSUhsVENDQm4yZ0F3SUJBZ0lSQU4weVp6TDhhUjQyVVp5c2JvajNjaW93RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlZUTWlCRFFTQXdNVEFlRncweU5qQTRNVFF3TURRd01UUmFGdzB5TnpBeU1Ea3dOalF3TVRSYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXpvU09rVlI3TU5qODdUZFpycTJ0c0w3ZUVXQloxVXhZVWpsSHMydDF4NlhuMzFvLTZlNXlNMUk3OVh3MTdIcEdfWlJDMDFzSDBEbUx1Y3VCRjZFR1FSNTBhVEo2bXgyMkhyRWU0WVFoUWlUaWVZYWJBcE5GRVc3QzFaM3NxaHdUVmFXR3ZWOS1udzlhblR4MUh6dFM1czJqak1lSm9lYnN0cS13Qkl2WUlPeU03aGoxMnZZWTV2ZFhUbjlTYXNrM1Y4UzNLQnhkUHBPRmhRNXBLRjZDZ1QtZlE5LXNjYnpnZUtlV3VQWFpUTzBFZUgwMnhBc2oxYy1sa2k1Vkd2MFJld3pEMmJlSnhHTzEtQ3hKRk9mSDlIM1VubFpNS0xnNmtULWFCVG42UnVZVnVMSm9NWVlDLWVIYll0YWhBM3g1cjN5dXRORzhnZWdJTWxMbGNkVEdBUUlEQVFBQm80SUVrakNDQkk0d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN25hRmZUd21Oa3NYNzBPakhPWVFQc1I1NUtJd0h3WURWUjBqQkJnd0ZvQVVfT3ctMjZwOEg0SWVCYmloQnZsRDV3S3pDcmt3Z2dHeUJnTlZIUjhFZ2dHcE1JSUJwVEJwb0dlZ1pZWmphSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekl2WTNKc2N5OWpZMjFsWldGemRIVnpNbkJyYVM5alkyMWxaV0Z6ZEhWek1tbGpZVEF4THpNNUwyTjFjbkpsYm5RdVkzSnNNR3VnYWFCbmhtVm9kSFJ3T2k4dmMyVmpiMjVrWVhKNUxXTmtiaTV3YTJrdVkyOXlaUzUzYVc1a2IzZHpMbTVsZEM5bFlYTjBkWE15TDJOeWJITXZZMk50WldWaGMzUjFjekp3YTJrdlkyTnRaV1ZoYzNSMWN6SnBZMkV3TVM4ek9TOWpkWEp5Wlc1MExtTnliREJhb0ZpZ1ZvWlVhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwyVmhjM1IxY3pJdlkzSnNjeTlqWTIxbFpXRnpkSFZ6TW5CcmFTOWpZMjFsWldGemRIVnpNbWxqWVRBeEx6TTVMMk4xY25KbGJuUXVZM0pzTUctZ2JhQnJobWxvZEhSd09pOHZZMk50WldWaGMzUjFjekp3YTJrdVpXRnpkSFZ6TWk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWpaWEowYVdacFkyRjBaVUYxZEdodmNtbDBhV1Z6TDJOamJXVmxZWE4wZFhNeWFXTmhNREV2TXprdlkzVnljbVZ1ZEM1amNtd3dnZ0czQmdnckJnRUZCUWNCQVFTQ0Fha3dnZ0dsTUd3R0NDc0dBUVVGQnpBQ2htQm9kSFJ3T2k4dmNISnBiV0Z5ZVMxalpHNHVjR3RwTG1OdmNtVXVkMmx1Wkc5M2N5NXVaWFF2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd2JnWUlLd1lCQlFVSE1BS0dZbWgwZEhBNkx5OXpaV052Ym1SaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pJdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1uQnJhUzlqWTIxbFpXRnpkSFZ6TW1sallUQXhMMk5sY25RdVkyVnlNRjBHQ0NzR0FRVUZCekFDaGxGb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd1pnWUlLd1lCQlFVSE1BS0dXbWgwZEhBNkx5OWpZMjFsWldGemRIVnpNbkJyYVM1bFlYTjBkWE15TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKcFkyRXdNVEFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBSnJSb0pXakl6c3ltQTBWcGlvNGUyaFJET1dsRzVQcFdtV29zM0dmbHQ4WGNRd1JzVS12dmRlV2stdVQtd0hZbjUyODQ2TjVVZTVjYnZNOE5WLWxhYk9BODUyVkwybXR1SG56N2Jra1JmV1RsUC10Qi1KWURTOGwweUdjVEVOcS1VTmxha2JsZUxndGZELVFyMDlsODUzamhlZ2lVUDN2SktMWE1DRkYxQzJtYVNOaHdaZzFNbHJFc3dOU1B6UkgwWGo5cTAtNDg3bEg0MlJuY3VSWENJcWQ4bGpmMV84di1JWE1sNld0RGRRRFlqUUVfcy1PSE4wQk5YdDB0NHdUZDVpa2VHNk5DSDJTSEMyd0ItUGNoQWlFNVA0b0hLNlZ4M00wcTNURWV4UDExVXA2STlrc25wTkJ3MjU2WktQYTBwWDN1cnhMYTIxNWZEaHRTY0E5UnpBJnM9bnN3VVhMd0lkbGh0WnplUGg1VzVFcU94LWtLQ0I4WndZemZ5SVlHTElEWDlRTk8yZG9vUU5GMmRjX0tVaTZxbi1sSTdxZk1PR3pyVm9uS2c2VlA2NWZ1dnlSOU9aUkFrQ3lRVERlcnZQRHFZeVZqVHlOTUp1dE1oWFBDeXIwbUphd1B5LVVxczJvMEwyRVRwenZDalBuQmxzNjhnWmVmNnNjOXZreHdPYzUtY0RtX1E3RFlmWC0wb2F2MjBQMTNSWTVsRFZKUnNzcENBdlNNRUMwSkNtOE9ZTmpGTGkyenBxRE50RFBVMjJXUmZfUUd0NHB1YVFfcTNhT0tDQmF5b1FlQ1JidFpZNUZBVkQ0S1lPdGJmZFgxVmE2cURUdWxuZTRQNUZQZWUxTExEVWVFcE1jVkhjUGFOVkZRZXVVbHM1cklpUzJHWVlCVXVjdnB0YXpjeE13Jmg9V1BnYnRLZFdlTEQyOUxlVm1KS196Y2kxcW41V0tOM0xyY0hPU3YtOEJaaw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "ec883964-b436-4b59-9949-dd69882d754c"
-        ],
-        "x-ms-client-request-id": [
-          "fb5ff67d-8f35-49f7-8045-a427de71e108"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "ec883964-b436-4b59-9949-dd69882d754c"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130853Z:ec883964-b436-4b59-9949-dd69882d754c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Cache": [
-          "CONFIG_NOCACHE"
-        ],
-        "X-MSEdge-Ref": [
-          "Ref A: AEBB6E919103401EB239D74CBEEC8AF2 Ref B: MAA201060516011 Ref C: 2024-04-22T13:08:52Z"
-        ],
-        "Date": [
-          "Mon, 22 Apr 2024 13:08:52 GMT"
-        ],
-        "Content-Length": [
-          "322"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTsyOGJmMmYxYy03MDQ5LTRlODgtOTI0ZS1iMDlhZGZiODA4OGM=\",\r\n  \"name\": \"NDA5NTsyOGJmMmYxYy03MDQ5LTRlODgtOTI0ZS1iMDlhZGZiODA4OGM=\",\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
-      "RequestMethod": "DELETE",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "adeb597a-4b40-40d9-bb6b-74720600d705"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2924.17105",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -660,13 +690,169 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/MTAyMztiMGQwMmM0My1lNzRmLTQ0YTEtODRlMi0xNmRhM2FlYjM0YmU=?api-version=2024-04-01&t=638493881390835716&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=flMdadAQ64oCUO1PtFz8vITWbLZwHt3elwC7TSAk2kQMcucW8oQE6lGzyxNaTLSHoKYrREox8Moe2rAeD-oLsB7CXl7HhJpmXKJmDD5BfBp92_yS0Wc_5jFE05s7nb9EIEtAbMiHpgUE68xtOjM3uJgeFC254OL_ONqo_pChxGgThZOp7gPmgmFcmoYHIYQ8ipVMSfFMxZreF0uLvlhzIpyNFZA07fEbryTuZ7aiZ1t4NorpRZgE2e65Fxp6_hwSHk6o6yuUbt-h_-ISkQojoVoPqGGteVWxTZ8k8kUCTUdL7sRapTLwYgbZDl7NZK2FjbuL22m3khvVnfpq5JjDWA&h=_GieOCbCjXKtSUiq1ET24IPaLGJwmbMrLGlCRE7ubic"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=?api-version=2026-07-01&t=639237697377511755&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=WFDlIKXFNJ41fc4oUXBBtMQTFW-nIUsOUfpIFEDVKgJLDMMaEShtr7ATIWT_Pw5b6OCSyddz7ksPJq9IwU2PF-rS8SFV2WlaRJenh6vRhaUNXnGm8IggRd1mCU5DzD2G5e5DXIjdqIJGPx5kvqxEzp0KoEzJYB1VIqFi8kYGeLFha01pJkEubBGf8mcFRmzyeSJpKh8vk7BtiBmUY-AzUYVrm_l-UfN5cWTUn9nORxhHSj_FyBssodhZ8EEjfV_k7qoNwQRDCc1L9nF74p-KLhGIzclOSIzbwNbSuFLAmnvxaIj4GYa9fCOsa2f85NH8GQkX4r489d3lhI5v6hNR_g&h=YLLs6mtvs9q4diVWP7nftqH6cLzY4tUJ39HoMeN1Xo0"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MTAyMztiMGQwMmM0My1lNzRmLTQ0YTEtODRlMi0xNmRhM2FlYjM0YmU=?api-version=2024-04-01&t=638493881390679500&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=U-ZoGpUd2CiKUXQfVFz7ScK0nY1S-TvMtQeqi8LWWHDbluWeVsysCJ-0T12gs_tNmvl_CI7R_luBeCDbGWixh4oXvmEmfeTWfXPbNpoQ8jbv7E9LUBZIpDJoQ5h87ebgp3UNabJy7jQvkgAoMmoXrxOrMuSBGZq731UQKusE1UPcqBolPwhBQZ5nwjQvtPphZOlexdsigmGuNql4Bi_pOHtXBdsyOlRBgW8Yt9Jycp_yev7BOZjTmEynge5ED9Nuc0QnKj2iDre2_4h2flJ0Gm-zae2_cVkrk1QJis6I1nVHfFXyGUE3ZPpJX_9KT5QuQe0XIvbNy_3nQYdQ7BbLKA&h=MYJUQe0eyR938hUyxJLmkNHP0ES_zPk4UGQ0WMFXWoU"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=?api-version=2026-07-01&t=639237697377511755&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=NrjfSBugNo1GFbGBLLZYFA8iR43PT4j6E0irRoMY3fwqACF0iyU23m78uPjtk5o8d-70xOgz6XQorNbwiP4EVBnZSPhr-XQOu3Yz1CRkPeg8p2WbjoncoIp3Rn0R3ki4s1QJYMOc0uDZTk98PHhKshAUSJvA1Nbvi3RwkT-Ms0Lw2EdWfZlVNbbqMqQrrLcpDKHqRDsmXFpRQHjsvy0GjmnVluSiXCbWBxT2LdNt3IQgck3-GTQOI3RmVEVvb6t-dYLB2x3ZQE5X-tx8xWZ8lelnvg8QiapUgpv8yjb_2jiORwz3wZytCO4N2BjqCWhJNDewXqp52yQzI1UtvIQq9g&h=ZYlfJfJK5sLHDUNPqCFlfAdGUZ0aUXNPbDSBR3aN7XU"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "51bedf73-b748-40f8-a0cc-ef51adcb4713"
+        ],
+        "x-ms-client-request-id": [
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/b8421377-ca7e-4bbb-a617-0303bb183157"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "51bedf73-b748-40f8-a0cc-ef51adcb4713"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20260831T104217Z:51bedf73-b748-40f8-a0cc-ef51adcb4713"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4D85D7D381EE4B3CA69731265EDDC1EA Ref B: PNQ231110908060 Ref C: 2026-08-31T10:42:17Z"
+        ],
+        "Date": [
+          "Mon, 31 Aug 2026 10:42:17 GMT"
+        ],
+        "Content-Length": [
+          "323"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=\",\r\n  \"name\": \"NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=\",\r\n  \"status\": \"InProgress\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=?api-version=2026-07-01&t=639237696773461608&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=nswUXLwIdlhtZzePh5W5EqOx-kKCB8ZwYzfyIYGLIDX9QNO2dooQNF2dc_KUi6qn-lI7qfMOGzrVonKg6VP65fuvyR9OZRAkCyQTDervPDqYyVjTyNMJutMhXPCyr0mJawPy-Uqs2o0L2ETpzvCjPnBls68gZef6sc9vkxwOc5-cDm_Q7DYfX-0oav20P13RY5lDVJRsspCAvSMEC0JCm8OYNjFLi2zpqDNtDPU22WRf_QGt4puaQ_q3aOKCBayoQeCRbtZY5FAVD4KYOtbfdX1Va6qDTulne4P5FPee1LLDUeEpMcVHcPaNVFQeuUls5rIiS2GYYBUucvptazcxMw&h=WPgbtKdWeLD29LeVmJK_zci1qn5WKN3LrcHOSv-8BZk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTkRBNU5UczJOakV4WlRnMU1DMWlPRFEwTFRRMU1tVXRZV1JrTVMwMVlqWXlNV1kzTWpnM00yRT0/YXBpLXZlcnNpb249MjAyNi0wNy0wMSZ0PTYzOTIzNzY5Njc3MzQ2MTYwOCZjPU1JSUhsVENDQm4yZ0F3SUJBZ0lSQU4weVp6TDhhUjQyVVp5c2JvajNjaW93RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlZUTWlCRFFTQXdNVEFlRncweU5qQTRNVFF3TURRd01UUmFGdzB5TnpBeU1Ea3dOalF3TVRSYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXpvU09rVlI3TU5qODdUZFpycTJ0c0w3ZUVXQloxVXhZVWpsSHMydDF4NlhuMzFvLTZlNXlNMUk3OVh3MTdIcEdfWlJDMDFzSDBEbUx1Y3VCRjZFR1FSNTBhVEo2bXgyMkhyRWU0WVFoUWlUaWVZYWJBcE5GRVc3QzFaM3NxaHdUVmFXR3ZWOS1udzlhblR4MUh6dFM1czJqak1lSm9lYnN0cS13Qkl2WUlPeU03aGoxMnZZWTV2ZFhUbjlTYXNrM1Y4UzNLQnhkUHBPRmhRNXBLRjZDZ1QtZlE5LXNjYnpnZUtlV3VQWFpUTzBFZUgwMnhBc2oxYy1sa2k1Vkd2MFJld3pEMmJlSnhHTzEtQ3hKRk9mSDlIM1VubFpNS0xnNmtULWFCVG42UnVZVnVMSm9NWVlDLWVIYll0YWhBM3g1cjN5dXRORzhnZWdJTWxMbGNkVEdBUUlEQVFBQm80SUVrakNDQkk0d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN25hRmZUd21Oa3NYNzBPakhPWVFQc1I1NUtJd0h3WURWUjBqQkJnd0ZvQVVfT3ctMjZwOEg0SWVCYmloQnZsRDV3S3pDcmt3Z2dHeUJnTlZIUjhFZ2dHcE1JSUJwVEJwb0dlZ1pZWmphSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekl2WTNKc2N5OWpZMjFsWldGemRIVnpNbkJyYVM5alkyMWxaV0Z6ZEhWek1tbGpZVEF4THpNNUwyTjFjbkpsYm5RdVkzSnNNR3VnYWFCbmhtVm9kSFJ3T2k4dmMyVmpiMjVrWVhKNUxXTmtiaTV3YTJrdVkyOXlaUzUzYVc1a2IzZHpMbTVsZEM5bFlYTjBkWE15TDJOeWJITXZZMk50WldWaGMzUjFjekp3YTJrdlkyTnRaV1ZoYzNSMWN6SnBZMkV3TVM4ek9TOWpkWEp5Wlc1MExtTnliREJhb0ZpZ1ZvWlVhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwyVmhjM1IxY3pJdlkzSnNjeTlqWTIxbFpXRnpkSFZ6TW5CcmFTOWpZMjFsWldGemRIVnpNbWxqWVRBeEx6TTVMMk4xY25KbGJuUXVZM0pzTUctZ2JhQnJobWxvZEhSd09pOHZZMk50WldWaGMzUjFjekp3YTJrdVpXRnpkSFZ6TWk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWpaWEowYVdacFkyRjBaVUYxZEdodmNtbDBhV1Z6TDJOamJXVmxZWE4wZFhNeWFXTmhNREV2TXprdlkzVnljbVZ1ZEM1amNtd3dnZ0czQmdnckJnRUZCUWNCQVFTQ0Fha3dnZ0dsTUd3R0NDc0dBUVVGQnpBQ2htQm9kSFJ3T2k4dmNISnBiV0Z5ZVMxalpHNHVjR3RwTG1OdmNtVXVkMmx1Wkc5M2N5NXVaWFF2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd2JnWUlLd1lCQlFVSE1BS0dZbWgwZEhBNkx5OXpaV052Ym1SaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pJdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1uQnJhUzlqWTIxbFpXRnpkSFZ6TW1sallUQXhMMk5sY25RdVkyVnlNRjBHQ0NzR0FRVUZCekFDaGxGb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd1pnWUlLd1lCQlFVSE1BS0dXbWgwZEhBNkx5OWpZMjFsWldGemRIVnpNbkJyYVM1bFlYTjBkWE15TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKcFkyRXdNVEFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBSnJSb0pXakl6c3ltQTBWcGlvNGUyaFJET1dsRzVQcFdtV29zM0dmbHQ4WGNRd1JzVS12dmRlV2stdVQtd0hZbjUyODQ2TjVVZTVjYnZNOE5WLWxhYk9BODUyVkwybXR1SG56N2Jra1JmV1RsUC10Qi1KWURTOGwweUdjVEVOcS1VTmxha2JsZUxndGZELVFyMDlsODUzamhlZ2lVUDN2SktMWE1DRkYxQzJtYVNOaHdaZzFNbHJFc3dOU1B6UkgwWGo5cTAtNDg3bEg0MlJuY3VSWENJcWQ4bGpmMV84di1JWE1sNld0RGRRRFlqUUVfcy1PSE4wQk5YdDB0NHdUZDVpa2VHNk5DSDJTSEMyd0ItUGNoQWlFNVA0b0hLNlZ4M00wcTNURWV4UDExVXA2STlrc25wTkJ3MjU2WktQYTBwWDN1cnhMYTIxNWZEaHRTY0E5UnpBJnM9bnN3VVhMd0lkbGh0WnplUGg1VzVFcU94LWtLQ0I4WndZemZ5SVlHTElEWDlRTk8yZG9vUU5GMmRjX0tVaTZxbi1sSTdxZk1PR3pyVm9uS2c2VlA2NWZ1dnlSOU9aUkFrQ3lRVERlcnZQRHFZeVZqVHlOTUp1dE1oWFBDeXIwbUphd1B5LVVxczJvMEwyRVRwenZDalBuQmxzNjhnWmVmNnNjOXZreHdPYzUtY0RtX1E3RFlmWC0wb2F2MjBQMTNSWTVsRFZKUnNzcENBdlNNRUMwSkNtOE9ZTmpGTGkyenBxRE50RFBVMjJXUmZfUUd0NHB1YVFfcTNhT0tDQmF5b1FlQ1JidFpZNUZBVkQ0S1lPdGJmZFgxVmE2cURUdWxuZTRQNUZQZWUxTExEVWVFcE1jVkhjUGFOVkZRZXVVbHM1cklpUzJHWVlCVXVjdnB0YXpjeE13Jmg9V1BnYnRLZFdlTEQyOUxlVm1KS196Y2kxcW41V0tOM0xyY0hPU3YtOEJaaw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "dd33895b-0f70-4335-b482-a784e88df280"
+        ],
+        "x-ms-client-request-id": [
+          "c6b17abc-bc8a-4b03-86a0-f1eb71791a01"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/402bd8bb-3ca6-4aa1-b320-8520acf514cb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "dd33895b-0f70-4335-b482-a784e88df280"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS:20260831T104318Z:dd33895b-0f70-4335-b482-a784e88df280"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 670C858AD50D4FE1B96B0EE4F456D88E Ref B: PNQ231110908060 Ref C: 2026-08-31T10:43:17Z"
+        ],
+        "Date": [
+          "Mon, 31 Aug 2026 10:43:17 GMT"
+        ],
+        "Content-Length": [
+          "322"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=\",\r\n  \"name\": \"NDA5NTs2NjExZTg1MC1iODQ0LTQ1MmUtYWRkMS01YjYyMWY3Mjg3M2E=\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "5d518dca-2ab7-436d-9f5c-1d63808fbf9c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3026.36720",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/MTAyMzswY2I1ZjA2NC1mYWQ1LTQ2ZGItYTdlOS03Mzk4MzVhMWRlYTU=?api-version=2026-07-01&t=639237697999084177&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=ZFTcTdbwy_lj6jiaXOKLnoNbmdo4QgpKC7Ha5FpH9Y7erwkLqZmqrWepmqbiEmJzwm7WvJ0KQjEKN9k_JWK0JLjUiuSgHk7Kxjs8T33zRug5koJEPyaTcsWMAJZgQeupXJTKtzGnTDJZMuQkqxRryN-Gby18apIbbDUNzk6Tsp1RwGMGf0Z7JIEG9iZqPV4mfUyLAzp-fBtNwVm-Tg1diLsews_lgSxb2JxitYDXgKM0TEigGIT3Bf1_iZJmDcNtGcxGjCz7nL9h3czo3yBleFGg3UuRMd7j_sTjQhUh_HYi_rFD9c49vCj87lLHxsI-Y3VpC1ecyAN4P6exo4tAcg&h=TqR-RzGEiiFNarL3BRrPzd0LqGWgq-WJNkgar13xjMA"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MTAyMzswY2I1ZjA2NC1mYWQ1LTQ2ZGItYTdlOS03Mzk4MzVhMWRlYTU=?api-version=2026-07-01&t=639237697999084177&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=v5ioeaZNKAOomtfhHPfUdrpjtK-PZ72n9eBZAQW_rgudavFszyy-yz5neGmIvIwn0xb8zTIZAfTrCG1eJX-6RdjO_E5tMMLgHysg7sFN9DICerYDriqgkqjPfbCoTIjtq1Hsr_nlYpcfNP0QY4m90e-12LCp_bCQUehMngIlzMb6PH4YQGECjSzYZsWQTVLUstgZJCbbQV6UW0xCg1oPTvWftU6XMelKJoQy7vU72sksddASdMlz5KeRtsgAyxO9FRiw5DB6aOssl8lDMAd_y8KvIH0jj1iwY28Hk-PdAllp98zibuFQVM4tCcXQlhwhHqCGOs5SqTZss71nj5p6pA&h=NbCVvMmMSpocCz0C9cT-H2HqKuqGUZ38ZR0NrmcgL8A"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -677,14 +863,17 @@
         "x-ms-client-request-id": [
           "00000000-0000-0000-0000-000000000000"
         ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/900df311-5279-40a9-b268-57bf1a327bae"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "49"
+          "199"
         ],
         "x-ms-correlation-request-id": [
-          "fb3fdf5f-d5d8-45c8-818e-a7fbb2fca0de"
+          "0f9ede8d-e3d3-45ba-b7d5-c06bd42ca8e0"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T130859Z:fb3fdf5f-d5d8-45c8-818e-a7fbb2fca0de"
+          "EASTUS:20260831T104319Z:0f9ede8d-e3d3-45ba-b7d5-c06bd42ca8e0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -693,10 +882,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 4DE3C7A5DEE2486CAC0F332F4EE2AE46 Ref B: MAA201060514023 Ref C: 2024-04-22T13:08:57Z"
+          "Ref A: F00B44EA5AE44A339B4849EB76E17A03 Ref B: PNQ231110907036 Ref C: 2026-08-31T10:43:19Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:08:58 GMT"
+          "Mon, 31 Aug 2026 10:43:19 GMT"
         ],
         "Expires": [
           "-1"
@@ -709,18 +898,18 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MTAyMztiMGQwMmM0My1lNzRmLTQ0YTEtODRlMi0xNmRhM2FlYjM0YmU=?api-version=2024-04-01&t=638493881390679500&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=U-ZoGpUd2CiKUXQfVFz7ScK0nY1S-TvMtQeqi8LWWHDbluWeVsysCJ-0T12gs_tNmvl_CI7R_luBeCDbGWixh4oXvmEmfeTWfXPbNpoQ8jbv7E9LUBZIpDJoQ5h87ebgp3UNabJy7jQvkgAoMmoXrxOrMuSBGZq731UQKusE1UPcqBolPwhBQZ5nwjQvtPphZOlexdsigmGuNql4Bi_pOHtXBdsyOlRBgW8Yt9Jycp_yev7BOZjTmEynge5ED9Nuc0QnKj2iDre2_4h2flJ0Gm-zae2_cVkrk1QJis6I1nVHfFXyGUE3ZPpJX_9KT5QuQe0XIvbNy_3nQYdQ7BbLKA&h=MYJUQe0eyR938hUyxJLmkNHP0ES_zPk4UGQ0WMFXWoU",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTVRBeU16dGlNR1F3TW1NME15MWxOelJtTFRRMFlURXRPRFJsTWkweE5tUmhNMkZsWWpNMFltVT0/YXBpLXZlcnNpb249MjAyNC0wNC0wMSZ0PTYzODQ5Mzg4MTM5MDY3OTUwMCZjPU1JSUhBRENDQmVpZ0F3SUJBZ0lUSGdQci1PeW5wYzExbnVrcVB3QUFBLXY0N0RBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01EWXdIaGNOTWpRd01qQXhNVFV6TXpNeldoY05NalV3TVRJMk1UVXpNek16V2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUwwZlZwSnY5SGZaOWxEeUZzS1ZmMlBKZ3NaRE1GQTZraG5tXzY3a1VWMEtEYjh2VGQzYm1udzFVWWw3NWcyQ3A5R0R2dmFDcUtWbi1hdXgzVFdlMTFENjF2QXRGY1RQYk52ZXpFU002YkhSLVJWMWU0TGhYVUlsNlBaUmNJRTY1cmswYllGOFAxT196WjRtcFdIeDk5TWM5Z1NlNkUyc3FoX3NXUkl1RTRtU1hOeFZ6em1uZGtuTE9rY0RucU5sOUt0MVZwWHQ1b3JCU3dBVjc0c0NCSnV2elNFN01FVzJrSFVKdHF6R1dvWHZmNXBtLXJZZndxaFFhM0hMalVNajd4Ynd6c0JEdEVuMlpZSkxscUpxSXBzNWlWSGl4SFBuOGs2b3B4LTlGVlAydTAwOUJjY0ZSRHdpVmwxYjZ4V1hod3pxNThoWXRkWWMzU29NQ2NXTXRmMENBd0VBQWFPQ0EtMHdnZ1BwTUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hMQmdnckJnRUZCUWNCQVFTQ0FiMHdnZ0c1TUdNR0NDc0dBUVVGQnpBQ2hsZG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01pNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdOaTVqY25Rd1V3WUlLd1lCQlFVSE1BS0dSMmgwZEhBNkx5OWpjbXd4TG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREl1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSjBNRk1HQ0NzR0FRVUZCekFDaGtkb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeUxrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQTJMbU55ZERCVEJnZ3JCZ0VGQlFjd0FvWkhhSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNaTVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3Tmk1amNuUXdVd1lJS3dZQkJRVUhNQUtHUjJoMGRIQTZMeTlqY213MExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURJdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0owTUIwR0ExVWREZ1FXQkJSMWZxMk44a0FRbmx3SEZadXFSWVozbkl1NUxqQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRW1CZ05WSFI4RWdnRWRNSUlCR1RDQ0FSV2dnZ0VSb0lJQkRZWV9hSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNaTVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc01CY0dBMVVkSUFRUU1BNHdEQVlLS3dZQkJBR0NOM3NCQVRBZkJnTlZIU01FR0RBV2dCVHhSbWpHOGNQd0t5MTlpMnJoc3ZtLU5melJRVEFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFCd0NRMGhSZ1R6dU1paXE4UFVyVmREQk44X2MzSGNFWnN4ZGF6dnk0Uk5jd183V2pZQTNRZFJ6VnRhT0FFZlBxNkdyZkNGN244cWxwWGpNU09xNU9jLW1MNkV3dWxRQXlidHg0UnhZMHpJNXREVEhmSVREbzJGVlNhNnRoajlXVmxnT0YyVXhOYm9wWEJBWXBOLWZiZ1VUYW5Cc3BoV1kyRl9Lel9WS0Z2LTRVWEh3eU5pRGEzd3BhUXJtUTJ1cnVuV29zM2xFaHgwYVJLZE5UWndqSnRLNzhyZklhek5jY0pIVDFMSHBXVTdpOFhFQllQX1J6ZnRrR2hvRWhvZmRudGg0dDk5RzRDbHc5UkJPQzhLbTFTWjd6SlR0YVljQ1UtTlhTeldRZ1dUUWVHTXdvNUNudkFETjV1UFh6M2FVTXhBdWtEWS1lZDR3UGxkanp6SkZtemsmcz1VLVpvR3BVZDJDaUtVWFFmVkZ6N1NjSzBuWTFTLVR2TXRRZXFpOExXV0hEYmx1V2VWc3lzQ0otMFQxMmdzX3RObXZsX0NJN1JfbHVCZUNEYkdXaXhoNG9Ydm1FbWZlVFdmWFBiTnBvUThqYnY3RTlMVUJaSXBESm9RNWg4N2ViZ3AzVU5hYkp5N2pRdmtnQW9NbW9YcnhPck11U0JHWnE3MzFVUUt1c0UxVVBjcUJvbFB3aEJRWjVud2pRdnRQcGhaT2xleGRzaWdtR3VOcWw0QmlfcE9IdFhCZHN5T2xSQmdXOFl0OUp5Y3BfeWV2N0JPWmpUbUV5bmdlNUVEOU51YzBRbktqMmlEcmUyXzRoMmZsSjBHbS16YWUyX2NWa3JrMVFKaXM2STFuVkhmRlh5R1VFM1pQcEpYXzlLVDVRdVFlMFhJdmJOeV8zblFZZFE3QmJMS0EmaD1NWUpVUWUwZXlSOTM4aFV5eEpMbWtOSFAwRVNfelBrNFVHUTBXTUZYV29V",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MTAyMzswY2I1ZjA2NC1mYWQ1LTQ2ZGItYTdlOS03Mzk4MzVhMWRlYTU=?api-version=2026-07-01&t=639237697999084177&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=v5ioeaZNKAOomtfhHPfUdrpjtK-PZ72n9eBZAQW_rgudavFszyy-yz5neGmIvIwn0xb8zTIZAfTrCG1eJX-6RdjO_E5tMMLgHysg7sFN9DICerYDriqgkqjPfbCoTIjtq1Hsr_nlYpcfNP0QY4m90e-12LCp_bCQUehMngIlzMb6PH4YQGECjSzYZsWQTVLUstgZJCbbQV6UW0xCg1oPTvWftU6XMelKJoQy7vU72sksddASdMlz5KeRtsgAyxO9FRiw5DB6aOssl8lDMAd_y8KvIH0jj1iwY28Hk-PdAllp98zibuFQVM4tCcXQlhwhHqCGOs5SqTZss71nj5p6pA&h=NbCVvMmMSpocCz0C9cT-H2HqKuqGUZ38ZR0NrmcgL8A",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25TdGF0dXMvTVRBeU16c3dZMkkxWmpBMk5DMW1ZV1ExTFRRMlpHSXRZVGRsT1MwM016azRNelZoTVdSbFlUVT0/YXBpLXZlcnNpb249MjAyNi0wNy0wMSZ0PTYzOTIzNzY5Nzk5OTA4NDE3NyZjPU1JSUhsVENDQm4yZ0F3SUJBZ0lSQU4weVp6TDhhUjQyVVp5c2JvajNjaW93RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlZUTWlCRFFTQXdNVEFlRncweU5qQTRNVFF3TURRd01UUmFGdzB5TnpBeU1Ea3dOalF3TVRSYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXpvU09rVlI3TU5qODdUZFpycTJ0c0w3ZUVXQloxVXhZVWpsSHMydDF4NlhuMzFvLTZlNXlNMUk3OVh3MTdIcEdfWlJDMDFzSDBEbUx1Y3VCRjZFR1FSNTBhVEo2bXgyMkhyRWU0WVFoUWlUaWVZYWJBcE5GRVc3QzFaM3NxaHdUVmFXR3ZWOS1udzlhblR4MUh6dFM1czJqak1lSm9lYnN0cS13Qkl2WUlPeU03aGoxMnZZWTV2ZFhUbjlTYXNrM1Y4UzNLQnhkUHBPRmhRNXBLRjZDZ1QtZlE5LXNjYnpnZUtlV3VQWFpUTzBFZUgwMnhBc2oxYy1sa2k1Vkd2MFJld3pEMmJlSnhHTzEtQ3hKRk9mSDlIM1VubFpNS0xnNmtULWFCVG42UnVZVnVMSm9NWVlDLWVIYll0YWhBM3g1cjN5dXRORzhnZWdJTWxMbGNkVEdBUUlEQVFBQm80SUVrakNDQkk0d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN25hRmZUd21Oa3NYNzBPakhPWVFQc1I1NUtJd0h3WURWUjBqQkJnd0ZvQVVfT3ctMjZwOEg0SWVCYmloQnZsRDV3S3pDcmt3Z2dHeUJnTlZIUjhFZ2dHcE1JSUJwVEJwb0dlZ1pZWmphSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekl2WTNKc2N5OWpZMjFsWldGemRIVnpNbkJyYVM5alkyMWxaV0Z6ZEhWek1tbGpZVEF4THpNNUwyTjFjbkpsYm5RdVkzSnNNR3VnYWFCbmhtVm9kSFJ3T2k4dmMyVmpiMjVrWVhKNUxXTmtiaTV3YTJrdVkyOXlaUzUzYVc1a2IzZHpMbTVsZEM5bFlYTjBkWE15TDJOeWJITXZZMk50WldWaGMzUjFjekp3YTJrdlkyTnRaV1ZoYzNSMWN6SnBZMkV3TVM4ek9TOWpkWEp5Wlc1MExtTnliREJhb0ZpZ1ZvWlVhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwyVmhjM1IxY3pJdlkzSnNjeTlqWTIxbFpXRnpkSFZ6TW5CcmFTOWpZMjFsWldGemRIVnpNbWxqWVRBeEx6TTVMMk4xY25KbGJuUXVZM0pzTUctZ2JhQnJobWxvZEhSd09pOHZZMk50WldWaGMzUjFjekp3YTJrdVpXRnpkSFZ6TWk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWpaWEowYVdacFkyRjBaVUYxZEdodmNtbDBhV1Z6TDJOamJXVmxZWE4wZFhNeWFXTmhNREV2TXprdlkzVnljbVZ1ZEM1amNtd3dnZ0czQmdnckJnRUZCUWNCQVFTQ0Fha3dnZ0dsTUd3R0NDc0dBUVVGQnpBQ2htQm9kSFJ3T2k4dmNISnBiV0Z5ZVMxalpHNHVjR3RwTG1OdmNtVXVkMmx1Wkc5M2N5NXVaWFF2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd2JnWUlLd1lCQlFVSE1BS0dZbWgwZEhBNkx5OXpaV052Ym1SaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pJdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1uQnJhUzlqWTIxbFpXRnpkSFZ6TW1sallUQXhMMk5sY25RdVkyVnlNRjBHQ0NzR0FRVUZCekFDaGxGb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNaTlqWVdObGNuUnpMMk5qYldWbFlYTjBkWE15Y0d0cEwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdlkyVnlkQzVqWlhJd1pnWUlLd1lCQlFVSE1BS0dXbWgwZEhBNkx5OWpZMjFsWldGemRIVnpNbkJyYVM1bFlYTjBkWE15TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKcFkyRXdNVEFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBSnJSb0pXakl6c3ltQTBWcGlvNGUyaFJET1dsRzVQcFdtV29zM0dmbHQ4WGNRd1JzVS12dmRlV2stdVQtd0hZbjUyODQ2TjVVZTVjYnZNOE5WLWxhYk9BODUyVkwybXR1SG56N2Jra1JmV1RsUC10Qi1KWURTOGwweUdjVEVOcS1VTmxha2JsZUxndGZELVFyMDlsODUzamhlZ2lVUDN2SktMWE1DRkYxQzJtYVNOaHdaZzFNbHJFc3dOU1B6UkgwWGo5cTAtNDg3bEg0MlJuY3VSWENJcWQ4bGpmMV84di1JWE1sNld0RGRRRFlqUUVfcy1PSE4wQk5YdDB0NHdUZDVpa2VHNk5DSDJTSEMyd0ItUGNoQWlFNVA0b0hLNlZ4M00wcTNURWV4UDExVXA2STlrc25wTkJ3MjU2WktQYTBwWDN1cnhMYTIxNWZEaHRTY0E5UnpBJnM9djVpb2VhWk5LQU9vbXRmaEhQZlVkcnBqdEstUFo3Mm45ZUJaQVFXX3JndWRhdkZzenl5LXl6NW5lR21Jdkl3bjB4Yjh6VElaQWZUckNHMWVKWC02UmRqT19FNXRNTUxnSHlzZzdzRk45RElDZXJZRHJpcWdrcWpQZmJDb1RJanRxMUhzcl9ubFlwY2ZOUDBRWTRtOTBlLTEyTENwX2JDUVVlaE1uZ0lsek1iNlBINFlRR0VDalN6WVpzV1FUVkxVc3RnWkpDYmJRVjZVVzB4Q2cxb1BUdldmdFU2WE1lbEtKb1F5N3ZVNzJza3NkZEFTZE1sejVLZVJ0c2dBeXhPOUZSaXc1REI2YU9zc2w4bERNQWRfeThLdklIMGpqMWl3WTI4SGstUGRBbGxwOTh6aWJ1RlFWTTR0Q2NYUWxod2hIcUNHT3M1U3FUWnNzNzFuajVwNnBBJmg9TmJDVnZNbU1TcG9jQ3owQzljVC1IMkhxS3VxR1VaMzhaUjBOcm1jZ0w4QQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "adeb597a-4b40-40d9-bb6b-74720600d705"
+          "5d518dca-2ab7-436d-9f5c-1d63808fbf9c"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -735,19 +924,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "dbc508a9-1159-4293-be31-0955d0e9dd33"
+          "90816c57-9e7c-4a91-b654-491376738bb3"
         ],
         "x-ms-client-request-id": [
-          "adeb597a-4b40-40d9-bb6b-74720600d705"
+          "5d518dca-2ab7-436d-9f5c-1d63808fbf9c"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/6cc9000b-381e-4dc6-beca-73d4b2eb5a36"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "dbc508a9-1159-4293-be31-0955d0e9dd33"
+          "90816c57-9e7c-4a91-b654-491376738bb3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T131000Z:dbc508a9-1159-4293-be31-0955d0e9dd33"
+          "EASTUS:20260831T104420Z:90816c57-9e7c-4a91-b654-491376738bb3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -756,10 +951,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D83B923BA3C0484CB5F3C154BF66FF58 Ref B: MAA201060514023 Ref C: 2024-04-22T13:09:59Z"
+          "Ref A: 0662B2C310B04DD1848BDFA11042A1E4 Ref B: PNQ231110907036 Ref C: 2026-08-31T10:44:20Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:09:59 GMT"
+          "Mon, 31 Aug 2026 10:44:19 GMT"
         ],
         "Content-Length": [
           "322"
@@ -771,22 +966,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MTAyMztiMGQwMmM0My1lNzRmLTQ0YTEtODRlMi0xNmRhM2FlYjM0YmU=\",\r\n  \"name\": \"MTAyMztiMGQwMmM0My1lNzRmLTQ0YTEtODRlMi0xNmRhM2FlYjM0YmU=\",\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationStatus/MTAyMzswY2I1ZjA2NC1mYWQ1LTQ2ZGItYTdlOS03Mzk4MzVhMWRlYTU=\",\r\n  \"name\": \"MTAyMzswY2I1ZjA2NC1mYWQ1LTQ2ZGItYTdlOS03Mzk4MzVhMWRlYTU=\",\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/MTAyMztiMGQwMmM0My1lNzRmLTQ0YTEtODRlMi0xNmRhM2FlYjM0YmU=?api-version=2024-04-01&t=638493881390835716&c=MIIHADCCBeigAwIBAgITHgPr-Oynpc11nukqPwAAA-v47DANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwMjAxMTUzMzMzWhcNMjUwMTI2MTUzMzMzWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0fVpJv9HfZ9lDyFsKVf2PJgsZDMFA6khnm_67kUV0KDb8vTd3bmnw1UYl75g2Cp9GDvvaCqKVn-aux3TWe11D61vAtFcTPbNvezESM6bHR-RV1e4LhXUIl6PZRcIE65rk0bYF8P1O_zZ4mpWHx99Mc9gSe6E2sqh_sWRIuE4mSXNxVzzmndknLOkcDnqNl9Kt1VpXt5orBSwAV74sCBJuvzSE7MEW2kHUJtqzGWoXvf5pm-rYfwqhQa3HLjUMj7xbwzsBDtEn2ZYJLlqJqIps5iVHixHPn8k6opx-9FVP2u009BccFRDwiVl1b6xWXhwzq58hYtdYc3SoMCcWMtf0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBR1fq2N8kAQnlwHFZuqRYZ3nIu5LjAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBABwCQ0hRgTzuMiiq8PUrVdDBN8_c3HcEZsxdazvy4RNcw_7WjYA3QdRzVtaOAEfPq6GrfCF7n8qlpXjMSOq5Oc-mL6EwulQAybtx4RxY0zI5tDTHfITDo2FVSa6thj9WVlgOF2UxNbopXBAYpN-fbgUTanBsphWY2F_Kz_VKFv-4UXHwyNiDa3wpaQrmQ2urunWos3lEhx0aRKdNTZwjJtK78rfIazNccJHT1LHpWU7i8XEBYP_RzftkGhoEhofdnth4t99G4Clw9RBOC8Km1SZ7zJTtaYcCU-NXSzWQgWTQeGMwo5CnvADN5uPXz3aUMxAukDY-ed4wPldjzzJFmzk&s=flMdadAQ64oCUO1PtFz8vITWbLZwHt3elwC7TSAk2kQMcucW8oQE6lGzyxNaTLSHoKYrREox8Moe2rAeD-oLsB7CXl7HhJpmXKJmDD5BfBp92_yS0Wc_5jFE05s7nb9EIEtAbMiHpgUE68xtOjM3uJgeFC254OL_ONqo_pChxGgThZOp7gPmgmFcmoYHIYQ8ipVMSfFMxZreF0uLvlhzIpyNFZA07fEbryTuZ7aiZ1t4NorpRZgE2e65Fxp6_hwSHk6o6yuUbt-h_-ISkQojoVoPqGGteVWxTZ8k8kUCTUdL7sRapTLwYgbZDl7NZK2FjbuL22m3khvVnfpq5JjDWA&h=_GieOCbCjXKtSUiq1ET24IPaLGJwmbMrLGlCRE7ubic",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25SZXN1bHRzL01UQXlNenRpTUdRd01tTTBNeTFsTnpSbUxUUTBZVEV0T0RSbE1pMHhObVJoTTJGbFlqTTBZbVU9P2FwaS12ZXJzaW9uPTIwMjQtMDQtMDEmdD02Mzg0OTM4ODEzOTA4MzU3MTYmYz1NSUlIQURDQ0JlaWdBd0lCQWdJVEhnUHItT3lucGMxMW51a3FQd0FBQS12NDdEQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNRFl3SGhjTk1qUXdNakF4TVRVek16TXpXaGNOTWpVd01USTJNVFV6TXpNeldqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMMGZWcEp2OUhmWjlsRHlGc0tWZjJQSmdzWkRNRkE2a2hubV82N2tVVjBLRGI4dlRkM2JtbncxVVlsNzVnMkNwOUdEdnZhQ3FLVm4tYXV4M1RXZTExRDYxdkF0RmNUUGJOdmV6RVNNNmJIUi1SVjFlNExoWFVJbDZQWlJjSUU2NXJrMGJZRjhQMU9felo0bXBXSHg5OU1jOWdTZTZFMnNxaF9zV1JJdUU0bVNYTnhWenptbmRrbkxPa2NEbnFObDlLdDFWcFh0NW9yQlN3QVY3NHNDQkp1dnpTRTdNRVcya0hVSnRxekdXb1h2ZjVwbS1yWWZ3cWhRYTNITGpVTWo3eGJ3enNCRHRFbjJaWUpMbHFKcUlwczVpVkhpeEhQbjhrNm9weC05RlZQMnUwMDlCY2NGUkR3aVZsMWI2eFdYaHd6cTU4aFl0ZFljM1NvTUNjV010ZjBDQXdFQUFhT0NBLTB3Z2dQcE1DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2d2WDJLNFB5MFNBQ0FXUUNBUW93Z2dITEJnZ3JCZ0VGQlFjQkFRU0NBYjB3Z2dHNU1HTUdDQ3NHQVFVRkJ6QUNobGRvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNaTVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3Tmk1amNuUXdVd1lJS3dZQkJRVUhNQUtHUjJoMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURJdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0owTUZNR0NDc0dBUVVGQnpBQ2hrZG9kSFJ3T2k4dlkzSnNNaTVoYldVdVoySnNMMkZwWVM5Q1RESlFTMGxKVGxSRFFUQXlMa0ZOUlM1SFFreGZRVTFGSlRJd1NXNW1jbUVsTWpCRFFTVXlNREEyTG1OeWREQlRCZ2dyQmdFRkJRY3dBb1pIYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TWk1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd05pNWpjblF3VXdZSUt3WUJCUVVITUFLR1IyaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ESXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKME1CMEdBMVVkRGdRV0JCUjFmcTJOOGtBUW5sd0hGWnVxUllaM25JdTVMakFPQmdOVkhROEJBZjhFQkFNQ0JhQXdnZ0VtQmdOVkhSOEVnZ0VkTUlJQkdUQ0NBUldnZ2dFUm9JSUJEWVlfYUhSMGNEb3ZMMk55YkM1dGFXTnliM052Wm5RdVkyOXRMM0JyYVdsdVpuSmhMME5TVEM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNoakZvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRFl1WTNKc2hqRm9kSFJ3T2k4dlkzSnNNeTVoYldVdVoySnNMMk55YkM5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01EWXVZM0pzaGpGb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURZdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlR4Um1qRzhjUHdLeTE5aTJyaHN2bS1OZnpSUVRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQndDUTBoUmdUenVNaWlxOFBVclZkREJOOF9jM0hjRVpzeGRhenZ5NFJOY3dfN1dqWUEzUWRSelZ0YU9BRWZQcTZHcmZDRjduOHFscFhqTVNPcTVPYy1tTDZFd3VsUUF5YnR4NFJ4WTB6STV0RFRIZklURG8yRlZTYTZ0aGo5V1ZsZ09GMlV4TmJvcFhCQVlwTi1mYmdVVGFuQnNwaFdZMkZfS3pfVktGdi00VVhId3lOaURhM3dwYVFybVEydXJ1bldvczNsRWh4MGFSS2ROVFp3akp0Szc4cmZJYXpOY2NKSFQxTEhwV1U3aThYRUJZUF9SemZ0a0dob0Vob2ZkbnRoNHQ5OUc0Q2x3OVJCT0M4S20xU1o3ekpUdGFZY0NVLU5YU3pXUWdXVFFlR013bzVDbnZBRE41dVBYejNhVU14QXVrRFktZWQ0d1BsZGp6ekpGbXprJnM9ZmxNZGFkQVE2NG9DVU8xUHRGejh2SVRXYkxad0h0M2Vsd0M3VFNBazJrUU1jdWNXOG9RRTZsR3p5eE5hVExTSG9LWXJSRW94OE1vZTJyQWVELW9Mc0I3Q1hsN0hoSnBtWEtKbURENUJmQnA5Ml95UzBXY181akZFMDVzN25iOUVJRXRBYk1pSHBnVUU2OHh0T2pNM3VKZ2VGQzI1NE9MX09OcW9fcENoeEdnVGhaT3A3Z1BtZ21GY21vWUhJWVE4aXBWTVNmRk14WnJlRjB1THZsaHpJcHlORlpBMDdmRWJyeVR1WjdhaVoxdDROb3JwUlpnRTJlNjVGeHA2X2h3U0hrNm82eXVVYnQtaF8tSVNrUW9qb1ZvUHFHR3RlVld4VFo4azhrVUNUVWRMN3NSYXBUTHdZZ2JaRGw3TlpLMkZqYnVMMjJtM2todlZuZnBxNUpqRFdBJmg9X0dpZU9DYkNqWEt0U1VpcTFFVDI0SVBhTEdKd21iTXJMR2xDUkU3dWJpYw==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagaCZR-rg/providers/Microsoft.RecoveryServices/vaults/hiagaPNAVault/operationResults/MTAyMzswY2I1ZjA2NC1mYWQ1LTQ2ZGItYTdlOS03Mzk4MzVhMWRlYTU=?api-version=2026-07-01&t=639237697999084177&c=MIIHlTCCBn2gAwIBAgIRAN0yZzL8aR42UZysboj3ciowDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVVTMiBDQSAwMTAeFw0yNjA4MTQwMDQwMTRaFw0yNzAyMDkwNjQwMTRaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzoSOkVR7MNj87TdZrq2tsL7eEWBZ1UxYUjlHs2t1x6Xn31o-6e5yM1I79Xw17HpG_ZRC01sH0DmLucuBF6EGQR50aTJ6mx22HrEe4YQhQiTieYabApNFEW7C1Z3sqhwTVaWGvV9-nw9anTx1HztS5s2jjMeJoebstq-wBIvYIOyM7hj12vYY5vdXTn9Sask3V8S3KBxdPpOFhQ5pKF6CgT-fQ9-scbzgeKeWuPXZTO0EeH02xAsj1c-lki5VGv0RewzD2beJxGO1-CxJFOfH9H3UnlZMKLg6kT-aBTn6RuYVuLJoMYYC-eHbYtahA3x5r3yutNG8gegIMlLlcdTGAQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7naFfTwmNksX70OjHOYQPsR55KIwHwYDVR0jBBgwFoAU_Ow-26p8H4IeBbihBvlD5wKzCrkwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NybHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS8zOS9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzM5L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZWVhc3R1czJwa2kuZWFzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWVlYXN0dXMyaWNhMDEvMzkvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY2FjZXJ0cy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAJrRoJWjIzsymA0Vpio4e2hRDOWlG5PpWmWos3Gflt8XcQwRsU-vvdeWk-uT-wHYn52846N5Ue5cbvM8NV-labOA852VL2mtuHnz7bkkRfWTlP-tB-JYDS8l0yGcTENq-UNlakbleLgtfD-Qr09l853jhegiUP3vJKLXMCFF1C2maSNhwZg1MlrEswNSPzRH0Xj9q0-487lH42RncuRXCIqd8ljf1_8v-IXMl6WtDdQDYjQE_s-OHN0BNXt0t4wTd5ikeG6NCH2SHC2wB-PchAiE5P4oHK6Vx3M0q3TEexP11Up6I9ksnpNBw256ZKPa0pX3urxLa215fDhtScA9RzA&s=ZFTcTdbwy_lj6jiaXOKLnoNbmdo4QgpKC7Ha5FpH9Y7erwkLqZmqrWepmqbiEmJzwm7WvJ0KQjEKN9k_JWK0JLjUiuSgHk7Kxjs8T33zRug5koJEPyaTcsWMAJZgQeupXJTKtzGnTDJZMuQkqxRryN-Gby18apIbbDUNzk6Tsp1RwGMGf0Z7JIEG9iZqPV4mfUyLAzp-fBtNwVm-Tg1diLsews_lgSxb2JxitYDXgKM0TEigGIT3Bf1_iZJmDcNtGcxGjCz7nL9h3czo3yBleFGg3UuRMd7j_sTjQhUh_HYi_rFD9c49vCj87lLHxsI-Y3VpC1ecyAN4P6exo4tAcg&h=TqR-RzGEiiFNarL3BRrPzd0LqGWgq-WJNkgar13xjMA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhQ1pSLXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvaGlhZ2FQTkFWYXVsdC9vcGVyYXRpb25SZXN1bHRzL01UQXlNenN3WTJJMVpqQTJOQzFtWVdRMUxUUTJaR0l0WVRkbE9TMDNNems0TXpWaE1XUmxZVFU9P2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmdD02MzkyMzc2OTc5OTkwODQxNzcmYz1NSUlIbFRDQ0JuMmdBd0lCQWdJUkFOMHlaekw4YVI0MlVaeXNib2ozY2lvd0RRWUpLb1pJaHZjTkFRRUxCUUF3TmpFME1ESUdBMVVFQXhNclEwTk5SU0JITVNCVVRGTWdVbE5CSURJd05EZ2dVMGhCTWpVMklESXdORGtnUlZWVE1pQkRRU0F3TVRBZUZ3MHlOakE0TVRRd01EUXdNVFJhRncweU56QXlNRGt3TmpRd01UUmFNRUF4UGpBOEJnTlZCQU1UTldGemVXNWpiM0JsY21GMGFXOXVjMmxuYm1sdVoyTmxjblJwWm1sallYUmxMbTFoYm1GblpXMWxiblF1WVhwMWNtVXVZMjl0TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF6b1NPa1ZSN01Oajg3VGRacnEydHNMN2VFV0JaMVV4WVVqbEhzMnQxeDZYbjMxby02ZTV5TTFJNzlYdzE3SHBHX1pSQzAxc0gwRG1MdWN1QkY2RUdRUjUwYVRKNm14MjJIckVlNFlRaFFpVGllWWFiQXBORkVXN0MxWjNzcWh3VFZhV0d2Vjktbnc5YW5UeDFIenRTNXMyampNZUpvZWJzdHEtd0JJdllJT3lNN2hqMTJ2WVk1dmRYVG45U2FzazNWOFMzS0J4ZFBwT0ZoUTVwS0Y2Q2dULWZROS1zY2J6Z2VLZVd1UFhaVE8wRWVIMDJ4QXNqMWMtbGtpNVZHdjBSZXd6RDJiZUp4R08xLUN4SkZPZkg5SDNVbmxaTUtMZzZrVC1hQlRuNlJ1WVZ1TEpvTVlZQy1lSGJZdGFoQTN4NXIzeXV0Tkc4Z2VnSU1sTGxjZFRHQVFJREFRQUJvNElFa2pDQ0JJNHdnWjBHQTFVZElBU0JsVENCa2pBTUJnb3JCZ0VFQVlJM2V3RUJNR1lHQ2lzR0FRUUJnamQ3QWdJd1dEQldCZ2dyQmdFRkJRY0NBakJLSGtnQU13QXpBR1VBTUFBeEFEa0FNZ0F4QUMwQU5BQmtBRFlBTkFBdEFEUUFaZ0E0QUdNQUxRQmhBREFBTlFBMUFDMEFOUUJpQUdRQVlRQm1BR1lBWkFBMUFHVUFNd0F6QUdRd0RBWUtLd1lCQkFHQ04zc0RBakFNQmdvckJnRUVBWUkzZXdRQ01Bd0dBMVVkRXdFQl93UUNNQUF3SFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BNEdBMVVkRHdFQl93UUVBd0lGb0RBZEJnTlZIUTRFRmdRVTduYUZmVHdtTmtzWDcwT2pIT1lRUHNSNTVLSXdId1lEVlIwakJCZ3dGb0FVX093LTI2cDhINEllQmJpaEJ2bEQ1d0t6Q3Jrd2dnR3lCZ05WSFI4RWdnR3BNSUlCcFRCcG9HZWdaWVpqYUhSMGNEb3ZMM0J5YVcxaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pJdlkzSnNjeTlqWTIxbFpXRnpkSFZ6TW5CcmFTOWpZMjFsWldGemRIVnpNbWxqWVRBeEx6TTVMMk4xY25KbGJuUXVZM0pzTUd1Z2FhQm5obVZvZEhSd09pOHZjMlZqYjI1a1lYSjVMV05rYmk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWxZWE4wZFhNeUwyTnliSE12WTJOdFpXVmhjM1IxY3pKd2Eya3ZZMk50WldWaGMzUjFjekpwWTJFd01TOHpPUzlqZFhKeVpXNTBMbU55YkRCYW9GaWdWb1pVYUhSMGNEb3ZMMk55YkM1dGFXTnliM052Wm5RdVkyOXRMMlZoYzNSMWN6SXZZM0pzY3k5alkyMWxaV0Z6ZEhWek1uQnJhUzlqWTIxbFpXRnpkSFZ6TW1sallUQXhMek01TDJOMWNuSmxiblF1WTNKc01HLWdiYUJyaG1sb2RIUndPaTh2WTJOdFpXVmhjM1IxY3pKd2Eya3VaV0Z6ZEhWek1pNXdhMmt1WTI5eVpTNTNhVzVrYjNkekxtNWxkQzlqWlhKMGFXWnBZMkYwWlVGMWRHaHZjbWwwYVdWekwyTmpiV1ZsWVhOMGRYTXlhV05oTURFdk16a3ZZM1Z5Y21WdWRDNWpjbXd3Z2dHM0JnZ3JCZ0VGQlFjQkFRU0NBYWt3Z2dHbE1Hd0dDQ3NHQVFVRkJ6QUNobUJvZEhSd09pOHZjSEpwYldGeWVTMWpaRzR1Y0d0cExtTnZjbVV1ZDJsdVpHOTNjeTV1WlhRdlpXRnpkSFZ6TWk5allXTmxjblJ6TDJOamJXVmxZWE4wZFhNeWNHdHBMMk5qYldWbFlYTjBkWE15YVdOaE1ERXZZMlZ5ZEM1alpYSXdiZ1lJS3dZQkJRVUhNQUtHWW1oMGRIQTZMeTl6WldOdmJtUmhjbmt0WTJSdUxuQnJhUzVqYjNKbExuZHBibVJ2ZDNNdWJtVjBMMlZoYzNSMWN6SXZZMkZqWlhKMGN5OWpZMjFsWldGemRIVnpNbkJyYVM5alkyMWxaV0Z6ZEhWek1tbGpZVEF4TDJObGNuUXVZMlZ5TUYwR0NDc0dBUVVGQnpBQ2hsRm9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdlpXRnpkSFZ6TWk5allXTmxjblJ6TDJOamJXVmxZWE4wZFhNeWNHdHBMMk5qYldWbFlYTjBkWE15YVdOaE1ERXZZMlZ5ZEM1alpYSXdaZ1lJS3dZQkJRVUhNQUtHV21oMGRIQTZMeTlqWTIxbFpXRnpkSFZ6TW5CcmFTNWxZWE4wZFhNeUxuQnJhUzVqYjNKbExuZHBibVJ2ZDNNdWJtVjBMMk5sY25ScFptbGpZWFJsUVhWMGFHOXlhWFJwWlhNdlkyTnRaV1ZoYzNSMWN6SnBZMkV3TVRBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQUpyUm9KV2pJenN5bUEwVnBpbzRlMmhSRE9XbEc1UHBXbVdvczNHZmx0OFhjUXdSc1UtdnZkZVdrLXVULXdIWW41Mjg0Nk41VWU1Y2J2TThOVi1sYWJPQTg1MlZMMm10dUhuejdia2tSZldUbFAtdEItSllEUzhsMHlHY1RFTnEtVU5sYWtibGVMZ3RmRC1RcjA5bDg1M2poZWdpVVAzdkpLTFhNQ0ZGMUMybWFTTmh3WmcxTWxyRXN3TlNQelJIMFhqOXEwLTQ4N2xINDJSbmN1UlhDSXFkOGxqZjFfOHYtSVhNbDZXdERkUURZalFFX3MtT0hOMEJOWHQwdDR3VGQ1aWtlRzZOQ0gyU0hDMndCLVBjaEFpRTVQNG9ISzZWeDNNMHEzVEVleFAxMVVwNkk5a3NucE5CdzI1NlpLUGEwcFgzdXJ4TGEyMTVmRGh0U2NBOVJ6QSZzPVpGVGNUZGJ3eV9sajZqaWFYT0tMbm9OYm1kbzRRZ3BLQzdIYTVGcEg5WTdlcndrTHFabXFyV2VwbXFiaUVtSnp3bTdXdkowS1FqRUtOOWtfSldLMEpMalVpdVNnSGs3S3hqczhUMzN6UnVnNWtvSkVQeWFUY3NXTUFKWmdRZXVwWEpUS3R6R25UREpaTXVRa3F4UnJ5Ti1HYnkxOGFwSWJiRFVOems2VHNwMVJ3R01HZjBaN0pJRUc5aVpxUFY0bWZVeUxBenAtZkJ0TndWbS1UZzFkaUxzZXdzX2xnU3hiMkp4aXRZRFhnS00wVEVpZ0dJVDNCZjFfaVpKbURjTnRHY3hHakN6N25MOWgzY3pvM3lCbGVGR2czVXVSTWQ3al9zVGpRaFVoX0hZaV9yRkQ5YzQ5dkNqODdsTEh4c0ktWTNWcEMxZWN5QU40UDZleG80dEFjZyZoPVRxUi1SekdFaWlGTmFyTDNCUnJQemQwTHFHV2dxLVdKTmtnYXIxM3hqTUE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "adeb597a-4b40-40d9-bb6b-74720600d705"
+          "5d518dca-2ab7-436d-9f5c-1d63808fbf9c"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/8.0.3026.36720",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.8.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.0"
         ]
       },
       "RequestBody": "",
@@ -806,14 +1001,20 @@
         "x-ms-client-request-id": [
           "00000000-0000-0000-0000-000000000000"
         ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=352782de-cadf-4f14-ad97-08cd2617ef55/eastus/60565297-629c-443e-bbe7-983c47daeb7c"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "ca7f72d3-f39f-4661-a5af-d48e390461d5"
+          "a4dc2a97-64db-43fa-8345-ebf5233ec927"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240422T131001Z:ca7f72d3-f39f-4661-a5af-d48e390461d5"
+          "EASTUS:20260831T104420Z:a4dc2a97-64db-43fa-8345-ebf5233ec927"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -822,10 +1023,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 91820D1F9A674DFA96DA49DB880BBF14 Ref B: MAA201060514023 Ref C: 2024-04-22T13:10:00Z"
+          "Ref A: 5E50D6BF7F1E4298B7D0C3D03E6DED55 Ref B: PNQ231110907036 Ref C: 2026-08-31T10:44:20Z"
         ],
         "Date": [
-          "Mon, 22 Apr 2024 13:10:00 GMT"
+          "Mon, 31 Aug 2026 10:44:20 GMT"
         ],
         "Expires": [
           "-1"

@@ -13,14 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzStreamAnalyticsInput' {
   It 'Delete' {
-    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01 -File (Join-Path $PSScriptRoot 'template-json\IotHub.json')
+    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01 -File (Join-Path $PSScriptRoot 'template-json' 'IotHub.json')
     Remove-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input01
     $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02
     $result.Name | Should -Not -Contain $env.input01
   }
 
   It 'DeleteViaIdentity' {
-    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input02 -File (Join-Path $PSScriptRoot 'template-json\IotHub.json')
+    New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input02 -File (Join-Path $PSScriptRoot 'template-json' 'IotHub.json')
     $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.input02
     Remove-AzStreamAnalyticsInput -InputObject $result
     $result = Get-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job02

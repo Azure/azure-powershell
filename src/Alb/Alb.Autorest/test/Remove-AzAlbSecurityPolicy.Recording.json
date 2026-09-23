@@ -1,0 +1,43 @@
+{
+  "Remove-AzAlbSecurityPolicy+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/frontends/test-wafSecurityPolicy?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/remove-test-alb/frontends/test-wafSecurityPolicy?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "145" ],
+        "x-ms-client-request-id": [ "a7978acc-1ee4-4594-b0de-915ee02679ef" ],
+        "CommandName": [ "Remove-AzAlbFrontend" ],
+        "FullCommandName": [ "Remove-AzAlbFrontend_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-request-id": [ "8705e4c7-c4c6-43e3-873e-ed74125973bc" ],
+        "x-ms-correlation-request-id": [ "8705e4c7-c4c6-43e3-873e-ed74125973bc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20250317T230316Z:8705e4c7-c4c6-43e3-873e-ed74125973bc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A454F042C51B43CEBEEA2898C0E07F73 Ref B: CO6AA3150220009 Ref C: 2025-03-17T23:03:15Z" ],
+        "Date": [ "Mon, 17 Mar 2025 23:03:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -15,24 +15,28 @@ Adds a subnet configuration to a virtual network.
 
 ### SetByResource (Default)
 ```
-Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
- [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
- [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
+ [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>] [-ServiceEndpoint <String[]>]
+ [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
+ [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ResourceId <String>]
- [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
- [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> [-AddressPrefix <String[]>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-NetworkSecurityGroupId <String>]
+ [-RouteTableId <String>] [-ResourceId <String>] [-ServiceEndpoint <String[]>]
+ [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
+ [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +70,21 @@ Finally, it creates a new subnet with that delegation that is added to the vnet.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddressPrefix
 Specifies a range of IP addresses for a subnet configuration.
 
@@ -74,7 +93,22 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,6 +187,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpamPoolPrefixAllocation
+IpamPool to auto allocate from for subnet address prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

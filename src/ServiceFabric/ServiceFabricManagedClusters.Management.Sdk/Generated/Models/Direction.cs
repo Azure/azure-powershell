@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
     public static class Direction
     {
+        /// <summary>
+        /// Inbound direction.
+        /// </summary>
         public const string Inbound = "inbound";
+        /// <summary>
+        /// Outbound direction.
+        /// </summary>
         public const string Outbound = "outbound";
     }
 }

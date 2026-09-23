@@ -18,8 +18,8 @@ New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <Strin
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnablePurgeProtection]
  [-DisableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-PublicNetworkAccess <String>]
  [-Sku <String>] [-Tag <Hashtable>] [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

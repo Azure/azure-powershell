@@ -45,19 +45,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             { "Microsoft.Azure.Storage.File.CloudFileDirectory", new[] { "Parent" } },
         };
 
-        private readonly SecretMasker _secretMasker = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels, generateCorrelatingIds: true);
+        private readonly SecretMasker _secretMasker = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels);
 
-        public bool TrySanitizeData(string data, out string sanitizedData)
+        public bool TrySanitizeData(string data, out IEnumerable<Detection> detections, out string sanitizedData)
         {
             sanitizedData = string.Empty;
 
-            if (!string.IsNullOrWhiteSpace(data))
+            if (string.IsNullOrWhiteSpace(data))
             {
-                var detections = _secretMasker.DetectSecrets(data);
-                return detections.Any();
+                detections = Enumerable.Empty<Detection>();
+                return false;
             }
 
-            return false;
+            detections = _secretMasker.DetectSecrets(data);
+            return detections.Any();
         }
     }
 }

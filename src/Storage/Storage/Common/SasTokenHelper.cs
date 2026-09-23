@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
-    using Microsoft.Azure.Storage.File;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -71,52 +70,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Validate the file share access policy
-        /// </summary>
-        /// <param name="channel">IStorageFileManagement channel object</param>
-        /// <param name="shareName">A string containing the name of the share.</param>
-        /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
-        /// <param name="shouldNoPermission"></param>
-        /// <param name="shouldNoStartTime"></param>
-        /// <param name="shouldNoExpiryTime"></param>
-        public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
-             string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
-        {
-            if (string.IsNullOrEmpty(policyIdentifier)) return true;
-            CloudFileShare fileShare = channel.GetShareReference(shareName);
-            FileSharePermissions permission;
-
-            try
-            {
-                permission = fileShare.GetPermissionsAsync().Result;
-            }
-            catch (AggregateException e) when (e.InnerException is StorageException)
-            {
-                throw e.InnerException;
-            }
-
-            SharedAccessFilePolicy sharedAccessPolicy =
-                GetExistingPolicy<SharedAccessFilePolicy>(permission.SharedAccessPolicies, policyIdentifier);
-
-            if (shouldNoPermission && sharedAccessPolicy.Permissions != SharedAccessFilePermissions.None)
-            {
-                throw new InvalidOperationException(Resources.SignedPermissionsMustBeOmitted);
-            }
-
-            if (shouldNoStartTime && sharedAccessPolicy.SharedAccessStartTime.HasValue)
-            {
-                throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
-            }
-
-            if (shouldNoExpiryTime && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
-            {
-                throw new InvalidOperationException(Resources.SignedExpiryTimeMustBeOmitted);
-            }
-
-            return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
-        }
-
-        /// <summary>
         /// Validate the table access policy
         /// </summary>
         /// <param name="channel">IStorageTableManagement channel object</param>
@@ -149,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Valiate access policy
+        /// Validate access policy
         /// </summary>
         /// <param name="policies">Access policy</param>
         /// <param name="policyIdentifier">policyIdentifier</param>
@@ -221,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get a BlobSignedIdentifier from contaienr with a specific Id
+        /// Get a BlobSignedIdentifier from container with a specific Id
         /// </summary>
         public static BlobSignedIdentifier GetBlobSignedIdentifier(BlobContainerClient container, string identifierId, CancellationToken cancellationToken)
         {
@@ -278,7 +231,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            string Protocol = null)
         {
             ShareSasBuilder sasBuilder = SetShareSasBuilder(file.ShareName,
                 file.Path,
@@ -300,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null)
+            string Protocol = null)
         {
             ShareSasBuilder sasBuilder = SetShareSasBuilder(share.Name,
                 null,
@@ -431,7 +384,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? StartTime = null,
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? Protocol = null,
+            string Protocol = null,
             string EncryptionScope = null)
         {
             ShareSasBuilder sasBuilder;
@@ -525,7 +478,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (Protocol != null)
             {
-                if (Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
+                if (Protocol.ToLower() == HttpsOrHttp)
                 {
                     sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
                 }
@@ -548,7 +501,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
             }
         }
 
@@ -563,7 +516,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey credentail.");
+                throw new InvalidOperationException("Create Queue service SAS only supported with SharedKey credential.");
             }
         }
 
@@ -802,6 +755,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (generateUserDelegationSas)
             {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
                 global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
                 BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, ClientOptions);
 
@@ -816,7 +773,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential.");
             }
         }
 
@@ -831,6 +788,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (generateUserDelegationSas)
             {
+                if (context.StorageAccountName.StartsWith("["))
+                {
+                    throw new InvalidOperationException("Please provide '-Context' as a storage context created by cmdlet `New-AzStorageContext` with parameters include '-StorageAccountName'.");
+                }
                 global::Azure.Storage.Files.DataLake.Models.UserDelegationKey userDelegationKey = null;
                 DataLakeServiceClient oauthService = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, clientOptions);
 
@@ -845,7 +806,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             else
             {
-                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credential.");
             }
         }
 
@@ -908,7 +869,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get Track2 accunt sas SasServices
+        /// Get Track2 account sas SasServices
         /// </summary>
         public static AccountSasServices GetAccountSasServices(SharedAccessAccountServices Service)
         {
@@ -933,7 +894,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get Track2 accunt sas ResourceTypes
+        /// Get Track2 account sas ResourceTypes
         /// </summary>
         public static AccountSasResourceTypes GetAccountSasResourceTypes(SharedAccessAccountResourceTypes type)
         {

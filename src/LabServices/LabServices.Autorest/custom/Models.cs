@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Collections;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
 {
     internal static class ResourceHelper
     {

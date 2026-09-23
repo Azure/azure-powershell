@@ -34,7 +34,7 @@ Add-AzIotHubConfiguration [-ResourceId] <String> -Name <String> [-DeviceContent 
 ```
 
 ## DESCRIPTION
-Configuration content is json and slighty varies based on device or module intent. 
+Configuration content is json and slightly varies based on device or module intent. 
 Device configurations are in the form of {"deviceContent":{...}}
 Module configurations are in the form of {"moduleContent":{...}}
 Configurations can be defined with user provided metrics for on demand evaluation.

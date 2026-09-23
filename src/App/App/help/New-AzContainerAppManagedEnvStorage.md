@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ New-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAcces
 ```
 
 ## DESCRIPTION
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 
 ## EXAMPLES
 

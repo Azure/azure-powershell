@@ -26,24 +26,66 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 		}
 
 		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		[Trait(Category.AcceptanceType, Category.LiveOnly)]
 		public void TestManagedInstanceLink()
 		{
 			TestRunner.RunTestScript("Test-ManagedInstanceLink");
 		}
 
 		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		[Trait(Category.AcceptanceType, Category.LiveOnly)]
 		public void TestManagedInstanceLinkErrHandling()
 		{
 			TestRunner.RunTestScript("Test-ManagedInstanceLinkErrHandling");
 		}
 
 		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		[Trait(Category.AcceptanceType, Category.LiveOnly)]
 		public void TestManagedInstanceLinkPiping()
 		{
 			TestRunner.RunTestScript("Test-ManagedInstanceLinkPiping");
 		}
-	}
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestManagedInstanceLinkMIPrimaryPlannedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkMIFirstPlannedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestManagedInstanceLinkMIPrimaryForcedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkMIFirstForcedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestManagedInstanceLinkBOXFirstForcedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkBOXFirstForcedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestManagedInstanceMultiDatabaseLink()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceMultiDatabaseLink");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestManagedInstanceMultiDatabaseLinkUpdateDatabases()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceMultiDatabaseLinkUpdateDatabases");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestManagedInstanceMultiDatabaseLinkErrHandling()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceMultiDatabaseLinkErrHandling");
+        }
+    }
 }

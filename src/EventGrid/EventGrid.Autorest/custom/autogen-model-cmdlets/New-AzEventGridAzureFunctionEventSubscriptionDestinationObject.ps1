@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AzureFunctionEventSubscripti
 https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridazurefunctioneventsubscriptiondestinationobject
 #>
 function New-AzEventGridAzureFunctionEventSubscriptionDestinationObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AzureFunctionEventSubscriptionDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

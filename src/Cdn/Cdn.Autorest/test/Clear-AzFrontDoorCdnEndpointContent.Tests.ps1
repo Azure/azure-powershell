@@ -19,6 +19,22 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'PurgeViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'PurgeViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'PurgeViaIdentityProfileExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'PurgeViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Purge' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

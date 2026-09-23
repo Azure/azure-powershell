@@ -24,15 +24,19 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the ResourceGroupExportResult class.
         /// </summary>
 
-        /// <param name="template">The template content.
+        /// <param name="template">The template content. Used if outputFormat is empty or set to &#39;Json&#39;.
+        /// </param>
+
+        /// <param name="output">The formatted export content. Used if outputFormat is set to &#39;Bicep&#39;.
         /// </param>
 
         /// <param name="error">The template export error.
         /// </param>
-        public ResourceGroupExportResult(object template = default(object), ErrorResponse error = default(ErrorResponse))
+        public ResourceGroupExportResult(object template = default(object), string output = default(string), ErrorResponse error = default(ErrorResponse))
 
         {
             this.Template = template;
+            this.Output = output;
             this.Error = error;
             CustomInit();
         }
@@ -44,10 +48,18 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets or sets the template content.
+        /// Gets or sets the template content. Used if outputFormat is empty or set to
+        /// &#39;Json&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "template")]
         public object Template {get; set; }
+
+        /// <summary>
+        /// Gets or sets the formatted export content. Used if outputFormat is set to
+        /// &#39;Bicep&#39;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "output")]
+        public string Output {get; set; }
 
         /// <summary>
         /// Gets or sets the template export error.

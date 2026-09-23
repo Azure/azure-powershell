@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// <summary>
     /// Parameters for updating the access policy in a vault
     /// </summary>
-    public partial class VaultAccessPolicyParameters : Microsoft.Rest.Azure.IResource
+    public partial class VaultAccessPolicyParameters
     {
         /// <summary>
         /// Initializes a new instance of the VaultAccessPolicyParameters class.

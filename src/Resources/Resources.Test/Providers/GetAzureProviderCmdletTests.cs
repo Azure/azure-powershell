@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void ResetCalls()
         {
-            this.providerOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            this.providerOperationsMock.Invocations.Clear();
+            this.commandRuntimeMock.Invocations.Clear();
         }
 
         /// <summary>
