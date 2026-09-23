@@ -5,6 +5,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network.Models;
@@ -266,6 +267,75 @@ namespace Commands.Network.Test.UnitTests
 
             Assert.Equal(new[] { "emea", "apac" }, condition.PropertyValues);
             Assert.Null(condition.PropertyValueMatcher);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAdvancedRoutingConditionRequiresPropertyNameForHeaderAndQueryString()
+        {
+            foreach (var conditionType in new[] { "Header", "QueryString" })
+            {
+                var command = new NewAzureApplicationGatewayAdvancedRoutingConditionCommand
+                {
+                    ConditionType = conditionType,
+                    PropertyValues = new[] { "emea" }
+                };
+
+                var ex = Assert.Throws<PSArgumentException>(() => command.NewObject());
+                Assert.Contains("PropertyName is required", ex.Message);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAdvancedRoutingConditionRejectsPropertyNameWhenNotApplicable()
+        {
+            foreach (var conditionType in new[] { "Path", "ClientIP", "Method" })
+            {
+                var command = new NewAzureApplicationGatewayAdvancedRoutingConditionCommand
+                {
+                    ConditionType = conditionType,
+                    PropertyName = "X-Region",
+                    PropertyValues = new[] { "emea" }
+                };
+
+                var ex = Assert.Throws<PSArgumentException>(() => command.NewObject());
+                Assert.Contains("PropertyName is not applicable", ex.Message);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAdvancedRoutingConditionRejectsPatternForClientIpAndMethod()
+        {
+            foreach (var conditionType in new[] { "ClientIP", "Method" })
+            {
+                var command = new NewAzureApplicationGatewayAdvancedRoutingConditionCommand
+                {
+                    ConditionType = conditionType,
+                    Pattern = "^10\\..*"
+                };
+
+                var ex = Assert.Throws<PSArgumentException>(() => command.NewObject());
+                Assert.Contains("Pattern is not applicable", ex.Message);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAdvancedRoutingConditionAllowsPathWithoutPropertyName()
+        {
+            var command = new NewAzureApplicationGatewayAdvancedRoutingConditionCommand
+            {
+                ConditionType = "Path",
+                Pattern = "^/api/.*"
+            };
+
+            var condition = command.NewObject();
+
+            Assert.Equal("Path", condition.ConditionType);
+            Assert.Null(condition.PropertyName);
+            Assert.Equal("^/api/.*", condition.PropertyValueMatcher.Pattern);
         }
 
         [Fact]

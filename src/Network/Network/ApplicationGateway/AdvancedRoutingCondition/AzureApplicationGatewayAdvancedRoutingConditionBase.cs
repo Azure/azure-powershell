@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
 
@@ -66,6 +67,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSApplicationGatewayAdvancedRoutingCondition NewObject()
         {
+            this.Validate();
+
             var condition = new PSApplicationGatewayAdvancedRoutingCondition
             {
                 ConditionType = this.ConditionType,
@@ -87,6 +90,31 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return condition;
+        }
+
+        private void Validate()
+        {
+            var supportsPropertyName = IsConditionType("Header") || IsConditionType("QueryString");
+
+            if (supportsPropertyName && string.IsNullOrEmpty(this.PropertyName))
+            {
+                throw new PSArgumentException($"PropertyName is required when ConditionType is '{this.ConditionType}'.");
+            }
+
+            if (!supportsPropertyName && !string.IsNullOrEmpty(this.PropertyName))
+            {
+                throw new PSArgumentException($"PropertyName is not applicable when ConditionType is '{this.ConditionType}'.");
+            }
+
+            if (!string.IsNullOrEmpty(this.Pattern) && (IsConditionType("ClientIP") || IsConditionType("Method")))
+            {
+                throw new PSArgumentException($"Pattern is not applicable when ConditionType is '{this.ConditionType}'. Use PropertyValues instead.");
+            }
+        }
+
+        private bool IsConditionType(string conditionType)
+        {
+            return string.Equals(this.ConditionType, conditionType, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
