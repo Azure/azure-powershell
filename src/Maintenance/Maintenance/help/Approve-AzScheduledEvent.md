@@ -23,8 +23,7 @@ Approve-AzScheduledEvent [-ResourceGroupName] <String> [-ResourceType] <String> 
 
 Approves an event in the ScheduledEvents for a virtual machine, virtual machine scale set, or availability set.
 On success, the cmdlet returns a ScheduledEvents approval response.
-If the service rejects the request, the cmdlet returns a structured error response containing the service-defined code and message.
-The default console view renders the error response as JSON, but the pipeline receives a structured object whose values are available through the `Error.Code` and `Error.Message` properties.
+For other non-success responses, raises a status-specific CLI error displaying the HTTP status heading followed by the formatted service JSON
 
 ## EXAMPLES
 
@@ -42,19 +41,19 @@ Successfully approved scheduled event
 
 Approves the specified ScheduledEvents entry for a virtual machine and returns the service response.
 
-### Example 2: Inspect a non-success response
+### Example 2: Approve an event that cannot be found
 
 ```powershell
-$response = Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
-$response
+Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
 ```
 
 ```output
+Approve-AzScheduledEvent: NotFound
 {
-	"Error": {
-		"Code": "InvalidScheduledEventId",
-		"Message": "Scheduled event not found"
-	}
+  "error": {
+    "code": "InvalidScheduledEventId",
+    "message": "Scheduled event not found"
+  }
 }
 ```
 
@@ -236,8 +235,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse
-
-### Microsoft.Azure.Management.Maintenance.Models.MaintenanceError
 
 ## NOTES
 

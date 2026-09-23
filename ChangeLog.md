@@ -1,3 +1,10 @@
+## Upcoming Release
+
+### Az.Maintenance
+
+* Changed scheduled event approval failures to terminating PowerShell errors displaying the HTTP status and service error JSON. HTTP 200 and list HTTP 207 responses remain normal output.
+* Updated `Approve-AzScheduledEventList` to return multi-status results through `Error.Details` with target IDs supplied by the service.
+
 ## 16.3.0 - September 2026
 #### Az.Accounts 5.5.3
 * Fixed 'Get-AzSubscription' to throw a clear error instead of returning nothing when '-TenantId' does not match the current Managed Service Identity (MSI) context. [#25710]
