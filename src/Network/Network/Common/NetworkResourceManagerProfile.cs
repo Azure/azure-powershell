@@ -1171,6 +1171,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteLink, CNM.PSExpressRouteLink>();
                 cfg.CreateMap<MNM.ExpressRoutePortAuthorization, CNM.PSExpressRoutePortAuthorization>();
 
+                // ExpressRouteAuthorizationKey (shared by circuit and port authorization listKeys)
+                cfg.CreateMap<CNM.PSExpressRouteAuthorizationKey, MNM.ExpressRouteAuthorizationKey>();
+                cfg.CreateMap<MNM.ExpressRouteAuthorizationKey, CNM.PSExpressRouteAuthorizationKey>();
+
                 // ExpressRouteLag
                 // The SDK model is nested (Properties of type ExpressRouteLagPropertiesFormat) while the
                 // PowerShell model is flat, so bridge the flat PS members to/from the nested SDK Properties.

@@ -841,6 +841,54 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
 
 <#
 .SYNOPSIS
+Tests retrieving the authorization key for an ExpressRoute circuit authorization.
+#>
+function Test-ExpressRouteCircuitAuthorizationKey
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $authorizationName = "testkey"
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create the ExpressRouteCircuit with an authorization
+        $authorization = New-AzExpressRouteCircuitAuthorization -Name $authorizationName
+        $circuit = New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 -Authorization $authorization
+
+        #verification
+        Assert-AreEqual $circuitName $circuit.Name
+        Assert-AreEqual 1 @($circuit.Authorizations).Count
+        Assert-AreEqual $authorizationName $circuit.Authorizations[0].Name
+
+        # get the authorization key by name
+        $key = Get-AzExpressRouteCircuitAuthorizationKey -ResourceGroupName $rgname -CircuitName $circuitName -Name $authorizationName
+        Assert-NotNull $key
+        Assert-NotNull $key.AuthorizationKey
+
+        # get the authorization key from the circuit object (pipeline)
+        $keyFromObject = $circuit | Get-AzExpressRouteCircuitAuthorizationKey -Name $authorizationName
+        Assert-NotNull $keyFromObject
+        Assert-AreEqual $key.AuthorizationKey $keyFromObject.AuthorizationKey
+
+        # Delete Circuit
+        $delete = Remove-AzExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+        Assert-AreEqual true $delete
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests ExpressRouteCircuitConnectionCRUD.
 #>
 function Test-ExpressRouteCircuitConnectionCRUD

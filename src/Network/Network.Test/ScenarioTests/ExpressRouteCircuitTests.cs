@@ -109,6 +109,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteCircuitAuthorizationKey()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationKey");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteBgpServiceCommunitiesGet()
         {
             TestRunner.RunTestScript("Test-ExpressRouteBGPServiceCommunities");

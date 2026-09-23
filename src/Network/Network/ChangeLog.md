@@ -37,6 +37,8 @@
 * Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
     - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
     - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
+* Added `Get-AzExpressRouteCircuitAuthorizationKey` and `Get-AzExpressRoutePortAuthorizationKey` to retrieve the authorization key for an ExpressRoute circuit or port authorization (Microsoft.Network 2026-01-01 API).
+    - The authorization key is now a secret that is masked by the standard get cmdlets, so these cmdlets retrieve it through a live `listKeys` action.
 * Added WAF (Web Application Firewall) managed rule set display name and managed rule paranoia level to Application Gateway WAF cmdlet output.
     - Added the `ParanoiaLevel` property to the rules returned by `Get-AzApplicationGatewayAvailableWafRuleSet` and `Get-AzApplicationGatewayWafDynamicManifest`.
     - Added the `DisplayName` property to the rule sets returned by the same cmdlets.
