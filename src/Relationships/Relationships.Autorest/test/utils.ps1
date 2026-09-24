@@ -63,8 +63,14 @@ function setupEnv() {
     # For subscription-scoped DependencyOf tests, target the dep resource group (source=sub, target=RG is valid)
     $env['DepTargetIdForSub'] = $env.DepResourceGroupResourceUri
     # ServiceGroup target for DependencyOf (RG source → SG target)
-    $env['DepTargetServiceGroupId'] = "/providers/Microsoft.Management/serviceGroups/SDKTestsSG"
-    $env['SgmTargetId'] = "/providers/Microsoft.Management/serviceGroups/SDKTestsSG"
+    $serviceGroupName = $env:RELATIONSHIPS_TEST_SERVICE_GROUP_NAME
+    if ([string]::IsNullOrWhiteSpace($serviceGroupName)) {
+        throw 'RELATIONSHIPS_TEST_SERVICE_GROUP_NAME must be set for live or record mode.'
+    }
+    $env['DepTargetServiceGroupId'] = "/providers/Microsoft.Management/serviceGroups/$serviceGroupName"
+    $env['ServiceGroupName'] = $serviceGroupName
+    $env['SgmSourceId'] = "/providers/Microsoft.Management/serviceGroups/$($env.ServiceGroupName)"
+    $env['SgmTargetResourceUri'] = $env.SgmResourceGroupResourceUri
 
     # --- Names for New tests (NOT created here; the tests create them) ---
     $env['DepRelNameForNew'] = 'deprelnew' + $env.RandomString
@@ -77,20 +83,28 @@ function setupEnv() {
     $env['SgmRelNameForNewJson'] = 'sgmreljson' + $env.RandomString
     $env['SgmRelNameForNewSub'] = 'sgmrelsub' + $env.RandomString
     $env['SgmRelNameForNewJsonFile'] = 'sgmreljf' + $env.RandomString
+    $env['SgDepRelNameForNew'] = 'sgdeprelnew' + $env.RandomString
+    $env['SgDepRelNameForGet'] = 'sgdeprelget' + $env.RandomString
+    $env['SgDepRelNameToUpdate'] = 'sgdeprelupt' + $env.RandomString
+    $env['SgDepRelNameToDelete'] = 'sgdepreldel' + $env.RandomString
 
     # --- Resources for Get tests ---
     $env['DepRelNameForGet'] = 'deprelget' + $env.RandomString
     New-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameForGet -TargetId $env.DepTargetId
 
     $env['SgmRelNameForGet'] = 'sgmrelget' + $env.RandomString
-    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForGet -TargetId $env.SgmTargetId
+    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForGet -SourceId $env.SgmSourceId
+
+    New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameForGet -TargetId $env.DepTargetId
 
     # --- Resources for Update tests ---
     $env['DepRelNameToUpdate'] = 'deprelupt' + $env.RandomString
     New-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToUpdate -TargetId $env.DepTargetId
 
     $env['SgmRelNameToUpdate'] = 'sgmrelupt' + $env.RandomString
-    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToUpdate -TargetId $env.SgmTargetId
+    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToUpdate -SourceId $env.SgmSourceId
+
+    New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameToUpdate -TargetId $env.DepTargetId
 
     # --- Resources for Remove tests ---
     $env['DepRelNameToDelete'] = 'depreldel' + $env.RandomString
@@ -100,10 +114,12 @@ function setupEnv() {
     New-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToDeleteViaIdentity -TargetId $env.DepTargetId
 
     $env['SgmRelNameToDelete'] = 'sgmreldel' + $env.RandomString
-    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToDelete -TargetId $env.SgmTargetId
+    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToDelete -SourceId $env.SgmSourceId
 
     $env['SgmRelNameToDeleteViaIdentity'] = 'sgmreldi' + $env.RandomString
-    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToDeleteViaIdentity -TargetId $env.SgmTargetId
+    New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToDeleteViaIdentity -SourceId $env.SgmSourceId
+
+    New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameToDelete -TargetId $env.DepTargetId
 
     # Write env file
     $envFile = 'env.json'
@@ -123,15 +139,20 @@ function cleanupEnv() {
     Remove-AzRelationshipsDependencyOfRelationship -ResourceUri $env.SubscriptionResourceUri -Name $env.DepRelNameForNewSub -ErrorAction SilentlyContinue
     Remove-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameForNewSgTarget -ErrorAction SilentlyContinue
     Remove-AzRelationshipsDependencyOfRelationship -ResourceUri $env.SubscriptionResourceUri -Name $env.DepRelNameForNewSubToSg -ErrorAction SilentlyContinue
-    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForGet -ErrorAction SilentlyContinue
-    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToUpdate -ErrorAction SilentlyContinue
-    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForNew -ErrorAction SilentlyContinue
-    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForNewJson -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForGet -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToUpdate -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForNew -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForNewJson -ErrorAction SilentlyContinue
     Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SubscriptionResourceUri -Name $env.SgmRelNameForNewSub -ErrorAction SilentlyContinue
-    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForNewJsonFile -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForNewJsonFile -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameForGet -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameToUpdate -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameToDelete -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name $env.SgDepRelNameForNew -ErrorAction SilentlyContinue
+    Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName $env.ServiceGroupName -Name ($env.SgDepRelNameForNew + 'identity') -ErrorAction SilentlyContinue
 
-    Remove-AzResourceGroup -Name $env.DepResourceGroupName -ErrorAction SilentlyContinue
-    Remove-AzResourceGroup -Name $env.SgmResourceGroupName -ErrorAction SilentlyContinue
+    Remove-AzResourceGroup -Name $env.DepResourceGroupName -Force -ErrorAction SilentlyContinue
+    Remove-AzResourceGroup -Name $env.SgmResourceGroupName -Force -ErrorAction SilentlyContinue
     Write-Host -ForegroundColor Magenta "Finished cleaning up test environment"
 }
 

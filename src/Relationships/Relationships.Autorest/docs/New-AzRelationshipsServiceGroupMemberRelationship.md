@@ -14,8 +14,8 @@ Create a ServiceGroupMemberRelationship
 
 ### CreateExpanded (Default)
 ```
-New-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-TargetId <String>]
- [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-SourceId <String>]
+ [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -38,15 +38,14 @@ Create a ServiceGroupMemberRelationship
 
 ### Example 1: Make a resource group a member of a Service Group
 ```powershell
-New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-Creates a ServiceGroupMember relationship that makes the resource group 'myRG' a member of the Service Group 'myServiceGroup'.
-The target must be an existing Service Group.
+Creates a ServiceGroupMember relationship that makes the resource group 'myRG' a member of the existing Service Group 'myServiceGroup'.
 
 ### Example 2: Make a subscription a member of a Service Group
 ```powershell
-New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
 Makes the subscription a direct member of the Service Group 'myServiceGroup'.
@@ -159,8 +158,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetId
-The relationship target resource id.
+### -SourceId
+The relationship source resource id.
+Must be a service group.
 
 ```yaml
 Type: System.String
@@ -174,8 +174,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetTenant
-The relationship target tenant id.
+### -SourceTenant
+The relationship source tenant id.
 
 ```yaml
 Type: System.String

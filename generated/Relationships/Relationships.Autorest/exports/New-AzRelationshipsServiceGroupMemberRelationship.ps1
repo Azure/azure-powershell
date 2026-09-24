@@ -48,14 +48,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Body')]
     [System.String]
-    # The relationship target resource id.
-    ${TargetId},
+    # The relationship source resource id.
+    # Must be a service group.
+    ${SourceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Body')]
     [System.String]
-    # The relationship target tenant id.
-    ${TargetTenant},
+    # The relationship source tenant id.
+    ${SourceTenant},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Body')]

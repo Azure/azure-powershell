@@ -1,7 +1,7 @@
 @{
   GUID = '68730c39-64d4-48ba-9f80-c2df17008592'
   RootModule = './Az.Relationships.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Relationships.private.dll'
   FormatsToProcess = './Az.Relationships.format.ps1xml'
-  FunctionsToExport = 'Get-AzRelationshipsDependencyOfRelationship', 'Get-AzRelationshipsServiceGroupMemberRelationship', 'New-AzRelationshipsDependencyOfRelationship', 'New-AzRelationshipsServiceGroupMemberRelationship', 'Remove-AzRelationshipsDependencyOfRelationship', 'Remove-AzRelationshipsServiceGroupMemberRelationship', 'Update-AzRelationshipsDependencyOfRelationship', 'Update-AzRelationshipsServiceGroupMemberRelationship'
+  FunctionsToExport = 'Get-AzRelationshipsContainsRelationship', 'Get-AzRelationshipsDependencyOfRelationship', 'Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup', 'Get-AzRelationshipsServiceGroupMemberRelationship', 'New-AzRelationshipsDependencyOfRelationship', 'New-AzRelationshipsDependencyOfRelationshipsByServiceGroup', 'New-AzRelationshipsServiceGroupMemberRelationship', 'Remove-AzRelationshipsDependencyOfRelationship', 'Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup', 'Remove-AzRelationshipsServiceGroupMemberRelationship', 'Update-AzRelationshipsDependencyOfRelationship', 'Update-AzRelationshipsDependencyOfRelationshipsByServiceGroup', 'Update-AzRelationshipsServiceGroupMemberRelationship'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Relationships'
