@@ -1027,5 +1027,9 @@
   {
     "alias": "Mission",
     "module": "Mission"
+  },
+  {
+    "module": "DocumentDB",
+    "alias": "DocumentDB"
   }
 ]
