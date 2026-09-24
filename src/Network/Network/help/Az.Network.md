@@ -796,6 +796,9 @@ Gets a virtual network in a resource group.
 ### [Get-AzVirtualNetworkAppliance](Get-AzVirtualNetworkAppliance.md)
 Gets a Virtual Network Appliance (VNA) resource.
 
+### [Get-AzVirtualNetworkApplianceCapability](Get-AzVirtualNetworkApplianceCapability.md)
+Gets a capability of a Virtual Network Appliance (VNA), or lists all capabilities on an appliance.
+
 ### [Get-AzVirtualNetworkAvailableEndpointService](Get-AzVirtualNetworkAvailableEndpointService.md)
 Lists available endpoint services for location.
 
@@ -1679,6 +1682,9 @@ Creates a virtual network.
 ### [New-AzVirtualNetworkAppliance](New-AzVirtualNetworkAppliance.md)
 Creates a new Virtual Network Appliance (VNA) resource.
 
+### [New-AzVirtualNetworkApplianceCapability](New-AzVirtualNetworkApplianceCapability.md)
+Creates a capability on a Virtual Network Appliance (VNA).
+
 ### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
 Creates a Virtual Network Gateway
 
@@ -2171,6 +2177,9 @@ Removes a virtual network.
 
 ### [Remove-AzVirtualNetworkAppliance](Remove-AzVirtualNetworkAppliance.md)
 Removes a Virtual Network Appliance (VNA) resource.
+
+### [Remove-AzVirtualNetworkApplianceCapability](Remove-AzVirtualNetworkApplianceCapability.md)
+Removes a capability from a Virtual Network Appliance (VNA).
 
 ### [Remove-AzVirtualNetworkGateway](Remove-AzVirtualNetworkGateway.md)
 Deletes a Virtual Network Gateway
