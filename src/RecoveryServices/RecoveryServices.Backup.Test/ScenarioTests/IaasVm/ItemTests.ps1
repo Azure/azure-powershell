@@ -480,8 +480,15 @@ function Test-AzureMonitorAlerts
 	finally
 	{
 		# Cleanup
-		Remove-AzRecoveryServicesVault -Vault $vault1
-		Remove-AzRecoveryServicesVault -Vault $vault2
+		if ($null -ne $vault1)
+		{
+			try { Remove-AzRecoveryServicesVault -Vault $vault1 } catch { Write-Warning $_.Exception.Message }
+		}
+
+		if ($null -ne $vault2)
+		{
+			try { Remove-AzRecoveryServicesVault -Vault $vault2 } catch { Write-Warning $_.Exception.Message }
+		}
 	}
 }
 
