@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDevCenterAdminProjectEnvironmentType
 
 ## SYNOPSIS
-Partially updates a project environment type.
+Update a project environment type.
 
 ## SYNTAX
 
@@ -16,23 +16,31 @@ Partially updates a project environment type.
 ```
 Update-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-CreatorRoleAssignmentRole <Hashtable>]
- [-DeploymentTargetId <String>] [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Status <EnvironmentTypeEnableStatus>] [-Tag <Hashtable>]
- [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DeploymentTargetId <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-Status <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserRoleAssignment <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProjectExpanded
+```
+Update-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String>
+ -ProjectInputObject <IDevCenterIdentity> [-CreatorRoleAssignmentRole <Hashtable>]
+ [-DeploymentTargetId <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-Status <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserRoleAssignment <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity>
  [-CreatorRoleAssignmentRole <Hashtable>] [-DeploymentTargetId <String>] [-DisplayName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-Status <EnvironmentTypeEnableStatus>] [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Status <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Partially updates a project environment type.
+Update a project environment type.
 
 ## EXAMPLES
 
@@ -136,12 +144,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnvironmentTypeName
 The name of the environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -151,45 +174,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: UpdateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -234,7 +239,7 @@ Accept wildcard characters: False
 Defines whether this Environment Type can be used in this Project.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.EnvironmentTypeEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -265,6 +270,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -331,7 +352,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IProjectEnvironmentType
 
 ## NOTES
 

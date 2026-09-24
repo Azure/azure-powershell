@@ -8,48 +8,74 @@ schema: 2.0.0
 # Update-AzDevCenterAdminPool
 
 ## SYNOPSIS
-Partially updates a machine pool
+Partially update a machine pool
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ActiveHourConfigurationAutoStartEnableStatus <AutoStartEnableStatus>]
+ [-SubscriptionId <String>] [-ActiveHourConfigurationAutoStartEnableStatus <String>]
  [-ActiveHourConfigurationDefaultEndTimeHour <Int32>] [-ActiveHourConfigurationDefaultStartTimeHour <Int32>]
- [-ActiveHourConfigurationDefaultTimeZone <String>]
- [-ActiveHourConfigurationKeepAwakeEnableStatus <KeepAwakeEnableStatus>] [-DevBoxDefinitionName <String>]
- [-DevBoxDefinitionType <PoolDevBoxDefinitionType>] [-DevBoxTunnelEnableStatus <DevBoxTunnelEnableStatus>]
- [-DisplayName <String>] [-ImageReferenceId <String>] [-LocalAdministrator <LocalAdminStatus>]
- [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>]
- [-SingleSignOnStatus <SingleSignOnStatus>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-StopOnDisconnectGracePeriodMinute <Int32>]
- [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-StopOnNoConnectGracePeriodMinute <Int32>]
- [-StopOnNoConnectStatus <StopOnNoConnectEnableStatus>] [-Tag <Hashtable>]
- [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ActiveHourConfigurationDefaultTimeZone <String>] [-ActiveHourConfigurationKeepAwakeEnableStatus <String>]
+ [-DevBoxDefinitionName <String>] [-DevBoxDefinitionType <String>] [-DevBoxTunnelEnableStatus <String>]
+ [-DisplayName <String>] [-ImageReferenceId <String>] [-LocalAdministrator <String>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>] [-SingleSignOnStatus <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <String>]
+ [-StopOnNoConnectGracePeriodMinute <Int32>] [-StopOnNoConnectStatus <String>] [-Tag <Hashtable>]
+ [-VirtualNetworkType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProjectExpanded
+```
+Update-AzDevCenterAdminPool -Name <String> -ProjectInputObject <IDevCenterIdentity>
+ [-ActiveHourConfigurationAutoStartEnableStatus <String>] [-ActiveHourConfigurationDefaultEndTimeHour <Int32>]
+ [-ActiveHourConfigurationDefaultStartTimeHour <Int32>] [-ActiveHourConfigurationDefaultTimeZone <String>]
+ [-ActiveHourConfigurationKeepAwakeEnableStatus <String>] [-DevBoxDefinitionName <String>]
+ [-DevBoxDefinitionType <String>] [-DevBoxTunnelEnableStatus <String>] [-DisplayName <String>]
+ [-ImageReferenceId <String>] [-LocalAdministrator <String>] [-ManagedVirtualNetworkRegion <String[]>]
+ [-NetworkConnectionName <String>] [-SingleSignOnStatus <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <String>] [-StopOnNoConnectGracePeriodMinute <Int32>]
+ [-StopOnNoConnectStatus <String>] [-Tag <Hashtable>] [-VirtualNetworkType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminPool -InputObject <IDevCenterIdentity>
- [-ActiveHourConfigurationAutoStartEnableStatus <AutoStartEnableStatus>]
- [-ActiveHourConfigurationDefaultEndTimeHour <Int32>] [-ActiveHourConfigurationDefaultStartTimeHour <Int32>]
- [-ActiveHourConfigurationDefaultTimeZone <String>]
- [-ActiveHourConfigurationKeepAwakeEnableStatus <KeepAwakeEnableStatus>] [-DevBoxDefinitionName <String>]
- [-DevBoxDefinitionType <PoolDevBoxDefinitionType>] [-DevBoxTunnelEnableStatus <DevBoxTunnelEnableStatus>]
- [-DisplayName <String>] [-ImageReferenceId <String>] [-LocalAdministrator <LocalAdminStatus>]
- [-ManagedVirtualNetworkRegion <String[]>] [-NetworkConnectionName <String>]
- [-SingleSignOnStatus <SingleSignOnStatus>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-StopOnDisconnectGracePeriodMinute <Int32>]
- [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-StopOnNoConnectGracePeriodMinute <Int32>]
- [-StopOnNoConnectStatus <StopOnNoConnectEnableStatus>] [-Tag <Hashtable>]
- [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ActiveHourConfigurationAutoStartEnableStatus <String>] [-ActiveHourConfigurationDefaultEndTimeHour <Int32>]
+ [-ActiveHourConfigurationDefaultStartTimeHour <Int32>] [-ActiveHourConfigurationDefaultTimeZone <String>]
+ [-ActiveHourConfigurationKeepAwakeEnableStatus <String>] [-DevBoxDefinitionName <String>]
+ [-DevBoxDefinitionType <String>] [-DevBoxTunnelEnableStatus <String>] [-DisplayName <String>]
+ [-ImageReferenceId <String>] [-LocalAdministrator <String>] [-ManagedVirtualNetworkRegion <String[]>]
+ [-NetworkConnectionName <String>] [-SingleSignOnStatus <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-StopOnDisconnectStatus <String>] [-StopOnNoConnectGracePeriodMinute <Int32>]
+ [-StopOnNoConnectStatus <String>] [-Tag <Hashtable>] [-VirtualNetworkType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Partially updates a machine pool
+Partially update a machine pool
 
 ## EXAMPLES
 
@@ -74,8 +100,8 @@ This command updates a pool named "DevPool" in the project "DevProject".
 Enables or disables whether the Dev Box should be automatically started at commencement of active hours.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AutoStartEnableStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -90,7 +116,7 @@ The default end time of the active hours
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -105,7 +131,7 @@ The default start time of the active hours.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,7 +146,7 @@ The default IANA timezone id of the active hours.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -134,8 +160,8 @@ Accept wildcard characters: False
 Enables or disables whether the Dev Box should be kept awake during active hours.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.KeepAwakeEnableStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +208,7 @@ Will be ignored if devBoxDefinitionType is Value.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -196,8 +222,8 @@ Accept wildcard characters: False
 Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.PoolDevBoxDefinitionType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -211,8 +237,8 @@ Accept wildcard characters: False
 Indicates whether Dev Box Tunnel is enabled for a the pool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxTunnelEnableStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -227,7 +253,7 @@ The display name of the pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,7 +269,7 @@ When Image ID is provided, its latest version will be used.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,7 +281,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -269,12 +294,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LocalAdministrator
 Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -289,7 +344,7 @@ The regions of the managed virtual network (required when managedNetworkType is 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +359,7 @@ Name of the pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityProjectExpanded
 Aliases: PoolName
 
 Required: True
@@ -319,7 +374,7 @@ Name of a Network Connection in parent Project of this Pool
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -344,12 +399,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: UpdateViaIdentityProjectExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the project.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -365,7 +435,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -380,8 +450,8 @@ Indicates whether Dev Boxes in this pool are created with single sign on enabled
 The also requires that single sign on be enabled on the tenant.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -397,7 +467,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -412,7 +482,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -430,7 +500,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -446,7 +516,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -460,8 +530,8 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -476,7 +546,7 @@ The specified time in minutes to wait before stopping a Dev Box once disconnect 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -490,8 +560,8 @@ Accept wildcard characters: False
 Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -506,7 +576,7 @@ The specified time in minutes to wait before stopping a Dev Box if no connection
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -520,8 +590,8 @@ Accept wildcard characters: False
 Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnNoConnectEnableStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -536,7 +606,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -551,7 +621,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -565,8 +635,8 @@ Accept wildcard characters: False
 Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -616,7 +686,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IPool
 
 ## NOTES
 

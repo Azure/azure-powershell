@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDevCenterAdminProjectPolicy
 
 ## SYNOPSIS
-Creates or updates an project policy.
+Create an project policy.
 
 ## SYNTAX
 
@@ -20,6 +20,27 @@ New-AzDevCenterAdminProjectPolicy -DevCenterName <String> -Name <String> -Resour
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzDevCenterAdminProjectPolicy -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDevCenterAdminProjectPolicy -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityDevcenterExpanded
+```
+New-AzDevCenterAdminProjectPolicy -Name <String> -DevcenterInputObject <IDevCenterIdentity>
+ [-ResourcePolicy <IResourcePolicy[]>] [-Scope <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminProjectPolicy -InputObject <IDevCenterIdentity> [-ResourcePolicy <IResourcePolicy[]>]
@@ -28,7 +49,7 @@ New-AzDevCenterAdminProjectPolicy -InputObject <IDevCenterIdentity> [-ResourcePo
 ```
 
 ## DESCRIPTION
-Creates or updates an project policy.
+Create an project policy.
 
 ## EXAMPLES
 
@@ -107,12 +128,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: CreateViaIdentityDevcenterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -124,7 +160,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -138,12 +173,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the project policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityDevcenterExpanded
 Aliases: ProjectPolicyName
 
 Required: True
@@ -174,7 +239,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -186,11 +251,10 @@ Accept wildcard characters: False
 
 ### -ResourcePolicy
 Resource policies that are a part of this project policy.
-To construct, see NOTES section for RESOURCEPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IResourcePolicy[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IResourcePolicy[]
+Parameter Sets: CreateExpanded, CreateViaIdentityDevcenterExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -205,7 +269,7 @@ Resources that have access to the shared resources that are a part of this proje
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityDevcenterExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -220,7 +284,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -270,7 +334,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IProjectPolicy
 
 ## NOTES
 
