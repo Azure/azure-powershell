@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Changed scheduled event approval failures to terminating PowerShell errors displaying the HTTP status and service error JSON. HTTP 200 and list HTTP 207 responses remain normal output.
+* Updated `Approve-AzScheduledEventList` to return multi-status results through `Error.Details` with target IDs supplied by the service.
 
 ## Version 1.7.0
 * Added `Approve-AzScheduledEvent` and `Approve-AzScheduledEventList` to approve scheduled events.
