@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
             : base(
                   appPackageUrl: appTypeVersion.AppPackageUrl,
                   id: appTypeVersion.Id,
-                  name: appTypeVersion.Name,
-                  type: appTypeVersion.Type,
                   location: appTypeVersion.Location,
+                  name: appTypeVersion.Name,
                   provisioningState: appTypeVersion.ProvisioningState,
-                  tags: appTypeVersion.Tags)
+                  tags: appTypeVersion.Tags,
+                  type: appTypeVersion.Type)
         {
         }
     }

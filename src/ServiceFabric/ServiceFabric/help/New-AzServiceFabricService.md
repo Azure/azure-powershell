@@ -16,23 +16,24 @@ Create new service fabric service under the specified application and cluster.
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
  [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32> [-DefaultMoveCost <MoveCostEnum>]
- [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateless-UniformInt64Range
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
  [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32> [-DefaultMoveCost <MoveCostEnum>]
- [-PartitionSchemeUniformInt64] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PartitionSchemeUniformInt64] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateless-Named
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
  [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32> [-DefaultMoveCost <MoveCostEnum>]
- [-PartitionSchemeNamed] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PartitionSchemeNamed] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Stateful-Singleton
@@ -41,7 +42,8 @@ New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32> -MinReplicaSetSize <Int32>
  [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
  [-StandByReplicaKeepDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeSingleton]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Stateful-UniformInt64Range
@@ -50,7 +52,8 @@ New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32> -MinReplicaSetSize <Int32>
  [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
  [-StandByReplicaKeepDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeUniformInt64]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Stateful-Named
@@ -59,7 +62,8 @@ New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32> -MinReplicaSetSize <Int32>
  [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
  [-StandByReplicaKeepDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeNamed]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +101,7 @@ This example will create a new stateful service "testApp~testService2" with a ta
 Specify the name of the application.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +116,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +132,7 @@ Specify the default cost for a move.
 Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum
+Type: MoveCostEnum
 Parameter Sets: (All)
 Aliases:
 Accepted values: Zero, Low, Medium, High
@@ -144,7 +148,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -159,7 +163,7 @@ Accept wildcard characters: False
 Specify the instance count for the service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
@@ -174,7 +178,7 @@ Accept wildcard characters: False
 Specify the min replica set size for the service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -189,7 +193,7 @@ Accept wildcard characters: False
 Specify the name of the service.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ServiceName
 
@@ -206,7 +210,7 @@ Services using this model usually have data that can be bucketed, within a bound
 Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-Named, Stateful-Named
 Aliases:
 
@@ -222,7 +226,7 @@ Indicates that the service uses the singleton partition scheme.
 Singleton partitions are typically used when the service does not require any additional routing.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-Singleton, Stateful-Singleton
 Aliases:
 
@@ -238,7 +242,7 @@ Indicates that the service uses the UniformInt64 partition scheme.
 This means that each partition owns a range of int64 keys.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
@@ -249,11 +253,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -QuorumLossWaitDuration
 Specify the quorum loss wait duration for the service
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -268,7 +287,7 @@ Accept wildcard characters: False
 Specify the replica restart wait duration for the service
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -283,7 +302,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +317,7 @@ Accept wildcard characters: False
 Specify the stand by replica duration for the service
 
 ```yaml
-Type: System.TimeSpan
+Type: TimeSpan
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -313,7 +332,7 @@ Accept wildcard characters: False
 Use for stateful service
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -328,7 +347,7 @@ Accept wildcard characters: False
 Use for stateless service
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
@@ -343,7 +362,7 @@ Accept wildcard characters: False
 Specify the target replica set size for the service
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
@@ -358,7 +377,7 @@ Accept wildcard characters: False
 Specify the service type name of the application, should exist in the application manifest.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ServiceType
 
@@ -373,7 +392,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -389,7 +408,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         public PSManagedApplicationType(ApplicationTypeResource appType)
             : base(
                   id: appType.Id,
-                  name: appType.Name,
-                  type: appType.Type,
                   location: appType.Location,
+                  name: appType.Name,
                   provisioningState: appType.ProvisioningState,
-                  tags: appType.Tags)
+                  tags: appType.Tags,
+                  type: appType.Type)
         {
         }
     }

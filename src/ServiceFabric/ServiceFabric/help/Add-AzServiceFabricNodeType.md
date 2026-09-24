@@ -17,7 +17,7 @@ Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capa
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
  [-DurabilityLevel <DurabilityLevel>] [-IsPrimaryNodeType <Boolean>] [-VMImagePublisher <String>]
  [-VMImageOffer <String>] [-VMImageSku <String>] [-VMImageVersion <String>] [-Location <String>]
- -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ This command will add a new NodeType 'n3' with capacity of 5, the vm admin name 
 Capacity
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Specify the durability level of the NodeType.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
+Type: DurabilityLevel
 Parameter Sets: (All)
 Aliases:
 Accepted values: Bronze, Silver, Gold
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The location of the VMSS and its associated storage, networking, and OS resources. If not specified, the location of the resource group will be used.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Specify the name of the cluster
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The node type name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,11 +159,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +193,7 @@ Accept wildcard characters: False
 Vm Sku Tier
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +208,7 @@ Accept wildcard characters: False
 Specify the VM image reference Offer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +223,7 @@ Accept wildcard characters: False
 Specify the VM image reference Publisher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +238,7 @@ Accept wildcard characters: False
 Specify the VM image reference Sku.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +253,7 @@ Accept wildcard characters: False
 Specify the VM image reference Version.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +268,7 @@ Accept wildcard characters: False
 The password for login to the Vm
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -268,7 +283,7 @@ Accept wildcard characters: False
 The sku name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +298,7 @@ Accept wildcard characters: False
 The user name for logging to Vm
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +313,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -314,7 +329,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

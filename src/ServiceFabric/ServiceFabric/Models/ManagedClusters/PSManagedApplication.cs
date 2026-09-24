@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         public PSManagedApplication(ApplicationResource app)
             : base(
                   id: app.Id,
-                  name: app.Name,
-                  type: app.Type,
-                  location: app.Location,
-                  tags: app.Tags,
-                  version: app.Version,
-                  parameters: app.Parameters,
-                  upgradePolicy: app.UpgradePolicy,
-                  provisioningState: app.ProvisioningState,
                   identity: app.Identity,
-                  managedIdentities: app.ManagedIdentities)
+                  location: app.Location,
+                  managedIdentities: app.ManagedIdentities,
+                  name: app.Name,
+                  parameters: app.Parameters,
+                  provisioningState: app.ProvisioningState,
+                  tags: app.Tags,
+                  type: app.Type,
+                  upgradePolicy: app.UpgradePolicy,
+                  version: app.Version)
         {
         }
     }

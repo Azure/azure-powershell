@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
-        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
+        [ResourceNameCompleter(Constants.ManagedClustersFullType, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public override string ClusterName { get; set; }
 
@@ -244,6 +244,36 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Specify the tags as key/value pairs.")]
         public Hashtable Tag { get; set; }
 
+        #region Identity params
+
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specify the type of managed identity for the application. Options are None, SystemAssigned, UserAssigned, and SystemAssigned,UserAssigned.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specify the type of managed identity for the application. Options are None, SystemAssigned, UserAssigned, and SystemAssigned,UserAssigned.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
+            HelpMessage = "Specify the type of managed identity for the application. Options are None, SystemAssigned, UserAssigned, and SystemAssigned,UserAssigned.")]
+        public ManagedIdentityType IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specify the list of user assigned identity ARM resource IDs for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specify the list of user assigned identity ARM resource IDs for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
+            HelpMessage = "Specify the list of user assigned identity ARM resource IDs for the application.")]
+        [ValidateNotNullOrEmpty]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specify the application managed identities as key/value pairs. The key is the friendly identity name, and the value is the principal id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specify the application managed identities as key/value pairs. The key is the friendly identity name, and the value is the principal id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByInputObject,
+            HelpMessage = "Specify the application managed identities as key/value pairs. The key is the friendly identity name, and the value is the principal id.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable ApplicationManagedIdentity { get; set; }
+
+        #endregion
+
         [Parameter(Mandatory = true, ParameterSetName = ByResourceId, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Arm ResourceId of the managed application.")]
         [ResourceIdCompleter(Constants.ManagedClustersFullType)]
@@ -335,6 +365,36 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.IsParameterBound(c => c.Tag))
             {
                 currentApp.Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+            }
+
+            if (this.IsParameterBound(c => c.IdentityType))
+            {
+                if (currentApp.Identity == null)
+                {
+                    currentApp.Identity = new ManagedIdentity();
+                }
+
+                currentApp.Identity.Type = this.IdentityType;
+            }
+
+            if (this.IsParameterBound(c => c.UserAssignedIdentityId))
+            {
+                if (currentApp.Identity == null)
+                {
+                    currentApp.Identity = new ManagedIdentity();
+                }
+
+                currentApp.Identity.UserAssignedIdentities = this.UserAssignedIdentityId
+                    ?.ToDictionary(id => id, id => new UserAssignedIdentity());
+            }
+
+            if (this.IsParameterBound(c => c.ApplicationManagedIdentity))
+            {
+                currentApp.ManagedIdentities = this.ApplicationManagedIdentity?.Cast<DictionaryEntry>()
+                    .Select(entry => new ApplicationUserAssignedIdentity(
+                        name: entry.Key as string,
+                        principalId: entry.Value as string))
+                    .ToList();
             }
 
             currentApp.UpgradePolicy = SetUpgradePolicy(currentApp.UpgradePolicy);

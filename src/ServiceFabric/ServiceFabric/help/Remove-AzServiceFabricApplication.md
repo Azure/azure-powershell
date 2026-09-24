@@ -15,19 +15,22 @@ Remove an application from the cluster. This will remove all the services under 
 ### ByResourceGroup (Default)
 ```
 Remove-AzServiceFabricApplication [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Remove-AzServiceFabricApplication -ResourceId <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzServiceFabricApplication -InputObject <PSApplication> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +54,7 @@ This example removes the application "testApp" under the resource group "testRG"
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -66,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +84,7 @@ Accept wildcard characters: False
 Remove without prompt.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +99,7 @@ Accept wildcard characters: False
 The application resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication
+Type: PSApplication
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -111,7 +114,7 @@ Accept wildcard characters: False
 Specify the name of the application.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroup
 Aliases: ApplicationName
 
@@ -126,9 +129,24 @@ Accept wildcard characters: False
 Returns $True if the command succeeds and $False if it fails. By default, this cmdlet does not return any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -141,7 +159,7 @@ Accept wildcard characters: False
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroup
 Aliases:
 
@@ -156,7 +174,7 @@ Accept wildcard characters: False
 Arm ResourceId of the application.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -171,7 +189,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -187,7 +205,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

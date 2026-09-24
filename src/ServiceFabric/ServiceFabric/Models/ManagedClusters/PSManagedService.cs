@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         {
             var serviceResource = new ServiceResource(
                 id: this.Id,
-                name: this.Name,
-                type: this.Type,
                 location: this.Location,
-                tags: this.Tags);
+                name: this.Name,
+                tags: this.Tags,
+                type: this.Type);
 
             if (this is PSManagedStatefulService)
             {

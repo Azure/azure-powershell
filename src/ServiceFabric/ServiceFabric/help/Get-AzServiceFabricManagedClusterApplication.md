@@ -15,19 +15,20 @@ Get Service Fabric managed application details. Only supports ARM deployed appli
 ### ByResourceGroupAndCluster (Default)
 ```
 Get-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzServiceFabricManagedClusterApplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +69,7 @@ This example will get the managed application details with the ARM Resource ID s
 Specify the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroupAndCluster, ByName
 Aliases:
 
@@ -83,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 Specify the name of the managed application.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases: ApplicationName
 
@@ -109,11 +110,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroupAndCluster, ByName
 Aliases:
 
@@ -128,7 +144,7 @@ Accept wildcard characters: False
 Arm ResourceId of the managed application.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceId
 Aliases:
 
