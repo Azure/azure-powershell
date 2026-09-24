@@ -21,35 +21,39 @@ Create an in-memory object for KeyEncryptionKey.
 Create an in-memory object for KeyEncryptionKey.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxkeyencryptionkeyobject
 #>
 function New-AzDataBoxKeyEncryptionKeyObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Managed identity properties used for key encryption.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IIdentityProperties]
-        $IdentityProperty,
+        [Parameter(HelpMessage="Managed service identity type.")]
+        [string]
+        $IdentityPropertyType,
         [Parameter(Mandatory, HelpMessage="Type of encryption key used for key encryption.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("MicrosoftManaged", "CustomerManaged")]
+        [string]
         $KekType,
         [Parameter(HelpMessage="Key encryption key. It is required in case of Customer managed KekType.")]
         [string]
         $KekUrl,
         [Parameter(HelpMessage="Kek vault resource id. It is required in case of Customer managed KekType.")]
         [string]
-        $KekVaultResourceId
+        $KekVaultResourceId,
+        [Parameter(HelpMessage="Arm resource id for user assigned identity to be used to fetch MSI token.")]
+        [string]
+        $UserAssignedResourceId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.KeyEncryptionKey]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey]::New()
 
-        if ($PSBoundParameters.ContainsKey('IdentityProperty')) {
-            $Object.IdentityProperty = $IdentityProperty
+        if ($PSBoundParameters.ContainsKey('IdentityPropertyType')) {
+            $Object.IdentityPropertyType = $IdentityPropertyType
         }
         if ($PSBoundParameters.ContainsKey('KekType')) {
             $Object.KekType = $KekType
@@ -59,6 +63,9 @@ function New-AzDataBoxKeyEncryptionKeyObject {
         }
         if ($PSBoundParameters.ContainsKey('KekVaultResourceId')) {
             $Object.KekVaultResourceId = $KekVaultResourceId
+        }
+        if ($PSBoundParameters.ContainsKey('UserAssignedResourceId')) {
+            $Object.UserAssignedResourceId = $UserAssignedResourceId
         }
         return $Object
     }
