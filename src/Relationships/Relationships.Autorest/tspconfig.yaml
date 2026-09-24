@@ -4,7 +4,7 @@ options:
     emitter-output-dir: "{output-dir}/{service-dir}/Relationships/Relationships.Autorest"
     clear-output-folder: true
     azure: true
-    module-version: 0.1.0
+    module-version: 0.2.0
     prefix: "Az"
     subject-prefix: "Relationships"
     service-name: "Relationships"
@@ -36,3 +36,9 @@ options:
       - where:
           verb: Set
         remove: true
+
+# The PowerShell generation environment pins an older Azure ruleset package that
+# does not contain client-sdk. API linting is performed in azure-rest-api-specs.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

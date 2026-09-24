@@ -6,7 +6,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Extensions;
 
     /// <summary>ServiceGroupMember relationship properties.</summary>
-    public partial class ServiceGroupMemberRelationshipProperties
+    public partial class ServiceGroupMemberRelationshipPropertiesV2
     {
 
         /// <summary>
@@ -52,22 +52,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2 FromJson(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject json ? new ServiceGroupMemberRelationshipProperties(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject json ? new ServiceGroupMemberRelationshipPropertiesV2(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject into a new instance of <see cref="ServiceGroupMemberRelationshipProperties" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject into a new instance of <see cref="ServiceGroupMemberRelationshipPropertiesV2" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ServiceGroupMemberRelationshipProperties(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject json)
+        internal ServiceGroupMemberRelationshipPropertiesV2(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -79,20 +79,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {_metadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject>("metadata"), out var __jsonMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.RelationshipMetadata.FromJson(__jsonMetadata) : _metadata;}
             {_sourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("sourceId"), out var __jsonSourceId) ? (string)__jsonSourceId : (string)_sourceId;}
             {_targetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("targetId"), out var __jsonTargetId) ? (string)__jsonTargetId : (string)_targetId;}
-            {_targetTenant = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("targetTenant"), out var __jsonTargetTenant) ? (string)__jsonTargetTenant : (string)_targetTenant;}
+            {_sourceTenant = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("sourceTenant"), out var __jsonSourceTenant) ? (string)__jsonSourceTenant : (string)_sourceTenant;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ServiceGroupMemberRelationshipProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode"
+        /// Serializes this instance of <see cref="ServiceGroupMemberRelationshipPropertiesV2" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode"
         /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ServiceGroupMemberRelationshipProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode"
+        /// a serialized instance of <see cref="ServiceGroupMemberRelationshipPropertiesV2" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode"
         /// />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.SerializationMode serializationMode)
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             {
                 AddIf( null != this._metadata ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) this._metadata.ToJson(null,serializationMode) : null, "metadata" ,container.Add );
             }
+            AddIf( null != (((object)this._sourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._sourceId.ToString()) : null, "sourceId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._sourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._sourceId.ToString()) : null, "sourceId" ,container.Add );
+                AddIf( null != (((object)this._targetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._targetId.ToString()) : null, "targetId" ,container.Add );
             }
-            AddIf( null != (((object)this._targetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._targetId.ToString()) : null, "targetId" ,container.Add );
-            AddIf( null != (((object)this._targetTenant)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._targetTenant.ToString()) : null, "targetTenant" ,container.Add );
+            AddIf( null != (((object)this._sourceTenant)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._sourceTenant.ToString()) : null, "sourceTenant" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
