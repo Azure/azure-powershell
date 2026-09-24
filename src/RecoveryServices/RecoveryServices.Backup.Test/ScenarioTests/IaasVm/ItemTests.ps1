@@ -1236,26 +1236,31 @@ function Test-AzureVMRPMountScript
 		-StartDate $startDate `
 		-EndDate $endDate | Select-Object -First 1
 
-	# After the MSRC-114273 change the iSCSI mount script and its CHAP Password are
-	# retrieved through the dedicated listInstantItemRecoveryOperationResult action
-	# rather than from the provision operation-status response. These assertions confirm
-	# the mount script details (including the redaction-sensitive Password) are still
-	# returned to the user through the new path.
-	$mountScriptDetails = Get-AzRecoveryServicesBackupRPMountScript `
-		-VaultId $vault.ID `
-		-RecoveryPoint $rp
+	try
+	{
+		# After the MSRC-114273 change the iSCSI mount script and its CHAP Password are
+		# retrieved through the dedicated listInstantItemRecoveryOperationResult action
+		# rather than from the provision operation-status response. These assertions confirm
+		# the mount script details (including the redaction-sensitive Password) are still
+		# returned to the user through the new path.
+		$mountScriptDetails = Get-AzRecoveryServicesBackupRPMountScript `
+			-VaultId $vault.ID `
+			-RecoveryPoint $rp
 
-	Assert-NotNull $mountScriptDetails.OsType
-	Assert-NotNull $mountScriptDetails.Password
-	Assert-NotNull $mountScriptDetails.Filename
-	Assert-NotNull $mountScriptDetails.FilePath
+		Assert-NotNull $mountScriptDetails.OsType
+		Assert-NotNull $mountScriptDetails.Password
+		Assert-NotNull $mountScriptDetails.Filename
+		Assert-NotNull $mountScriptDetails.FilePath
 
-	# Emit only non-sensitive fields; the Password (CHAP credential) must not reach test logs.
-	Write-Output ([pscustomobject]@{ OsType = $mountScriptDetails.OsType; Filename = $mountScriptDetails.Filename; FilePath = $mountScriptDetails.FilePath })
-
-	# Disable (revoke) the mount session created above. No resource-group cleanup: the
-	# vault and VM are a shared pre-provisioned setup and must not be deleted.
-	Disable-AzRecoveryServicesBackupRPMountScript -VaultId $vault.ID -RecoveryPoint $rp
+		# Emit only non-sensitive fields; the Password (CHAP credential) must not reach test logs.
+		Write-Output ([pscustomobject]@{ OsType = $mountScriptDetails.OsType; Filename = $mountScriptDetails.Filename; FilePath = $mountScriptDetails.FilePath })
+	}
+	finally
+	{
+		# Disable (revoke) the mount session created above. No resource-group cleanup: the
+		# vault and VM are a shared pre-provisioned setup and must not be deleted.
+		Disable-AzRecoveryServicesBackupRPMountScript -VaultId $vault.ID -RecoveryPoint $rp
+	}
 }
 
 function Test-AzureVMBackup

@@ -881,22 +881,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
 
-            if (recoveryTarget != null && recoveryTarget.ClientScripts != null &&
-                recoveryTarget.ClientScripts.Count != 0)
+            if (recoveryTarget == null || recoveryTarget.ClientScripts == null ||
+                recoveryTarget.ClientScripts.Count == 0)
             {
-                if (recoveryTarget.ClientScripts.Count == 2)
-                {
-                    // clientScriptForConnection.OsType == "Windows"
-                    result = this.GenerateILRResponseForWindowsVMs(
-                            recoveryTarget.ClientScripts[1], out content);
-                }
-                else
-                {
-                    // clientScriptForConnection.OsType == "Linux"
-                    result = this.GenerateILRResponseForLinuxVMs(
-                            recoveryTarget.ClientScripts[0],
-                            protectedItemName, rp.RecoveryPointTime.ToString(), out content);
-                }
+                throw new ArgumentException(Resources.ILRNoClientScriptsReturned);
+            }
+
+            ClientScriptForConnect clientScriptForConnection =
+                recoveryTarget.ClientScripts.FirstOrDefault(script =>
+                    string.Equals(script.OSType, "Windows", StringComparison.OrdinalIgnoreCase)) ??
+                recoveryTarget.ClientScripts.FirstOrDefault(script =>
+                    !string.IsNullOrEmpty(script.Url)) ??
+                recoveryTarget.ClientScripts.FirstOrDefault(script =>
+                    string.Equals(script.OSType, "Linux", StringComparison.OrdinalIgnoreCase)) ??
+                recoveryTarget.ClientScripts.FirstOrDefault(script =>
+                    !string.IsNullOrEmpty(script.ScriptContent));
+
+            if (clientScriptForConnection == null)
+            {
+                throw new ArgumentException(Resources.ILRNoClientScriptsReturned);
+            }
+
+            if (string.Equals(clientScriptForConnection.OSType, "Windows", StringComparison.OrdinalIgnoreCase) ||
+                !string.IsNullOrEmpty(clientScriptForConnection.Url))
+            {
+                result = this.GenerateILRResponseForWindowsVMs(
+                    clientScriptForConnection, out content);
+            }
+            else
+            {
+                result = this.GenerateILRResponseForLinuxVMs(
+                    clientScriptForConnection,
+                    protectedItemName, rp.RecoveryPointTime.ToString(), out content);
             }
 
             string scriptDownloadLocation =
@@ -909,7 +925,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureSession.Instance.DataStore.WriteFile(result.FilePath, Convert.FromBase64String(content));
 
             Logger.Instance.WriteVerbose(string.Format(
-                Resources.MountRecoveryPointInfoMessage, result.FilePath, result.Password));
+                Resources.MountRecoveryPointInfoMessage, result.FilePath, "REDACTED"));
             return result;
         }
 
