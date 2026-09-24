@@ -252,6 +252,15 @@ function Set-AzMigrateLocalServerReplication {
                 throw "Secure Boot and Trusted Launch require a Generation 2 target VM. Protected item '$TargetObjectID' has a Generation 1 target VM."
             }
 
+            if (-not $secureBootEnabled -and $customProperties.HyperVGeneration -eq "2") {
+                # The service rejects turning Secure Boot off for a Gen 2 source that has it on.
+                if ($true -eq (Get-AzMigrateSourceSecureBootState -MachineId $customProperties.FabricDiscoveryMachineId)) {
+                    # For VMware sources $MachineName is an opaque id, so report the discovered name.
+                    $sourceName = if ([string]::IsNullOrEmpty($customProperties.SourceVMName)) { $MachineName } else { $customProperties.SourceVMName }
+                    throw "Source server '$sourceName' has Secure Boot enabled, so it cannot be migrated with -EnableSecureBoot 'false'. Omit -EnableSecureBoot to keep Secure Boot enabled on the target VM, or disable Secure Boot on the source server first."
+                }
+            }
+
             $customPropertiesUpdate.SecurityOption =
                 if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch) { $SecurityOptions.TrustedLaunch }
                 elseif ($secureBootEnabled) { $SecurityOptions.SecureBootEnabled }

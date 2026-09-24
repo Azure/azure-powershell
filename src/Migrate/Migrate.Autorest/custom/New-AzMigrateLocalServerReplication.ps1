@@ -765,13 +765,16 @@ function New-AzMigrateLocalServerReplication {
         if ($HasTargetVMSecurityOption -or $HasEnableSecureBoot) {
             $securityType = if ($HasTargetVMSecurityOption) { $TargetVMSecurityOption } else { $TargetVMSecurityTypes.Standard }
 
+            # For VMware sources -MachineName is an opaque id, so report the discovered name.
+            $sourceName = if ([string]::IsNullOrEmpty($machine.DisplayName)) { $MachineName } else { $machine.DisplayName }
+
             if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch) {
                 $secureBootEnabled = $true
             }
 
             if ($customProperties.HyperVGeneration -eq "1" -and
                 ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or $secureBootEnabled)) {
-                throw "Secure Boot and Trusted Launch require a Generation 2 target VM. The source server '$MachineName' maps to a Generation 1 target VM."
+                throw "Secure Boot and Trusted Launch require a Generation 2 target VM. The source server '$sourceName' maps to a Generation 1 target VM."
             }
 
             # Only send securityOption once a choice is expressed. '-TargetVMSecurityOption Standard'
@@ -780,6 +783,13 @@ function New-AzMigrateLocalServerReplication {
                 $customProperties.SecurityOption = $SecurityOptions.TrustedLaunch
             }
             elseif ($HasEnableSecureBoot) {
+                if (-not $secureBootEnabled -and $customProperties.HyperVGeneration -eq "2") {
+                    # The service rejects turning Secure Boot off for a Gen 2 source that has it on.
+                    if ($true -eq (Get-AzMigrateSourceSecureBootState -MachineId $MachineId)) {
+                        throw "Source server '$sourceName' has Secure Boot enabled, so it cannot be migrated with -EnableSecureBoot 'false'. Omit -EnableSecureBoot to keep Secure Boot enabled on the target VM, or disable Secure Boot on the source server first."
+                    }
+                }
+
                 $customProperties.SecurityOption = if ($secureBootEnabled) { $SecurityOptions.SecureBootEnabled } else { $SecurityOptions.None }
             }
         }

@@ -610,3 +610,47 @@ function New-OffAzureResourceNotFoundException {
 
     return "'$Scenario' '$Name' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 }
+
+function Get-AzMigrateSourceSecureBootState {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        ${MachineId}
+    )
+
+    # Returns $true/$false, or $null when the state cannot be determined. Callers must treat $null
+    # as unknown and fall through to the service rather than blocking the migration.
+    $uri = "{0}?api-version={1}" -f $MachineId, $ApiVersions.OffAzureMachineRead
+
+    try {
+        $response = Invoke-AzRestMethod -Path $uri -Method GET -ErrorAction Stop
+    }
+    catch {
+        Write-Verbose "Could not read Secure Boot state from '$MachineId': $($_.Exception.Message)"
+        return $null
+    }
+
+    if ($null -eq $response -or $response.StatusCode -ne 200) {
+        Write-Verbose "Could not read Secure Boot state from '$MachineId'. Status code: $($response.StatusCode)."
+        return $null
+    }
+
+    try {
+        $properties = ($response.Content | ConvertFrom-Json).properties
+    }
+    catch {
+        Write-Verbose "Could not parse the discovered machine response for '$MachineId'."
+        return $null
+    }
+
+    # Absent on older appliance versions and on clouds still serving the GA contract.
+    if ($null -eq $properties -or
+        'secureBootEnabled' -notin $properties.PSObject.Properties.Name -or
+        $null -eq $properties.secureBootEnabled) {
+        Write-Verbose "Discovered machine '$MachineId' does not report Secure Boot state."
+        return $null
+    }
+
+    return [bool]$properties.secureBootEnabled
+}

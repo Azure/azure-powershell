@@ -104,4 +104,60 @@ Describe 'New-AzMigrateLocalServerReplication' {
         $err | Should -Not -BeNullOrEmpty
         $err.Exception.Message | Should -BeLike '*Trusted Launch requires Secure Boot*'
     }
+
+    # The custom helpers live in a nested module that Get-Module and InModuleScope cannot reach, so
+    # go through the root module and shadow the REST call inside that scope.
+    function Invoke-SecureBootLookup {
+        param([int]$StatusCode = 200, [string]$Content = '{}', [switch]$FailTransport)
+
+        $custom = (Get-Module Az.Migrate).NestedModules |
+            Where-Object { $_.Name -eq 'Az.Migrate.custom' }
+
+        & $custom {
+            param($statusCode, $content, $failTransport)
+
+            function Invoke-AzRestMethod {
+                param($Path, $Method)
+                $script:capturedPath = $Path
+                if ($failTransport) { throw 'transport failure' }
+                [PSCustomObject]@{ StatusCode = $statusCode; Content = $content }
+            }
+
+            try {
+                $state = Get-AzMigrateSourceSecureBootState -MachineId '/machines/m'
+                [PSCustomObject]@{
+                    ApiVersion = $ApiVersions.OffAzureMachineRead
+                    Path       = $script:capturedPath
+                    State      = $state
+                    IsBool     = $state -is [bool]
+                }
+            }
+            finally {
+                Remove-Item Function:\Invoke-AzRestMethod -ErrorAction SilentlyContinue
+                Remove-Variable -Name capturedPath -Scope Script -ErrorAction SilentlyContinue
+            }
+        } $StatusCode $Content $FailTransport.IsPresent
+    }
+
+    It 'SecureBootLookup-ReadsStateFromNewerApiVersion' {
+        $on = Invoke-SecureBootLookup -Content '{"properties":{"secureBootEnabled":true}}'
+        $on.ApiVersion | Should -Be '2024-12-01-preview'
+        $on.Path | Should -Be '/machines/m?api-version=2024-12-01-preview'
+        ($on.IsBool -and $on.State) | Should -BeTrue
+
+        $off = Invoke-SecureBootLookup -Content '{"properties":{"secureBootEnabled":false}}'
+        ($off.IsBool -and -not $off.State) | Should -BeTrue
+    }
+
+    It 'SecureBootLookup-FailsOpenWhenStateUnknown' {
+        # Older appliances, and clouds still serving the GA contract, omit the field entirely.
+        $absent = Invoke-SecureBootLookup -Content '{"properties":{"displayName":"vm"}}'
+        $null -eq $absent.State | Should -BeTrue
+
+        $notFound = Invoke-SecureBootLookup -StatusCode 404 -Content '{}'
+        $null -eq $notFound.State | Should -BeTrue
+
+        $broken = Invoke-SecureBootLookup -FailTransport
+        $null -eq $broken.State | Should -BeTrue
+    }
 }

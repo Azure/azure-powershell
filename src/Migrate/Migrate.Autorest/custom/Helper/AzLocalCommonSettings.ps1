@@ -28,6 +28,10 @@ $ApiVersions = @{
     HyperVSites          = "2020-01-01";
     ProtectedItem        = "2021-02-16-preview";
     AzLocal              = "2021-09-01-preview";
+    # The module is generated against OffAzure 2020-01-01, which has no secureBootEnabled on its
+    # machine models. Read that one field at the newer version instead of regenerating, since
+    # every OffAzure operationId was renamed after 2020-01-01.
+    OffAzureMachineRead  = "2024-12-01-preview";
 }
 
 # Role definition GUIDs for storage account creation
