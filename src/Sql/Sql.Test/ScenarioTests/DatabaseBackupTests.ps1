@@ -646,6 +646,80 @@ function Test-ShortTermRetentionPolicy
 	}
 }
 
+function Test-ShortTermRetentionLockImmutability
+{
+	# These are some pre-requisites that need to be setup for this test:
+	# 1. Create a resource group matching name as rgName
+	# 2. Create a SQL server matching name as serverName within the above rg
+	# 3. Create a SQL database matching name as databaseName within the above server
+	# 4. Temporary step- Use CAS to update CMS value of pitr_immutability_extended to False from null
+	# Once all T-Train and MS-Train changes are complete, these pre-reqs and hard-coded steps can be commented
+	# And uncomment the below steps that create server and db as part of test
+	$location = "centraluseuap"
+	$rgName = "dev-anehe-rg"
+	$serverName = "anehetestsvr"
+	$databaseName = "anehetestdb0"
+	$rg = Get-AzResourceGroup -ResourceGroupName $rgName
+	$server = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
+	$db = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	# $server = Create-ServerForTest $rg $location
+	# $databaseName = Get-DatabaseName
+	# $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force:$true
+
+	try
+	{
+		# Test default values
+		$defaultRetention = 7
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Enabled"
+		Assert-AreEqual $policy[0].RetentionDays $defaultRetention
+
+		# Test retention days can be increased before locking immutability
+		$updatedRetention = 14
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].RetentionDays $updatedRetention
+
+		# Test retention days can be decreased before locking immutability
+		$decreasedRetention = 5
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $decreasedRetention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].RetentionDays $decreasedRetention
+
+		# Test Get returns the correct retention days before locking immutability
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		$currentRetention = $policy[0].RetentionDays
+		Assert-AreEqual $currentRetention $decreasedRetention
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Enabled"
+
+		# Test ImmutabilityStatus is Locked after setting the LockImmutability flag to true
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $currentRetention -LockImmutability $true -Force
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Locked"
+
+		# Test ImmutabilityStatus is Locked in GET response
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Locked"
+		Assert-AreEqual $policy[0].RetentionDays $currentRetention
+
+		# Test retention days can be increased after locking immutability
+		$updatedRetention = 7
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention -LockImmutability $true -Force
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].RetentionDays $updatedRetention
+	}
+	finally
+	{
+		# drop the test db and server
+		Remove-AzSqlDatabase -DatabaseName $databaseName -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
+		# When server can be created as part of test, uncomment the dropping of the server below.
+		# Remove-AzSqlServer -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
+	}
+}
+
 function Test-CopyLongTermRetentionBackup
 {
 	# MANUAL INSTRUCTIONS

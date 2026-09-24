@@ -15,21 +15,25 @@ Sets a backup short term retention policy.
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays <Int32>] [-DiffBackupIntervalInHours <Int32>]
- [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LockImmutability <Boolean>] [-Force] [-ResourceGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays <Int32>] [-DiffBackupIntervalInHours <Int32>]
- -AzureSqlDatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LockImmutability <Boolean>] [-Force] -AzureSqlDatabaseObject <AzureSqlDatabaseModel>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays <Int32>] [-DiffBackupIntervalInHours <Int32>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LockImmutability <Boolean>] [-Force] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +81,38 @@ resourcegroup01   server01   database01   7             12
 
 This command sets the short term retention policy for database01 to 7 retention days only. DiffBackupIntervalInHours is unchanged.  
 
+### Example 4
+```powershell
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 7 -LockImmutability $true -Force
+```
+
+```output
+ResourceGroupName  : resourcegroup01
+ServerName         : server01
+DatabaseName       : database01
+RetentionDays      : 7
+DiffBackupIntervalInHours : 12
+ImmutabilityStatus : Locked
+```
+
+This command sets the short term retention policy for database01 to 7 days and locks backup immutability. The `-Force` parameter skips the confirmation prompt for this irreversible action.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AzureSqlDatabaseObject
 The database object to get the policy for.
@@ -91,6 +126,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -131,6 +181,51 @@ Differential backup frequency in hours.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Skip confirmation when locking backup immutability.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LockImmutability
+Whether to lock the immutability of backups governed by this policy.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

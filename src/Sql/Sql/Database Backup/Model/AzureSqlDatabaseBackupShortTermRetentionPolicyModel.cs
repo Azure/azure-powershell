@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// </summary>
         public int? DiffBackupIntervalInHours { get; set; }
 
+        internal bool? LockImmutability { get; set; }
+
+        /// <summary>
+        /// Gets the current backup immutability status.
+        /// </summary>
+        public string ImmutabilityStatus { get; set; }
+
         /// <summary>
         /// Construct AzureSqlDatabaseBackupShortTermRetentionPolicyModel from Management.Sql.BackupShortTermRetentionPolicy object
         /// </summary>
@@ -52,16 +59,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <param name="policy"></param>
         public AzureSqlDatabaseBackupShortTermRetentionPolicyModel(string resourceGroup, string serverName, string databaseName, Management.Sql.Models.BackupShortTermRetentionPolicy policy)
         {
-            if (policy.RetentionDays == null && policy.DiffBackupIntervalInHours == null)
+            if (policy.RetentionDays == null && policy.DiffBackupIntervalInHours == null && policy.LockImmutability == null)
             {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters, "RetentionDays", "DiffBackupIntervalInHours"));
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters, "RetentionDays, DiffBackupIntervalInHours", "LockImmutability"));
             }
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
             DatabaseName = databaseName;
             RetentionDays = policy.RetentionDays;
-            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours;
+            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours.HasValue ? Convert.ToInt32(policy.DiffBackupIntervalInHours.Value) : (int?)null;
+            LockImmutability = policy.LockImmutability;
+            ImmutabilityStatus = policy.ImmutabilityStatus;
         }
     }
 }

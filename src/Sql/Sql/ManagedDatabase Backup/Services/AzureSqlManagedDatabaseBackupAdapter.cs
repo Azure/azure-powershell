@@ -122,7 +122,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <returns>The upserted Azure Sql Database from AutoRest SDK</returns>
         internal AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel UpsertManagedDatabaseRetentionPolicy(string resourceGroup, string managedInstanceName, string databaseName, AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel model)
         {
-            ManagedBackupShortTermRetentionPolicy newPolicy = new ManagedBackupShortTermRetentionPolicy(retentionDays: model.RetentionDays);
+            ManagedBackupShortTermRetentionPolicy newPolicy = new ManagedBackupShortTermRetentionPolicy(
+                retentionDays: model.RetentionDays,
+                lockImmutability: model.LockImmutability);
 
             var resp = Communicator.CreateOrUpdateShortTermRetentionLiveDatabase(resourceGroup, managedInstanceName, databaseName, newPolicy);
 
@@ -139,7 +141,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
         /// <returns>The upserted Azure Sql Database from AutoRest SDK</returns>
         internal AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel UpsertDeletedManagedDatabaseRetentionPolicy(string resourceGroup, string managedInstanceName, string databaseName, AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel model)
         {
-            ManagedBackupShortTermRetentionPolicy newPolicy = new ManagedBackupShortTermRetentionPolicy(retentionDays: model.RetentionDays);
+            ManagedBackupShortTermRetentionPolicy newPolicy = new ManagedBackupShortTermRetentionPolicy(
+                retentionDays: model.RetentionDays);
 
             var resp = Communicator.CreateOrUpdateShortTermRetentionDroppedDatabase(resourceGroup, managedInstanceName, databaseName, newPolicy);
 

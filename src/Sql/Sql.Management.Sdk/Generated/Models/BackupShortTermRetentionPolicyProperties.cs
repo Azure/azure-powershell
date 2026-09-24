@@ -32,11 +32,21 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// between each differential backup will be supported. This is only applicable
         /// to live databases but not dropped databases.
         /// Possible values include: &#39;12&#39;, &#39;24&#39;</param>
-        public BackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?), int? diffBackupIntervalInHours = default(int?))
+
+        /// <param name="lockImmutability">Whether to lock the immutability of the backups governed by this short term
+        /// retention policy.
+        /// </param>
+
+        /// <param name="immutabilityStatus">The immutability status of the backups governed by this short term
+        /// retention policy.
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Locked&#39;</param>
+        public BackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?), double? diffBackupIntervalInHours = default(double?), bool? lockImmutability = default(bool?), string immutabilityStatus = default(string))
 
         {
             this.RetentionDays = retentionDays;
             this.DiffBackupIntervalInHours = diffBackupIntervalInHours;
+            this.LockImmutability = lockImmutability;
+            this.ImmutabilityStatus = immutabilityStatus;
             CustomInit();
         }
 
@@ -59,6 +69,20 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// only applicable to live databases but not dropped databases. Possible values include: &#39;12&#39;, &#39;24&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diffBackupIntervalInHours")]
-        public int? DiffBackupIntervalInHours {get; set; }
+        public double? DiffBackupIntervalInHours {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to lock the immutability of the backups governed by
+        /// this short term retention policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lockImmutability")]
+        public bool? LockImmutability {get; set; }
+
+        /// <summary>
+        /// Gets the immutability status of the backups governed by this short term
+        /// retention policy. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Locked&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "immutabilityStatus")]
+        public string ImmutabilityStatus {get; private set; }
     }
 }
