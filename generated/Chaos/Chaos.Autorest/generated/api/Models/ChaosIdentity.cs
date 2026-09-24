@@ -12,12 +12,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal
     {
 
-        /// <summary>Backing field for <see cref="AsyncOperationId" /> property.</summary>
-        private string _asyncOperationId;
+        /// <summary>Backing field for <see cref="ActionName" /> property.</summary>
+        private string _actionName;
 
-        /// <summary>The operation Id.</summary>
+        /// <summary>String that represents an Action resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public string AsyncOperationId { get => this._asyncOperationId; set => this._asyncOperationId = value; }
+        public string ActionName { get => this._actionName; set => this._actionName = value; }
 
         /// <summary>Backing field for <see cref="CapabilityName" /> property.</summary>
         private string _capabilityName;
@@ -32,6 +32,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// <summary>String that represents a Capability Type resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string CapabilityTypeName { get => this._capabilityTypeName; set => this._capabilityTypeName = value; }
+
+        /// <summary>Backing field for <see cref="DiscoveredResourceName" /> property.</summary>
+        private string _discoveredResourceName;
+
+        /// <summary>Name of the discovered resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string DiscoveredResourceName { get => this._discoveredResourceName; set => this._discoveredResourceName = value; }
 
         /// <summary>Backing field for <see cref="ExecutionId" /> property.</summary>
         private string _executionId;
@@ -61,45 +68,83 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
-        /// <summary>Backing field for <see cref="LocationName" /> property.</summary>
-        private string _locationName;
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
 
-        /// <summary>String that represents a Location resource name.</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public string LocationName { get => this._locationName; set => this._locationName = value; }
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
 
         /// <summary>Backing field for <see cref="ParentProviderNamespace" /> property.</summary>
         private string _parentProviderNamespace;
 
-        /// <summary>String that represents a resource provider namespace.</summary>
+        /// <summary>The parent resource provider namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string ParentProviderNamespace { get => this._parentProviderNamespace; set => this._parentProviderNamespace = value; }
 
         /// <summary>Backing field for <see cref="ParentResourceName" /> property.</summary>
         private string _parentResourceName;
 
-        /// <summary>String that represents a resource name.</summary>
+        /// <summary>The parent resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string ParentResourceName { get => this._parentResourceName; set => this._parentResourceName = value; }
 
         /// <summary>Backing field for <see cref="ParentResourceType" /> property.</summary>
         private string _parentResourceType;
 
-        /// <summary>String that represents a resource type.</summary>
+        /// <summary>The parent resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string ParentResourceType { get => this._parentResourceType; set => this._parentResourceType = value; }
+
+        /// <summary>Backing field for <see cref="PrivateAccessName" /> property.</summary>
+        private string _privateAccessName;
+
+        /// <summary>
+        /// The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _
+        /// and -. The maximum name length is 80 characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string PrivateAccessName { get => this._privateAccessName; set => this._privateAccessName = value; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>String that represents an Azure resource group.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="RunId" /> property.</summary>
+        private string _runId;
+
+        /// <summary>The name of the ScenarioRun</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string RunId { get => this._runId; set => this._runId = value; }
+
+        /// <summary>Backing field for <see cref="ScenarioConfigurationName" /> property.</summary>
+        private string _scenarioConfigurationName;
+
+        /// <summary>Name of the scenario definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string ScenarioConfigurationName { get => this._scenarioConfigurationName; set => this._scenarioConfigurationName = value; }
+
+        /// <summary>Backing field for <see cref="ScenarioName" /> property.</summary>
+        private string _scenarioName;
+
+        /// <summary>Name of the scenario.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string ScenarioName { get => this._scenarioName; set => this._scenarioName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>GUID that represents an Azure subscription ID.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -117,6 +162,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string TargetTypeName { get => this._targetTypeName; set => this._targetTypeName = value; }
 
+        /// <summary>Backing field for <see cref="VersionName" /> property.</summary>
+        private string _versionName;
+
+        /// <summary>String that represents an Action Version resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string VersionName { get => this._versionName; set => this._versionName = value; }
+
+        /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
+        private string _workspaceName;
+
+        /// <summary>String that represents a Workspace resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string WorkspaceName { get => this._workspaceName; set => this._workspaceName = value; }
+
         /// <summary>Creates an new <see cref="ChaosIdentity" /> instance.</summary>
         public ChaosIdentity()
         {
@@ -126,17 +185,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
     public partial interface IChaosIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable
     {
-        /// <summary>The operation Id.</summary>
+        /// <summary>String that represents an Action resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The operation Id.",
-        SerializedName = @"asyncOperationId",
+        Description = @"String that represents an Action resource name.",
+        SerializedName = @"actionName",
         PossibleTypes = new [] { typeof(string) })]
-        string AsyncOperationId { get; set; }
+        string ActionName { get; set; }
         /// <summary>String that represents a Capability resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -159,6 +218,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         SerializedName = @"capabilityTypeName",
         PossibleTypes = new [] { typeof(string) })]
         string CapabilityTypeName { get; set; }
+        /// <summary>Name of the discovered resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the discovered resource.",
+        SerializedName = @"discoveredResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DiscoveredResourceName { get; set; }
         /// <summary>GUID that represents a Experiment execution detail.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -203,69 +273,127 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>String that represents a Location resource name.</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"String that represents a Location resource name.",
-        SerializedName = @"locationName",
+        Description = @"The ID of an ongoing async operation.",
+        SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
-        string LocationName { get; set; }
-        /// <summary>String that represents a resource provider namespace.</summary>
+        string OperationId { get; set; }
+        /// <summary>The parent resource provider namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"String that represents a resource provider namespace.",
+        Description = @"The parent resource provider namespace.",
         SerializedName = @"parentProviderNamespace",
         PossibleTypes = new [] { typeof(string) })]
         string ParentProviderNamespace { get; set; }
-        /// <summary>String that represents a resource name.</summary>
+        /// <summary>The parent resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"String that represents a resource name.",
+        Description = @"The parent resource name.",
         SerializedName = @"parentResourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ParentResourceName { get; set; }
-        /// <summary>String that represents a resource type.</summary>
+        /// <summary>The parent resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"String that represents a resource type.",
+        Description = @"The parent resource type.",
         SerializedName = @"parentResourceType",
         PossibleTypes = new [] { typeof(string) })]
         string ParentResourceType { get; set; }
-        /// <summary>String that represents an Azure resource group.</summary>
+        /// <summary>
+        /// The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _
+        /// and -. The maximum name length is 80 characters.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"String that represents an Azure resource group.",
+        Description = @"The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.",
+        SerializedName = @"privateAccessName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateAccessName { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the private endpoint connection.",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>GUID that represents an Azure subscription ID.</summary>
+        /// <summary>The name of the ScenarioRun</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"GUID that represents an Azure subscription ID.",
+        Description = @"The name of the ScenarioRun",
+        SerializedName = @"runId",
+        PossibleTypes = new [] { typeof(string) })]
+        string RunId { get; set; }
+        /// <summary>Name of the scenario definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the scenario definition.",
+        SerializedName = @"scenarioConfigurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScenarioConfigurationName { get; set; }
+        /// <summary>Name of the scenario.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the scenario.",
+        SerializedName = @"scenarioName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScenarioName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -291,17 +419,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         SerializedName = @"targetTypeName",
         PossibleTypes = new [] { typeof(string) })]
         string TargetTypeName { get; set; }
+        /// <summary>String that represents an Action Version resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"String that represents an Action Version resource name.",
+        SerializedName = @"versionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VersionName { get; set; }
+        /// <summary>String that represents a Workspace resource name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"String that represents a Workspace resource name.",
+        SerializedName = @"workspaceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string WorkspaceName { get; set; }
 
     }
     internal partial interface IChaosIdentityInternal
 
     {
-        /// <summary>The operation Id.</summary>
-        string AsyncOperationId { get; set; }
+        /// <summary>String that represents an Action resource name.</summary>
+        string ActionName { get; set; }
         /// <summary>String that represents a Capability resource name.</summary>
         string CapabilityName { get; set; }
         /// <summary>String that represents a Capability Type resource name.</summary>
         string CapabilityTypeName { get; set; }
+        /// <summary>Name of the discovered resource.</summary>
+        string DiscoveredResourceName { get; set; }
         /// <summary>GUID that represents a Experiment execution detail.</summary>
         string ExecutionId { get; set; }
         /// <summary>String that represents a Experiment resource name.</summary>
@@ -310,22 +462,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         string Id { get; set; }
         /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
-        /// <summary>String that represents a Location resource name.</summary>
-        string LocationName { get; set; }
-        /// <summary>String that represents a resource provider namespace.</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
+        string OperationId { get; set; }
+        /// <summary>The parent resource provider namespace.</summary>
         string ParentProviderNamespace { get; set; }
-        /// <summary>String that represents a resource name.</summary>
+        /// <summary>The parent resource name.</summary>
         string ParentResourceName { get; set; }
-        /// <summary>String that represents a resource type.</summary>
+        /// <summary>The parent resource type.</summary>
         string ParentResourceType { get; set; }
-        /// <summary>String that represents an Azure resource group.</summary>
+        /// <summary>
+        /// The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _
+        /// and -. The maximum name length is 80 characters.
+        /// </summary>
+        string PrivateAccessName { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        string PrivateEndpointConnectionName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>GUID that represents an Azure subscription ID.</summary>
+        /// <summary>The name of the ScenarioRun</summary>
+        string RunId { get; set; }
+        /// <summary>Name of the scenario definition.</summary>
+        string ScenarioConfigurationName { get; set; }
+        /// <summary>Name of the scenario.</summary>
+        string ScenarioName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>String that represents a Target resource name.</summary>
         string TargetName { get; set; }
         /// <summary>String that represents a Target Type resource name.</summary>
         string TargetTypeName { get; set; }
+        /// <summary>String that represents an Action Version resource name.</summary>
+        string VersionName { get; set; }
+        /// <summary>String that represents a Workspace resource name.</summary>
+        string WorkspaceName { get; set; }
 
     }
 }

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// <summary>Internal Acessors for ParametersSchema</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal.ParametersSchema { get => this._parametersSchema; set { {_parametersSchema = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
         /// <summary>Internal Acessors for Publisher</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal.Publisher { get => this._publisher; set { {_publisher = value;} } }
 
@@ -41,6 +44,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// <summary>URL to retrieve JSON schema of the Capability parameters.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string ParametersSchema { get => this._parametersSchema; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>
+        /// Resource provisioning state. Not currently in use because resource is created synchronously.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Publisher" /> property.</summary>
         private string _publisher;
@@ -95,6 +107,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         SerializedName = @"parametersSchema",
         PossibleTypes = new [] { typeof(string) })]
         string ParametersSchema { get;  }
+        /// <summary>
+        /// Resource provisioning state. Not currently in use because resource is created synchronously.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Resource provisioning state. Not currently in use because resource is created synchronously.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
+        string ProvisioningState { get;  }
         /// <summary>String of the Publisher that this Capability extends.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -138,6 +164,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         string Description { get; set; }
         /// <summary>URL to retrieve JSON schema of the Capability parameters.</summary>
         string ParametersSchema { get; set; }
+        /// <summary>
+        /// Resource provisioning state. Not currently in use because resource is created synchronously.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
+        string ProvisioningState { get; set; }
         /// <summary>String of the Publisher that this Capability extends.</summary>
         string Publisher { get; set; }
         /// <summary>String of the Target Type that this Capability extends.</summary>

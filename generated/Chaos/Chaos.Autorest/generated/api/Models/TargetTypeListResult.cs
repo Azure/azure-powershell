@@ -15,25 +15,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetTypeListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetTypeListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetTypeListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to retrieve the next page of Target Type resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> _value;
 
-        /// <summary>List of Target Type resources.</summary>
+        /// <summary>The TargetType items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="TargetTypeListResult" /> instance.</summary>
         public TargetTypeListResult()
@@ -45,37 +39,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
     public partial interface ITargetTypeListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable
     {
-        /// <summary>URL to retrieve the next page of Target Type resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to retrieve the next page of Target Type resources.",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of Target Type resources.</summary>
+        string NextLink { get; set; }
+        /// <summary>The TargetType items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of Target Type resources.",
+        Create = true,
+        Update = true,
+        Description = @"The TargetType items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> Value { get; set; }
 
     }
     /// Model that represents a list of Target Type resources and a link for pagination.
     internal partial interface ITargetTypeListResultInternal
 
     {
-        /// <summary>URL to retrieve the next page of Target Type resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Target Type resources.</summary>
+        /// <summary>The TargetType items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITargetType> Value { get; set; }
 
     }

@@ -106,6 +106,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).RunInformation = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesRunInformation) content.GetValueForProperty("RunInformation",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).RunInformation, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentExecutionDetailsPropertiesRunInformationTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).Status, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StartedAt = (global::System.DateTime?) content.GetValueForProperty("StartedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StartedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("StoppedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StoppedAt = (global::System.DateTime?) content.GetValueForProperty("StoppedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StoppedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("FailureReason"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).FailureReason = (string) content.GetValueForProperty("FailureReason",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).FailureReason, global::System.Convert.ToString);
@@ -113,18 +129,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             if (content.Contains("LastActionAt"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).LastActionAt = (global::System.DateTime?) content.GetValueForProperty("LastActionAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).LastActionAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("Status"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).Status, global::System.Convert.ToString);
-            }
-            if (content.Contains("StartedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StartedAt = (global::System.DateTime?) content.GetValueForProperty("StartedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StartedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("StoppedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StoppedAt = (global::System.DateTime?) content.GetValueForProperty("StoppedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StoppedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("RunInformationStep"))
             {
@@ -151,6 +155,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).RunInformation = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesRunInformation) content.GetValueForProperty("RunInformation",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).RunInformation, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentExecutionDetailsPropertiesRunInformationTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).Status, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StartedAt = (global::System.DateTime?) content.GetValueForProperty("StartedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StartedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("StoppedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StoppedAt = (global::System.DateTime?) content.GetValueForProperty("StoppedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).StoppedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("FailureReason"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).FailureReason = (string) content.GetValueForProperty("FailureReason",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).FailureReason, global::System.Convert.ToString);
@@ -158,18 +178,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             if (content.Contains("LastActionAt"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).LastActionAt = (global::System.DateTime?) content.GetValueForProperty("LastActionAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)this).LastActionAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("Status"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).Status, global::System.Convert.ToString);
-            }
-            if (content.Contains("StartedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StartedAt = (global::System.DateTime?) content.GetValueForProperty("StartedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StartedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("StoppedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StoppedAt = (global::System.DateTime?) content.GetValueForProperty("StoppedAt",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)this).StoppedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("RunInformationStep"))
             {
