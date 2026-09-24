@@ -1,10 +1,4 @@
-if(($null -eq $TestName) -or `
-   ($TestName -contains 'New-AzMonitorHealthModelSignalDefinition') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelThresholdRuleV2Object') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelEvaluationRuleObject') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzMonitorHealthModelSignalDefinition'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -27,7 +21,21 @@ Describe 'New-AzMonitorHealthModelSignalDefinition' {
             $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
             $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
             $rules = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
+            $degraded.Operator | Should -Be 'GreaterThan'
+            $degraded.Threshold | Should -Be 70
+            $unhealthy.Operator | Should -Be 'GreaterThan'
+            $unhealthy.Threshold | Should -Be 90
+            $rules.DegradedRule.Threshold | Should -Be 70
+            $rules.UnhealthyRule.Threshold | Should -Be 90
             $property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rules -DisplayName 'Create signal' -DataUnit Percent -RefreshInterval PT5M
+            $property.MetricNamespace | Should -Be 'Microsoft.Compute/virtualMachines'
+            $property.MetricName | Should -Be 'Percentage CPU'
+            $property.TimeGrain | Should -Be 'PT5M'
+            $property.AggregationType | Should -Be 'Average'
+            $property.DisplayName | Should -Be 'Create signal'
+            $property.DataUnit | Should -Be 'Percent'
+            $property.RefreshInterval | Should -Be 'PT5M'
+            $property.SignalKind | Should -Be 'AzureResourceMetric'
             $result = New-AzMonitorHealthModelSignalDefinition -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.SignalDefinitionCreateName -Property $property
             $result | Should -Not -BeNullOrEmpty
             $result.Name | Should -Be $env.SignalDefinitionCreateName
@@ -42,58 +50,34 @@ Describe 'New-AzMonitorHealthModelSignalDefinition' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-}
+    $localQuerySignalCases = @(
+        @{ Kind = 'LogAnalyticsQuery'; QueryText = 'AppExceptions | summarize Count = count()'; TimeGrain = 'PT15M'; Threshold = 10; ValueColumnName = 'Count'; DisplayName = 'Log signal' }
+        @{ Kind = 'PrometheusMetricsQuery'; QueryText = 'rate(http_requests_failed_total[5m])'; TimeGrain = 'PT5M'; Threshold = 0.05; ValueColumnName = $null; DisplayName = $null }
+    )
 
-Describe 'New-AzMonitorHealthModelThresholdRuleV2Object' {
-    It '__AllParameterSets' {
-        $rule = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
-        $rule.Operator | Should -Be 'GreaterThan'
-        $rule.Threshold | Should -Be 90
-    }
-
-}
-
-Describe 'New-AzMonitorHealthModelEvaluationRuleObject' {
-    It '__AllParameterSets' {
-        $degraded = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 70
-        $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
-        $rule = New-AzMonitorHealthModelEvaluationRuleObject -DegradedRule $degraded -UnhealthyRule $unhealthy
-        $rule.UnhealthyRule.Threshold | Should -Be 90
-        $rule.DegradedRule.Threshold | Should -Be 70
-    }
-
-}
-
-Describe 'New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject' {
-    It '__AllParameterSets' {
-        $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 90
+    It 'Local <Kind> query signal' -TestCases $localQuerySignalCases {
+        param($Kind, $QueryText, $TimeGrain, $Threshold, $ValueColumnName, $DisplayName)
+        $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold $Threshold
         $rule = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
-        $property = New-AzMonitorHealthModelResourceMetricSignalDefinitionPropertiesObject -MetricNamespace 'Microsoft.Compute/virtualMachines' -MetricName 'Percentage CPU' -TimeGrain PT5M -AggregationType Average -EvaluationRule $rule -DisplayName 'CPU signal'
-        $property.MetricNamespace | Should -Be 'Microsoft.Compute/virtualMachines'
-        $property.MetricName | Should -Be 'Percentage CPU'
-        $property.AggregationType | Should -Be 'Average'
-    }
+        if ($Kind -eq 'LogAnalyticsQuery') {
+            $property = New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject -QueryText $QueryText -ValueColumnName $ValueColumnName -TimeGrain $TimeGrain -EvaluationRule $rule -DisplayName $DisplayName
+            $property.ValueColumnName | Should -Be $ValueColumnName
+        } else {
+            $property = New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject -QueryText $QueryText -TimeGrain $TimeGrain -EvaluationRule $rule
+        }
 
-}
+        $property.QueryText | Should -Be $QueryText
+        $property.TimeGrain | Should -Be $TimeGrain
+        $property.SignalKind | Should -Be $Kind
+        $property.EvaluationRule.UnhealthyRule.Threshold | Should -Be $Threshold
 
-Describe 'New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject' {
-    It '__AllParameterSets' {
-        $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 10
-        $rule = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
-        $property = New-AzMonitorHealthModelLogAnalyticsQuerySignalDefinitionPropertiesObject -QueryText 'AppExceptions | summarize Count = count()' -ValueColumnName Count -TimeGrain PT15M -EvaluationRule $rule -DisplayName 'Log signal'
-        $property.QueryText | Should -Be 'AppExceptions | summarize Count = count()'
-        $property.ValueColumnName | Should -Be 'Count'
-    }
-
-}
-
-Describe 'New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject' {
-    It '__AllParameterSets' {
-        $unhealthy = New-AzMonitorHealthModelThresholdRuleV2Object -Operator GreaterThan -Threshold 0.05
-        $rule = New-AzMonitorHealthModelEvaluationRuleObject -UnhealthyRule $unhealthy
-        $property = New-AzMonitorHealthModelPrometheusMetricsSignalDefinitionPropertiesObject -QueryText 'rate(http_requests_failed_total[5m])' -TimeGrain PT5M -EvaluationRule $rule -DisplayName 'Prom signal'
-        $property.QueryText | Should -Be 'rate(http_requests_failed_total[5m])'
-        $property.DisplayName | Should -Be 'Prom signal'
+        $serialized = $property.ToJsonString() | ConvertFrom-Json
+        $serialized.evaluationRules.PSObject.Properties.Name | Should -Not -Contain 'degradedRule'
+        if ($null -ne $DisplayName) {
+            $property.DisplayName | Should -Be $DisplayName
+        } else {
+            $serialized.PSObject.Properties.Name | Should -Not -Contain 'displayName'
+        }
     }
 
 }

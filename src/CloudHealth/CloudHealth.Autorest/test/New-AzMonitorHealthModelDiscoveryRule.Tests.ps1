@@ -1,7 +1,4 @@
-if(($null -eq $TestName) -or `
-   ($TestName -contains 'New-AzMonitorHealthModelDiscoveryRule') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelResourceGraphQuerySpecificationObject') -or `
-   ($TestName -contains 'New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzMonitorHealthModelDiscoveryRule'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -22,6 +19,8 @@ Describe 'New-AzMonitorHealthModelDiscoveryRule' {
     It 'CreateExpanded' {
         {
             $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where isnotempty(id) | project id | take 1"
+            $specification.ResourceGraphQuery | Should -Be "resources | where isnotempty(id) | project id | take 1"
+            $specification.Kind | Should -Be 'ResourceGraphQuery'
             $result = New-AzMonitorHealthModelDiscoveryRule -HealthModelName $env.HealthModelName -ResourceGroupName $env.ResourceGroupName -Name $env.DiscoveryRuleCreateName -AuthenticationSetting $env.AuthenticationSettingName -AddRecommendedSignal Enabled -AddResourceHealthSignal Disabled -DiscoverRelationship Disabled -DisplayName 'Create discovery rule' -Specification $specification
             $result | Should -Not -BeNullOrEmpty
             $result.Name | Should -Be $env.DiscoveryRuleCreateName
@@ -36,21 +35,11 @@ Describe 'New-AzMonitorHealthModelDiscoveryRule' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-}
-
-Describe 'New-AzMonitorHealthModelResourceGraphQuerySpecificationObject' {
-    It '__AllParameterSets' {
-        $specification = New-AzMonitorHealthModelResourceGraphQuerySpecificationObject -ResourceGraphQuery "resources | where isnotempty(id) | project id"
-        $specification.ResourceGraphQuery | Should -Be "resources | where isnotempty(id) | project id"
-    }
-
-}
-
-Describe 'New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject' {
-    It '__AllParameterSets' {
+    It 'Local ApplicationInsightsTopology specification' {
         $resourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Insights/components/demo-ai"
         $specification = New-AzMonitorHealthModelApplicationInsightsTopologySpecificationObject -ApplicationInsightsResourceId $resourceId
         $specification.ApplicationInsightsResourceId | Should -Be $resourceId
+        $specification.Kind | Should -Be 'ApplicationInsightsTopology'
     }
 
 }
