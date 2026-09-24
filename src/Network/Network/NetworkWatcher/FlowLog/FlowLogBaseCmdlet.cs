@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatType);
             }
 
+            if (formatVersion != null && formatVersion < 0)
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
+            }
+
             if (enableTrafficAnalytics && string.IsNullOrEmpty(trafficAnalyticsWorkspaceId))
             {
                 throw new PSArgumentException(Properties.Resources.TrafficAnalyticsWorkspaceResourceIdIsMissing);
