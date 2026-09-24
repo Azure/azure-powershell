@@ -6265,6 +6265,270 @@ function Test-ApplicationGatewayFirewallPolicyCustomRuleClientAddrXFFHeaderRemov
 	Test-ApplicationGatewayFirewallPolicyCustomRuleXFFHeaderRemovalInternal -GroupByVariableName "ClientAddrXFFHeader"
 }
 
+<#
+.SYNOPSIS
+Sends a request to the application gateway frontend and asserts the redirect it returns
+#>
+function Assert-ApplicationGatewayRedirectsTo
+{
+	param
+	(
+		[string] $IpAddress,
+		[string] $ExpectedLocation,
+		[string] $Method = "GET",
+		[hashtable] $Headers = @{}
+	)
+
+	$handler = [System.Net.Http.HttpClientHandler]::new()
+	$handler.AllowAutoRedirect = $false
+	$client = [System.Net.Http.HttpClient]::new($handler)
+	$client.Timeout = [TimeSpan]::FromSeconds(15)
+	$maxAttempts = 12
+	try
+	{
+		# Configuration changes can take a moment to reach every gateway instance
+		for ($attempt = 1; $attempt -le $maxAttempts; $attempt++)
+		{
+			$request = [System.Net.Http.HttpRequestMessage]::new([System.Net.Http.HttpMethod]::new($Method), "http://$IpAddress/")
+			foreach ($name in $Headers.Keys)
+			{
+				$request.Headers.Add($name, $Headers[$name])
+			}
+			if ($Method -ne "GET")
+			{
+				$request.Content = [System.Net.Http.StringContent]::new("")
+			}
+
+			try
+			{
+				$response = $client.SendAsync($request).GetAwaiter().GetResult()
+				$actual = "$([int]$response.StatusCode) $($response.Headers.Location)"
+				if ($response.Headers.Location -and $response.Headers.Location.OriginalString -like "$ExpectedLocation*")
+				{
+					return
+				}
+			}
+			catch
+			{
+				$actual = $_.Exception.GetBaseException().Message
+			}
+
+			if ($attempt -lt $maxAttempts)
+			{
+				Start-TestSleep -Seconds 10
+			}
+		}
+
+		throw "$Method request with headers [$($Headers.Keys -join ', ')] should redirect to '$ExpectedLocation' but got '$actual'"
+	}
+	finally
+	{
+		$client.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway advanced routing tests
+#>
+function Test-ApplicationGatewayAdvancedRouting
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigName = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$frontendPortName = Get-ResourceName
+	$listenerName = Get-ResourceName
+	$poolName = Get-ResourceName
+	$pool2Name = Get-ResourceName
+	$poolSettingName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$redirectDefaultName = Get-ResourceName
+	$redirectEmeaName = Get-ResourceName
+	$redirectPostName = Get-ResourceName
+	$conditionSetName = Get-ResourceName
+	$conditionSet2Name = Get-ResourceName
+	$mapName = Get-ResourceName
+	$advancedRule1Name = Get-ResourceName
+	$advancedRule2Name = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName -Location $location -AllocationMethod Static -Sku Standard
+
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigName -Subnet $gwSubnet
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp = New-AzApplicationGatewayFrontendPort -Name $frontendPortName -Port 80
+		$listener = New-AzApplicationGatewayHttpListener -Name $listenerName -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
+
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com
+		$pool2 = New-AzApplicationGatewayBackendAddressPool -Name $pool2Name -BackendIPAddresses www.bing.com
+		$poolSetting = New-AzApplicationGatewayBackendHttpSetting -Name $poolSettingName -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+
+		$headerCondition = New-AzApplicationGatewayAdvancedRoutingCondition -ConditionType Header -PropertyName "X-Region" -PropertyValues "emea", "apac"
+		$pathCondition = New-AzApplicationGatewayAdvancedRoutingCondition -ConditionType Path -Pattern "^/api/.*" -IgnoreCase
+		$conditionSet = New-AzApplicationGatewayAdvancedRoutingConditionSet -Name $conditionSetName -RoutingCondition $headerCondition, $pathCondition
+		$advancedRule1 = New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name $advancedRule1Name -Priority 100 -AdvancedRoutingConditionSet $conditionSet -BackendAddressPool $pool2 -BackendHttpSettings $poolSetting
+		$map = New-AzApplicationGatewayAdvancedRoutingMap -Name $mapName -AdvancedRoutingRule $advancedRule1 -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting
+
+		$rule = New-AzApplicationGatewayRequestRoutingRule -Name $ruleName -RuleType AdvancedRouting -Priority 100 -HttpListener $listener -AdvancedRoutingMap $map
+
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
+
+		# Create with advanced routing in a single call
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool, $pool2 -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -AdvancedRoutingConditionSets $conditionSet -AdvancedRoutingMaps $map
+
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		Assert-AreEqual 1 $getgw.AdvancedRoutingConditionSets.Count
+		Assert-AreEqual 1 $getgw.AdvancedRoutingMaps.Count
+
+		$conditionSet = Get-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSetName
+		Assert-NotNull $conditionSet
+		Assert-AreEqual 2 $conditionSet.RoutingConditions.Count
+
+		$headerCondition = $conditionSet.RoutingConditions | Where-Object { $_.ConditionType -eq "Header" }
+		Assert-AreEqual "X-Region" $headerCondition.PropertyName
+		Assert-AreEqual 2 $headerCondition.PropertyValues.Count
+
+		$pathCondition = $conditionSet.RoutingConditions | Where-Object { $_.ConditionType -eq "Path" }
+		Assert-AreEqual "^/api/.*" $pathCondition.PropertyValueMatcher.Pattern
+		Assert-AreEqual $true $pathCondition.PropertyValueMatcher.IgnoreCase
+
+		$pool = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $poolName
+		$pool2 = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $pool2Name
+		$poolSetting = Get-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $getgw -Name $poolSettingName
+
+		$map = Get-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw -Name $mapName
+		Assert-NotNull $map
+		Assert-AreEqual $pool.Id $map.DefaultBackendAddressPool.Id
+		Assert-AreEqual $poolSetting.Id $map.DefaultBackendHttpSettings.Id
+		Assert-AreEqual 1 $map.AdvancedRoutingRules.Count
+		Assert-AreEqual 100 $map.AdvancedRoutingRules[0].Priority
+		Assert-AreEqual $conditionSet.Id $map.AdvancedRoutingRules[0].AdvancedRoutingConditionSet.Id
+		Assert-AreEqual $pool2.Id $map.AdvancedRoutingRules[0].BackendAddressPool.Id
+
+		$rule = Get-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $ruleName
+		Assert-AreEqual "AdvancedRouting" $rule.RuleType
+		Assert-AreEqual $map.Id $rule.AdvancedRoutingMap.Id
+
+		Assert-AreEqual 1 @(Get-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw).Count
+		Assert-AreEqual 1 @(Get-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw).Count
+
+		# Invalid operations are rejected locally, before any request is sent
+		Assert-ThrowsLike { Add-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSetName -RoutingCondition $headerCondition } "*already exists*"
+		Assert-ThrowsLike { Add-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw -Name $mapName -AdvancedRoutingRule $advancedRule1 -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting } "*already exists*"
+		Assert-ThrowsLike { Set-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name "fakeName" -RoutingCondition $headerCondition } "*does not exist*"
+		Assert-ThrowsLike { Set-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw -Name "fakeName" -AdvancedRoutingRule $advancedRule1 -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting } "*does not exist*"
+		Assert-ThrowsLike { New-AzApplicationGatewayAdvancedRoutingCondition -ConditionType Header -PropertyValues "emea" } "*PropertyName is required*"
+		Assert-ThrowsLike { New-AzApplicationGatewayAdvancedRoutingCondition -ConditionType ClientIP -Pattern "^10\..*" } "*Pattern is not applicable*"
+
+		# Update: route every outcome to a gateway-generated redirect so the datapath can tell which rule matched
+		$defaultTarget = "https://default.example.com"
+		$emeaTarget = "https://emea.example.com"
+		$postTarget = "https://post.example.com"
+		$getgw = Add-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectDefaultName -RedirectType Found -TargetUrl $defaultTarget
+		$getgw = Add-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectEmeaName -RedirectType Found -TargetUrl $emeaTarget
+		$getgw = Add-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectPostName -RedirectType Found -TargetUrl $postTarget
+		$redirectDefault = Get-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectDefaultName
+		$redirectEmea = Get-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectEmeaName
+		$redirectPost = Get-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectPostName
+
+		$methodCondition = New-AzApplicationGatewayAdvancedRoutingCondition -ConditionType Method -PropertyValues "POST"
+		$getgw = Add-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSet2Name -RoutingCondition $methodCondition
+		$conditionSet2 = Get-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSet2Name
+
+		$emeaCondition = New-AzApplicationGatewayAdvancedRoutingCondition -ConditionType Header -PropertyName "X-Region" -PropertyValues "emea"
+		$getgw = Set-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSetName -RoutingCondition $emeaCondition
+		$conditionSet = Get-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSetName
+
+		$advancedRule1 = New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name $advancedRule1Name -Priority 100 -AdvancedRoutingConditionSet $conditionSet -RedirectConfiguration $redirectEmea
+		$advancedRule2 = New-AzApplicationGatewayAdvancedRoutingRuleConfig -Name $advancedRule2Name -Priority 200 -AdvancedRoutingConditionSet $conditionSet2 -RedirectConfiguration $redirectPost
+		$getgw = Set-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw -Name $mapName -AdvancedRoutingRule $advancedRule1, $advancedRule2 -DefaultRedirectConfiguration $redirectDefault
+
+		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
+
+		Assert-AreEqual 2 $getgw.AdvancedRoutingConditionSets.Count
+
+		$conditionSet = Get-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSetName
+		Assert-AreEqual 1 $conditionSet.RoutingConditions.Count
+		Assert-AreEqual 1 $conditionSet.RoutingConditions[0].PropertyValues.Count
+
+		$conditionSet2 = Get-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSet2Name
+		Assert-AreEqual "Method" $conditionSet2.RoutingConditions[0].ConditionType
+
+		$redirectDefault = Get-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectDefaultName
+		$redirectEmea = Get-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectEmeaName
+		$redirectPost = Get-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectPostName
+
+		$map = Get-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw -Name $mapName
+		Assert-AreEqual $redirectDefault.Id $map.DefaultRedirectConfiguration.Id
+		Assert-Null $map.DefaultBackendAddressPool
+		Assert-AreEqual 2 $map.AdvancedRoutingRules.Count
+
+		$emeaRule = $map.AdvancedRoutingRules | Where-Object { $_.Name -eq $advancedRule1Name }
+		Assert-AreEqual 100 $emeaRule.Priority
+		Assert-AreEqual $conditionSet.Id $emeaRule.AdvancedRoutingConditionSet.Id
+		Assert-AreEqual $redirectEmea.Id $emeaRule.RedirectConfiguration.Id
+
+		$postRule = $map.AdvancedRoutingRules | Where-Object { $_.Name -eq $advancedRule2Name }
+		Assert-AreEqual 200 $postRule.Priority
+		Assert-AreEqual $conditionSet2.Id $postRule.AdvancedRoutingConditionSet.Id
+		Assert-AreEqual $redirectPost.Id $postRule.RedirectConfiguration.Id
+		Assert-Null $postRule.BackendAddressPool
+
+		$publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName
+
+		# Datapath checks call the live frontend IP, so they cannot be replayed
+		if ((Get-NetworkTestMode) -ne 'Playback')
+		{
+			$ip = $publicip.IpAddress
+			Assert-ApplicationGatewayRedirectsTo -IpAddress $ip -ExpectedLocation $defaultTarget
+			Assert-ApplicationGatewayRedirectsTo -IpAddress $ip -ExpectedLocation $emeaTarget -Headers @{ "X-Region" = "emea" }
+			Assert-ApplicationGatewayRedirectsTo -IpAddress $ip -ExpectedLocation $postTarget -Method POST
+			# Both rules match; the lower priority value wins
+			Assert-ApplicationGatewayRedirectsTo -IpAddress $ip -ExpectedLocation $emeaTarget -Method POST -Headers @{ "X-Region" = "emea" }
+			# "apac" was dropped from the condition set by the Set above
+			Assert-ApplicationGatewayRedirectsTo -IpAddress $ip -ExpectedLocation $defaultTarget -Headers @{ "X-Region" = "apac" }
+		}
+
+		# Remove: the map must be detached from the request routing rule first
+		$listener = Get-AzApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listenerName
+		$getgw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $ruleName -RuleType Basic -Priority 100 -HttpListener $listener -BackendAddressPool $pool -BackendHttpSettings $poolSetting
+
+		Remove-AzApplicationGatewayAdvancedRoutingMap -ApplicationGateway $getgw -Name $mapName
+		Remove-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSetName
+		Remove-AzApplicationGatewayAdvancedRoutingConditionSet -ApplicationGateway $getgw -Name $conditionSet2Name
+		Remove-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectDefaultName
+		Remove-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectEmeaName
+		Remove-AzApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirectPostName
+
+		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
+
+		Assert-Null $getgw.AdvancedRoutingMaps
+		Assert-Null $getgw.AdvancedRoutingConditionSets
+		Assert-AreEqual "Basic" (Get-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $ruleName).RuleType
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
 function Test-ApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval {
 	Test-ApplicationGatewayFirewallPolicyCustomRuleXFFHeaderRemovalInternal -GroupByVariableName "GeoLocationXFFHeader"
 }

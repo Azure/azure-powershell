@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpTagType { get; set; }
 
         public string Tag { get; set; }
+
+        public string FirstPartyServiceTagId { get; set; }
     }
 }
-

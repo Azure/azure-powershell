@@ -18,7 +18,7 @@ Creates a request routing rule for an application gateway.
 New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> [-Priority <Int32>]
  [-BackendHttpSettingsId <String>] [-HttpListenerId <String>] [-BackendAddressPoolId <String>]
  [-UrlPathMapId <String>] [-RewriteRuleSetId <String>] [-RedirectConfigurationId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AdvancedRoutingMapId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -29,7 +29,7 @@ New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> [-P
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>] [-UrlPathMap <PSApplicationGatewayUrlPathMap>]
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AdvancedRoutingMap <PSApplicationGatewayAdvancedRoutingMap>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +45,36 @@ $Rule = New-AzApplicationGatewayRequestRoutingRule -Name "Rule01" -RuleType Basi
 This command creates a basic request routing rule named Rule01 and stores the result in the variable named $Rule.
 
 ## PARAMETERS
+
+### -AdvancedRoutingMap
+Application gateway AdvancedRoutingMap. Applicable when RuleType is AdvancedRouting
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingMap
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdvancedRoutingMapId
+ID of the application gateway AdvancedRoutingMap. Applicable when RuleType is AdvancedRouting
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackendAddressPool
 Specifies the back-end address pool, as an object, for the request routing rule to create.
@@ -248,7 +278,7 @@ Specifies type of the request routing rule.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, PathBasedRouting
+Accepted values: Basic, PathBasedRouting, AdvancedRouting
 
 Required: True
 Position: Named
