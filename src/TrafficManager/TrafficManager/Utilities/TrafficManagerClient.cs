@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
     using Management.TrafficManager;
     using Management.TrafficManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Rest.Azure;
     using Models;
     using System;
     using System.Collections;
@@ -167,15 +168,36 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public TrafficManagerProfile[] ListTrafficManagerProfiles(string resourceGroupName = null)
         {
-            IEnumerable<Profile> response =
-                resourceGroupName == null ?
-                this.TrafficManagerManagementClient.Profiles.ListBySubscription() :
-                this.TrafficManagerManagementClient.Profiles.ListByResourceGroup(resourceGroupName);
+            IList<Profile> response =
+                resourceGroupName == null
+                    ? ListPaged(
+                        () => this.TrafficManagerManagementClient.Profiles.ListBySubscription(),
+                        nextPageLink => this.TrafficManagerManagementClient.Profiles.ListBySubscriptionNext(nextPageLink))
+                    : ListPaged(
+                        () => this.TrafficManagerManagementClient.Profiles.ListByResourceGroup(resourceGroupName),
+                        nextPageLink => this.TrafficManagerManagementClient.Profiles.ListByResourceGroupNext(nextPageLink));
 
             return response.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(
                 resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id),
                 profile.Name,
                 profile)).ToArray();
+        }
+
+        internal static IList<T> ListPaged<T>(
+            Func<IPage<T>> listFirstPage,
+            Func<string, IPage<T>> listNextPage)
+        {
+            var results = new List<T>();
+            IPage<T> page = listFirstPage();
+            results.AddRange(page);
+
+            while (!string.IsNullOrEmpty(page.NextPageLink))
+            {
+                page = listNextPage(page.NextPageLink);
+                results.AddRange(page);
+            }
+
+            return results;
         }
 
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
