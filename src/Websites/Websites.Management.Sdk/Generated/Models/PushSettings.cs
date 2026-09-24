@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="dynamicTagsJson">Gets or sets a JSON string containing a list of dynamic tags that will be
         /// evaluated from user claims in the push registration endpoint.
         /// </param>
-        public PushSettings(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? isPushEnabled = default(bool?), string tagWhitelistJson = default(string), string tagsRequiringAuth = default(string), string dynamicTagsJson = default(string))
+        public PushSettings(bool isPushEnabled, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string tagWhitelistJson = default(string), string tagsRequiringAuth = default(string), string dynamicTagsJson = default(string))
 
         : base(id, name, kind, type)
         {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isPushEnabled")]
-        public bool? IsPushEnabled {get; set; }
+        public bool IsPushEnabled {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets a JSON string containing a list of tags that are
@@ -101,5 +101,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dynamicTagsJson")]
         public string DynamicTagsJson {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+        }
     }
 }
