@@ -137,6 +137,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Config File Format
+
+```json
+{
+    "action": "PerfDataCollection",
+    "outputFolder": "C:\\Output",
+    "perfQueryIntervalInSec": 30,
+    "staticQueryIntervalInSec": 60,
+    "numberOfIterations": 20,
+    "sqlConnectionStrings": [
+        "Data Source=<SERVER_NAME>;Initial Catalog=<DATABASE_NAME>;User ID=<USERNAME>;Password=<PASSWORD>;TrustServerCertificate=True;Encrypt=True"
+    ]
+}
+```
+
 ### -NumberOfIterations
 Number of iterations of performance data collection to perform before persisting to file.
 For example, with default values, performance data will be persisted every 30 seconds * 20 iterations = 10 minutes.
