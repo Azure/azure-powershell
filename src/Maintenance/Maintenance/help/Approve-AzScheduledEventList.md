@@ -27,7 +27,7 @@ For HTTP 200, the cmdlet returns a ScheduledEvents approval response.
 The service can return HTTP 207 Multi-Status with per-event results, including when all requested events cannot be found.
 For that response, the cmdlet returns a structured object containing `Error.Code`, `Error.Message`, and `Error.Details`. Each detail contains the service-supplied `Target`, `Code`, and `Message` for an event.
 The default console view renders the multi-status response as JSON, but the pipeline receives a structured object that can be inspected or filtered.
-For other non-success responses, the cmdlet returns a structured error response containing the service-defined code and message.
+For other non-success responses, the cmdlet raises a terminating PowerShell error displaying the HTTP status name followed by indented service error JSON.
 
 ## EXAMPLES
 

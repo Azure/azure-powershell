@@ -23,7 +23,7 @@ Approve-AzScheduledEvent [-ResourceGroupName] <String> [-ResourceType] <String> 
 
 Approves an event in the ScheduledEvents for a virtual machine, virtual machine scale set, or availability set.
 On success, the cmdlet returns a ScheduledEvents approval response.
-For other non-success responses, raises a status-specific CLI error displaying the HTTP status heading followed by the formatted service JSON
+For non-success responses, the cmdlet raises a terminating PowerShell error displaying the HTTP status name followed by indented service error JSON.
 
 ## EXAMPLES
 
@@ -57,8 +57,25 @@ Approve-AzScheduledEvent: NotFound
 }
 ```
 
-Attempts to approve a ScheduledEvents entry and displays the non-success response as JSON.
-The pipeline value remains a structured object whose code and message are available through `$response.Error.Code` and `$response.Error.Message`.
+Attempts to approve an event that the service cannot find and raises a terminating PowerShell error for HTTP 404 Not Found.
+Use `try`/`catch`, as shown below, to inspect the error.
+
+### Example 3: Catch and inspect a service error
+
+```powershell
+try {
+  Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
+}
+catch {
+  $_.Exception.Body.Error.Code
+  $_.Exception.Body.Error.Message
+  $_.ErrorDetails.Message
+}
+```
+
+Catches the terminating error when the event cannot be found. Inside `catch`, `$_` is the PowerShell error record, and `Exception` retains the original SDK exception.
+`$_.Exception.Body.Error` contains the structured service error when the service provides an error body.
+`$_.ErrorDetails.Message` contains the HTTP status name followed by the formatted service JSON, or the exception message when no usable service error body is available.
 
 ## PARAMETERS
 
