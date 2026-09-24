@@ -37,7 +37,7 @@ Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -InputObject $env
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentOperation
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironmentOperation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation
 #>
 function Get-AzDevCenterUserEnvironmentOperation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentOperation])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironmentOperation])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

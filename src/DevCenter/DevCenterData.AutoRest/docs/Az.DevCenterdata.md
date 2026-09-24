@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DevCenterdata
-Module Guid: 576e805a-074a-4654-95e0-396a623c0868
+Module Guid: dd6b6cde-459a-4b83-890a-342dd77d2a15
 Download Help Link: https://learn.microsoft.com/powershell/module/az.devcenterdata
 Help Version: 1.0.0.0
 Locale: en-US

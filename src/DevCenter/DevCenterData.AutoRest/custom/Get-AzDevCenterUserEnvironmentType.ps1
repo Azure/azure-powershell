@@ -27,7 +27,7 @@ Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProjec
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentType])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironmentType])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

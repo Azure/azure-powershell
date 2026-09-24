@@ -37,7 +37,7 @@ Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterusercatalog
 #>
 function Get-AzDevCenterUserCatalog {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICatalog])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICatalog])]
   [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
   param(
     [Parameter(ParameterSetName = 'Get', Mandatory)]
