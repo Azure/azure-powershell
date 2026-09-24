@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </param>
 
         /// <param name="recordType">When record type is set, a traffic manager profile will allow only
-        /// endpoints that match this type. If it is not set, traffic manager
-        /// profile will allow adding all types of endpoints. It is returned
-        /// as null when this is not set.
+        /// endpoints that match this type. If it is not set, traffic manager profile
+        /// will allow adding all types of endpoints. It is returned as null when this
+        /// is not set.
         /// Possible values include: &#39;A&#39;, &#39;AAAA&#39;, &#39;CNAME&#39;</param>
 
         /// <param name="trafficRoutingMethod">The traffic routing method of the Traffic Manager profile.
@@ -116,7 +116,9 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <summary>
         /// Gets or sets when record type is set, a traffic manager profile will allow
-        /// only endpoints that match this type. Possible values include: &#39;A&#39;, &#39;AAAA&#39;, &#39;CNAME&#39;
+        /// only endpoints that match this type. If it is not set, traffic manager
+        /// profile will allow adding all types of endpoints. It is returned as null
+        /// when this is not set. Possible values include: &#39;A&#39;, &#39;AAAA&#39;, &#39;CNAME&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.recordType")]
         public string RecordType {get; set; }
