@@ -1,0 +1,222 @@
+{
+  "Remove-AzMonitorHealthModelDiscoveryRule+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"Delete discovery rule\",\n    \"authenticationSetting\": \"azps-auth-shared-a9skjo\",\n    \"discoverRelationships\": \"Disabled\",\n    \"addRecommendedSignals\": \"Enabled\",\n    \"specification\": {\n      \"kind\": \"ResourceGraphQuery\",\n      \"resourceGraphQuery\": \"resources | where isnotempty(id) | project id | take 1\"\n    },\n    \"addResourceHealthSignal\": \"Disabled\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "399" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000211" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000212" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000213" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052602Z:00000000-0000-4000-8000-000000000213" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E30DC18210D74B8CA537F6D3D9FEFADF Ref B: GVA201070812029 Ref C: 2026-09-10T05:26:02Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:26:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "931" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo\",\"name\":\"azps-disc-delete-a9skjo\",\"type\":\"microsoft.cloudhealth/healthmodels/discoveryrules\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:26:02.4545346Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:26:02.4545346Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Delete discovery rule\",\"authenticationSetting\":\"azps-auth-shared-a9skjo\",\"discoverRelationships\":\"Disabled\",\"addRecommendedSignals\":\"Enabled\",\"addResourceHealthSignal\":\"Disabled\",\"specification\":{\"kind\":\"ResourceGraphQuery\",\"resourceGraphQuery\":\"resources | where isnotempty(id) | project id | take 1\"},\"entityName\":\"azps-disc-delete-a9skjo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelDiscoveryRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000214" ],
+        "CommandName": [ "New-AzMonitorHealthModelDiscoveryRule" ],
+        "FullCommandName": [ "New-AzMonitorHealthModelDiscoveryRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000215" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000216" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000217" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052633Z:00000000-0000-4000-8000-000000000217" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 36D3176D974F4F5A82790F05A4B2C4BF Ref B: GVA201070812029 Ref C: 2026-09-10T05:26:33Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:26:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1136" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo\",\"name\":\"azps-disc-delete-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/discoveryrules\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:26:02.4545346Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:26:02.6728959Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Delete discovery rule\",\"authenticationSetting\":\"azps-auth-shared-a9skjo\",\"discoverRelationships\":\"Disabled\",\"addRecommendedSignals\":\"Enabled\",\"addResourceHealthSignal\":\"Disabled\",\"specification\":{\"kind\":\"ResourceGraphQuery\",\"resourceGraphQuery\":\"resources | where isnotempty(id) | project id | take 1\"},\"error\":{\"message\":\"Access denied (HTTP 403) running the discovery rule\u0027s Azure Resource Graph query. Grant the managed identity Reader on the queried scope (or Service Group Reader on a Service Group).\"},\"entityName\":\"azps-disc-delete-a9skjo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelDiscoveryRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000214" ],
+        "CommandName": [ "New-AzMonitorHealthModelDiscoveryRule" ],
+        "FullCommandName": [ "New-AzMonitorHealthModelDiscoveryRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000218" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000219" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000220" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052634Z:00000000-0000-4000-8000-000000000220" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1F7148F24C4146538F682A9AE5D48C0B Ref B: GVA201070812029 Ref C: 2026-09-10T05:26:34Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:26:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1136" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo\",\"name\":\"azps-disc-delete-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/discoveryrules\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:26:02.4545346Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:26:02.6728959Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Delete discovery rule\",\"authenticationSetting\":\"azps-auth-shared-a9skjo\",\"discoverRelationships\":\"Disabled\",\"addRecommendedSignals\":\"Enabled\",\"addResourceHealthSignal\":\"Disabled\",\"specification\":{\"kind\":\"ResourceGraphQuery\",\"resourceGraphQuery\":\"resources | where isnotempty(id) | project id | take 1\"},\"error\":{\"message\":\"Access denied (HTTP 403) running the discovery rule\u0027s Azure Resource Graph query. Grant the managed identity Reader on the queried scope (or Service Group Reader on a Service Group).\"},\"entityName\":\"azps-disc-delete-a9skjo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelDiscoveryRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000221" ],
+        "CommandName": [ "Remove-AzMonitorHealthModelDiscoveryRule" ],
+        "FullCommandName": [ "Remove-AzMonitorHealthModelDiscoveryRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000222" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000223" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000224" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052634Z:00000000-0000-4000-8000-000000000224" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 30C38E98C12748DE9ACC82BBD8A6D7F0 Ref B: GVA201070812029 Ref C: 2026-09-10T05:26:34Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:26:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelDiscoveryRule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/discoveryrules/azps-disc-delete-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "91" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000225" ],
+        "CommandName": [ "Get-AzMonitorHealthModelDiscoveryRule" ],
+        "FullCommandName": [ "Get-AzMonitorHealthModelDiscoveryRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000226" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000227" ],
+        "x-ms-error-code": [ "DiscoveryRuleNotFound" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000228" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052635Z:00000000-0000-4000-8000-000000000228" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7A2FB6EB49BA48169A7E22A0E6682B04 Ref B: GVA201070812029 Ref C: 2026-09-10T05:26:35Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:26:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "112" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"DiscoveryRuleNotFound\",\"message\":\"Discovery rule was not found (\u0027azps-disc-delete-a9skjo\u0027).\"}}",
+      "isContentBase64": false
+    }
+  }
+}
