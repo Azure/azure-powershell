@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 * Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
 * Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the client certificate verification mode (`Strict` or `Passthrough`) for Application Gateway frontend mutual TLS (mTLS). In `Passthrough` mode the client certificate is forwarded to the backend without being verified by the application gateway.
 * Upgraded Network SDK to API version `2026-01-01`.
