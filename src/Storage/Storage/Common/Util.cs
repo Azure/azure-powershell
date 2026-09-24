@@ -487,20 +487,48 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 if (blobType == null)
                 {
-                    blobClient = new BlobBaseClient(blobUri, options);
+                    if (context.Track2OauthToken != null)
+                    {
+                        blobClient = new BlobBaseClient(blobUri, context.Track2OauthToken, options);
+                    }
+                    else
+                    {
+                        blobClient = new BlobBaseClient(blobUri, options);
+                    }
                 }
                 else
                 {
                     switch (blobType.Value)
                     {
                         case global::Azure.Storage.Blobs.Models.BlobType.Page:
-                            blobClient = new PageBlobClient(blobUri, options);
+                            if (context.Track2OauthToken != null)
+                            {
+                                blobClient = new PageBlobClient(blobUri, context.Track2OauthToken, options);
+                            }
+                            else
+                            {
+                                blobClient = new PageBlobClient(blobUri, options);
+                            }
                             break;
                         case global::Azure.Storage.Blobs.Models.BlobType.Append:
-                            blobClient = new AppendBlobClient(blobUri, options);
+                            if (context.Track2OauthToken != null)
+                            {
+                                blobClient = new AppendBlobClient(blobUri, context.Track2OauthToken, options);
+                            }
+                            else
+                            {
+                                blobClient = new AppendBlobClient(blobUri, options);
+                            }
                             break;
                         default: //Block
-                            blobClient = new BlockBlobClient(blobUri, options);
+                            if (context.Track2OauthToken != null)
+                            {
+                                blobClient = new BlockBlobClient(blobUri, context.Track2OauthToken, options);
+                            }
+                            else
+                            {
+                                blobClient = new BlockBlobClient(blobUri, options);
+                            }
                             break;
                     }
                 }
@@ -525,11 +553,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string connectionString = context.ConnectionString;
 
                 // remove the "?" at the begin of SAS if any
+                bool withSasToken = false;
                 if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
                 {
+                    withSasToken = true;
                     connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
                 }
+
                 blobServiceClient = new BlobServiceClient(connectionString, options);
+
+                if (withSasToken && context.Track2OauthToken != null)
+                {
+                    blobServiceClient = new BlobServiceClient(blobServiceClient.Uri, context.Track2OauthToken, options);
+                }
             }
             return blobServiceClient;
         }
@@ -747,8 +783,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
                 {
                     connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                    shareServiceClient = new ShareServiceClient(connectionString, options);
+
+                    if (context.Track2OauthToken != null)
+                    {
+                        if (context.ShareTokenIntent != null)
+                        {
+                            options.ShareTokenIntent = context.ShareTokenIntent.Value;
+                        }
+                        shareServiceClient = new ShareServiceClient(shareServiceClient.Uri, context.Track2OauthToken, options);
+                    }
                 }
-                shareServiceClient = new ShareServiceClient(connectionString, options);
+                else
+                {
+                    shareServiceClient = new ShareServiceClient(connectionString, options);
+                }
             }
             return shareServiceClient;
         }
@@ -785,8 +834,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
                 {
                     connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                    queueServiceClient = new QueueServiceClient(connectionString, options);
+
+                    if (context != null && context.Track2OauthToken != null)
+                    {
+                        queueServiceClient = new QueueServiceClient(queueServiceClient.Uri, context.Track2OauthToken, options);
+                    }
                 }
-                queueServiceClient = new QueueServiceClient(connectionString, options);
+                else
+                {
+                    queueServiceClient = new QueueServiceClient(connectionString, options);
+                }
             }
             return queueServiceClient;
         }

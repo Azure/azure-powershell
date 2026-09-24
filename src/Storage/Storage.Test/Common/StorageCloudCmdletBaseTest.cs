@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         public void GetCloudStorageAccountFromContextTest()
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
-            command.Context = new AzureStorageContext(account);
+            command.Context = new AzureStorageContext(account, null, null, null);
             Assert.AreEqual(command.Context, command.GetCmdletStorageContext());
         }
 
@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         public void WriteObjectWithStorageContextWithContextTest()
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
-            command.Context = new AzureStorageContext(account);
+            command.Context = new AzureStorageContext(account, null, null, null);
 
             AzureStorageBase item = new AzureStorageBase();
             command.WriteObjectWithStorageContext(item);
@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         public void ShouldInitServiceChannelTest()
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
-            command.Context = new AzureStorageContext(account);
+            command.Context = new AzureStorageContext(account, null, null, null);
             string toss;
             Assert.IsFalse(command.TryGetStorageAccount(command.SMProfile, out toss));
         }
