@@ -30,6 +30,9 @@
     - Added the `ParanoiaLevel` property to the rules returned by `Get-AzApplicationGatewayAvailableWafRuleSet` and `Get-AzApplicationGatewayWafDynamicManifest`.
     - Added the `DisplayName` property to the rule sets returned by the same cmdlets.
     - Both properties are read-only and are populated from API version 2026-01-01 and later.
+* Added `SourceGeoLocation` and `DestinationGeoLocation` parameters to `New-AzFirewallPolicyNetworkRule` to support geographic location (ISO 3166-1 alpha-2 country code) filters in Firewall Policy network rules.
+    - Source types (`SourceAddress`, `SourceIpGroup`, `SourceGeoLocation`) are mutually exclusive.
+    - Destination types (`DestinationAddress`, `DestinationIpGroup`, `DestinationFqdn`, `DestinationGeoLocation`) are mutually exclusive.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
