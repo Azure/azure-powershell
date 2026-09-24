@@ -112,12 +112,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// <summary>Backing field for <see cref="ProtectionContainerName" /> property.</summary>
         private string _protectionContainerName;
 
-        /// <summary>The name of the container containing the protected item.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the container containing the protected item.")]
+        /// <summary>Protection container name.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Protection container name.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the container containing the protected item.",
+        Description = @"Protection container name.",
         SerializedName = @"protectionContainerName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Path)]
