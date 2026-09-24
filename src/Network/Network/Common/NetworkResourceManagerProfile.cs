@@ -1310,6 +1310,15 @@ namespace Microsoft.Azure.Commands.Network
                 // ExpressRouteCrossConnection
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCrossConnection, MNM.ExpressRouteCrossConnection>();
+                cfg.CreateMap<CNM.PSExpressRouteCrossConnectionPortMapping, MNM.PortMapping>();
+                cfg.CreateMap<MNM.MigrateExpressRouteCircuitValidateResponse, CNM.PSExpressRouteCircuitMigrationValidationResult>();
+                cfg.CreateMap<MNM.MigrateExpressRouteCircuitHealthCheckResponse, CNM.PSExpressRouteCircuitMigrationResult>();
+                cfg.CreateMap<MNM.MigrateExpressRouteCircuitHealthCheckDetails, CNM.PSExpressRouteCircuitMigrationHealthDetails>();
+                cfg.CreateMap<MNM.PortMigrationInfo, CNM.PSExpressRouteCircuitMigrationPortInfo>();
+                cfg.CreateMap<MNM.PeeringHealth, CNM.PSExpressRouteCircuitMigrationPeeringHealth>();
+                cfg.CreateMap<MNM.PeeringStats, CNM.PSExpressRouteCircuitMigrationPeeringStats>();
+                cfg.CreateMap<MNM.SourcePortStats, CNM.PSExpressRouteCircuitMigrationSourcePortStats>();
+                cfg.CreateMap<MNM.Metric, CNM.PSExpressRouteCircuitMigrationMetric>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitReference, MNM.ExpressRouteCircuitReference>();
                 cfg.CreateMap<CNM.PSExpressRouteCrossConnectionPeering, MNM.ExpressRouteCrossConnectionPeering>()
                     .ForMember(

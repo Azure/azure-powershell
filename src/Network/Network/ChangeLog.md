@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
+    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
+    - Added `New-AzExpressRouteCrossConnectionPortMapping` to construct source-to-target port mappings. Migration actions support confirmation, WhatIf, and background jobs.
+    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 * Added First Party Service Tag association support to IP tags used by `New-AzPublicIpPrefix`.
 * Added support for provisioning an ExpressRoute circuit on an `ExpressRouteLag` resource (Microsoft.Network 2026-01-01 API).
     - Added `-ExpressRouteLag` to `New-AzExpressRouteCircuit` to reference the target `ExpressRouteLag` resource when creating the circuit.
