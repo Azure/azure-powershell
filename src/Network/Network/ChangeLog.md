@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added First Party Service Tag association support to IP tags used by `New-AzPublicIpPrefix`.
 * Added support for provisioning an ExpressRoute circuit on an `ExpressRouteLag` resource (Microsoft.Network 2026-01-01 API).
     - Added `-ExpressRouteLag` to `New-AzExpressRouteCircuit` to reference the target `ExpressRouteLag` resource when creating the circuit.
     - Added the read-only `Circuits` property to the `PSExpressRouteLag` output, listing the ExpressRoute circuit(s) provisioned on the ExpressRouteLag.
