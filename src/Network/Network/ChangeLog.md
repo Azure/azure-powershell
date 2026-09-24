@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed VirtualNetworkGateway command lets to fetch radius secrets before calling PUT on gateway.
 * Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
     - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
     - Added `New-AzExpressRouteCrossConnectionPortMapping` to construct source-to-target port mappings. Migration actions support confirmation, WhatIf, and background jobs.

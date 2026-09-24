@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.Network
 
             this.VirtualNetworkGateway.GatewayDefaultSite = new PSResourceId();
             this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
+            
+            // For VPN VirtualNetworkGateway with P2SVpnClientConfiguration set, fetch Radius server secrets using new Post API and backfill before calling PUT.
+            this.BackfillRadiusServerSecrets(this.VirtualNetworkGateway);
 
             // Map to the sdk object
             var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
