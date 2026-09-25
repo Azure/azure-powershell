@@ -28,14 +28,14 @@ For information on how to develop for `Az.FrontDoor`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 3a617d58ce1d84caade01a3a682ec5c06a9088d9
+commit: 5d1343f93a5bb718e76ee017aa175cf8a697cb73
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/FrontDoor/stable/2025-11-01/openapi.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/FrontDoor/stable/2026-04-01/openapi.json
 
 try-require: 
   - $(repo)/specification/xxx/resource-manager/readme.powershell.md
