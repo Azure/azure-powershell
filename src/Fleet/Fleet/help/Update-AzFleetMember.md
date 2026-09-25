@@ -15,7 +15,7 @@ Update a FleetMember
 ### UpdateExpanded (Default)
 ```
 Update-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-IfMatch <String>] [-Group <String>] [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,13 +36,13 @@ Update-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <Stri
 ### UpdateViaIdentityFleetExpanded
 ```
 Update-AzFleetMember -Name <String> -FleetInputObject <IFleetIdentity> [-IfMatch <String>] [-Group <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFleetMember -InputObject <IFleetIdentity> [-IfMatch <String>] [-Group <String>]
+Update-AzFleetMember -InputObject <IFleetIdentity> [-IfMatch <String>] [-Group <String>] [-Label <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -240,6 +240,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Label
+The labels for the fleet member.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFleetExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Fleet member resource.
 
@@ -288,6 +303,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
