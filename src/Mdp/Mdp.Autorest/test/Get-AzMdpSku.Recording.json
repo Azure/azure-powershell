@@ -1,8 +1,8 @@
 {
-  "Get-AzMdpSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/locations/westus/skus?api-version=2024-10-19+1": {
+  "Get-AzMdpSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/locations/westus/skus?api-version=2026-07-03-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/locations/westus/skus?api-version=2024-10-19",
+      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/locations/westus/skus?api-version=2026-07-03-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

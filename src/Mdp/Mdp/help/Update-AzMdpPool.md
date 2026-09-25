@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMdpPool
 
 ## SYNOPSIS
-update a Pool
+Update a Pool
 
 ## SYNTAX
 
@@ -17,9 +17,10 @@ update a Pool
 Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>]
  [-EnableSystemAssignedIdentity <Boolean>] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
+ [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -34,9 +35,9 @@ Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
  [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity <Boolean>]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ProvisioningState <String>] [-RuntimeConfigurationWorkFolder <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -46,7 +47,7 @@ Update-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-update a Pool
+Update a Pool
 
 ## EXAMPLES
 
@@ -275,6 +276,21 @@ Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeConfigurationWorkFolder
+The target work folder of the task agent on the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
