@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface ICredentialOperations
     {
         /// <summary>
-        /// Delete the credential.
+        /// Retrieve a list of credentials.
         /// </summary>
         /// <remarks>
-        /// Delete the credential.
+        /// Retrieve a list of credentials.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
-        /// </param>
-        /// <param name='credentialName'>
-        /// The name of credential.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string credentialName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Credential>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve the credential identified by credential name.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve the credential identified by credential name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -75,13 +75,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Create a credential.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='credentialName'>
-        /// The parameters supplied to the create or update credential operation.
+        /// The name of credential.
         /// </param>
         /// <param name='parameters'>
         /// The parameters supplied to the create or update credential operation.
@@ -107,13 +107,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Update a credential.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='credentialName'>
-        /// The parameters supplied to the Update credential operation.
+        /// The name of credential.
         /// </param>
         /// <param name='parameters'>
         /// The parameters supplied to the Update credential operation.
@@ -133,16 +133,19 @@ namespace Microsoft.Azure.Management.Automation
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Credential>> UpdateWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string credentialName, CredentialUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieve a list of credentials.
+        /// Delete the credential.
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of credentials.
+        /// Delete the credential.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='credentialName'>
+        /// The name of credential.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -153,10 +156,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Credential>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string credentialName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve a list of credentials.

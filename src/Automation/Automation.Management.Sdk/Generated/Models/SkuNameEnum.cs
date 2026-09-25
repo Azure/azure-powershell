@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class SkuNameEnum
     {
+        /// <summary>
+        /// Free
+        /// </summary>
         public const string Free = "Free";
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
     }
 }

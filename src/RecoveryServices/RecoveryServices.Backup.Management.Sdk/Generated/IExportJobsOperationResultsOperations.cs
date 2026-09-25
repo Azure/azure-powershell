@@ -15,25 +15,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Gets the operation result of operation triggered by Export Jobs API. If the
-        /// operation is successful, then it also contains URL of a Blob and a SAS key
-        /// to access the same. The blob contains exported jobs in JSON serialized
-        /// format.
+        /// operation is successful, then it also
+        /// contains URL of a Blob and a SAS key to access the same. The blob contains
+        /// exported jobs in JSON serialized format.
         /// </summary>
         /// <remarks>
         /// Gets the operation result of operation triggered by Export Jobs API. If the
-        /// operation is successful, then it also contains URL of a Blob and a SAS key
-        /// to access the same. The blob contains exported jobs in JSON serialized
-        /// format.
+        /// operation is successful, then it also
+        /// contains URL of a Blob and a SAS key to access the same. The blob contains
+        /// exported jobs in JSON serialized format.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the export job.
+        /// The name of the JobResource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationResultInfoBaseResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationResultInfoBaseResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

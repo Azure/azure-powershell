@@ -14,10 +14,10 @@ namespace Microsoft.Azure.Management.WebSites
     public partial interface IAppServiceCertificateOrdersOperations
     {
         /// <summary>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AppServiceCertificateOrder>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Validate information for a certificate order.
+        /// Validate information for a certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Validate information for a certificate order.
+        /// Validate information for a certificate order.
         /// </remarks>
         /// <param name='appServiceCertificateOrder'>
         /// Information for a certificate order.
@@ -54,10 +54,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ValidatePurchaseInformationWithHttpMessagesAsync(AppServiceCertificateOrder appServiceCertificateOrder, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AppServiceCertificateOrder>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get a certificate order.
+        /// Get a certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Get a certificate order.
+        /// Get a certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -103,10 +103,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateOrder>> GetWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -132,10 +132,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateOrder>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, AppServiceCertificateOrder certificateDistinguishedName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete an existing certificate order.
+        /// Delete an existing certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Delete an existing certificate order.
+        /// Delete an existing certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -155,10 +155,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -184,10 +184,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateOrder>> UpdateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, AppServiceCertificateOrderPatchResource certificateDistinguishedName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -210,10 +210,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AppServiceCertificateResource>>> ListCertificatesWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get the certificate associated with a certificate order.
+        /// Get the certificate associated with a certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Get the certificate associated with a certificate order.
+        /// Get the certificate associated with a certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -239,12 +239,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateResource>> GetCertificateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <remarks>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -273,10 +271,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateResource>> CreateOrUpdateCertificateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, string name, AppServiceCertificateResource keyVaultCertificate, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete the certificate associated with a certificate order.
+        /// Delete the certificate associated with a certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Delete the certificate associated with a certificate order.
+        /// Delete the certificate associated with a certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -299,12 +297,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteCertificateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <remarks>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -333,10 +329,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateResource>> UpdateCertificateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, string name, AppServiceCertificatePatchResource keyVaultCertificate, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Reissue an existing certificate order.
+        /// Reissue an existing certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Reissue an existing certificate order.
+        /// Reissue an existing certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -359,10 +355,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ReissueWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, ReissueCertificateOrderRequest reissueCertificateOrderRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Renew an existing certificate order.
+        /// Renew an existing certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Renew an existing certificate order.
+        /// Renew an existing certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -385,10 +381,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RenewWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, RenewCertificateOrderRequest renewCertificateOrderRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Resend certificate email.
+        /// Resend certificate email.
         /// </summary>
         /// <remarks>
-        /// Description for Resend certificate email.
+        /// Resend certificate email.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -408,10 +404,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ResendEmailWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -434,10 +430,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ResendRequestEmailsWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, NameIdentifier nameIdentifier, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -463,10 +459,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SiteSeal>> RetrieveSiteSealWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, SiteSealRequest siteSealRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -486,10 +482,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> VerifyDomainOwnershipWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Retrieve the list of certificate actions.
+        /// Retrieve the list of certificate actions.
         /// </summary>
         /// <remarks>
-        /// Description for Retrieve the list of certificate actions.
+        /// Retrieve the list of certificate actions.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -512,10 +508,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<CertificateOrderAction>>> RetrieveCertificateActionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Retrieve email history.
+        /// Retrieve email history.
         /// </summary>
         /// <remarks>
-        /// Description for Retrieve email history.
+        /// Retrieve email history.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -538,10 +534,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<CertificateEmail>>> RetrieveCertificateEmailHistoryWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <remarks>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -567,12 +563,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateOrder>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, AppServiceCertificateOrder certificateDistinguishedName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <remarks>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -601,10 +595,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServiceCertificateResource>> BeginCreateOrUpdateCertificateWithHttpMessagesAsync(string resourceGroupName, string certificateOrderName, string name, AppServiceCertificateResource keyVaultCertificate, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </summary>
         /// <remarks>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -624,10 +618,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AppServiceCertificateOrder>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </summary>
         /// <remarks>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -647,10 +641,10 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AppServiceCertificateOrder>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </summary>
         /// <remarks>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

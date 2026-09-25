@@ -18,68 +18,104 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.TrackedResource();
 
+        /// <summary>Azure Resource ID of the Storage account to use for Customer Data storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string CustomerDataStorageAccountResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).CustomerDataStorageAccountResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).CustomerDataStorageAccountResourceId = value ?? null; }
+
+        /// <summary>Name of the Azure Blob Storage container to use or create.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string CustomerDataStorageBlobContainerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).CustomerDataStorageBlobContainerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).CustomerDataStorageBlobContainerName = value ?? null; }
+
         /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity _identity;
+        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity _identity;
 
-        /// <summary>The identity of the experiment resource.</summary>
+        /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentity()); set => this._identity = value; }
-
-        /// <summary>GUID that represents the principal ID of this resource identity.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).PrincipalId; }
-
-        /// <summary>GUID that represents the tenant ID of this resource identity.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).TenantId; }
-
-        /// <summary>String of the resource identity type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).Type = value ?? null; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
         /// <summary>
-        /// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource
-        /// ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
+
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
+
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
+
+        /// <summary>Internal Acessors for CustomerDataStorage</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICustomerDataStorageProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.CustomerDataStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).CustomerDataStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).CustomerDataStorage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentity()); set { {_identity = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).ProvisioningState = value; }
-
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemData()); set { {_systemData = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
@@ -102,42 +138,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>List of selectors.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector> Selector { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Selector; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Selector = value ; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector> Selector { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Selector; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Selector = value ; }
 
         /// <summary>List of steps.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep> Step { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Step; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Step = value ; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep> Step { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Step; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)Property).Step = value ; }
 
-        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData _systemData;
-
-        /// <summary>The system metadata of the experiment resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemData()); }
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
@@ -172,43 +207,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResource
     {
-        /// <summary>GUID that represents the principal ID of this resource identity.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"GUID that represents the principal ID of this resource identity.",
-        SerializedName = @"principalId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityPrincipalId { get;  }
-        /// <summary>GUID that represents the tenant ID of this resource identity.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"GUID that represents the tenant ID of this resource identity.",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityTenantId { get;  }
-        /// <summary>String of the resource identity type.</summary>
+        /// <summary>Azure Resource ID of the Storage account to use for Customer Data storage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"String of the resource identity type.",
-        SerializedName = @"type",
+        Description = @"Azure Resource ID of the Storage account to use for Customer Data storage.",
+        SerializedName = @"storageAccountResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
-        string IdentityType { get; set; }
+        string CustomerDataStorageAccountResourceId { get; set; }
+        /// <summary>Name of the Azure Blob Storage container to use or create.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Azure Blob Storage container to use or create.",
+        SerializedName = @"blobContainerName",
+        PossibleTypes = new [] { typeof(string) })]
+        string CustomerDataStorageBlobContainerName { get; set; }
         /// <summary>
-        /// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource
-        /// ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityPrincipalId { get;  }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityTenantId { get;  }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -216,7 +264,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) })]
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
@@ -230,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Description = @"Most recent provisioning state for the given experiment resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
         string ProvisioningState { get;  }
         /// <summary>List of selectors.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
@@ -241,8 +305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Update = true,
         Description = @"List of selectors.",
         SerializedName = @"selectors",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector> Selector { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector> Selector { get; set; }
         /// <summary>List of steps.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = true,
@@ -252,121 +316,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Update = true,
         Description = @"List of steps.",
         SerializedName = @"steps",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep> Step { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataCreatedAt { get;  }
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataCreatedBy { get;  }
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get;  }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource last modification (UTC)",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataLastModifiedAt { get;  }
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataLastModifiedBy { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep> Step { get; set; }
 
     }
     /// Model that represents a Experiment resource.
     internal partial interface IExperimentInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITrackedResourceInternal
     {
-        /// <summary>The identity of the experiment resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity Identity { get; set; }
-        /// <summary>GUID that represents the principal ID of this resource identity.</summary>
+        /// <summary>
+        /// Optional customer-managed Storage account where Experiment schema will be stored.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICustomerDataStorageProperties CustomerDataStorage { get; set; }
+        /// <summary>Azure Resource ID of the Storage account to use for Customer Data storage.</summary>
+        string CustomerDataStorageAccountResourceId { get; set; }
+        /// <summary>Name of the Azure Blob Storage container to use or create.</summary>
+        string CustomerDataStorageBlobContainerName { get; set; }
+        /// <summary>The managed service identities assigned to this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity Identity { get; set; }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         string IdentityPrincipalId { get; set; }
-        /// <summary>GUID that represents the tenant ID of this resource identity.</summary>
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
         string IdentityTenantId { get; set; }
-        /// <summary>String of the resource identity type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         string IdentityType { get; set; }
         /// <summary>
-        /// The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource
-        /// ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The properties of the experiment resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentProperties Property { get; set; }
         /// <summary>Most recent provisioning state for the given experiment resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
         string ProvisioningState { get; set; }
         /// <summary>List of selectors.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector> Selector { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector> Selector { get; set; }
         /// <summary>List of steps.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep> Step { get; set; }
-        /// <summary>The system metadata of the experiment resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData SystemData { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        global::System.DateTime? SystemDataCreatedAt { get; set; }
-        /// <summary>The identity that created the resource.</summary>
-        string SystemDataCreatedBy { get; set; }
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get; set; }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
-        /// <summary>The identity that last modified the resource.</summary>
-        string SystemDataLastModifiedBy { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep> Step { get; set; }
 
     }
 }

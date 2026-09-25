@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             var deployment = new Management.Internal.Resources.Models.Deployment
             {
-                Properties = new DeploymentProperties
+                Properties = new Management.Internal.Resources.Models.DeploymentProperties
                 {
                     Mode = DeploymentMode.Incremental,
                     Template = template

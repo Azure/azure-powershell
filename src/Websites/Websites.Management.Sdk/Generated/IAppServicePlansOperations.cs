@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all App Service plans in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates or updates an App Service Plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -114,30 +114,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServicePlan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServicePlan appServicePlan, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Description for Delete an App Service plan.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete an App Service plan.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service plan.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServicePlan,AppServicePlansCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServicePlan appServicePlan, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Creates or updates an App Service Plan.
@@ -146,7 +123,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Creates or updates an App Service Plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -169,13 +146,36 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServicePlan>> UpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServicePlanPatchResource appServicePlan, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Delete an App Service plan.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete an App Service plan.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for List all capabilities of an App Service plan.
         /// </summary>
         /// <remarks>
         /// Description for List all capabilities of an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -195,13 +195,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<Capability>>> ListCapabilitiesWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Get the RDP password for an IsCustomMode ServerFarm.
+        /// </summary>
+        /// <remarks>
+        /// Description for Get the RDP password for an IsCustomMode ServerFarm.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerFarmRdpDetails>> GetServerFarmRdpPasswordWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Retrieve a Hybrid Connection in use in an App Service plan.
         /// </summary>
         /// <remarks>
         /// Description for Retrieve a Hybrid Connection in use in an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -233,7 +259,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Delete a Hybrid Connection in use in an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -262,16 +288,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get the send key name and value of a Hybrid Connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
         /// <param name='namespaceName'>
-        /// The name of the Service Bus namespace.
+        /// Name of the Service Bus namespace.
         /// </param>
         /// <param name='relayName'>
-        /// The name of the Service Bus relay.
+        /// Name of the Service Bus relay.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -296,16 +322,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// Plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
         /// <param name='namespaceName'>
-        /// Name of the Hybrid Connection namespace.
+        /// Name of the Service Bus namespace.
         /// </param>
         /// <param name='relayName'>
-        /// Name of the Hybrid Connection relay.
+        /// Name of the Service Bus relay.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -330,7 +356,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -358,7 +384,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -378,13 +404,39 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<HybridConnection>>> ListHybridConnectionsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Get the instance details for an app service plan.
+        /// </summary>
+        /// <remarks>
+        /// Description for Get the instance details for an app service plan.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerFarmInstanceDetails>> GetServerFarmInstanceDetailsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Restart all apps in an App Service plan.
         /// </summary>
         /// <remarks>
         /// Description for Restart all apps in an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -412,7 +464,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all apps associated with an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -451,10 +503,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets all selectable SKUs for a given App Service Plan
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of App Service Plan
+        /// Name of the App Service plan.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -477,10 +529,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Gets server farm usage information
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of App Service Plan
+        /// Name of the App Service plan.
         /// </param>
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms to
@@ -510,7 +562,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -527,7 +579,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VnetInfo>>> ListVnetsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<VnetInfoResource>>> ListVnetsWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get a Virtual Network associated with an App Service plan.
@@ -536,7 +588,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get a Virtual Network associated with an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -556,7 +608,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfo>> GetVnetFromServerFarmWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetInfoResource>> GetVnetFromServerFarmWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get a Virtual Network gateway.
@@ -565,7 +617,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get a Virtual Network gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -597,7 +649,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Update a Virtual Network gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -634,7 +686,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// in an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -663,7 +715,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get a Virtual Network route in an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -697,7 +749,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -726,35 +778,6 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetRoute>> CreateOrUpdateVnetRouteWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string routeName, VnetRoute route, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Description for Delete a Virtual Network route in an App Service plan.
-        /// </summary>
-        /// <remarks>
-        /// Description for Delete a Virtual Network route in an App Service plan.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service plan.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of the Virtual Network.
-        /// </param>
-        /// <param name='routeName'>
-        /// Name of the Virtual Network route.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteVnetRouteWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string routeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Description for Create or update a Virtual Network route in an App Service
         /// plan.
         /// </summary>
@@ -763,7 +786,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -792,16 +815,45 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VnetRoute>> UpdateVnetRouteWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string routeName, VnetRoute route, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Delete a Virtual Network route in an App Service plan.
+        /// </summary>
+        /// <remarks>
+        /// Description for Delete a Virtual Network route in an App Service plan.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the Virtual Network.
+        /// </param>
+        /// <param name='routeName'>
+        /// Name of the Virtual Network route.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteVnetRouteWithHttpMessagesAsync(string resourceGroupName, string name, string vnetName, string routeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Reboot a worker machine in an App Service plan.
         /// </summary>
         /// <remarks>
         /// Description for Reboot a worker machine in an App Service plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the App Service plan.
+        /// App Service plan.
         /// </param>
         /// <param name='workerName'>
         /// Name of worker machine, which typically starts with RD.
@@ -818,13 +870,42 @@ namespace Microsoft.Azure.Management.WebSites
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RebootWorkerWithHttpMessagesAsync(string resourceGroupName, string name, string workerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Description for Recycles a managed instance worker machine.
+        /// </summary>
+        /// <remarks>
+        /// Description for Recycles a managed instance worker machine.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// App Service plan.
+        /// </param>
+        /// <param name='workerName'>
+        /// Name of worker machine, which typically starts with RD.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Operation>> RecycleManagedInstanceWorkerWithHttpMessagesAsync(string resourceGroupName, string name, string workerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Description for Creates or updates an App Service Plan.
         /// </summary>
         /// <remarks>
         /// Description for Creates or updates an App Service Plan.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -844,7 +925,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServicePlan>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServicePlan appServicePlan, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AppServicePlan,AppServicePlansCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, AppServicePlan appServicePlan, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Description for Get all App Service plans for a subscription.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Used for getting ResourceHealthCheck settings.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ResourceHealthMetadata : ProxyOnlyResource
+    public partial class ResourceHealthMetadata : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ResourceHealthMetadata class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ResourceHealthMetadata class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="category">The category that the resource matches in the RHC Policy File
@@ -42,10 +48,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="signalAvailability">Is there a health signal for the resource
         /// </param>
-        public ResourceHealthMetadata(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string category = default(string), bool? signalAvailability = default(bool?))
+        public ResourceHealthMetadata(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string category = default(string), bool? signalAvailability = default(bool?))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.Category = category;
             this.SignalAvailability = signalAvailability;
             CustomInit();
@@ -56,6 +63,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets the category that the resource matches in the RHC Policy File

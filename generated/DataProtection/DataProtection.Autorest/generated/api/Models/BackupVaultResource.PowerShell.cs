@@ -152,6 +152,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("CostManagementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings) content.GetValueForProperty("CostManagementSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ResourceMoveDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceMoveDetailsTypeConverter.ConvertFrom);
@@ -183,6 +187,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("ReplicatedRegion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ReplicatedRegion = (System.Collections.Generic.List<string>) content.GetValueForProperty("ReplicatedRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ReplicatedRegion, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("CostManagementSettingGranularityLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel = (string) content.GetValueForProperty("CostManagementSettingGranularityLevel",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceMoveDetailOperationId"))
             {
@@ -361,6 +369,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("CostManagementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings) content.GetValueForProperty("CostManagementSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ResourceMoveDetail"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ResourceMoveDetail = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceMoveDetails) content.GetValueForProperty("ResourceMoveDetail",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ResourceMoveDetail, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceMoveDetailsTypeConverter.ConvertFrom);
@@ -392,6 +404,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("ReplicatedRegion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ReplicatedRegion = (System.Collections.Generic.List<string>) content.GetValueForProperty("ReplicatedRegion",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).ReplicatedRegion, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("CostManagementSettingGranularityLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel = (string) content.GetValueForProperty("CostManagementSettingGranularityLevel",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceInternal)this).CostManagementSettingGranularityLevel, global::System.Convert.ToString);
             }
             if (content.Contains("ResourceMoveDetailOperationId"))
             {

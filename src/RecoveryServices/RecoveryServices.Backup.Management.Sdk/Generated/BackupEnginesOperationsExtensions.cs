@@ -19,22 +19,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<BackupEngineBaseResource> List(this IBackupEnginesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEnginesQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEnginesQueryObject>), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<BackupEngineBaseResource> List(this IBackupEnginesOperations operations, string resourceGroupName, string vaultName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupEnginesOperations)operations).ListAsync(vaultName, resourceGroupName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupEnginesOperations)operations).ListAsync(resourceGroupName, vaultName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -44,15 +43,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
+        /// The name of the VaultResource
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -60,9 +58,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackupEngineBaseResource>> ListAsync(this IBackupEnginesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEnginesQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEnginesQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackupEngineBaseResource>> ListAsync(this IBackupEnginesOperations operations, string resourceGroupName, string vaultName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, vaultName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -73,25 +71,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='backupEngineName'>
         /// Name of the backup management server.
         /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static BackupEngineBaseResource Get(this IBackupEnginesOperations operations, string vaultName, string resourceGroupName, string backupEngineName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEngineQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEngineQueryObject>), string skipToken = default(string))
+        public static BackupEngineBaseResource Get(this IBackupEnginesOperations operations, string resourceGroupName, string vaultName, string backupEngineName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupEnginesOperations)operations).GetAsync(vaultName, resourceGroupName, backupEngineName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupEnginesOperations)operations).GetAsync(resourceGroupName, vaultName, backupEngineName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -100,18 +97,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='backupEngineName'>
         /// Name of the backup management server.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -119,9 +115,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupEngineBaseResource> GetAsync(this IBackupEnginesOperations operations, string vaultName, string resourceGroupName, string backupEngineName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEngineQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEngineQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupEngineBaseResource> GetAsync(this IBackupEnginesOperations operations, string resourceGroupName, string vaultName, string backupEngineName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, backupEngineName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, backupEngineName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -17,10 +17,11 @@ New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
  [-AzureMonitorAlertsForAllJobFailure <String>] [-CmkEncryptionKeyUri <String>] [-CmkEncryptionState <String>]
  [-CmkIdentityType <String>] [-CmkInfrastructureEncryption <String>] [-CmkUserAssignedIdentityId <String>]
- [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>]
- [-EnableSystemAssignedIdentity] [-ETag <String>] [-ImmutabilityState <String>] [-NoWait]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CostManagementGranularity <String>] [-CrossRegionRestoreState <String>]
+ [-CrossSubscriptionRestoreState <String>] [-DefaultProfile <PSObject>] [-EnableSystemAssignedIdentity]
+ [-ETag <String>] [-ImmutabilityState <String>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,6 +177,22 @@ Accept wildcard characters: False
 ### -CmkUserAssignedIdentityId
 This parameter is required if the identity type is UserAssigned.
 Add the user assigned managed identity id to be used which has access permissions to the Key Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CostManagementGranularity
+Cost Management Granularity of the vault.
+Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
 
 ```yaml
 Type: System.String
