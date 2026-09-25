@@ -248,9 +248,14 @@ function Set-AzMigrateLocalServerReplication {
                 $secureBootEnabled = $true
             }
 
-            if ($customProperties.HyperVGeneration -eq "1" -and
-                ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or $secureBootEnabled)) {
-                throw "Secure Boot and Trusted Launch require a Generation 2 target VM. Protected item '$TargetObjectID' has a Generation 1 target VM."
+            if ($customProperties.HyperVGeneration -eq "1") {
+                # Only an explicit request is an error. The inherit-Secure-Boot default above is a
+                # Gen 2 convention, so on Gen 1 it resolves to None instead of being rejected.
+                if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or ($HasEnableSecureBoot -and $secureBootEnabled)) {
+                    throw "Secure Boot and Trusted Launch require a Generation 2 target VM. Protected item '$TargetObjectID' has a Generation 1 target VM."
+                }
+
+                $secureBootEnabled = $false
             }
 
             if (-not $secureBootEnabled -and $customProperties.HyperVGeneration -eq "2") {
