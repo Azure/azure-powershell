@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of the registration for the Apple provider
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AppleRegistration : ProxyOnlyResource
+    public partial class AppleRegistration
     {
         /// <summary>
         /// Initializes a new instance of the AppleRegistration class.
@@ -25,26 +24,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the AppleRegistration class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="clientId">The Client ID of the app used for login.
         /// </param>
 
         /// <param name="clientSecretSettingName">The app setting name that contains the client secret.
         /// </param>
-        public AppleRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string clientId = default(string), string clientSecretSettingName = default(string))
+        public AppleRegistration(string clientId = default(string), string clientSecretSettingName = default(string))
 
-        : base(id, name, kind, type)
         {
             this.ClientId = clientId;
             this.ClientSecretSettingName = clientSecretSettingName;
@@ -60,13 +46,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the Client ID of the app used for login.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientId")]
         public string ClientId {get; set; }
 
         /// <summary>
         /// Gets or sets the app setting name that contains the client secret.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientSecretSettingName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientSecretSettingName")]
         public string ClientSecretSettingName {get; set; }
     }
 }

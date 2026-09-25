@@ -539,12 +539,6 @@
       "Remove-AzArcResourceBridge": {},
       "Update-AzArcResourceBridge": {}
     },
-    "Az.ArizeAI": {
-      "Get-AzArizeAIOrganization": {},
-      "New-AzArizeAIOrganization": {},
-      "Remove-AzArizeAIOrganization": {},
-      "Update-AzArizeAIOrganization": {}
-    },
     "Az.ArtifactSigning": {
       "Get-AzArtifactSigningCertificateChain": {},
       "Get-AzArtifactSigningCertificateRoot": {},
@@ -4169,12 +4163,6 @@
       "Update-AzLabServicesSchedule": {},
       "Update-AzLabServicesUser": {},
       "Update-AzLabServicesVMReimage": {}
-    },
-    "Az.LambdaTest": {
-      "Get-AzLambdaTestOrganization": {},
-      "New-AzLambdaTestOrganization": {},
-      "Remove-AzLambdaTestOrganization": {},
-      "Update-AzLambdaTestOrganization": {}
     },
     "Az.LoadTesting": {
       "Get-AzLoad": {},

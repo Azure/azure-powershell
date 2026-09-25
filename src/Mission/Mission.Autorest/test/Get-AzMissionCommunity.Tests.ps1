@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMissionCommunity'))
 }
 
 Describe 'Get-AzMissionCommunity' {
-    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission preview subscription.
+    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission subscription.
     It 'Get' -skip {
         {
             $community = Get-AzMissionCommunity -Name $env.communityName -ResourceGroupName $env.resourceGroup

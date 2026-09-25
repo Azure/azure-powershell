@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<AppServicePlan> ListByResourceGroup(this IAppServicePlansOperations operations, string resourceGroupName)
         {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -161,49 +161,13 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Delete an App Service plan.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service plan.
-        /// </param>
-        public static void Delete(this IAppServicePlansOperations operations, string resourceGroupName, string name)
-        {
-                ((IAppServicePlansOperations)operations).DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Delete an App Service plan.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service plan.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Creates or updates an App Service Plan.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -220,7 +184,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -236,13 +200,49 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Delete an App Service plan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        public static void Delete(this IAppServicePlansOperations operations, string resourceGroupName, string name)
+        {
+                ((IAppServicePlansOperations)operations).DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Delete an App Service plan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Description for List all capabilities of an App Service plan.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -275,13 +275,52 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Get the RDP password for an IsCustomMode ServerFarm.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        public static ServerFarmRdpDetails GetServerFarmRdpPassword(this IAppServicePlansOperations operations, string resourceGroupName, string name)
+        {
+                return ((IAppServicePlansOperations)operations).GetServerFarmRdpPasswordAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Get the RDP password for an IsCustomMode ServerFarm.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ServerFarmRdpDetails> GetServerFarmRdpPasswordAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetServerFarmRdpPasswordWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Retrieve a Hybrid Connection in use in an App Service plan.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -304,7 +343,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -332,7 +371,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -355,7 +394,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -380,16 +419,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
         /// <param name='namespaceName'>
-        /// The name of the Service Bus namespace.
+        /// Name of the Service Bus namespace.
         /// </param>
         /// <param name='relayName'>
-        /// The name of the Service Bus relay.
+        /// Name of the Service Bus relay.
         /// </param>
         public static HybridConnectionKey ListHybridConnectionKeys(this IAppServicePlansOperations operations, string resourceGroupName, string name, string namespaceName, string relayName)
         {
@@ -403,16 +442,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
         /// <param name='namespaceName'>
-        /// The name of the Service Bus namespace.
+        /// Name of the Service Bus namespace.
         /// </param>
         /// <param name='relayName'>
-        /// The name of the Service Bus relay.
+        /// Name of the Service Bus relay.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -432,16 +471,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
         /// <param name='namespaceName'>
-        /// Name of the Hybrid Connection namespace.
+        /// Name of the Service Bus namespace.
         /// </param>
         /// <param name='relayName'>
-        /// Name of the Hybrid Connection relay.
+        /// Name of the Service Bus relay.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<string> ListWebAppsByHybridConnection(this IAppServicePlansOperations operations, string resourceGroupName, string name, string namespaceName, string relayName)
         {
@@ -456,16 +495,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
         /// <param name='namespaceName'>
-        /// Name of the Hybrid Connection namespace.
+        /// Name of the Service Bus namespace.
         /// </param>
         /// <param name='relayName'>
-        /// Name of the Hybrid Connection relay.
+        /// Name of the Service Bus relay.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -485,7 +524,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -503,7 +542,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -526,7 +565,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -544,7 +583,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -560,13 +599,52 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Get the instance details for an app service plan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        public static ServerFarmInstanceDetails GetServerFarmInstanceDetails(this IAppServicePlansOperations operations, string resourceGroupName, string name)
+        {
+                return ((IAppServicePlansOperations)operations).GetServerFarmInstanceDetailsAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Get the instance details for an app service plan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ServerFarmInstanceDetails> GetServerFarmInstanceDetailsAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetServerFarmInstanceDetailsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Restart all apps in an App Service plan.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -588,7 +666,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -612,7 +690,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -642,7 +720,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -677,10 +755,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of App Service Plan
+        /// Name of the App Service plan.
         /// </param>
         public static object GetServerFarmSkus(this IAppServicePlansOperations operations, string resourceGroupName, string name)
         {
@@ -694,10 +772,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of App Service Plan
+        /// Name of the App Service plan.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -716,10 +794,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of App Service Plan
+        /// Name of the App Service plan.
         /// </param>
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms to
@@ -738,10 +816,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of App Service Plan
+        /// Name of the App Service plan.
         /// </param>
         /// <param name='filter'>
         /// Return only usages/metrics specified in the filter. Filter conforms to
@@ -766,12 +844,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
         /// </param>
-        public static System.Collections.Generic.IList<VnetInfo> ListVnets(this IAppServicePlansOperations operations, string resourceGroupName, string name)
+        public static System.Collections.Generic.IList<VnetInfoResource> ListVnets(this IAppServicePlansOperations operations, string resourceGroupName, string name)
         {
                 return ((IAppServicePlansOperations)operations).ListVnetsAsync(resourceGroupName, name).GetAwaiter().GetResult();
         }
@@ -784,7 +862,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -792,7 +870,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<VnetInfo>> ListVnetsAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<VnetInfoResource>> ListVnetsAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListVnetsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
             {
@@ -806,7 +884,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -814,7 +892,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='vnetName'>
         /// Name of the Virtual Network.
         /// </param>
-        public static VnetInfo GetVnetFromServerFarm(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName)
+        public static VnetInfoResource GetVnetFromServerFarm(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName)
         {
                 return ((IAppServicePlansOperations)operations).GetVnetFromServerFarmAsync(resourceGroupName, name, vnetName).GetAwaiter().GetResult();
         }
@@ -826,7 +904,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -837,7 +915,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VnetInfo> GetVnetFromServerFarmAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VnetInfoResource> GetVnetFromServerFarmAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetVnetFromServerFarmWithHttpMessagesAsync(resourceGroupName, name, vnetName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -851,7 +929,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -874,7 +952,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -902,7 +980,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -925,7 +1003,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -954,7 +1032,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -975,7 +1053,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1000,7 +1078,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1023,7 +1101,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1052,7 +1130,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1076,7 +1154,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1098,54 +1176,6 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Delete a Virtual Network route in an App Service plan.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service plan.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of the Virtual Network.
-        /// </param>
-        /// <param name='routeName'>
-        /// Name of the Virtual Network route.
-        /// </param>
-        public static void DeleteVnetRoute(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName, string routeName)
-        {
-                ((IAppServicePlansOperations)operations).DeleteVnetRouteAsync(resourceGroupName, name, vnetName, routeName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Delete a Virtual Network route in an App Service plan.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the App Service plan.
-        /// </param>
-        /// <param name='vnetName'>
-        /// Name of the Virtual Network.
-        /// </param>
-        /// <param name='routeName'>
-        /// Name of the Virtual Network route.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteVnetRouteAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName, string routeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteVnetRouteWithHttpMessagesAsync(resourceGroupName, name, vnetName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Create or update a Virtual Network route in an App Service
         /// plan.
         /// </summary>
@@ -1153,7 +1183,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1177,7 +1207,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1199,16 +1229,64 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Delete a Virtual Network route in an App Service plan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the Virtual Network.
+        /// </param>
+        /// <param name='routeName'>
+        /// Name of the Virtual Network route.
+        /// </param>
+        public static void DeleteVnetRoute(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName, string routeName)
+        {
+                ((IAppServicePlansOperations)operations).DeleteVnetRouteAsync(resourceGroupName, name, vnetName, routeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Delete a Virtual Network route in an App Service plan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the App Service plan.
+        /// </param>
+        /// <param name='vnetName'>
+        /// Name of the Virtual Network.
+        /// </param>
+        /// <param name='routeName'>
+        /// Name of the Virtual Network route.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteVnetRouteAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, string vnetName, string routeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteVnetRouteWithHttpMessagesAsync(resourceGroupName, name, vnetName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Description for Reboot a worker machine in an App Service plan.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the App Service plan.
+        /// App Service plan.
         /// </param>
         /// <param name='workerName'>
         /// Name of worker machine, which typically starts with RD.
@@ -1225,10 +1303,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the App Service plan.
+        /// App Service plan.
         /// </param>
         /// <param name='workerName'>
         /// Name of worker machine, which typically starts with RD.
@@ -1241,13 +1319,58 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.RebootWorkerWithHttpMessagesAsync(resourceGroupName, name, workerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Description for Recycles a managed instance worker machine.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// App Service plan.
+        /// </param>
+        /// <param name='workerName'>
+        /// Name of worker machine, which typically starts with RD.
+        /// </param>
+        public static Operation RecycleManagedInstanceWorker(this IAppServicePlansOperations operations, string resourceGroupName, string name, string workerName)
+        {
+                return ((IAppServicePlansOperations)operations).RecycleManagedInstanceWorkerAsync(resourceGroupName, name, workerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Recycles a managed instance worker machine.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// App Service plan.
+        /// </param>
+        /// <param name='workerName'>
+        /// Name of worker machine, which typically starts with RD.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Operation> RecycleManagedInstanceWorkerAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, string workerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RecycleManagedInstanceWorkerWithHttpMessagesAsync(resourceGroupName, name, workerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Creates or updates an App Service Plan.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.
@@ -1264,7 +1387,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the App Service plan.

@@ -26,10 +26,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="state">
         /// Possible values include: &#39;Disabled&#39;, &#39;Unlocked&#39;, &#39;Locked&#39;</param>
-        public ImmutabilitySettings(string state = default(string))
+
+        /// <param name="configuration">Immutability configuration of the vault — selects whether immutability is
+        /// inherited from the backup policy (AsPerPolicy) or fixed for a specific
+        /// duration (TimeBased).
+        /// </param>
+        public ImmutabilitySettings(string state = default(string), ImmutabilityConfiguration configuration = default(ImmutabilityConfiguration))
 
         {
             this.State = state;
+            this.Configuration = configuration;
             CustomInit();
         }
 
@@ -44,5 +50,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
         public string State {get; set; }
+
+        /// <summary>
+        /// Gets or sets immutability configuration of the vault — selects whether
+        /// immutability is
+        /// inherited from the backup policy (AsPerPolicy) or fixed for a specific
+        /// duration (TimeBased).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "configuration")]
+        public ImmutabilityConfiguration Configuration {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.Configuration != null)
+            {
+                this.Configuration.Validate();
+            }
+        }
     }
 }

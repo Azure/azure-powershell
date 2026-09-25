@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of the Azure Active directory provider.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureActiveDirectory : ProxyOnlyResource
+    public partial class AzureActiveDirectory
     {
         /// <summary>
         /// Initializes a new instance of the AzureActiveDirectory class.
@@ -24,18 +23,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Initializes a new instance of the AzureActiveDirectory class.
         /// </summary>
-
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
 
         /// <param name="enabled">&lt;code&gt;false&lt;/code&gt; if the Azure Active Directory provider should not be
         /// enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
@@ -57,9 +44,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Portal. Users should not
         /// read or write to this property.
         /// </param>
-        public AzureActiveDirectory(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), AzureActiveDirectoryRegistration registration = default(AzureActiveDirectoryRegistration), AzureActiveDirectoryLogin login = default(AzureActiveDirectoryLogin), AzureActiveDirectoryValidation validation = default(AzureActiveDirectoryValidation), bool? isAutoProvisioned = default(bool?))
+        public AzureActiveDirectory(bool? enabled = default(bool?), AzureActiveDirectoryRegistration registration = default(AzureActiveDirectoryRegistration), AzureActiveDirectoryLogin login = default(AzureActiveDirectoryLogin), AzureActiveDirectoryValidation validation = default(AzureActiveDirectoryValidation), bool? isAutoProvisioned = default(bool?))
 
-        : base(id, name, kind, type)
         {
             this.Enabled = enabled;
             this.Registration = registration;
@@ -80,28 +66,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// should not be enabled despite the set registration; otherwise,
         /// &lt;code&gt;true&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabled")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Azure Active Directory app
         /// registration.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "registration")]
         public AzureActiveDirectoryRegistration Registration {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Azure Active Directory login
         /// flow.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.login")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "login")]
         public AzureActiveDirectoryLogin Login {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Azure Active Directory token
         /// validation flow.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.validation")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "validation")]
         public AzureActiveDirectoryValidation Validation {get; set; }
 
         /// <summary>
@@ -111,7 +97,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Portal. Users should not
         /// read or write to this property.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isAutoProvisioned")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAutoProvisioned")]
         public bool? IsAutoProvisioned {get; set; }
     }
 }

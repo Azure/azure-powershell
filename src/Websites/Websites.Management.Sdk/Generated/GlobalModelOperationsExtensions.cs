@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Location name
+        /// The name of the Azure region.
         /// </param>
         /// <param name='operationId'>
         /// Operation Id
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Location name
+        /// The name of the Azure region.
         /// </param>
         /// <param name='operationId'>
         /// Operation Id

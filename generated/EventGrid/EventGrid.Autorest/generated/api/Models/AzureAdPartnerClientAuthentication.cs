@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAzureAdPartnerClientAuthenticationProperties Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAzureAdPartnerClientAuthenticationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AzureAdPartnerClientAuthenticationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ClientAuthenticationType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal.ClientAuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)__partnerClientAuthentication).ClientAuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)__partnerClientAuthentication).ClientAuthenticationType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal.ClientAuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)__partnerClientAuthentication).ClientAuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerClientAuthenticationInternal)__partnerClientAuthentication).ClientAuthenticationType = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAzureAdPartnerClientAuthenticationProperties _property;

@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.RecoveryServices/vaults/afs-msi-test-vault?api-version=2026-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwL3Jlc291cmNlR3JvdXBzL2Fmcy1tc2ktdGVzdC1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL2Fmcy1tc2ktdGVzdC12YXVsdD9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "1784a8e1-be5c-4801-b6b4-d68d26277eee"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3126.42015",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.14.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "947fb077-d0e4-4bc8-b15d-a3ffd7ae3ac3"
+        ],
+        "x-ms-client-request-id": [
+          "1784a8e1-be5c-4801-b6b4-d68d26277eee"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "947fb077-d0e4-4bc8-b15d-a3ffd7ae3ac3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20260915T082124Z:947fb077-d0e4-4bc8-b15d-a3ffd7ae3ac3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 87A5AC08B5CB49EFAB97AB0A54D2EFC3 Ref B: PNQ241100405023 Ref C: 2026-09-15T08:21:24Z"
+        ],
+        "Date": [
+          "Tue, 15 Sep 2026 08:21:24 GMT"
+        ],
+        "Content-Length": [
+          "2669"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westeurope\",\r\n  \"name\": \"test-recovery-services-vault\",\r\n  \"etag\": \"W/\\\"datetime'2026-09-15T04%3A45%3A16.3860257Z'\\\"\",\r\n  \"tags\": {\r\n    \"DisableLocalAuth\": \"false\",\r\n    \"ManagerAlias\": \"test-manager\",\r\n    \"Owner\": \"test-owner\",\r\n    \"Purpose\": \"AzureFilesManagedIdentityTesting\",\r\n    \"TestType\": \"E2E\",\r\n    \"Workload\": \"AzureFileShareBackup\",\r\n    \"DeleteBy\": \"12-2099\",\r\n    \"BCDR\": \"NA\",\r\n    \"SourceRegion\": \"westeurope\",\r\n    \"Reason\": \"AzureFilesManagedIdentityTesting\",\r\n    \"ETA\": \"12-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"11111111-1111-1111-1111-111111111111\",\r\n    \"principalId\": \"22222222-2222-2222-2222-222222222222\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami\": {\r\n        \"clientId\": \"33333333-3333-3333-3333-333333333333\",\r\n        \"principalId\": \"44444444-4444-4444-4444-444444444444\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"monitoringSettings\": {\r\n      \"azureMonitorAlertSettings\": {\r\n        \"alertsForAllJobFailures\": \"Enabled\",\r\n        \"alertsForAllReplicationIssues\": \"Enabled\",\r\n        \"alertsForAllFailoverIssues\": \"Enabled\"\r\n      },\r\n      \"classicAlertSettings\": {\r\n        \"alertsForCriticalOperations\": \"Enabled\",\r\n        \"emailNotificationsForSiteRecovery\": \"Enabled\"\r\n      }\r\n    },\r\n    \"backupStorageVersion\": \"V2\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Enabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-resource-group/providers/Microsoft.RecoveryServices/vaults/test-recovery-services-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
+}

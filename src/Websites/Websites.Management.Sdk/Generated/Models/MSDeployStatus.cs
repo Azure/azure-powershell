@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// MSDeploy ARM response
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class MSDeployStatus : ProxyOnlyResource
+    public partial class MSDeployStatus : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the MSDeployStatus class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the MSDeployStatus class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="deployer">Username of deployer
@@ -52,10 +58,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="complete">Whether the deployment operation has completed
         /// </param>
-        public MSDeployStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string deployer = default(string), MSDeployProvisioningState? provisioningState = default(MSDeployProvisioningState?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? complete = default(bool?))
+        public MSDeployStatus(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string deployer = default(string), MSDeployProvisioningState? provisioningState = default(MSDeployProvisioningState?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? complete = default(bool?))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.Deployer = deployer;
             this.ProvisioningState = provisioningState;
             this.StartTime = startTime;
@@ -69,6 +76,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets username of deployer

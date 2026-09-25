@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Location where you plan to create the static site.
+        /// The name of the Azure region.
         /// </param>
         public static StaticSitesWorkflowPreview PreviewWorkflow(this IStaticSitesOperations operations, string location, StaticSitesWorkflowPreviewRequest staticSitesWorkflowPreviewRequest)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// Location where you plan to create the static site.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<StaticSiteARMResource> GetStaticSitesByResourceGroup(this IStaticSitesOperations operations, string resourceGroupName)
         {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -152,10 +152,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         public static StaticSiteARMResource CreateOrUpdateStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteARMResource staticSiteEnvelope)
         {
@@ -170,10 +170,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -186,42 +186,6 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Deletes a static site.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the static site to delete.
-        /// </param>
-        public static void DeleteStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
-        {
-                ((IStaticSitesOperations)operations).DeleteStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Deletes a static site.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the static site to delete.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Creates a new static site in an existing resource group, or
         /// updates an existing static site.
         /// </summary>
@@ -229,10 +193,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         public static StaticSiteARMResource UpdateStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSitePatchResource staticSiteEnvelope)
         {
@@ -247,10 +211,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -263,16 +227,55 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Deletes a static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        public static StaticSitesDeleteStaticSiteHeaders DeleteStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        {
+                return ((IStaticSitesOperations)operations).DeleteStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Deletes a static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSitesDeleteStaticSiteHeaders> DeleteStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Description for Gets the list of users of a static site.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site.
+        /// 
         /// </param>
         /// <param name='authprovider'>
         /// The auth provider for the users.
@@ -289,10 +292,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site.
+        /// 
         /// </param>
         /// <param name='authprovider'>
         /// The auth provider for the users.
@@ -308,70 +311,22 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Deletes the user entry from the static site.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the staticsite.
-        /// </param>
-        /// <param name='authprovider'>
-        /// The auth provider for this user.
-        /// </param>
-        /// <param name='userid'>
-        /// The user id of the user.
-        /// </param>
-        public static void DeleteStaticSiteUser(this IStaticSitesOperations operations, string resourceGroupName, string name, string authprovider, string userid)
-        {
-                ((IStaticSitesOperations)operations).DeleteStaticSiteUserAsync(resourceGroupName, name, authprovider, userid).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Description for Deletes the user entry from the static site.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='name'>
-        /// Name of the staticsite.
-        /// </param>
-        /// <param name='authprovider'>
-        /// The auth provider for this user.
-        /// </param>
-        /// <param name='userid'>
-        /// The user id of the user.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteStaticSiteUserAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string authprovider, string userid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteStaticSiteUserWithHttpMessagesAsync(resourceGroupName, name, authprovider, userid, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Description for Updates a user entry with the listed roles
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site.
+        /// 
         /// </param>
         /// <param name='authprovider'>
-        /// The auth provider for this user.
+        /// 
         /// </param>
         /// <param name='userid'>
-        /// The user id of the user.
+        /// 
         /// </param>
         public static StaticSiteUserARMResource UpdateStaticSiteUser(this IStaticSitesOperations operations, string resourceGroupName, string name, string authprovider, string userid, StaticSiteUserARMResource staticSiteUserEnvelope)
         {
@@ -385,16 +340,16 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site.
+        /// 
         /// </param>
         /// <param name='authprovider'>
-        /// The auth provider for this user.
+        /// 
         /// </param>
         /// <param name='userid'>
-        /// The user id of the user.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -407,13 +362,180 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Deletes the user entry from the static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// 
+        /// </param>
+        /// <param name='authprovider'>
+        /// 
+        /// </param>
+        /// <param name='userid'>
+        /// 
+        /// </param>
+        public static void DeleteStaticSiteUser(this IStaticSitesOperations operations, string resourceGroupName, string name, string authprovider, string userid)
+        {
+                ((IStaticSitesOperations)operations).DeleteStaticSiteUserAsync(resourceGroupName, name, authprovider, userid).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Deletes the user entry from the static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// 
+        /// </param>
+        /// <param name='authprovider'>
+        /// 
+        /// </param>
+        /// <param name='userid'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteStaticSiteUserAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string authprovider, string userid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteStaticSiteUserWithHttpMessagesAsync(resourceGroupName, name, authprovider, userid, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StaticSiteBasicAuthPropertiesARMResource> ListBasicAuth(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        {
+                return ((IStaticSitesOperations)operations).ListBasicAuthAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteBasicAuthPropertiesARMResource>> ListBasicAuthAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBasicAuthWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        public static StaticSiteBasicAuthPropertiesARMResource GetBasicAuth(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        {
+                return ((IStaticSitesOperations)operations).GetBasicAuthAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteBasicAuthPropertiesARMResource> GetBasicAuthAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBasicAuthWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Adds or updates basic auth for a static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        public static StaticSiteBasicAuthPropertiesARMResource CreateOrUpdateBasicAuth(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteBasicAuthPropertiesARMResource basicAuthEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).CreateOrUpdateBasicAuthAsync(resourceGroupName, name, basicAuthEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Adds or updates basic auth for a static site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteBasicAuthPropertiesARMResource> CreateOrUpdateBasicAuthAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteBasicAuthPropertiesARMResource basicAuthEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateBasicAuthWithHttpMessagesAsync(resourceGroupName, name, basicAuthEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets all static site builds for a particular static site.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -430,7 +552,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -452,7 +574,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -472,7 +594,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -497,7 +619,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -505,9 +627,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='environmentName'>
         /// The stage site identifier.
         /// </param>
-        public static void DeleteStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
+        public static StaticSitesDeleteStaticSiteBuildHeaders DeleteStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
         {
-                ((IStaticSitesOperations)operations).DeleteStaticSiteBuildAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).DeleteStaticSiteBuildAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -517,7 +639,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -528,9 +650,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDeleteStaticSiteBuildHeaders> DeleteStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Creates or updates the app settings of a static site build.
@@ -539,7 +664,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -559,7 +684,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -585,7 +710,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -606,7 +731,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -625,13 +750,314 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Returns overviews of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetBuildDatabaseConnections(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
+        {
+                return ((IStaticSitesOperations)operations).GetBuildDatabaseConnectionsAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns overviews of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetBuildDatabaseConnectionsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBuildDatabaseConnectionsWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns overview of a database connection for a static site build by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection GetBuildDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName)
+        {
+                return ((IStaticSitesOperations)operations).GetBuildDatabaseConnectionAsync(resourceGroupName, name, environmentName, databaseConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns overview of a database connection for a static site build by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> GetBuildDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBuildDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, environmentName, databaseConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection CreateOrUpdateBuildDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, DatabaseConnection databaseConnectionRequestEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).CreateOrUpdateBuildDatabaseConnectionAsync(resourceGroupName, name, environmentName, databaseConnectionName, databaseConnectionRequestEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> CreateOrUpdateBuildDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, DatabaseConnection databaseConnectionRequestEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateBuildDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, environmentName, databaseConnectionName, databaseConnectionRequestEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection UpdateBuildDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, DatabaseConnectionPatchRequest databaseConnectionRequestEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).UpdateBuildDatabaseConnectionAsync(resourceGroupName, name, environmentName, databaseConnectionName, databaseConnectionRequestEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> UpdateBuildDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, DatabaseConnectionPatchRequest databaseConnectionRequestEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateBuildDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, environmentName, databaseConnectionName, databaseConnectionRequestEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete a database connection for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static void DeleteBuildDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName)
+        {
+                ((IStaticSitesOperations)operations).DeleteBuildDatabaseConnectionAsync(resourceGroupName, name, environmentName, databaseConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete a database connection for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteBuildDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteBuildDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, environmentName, databaseConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Returns details of a database connection for a static site build by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection GetBuildDatabaseConnectionWithDetails(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName)
+        {
+                return ((IStaticSitesOperations)operations).GetBuildDatabaseConnectionWithDetailsAsync(resourceGroupName, name, environmentName, databaseConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of a database connection for a static site build by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> GetBuildDatabaseConnectionWithDetailsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string databaseConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBuildDatabaseConnectionWithDetailsWithHttpMessagesAsync(resourceGroupName, name, environmentName, databaseConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets the functions of a particular static site build.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -651,7 +1077,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -670,13 +1096,267 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Returns details of all backends linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource> GetLinkedBackendsForBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
+        {
+                return ((IStaticSitesOperations)operations).GetLinkedBackendsForBuildAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of all backends linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>> GetLinkedBackendsForBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetLinkedBackendsForBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns the details of a linked backend linked to a static site build by
+        /// name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSiteLinkedBackendARMResource GetLinkedBackendForBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName)
+        {
+                return ((IStaticSitesOperations)operations).GetLinkedBackendForBuildAsync(resourceGroupName, name, environmentName, linkedBackendName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the details of a linked backend linked to a static site build by
+        /// name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteLinkedBackendARMResource> GetLinkedBackendForBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetLinkedBackendForBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, linkedBackendName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Link backend to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSiteLinkedBackendARMResource LinkBackendToBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).LinkBackendToBuildAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Link backend to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteLinkedBackendARMResource> LinkBackendToBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.LinkBackendToBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Unlink a backend from a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='isCleaningAuthConfig'>
+        /// Decides if auth will be removed from backend configuration
+        /// </param>
+        public static void UnlinkBackendFromBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, bool? isCleaningAuthConfig = default(bool?))
+        {
+                ((IStaticSitesOperations)operations).UnlinkBackendFromBuildAsync(resourceGroupName, name, environmentName, linkedBackendName, isCleaningAuthConfig).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Unlink a backend from a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='isCleaningAuthConfig'>
+        /// Decides if auth will be removed from backend configuration
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task UnlinkBackendFromBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, bool? isCleaningAuthConfig = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.UnlinkBackendFromBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, linkedBackendName, isCleaningAuthConfig, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Validates that a backend can be linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSitesValidateBackendForBuildHeaders ValidateBackendForBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).ValidateBackendForBuildAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSitesValidateBackendForBuildHeaders> ValidateBackendForBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateBackendForBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Description for Gets the application settings of a static site build.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -696,7 +1376,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -721,7 +1401,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -741,7 +1421,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -760,6 +1440,51 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Returns details of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetBuildDatabaseConnectionsWithDetails(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
+        {
+                return ((IStaticSitesOperations)operations).GetBuildDatabaseConnectionsWithDetailsAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetBuildDatabaseConnectionsWithDetailsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBuildDatabaseConnectionsWithDetailsWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets the details of the user provided function apps
         /// registered with a static site build
         /// </summary>
@@ -767,7 +1492,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -788,7 +1513,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -814,7 +1539,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -838,7 +1563,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -867,7 +1592,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -876,7 +1601,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site build.
+        /// Name of the function app registered with the static site build.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -896,7 +1621,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -905,7 +1630,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site build.
+        /// Name of the function app registered with the static site build.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -930,7 +1655,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -954,7 +1679,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -980,17 +1705,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='environmentName'>
-        /// Name of the environment.
+        /// The stage site identifier.
         /// </param>
-        public static void CreateZipDeploymentForStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
+        public static StaticSitesCreateZipDeploymentForStaticSiteBuildHeaders CreateZipDeploymentForStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
         {
-                ((IStaticSitesOperations)operations).CreateZipDeploymentForStaticSiteBuildAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).CreateZipDeploymentForStaticSiteBuildAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1001,20 +1726,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='environmentName'>
-        /// Name of the environment.
+        /// The stage site identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CreateZipDeploymentForStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesCreateZipDeploymentForStaticSiteBuildHeaders> CreateZipDeploymentForStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Creates or updates the app settings of a static site.
@@ -1023,7 +1751,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1040,7 +1768,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1063,7 +1791,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1081,7 +1809,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1103,7 +1831,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1120,7 +1848,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1143,10 +1871,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site resource to search in.
+        /// Name of the static site.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<StaticSiteCustomDomainOverviewARMResource> ListStaticSiteCustomDomains(this IStaticSitesOperations operations, string resourceGroupName, string name)
         {
@@ -1161,10 +1889,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site resource to search in.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1184,10 +1912,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site resource to search in.
+        /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
         /// The custom domain name.
@@ -1205,10 +1933,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site resource to search in.
+        /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
         /// The custom domain name.
@@ -1231,13 +1959,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to create.
+        /// The custom domain name.
         /// </param>
         public static StaticSiteCustomDomainOverviewARMResource CreateOrUpdateStaticSiteCustomDomain(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope)
         {
@@ -1252,13 +1980,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to create.
+        /// The custom domain name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1277,17 +2005,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to delete.
+        /// The custom domain name.
         /// </param>
-        public static void DeleteStaticSiteCustomDomain(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName)
+        public static StaticSitesDeleteStaticSiteCustomDomainHeaders DeleteStaticSiteCustomDomain(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName)
         {
-                ((IStaticSitesOperations)operations).DeleteStaticSiteCustomDomainAsync(resourceGroupName, name, domainName).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).DeleteStaticSiteCustomDomainAsync(resourceGroupName, name, domainName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1297,20 +2025,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to delete.
+        /// The custom domain name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteStaticSiteCustomDomainAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDeleteStaticSiteCustomDomainHeaders> DeleteStaticSiteCustomDomainAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteStaticSiteCustomDomainWithHttpMessagesAsync(resourceGroupName, name, domainName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteStaticSiteCustomDomainWithHttpMessagesAsync(resourceGroupName, name, domainName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Validates a particular custom domain can be added to a
@@ -1320,17 +2051,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to validate.
+        /// The custom domain name.
         /// </param>
-        public static void ValidateCustomDomainCanBeAddedToStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope)
+        public static StaticSitesValidateCustomDomainCanBeAddedToStaticSiteHeaders ValidateCustomDomainCanBeAddedToStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope)
         {
-                ((IStaticSitesOperations)operations).ValidateCustomDomainCanBeAddedToStaticSiteAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).ValidateCustomDomainCanBeAddedToStaticSiteAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1341,20 +2072,284 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to validate.
+        /// The custom domain name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ValidateCustomDomainCanBeAddedToStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesValidateCustomDomainCanBeAddedToStaticSiteHeaders> ValidateCustomDomainCanBeAddedToStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Returns overviews of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetDatabaseConnections(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        {
+                return ((IStaticSitesOperations)operations).GetDatabaseConnectionsAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns overviews of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetDatabaseConnectionsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDatabaseConnectionsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns overview of a database connection for a static site by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection GetDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName)
+        {
+                return ((IStaticSitesOperations)operations).GetDatabaseConnectionAsync(resourceGroupName, name, databaseConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns overview of a database connection for a static site by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> GetDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, databaseConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection CreateOrUpdateDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, DatabaseConnection databaseConnectionRequestEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).CreateOrUpdateDatabaseConnectionAsync(resourceGroupName, name, databaseConnectionName, databaseConnectionRequestEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> CreateOrUpdateDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, DatabaseConnection databaseConnectionRequestEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, databaseConnectionName, databaseConnectionRequestEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection UpdateDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, DatabaseConnectionPatchRequest databaseConnectionRequestEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).UpdateDatabaseConnectionAsync(resourceGroupName, name, databaseConnectionName, databaseConnectionRequestEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Create or update a database connection for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> UpdateDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, DatabaseConnectionPatchRequest databaseConnectionRequestEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, databaseConnectionName, databaseConnectionRequestEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete a database connection for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static void DeleteDatabaseConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName)
+        {
+                ((IStaticSitesOperations)operations).DeleteDatabaseConnectionAsync(resourceGroupName, name, databaseConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete a database connection for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteDatabaseConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteDatabaseConnectionWithHttpMessagesAsync(resourceGroupName, name, databaseConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Returns details of a database connection for a static site by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        public static DatabaseConnection GetDatabaseConnectionWithDetails(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName)
+        {
+                return ((IStaticSitesOperations)operations).GetDatabaseConnectionWithDetailsAsync(resourceGroupName, name, databaseConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of a database connection for a static site by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='databaseConnectionName'>
+        /// Name of the database connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DatabaseConnection> GetDatabaseConnectionWithDetailsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string databaseConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDatabaseConnectionWithDetailsWithHttpMessagesAsync(resourceGroupName, name, databaseConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Description for Detaches a static site.
@@ -1363,14 +2358,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to detach.
+        /// Name of the static site.
         /// </param>
-        public static void DetachStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        public static StaticSitesDetachStaticSiteHeaders DetachStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
         {
-                ((IStaticSitesOperations)operations).DetachStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).DetachStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1380,17 +2375,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to detach.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DetachStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDetachStaticSiteHeaders> DetachStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DetachStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DetachStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Gets the functions of a static site.
@@ -1399,7 +2397,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1416,7 +2414,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1432,13 +2430,237 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Returns details of all backends linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource> GetLinkedBackends(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        {
+                return ((IStaticSitesOperations)operations).GetLinkedBackendsAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of all backends linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>> GetLinkedBackendsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetLinkedBackendsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns the details of a linked backend linked to a static site by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSiteLinkedBackendARMResource GetLinkedBackend(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName)
+        {
+                return ((IStaticSitesOperations)operations).GetLinkedBackendAsync(resourceGroupName, name, linkedBackendName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the details of a linked backend linked to a static site by name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteLinkedBackendARMResource> GetLinkedBackendAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetLinkedBackendWithHttpMessagesAsync(resourceGroupName, name, linkedBackendName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Link backend to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSiteLinkedBackendARMResource LinkBackend(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).LinkBackendAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Link backend to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteLinkedBackendARMResource> LinkBackendAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.LinkBackendWithHttpMessagesAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Unlink a backend from a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='isCleaningAuthConfig'>
+        /// Decides if Easy Auth configuration will be removed from backend
+        /// configuration
+        /// </param>
+        public static void UnlinkBackend(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, bool? isCleaningAuthConfig = default(bool?))
+        {
+                ((IStaticSitesOperations)operations).UnlinkBackendAsync(resourceGroupName, name, linkedBackendName, isCleaningAuthConfig).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Unlink a backend from a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='isCleaningAuthConfig'>
+        /// Decides if Easy Auth configuration will be removed from backend
+        /// configuration
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task UnlinkBackendAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, bool? isCleaningAuthConfig = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.UnlinkBackendWithHttpMessagesAsync(resourceGroupName, name, linkedBackendName, isCleaningAuthConfig, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Validates that a backend can be linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSitesValidateBackendHeaders ValidateBackend(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).ValidateBackendAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSitesValidateBackendHeaders> ValidateBackendAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateBackendWithHttpMessagesAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Description for Gets the application settings of a static site.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1455,7 +2677,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1477,7 +2699,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1494,7 +2716,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1516,7 +2738,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1533,7 +2755,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1555,7 +2777,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1572,7 +2794,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1595,7 +2817,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1613,7 +2835,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1635,7 +2857,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1655,7 +2877,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1680,7 +2902,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1688,7 +2910,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection.
         /// </param>
-        public static RemotePrivateEndpointConnectionARMResource ApproveOrRejectPrivateEndpointConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper)
+        public static RemotePrivateEndpointConnectionARMResource ApproveOrRejectPrivateEndpointConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper)
         {
                 return ((IStaticSitesOperations)operations).ApproveOrRejectPrivateEndpointConnectionAsync(resourceGroupName, name, privateEndpointConnectionName, privateEndpointWrapper).GetAwaiter().GetResult();
         }
@@ -1700,7 +2922,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1711,7 +2933,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RemotePrivateEndpointConnectionARMResource> ApproveOrRejectPrivateEndpointConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RemotePrivateEndpointConnectionARMResource> ApproveOrRejectPrivateEndpointConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, name, privateEndpointConnectionName, privateEndpointWrapper, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1725,7 +2947,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1745,7 +2967,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1770,10 +2992,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the site.
+        /// Name of the static site.
         /// </param>
         public static PrivateLinkResourcesWrapper GetPrivateLinkResources(this IStaticSitesOperations operations, string resourceGroupName, string name)
         {
@@ -1787,10 +3009,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the site.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1809,7 +3031,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1826,7 +3048,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1839,6 +3061,45 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.ResetStaticSiteApiKeyWithHttpMessagesAsync(resourceGroupName, name, resetPropertiesEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Returns details of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetDatabaseConnectionsWithDetails(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        {
+                return ((IStaticSitesOperations)operations).GetDatabaseConnectionsWithDetailsAsync(resourceGroupName, name).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetDatabaseConnectionsWithDetailsAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDatabaseConnectionsWithDetailsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets the details of the user provided function apps
         /// registered with a static site
         /// </summary>
@@ -1846,7 +3107,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1864,7 +3125,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1887,7 +3148,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1908,7 +3169,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -1933,13 +3194,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site.
+        /// Name of the function app registered with the static site.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -1958,13 +3219,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site.
+        /// Name of the function app registered with the static site.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -1988,7 +3249,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2008,7 +3269,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2030,14 +3291,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
-        public static void CreateZipDeploymentForStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
+        public static StaticSitesCreateZipDeploymentForStaticSiteHeaders CreateZipDeploymentForStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
         {
-                ((IStaticSitesOperations)operations).CreateZipDeploymentForStaticSiteAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).CreateZipDeploymentForStaticSiteAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2047,7 +3308,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2055,9 +3316,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CreateZipDeploymentForStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesCreateZipDeploymentForStaticSiteHeaders> CreateZipDeploymentForStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CreateZipDeploymentForStaticSiteWithHttpMessagesAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CreateZipDeploymentForStaticSiteWithHttpMessagesAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Creates a new static site in an existing resource group, or
@@ -2067,10 +3331,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         public static StaticSiteARMResource BeginCreateOrUpdateStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteARMResource staticSiteEnvelope)
         {
@@ -2085,10 +3349,10 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to create or update.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -2107,14 +3371,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to delete.
+        /// Name of the static site.
         /// </param>
-        public static void BeginDeleteStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        public static StaticSitesDeleteStaticSiteHeaders BeginDeleteStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
         {
-                ((IStaticSitesOperations)operations).BeginDeleteStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginDeleteStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2124,17 +3388,20 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to delete.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDeleteStaticSiteHeaders> BeginDeleteStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Deletes a static site build.
@@ -2143,7 +3410,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2151,9 +3418,9 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='environmentName'>
         /// The stage site identifier.
         /// </param>
-        public static void BeginDeleteStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
+        public static StaticSitesDeleteStaticSiteBuildHeaders BeginDeleteStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName)
         {
-                ((IStaticSitesOperations)operations).BeginDeleteStaticSiteBuildAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginDeleteStaticSiteBuildAsync(resourceGroupName, name, environmentName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2163,7 +3430,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2174,9 +3441,114 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDeleteStaticSiteBuildHeaders> BeginDeleteStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Link backend to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSiteLinkedBackendARMResource BeginLinkBackendToBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).BeginLinkBackendToBuildAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Link backend to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteLinkedBackendARMResource> BeginLinkBackendToBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginLinkBackendToBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Validates that a backend can be linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSitesValidateBackendForBuildHeaders BeginValidateBackendForBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).BeginValidateBackendForBuildAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='environmentName'>
+        /// The stage site identifier
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSitesValidateBackendForBuildHeaders> BeginValidateBackendForBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateBackendForBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Register a user provided function app with a static site
@@ -2186,7 +3558,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2195,7 +3567,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site build.
+        /// Name of the function app registered with the static site build.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -2215,7 +3587,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2224,7 +3596,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The stage site identifier.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site build.
+        /// Name of the function app registered with the static site build.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -2249,17 +3621,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='environmentName'>
-        /// Name of the environment.
+        /// The stage site identifier.
         /// </param>
-        public static void BeginCreateZipDeploymentForStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
+        public static StaticSitesCreateZipDeploymentForStaticSiteBuildHeaders BeginCreateZipDeploymentForStaticSiteBuild(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
         {
-                ((IStaticSitesOperations)operations).BeginCreateZipDeploymentForStaticSiteBuildAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginCreateZipDeploymentForStaticSiteBuildAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2270,20 +3642,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='environmentName'>
-        /// Name of the environment.
+        /// The stage site identifier.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCreateZipDeploymentForStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesCreateZipDeploymentForStaticSiteBuildHeaders> BeginCreateZipDeploymentForStaticSiteBuildAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string environmentName, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginCreateZipDeploymentForStaticSiteBuildWithHttpMessagesAsync(resourceGroupName, name, environmentName, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Creates a new static site custom domain in an existing
@@ -2293,13 +3668,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to create.
+        /// The custom domain name.
         /// </param>
         public static StaticSiteCustomDomainOverviewARMResource BeginCreateOrUpdateStaticSiteCustomDomain(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope)
         {
@@ -2314,13 +3689,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to create.
+        /// The custom domain name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -2339,17 +3714,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to delete.
+        /// The custom domain name.
         /// </param>
-        public static void BeginDeleteStaticSiteCustomDomain(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName)
+        public static StaticSitesDeleteStaticSiteCustomDomainHeaders BeginDeleteStaticSiteCustomDomain(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName)
         {
-                ((IStaticSitesOperations)operations).BeginDeleteStaticSiteCustomDomainAsync(resourceGroupName, name, domainName).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginDeleteStaticSiteCustomDomainAsync(resourceGroupName, name, domainName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2359,20 +3734,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to delete.
+        /// The custom domain name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteStaticSiteCustomDomainAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDeleteStaticSiteCustomDomainHeaders> BeginDeleteStaticSiteCustomDomainAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteStaticSiteCustomDomainWithHttpMessagesAsync(resourceGroupName, name, domainName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteStaticSiteCustomDomainWithHttpMessagesAsync(resourceGroupName, name, domainName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Validates a particular custom domain can be added to a
@@ -2382,17 +3760,17 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to validate.
+        /// The custom domain name.
         /// </param>
-        public static void BeginValidateCustomDomainCanBeAddedToStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope)
+        public static StaticSitesValidateCustomDomainCanBeAddedToStaticSiteHeaders BeginValidateCustomDomainCanBeAddedToStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope)
         {
-                ((IStaticSitesOperations)operations).BeginValidateCustomDomainCanBeAddedToStaticSiteAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginValidateCustomDomainCanBeAddedToStaticSiteAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2403,20 +3781,23 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='domainName'>
-        /// The custom domain to validate.
+        /// The custom domain name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginValidateCustomDomainCanBeAddedToStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesValidateCustomDomainCanBeAddedToStaticSiteHeaders> BeginValidateCustomDomainCanBeAddedToStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string domainName, StaticSiteCustomDomainRequestPropertiesARMResource staticSiteCustomDomainRequestPropertiesEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginValidateCustomDomainCanBeAddedToStaticSiteWithHttpMessagesAsync(resourceGroupName, name, domainName, staticSiteCustomDomainRequestPropertiesEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Detaches a static site.
@@ -2425,14 +3806,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to detach.
+        /// Name of the static site.
         /// </param>
-        public static void BeginDetachStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
+        public static StaticSitesDetachStaticSiteHeaders BeginDetachStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name)
         {
-                ((IStaticSitesOperations)operations).BeginDetachStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginDetachStaticSiteAsync(resourceGroupName, name).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2442,17 +3823,110 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
-        /// Name of the static site to detach.
+        /// Name of the static site.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDetachStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesDetachStaticSiteHeaders> BeginDetachStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDetachStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDetachStaticSiteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Link backend to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSiteLinkedBackendARMResource BeginLinkBackend(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).BeginLinkBackendAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Link backend to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSiteLinkedBackendARMResource> BeginLinkBackendAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginLinkBackendWithHttpMessagesAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Validates that a backend can be linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        public static StaticSitesValidateBackendHeaders BeginValidateBackend(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope)
+        {
+                return ((IStaticSitesOperations)operations).BeginValidateBackendAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates that a backend can be linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='name'>
+        /// Name of the static site
+        /// </param>
+        /// <param name='linkedBackendName'>
+        /// Name of the linked backend that should be retrieved
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticSitesValidateBackendHeaders> BeginValidateBackendAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string linkedBackendName, StaticSiteLinkedBackendARMResource staticSiteLinkedBackendEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateBackendWithHttpMessagesAsync(resourceGroupName, name, linkedBackendName, staticSiteLinkedBackendEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Approves or rejects a private endpoint connection
@@ -2461,7 +3935,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2469,7 +3943,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='privateEndpointConnectionName'>
         /// Name of the private endpoint connection.
         /// </param>
-        public static RemotePrivateEndpointConnectionARMResource BeginApproveOrRejectPrivateEndpointConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper)
+        public static RemotePrivateEndpointConnectionARMResource BeginApproveOrRejectPrivateEndpointConnection(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper)
         {
                 return ((IStaticSitesOperations)operations).BeginApproveOrRejectPrivateEndpointConnectionAsync(resourceGroupName, name, privateEndpointConnectionName, privateEndpointWrapper).GetAwaiter().GetResult();
         }
@@ -2481,7 +3955,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2492,7 +3966,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RemotePrivateEndpointConnectionARMResource> BeginApproveOrRejectPrivateEndpointConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, PrivateLinkConnectionApprovalRequestResource privateEndpointWrapper, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RemotePrivateEndpointConnectionARMResource> BeginApproveOrRejectPrivateEndpointConnectionAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, string privateEndpointConnectionName, RemotePrivateEndpointConnectionARMResource privateEndpointWrapper, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginApproveOrRejectPrivateEndpointConnectionWithHttpMessagesAsync(resourceGroupName, name, privateEndpointConnectionName, privateEndpointWrapper, null, cancellationToken).ConfigureAwait(false))
             {
@@ -2506,7 +3980,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2526,7 +4000,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2551,13 +4025,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site.
+        /// Name of the function app registered with the static site.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -2576,13 +4050,13 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
         /// <param name='functionAppName'>
-        /// Name of the function app to register with the static site.
+        /// Name of the function app registered with the static site.
         /// </param>
         /// <param name='isForced'>
         /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on
@@ -2606,14 +4080,14 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
         /// </param>
-        public static void BeginCreateZipDeploymentForStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
+        public static StaticSitesCreateZipDeploymentForStaticSiteHeaders BeginCreateZipDeploymentForStaticSite(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope)
         {
-                ((IStaticSitesOperations)operations).BeginCreateZipDeploymentForStaticSiteAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
+                return ((IStaticSitesOperations)operations).BeginCreateZipDeploymentForStaticSiteAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2623,7 +4097,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// Name of the static site.
@@ -2631,9 +4105,12 @@ namespace Microsoft.Azure.Management.WebSites
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCreateZipDeploymentForStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticSitesCreateZipDeploymentForStaticSiteHeaders> BeginCreateZipDeploymentForStaticSiteAsync(this IStaticSitesOperations operations, string resourceGroupName, string name, StaticSiteZipDeploymentARMResource staticSiteZipDeploymentEnvelope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCreateZipDeploymentForStaticSiteWithHttpMessagesAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginCreateZipDeploymentForStaticSiteWithHttpMessagesAsync(resourceGroupName, name, staticSiteZipDeploymentEnvelope, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Description for Get all Static Sites for a subscription.
@@ -2735,6 +4212,41 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StaticSiteBasicAuthPropertiesARMResource> ListBasicAuthNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).ListBasicAuthNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Description for Gets the basic auth properties for a static site as a
+        /// collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteBasicAuthPropertiesARMResource>> ListBasicAuthNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBasicAuthNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets all static site builds for a particular static site.
         /// </summary>
         /// <param name='operations'>
@@ -2768,6 +4280,39 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Returns overviews of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetBuildDatabaseConnectionsNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).GetBuildDatabaseConnectionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns overviews of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetBuildDatabaseConnectionsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBuildDatabaseConnectionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets the functions of a particular static site build.
         /// </summary>
         /// <param name='operations'>
@@ -2796,6 +4341,72 @@ namespace Microsoft.Azure.Management.WebSites
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteFunctionOverviewARMResource>> ListStaticSiteBuildFunctionsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListStaticSiteBuildFunctionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns details of all backends linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource> GetLinkedBackendsForBuildNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).GetLinkedBackendsForBuildNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of all backends linked to a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>> GetLinkedBackendsForBuildNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetLinkedBackendsForBuildNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns details of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetBuildDatabaseConnectionsWithDetailsNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).GetBuildDatabaseConnectionsWithDetailsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of database connections for a static site build
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetBuildDatabaseConnectionsWithDetailsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBuildDatabaseConnectionsWithDetailsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -2871,6 +4482,39 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
+        /// Returns overviews of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetDatabaseConnectionsNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).GetDatabaseConnectionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns overviews of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetDatabaseConnectionsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDatabaseConnectionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Description for Gets the functions of a static site.
         /// </summary>
         /// <param name='operations'>
@@ -2899,6 +4543,39 @@ namespace Microsoft.Azure.Management.WebSites
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteFunctionOverviewARMResource>> ListStaticSiteFunctionsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListStaticSiteFunctionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns details of all backends linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource> GetLinkedBackendsNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).GetLinkedBackendsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of all backends linked to a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<StaticSiteLinkedBackendARMResource>> GetLinkedBackendsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetLinkedBackendsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -2934,6 +4611,39 @@ namespace Microsoft.Azure.Management.WebSites
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RemotePrivateEndpointConnectionARMResource>> GetPrivateEndpointConnectionListNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetPrivateEndpointConnectionListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns details of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseConnection> GetDatabaseConnectionsWithDetailsNext(this IStaticSitesOperations operations, string nextPageLink)
+        {
+                return ((IStaticSitesOperations)operations).GetDatabaseConnectionsWithDetailsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns details of database connections for a static site
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseConnection>> GetDatabaseConnectionsWithDetailsNextAsync(this IStaticSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDatabaseConnectionsWithDetailsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

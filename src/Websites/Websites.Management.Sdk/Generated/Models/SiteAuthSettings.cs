@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="issuer">The OpenID Connect Issuer URI that represents the entity which issues
         /// access tokens for this application.
         /// When using Azure Active Directory, this value is the URI of the directory
-        /// tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+        /// tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
         /// This URI is a case-sensitive identifier for the token issuer.
         /// More information on OpenID Connect Discovery:
         /// http://openid.net/specs/openid-connect-discovery-1_0.html
@@ -117,7 +117,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// be validated as such.
         /// </param>
 
-        /// <param name="allowedAudiences">Allowed audience values to consider when validating JWTs issued by
+        /// <param name="allowedAudiences">Allowed audience values to consider when validating JSON Web Tokens issued
+        /// by
         /// Azure Active Directory. Note that the &lt;code&gt;ClientID&lt;/code&gt; value is always
         /// considered an
         /// allowed audience, regardless of this setting.
@@ -403,7 +404,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets the OpenID Connect Issuer URI that represents the entity which
         /// issues access tokens for this application.
         /// When using Azure Active Directory, this value is the URI of the directory
-        /// tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+        /// tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
         /// This URI is a case-sensitive identifier for the token issuer.
         /// More information on OpenID Connect Discovery:
         /// http://openid.net/specs/openid-connect-discovery-1_0.html
@@ -419,8 +420,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? ValidateIssuer {get; set; }
 
         /// <summary>
-        /// Gets or sets allowed audience values to consider when validating JWTs
-        /// issued by
+        /// Gets or sets allowed audience values to consider when validating JSON Web
+        /// Tokens issued by
         /// Azure Active Directory. Note that the &lt;code&gt;ClientID&lt;/code&gt; value is always
         /// considered an
         /// allowed audience, regardless of this setting.

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="incrementNodeConfigurationBuild">If a new build version of NodeConfiguration is required.
         /// </param>
-        public DscNodeConfigurationProperties(System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), System.DateTimeOffset creationTime = default(System.DateTimeOffset), DscConfigurationAssociationProperty configuration = default(DscConfigurationAssociationProperty), string source = default(string), long? nodeCount = default(long?), bool? incrementNodeConfigurationBuild = default(bool?))
+        public DscNodeConfigurationProperties(System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), DscConfigurationAssociationProperty configuration = default(DscConfigurationAssociationProperty), string source = default(string), long? nodeCount = default(long?), bool? incrementNodeConfigurationBuild = default(bool?))
 
         {
             this.LastModifiedTime = lastModifiedTime;
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the configuration of the node.

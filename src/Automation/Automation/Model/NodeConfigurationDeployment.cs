@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (automationJob != null)
             {
-                JobId = automationJob.JobId;
+                JobId = automationJob.JobId.GetValueOrDefault();
                 JobStatus = automationJob.Status;
                 Job = new Job(resourceGroupName, accountName, automationJob);
             }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (automationJob != null)
             {
-                JobId = automationJob.JobId;
+                JobId = automationJob.JobId.GetValueOrDefault();
                 JobStatus = automationJob.Status;
                 Job = new Job(resourceGroupName, accountName, automationJob);
             }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             {
                 if (automationJob != null)
                 {
-                    JobId = automationJob.JobId;
+                    JobId = automationJob.JobId.GetValueOrDefault();
                     JobStatus = automationJob.Status;
                     Job = new Job(resourceGroupName, accountName, automationJob);
                 }
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (automationJob != null)
             {
-                JobId = automationJob.JobId;
+                JobId = automationJob.JobId.GetValueOrDefault();
                 JobStatus = automationJob.Status;
                 Job = new Job(resourceGroupName, accountName, automationJob);
             }
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             {
                 if (automationJob != null)
                 {
-                    JobId = automationJob.JobId;
+                    JobId = automationJob.JobId.GetValueOrDefault();
                     JobStatus = automationJob.Status;
                     Job = new Job(resourceGroupName, accountName, automationJob);
                 }

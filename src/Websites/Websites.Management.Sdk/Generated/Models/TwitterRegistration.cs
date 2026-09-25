@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the app registration for the Twitter
     /// provider.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TwitterRegistration : ProxyOnlyResource
+    public partial class TwitterRegistration
     {
         /// <summary>
         /// Initializes a new instance of the TwitterRegistration class.
@@ -26,18 +25,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the TwitterRegistration class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="consumerKey">The OAuth 1.0a consumer key of the Twitter application used for sign-in.
         /// This setting is required for enabling Twitter Sign-In.
         /// Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
@@ -47,9 +34,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Twitter
         /// application used for sign-in.
         /// </param>
-        public TwitterRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string consumerKey = default(string), string consumerSecretSettingName = default(string))
+        public TwitterRegistration(string consumerKey = default(string), string consumerSecretSettingName = default(string))
 
-        : base(id, name, kind, type)
         {
             this.ConsumerKey = consumerKey;
             this.ConsumerSecretSettingName = consumerSecretSettingName;
@@ -68,7 +54,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// This setting is required for enabling Twitter Sign-In.
         /// Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.consumerKey")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "consumerKey")]
         public string ConsumerKey {get; set; }
 
         /// <summary>
@@ -76,7 +62,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// secret of the Twitter
         /// application used for sign-in.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.consumerSecretSettingName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "consumerSecretSettingName")]
         public string ConsumerSecretSettingName {get; set; }
     }
 }

@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve a list of sync job streams identified by sync job id.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='sourceControlName'>
-        /// The source control name.
+        /// The name of source control.
         /// </param>
         /// <param name='sourceControlSyncJobId'>
         /// The source control sync job id.
@@ -55,13 +55,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve a sync job stream identified by stream id.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='sourceControlName'>
-        /// The source control name.
+        /// The name of source control.
         /// </param>
         /// <param name='sourceControlSyncJobId'>
         /// The source control sync job id.

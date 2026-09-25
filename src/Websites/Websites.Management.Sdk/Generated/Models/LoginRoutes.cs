@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The routes that specify the endpoints used for login and logout requests.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LoginRoutes : ProxyOnlyResource
+    public partial class LoginRoutes
     {
         /// <summary>
         /// Initializes a new instance of the LoginRoutes class.
@@ -25,23 +24,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the LoginRoutes class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="logoutEndpoint">The endpoint at which a logout request should be made.
         /// </param>
-        public LoginRoutes(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string logoutEndpoint = default(string))
+        public LoginRoutes(string logoutEndpoint = default(string))
 
-        : base(id, name, kind, type)
         {
             this.LogoutEndpoint = logoutEndpoint;
             CustomInit();
@@ -56,7 +42,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the endpoint at which a logout request should be made.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.logoutEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "logoutEndpoint")]
         public string LogoutEndpoint {get; set; }
     }
 }
