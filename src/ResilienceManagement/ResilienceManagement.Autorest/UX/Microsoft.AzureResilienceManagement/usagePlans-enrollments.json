@@ -1,0 +1,95 @@
+{
+  "resourceType": "usagePlans/enrollments",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementEnrollment",
+      "description": "Get an Enrollment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureResilienceManagement/usagePlans/{usagePlanName}/enrollments/{enrollmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementenrollment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-UsagePlanName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an Enrollment.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.enrollmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-UsagePlanName",
+              "value": "[Path.usagePlanName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResilienceManagementEnrollment",
+      "description": "Delete an Enrollment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureResilienceManagement/usagePlans/{usagePlanName}/enrollments/{enrollmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/remove-azresiliencemanagementenrollment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-UsagePlanName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an Enrollment.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.enrollmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-UsagePlanName",
+              "value": "[Path.usagePlanName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
