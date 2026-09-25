@@ -15,6 +15,12 @@ returned by `changed_ps_test_files`. The approved
 changed `<Service>.Test` files. Do not guess a different workflow or execute
 live tests in the worker.
 
+Review coverage can also include AutoRest/Pester `test/*.Tests.ps1` and
+`*.Recording.json` artifacts. That does not extend this workflow's execution
+surface: use only `changed_ps_test_files` for dispatch selection, never the
+broader review coverage file list. Report Pester validation separately using
+available CI evidence; do not claim that this TestFx workflow ran it.
+
 If no test path is selected, call the dispatcher with the empty list so it
 records a neutral skip for the current revision. If tests are selected but
 target inference does not return a named `psmodule`, stop with a pending
