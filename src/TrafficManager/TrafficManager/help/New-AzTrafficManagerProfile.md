@@ -237,7 +237,8 @@ Accept wildcard characters: False
 ```
 
 ### -RecordType
-Specifies the DNS record type used for the profile's synthesized DNS records.
+When RecordType is set, the Traffic Manager profile only allows endpoints that match the specified DNS record type.
+When it is not set, the profile allows endpoints of any supported type.
 Valid values are:
 
 - A
@@ -370,5 +371,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzTrafficManagerProfile](./Remove-AzTrafficManagerProfile.md)
 
 [Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)
-
 
