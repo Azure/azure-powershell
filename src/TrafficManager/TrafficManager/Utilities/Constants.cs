@@ -20,6 +20,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public const string ExternalEndpoint = "ExternalEndpoints";
         public const string NestedEndpoint = "NestedEndpoints";
 
+        public const string A = "A";
+        public const string AAAA = "AAAA";
+        public const string CNAME = "CNAME";
+
         public const string StatusEnabled = "Enabled";
         public const string StatusDisabled = "Disabled";
 
