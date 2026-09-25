@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 
 ## Version 3.3.0
 * Added ChangeSafety Support

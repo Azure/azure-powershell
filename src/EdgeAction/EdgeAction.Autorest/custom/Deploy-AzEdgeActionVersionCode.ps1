@@ -129,6 +129,20 @@ function Deploy-AzEdgeActionVersionCode {
         ${ProxyUseDefaultCredentials}
     )
 
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.EdgeAction.private\Deploy-AzEdgeActionVersionCode_DeployExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
+
     process {
         try {
             # Validate file exists
@@ -229,6 +243,8 @@ function Deploy-AzEdgeActionVersionCode {
             if ($PSBoundParameters.ContainsKey('Proxy')) { $params['Proxy'] = $Proxy }
             if ($PSBoundParameters.ContainsKey('ProxyCredential')) { $params['ProxyCredential'] = $ProxyCredential }
             if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) { $params['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials }
+            if ($PSBoundParameters.ContainsKey('AcquirePolicyToken')) { $params['AcquirePolicyToken'] = $PSBoundParameters['AcquirePolicyToken'] }
+            if ($PSBoundParameters.ContainsKey('ChangeReference')) { $params['ChangeReference'] = $PSBoundParameters['ChangeReference'] }
 
             Write-Verbose "Calling internal deployment implementation with Content and Name parameters"
             

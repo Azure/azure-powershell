@@ -76,6 +76,7 @@ input-file:
 module-version: 0.2.9
 title: DnsResolver
 subject-prefix: DnsResolver
+enable-change-safety: true
 
 inlining-threshold: 50
 # If there are post APIs for some kinds of actions in the RP, you may need to

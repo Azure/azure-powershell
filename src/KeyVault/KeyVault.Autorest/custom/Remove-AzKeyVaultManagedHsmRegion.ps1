@@ -119,21 +119,53 @@ function Remove-AzKeyVaultManagedHsmRegion {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.KeyVault.private\Update-AzKeyVaultManagedHsm_UpdateExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
+
     process {
         try {
-            $null = $PSBoundParameters.Remove('PassThru')
-            $null = $PSBoundParameters.Remove('HsmName')
-            $null = $PSBoundParameters.Add('Name', $HsmName)
-            $null = $PSBoundParameters.Remove('Region')
-            $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @PSBoundParameters
+            $GetParameters = @{}
+            foreach ($key in @('ResourceGroupName', 'SubscriptionId', 'DefaultProfile', 'Break', 'HttpPipelineAppend', 'HttpPipelinePrepend', 'Proxy', 'ProxyCredential', 'ProxyUseDefaultCredentials', 'AsJob')) {
+                if ($PSBoundParameters.ContainsKey($key)) {
+                    $GetParameters[$key] = $PSBoundParameters[$key]
+                }
+            }
+            $GetParameters['Name'] = $HsmName
+            $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @GetParameters
             $Parameter = Az.KeyVault.private\Get-ParameterForRegion -Parameter $Parameter -Region $Region -RemoveRegion
-            $null = $PSBoundParameters.Add('Parameter', $Parameter)
-            $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @PSBoundParameters
+            $UpdateParameters = @{}
+            foreach ($entry in $PSBoundParameters.GetEnumerator()) {
+                $UpdateParameters[$entry.Key] = $entry.Value
+            }
+            $UpdateParameters.Remove('PassThru')
+            $UpdateParameters.Remove('HsmName')
+            $UpdateParameters.Remove('Region')
+            $UpdateParameters['Name'] = $HsmName
+            $UpdateParameters['Parameter'] = $Parameter
+            $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @UpdateParameters
             if($PassThru.IsPresent){
-                $null = $PSBoundParameters.Remove('Parameter')
-                $null = $PSBoundParameters.Remove('Name')
-                $null = $PSBoundParameters.Add('HsmName', $HsmName)
-                Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @PSBoundParameters
+                $RegionParameters = @{}
+                foreach ($key in @('ResourceGroupName', 'SubscriptionId', 'DefaultProfile', 'Break', 'HttpPipelineAppend', 'HttpPipelinePrepend', 'Proxy', 'ProxyCredential', 'ProxyUseDefaultCredentials', 'AsJob')) {
+                    if ($PSBoundParameters.ContainsKey($key)) {
+                        $RegionParameters[$key] = $PSBoundParameters[$key]
+                    }
+                }
+                $RegionParameters['HsmName'] = $HsmName
+                Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @RegionParameters
             }
         } catch {
             throw
