@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 8)]
         public List<TrafficManagerExpectedStatusCodeRange> ExpectedStatusCodeRange { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The record type of the profile.")]
+        [Parameter(Mandatory = false, HelpMessage = "When RecordType is set, the Traffic Manager profile only allows endpoints that match the specified DNS record type. When it is not set, the profile allows endpoints of any supported type. Valid values are A, AAAA, and CNAME.")]
         [ValidateSet(Constants.A, Constants.AAAA, Constants.CNAME, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string RecordType { get; set; }

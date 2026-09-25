@@ -783,6 +783,43 @@ function Test-ProfileCrudWithRecordType
 
 <#
 .SYNOPSIS
+Create profile without RecordType and verify setting RecordType succeeds
+#>
+function Test-ProfileSetRecordTypeWhenUnset
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+
+	try
+	{
+	$createdProfile = New-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
+
+	Assert-NotNull $createdProfile
+	Assert-Null $createdProfile.RecordType
+
+	$createdProfile.RecordType = "A"
+	$updatedProfile = Set-AzTrafficManagerProfile -TrafficManagerProfile $createdProfile
+
+	Assert-NotNull $updatedProfile
+	Assert-AreEqual "A" $updatedProfile.RecordType
+
+	$retrievedProfile = Get-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual "A" $retrievedProfile.RecordType
+
+	Assert-True { Remove-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Create profile with RecordType and verify changing RecordType fails
 #>
 function Test-ProfileChangeRecordTypeShouldFail
