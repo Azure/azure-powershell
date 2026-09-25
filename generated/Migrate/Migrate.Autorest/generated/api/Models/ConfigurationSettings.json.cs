@@ -96,13 +96,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
                 {
                     return new ReplicationGroupDetails(json);
                 }
-                case "VmmVirtualMachine":
-                {
-                    return new VmmVirtualMachineDetails(json);
-                }
                 case "VMwareVirtualMachine":
                 {
                     return new VMwareVirtualMachineDetails(json);
+                }
+                case "VmmVirtualMachine":
+                {
+                    return new VmmVirtualMachineDetails(json);
                 }
             }
             return new ConfigurationSettings(json);

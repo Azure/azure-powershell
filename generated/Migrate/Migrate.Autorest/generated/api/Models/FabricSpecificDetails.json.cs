@@ -100,10 +100,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
                 {
                     return new InMageRcmFabricSpecificDetails(json);
                 }
-                case "VMM":
-                {
-                    return new VmmDetails(json);
-                }
                 case "VMware":
                 {
                     return new VMwareDetails(json);
@@ -111,6 +107,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
                 case "VMwareV2":
                 {
                     return new VMwareV2FabricSpecificDetails(json);
+                }
+                case "VMM":
+                {
+                    return new VmmDetails(json);
                 }
             }
             return new FabricSpecificDetails(json);
