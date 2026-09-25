@@ -198,6 +198,18 @@ function New-AzMigrateLocalServerReplication {
         $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
         Import-Module $helperPath
 
+        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
+        $HasEnableSecureBoot = $PSBoundParameters.ContainsKey('EnableSecureBoot')
+        if ($HasEnableSecureBoot) {
+            $secureBootEnabled = [System.Convert]::ToBoolean($EnableSecureBoot)
+        }
+
+        # Purely a contradiction between parameters, so reject it before the module and service checks.
+        if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
+            $HasEnableSecureBoot -and -not $secureBootEnabled) {
+            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires Secure Boot."
+        }
+
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
@@ -209,17 +221,6 @@ function New-AzMigrateLocalServerReplication {
         $HasMigrateAsArcVM = $PSBoundParameters.ContainsKey('MigrateAsArcVM')
         if ($HasMigrateAsArcVM) {
             $migrateAsArcVMEnabled = [System.Convert]::ToBoolean($MigrateAsArcVM)
-        }
-        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
-        $HasEnableSecureBoot = $PSBoundParameters.ContainsKey('EnableSecureBoot')
-        if ($HasEnableSecureBoot) {
-            $secureBootEnabled = [System.Convert]::ToBoolean($EnableSecureBoot)
-        }
-
-        # Purely a contradiction between parameters, so reject it before any service lookups.
-        if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
-            $HasEnableSecureBoot -and -not $secureBootEnabled) {
-            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires Secure Boot."
         }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
