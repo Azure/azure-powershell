@@ -21,5 +21,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// PathBasedRouting
         /// </summary>
         public const string PathBasedRouting = "PathBasedRouting";
+        /// <summary>
+        /// AdvancedRouting
+        /// </summary>
+        public const string AdvancedRouting = "AdvancedRouting";
     }
 }
