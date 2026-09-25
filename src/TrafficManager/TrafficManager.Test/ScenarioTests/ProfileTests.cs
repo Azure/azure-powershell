@@ -186,6 +186,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileSetRecordTypeWhenUnset()
+        {
+            TestRunner.RunTestScript("Test-ProfileSetRecordTypeWhenUnset");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileChangeRecordTypeShouldFail()
         {
             TestRunner.RunTestScript("Test-ProfileChangeRecordTypeShouldFail");
