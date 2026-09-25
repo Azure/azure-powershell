@@ -1,0 +1,141 @@
+{
+  "resourceType": "serviceGroups/drills",
+  "apiVersion": "2026-09-30-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliency"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResiliencyDrill",
+      "description": "Get a Drill",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencydrill"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Drill",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResiliencyDrill",
+      "description": "Delete a Drill",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/remove-azresiliencydrill"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Drill",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzResiliencyDrill",
+      "description": "This starts a new running instance of the Drill.",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/start-azresiliencydrill"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "This starts a new running instance of the Drill.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sync-AzResiliencyDrillReadiness",
+      "description": "This triggers detection of any drifts from the desired state of Resources and RBAC.",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/drills/{drillName}/resyncReadinessCheck",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/sync-azresiliencydrillreadiness"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DrillName <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "This triggers detection of any drifts from the desired state of Resources and RBAC.",
+          "parameters": [
+            {
+              "name": "-DrillName",
+              "value": "[Path.drillName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
