@@ -69,6 +69,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool UsePolicyBasedTrafficSelectors { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether FIPS compliance is enabled for this VPN connection.
+        /// A null value means that the setting was not specified or returned by the service.
+        /// </summary>
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableFipsCompliance { get; set; }
+
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
         public List<PSTrafficSelectorPolicy> TrafficSelectorPolicies { get; set; }
