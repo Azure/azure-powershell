@@ -206,6 +206,28 @@ param(
     ${Force}
 )
 
+    dynamicparam {
+      # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+      # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+      $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+      $variant = switch ($PSCmdlet.ParameterSetName) {
+        'CustomerExpanded' { 'StartExpanded' }
+        'CustomerViaIdentityExpanded' { 'StartViaIdentityExpanded' }
+        'CustomerViaJsonFilePath' { 'StartViaJsonFilePath' }
+        'CustomerViaJsonString' { 'StartViaJsonString' }
+      }
+      $wrapped = Get-Command -Name "Az.Storage.private\Start-AzStorageAccountMigration_$variant" -ErrorAction Ignore
+      if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+        $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+        foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+          if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+            $dynamicParameters.Add($entry.Key, $entry.Value)
+          }
+        }
+      }
+      return $dynamicParameters
+    }
+
     process {
 
       if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Confirm redundancy configuration change:", "After your request to convert the account's redundancy configuration is validated, the conversion will typically complete in a few days, but can take several weeks depending on current resource demands in the region, account size, and other factors. The conversion can't be stopped after being initiated, and for accounts with geo redundancy a failover can't be initiated while conversion is in progress. During the conversion, you can access data in your storage account with no loss of durability, and non-HNS-enabled accounts experience no interruption to availability. However, HNS-enabled accounts might experience a brief pause while the account switches to the new resiliency level. This pause lasts less than 30 seconds and requests will complete automatically after the pause.")) {

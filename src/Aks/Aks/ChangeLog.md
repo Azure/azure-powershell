@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 
 ## Version 7.2.1
 * Added support for `AzureContainerLinux` OS SKU in `New-AzAksCluster` (`-NodeOsSKU`) and `New-AzAksNodePool` (`-OsSKU`)
