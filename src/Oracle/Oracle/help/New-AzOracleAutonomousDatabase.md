@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoracleautonomousdatabase
 schema: 2.0.0
@@ -14,32 +14,34 @@ Create a AutonomousDatabase
 
 ### CreateExpanded (Default)
 ```
-New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-AdminPassword <SecureString>] [-AutonomousDatabaseId <String>]
- [-AutonomousMaintenanceScheduleType <String>] [-BackupRetentionPeriodInDay <Int32>] [-CharacterSet <String>]
- [-ComputeCount <Single>] [-ComputeModel <String>] [-CpuCoreCount <Int32>]
- [-CustomerContact <ICustomerContact[]>] [-DataBaseType <String>] [-DataStorageSizeInGb <Int32>]
- [-DataStorageSizeInTb <Int32>] [-DatabaseEdition <String>] [-DbVersion <String>] [-DbWorkload <String>]
- [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
+New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-AdminPassword <SecureString>] [-AutonomousDatabaseId <String>]
+ [-AutonomousMaintenanceScheduleType <String>] [-BackupDestination <String>]
+ [-BackupRetentionPeriodInDay <Int32>] [-CharacterSet <String>] [-ComputeCount <Single>]
+ [-ComputeModel <String>] [-CpuCoreCount <Int32>] [-CustomerContact <ICustomerContact[]>]
+ [-DatabaseEdition <String>] [-DataBaseType <String>] [-DataStorageSizeInGb <Int32>]
+ [-DataStorageSizeInTb <Int32>] [-DbVersion <String>] [-DbWorkload <String>] [-DisplayName <String>]
+ [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
  [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted] [-LicenseModel <String>]
- [-NcharacterSet <String>] [-PrivateEndpointIP <String>] [-PrivateEndpointLabel <String>]
+ [-NcharacterSet <String>] [-NetworkAnchorId <String>] [-PrivateEndpointIP <String>]
+ [-PrivateEndpointLabel <String>] [-ResourceAnchorId <String>]
  [-ScheduledOperationsList <IScheduledOperationsType[]>] [-SubnetId <String>] [-Tag <Hashtable>]
- [-VnetId <String>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VnetId <String>] [-WhitelistedIP <String[]>] [-Zone <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +119,7 @@ Type                                          : oracle.database/autonomousdataba
 UsedDataStorageSizeInGb                       : 
 UsedDataStorageSizeInTb                       : 
 VnetId                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
-WhitelistedIP                                 :
+WhitelistedIP                                 : 
 ```
 
 Create an Autonomous Database resource.
@@ -172,6 +174,22 @@ Accept wildcard characters: False
 
 ### -AutonomousMaintenanceScheduleType
 The maintenance schedule type of the Autonomous Database Serverless.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupDestination
+Backup destination for auto and long-term backups.
+Existing backups stay in their original destination when this value changes.
 
 ```yaml
 Type: System.String
@@ -562,6 +580,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkAnchorId
+Azure Network Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -594,6 +627,21 @@ Accept wildcard characters: False
 
 ### -PrivateEndpointLabel
 The resource's private endpoint label.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceAnchorId
+Azure Resource Anchor ID
 
 ```yaml
 Type: System.String
@@ -717,6 +765,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Zone
+The logical zone where the Autonomous Database is provisioned.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -760,3 +823,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,0 +1,52 @@
+{
+  "resourceType": "goldenGateConnections/assignedDeployments",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleGoldenGateConnectionAssignedDeployment",
+      "description": "Get assigned deployment by GoldenGate connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/goldenGateConnections/{goldenGateConnectionName}/assignedDeployments/{assignmentId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoraclegoldengateconnectionassigneddeployment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AssignmentId <String>",
+              "-GoldenGateConnectionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get assigned deployment by GoldenGate connection.",
+          "parameters": [
+            {
+              "name": "-AssignmentId",
+              "value": "[Path.assignmentId]"
+            },
+            {
+              "name": "-GoldenGateConnectionName",
+              "value": "[Path.goldenGateConnectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

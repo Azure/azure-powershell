@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleautonomousdatabasebackup
 schema: 2.0.0
@@ -15,7 +15,18 @@ Get a AutonomousDatabaseBackup
 ### List (Default)
 ```
 Get-AzOracleAutonomousDatabaseBackup -Autonomousdatabasename <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzOracleAutonomousDatabaseBackup -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -23,19 +34,6 @@ Get-AzOracleAutonomousDatabaseBackup -Autonomousdatabasename <String> -ResourceG
 ```
 Get-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -AutonomousDatabaseInputObject <IOracleIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzOracleAutonomousDatabaseBackup -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +66,7 @@ AutonomousDatabaseBackup id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityAutonomousDatabase, Get
+Parameter Sets: Get, GetViaIdentityAutonomousDatabase
 Aliases:
 
 Required: True
@@ -98,7 +96,7 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -145,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -161,7 +159,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -185,3 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
