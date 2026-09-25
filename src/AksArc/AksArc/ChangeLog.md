@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.2.0
 * Fixed commands and added autorest tests.
     - Undo ExtendedLocationName to CustomLocationID parameter rename in `src/AksArc/AksArc.Autorest/README.md`.
     - Get-AzAksArcNodepool
@@ -38,7 +37,7 @@
     - Update-AzAksArcCluster
         - Parameter `SubscriptionId` is mandatory.
         - Parameters `MinCount`, `MaxCount`, and `EnableAutoScaling` are available for all parameter sets.
-        - Removed `return` statemenet after only updating the nodepool.
+        - Removed `return` statement after only updating the nodepool.
     - Update-AzAksArcNodepool
         - Parameters `ClusterName`, `ResourceGroupName`, `SubscriptionId`, and `Name` are part of `UpdateExpanded` parameter set.
         - Removed `AutoScaling` parameter set.
