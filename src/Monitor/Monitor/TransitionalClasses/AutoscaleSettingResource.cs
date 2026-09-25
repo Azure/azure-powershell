@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
                   tags: autoscaleSettingResource?.Tags,
                   notifications: autoscaleSettingResource?.Notifications,
                   enabled: autoscaleSettingResource?.Enabled,
-                  autoscaleSettingResourceName: autoscaleSettingResource?.AutoscaleSettingResourceName,
+                  propertiesName: autoscaleSettingResource?.PropertiesName,
                   targetResourceUri: autoscaleSettingResource?.TargetResourceUri)
         {
             this.Profiles = autoscaleSettingResource?.Profiles?.Select(Commands.Insights.TransitionalClasses.TransitionHelpers.ConvertNamespace).ToList();
