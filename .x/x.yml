@@ -55,5 +55,6 @@ skills:
 custom_skills:
   changed_ps_test_files: changed_ps_test_files
   dispatch_powershell_copilot: dispatch_powershell_copilot
+  get_pr_powershell_review_summary: get_pr_powershell_review_summary
   get_pr_regression_coverage_summary: get_pr_regression_coverage_summary
   infer_ps_target: infer_ps_target
