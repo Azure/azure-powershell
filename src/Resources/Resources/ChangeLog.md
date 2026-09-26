@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `Update-AzPolicyAssignment` removing the existing overrides and resource selectors of a policy assignment when `-Override` or `-ResourceSelector` is not specified.
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.
