@@ -887,31 +887,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(Resources.ILRNoClientScriptsReturned);
             }
 
-            ClientScriptForConnect clientScriptForConnection =
-                recoveryTarget.ClientScripts.FirstOrDefault(script =>
-                    string.Equals(script.OSType, "Windows", StringComparison.OrdinalIgnoreCase)) ??
-                recoveryTarget.ClientScripts.FirstOrDefault(script =>
-                    !string.IsNullOrEmpty(script.Url)) ??
-                recoveryTarget.ClientScripts.FirstOrDefault(script =>
-                    string.Equals(script.OSType, "Linux", StringComparison.OrdinalIgnoreCase)) ??
-                recoveryTarget.ClientScripts.FirstOrDefault(script =>
-                    !string.IsNullOrEmpty(script.ScriptContent));
-
-            if (clientScriptForConnection == null)
-            {
-                throw new ArgumentException(Resources.ILRNoClientScriptsReturned);
-            }
-
-            if (string.Equals(clientScriptForConnection.OSType, "Windows", StringComparison.OrdinalIgnoreCase) ||
-                !string.IsNullOrEmpty(clientScriptForConnection.Url))
+            // Preserve the original PowerShell client-script selection semantics: when the
+            // service returns two scripts, index 1 is the Windows iSCSI mount tool that carries
+            // the download URL; a single script is the Linux inline script. Selecting by OSType
+            // is unsafe because both returned scripts report OSType "Windows" and the first one
+            // has no URL, which crashed the Windows download path.
+            if (recoveryTarget.ClientScripts.Count == 2)
             {
                 result = this.GenerateILRResponseForWindowsVMs(
-                    clientScriptForConnection, out content);
+                    recoveryTarget.ClientScripts[1], out content);
             }
             else
             {
                 result = this.GenerateILRResponseForLinuxVMs(
-                    clientScriptForConnection,
+                    recoveryTarget.ClientScripts[0],
                     protectedItemName, rp.RecoveryPointTime.ToString(), out content);
             }
 
