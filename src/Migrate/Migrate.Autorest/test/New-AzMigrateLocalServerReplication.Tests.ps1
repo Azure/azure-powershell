@@ -160,4 +160,40 @@ Describe 'New-AzMigrateLocalServerReplication' {
         $broken = Invoke-SecureBootLookup -FailTransport
         $null -eq $broken.State | Should -BeTrue
     }
+
+    # LiveOnly: the cmdlet rejects an already-replicating VM via a pre-existence lookup that returns
+    # 404 on a first run, and the recorder does not persist that exchange, so playback cannot satisfy
+    # it. The same limitation is why ByIdDefaultUser and ByIdPowerUser above are skipped.
+}
+
+Describe 'New-AzMigrateLocalServerReplicationSecurityOption' -Tag 'LiveOnly' {
+    It 'ByIdSecurityOptionTrustedLaunch' {
+        # The service accepts securityOption on create but returns null for it on later GETs, so the
+        # only way to catch a dropped or wrong assignment is to inspect the outgoing request.
+        $script:capturedBody = $null
+        $capture = {
+            param($message, $eventListener, $next)
+            if ($message.Method.Method -eq 'PUT' -and $message.RequestUri.AbsoluteUri -match '/protectedItems/') {
+                $script:capturedBody = $message.Content.ReadAsStringAsync().Result
+            }
+            $next.SendAsync($message, $eventListener)
+        }
+
+        $job = New-AzMigrateLocalServerReplication `
+            -MachineId $env.hciTvmMachineId `
+            -TargetStoragePathId $env.hciTvmStoragePathId `
+            -TargetResourceGroupId $env.hciTvmTargetRgId `
+            -TargetVMName $env.hciTvmTargetVMName `
+            -SourceApplianceName $env.hciTvmSourceApplianceName `
+            -TargetApplianceName $env.hciTvmTargetApplianceName `
+            -TargetVirtualSwitchId $env.hciTvmVirtualSwitchId `
+            -OSDiskID $env.hciTvmOSDiskId `
+            -TargetVMSecurityOption 'TrustedLaunch' `
+            -HttpPipelinePrepend $capture
+
+        $job | Should -Not -BeNullOrEmpty
+        $script:capturedBody | Should -Not -BeNullOrEmpty
+        $script:capturedBody | Should -Match '"securityOption"\s*:\s*"TrustedLaunch"'
+        $script:capturedBody | Should -Match '"hyperVGeneration"\s*:\s*"2"'
+    }
 }
