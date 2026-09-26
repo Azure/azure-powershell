@@ -25,10 +25,10 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-# Lock to the merged Swagger PR commit so SDK generation remains reproducible.
-commit: 53fc184a55bd2214e3bec2f1d9098501072e7d1e
+# Spec source: merged Azure/azure-rest-api-specs PR #44639 (RecoveryServicesBackup 2026-08-01, listMountScripts / MSRC-114273), merged 2026-08-29.
+commit: 4e6e13d398d4c2616237322a62394fc4f1dfeb81
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-07-01/bms.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-08-01/bms.json
 
 directive:
   # Normalize multiline descriptions so generated C# documentation remains well-formed.
@@ -52,6 +52,9 @@ directive:
     transform: $ = $.replace(/xcludedRpList/g, 'xcludedRPList')
 
 output-folder: Generated
+
+# bms.json info.title is "Recovery Services Backup Client" (spaces = invalid C# class name); override to the legacy no-space client name.
+title: RecoveryServicesBackupClient
 
 namespace: Microsoft.Azure.Management.RecoveryServices.Backup
 ```

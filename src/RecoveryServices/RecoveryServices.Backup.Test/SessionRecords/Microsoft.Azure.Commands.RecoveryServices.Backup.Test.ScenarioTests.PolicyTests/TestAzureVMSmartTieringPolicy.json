@@ -73,8 +73,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -148,8 +148,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -214,8 +214,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -289,8 +289,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -364,8 +364,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -439,8 +439,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -520,8 +520,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -601,8 +601,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -682,8 +682,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -757,8 +757,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -832,8 +832,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -907,8 +907,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -988,8 +988,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-07-01&$filter=",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj0=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-08-01&$filter=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj0=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1063,8 +1063,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-07-01&$filter=",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj0=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-08-01&$filter=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj0=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1138,8 +1138,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-07-01&$filter=",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj0=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-08-01&$filter=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj0=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1213,8 +1213,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-07-01&$filter=",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj0=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2026-08-01&$filter=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj0=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1288,8 +1288,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1360,8 +1360,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [

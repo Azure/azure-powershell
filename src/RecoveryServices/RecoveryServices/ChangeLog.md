@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listInstantItemRecoveryOperationResult` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
 * Added Managed Identity (MI) based authentication support for Azure File Share backup:
     - `Enable-AzRecoveryServicesBackupProtection` and `Register-AzRecoveryServicesBackupContainer` (extended to `-BackupManagementType AzureStorage`) now accept `-AccessType` (`KeyBased`/`IdentityBased`), `-IsSystemAssignedIdentity`, and `-UserAssignedIdentityArmUrl` to register/re-register a storage account with a vault managed identity; `-Force` re-registers when the access type or identity changes.
     - `Restore-AzRecoveryServicesBackupItem` accepts `-IsSystemAssignedIdentity` and `-UserAssignedIdentityArmUrl` for identity-based Azure File Share restore, and `-TargetSubscriptionId` to enable Cross Subscription Restore (CSR).

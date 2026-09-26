@@ -480,8 +480,15 @@ function Test-AzureMonitorAlerts
 	finally
 	{
 		# Cleanup
-		Remove-AzRecoveryServicesVault -Vault $vault1
-		Remove-AzRecoveryServicesVault -Vault $vault2
+		if ($null -ne $vault1)
+		{
+			try { Remove-AzRecoveryServicesVault -Vault $vault1 } catch { Write-Warning $_.Exception.Message }
+		}
+
+		if ($null -ne $vault2)
+		{
+			try { Remove-AzRecoveryServicesVault -Vault $vault2 } catch { Write-Warning $_.Exception.Message }
+		}
 	}
 }
 
@@ -1197,20 +1204,52 @@ function Test-AzureUnmanagedVMFullRestore
 
 function Test-AzureVMRPMountScript
 {
-	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	# Item-Level Recovery (ILR) mount-script scenario for MSRC-114273.
+	#
+	# This test is recorded live against a pre-provisioned ILR-capable setup rather than an
+	# inline VM-create + first-backup: the cmdlet only returns a non-null CHAP Password when
+	# a real Instant ILR mount succeeds, which requires an already-backed-up VM with an
+	# existing recovery point on a stamp whose Instant ILR backend is functional.
+	#
+	# Pre-provisioned setup used for recording (Record mode) lives in the
+	# "Nirajk-MAB-Functional-Testing" subscription (e1901c89-33a5-4126-868b-991e4a9993dc):
+	#   Resource group : hiaga-ilr-ecy-rg   (region eastus2euap)
+	#   Vault          : ilr-ecy-vault1
+	#   Protected VM   : ilr-win-ecy-vm1    (already protected; has recovery points)
+	# To re-record: select the above subscription in testcredentials.json, confirm the VM
+	# still has at least one recovery point, and run in Record mode. The iSCSI mount scripts
+	# (including the redaction-sensitive CHAP Password) are served by the dedicated
+	# listInstantItemRecoveryOperationResult action rather than the provision
+	# operation-status response (MSRC-114273).
+	$resourceGroupName = "hiaga-ilr-ecy-rg"
+	$vaultName = "ilr-ecy-vault1"
+	$vmFriendlyName = "ilr-win-ecy-vm1"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureVM `
+		-WorkloadType AzureVM `
+		-Name $vmFriendlyName
+
+	# Use a fixed recovery-point query window (not the cmdlet's default now-30d..now) so the
+	# recorded request URL is deterministic and matches on playback. On re-record, widen this
+	# window if needed so it still contains a recovery point for the pre-provisioned VM.
+	$startDate = (Get-Date -Date "2026-08-15T00:00:00Z").ToUniversalTime()
+	$endDate = (Get-Date -Date "2026-09-17T00:00:00Z").ToUniversalTime()
+	$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-StartDate $startDate `
+		-EndDate $endDate | Select-Object -First 1
 
 	try
 	{
-		# Setup
-		$vm = Create-VM $resourceGroupName $location
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
-		$item = Enable-Protection $vault $vm
-		$backupJob = Backup-Item $vault $item
-		$rp = Get-RecoveryPoint $vault $item $backupJob
-
-		# Get details of mount script of recovery point
+		# After the MSRC-114273 change the iSCSI mount script and its CHAP Password are
+		# retrieved through the dedicated listInstantItemRecoveryOperationResult action
+		# rather than from the provision operation-status response. These assertions confirm
+		# the mount script details (including the redaction-sensitive Password) are still
+		# returned to the user through the new path.
 		$mountScriptDetails = Get-AzRecoveryServicesBackupRPMountScript `
 			-VaultId $vault.ID `
 			-RecoveryPoint $rp
@@ -1220,15 +1259,14 @@ function Test-AzureVMRPMountScript
 		Assert-NotNull $mountScriptDetails.Filename
 		Assert-NotNull $mountScriptDetails.FilePath
 
-		Write-Output $mountScriptDetails
-
-		# Disable the mount script of recovery point
-		Disable-AzRecoveryServicesBackupRPMountScript -VaultId $vault.ID -RecoveryPoint $rp
+		# Emit only non-sensitive fields; the Password (CHAP credential) must not reach test logs.
+		Write-Output ([pscustomobject]@{ OsType = $mountScriptDetails.OsType; Filename = $mountScriptDetails.Filename; FilePath = $mountScriptDetails.FilePath })
 	}
 	finally
 	{
-		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Disable (revoke) the mount session created above. No resource-group cleanup: the
+		# vault and VM are a shared pre-provisioned setup and must not be deleted.
+		Disable-AzRecoveryServicesBackupRPMountScript -VaultId $vault.ID -RecoveryPoint $rp
 	}
 }
 

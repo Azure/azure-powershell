@@ -220,8 +220,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -286,8 +286,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -361,8 +361,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -436,8 +436,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -511,8 +511,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -586,8 +586,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -667,8 +667,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -739,8 +739,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/DefaultPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9EZWZhdWx0UG9saWN5P2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/DefaultPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9EZWZhdWx0UG9saWN5P2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -805,8 +805,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupResourceGuardProxies?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBSZXNvdXJjZUd1YXJkUHJveGllcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupResourceGuardProxies?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBSZXNvdXJjZUd1YXJkUHJveGllcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -880,8 +880,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/ps-test-runtime/providers/Microsoft.RecoveryServices/vaults/ps-test-runtime-vault/backupPolicies/newPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzLXRlc3QtcnVudGltZS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzLXRlc3QtcnVudGltZS12YXVsdC9iYWNrdXBQb2xpY2llcy9uZXdQb2xpY3k/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [

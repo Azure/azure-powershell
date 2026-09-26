@@ -108,7 +108,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "To re-record in next release. Need to move assertion to ps1 file if possible.")]
+        // Exercises the dedicated listInstantItemRecoveryOperationResult mount-script path
+        // (MSRC-114273 CHAP redaction). Recorded live at api-version 2026-08-01 against a
+        // pre-provisioned ILR-capable vault; see Test-AzureVMRPMountScript in ItemTests.ps1
+        // for the setup subscription/vault/VM and re-record instructions.
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMRPMountScript()
@@ -117,11 +121,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
                 $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVMRPMountScript");
-
-            //AzureVmRPMountScriptDetails mountScriptDetails = (AzureVmRPMountScriptDetails)psObjects.First(
-            //    psObject => psObject.BaseObject.GetType() == typeof(AzureVmRPMountScriptDetails)).BaseObject;
-
-            //Assert.True(AzureSession.Instance.DataStore.FileExists(mountScriptDetails.FilePath));
         }
 
         [Fact(Skip = "Skipping for this release because backup job is taking hours of time.")]
