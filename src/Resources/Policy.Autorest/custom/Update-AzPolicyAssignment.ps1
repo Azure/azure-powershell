@@ -332,11 +332,11 @@ process {
         $calledParameters.NotScope = $existing.NotScope
     }
 
-    if (!$Override -and !($Override -is [array]) -and $existing.Override) {
+    if (!$calledParameters.Override -and !($calledParameters.Override -is [array]) -and $existing.Override) {
         $calledParameters.Override = $existing.Override
     }
 
-    if (!$ResourceSelector -and !($ResourceSelector -is [array]) -and $existing.ResourceSelector) {
+    if (!$calledParameters.ResourceSelector -and !($calledParameters.ResourceSelector -is [array]) -and $existing.ResourceSelector) {
         $calledParameters.ResourceSelector = $existing.ResourceSelector
     }
 
