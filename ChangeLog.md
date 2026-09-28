@@ -1,3 +1,9 @@
+## Upcoming Release
+#### Az.Network
+* Added provider-led ExpressRoute cross-connection migration commands, typed health results, and a port-mapping helper. Migration actions support confirmation, WhatIf, and background jobs.
+    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
+    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
+
 ## 16.3.0 - September 2026
 #### Az.Accounts 5.5.3
 * Fixed 'Get-AzSubscription' to throw a clear error instead of returning nothing when '-TenantId' does not match the current Managed Service Identity (MSI) context. [#25710]

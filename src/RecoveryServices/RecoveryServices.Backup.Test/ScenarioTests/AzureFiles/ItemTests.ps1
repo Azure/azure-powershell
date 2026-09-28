@@ -1171,16 +1171,16 @@ function Test-AzureFSCrossSubscriptionRestoreTargetLookup
 		-PlaybackValue "afs-msi-test-rg"
 	$vaultName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
-		-PlaybackValue "afs-msi-test-vault"
+		-PlaybackValue "afs-msi-test-rsv"
 	$storageAccountName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_STORAGE_ACCOUNT" `
-		-PlaybackValue "afsmsiuamisa"
+		-PlaybackValue "afsmsitestsa1"
 	$fileShareName = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_UAMI_FILE_SHARE" `
-		-PlaybackValue "afsmsiuamishare"
+		-PlaybackValue "test-share-small"
 	$targetSubscriptionId = Get-AzureFSMsiTestValue `
 		-Name "AZURE_TEST_AFS_MSI_TARGET_SUBSCRIPTION" `
-		-PlaybackValue "55555555-5555-5555-5555-555555555555"
+		-PlaybackValue "38304e13-357e-405e-9e9a-220351dcce8c"
 
 	$vault = Get-AzRecoveryServicesVault `
 		-ResourceGroupName $resourceGroupName `

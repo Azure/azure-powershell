@@ -70,7 +70,6 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -82,7 +81,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -513,7 +512,6 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -525,7 +523,7 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -553,14 +551,15 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter(ParameterSetName='Get')]
@@ -779,7 +778,6 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -791,7 +789,7 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -819,14 +817,15 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter(ParameterSetName='Get')]
@@ -1036,7 +1035,6 @@ REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1048,7 +1046,7 @@ REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1088,7 +1086,6 @@ REPLICATIONPROTECTIONCONTAINERINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1100,7 +1097,7 @@ REPLICATIONPROTECTIONCONTAINERINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1140,7 +1137,6 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1152,7 +1148,7 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1200,7 +1196,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1208,7 +1205,7 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter(ParameterSetName='Get')]
@@ -1436,7 +1433,6 @@ REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1448,7 +1444,7 @@ REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1488,7 +1484,6 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1500,7 +1495,7 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1538,7 +1533,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1546,7 +1542,7 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter(ParameterSetName='Get')]
@@ -1765,7 +1761,6 @@ REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1777,7 +1772,7 @@ REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1817,7 +1812,6 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -1829,7 +1823,7 @@ VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -1867,7 +1861,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1875,7 +1870,7 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter(ParameterSetName='Get')]
@@ -2096,7 +2091,6 @@ SUBSCRIPTIONINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -2108,7 +2102,7 @@ SUBSCRIPTIONINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -2148,7 +2142,6 @@ VMWARESITEINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -2160,7 +2153,7 @@ VMWARESITEINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -2419,7 +2412,6 @@ SUBSCRIPTION1INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -2431,7 +2423,7 @@ SUBSCRIPTION1INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -2471,7 +2463,6 @@ SUBSCRIPTION2INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -2483,7 +2474,7 @@ SUBSCRIPTION2INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -2523,7 +2514,6 @@ SUBSCRIPTIONINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -2535,7 +2525,7 @@ SUBSCRIPTIONINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -2785,7 +2775,6 @@ MIGRATEPROJECTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -2797,7 +2786,7 @@ MIGRATEPROJECTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -3030,13 +3019,14 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter()]
@@ -3265,7 +3255,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Protection container mapping name.
+    # Protection Container mapping name.
     ${MappingName},
 
     [Parameter(Mandatory)]
@@ -3277,13 +3267,14 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the resource group where the recovery services vault is present.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # The name of the recovery services vault.
+    # The name of the Vault
     ${ResourceName},
 
     [Parameter()]
@@ -4088,7 +4079,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
-  [Location <String>]: Resource Location
   [ActivityId <String>]: The activity id.
   [AllowedAction <List<String>>]: The Allowed action the job.
   [CustomDetailAffectedObjectDetail <IJobDetailsAffectedObjectDetails>]: The affected object properties like source server, source cloud, target server, target cloud etc. based on the workflow object details.
@@ -4110,6 +4100,7 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
     [ServiceErrorDetailRecommendedAction <String>]: Recommended action to resolve error.
     [TaskId <String>]: The Id of the task.
   [FriendlyName <String>]: The DisplayName.
+  [Location <String>]: Resource Location
   [ScenarioName <String>]: The ScenarioName.
   [StartTime <DateTime?>]: The start time.
   [State <String>]: The status of the Job. It is one of these values - NotStarted, InProgress, Succeeded, Failed, Cancelled, Suspended or Other.
@@ -4402,7 +4393,6 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the job object of the replicating serv
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -4414,7 +4404,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the job object of the replicating serv
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -4681,7 +4671,6 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the machine object of the replicating 
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -4693,7 +4682,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the machine object of the replicating 
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -6306,6 +6295,14 @@ param(
     ${IsDynamicMemoryEnabled},
 
     [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies whether to migrate the server as an Azure Arc-enabled VM.
+    # When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+    ${MigrateAsArcVM},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.Int64]
     # Specifies the target RAM size in MB.
@@ -7326,7 +7323,6 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which the r
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -7338,7 +7334,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which the r
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
@@ -8895,7 +8891,6 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migra
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
@@ -8907,7 +8902,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migra
   [ReplicationExtensionName <String>]: The replication extension name.
   [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
+  [ResourceName <String>]: The name of the Vault
   [SiteName <String>]: Site name.
   [SolutionName <String>]: Unique name of a migration solution within a migrate project.
   [StorageClassificationMappingName <String>]: Storage classification mapping name.

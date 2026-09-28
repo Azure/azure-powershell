@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
 
+        public List<PSApplicationGatewayAdvancedRoutingMap> AdvancedRoutingMaps { get; set; }
+
+        public List<PSApplicationGatewayAdvancedRoutingConditionSet> AdvancedRoutingConditionSets { get; set; }
+
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
         public List<PSApplicationGatewayRoutingRule> RoutingRules { get; set; }
@@ -265,6 +269,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string UrlPathMapsText
         {
             get { return JsonConvert.SerializeObject(UrlPathMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AdvancedRoutingMapsText
+        {
+            get { return JsonConvert.SerializeObject(AdvancedRoutingMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AdvancedRoutingConditionSetsText
+        {
+            get { return JsonConvert.SerializeObject(AdvancedRoutingConditionSets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
