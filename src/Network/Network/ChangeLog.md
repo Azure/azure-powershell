@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Removed client-side validation of the `-FormatVersion` parameter for `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
+    - Flow log format versions are now validated by the service, so newly supported versions can be used without a module update.
+    - Corrected the error message shown for an invalid `-FormatType` value, which previously reported an invalid format version.
 * Added Change Safety support for additional cmdlets.
 * Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
     - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
