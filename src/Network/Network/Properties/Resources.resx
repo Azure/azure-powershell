@@ -681,7 +681,7 @@
     <value>StorageId specified in flow log is not a valid ID of storage account.</value>
   </data>
   <data name="InvalidFlowLogFormatVersion" xml:space="preserve">
-    <value>Invalid format version. Supported values are 0, 1 and 2.</value>
+    <value>Invalid format version. Supported values are 0, 1, 2 and 5.</value>
   </data>
   <data name="FlowLogFilteringCriteriaExceedsLimit" xml:space="preserve">
     <value>Filtering string can be maximum of 1000 characters in length.</value>
