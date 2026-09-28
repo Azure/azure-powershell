@@ -59,6 +59,22 @@ Describe 'ServiceBus GeoDR via-identity dynamic parameter forwarding' {
         $environmentParameters.ContainsKey('ChangeReference') | Should Be $false
     }
 
+    It 'accepts the PSBoundParameters dictionary used by custom cmdlets' {
+        function Invoke-ServiceBusTestForwarding {
+            param(
+                [string] $ChangeReference
+            )
+
+            $environmentParameters = @{}
+            Add-AzServiceBusBoundDynamicParameter -CommandName 'Az.ServiceBus.private\Test-Target' -BoundParameters $PSBoundParameters -TargetParameters $environmentParameters
+            return $environmentParameters
+        }
+
+        $environmentParameters = Invoke-ServiceBusTestForwarding -ChangeReference 'change-123'
+
+        $environmentParameters.ChangeReference | Should Be 'change-123'
+    }
+
     It 'uses exact target metadata and environment splats in both via-identity branches' {
         $cases = @(
             @{

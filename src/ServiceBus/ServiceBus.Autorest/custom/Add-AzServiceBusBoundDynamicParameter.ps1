@@ -29,7 +29,7 @@ function Add-AzServiceBusBoundDynamicParameter {
 
     $instance = [System.Activator]::CreateInstance($command.ImplementingType)
     foreach ($parameterName in $instance.GetDynamicParameters().Keys) {
-        if (($parameterName -notin $ExcludedParameter) -and $BoundParameters.Contains($parameterName)) {
+        if (($parameterName -notin $ExcludedParameter) -and $BoundParameters.ContainsKey($parameterName)) {
             $TargetParameters[$parameterName] = $BoundParameters[$parameterName]
         }
     }
