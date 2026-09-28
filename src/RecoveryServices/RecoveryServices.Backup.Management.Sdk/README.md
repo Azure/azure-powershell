@@ -14,6 +14,7 @@ autorest --use:@autorest/powershell@4.x
 isSdkGenerator: true
 powershell: true
 override-client-name: RecoveryServicesBackupClient
+title: RecoveryServicesBackupClient
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
+* Fixed `Restore-AzSqlDatabase` to omit the high availability (HA) replica count when the parameter is not specified.
 * Added selective-fields support to Azure SQL auditing
     - Added the optional `RequiredFields` parameter to `Set-AzSqlServerAudit` and `Set-AzSqlDatabaseAudit`
     - Added `RequiredFields` to the output of `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`

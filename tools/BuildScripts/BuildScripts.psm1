@@ -105,6 +105,10 @@ function Get-CsprojFromModule {
         }
         else {
             $testModulePath = Join-Path $SourceDirectory $testModule
+            if (-not (Test-Path $testModulePath)) {
+                Write-Warning "Skipping missing test module path: $testModulePath"
+                continue
+            }
             $testFolders = Get-ChildItem -Path $testModulePath -Filter *.Test -Directory
             if ($null -ne $testFolders) {
                 $testCsproj = $testFolders | Get-ChildItem -Filter *.Test.csproj -File | Select-Object -ExpandProperty FullName

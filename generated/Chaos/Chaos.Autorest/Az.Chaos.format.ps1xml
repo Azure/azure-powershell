@@ -11,12 +11,156 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OnActionLifecycle</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OnActionLifecycle</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CanonicalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CanonicalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -70,14 +214,57 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Branch</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionSupportedTargetType</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Branch#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionSupportedTargetType#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>TargetType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>TargetType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionVersion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionVersion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -85,6 +272,49 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionVersionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionVersionListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -136,6 +366,24 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -144,6 +392,24 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -189,6 +455,9 @@
             <Label>ParametersSchema</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Publisher</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -206,6 +475,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ParametersSchema</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Publisher</PropertyName>
@@ -232,7 +504,22 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -245,7 +532,22 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -358,6 +660,72 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentAction</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentAction#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentBranch</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentBranch#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStep</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStep#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosIdentity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosIdentity#Multiple</TypeName>
@@ -365,13 +733,16 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AsyncOperationId</Label>
+            <Label>ActionName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CapabilityName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CapabilityTypeName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DiscoveredResourceName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ExecutionId</Label>
@@ -383,7 +754,7 @@
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>LocationName</Label>
+            <Label>OperationId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ParentProviderNamespace</Label>
@@ -395,7 +766,22 @@
             <Label>ParentResourceType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PrivateAccessName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateEndpointConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioConfigurationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SubscriptionId</Label>
@@ -406,18 +792,27 @@
           <TableColumnHeader>
             <Label>TargetTypeName</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VersionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkspaceName</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AsyncOperationId</PropertyName>
+                <PropertyName>ActionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CapabilityName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CapabilityTypeName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DiscoveredResourceName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ExecutionId</PropertyName>
@@ -429,7 +824,7 @@
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>LocationName</PropertyName>
+                <PropertyName>OperationId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ParentProviderNamespace</PropertyName>
@@ -441,7 +836,22 @@
                 <PropertyName>ParentResourceType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PrivateAccessName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateEndpointConnectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioConfigurationName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
@@ -451,6 +861,62 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TargetTypeName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VersionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkspaceName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetListSelector</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetListSelector#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FilterType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FilterType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetQuerySelector</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetQuerySelector#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FilterType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>QueryString</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FilterType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>QueryString</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -486,6 +952,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStorageProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStorageProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BlobContainerName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageAccountResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BlobContainerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageAccountResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DelayAction</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DelayAction#Multiple</TypeName>
@@ -501,6 +995,144 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DiscoveredResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DiscoveredResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DiscoveredResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DiscoveredResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DiscoveredResourceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.DiscoveredResourceProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DiscoveredAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FullyQualifiedIdentifier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceNamespace</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DiscoveredAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FullyQualifiedIdentifier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceNamespace</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -529,6 +1161,34 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SelectorId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.EntraIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.EntraIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -583,6 +1243,24 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -594,6 +1272,24 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -614,6 +1310,24 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -622,6 +1336,24 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -735,6 +1467,15 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>FailureReason</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastActionAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>StartedAt</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -743,16 +1484,19 @@
           <TableColumnHeader>
             <Label>StoppedAt</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FailureReason</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastActionAt</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FailureReason</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastActionAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StartedAt</PropertyName>
               </TableColumnItem>
@@ -761,12 +1505,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StoppedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FailureReason</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastActionAt</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -803,6 +1541,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>StartedAt</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -815,6 +1556,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StartedAt</PropertyName>
               </TableColumnItem>
@@ -874,6 +1618,72 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExternalResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExternalResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.FixResourcePermissionsRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.FixResourcePermissionsRequest#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>WhatIf</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>WhatIf</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.KeyValuePair</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.KeyValuePair#Multiple</TypeName>
@@ -902,21 +1712,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ListSelector</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ListSelector#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>FilterType</Label>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>FilterType</PropertyName>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1004,6 +1820,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ErrorCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ErrorMessage</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ErrorCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ErrorMessage</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationListResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationListResult#Multiple</TypeName>
@@ -1026,21 +1870,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationStatusResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationStatus#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.OperationStatusResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>EndTime</Label>
           </TableColumnHeader>
@@ -1048,7 +1883,13 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StartTime</Label>
@@ -1061,22 +1902,19 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>EndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StartTime</PropertyName>
@@ -1090,27 +1928,677 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.QuerySelector</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.QuerySelector#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionError#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>FilterType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>QueryString</Label>
+            <Label>ResourceId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>FilterType</PropertyName>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionsFix</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionsFix#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>QueryString</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionsFixProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionsFixProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CompletedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WhatIfMode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CompletedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WhatIfMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionsFixSummary</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PermissionsFixSummary#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Failed</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Skipped</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Succeeded</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalRequired</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Failed</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Skipped</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Succeeded</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TotalRequired</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PhysicalToLogicalZoneMapping</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PhysicalToLogicalZoneMapping#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LogicalZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PhysicalZone</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LogicalZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PhysicalZone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccess</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccess#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccessListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccessListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccessPatchTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccessPatchTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccessProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateAccessProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateEndpointConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateEndpointConnection#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateEndpointConnectionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateEndpointConnectionListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateEndpointConnectionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateEndpointConnectionProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkResourceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkResourceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkResourceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkResourceProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>GroupId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>GroupId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkServiceConnectionState</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.PrivateLinkServiceConnectionState#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionsRequired</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionsRequired</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ProxyResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Recommendation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Recommendation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EvaluationRunAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EvaluationRunAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1140,9 +2628,77 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceStateError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceStateError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ErrorCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ErrorMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RemediationUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ErrorCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ErrorMessage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RemediationUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.RoleAssignmentError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.RoleAssignmentError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.RoleAssignmentResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.RoleAssignmentResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1150,7 +2706,22 @@
             <Label>PrincipalId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>TenantId</Label>
+            <Label>RoleAssignmentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RoleDefinitionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RoleDefinitionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetResourceId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1160,7 +2731,22 @@
                 <PropertyName>PrincipalId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
+                <PropertyName>RoleAssignmentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RoleDefinitionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RoleDefinitionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1168,14 +2754,57 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.RunAfter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.RunAfter#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Behavior</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Behavior</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Scenario</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Scenario#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1183,6 +2812,541 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioAction</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioAction#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Duration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Timeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WaitBefore</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Duration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Timeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WaitBefore</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioConfigurationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioConfigurationListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioConfigurationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioConfigurationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioErrors</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioErrors#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ErrorCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ErrorMessage</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ErrorCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ErrorMessage</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioEvaluationResultItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioEvaluationResultItem#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EvaluationResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EvaluationResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioParameter#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Default</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Default</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Required</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedFrom</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedFrom</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRun</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRun#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRunListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRunListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRunProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRunProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagedIdentityPrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioConfigurationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScenarioRunJson</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkspaceName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManagedIdentityPrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioConfigurationName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScenarioRunJson</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkspaceName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRunSummaryAction</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ScenarioRunSummaryAction#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionUrn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CompletedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionUrn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CompletedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1276,28 +3440,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Tags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Tags#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Target</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Target#Multiple</TypeName>
@@ -1306,6 +3448,24 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
@@ -1319,6 +3479,24 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
@@ -1364,7 +3542,22 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -1377,7 +3570,22 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -1454,6 +3662,24 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1462,6 +3688,24 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
@@ -1515,6 +3759,430 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Validation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Validation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ValidationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ValidationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExecutionPlanJson</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExecutionPlanJson</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Workspace</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Workspace#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceEvaluation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceEvaluation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceEvaluationProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceEvaluationProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EvaluationResult</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumScenariosEvaluatedCancelled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumScenariosEvaluatedFailed</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumScenariosEvaluatedSucceeded</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumScenariosToEvaluate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkspaceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EvaluationResult</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumScenariosEvaluatedCancelled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumScenariosEvaluatedFailed</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumScenariosEvaluatedSucceeded</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumScenariosToEvaluate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkspaceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CommunicationEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CommunicationEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.WorkspaceUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ZoneResolutionInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ZoneResolutionInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ZoneResolutionMapping</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ZoneResolutionMapping#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

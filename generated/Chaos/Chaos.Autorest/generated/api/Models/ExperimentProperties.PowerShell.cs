@@ -102,17 +102,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("CustomerDataStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorage = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICustomerDataStorageProperties) content.GetValueForProperty("CustomerDataStorage",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorage, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStoragePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("Step"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.StepTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStepTypeConverter.ConvertFrom));
             }
             if (content.Contains("Selector"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SelectorTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetSelectorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CustomerDataStorageAccountResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageAccountResourceId = (string) content.GetValueForProperty("CustomerDataStorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageAccountResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomerDataStorageBlobContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageBlobContainerName = (string) content.GetValueForProperty("CustomerDataStorageBlobContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageBlobContainerName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -131,17 +143,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("CustomerDataStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorage = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICustomerDataStorageProperties) content.GetValueForProperty("CustomerDataStorage",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorage, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStoragePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("Step"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.StepTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>) content.GetValueForProperty("Step",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Step, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStepTypeConverter.ConvertFrom));
             }
             if (content.Contains("Selector"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SelectorTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>) content.GetValueForProperty("Selector",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).Selector, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>(__y, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetSelectorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CustomerDataStorageAccountResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageAccountResourceId = (string) content.GetValueForProperty("CustomerDataStorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageAccountResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomerDataStorageBlobContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageBlobContainerName = (string) content.GetValueForProperty("CustomerDataStorageBlobContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentPropertiesInternal)this).CustomerDataStorageBlobContainerName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
