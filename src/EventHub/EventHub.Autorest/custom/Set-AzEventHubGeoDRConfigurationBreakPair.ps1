@@ -167,6 +167,8 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
 
+                Add-AzEventHubBoundDynamicParameter -CommandName 'Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break' -BoundParameters $PSBoundParameters -TargetParameters $EnvPSBoundParameters -ExcludedParameter InputObject, Name, NamespaceName, ResourceGroupName, SubscriptionId
+
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
                 }

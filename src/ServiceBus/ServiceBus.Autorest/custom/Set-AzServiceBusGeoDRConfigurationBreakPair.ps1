@@ -168,6 +168,8 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
 
+                Add-AzServiceBusBoundDynamicParameter -CommandName 'Az.ServiceBus.private\Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing_Break' -BoundParameters $PSBoundParameters -TargetParameters $EnvPSBoundParameters -ExcludedParameter InputObject, Name, NamespaceName, ResourceGroupName, SubscriptionId
+
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
                 }

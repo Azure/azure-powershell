@@ -167,6 +167,8 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
 
+                Add-AzEventHubBoundDynamicParameter -CommandName 'Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail' -BoundParameters $PSBoundParameters -TargetParameters $EnvPSBoundParameters -ExcludedParameter InputObject, Name, NamespaceName, ResourceGroupName, SubscriptionId
+
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
                 }
