@@ -141,30 +141,29 @@ function Set-AzEventHubConsumerGroup{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasUserMetadata = $targetParameters.Remove('UserMetadata')
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasUserMetadata = $PSBoundParameters.Remove('UserMetadata')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubConsumerGroup' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubConsumerGroup' -BoundParameters $PSBoundParameters
             $consumerGroup = Get-AzEventHubConsumerGroup @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('EventHubName')
-            $null = $targetParameters.Remove('Name')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('EventHubName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
             if ($hasUserMetadata) {
                 $consumerGroup.UserMetadata = $UserMetadata
             }
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Consumer Group $($consumerGroup.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubConsumerGroup_CreateViaIdentity -InputObject $consumerGroup -Parameter $consumerGroup @targetParameters
+                Az.EventHub.private\New-AzEventHubConsumerGroup_CreateViaIdentity -InputObject $consumerGroup -Parameter $consumerGroup @PSBoundParameters
             }
 		}
 		catch{

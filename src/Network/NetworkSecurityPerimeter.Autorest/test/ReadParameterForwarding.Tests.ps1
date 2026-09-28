@@ -30,8 +30,8 @@ function Set-AzNetworkSecurityPerimeterReadTestResource {
 Set-Alias -Name Get-AzNetworkSecurityPerimeterReadTestAlias -Value Get-AzNetworkSecurityPerimeterReadTestResource
 
 Describe 'NetworkSecurityPerimeter read parameter forwarding' {
-    It 'filters write-only parameters using read command metadata without changing target parameters' {
-        $targetParameters = @{
+    It 'filters write-only parameters using read command metadata without changing write parameters' {
+        $writeParameters = @{
             Name = 'access-rule'
             DefaultProfile = 'profile'
             ErrorAction = 'Stop'
@@ -40,9 +40,9 @@ Describe 'NetworkSecurityPerimeter read parameter forwarding' {
             SyntheticWriteOnly = 'future-value'
         }
 
-        $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterReadTestAlias' -BoundParameters $targetParameters
+        $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterReadTestAlias' -BoundParameters $writeParameters
         Get-AzNetworkSecurityPerimeterReadTestResource @readParameters
-        Set-AzNetworkSecurityPerimeterReadTestResource @targetParameters
+        Set-AzNetworkSecurityPerimeterReadTestResource @writeParameters
 
         $script:nspReadParameters.Name | Should Be 'access-rule'
         $script:nspReadParameters.DefaultProfile | Should Be 'profile'
@@ -61,7 +61,7 @@ Describe 'NetworkSecurityPerimeter read parameter forwarding' {
         $readParameters.ResourceName | Should Be 'access-rule'
     }
 
-    It 'uses separate read and target parameter groups in every affected wrapper' {
+    It 'uses read parameters without replacing the original bound parameters in every affected wrapper' {
         $wrappers = @(
             'Update-AzNetworkSecurityPerimeterAccessRule.ps1',
             'Update-AzNetworkSecurityPerimeterAssociation.ps1',
@@ -71,10 +71,10 @@ Describe 'NetworkSecurityPerimeter read parameter forwarding' {
 
         foreach ($wrapper in $wrappers) {
             $source = Get-Content -Path (Join-Path $PSScriptRoot "..\custom\$wrapper") -Raw
-            $source | Should Match '\$targetParameters\s*=\s*@\{\}\s*\+\s*\$PSBoundParameters'
-            $source | Should Match 'Get-AzNetworkSecurityPerimeterReadParameters\s+-CommandName'
+            $source | Should Not Match '\$targetParameters'
+            $source | Should Match 'Get-AzNetworkSecurityPerimeterReadParameters\s+-CommandName\s+''[^'']+''\s+-BoundParameters\s+\$PSBoundParameters'
             $source | Should Match '@readParameters'
-            $source | Should Match '@targetParameters'
+            $source | Should Match '@PSBoundParameters'
         }
     }
 

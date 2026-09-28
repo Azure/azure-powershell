@@ -128,44 +128,43 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusGeoDRConfiguration' -BoundParameters $targetParameters
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusGeoDRConfiguration' -BoundParameters $PSBoundParameters
             $drConfig = Get-AzServiceBusGeoDRConfiguration @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('InputObject')
 
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if($PSCmdlet.ParameterSetName -eq 'Break'){
                 if ($PSCmdlet.ShouldProcess("ServiceBus Disaster Recovery Alias $($Name)", "Break Pair")) {
-                    Az.ServiceBus.private\Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing_Break @targetParameters
+                    Az.ServiceBus.private\Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing_Break @PSBoundParameters
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'BreakViaIdentity'){
                 $EnvPSBoundParameters = @{}
 
-                if ($targetParameters.ContainsKey('Debug')) {
+                if ($PSBoundParameters.ContainsKey('Debug')) {
                     $EnvPSBoundParameters['Debug'] = $Debug
                 }
-                if ($targetParameters.ContainsKey('HttpPipelineAppend')) {
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
                     $EnvPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
                 }
-                if ($targetParameters.ContainsKey('HttpPipelinePrepend')) {
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
                     $EnvPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
                 }
-                if ($targetParameters.ContainsKey('Proxy')) {
+                if ($PSBoundParameters.ContainsKey('Proxy')) {
                     $EnvPSBoundParameters['Proxy'] = $Proxy
                 }
-                if ($targetParameters.ContainsKey('ProxyCredential')) {
+                if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
                     $EnvPSBoundParameters['ProxyCredential'] = $ProxyCredential
                 }
-                if ($targetParameters.ContainsKey('ProxyUseDefaultCredentials')) {
+                if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
 

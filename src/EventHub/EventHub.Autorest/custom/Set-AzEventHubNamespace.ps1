@@ -204,34 +204,33 @@ function Set-AzEventHubNamespace{
     }
     process{
         try{
-            $targetParameters = @{} + $PSBoundParameters
-            $hasAlternateName = $targetParameters.Remove('AlternateName')
-            $hasDisableLocalAuth = $targetParameters.Remove('DisableLocalAuth')
-            $hasKeyVaultProperty = $targetParameters.Remove('KeyVaultProperty')
-            $hasUserAssignedIdentityId = $targetParameters.Remove('UserAssignedIdentityId')
-            $hasIdentityType = $targetParameters.Remove('IdentityType')
-            $hasEnableAutoInflate = $targetParameters.Remove('EnableAutoInflate')
-            $hasMaximumThroughputUnit = $targetParameters.Remove('MaximumThroughputUnit')
-            $hasMinimumTlsVersion = $targetParameters.Remove('MinimumTlsVersion')
-            $hasRequireInfrastructureEncryption = $targetParameters.Remove('RequireInfrastructureEncryption')
-            $hasPublicNetworkAccess = $targetParameters.Remove('PublicNetworkAccess')
-            $hasSkuCapacity = $targetParameters.Remove('SkuCapacity')
-            $hasTag = $targetParameters.Remove('Tag')
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $hasIPAddressType = $targetParameters.Remove('IPAddressType')
-            $hasGeoDataReplicationLocation = $targetParameters.Remove('GeoDataReplicationLocation')
-            $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $targetParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
+            $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
+            $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
+            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
+            $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
+            $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
+            $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnit')
+            $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
+            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
+            $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
+            $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
+            $hasTag = $PSBoundParameters.Remove('Tag')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $hasIPAddressType = $PSBoundParameters.Remove('IPAddressType')
+            $hasGeoDataReplicationLocation = $PSBoundParameters.Remove('GeoDataReplicationLocation')
+            $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $PSBoundParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNamespace' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNamespace' -BoundParameters $PSBoundParameters
             $eventHubNamespace = Get-AzEventHubNamespace @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('Name')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             if ($hasAlternateName) {
                 $eventHubNamespace.AlternateName = $AlternateName
@@ -286,11 +285,11 @@ function Set-AzEventHubNamespace{
                 $eventHubNamespace.Tag = $Tag
             }
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @targetParameters
+                Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
             }
         }
         catch{

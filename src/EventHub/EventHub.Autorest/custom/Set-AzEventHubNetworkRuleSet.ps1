@@ -152,23 +152,22 @@ function Set-AzEventHubNetworkRuleSet{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasPublicNetworkAccess = $targetParameters.Remove('PublicNetworkAccess')
-            $hasTrustedServiceAccessEnabled = $targetParameters.Remove('TrustedServiceAccessEnabled')
-            $hasDefaultAction = $targetParameters.Remove('DefaultAction')
-            $hasIPRule = $targetParameters.Remove('IPRule')
-            $hasVirtualNetworkRule = $targetParameters.Remove('VirtualNetworkRule')
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
+            $hasTrustedServiceAccessEnabled = $PSBoundParameters.Remove('TrustedServiceAccessEnabled')
+            $hasDefaultAction = $PSBoundParameters.Remove('DefaultAction')
+            $hasIPRule = $PSBoundParameters.Remove('IPRule')
+            $hasVirtualNetworkRule = $PSBoundParameters.Remove('VirtualNetworkRule')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNetworkRuleSet' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNetworkRuleSet' -BoundParameters $PSBoundParameters
             $networkRuleSet = Get-AzEventHubNetworkRuleSet @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -198,11 +197,11 @@ function Set-AzEventHubNetworkRuleSet{
             }
 
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Network Rule Set on namespace $($networkRuleSet.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubNetworkRuleSet_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @targetParameters
+                Az.EventHub.private\New-AzEventHubNetworkRuleSet_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @PSBoundParameters
             }
 		}
 		catch{

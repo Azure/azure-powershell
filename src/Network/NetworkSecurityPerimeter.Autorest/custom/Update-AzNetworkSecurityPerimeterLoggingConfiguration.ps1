@@ -157,7 +157,6 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
 
     process {
         try {
-            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -166,20 +165,20 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
             }
 
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLoggingConfiguration' -BoundParameters $targetParameters
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLoggingConfiguration' -BoundParameters $PSBoundParameters
             $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @readParameters
             # 2. PUT
 
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
             ForEach($pathParam in $pathParams){
-                $null = $targetParameters.Remove($pathParam)
+                $null = $PSBoundParameters.Remove($pathParam)
             }
 
             foreach ($item in $bodyParamsMap.GetEnumerator() )
@@ -195,7 +194,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
 
 
             # Call PUT method
-            New-AzNetworkSecurityPerimeterLoggingConfiguration_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
+            New-AzNetworkSecurityPerimeterLoggingConfiguration_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }
         catch {

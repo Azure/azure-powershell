@@ -199,7 +199,6 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
     process {
         try {
-            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -208,21 +207,21 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
             }
 
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
 
-            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAccessRule' -BoundParameters $targetParameters
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAccessRule' -BoundParameters $PSBoundParameters
             $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @readParameters
             # 2. PUT
 
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName', 'ProfileName'
 
             ForEach($pathParam in $pathParams){
-                $null = $targetParameters.Remove($pathParam)
+                $null = $PSBoundParameters.Remove($pathParam)
             }
 
             foreach ($item in $bodyParamsMap.GetEnumerator() )
@@ -237,7 +236,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             }
 
             # Call PUT method
-            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
+            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }
 

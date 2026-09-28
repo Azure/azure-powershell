@@ -127,44 +127,43 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubGeoDRConfiguration' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubGeoDRConfiguration' -BoundParameters $PSBoundParameters
             $drConfig = Get-AzEventHubGeoDRConfiguration @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('InputObject')
 
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if($PSCmdlet.ParameterSetName -eq 'Fail'){
                 if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Fail Over")) {
-                    Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail @targetParameters
+                    Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail @PSBoundParameters
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'FailViaIdentity'){
                 $EnvPSBoundParameters = @{}
 
-                if ($targetParameters.ContainsKey('Debug')) {
+                if ($PSBoundParameters.ContainsKey('Debug')) {
                     $EnvPSBoundParameters['Debug'] = $Debug
                 }
-                if ($targetParameters.ContainsKey('HttpPipelineAppend')) {
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
                     $EnvPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
                 }
-                if ($targetParameters.ContainsKey('HttpPipelinePrepend')) {
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
                     $EnvPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
                 }
-                if ($targetParameters.ContainsKey('Proxy')) {
+                if ($PSBoundParameters.ContainsKey('Proxy')) {
                     $EnvPSBoundParameters['Proxy'] = $Proxy
                 }
-                if ($targetParameters.ContainsKey('ProxyCredential')) {
+                if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
                     $EnvPSBoundParameters['ProxyCredential'] = $ProxyCredential
                 }
-                if ($targetParameters.ContainsKey('ProxyUseDefaultCredentials')) {
+                if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
 

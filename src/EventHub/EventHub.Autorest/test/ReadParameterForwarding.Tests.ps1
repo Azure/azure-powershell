@@ -30,8 +30,8 @@ function Set-AzEventHubReadTestResource {
 Set-Alias -Name Get-AzEventHubReadTestAlias -Value Get-AzEventHubReadTestResource
 
 Describe 'EventHub read parameter forwarding' {
-    It 'filters write-only parameters using read command metadata without changing target parameters' {
-        $targetParameters = @{
+    It 'filters write-only parameters using read command metadata without changing write parameters' {
+        $writeParameters = @{
             Name = 'eventhub'
             DefaultProfile = 'profile'
             ErrorAction = 'Stop'
@@ -40,9 +40,9 @@ Describe 'EventHub read parameter forwarding' {
             SyntheticWriteOnly = 'future-value'
         }
 
-        $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubReadTestAlias' -BoundParameters $targetParameters
+        $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubReadTestAlias' -BoundParameters $writeParameters
         Get-AzEventHubReadTestResource @readParameters
-        Set-AzEventHubReadTestResource @targetParameters
+        Set-AzEventHubReadTestResource @writeParameters
 
         $script:eventHubReadParameters.Name | Should Be 'eventhub'
         $script:eventHubReadParameters.DefaultProfile | Should Be 'profile'
@@ -61,7 +61,7 @@ Describe 'EventHub read parameter forwarding' {
         $readParameters.ResourceName | Should Be 'eventhub'
     }
 
-    It 'uses separate read and target parameter groups in every affected wrapper' {
+    It 'uses read parameters without replacing the original bound parameters in every affected wrapper' {
         $wrappers = @(
             'Approve-AzEventHubPrivateEndpointConnection.ps1',
             'Deny-AzEventHubPrivateEndpointConnection.ps1',
@@ -78,10 +78,10 @@ Describe 'EventHub read parameter forwarding' {
 
         foreach ($wrapper in $wrappers) {
             $source = Get-Content -Path (Join-Path $PSScriptRoot "..\custom\$wrapper") -Raw
-            $source | Should Match '\$targetParameters\s*=\s*@\{\}\s*\+\s*\$PSBoundParameters'
-            $source | Should Match 'Get-AzEventHubReadParameters\s+-CommandName'
+            $source | Should Not Match '\$targetParameters'
+            $source | Should Match 'Get-AzEventHubReadParameters\s+-CommandName\s+''[^'']+''\s+-BoundParameters\s+\$PSBoundParameters'
             $source | Should Match '@readParameters'
-            $source | Should Match '@targetParameters'
+            $source | Should Match '@PSBoundParameters'
         }
     }
 

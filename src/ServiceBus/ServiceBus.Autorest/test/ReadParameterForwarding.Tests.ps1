@@ -30,8 +30,8 @@ function Set-AzServiceBusReadTestResource {
 Set-Alias -Name Get-AzServiceBusReadTestAlias -Value Get-AzServiceBusReadTestResource
 
 Describe 'ServiceBus read parameter forwarding' {
-    It 'filters write-only parameters using read command metadata without changing target parameters' {
-        $targetParameters = @{
+    It 'filters write-only parameters using read command metadata without changing write parameters' {
+        $writeParameters = @{
             Name = 'queue'
             DefaultProfile = 'profile'
             ErrorAction = 'Stop'
@@ -40,9 +40,9 @@ Describe 'ServiceBus read parameter forwarding' {
             SyntheticWriteOnly = 'future-value'
         }
 
-        $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusReadTestAlias' -BoundParameters $targetParameters
+        $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusReadTestAlias' -BoundParameters $writeParameters
         Get-AzServiceBusReadTestResource @readParameters
-        Set-AzServiceBusReadTestResource @targetParameters
+        Set-AzServiceBusReadTestResource @writeParameters
 
         $script:serviceBusReadParameters.Name | Should Be 'queue'
         $script:serviceBusReadParameters.DefaultProfile | Should Be 'profile'
@@ -61,7 +61,7 @@ Describe 'ServiceBus read parameter forwarding' {
         $readParameters.ResourceName | Should Be 'queue'
     }
 
-    It 'uses separate read and target parameter groups in every affected wrapper' {
+    It 'uses read parameters without replacing the original bound parameters in every affected wrapper' {
         $wrappers = @(
             'Approve-AzServiceBusPrivateEndpointConnection.ps1',
             'Deny-AzServiceBusPrivateEndpointConnection.ps1',
@@ -78,10 +78,10 @@ Describe 'ServiceBus read parameter forwarding' {
 
         foreach ($wrapper in $wrappers) {
             $source = Get-Content -Path (Join-Path $PSScriptRoot "..\custom\$wrapper") -Raw
-            $source | Should Match '\$targetParameters\s*=\s*@\{\}\s*\+\s*\$PSBoundParameters'
-            $source | Should Match 'Get-AzServiceBusReadParameters\s+-CommandName'
+            $source | Should Not Match '\$targetParameters'
+            $source | Should Match 'Get-AzServiceBusReadParameters\s+-CommandName\s+''[^'']+''\s+-BoundParameters\s+\$PSBoundParameters'
             $source | Should Match '@readParameters'
-            $source | Should Match '@targetParameters'
+            $source | Should Match '@PSBoundParameters'
         }
     }
 

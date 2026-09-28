@@ -134,13 +134,12 @@ function Approve-AzEventHubPrivateEndpointConnection{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasDescription = $targetParameters.Remove('Description')
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasDescription = $PSBoundParameters.Remove('Description')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubPrivateEndpointConnection' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubPrivateEndpointConnection' -BoundParameters $PSBoundParameters
             $connection = Get-AzEventHubPrivateEndpointConnection @readParameters
             $connection.ConnectionState = "Approved"
 
@@ -152,14 +151,14 @@ function Approve-AzEventHubPrivateEndpointConnection{
             }
 
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('Name')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             if ($PSCmdlet.ShouldProcess("Approve EventHub Namespace PrivateEndpoint Connection $($Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubPrivateEndpointConnection_CreateViaIdentity -InputObject $connection -Parameter $connection @targetParameters
+                Az.EventHub.private\New-AzEventHubPrivateEndpointConnection_CreateViaIdentity -InputObject $connection -Parameter $connection @PSBoundParameters
             }
 		}
 		catch{

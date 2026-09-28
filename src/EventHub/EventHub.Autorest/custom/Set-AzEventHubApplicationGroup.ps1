@@ -146,22 +146,21 @@ function Set-AzEventHubApplicationGroup{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasIsEnabled = $targetParameters.Remove('IsEnabled')
-            $hasPolicy = $targetParameters.Remove('Policy')
-            $hasClientAppGroupIdentifier = $targetParameters.Remove('ClientAppGroupIdentifier')
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasIsEnabled = $PSBoundParameters.Remove('IsEnabled')
+            $hasPolicy = $PSBoundParameters.Remove('Policy')
+            $hasClientAppGroupIdentifier = $PSBoundParameters.Remove('ClientAppGroupIdentifier')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubApplicationGroup' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubApplicationGroup' -BoundParameters $PSBoundParameters
             $appGroup = Get-AzEventHubApplicationGroup @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('Name')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -183,12 +182,12 @@ function Set-AzEventHubApplicationGroup{
             }
 
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
 
             if ($PSCmdlet.ShouldProcess("EventHub Application Group $($appGroup.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubApplicationGroup_CreateViaIdentity -InputObject $appGroup -Parameter $appGroup @targetParameters
+                Az.EventHub.private\New-AzEventHubApplicationGroup_CreateViaIdentity -InputObject $appGroup -Parameter $appGroup @PSBoundParameters
             }
 		}
 		catch{

@@ -235,37 +235,36 @@ function Set-AzEventHub{
     }
 	process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasCaptureEnabled = $targetParameters.Remove('CaptureEnabled')
-            $hasEncoding = $targetParameters.Remove('Encoding')
-            $hasIntervalInSeconds = $targetParameters.Remove('IntervalInSeconds')
-            $hasSizeLimitInBytes = $targetParameters.Remove('SizeLimitInBytes')
-            $hasSkipEmptyArchive = $targetParameters.Remove('SkipEmptyArchive')
-            $hasUserAssignedIdentityId = $targetParameters.Remove('UserAssignedIdentityId')
-            $hasIdentityType = $targetParameters.Remove('IdentityType')
-            $hasRetentionTimeInHour = $targetParameters.Remove('RetentionTimeInHour')
-            $hasTombstoneRetentionTimeInHour = $targetParameters.Remove('TombstoneRetentionTimeInHour')
-            $hasStatus = $targetParameters.Remove('Status')
-            $hasDestinationName = $targetParameters.Remove('DestinationName')
-            $hasStorageAccountResourceId = $targetParameters.Remove('StorageAccountResourceId')
-            $hasArchiveNameFormat = $targetParameters.Remove('ArchiveNameFormat')
-            $hasBlobContainer = $targetParameters.Remove('BlobContainer')
-            $hasAsJob = $targetParameters.Remove('AsJob')
-            $hasPartitionCount = $targetParameters.Remove('PartitionCount')
-            $hasUserMetadata = $targetParameters.Remove('UserMetadata')
-            $hasMinCompactionLagInMin = $targetParameters.Remove('MinCompactionLagInMin')
-            $hasTimestampType = $targetParameters.Remove('TimestampType')
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $hasCaptureEnabled = $PSBoundParameters.Remove('CaptureEnabled')
+            $hasEncoding = $PSBoundParameters.Remove('Encoding')
+            $hasIntervalInSeconds = $PSBoundParameters.Remove('IntervalInSeconds')
+            $hasSizeLimitInBytes = $PSBoundParameters.Remove('SizeLimitInBytes')
+            $hasSkipEmptyArchive = $PSBoundParameters.Remove('SkipEmptyArchive')
+            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
+            $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
+            $hasRetentionTimeInHour = $PSBoundParameters.Remove('RetentionTimeInHour')
+            $hasTombstoneRetentionTimeInHour = $PSBoundParameters.Remove('TombstoneRetentionTimeInHour')
+            $hasStatus = $PSBoundParameters.Remove('Status')
+            $hasDestinationName = $PSBoundParameters.Remove('DestinationName')
+            $hasStorageAccountResourceId = $PSBoundParameters.Remove('StorageAccountResourceId')
+            $hasArchiveNameFormat = $PSBoundParameters.Remove('ArchiveNameFormat')
+            $hasBlobContainer = $PSBoundParameters.Remove('BlobContainer')
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
+            $hasUserMetadata = $PSBoundParameters.Remove('UserMetadata')
+            $hasMinCompactionLagInMin = $PSBoundParameters.Remove('MinCompactionLagInMin')
+            $hasTimestampType = $PSBoundParameters.Remove('TimestampType')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHub' -BoundParameters $targetParameters
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHub' -BoundParameters $PSBoundParameters
             $eventHub = Get-AzEventHub @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('Name')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -362,11 +361,11 @@ function Set-AzEventHub{
             }
 
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Entity $($eventHub.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHub_CreateViaIdentity -InputObject $eventHub -Parameter $eventHub @targetParameters
+                Az.EventHub.private\New-AzEventHub_CreateViaIdentity -InputObject $eventHub -Parameter $eventHub @PSBoundParameters
             }
 		}
 		catch{

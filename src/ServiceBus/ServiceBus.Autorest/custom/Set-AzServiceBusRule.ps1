@@ -231,33 +231,32 @@ function Set-AzServiceBusRule{
     }
     process{
 		try{
-		    $targetParameters = @{} + $PSBoundParameters
-            $hasSqlExpression = $targetParameters.Remove('SqlExpression')
-            $hasSqlFilterRequiresPreprocessing = $targetParameters.Remove('SqlFilterRequiresPreprocessing')
-            $hasContentType = $targetParameters.Remove('ContentType')
-            $hasCorrelationId = $targetParameters.Remove('CorrelationId')
-            $hasLabel = $targetParameters.Remove('Label')
-            $hasMessageId = $targetParameters.Remove('MessageId')
-            $hasCorrelationFilterProperty = $targetParameters.Remove('CorrelationFilterProperty')
-            $hasReplyTo = $targetParameters.Remove('ReplyTo')
-            $hasReplyToSessionId = $targetParameters.Remove('ReplyToSessionId')
-            $hasCorrelationFilterRequiresPreprocessing = $targetParameters.Remove('CorrelationFilterRequiresPreprocessing')
-            $hasSessionId = $targetParameters.Remove('SessionId')
-            $hasTo = $targetParameters.Remove('To')
-            $hasFilterType = $targetParameters.Remove('FilterType')
-            $hasActionSqlExpression = $targetParameters.Remove('ActionSqlExpression')
-            $hasActionRequiresPreprocessing = $targetParameters.Remove('ActionRequiresPreprocessing')
+            $hasSqlExpression = $PSBoundParameters.Remove('SqlExpression')
+            $hasSqlFilterRequiresPreprocessing = $PSBoundParameters.Remove('SqlFilterRequiresPreprocessing')
+            $hasContentType = $PSBoundParameters.Remove('ContentType')
+            $hasCorrelationId = $PSBoundParameters.Remove('CorrelationId')
+            $hasLabel = $PSBoundParameters.Remove('Label')
+            $hasMessageId = $PSBoundParameters.Remove('MessageId')
+            $hasCorrelationFilterProperty = $PSBoundParameters.Remove('CorrelationFilterProperty')
+            $hasReplyTo = $PSBoundParameters.Remove('ReplyTo')
+            $hasReplyToSessionId = $PSBoundParameters.Remove('ReplyToSessionId')
+            $hasCorrelationFilterRequiresPreprocessing = $PSBoundParameters.Remove('CorrelationFilterRequiresPreprocessing')
+            $hasSessionId = $PSBoundParameters.Remove('SessionId')
+            $hasTo = $PSBoundParameters.Remove('To')
+            $hasFilterType = $PSBoundParameters.Remove('FilterType')
+            $hasActionSqlExpression = $PSBoundParameters.Remove('ActionSqlExpression')
+            $hasActionRequiresPreprocessing = $PSBoundParameters.Remove('ActionRequiresPreprocessing')
 
-            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusRule' -BoundParameters $targetParameters
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusRule' -BoundParameters $PSBoundParameters
             $rule = Get-AzServiceBusRule @readParameters
             # 2. PUT
-            $null = $targetParameters.Remove('InputObject')
-            $null = $targetParameters.Remove('ResourceGroupName')
-            $null = $targetParameters.Remove('NamespaceName')
-            $null = $targetParameters.Remove('TopicName')
-            $null = $targetParameters.Remove('SubscriptionName')
-            $null = $targetParameters.Remove('Name')
-            $null = $targetParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('NamespaceName')
+            $null = $PSBoundParameters.Remove('TopicName')
+            $null = $PSBoundParameters.Remove('SubscriptionName')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -327,11 +326,11 @@ function Set-AzServiceBusRule{
             }
 
             if ($hasAsJob) {
-                $targetParameters.Add('AsJob', $true)
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Rule $($rule.Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusRule_CreateViaIdentity -InputObject $rule -Parameter $rule @targetParameters
+                Az.ServiceBus.private\New-AzServiceBusRule_CreateViaIdentity -InputObject $rule -Parameter $rule @PSBoundParameters
             }
 		}
 		catch{

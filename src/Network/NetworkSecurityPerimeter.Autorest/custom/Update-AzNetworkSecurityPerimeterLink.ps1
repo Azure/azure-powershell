@@ -169,7 +169,6 @@ function Update-AzNetworkSecurityPerimeterLink {
 
     process {
         try {
-            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -178,20 +177,20 @@ function Update-AzNetworkSecurityPerimeterLink {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
             }
 
-            $null = $targetParameters.Remove('WhatIf')
-            $null = $targetParameters.Remove('Confirm')
+            $null = $PSBoundParameters.Remove('WhatIf')
+            $null = $PSBoundParameters.Remove('Confirm')
 
-            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLink' -BoundParameters $targetParameters
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLink' -BoundParameters $PSBoundParameters
             $GETObject = Get-AzNetworkSecurityPerimeterLink @readParameters
             # 2. PUT
 
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
             ForEach($pathParam in $pathParams){
-                $null = $targetParameters.Remove($pathParam)
+                $null = $PSBoundParameters.Remove($pathParam)
             }
 
             foreach ($item in $bodyParamsMap.GetEnumerator() )
@@ -207,7 +206,7 @@ function Update-AzNetworkSecurityPerimeterLink {
 
 
             # Call PUT method
-            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
+            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }
         catch {

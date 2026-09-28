@@ -193,33 +193,32 @@ function Set-AzServiceBusNamespace{
     }
 	process{
 	    try{
-	        $targetParameters = @{} + $PSBoundParameters
-                $hasAlternateName = $targetParameters.Remove('AlternateName')
-                $hasDisableLocalAuth = $targetParameters.Remove('DisableLocalAuth')
-                $hasKeyVaultProperty = $targetParameters.Remove('KeyVaultProperty')
-                $hasUserAssignedIdentityId = $targetParameters.Remove('UserAssignedIdentityId')
-                $hasIdentityType = $targetParameters.Remove('IdentityType')
-                $hasMinimumTlsVersion = $targetParameters.Remove('MinimumTlsVersion')
-                $hasRequireInfrastructureEncryption = $targetParameters.Remove('RequireInfrastructureEncryption')
-                $hasPublicNetworkAccess = $targetParameters.Remove('PublicNetworkAccess')
-                $hasSkuCapacity = $targetParameters.Remove('SkuCapacity')
-                $hasTag = $targetParameters.Remove('Tag')
-                $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $targetParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
-                $hasGeoDataReplicationLocation = $targetParameters.Remove('GeoDataReplicationLocation')
-                $hasIPAddressType = $targetParameters.Remove('IPAddressType')
-                $hasDefaultProfile = $targetParameters.Remove('DefaultProfile')
-                $hasAsJob = $targetParameters.Remove('AsJob')
-                $hasNoWait = $targetParameters.Remove('NoWait')
-                $null = $targetParameters.Remove('WhatIf')
-                $null = $targetParameters.Remove('Confirm')
-                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusNamespace' -BoundParameters $targetParameters
+                $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
+                $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
+                $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
+                $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
+                $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
+                $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
+                $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
+                $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
+                $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
+                $hasTag = $PSBoundParameters.Remove('Tag')
+                $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $PSBoundParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
+                $hasGeoDataReplicationLocation = $PSBoundParameters.Remove('GeoDataReplicationLocation')
+                $hasIPAddressType = $PSBoundParameters.Remove('IPAddressType')
+                $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
+                $hasAsJob = $PSBoundParameters.Remove('AsJob')
+                $hasNoWait = $PSBoundParameters.Remove('NoWait')
+                $null = $PSBoundParameters.Remove('WhatIf')
+                $null = $PSBoundParameters.Remove('Confirm')
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusNamespace' -BoundParameters $PSBoundParameters
                 $serviceBusNamespace = Get-AzServiceBusNamespace @readParameters
                 # 2. PUT
-                $null = $targetParameters.Remove('InputObject')
-                $null = $targetParameters.Remove('ResourceGroupName')
-                $null = $targetParameters.Remove('NamespaceName')
-                $null = $targetParameters.Remove('Name')
-                $null = $targetParameters.Remove('SubscriptionId')
+                $null = $PSBoundParameters.Remove('InputObject')
+                $null = $PSBoundParameters.Remove('ResourceGroupName')
+                $null = $PSBoundParameters.Remove('NamespaceName')
+                $null = $PSBoundParameters.Remove('Name')
+                $null = $PSBoundParameters.Remove('SubscriptionId')
 
                 if ($hasAlternateName) {
                     $serviceBusNamespace.AlternateName = $AlternateName
@@ -268,15 +267,15 @@ function Set-AzServiceBusNamespace{
                    $serviceBusNamespace.IPAddressType = $IPAddressType
                }
                if ($hasAsJob) {
-                    $targetParameters.Add('AsJob', $true)
+                    $PSBoundParameters.Add('AsJob', $true)
                }
 
                if ($hasNoWait) {
-                    $targetParameters.Add('NoWait', $true)
+                    $PSBoundParameters.Add('NoWait', $true)
                }
 
                if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
-                    Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity -InputObject $serviceBusNamespace -Parameter $serviceBusNamespace @targetParameters
+                    Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity -InputObject $serviceBusNamespace -Parameter $serviceBusNamespace @PSBoundParameters
                }
 	}
 	catch{
