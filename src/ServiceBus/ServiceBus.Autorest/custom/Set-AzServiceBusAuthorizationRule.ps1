@@ -162,83 +162,17 @@ function Set-AzServiceBusAuthorizationRule{
             $null = $targetParameters.Remove('Confirm')
 
             if ($PSCmdlet.ParameterSetName -eq 'SetExpandedQueue'){
-                $readCommand = @(Get-Command -Name 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get' -ErrorAction Stop)[0]
-
-                while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                    $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-                }
-
-                $readParameterNames = @($readCommand.Parameters.Keys)
-
-                $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-                $readParameters = @{}
-
-                foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                    if ($parameter.Key -in $readParameterNames) {
-
-                        $readParameters[$parameter.Key] = $parameter.Value
-
-                    }
-
-                }
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get' -BoundParameters $targetParameters
                 $authRule = Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get @readParameters
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetExpandedTopic'){
-                $readCommand = @(Get-Command -Name 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get' -ErrorAction Stop)[0]
-
-                while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                    $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-                }
-
-                $readParameterNames = @($readCommand.Parameters.Keys)
-
-                $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-                $readParameters = @{}
-
-                foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                    if ($parameter.Key -in $readParameterNames) {
-
-                        $readParameters[$parameter.Key] = $parameter.Value
-
-                    }
-
-                }
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get' -BoundParameters $targetParameters
                 $authRule = Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get @readParameters
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetExpandedNamespace'){
-                $readCommand = @(Get-Command -Name 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get' -ErrorAction Stop)[0]
-
-                while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                    $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-                }
-
-                $readParameterNames = @($readCommand.Parameters.Keys)
-
-                $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-                $readParameters = @{}
-
-                foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                    if ($parameter.Key -in $readParameterNames) {
-
-                        $readParameters[$parameter.Key] = $parameter.Value
-
-                    }
-
-                }
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get' -BoundParameters $targetParameters
                 $authRule = Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get @readParameters
             }
 
@@ -256,81 +190,15 @@ function Set-AzServiceBusAuthorizationRule{
                 }
 
                 if ($ResourceHashTable['QueueName'] -ne $null){
-                    $readCommand = @(Get-Command -Name 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_GetViaIdentity' -ErrorAction Stop)[0]
-
-                    while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                        $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-                    }
-
-                    $readParameterNames = @($readCommand.Parameters.Keys)
-
-                    $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-                    $readParameters = @{}
-
-                    foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                        if ($parameter.Key -in $readParameterNames) {
-
-                            $readParameters[$parameter.Key] = $parameter.Value
-
-                        }
-
-                    }
+                    $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_GetViaIdentity' -BoundParameters $targetParameters
                     $authRule = Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_GetViaIdentity @readParameters
                 }
                 elseif ($ResourceHashTable['TopicName'] -ne $null){
-                    $readCommand = @(Get-Command -Name 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity' -ErrorAction Stop)[0]
-
-                    while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                        $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-                    }
-
-                    $readParameterNames = @($readCommand.Parameters.Keys)
-
-                    $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-                    $readParameters = @{}
-
-                    foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                        if ($parameter.Key -in $readParameterNames) {
-
-                            $readParameters[$parameter.Key] = $parameter.Value
-
-                        }
-
-                    }
+                    $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity' -BoundParameters $targetParameters
                     $authRule = Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity @readParameters
                 }
                 elseif ($ResourceHashTable['NamespaceName'] -ne $null){
-                    $readCommand = @(Get-Command -Name 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity' -ErrorAction Stop)[0]
-
-                    while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                        $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-                    }
-
-                    $readParameterNames = @($readCommand.Parameters.Keys)
-
-                    $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-                    $readParameters = @{}
-
-                    foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                        if ($parameter.Key -in $readParameterNames) {
-
-                            $readParameters[$parameter.Key] = $parameter.Value
-
-                        }
-
-                    }
+                    $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity' -BoundParameters $targetParameters
                     $authRule = Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity @readParameters
                 }
                 else{

@@ -162,18 +162,7 @@ function Set-AzServiceBusNetworkRuleSet{
             $null = $targetParameters.Remove('WhatIf')
             $null = $targetParameters.Remove('Confirm')
 
-            $readCommand = @(Get-Command -Name 'Get-AzServiceBusNetworkRuleSet' -ErrorAction Stop)[0]
-            while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-                $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-            }
-            $readParameterNames = @($readCommand.Parameters.Keys)
-            $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-            $readParameters = @{}
-            foreach ($parameter in $targetParameters.GetEnumerator()) {
-                if ($parameter.Key -in $readParameterNames) {
-                    $readParameters[$parameter.Key] = $parameter.Value
-                }
-            }
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusNetworkRuleSet' -BoundParameters $targetParameters
             $networkRuleSet = Get-AzServiceBusNetworkRuleSet @readParameters
             # 2. PUT
             $null = $targetParameters.Remove('InputObject')

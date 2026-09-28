@@ -184,18 +184,7 @@ function Update-AzNetworkSecurityPerimeterLink {
             $null = $targetParameters.Remove('WhatIf')
             $null = $targetParameters.Remove('Confirm')
 
-            $readCommand = @(Get-Command -Name 'Get-AzNetworkSecurityPerimeterLink' -ErrorAction Stop)[0]
-            while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-                $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-            }
-            $readParameterNames = @($readCommand.Parameters.Keys)
-            $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-            $readParameters = @{}
-            foreach ($parameter in $targetParameters.GetEnumerator()) {
-                if ($parameter.Key -in $readParameterNames) {
-                    $readParameters[$parameter.Key] = $parameter.Value
-                }
-            }
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLink' -BoundParameters $targetParameters
             $GETObject = Get-AzNetworkSecurityPerimeterLink @readParameters
             # 2. PUT
 

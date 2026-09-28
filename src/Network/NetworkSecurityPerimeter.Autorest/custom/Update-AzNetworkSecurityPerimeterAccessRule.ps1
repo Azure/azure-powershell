@@ -215,29 +215,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $null = $targetParameters.Remove('Confirm')
 
 
-            $readCommand = @(Get-Command -Name 'Get-AzNetworkSecurityPerimeterAccessRule' -ErrorAction Stop)[0]
-
-            while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-
-                $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
-
-            }
-
-            $readParameterNames = @($readCommand.Parameters.Keys)
-
-            $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
-
-            $readParameters = @{}
-
-            foreach ($parameter in $targetParameters.GetEnumerator()) {
-
-                if ($parameter.Key -in $readParameterNames) {
-
-                    $readParameters[$parameter.Key] = $parameter.Value
-
-                }
-
-            }
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAccessRule' -BoundParameters $targetParameters
             $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @readParameters
             # 2. PUT
 
