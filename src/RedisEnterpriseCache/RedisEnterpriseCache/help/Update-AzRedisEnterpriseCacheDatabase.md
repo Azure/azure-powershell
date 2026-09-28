@@ -17,8 +17,9 @@ Updates an existing Redis Enterprise database
 Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AccessKeysAuthentication <String>] [-ClientProtocol <String>]
  [-EvictionPolicy <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <String>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-NotifyKeyspaceEvents <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,8 +27,8 @@ Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <
 Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
  [-AccessKeysAuthentication <String>] [-ClientProtocol <String>] [-EvictionPolicy <String>]
  [-AofPersistenceEnabled] [-AofPersistenceFrequency <String>] [-RdbPersistenceEnabled]
- [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RdbPersistenceFrequency <String>] [-NotifyKeyspaceEvents <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +61,13 @@ default Microsoft.Cache/redisEnterprise/databases
 ```
 
 This command updates the client protocol and eviction policy of the database for the Redis Enterprise cache named MyCache.
+
+### Example 3: Enable keyspace notifications on a database
+```powershell
+Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -NotifyKeyspaceEvents "KEA"
+```
+
+This command enables keyspace notifications (KEA) on the database for the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -202,6 +210,25 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NotifyKeyspaceEvents
+Specifies which keyspace events should trigger notifications.
+Default is an empty string, meaning this feature is disabled.
+When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+For example, 'AKE' enables all standard events.
+See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

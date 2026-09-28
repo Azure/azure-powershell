@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Extensions;
 
-    /// <summary>The Private Endpoint resource.</summary>
+    /// <summary>The private endpoint resource.</summary>
     public partial class PrivateEndpoint :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointInternal
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public string Id { get => this._id; }
 
@@ -29,28 +29,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
         }
     }
-    /// The Private Endpoint resource.
+    /// The private endpoint resource.
     public partial interface IPrivateEndpoint :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IJsonSerializable
     {
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The ARM identifier for Private Endpoint",
+        Description = @"The ARM identifier for private endpoint.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
 
     }
-    /// The Private Endpoint resource.
+    /// The private endpoint resource.
     internal partial interface IPrivateEndpointInternal
 
     {
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         string Id { get; set; }
 
     }

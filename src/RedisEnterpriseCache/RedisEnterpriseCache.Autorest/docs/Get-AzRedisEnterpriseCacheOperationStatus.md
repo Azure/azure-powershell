@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of Azure region.
+The name of the Azure region.
 
 ```yaml
 Type: System.String
@@ -108,6 +108,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

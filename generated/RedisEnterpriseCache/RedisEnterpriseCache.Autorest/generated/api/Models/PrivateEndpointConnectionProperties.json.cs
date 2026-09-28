@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Extensions;
 
-    /// <summary>Properties of the PrivateEndpointConnectProperties.</summary>
+    /// <summary>Properties of the private endpoint connection.</summary>
     public partial class PrivateEndpointConnectionProperties
     {
 
@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             }
             {_privateEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject>("privateEndpoint"), out var __jsonPrivateEndpoint) ? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpoint.FromJson(__jsonPrivateEndpoint) : _privateEndpoint;}
             {_privateLinkServiceConnectionState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonObject>("privateLinkServiceConnectionState"), out var __jsonPrivateLinkServiceConnectionState) ? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateLinkServiceConnectionState.FromJson(__jsonPrivateLinkServiceConnectionState) : _privateLinkServiceConnectionState;}
+            {_groupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray>("groupIds"), out var __jsonGroupIds) ? If( __jsonGroupIds as Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _groupId;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
@@ -105,6 +106,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             }
             AddIf( null != this._privateEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) this._privateEndpoint.ToJson(null,serializationMode) : null, "privateEndpoint" ,container.Add );
             AddIf( null != this._privateLinkServiceConnectionState ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) this._privateLinkServiceConnectionState.ToJson(null,serializationMode) : null, "privateLinkServiceConnectionState" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._groupId)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._groupId )
+                    {
+                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                    }
+                    container.Add("groupIds",__w);
+                }
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

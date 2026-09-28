@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).AccessKeysAuthentication = (string) content.GetValueForProperty("AccessKeysAuthentication",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).AccessKeysAuthentication, global::System.Convert.ToString);
             }
+            if (content.Contains("NotifyKeyspaceEvents"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).NotifyKeyspaceEvents = (string) content.GetValueForProperty("NotifyKeyspaceEvents",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).NotifyKeyspaceEvents, global::System.Convert.ToString);
+            }
             if (content.Contains("PersistenceAofFrequency"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).PersistenceAofFrequency = (string) content.GetValueForProperty("PersistenceAofFrequency",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).PersistenceAofFrequency, global::System.Convert.ToString);
@@ -214,6 +218,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("AccessKeysAuthentication"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).AccessKeysAuthentication = (string) content.GetValueForProperty("AccessKeysAuthentication",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).AccessKeysAuthentication, global::System.Convert.ToString);
+            }
+            if (content.Contains("NotifyKeyspaceEvents"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).NotifyKeyspaceEvents = (string) content.GetValueForProperty("NotifyKeyspaceEvents",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabasePropertiesInternal)this).NotifyKeyspaceEvents, global::System.Convert.ToString);
             }
             if (content.Contains("PersistenceAofFrequency"))
             {

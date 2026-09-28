@@ -171,6 +171,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string KeyEncryptionKeyIdentityUserAssignedIdentityResourceId { get => _parametersBody.KeyEncryptionKeyIdentityUserAssignedIdentityResourceId ?? null; set => _parametersBody.KeyEncryptionKeyIdentityUserAssignedIdentityResourceId = value; }
 
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Custom maintenance windows that apply to the cluster.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Custom maintenance windows that apply to the cluster.",
+        SerializedName = @"maintenanceWindows",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[] MaintenanceConfigurationMaintenanceWindow { get => _parametersBody.MaintenanceConfigurationMaintenanceWindow?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.MaintenanceConfigurationMaintenanceWindow = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>(value) : null); }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -276,14 +288,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         [global::System.Management.Automation.AllowEmptyCollection]
         public string[] UserAssignedIdentity { get; set; }
 
-        /// <summary>The Availability Zones where this cluster will be deployed.</summary>
+        /// <summary>The availability zones.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Availability Zones where this cluster will be deployed.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The availability zones.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Availability Zones where this cluster will be deployed.",
+        Description = @"The availability zones.",
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
         public string[] Zone { get => _parametersBody.Zone?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Zone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -665,6 +677,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
             {
                 this.Zone = (string[])(this.MyInvocation?.BoundParameters["Zone"]);
             }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("HighAvailability")))
+            {
+                this.HighAvailability = (string)(this.MyInvocation?.BoundParameters["HighAvailability"]);
+            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Sku")))
             {
                 this.Sku = (string)(this.MyInvocation?.BoundParameters["Sku"]);
@@ -673,9 +689,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
             {
                 this.Capacity = (int)(this.MyInvocation?.BoundParameters["Capacity"]);
             }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("HighAvailability")))
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MaintenanceConfigurationMaintenanceWindow")))
             {
-                this.HighAvailability = (string)(this.MyInvocation?.BoundParameters["HighAvailability"]);
+                this.MaintenanceConfigurationMaintenanceWindow = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[])(this.MyInvocation?.BoundParameters["MaintenanceConfigurationMaintenanceWindow"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("MinimumTlsVersion")))
             {
