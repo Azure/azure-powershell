@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsLifecycle.Approve, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledEvent", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
-    [OutputType(typeof(ScheduledEventsApproveResponse), typeof(MaintenanceError))]
+    [OutputType(typeof(ScheduledEventsApproveResponse))]
     public partial class ApproveAzureRmScheduledEvent : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -47,10 +47,9 @@ namespace Microsoft.Azure.Commands.Maintenance
                     }
                     catch (MaintenanceErrorException exception)
                     {
-                        WriteObject(exception.Body ?? new MaintenanceError(
-                            new Microsoft.Azure.Management.Maintenance.Models.ErrorDetails(
-                                exception.Response?.StatusCode.ToString(),
-                                exception.Message)));
+                        ThrowScheduledEventError(exception, exception.Response?.StatusCode,
+                            exception.Body?.Error == null ? null : exception.Body,
+                            exception.Body?.Error?.Code, target);
                     }
                 }
             });

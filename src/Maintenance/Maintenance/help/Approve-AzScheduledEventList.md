@@ -23,11 +23,11 @@ Approve-AzScheduledEventList [-ResourceGroupName] <String> [-ResourceType] <Stri
 ## DESCRIPTION
 
 Approves events in the ScheduledEvents for a virtual machine, virtual machine scale set, or availability set.
-On success, the cmdlet returns a ScheduledEvents approval response.
-When ScheduledEvents entries in the same request have different outcomes, the service can return HTTP 207 Multi-Status.
-For that response, the cmdlet returns a structured object containing an overall `Response` and a `Details` with the outcome for each ScheduledEvents entry.
+For HTTP 200, the cmdlet returns a ScheduledEvents approval response.
+The service can return HTTP 207 Multi-Status with per-event results, including when all requested events cannot be found.
+For that response, the cmdlet returns a structured object containing `Error.Code`, `Error.Message`, and `Error.Details`. Each detail contains the service-supplied `Target`, `Code`, and `Message` for an event.
 The default console view renders the multi-status response as JSON, but the pipeline receives a structured object that can be inspected or filtered.
-For other non-success responses, the cmdlet returns a structured error response containing the service-defined code and message.
+For other non-success responses, the cmdlet raises a terminating PowerShell error displaying the HTTP status name followed by indented service error JSON.
 
 ## EXAMPLES
 
@@ -54,47 +54,43 @@ $response
 
 ```output
 {
-	"Details": [
-		{
-			"Target": "11111111-1111-1111-1111-111111111111",
-			"Code": "OK",
-			"Message": "Successfully approved scheduled event"
-		},
-		{
-			"Target": "33333333-3333-3333-3333-333333333333",
-			"Code": "NotFound",
-			"Message": "Scheduled event not found"
-		}
-	],
-	"Response": {
-		"Code": "MultiStatusResponse",
-		"Message": "The operation returned different statuses for the Scheduled Events. Review each event's result for details."
-	}
+    "Error": {
+        "Code": "MultiStatusResponse",
+        "Message": "The operation returned different statuses for the Scheduled Events. Review each event's result for details.",
+        "Details": [
+            {
+                "Target": "11111111-1111-1111-1111-111111111111",
+                "Code": "NotFound",
+                "Message": "Scheduled event not found"
+            },
+            {
+                "Target": "33333333-3333-3333-3333-333333333333",
+                "Code": "NotFound",
+                "Message": "Scheduled event not found"
+            }
+        ]
+    }
 }
 ```
 
 Approves multiple ScheduledEvents entries and displays the HTTP 207 Multi-Status response as JSON.
-The pipeline value remains a structured object whose overall status and per-entry results are available through `$response.Response` and `$response.Details`.
+The pipeline value remains a structured object whose overall status and per-entry results are available through `$response.Error` and `$response.Error.Details`.
+Both entries report `NotFound`, but the HTTP 207 response does not raise a terminating error.
 
-### Example 3: Inspect a non-success response
+### Example 3: Inspect individual event results
 
 ```powershell
-$response = Approve-AzScheduledEventList -ResourceGroupName 'example-rg' -ResourceType 'availabilitySets' -ResourceName 'example-availability-set' -ScheduledEventIdList @('44444444-4444-4444-4444-444444444444', '55555555-5555-5555-5555-555555555555') -Confirm:$false
-$response
+$response.Error.Details | Select-Object Target, Code, Message
 ```
 
 ```output
-{
-	"Error": {
-		"Code": "InvalidScheduledEventId",
-		"Message": "Scheduled event not found",
-		"Details": null
-	}
-}
+Target                               Code     Message
+------                               ----     -------
+11111111-1111-1111-1111-111111111111 NotFound Scheduled event not found
+33333333-3333-3333-3333-333333333333 NotFound Scheduled event not found
 ```
 
-Attempts to approve multiple ScheduledEvents entries and displays the non-success response as JSON.
-The pipeline value remains a structured object whose code and message are available through `$response.Error.Code` and `$response.Error.Message`.
+Uses the response from Example 2 to inspect the service-supplied target ID, code, and message for each event without parsing the console JSON.
 
 ## PARAMETERS
 
@@ -213,7 +209,9 @@ Accept wildcard characters: False
 
 ### -ScheduledEventIdList
 
-The list of ScheduledEvents IDs.
+The ScheduledEvents IDs to approve for the specified resource.
+Pass multiple IDs as a comma-separated string array, for example `@('11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222222')`.
+Do not separate IDs with spaces alone; PowerShell treats the next ID as a separate positional argument and reports a parameter-binding error before sending the request.
 
 ```yaml
 Type: System.String[]
@@ -273,8 +271,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse
-
-### Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsApproveResponse
 
 ### Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError
 
