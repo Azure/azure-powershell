@@ -133,7 +133,18 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
             $null = $targetParameters.Remove('WhatIf')
             $null = $targetParameters.Remove('Confirm')
 
-            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusGeoDRConfiguration' -BoundParameters $targetParameters
+            $readCommand = @(Get-Command -Name 'Get-AzServiceBusGeoDRConfiguration' -ErrorAction Stop)[0]
+            while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+                $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+            }
+            $readParameterNames = @($readCommand.Parameters.Keys)
+            $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+            $readParameters = @{}
+            foreach ($parameter in $targetParameters.GetEnumerator()) {
+                if ($parameter.Key -in $readParameterNames) {
+                    $readParameters[$parameter.Key] = $parameter.Value
+                }
+            }
             $drConfig = Get-AzServiceBusGeoDRConfiguration @readParameters
             # 2. PUT
             $null = $targetParameters.Remove('InputObject')

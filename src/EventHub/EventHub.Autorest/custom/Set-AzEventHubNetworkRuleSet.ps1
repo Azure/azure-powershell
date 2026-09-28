@@ -162,7 +162,18 @@ function Set-AzEventHubNetworkRuleSet{
             $null = $targetParameters.Remove('WhatIf')
             $null = $targetParameters.Remove('Confirm')
 
-            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNetworkRuleSet' -BoundParameters $targetParameters
+            $readCommand = @(Get-Command -Name 'Get-AzEventHubNetworkRuleSet' -ErrorAction Stop)[0]
+            while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+                $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+            }
+            $readParameterNames = @($readCommand.Parameters.Keys)
+            $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+            $readParameters = @{}
+            foreach ($parameter in $targetParameters.GetEnumerator()) {
+                if ($parameter.Key -in $readParameterNames) {
+                    $readParameters[$parameter.Key] = $parameter.Value
+                }
+            }
             $networkRuleSet = Get-AzEventHubNetworkRuleSet @readParameters
             # 2. PUT
             $null = $targetParameters.Remove('InputObject')

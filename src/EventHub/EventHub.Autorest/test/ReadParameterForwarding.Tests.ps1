@@ -1,8 +1,3 @@
-$helperPath = Join-Path $PSScriptRoot '..\custom\Get-AzEventHubReadParameters.ps1'
-$helperSource = Get-Content -Path $helperPath -Raw
-$helperSource = $helperSource -replace '(?m)^\s*\[Microsoft\.Azure\.PowerShell\.Cmdlets\.EventHub\.DoNotExportAttribute\(\)\]\r?\n', ''
-. ([scriptblock]::Create($helperSource))
-
 function Get-AzEventHubReadTestResource {
     [CmdletBinding()]
     param(
@@ -27,10 +22,30 @@ function Set-AzEventHubReadTestResource {
     $script:eventHubWriteParameters = @{} + $PSBoundParameters
 }
 
-Set-Alias -Name Get-AzEventHubReadTestAlias -Value Get-AzEventHubReadTestResource
+function Assert-InlineReadCommandsInvoked {
+    param([string] $Source)
 
-Describe 'EventHub read parameter forwarding' {
-    It 'filters write-only parameters using read command metadata without changing target parameters' {
+    $lookupPattern = "(?ms)\`$readCommand\s*=\s*@\(Get-Command -Name '([^']+)'[^\r\n]*\)\[0\](?<Block>.*?)(?=\`$readCommand\s*=\s*@\(Get-Command -Name|\z)"
+    $lookups = [regex]::Matches($Source, $lookupPattern)
+    if ($lookups.Count -eq 0) {
+        return $false
+    }
+
+    foreach ($lookup in $lookups) {
+        $commandName = $lookup.Groups[1].Value
+        $invocationPattern = '(?m)^\s*(?:\$\w+\s*=\s*)?' + [regex]::Escape($commandName) + '\s+@readParameters\s*$'
+        if (-not [regex]::IsMatch($lookup.Groups['Block'].Value, $invocationPattern)) {
+            return $false
+        }
+    }
+
+    return $true
+}
+
+Set-Alias -Name Get-AzEventHubReadTestResourceAlias -Value Get-AzEventHubReadTestResource
+
+Describe 'EventHub inline read parameter forwarding' {
+    It 'filters write-only parameters using aliased read command metadata without changing target parameters' {
         $targetParameters = @{
             Name = 'eventhub'
             DefaultProfile = 'profile'
@@ -40,7 +55,20 @@ Describe 'EventHub read parameter forwarding' {
             SyntheticWriteOnly = 'future-value'
         }
 
-        $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubReadTestAlias' -BoundParameters $targetParameters
+        $readCommand = @(Get-Command -Name 'Get-AzEventHubReadTestResourceAlias' -ErrorAction Stop)[0]
+        while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+            $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+        }
+        $readParameterNames = @($readCommand.Parameters.Keys)
+        $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+        $readParameters = @{}
+        foreach ($parameter in $targetParameters.GetEnumerator()) {
+            if ($parameter.Key -in $readParameterNames) {
+                $readParameters[$parameter.Key] = $parameter.Value
+            }
+        }
+
+        ($readParameterNames -contains 'ResourceName') | Should Be $true
         Get-AzEventHubReadTestResource @readParameters
         Set-AzEventHubReadTestResource @targetParameters
 
@@ -55,13 +83,7 @@ Describe 'EventHub read parameter forwarding' {
         $script:eventHubWriteParameters.SyntheticWriteOnly | Should Be 'future-value'
     }
 
-    It 'recognizes read parameter aliases' {
-        $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubReadTestResource' -BoundParameters @{ ResourceName = 'eventhub' }
-
-        $readParameters.ResourceName | Should Be 'eventhub'
-    }
-
-    It 'uses separate read and target parameter groups in every affected wrapper' {
+    It 'inlines metadata filtering with separate read and target parameters in every affected wrapper' {
         $wrappers = @(
             'Approve-AzEventHubPrivateEndpointConnection.ps1',
             'Deny-AzEventHubPrivateEndpointConnection.ps1',
@@ -79,30 +101,40 @@ Describe 'EventHub read parameter forwarding' {
         foreach ($wrapper in $wrappers) {
             $source = Get-Content -Path (Join-Path $PSScriptRoot "..\custom\$wrapper") -Raw
             $source | Should Match '\$targetParameters\s*=\s*@\{\}\s*\+\s*\$PSBoundParameters'
-            $source | Should Match 'Get-AzEventHubReadParameters\s+-CommandName'
+            $source | Should Match '\$readCommand\s*=\s*@\(Get-Command -Name'
+            $source | Should Match '\$readCommand\.CommandType.+CommandTypes\]::Alias'
+            $source | Should Match '\$readCommand\.Parameters\.Values.+\$_.Aliases'
+            $source | Should Match '\$readParameters\s*=\s*@\{\}'
             $source | Should Match '@readParameters'
             $source | Should Match '@targetParameters'
+            $source | Should Not Match 'Get-Az(?:EventHub|ServiceBus|NetworkSecurityPerimeter)ReadParameters'
+            (Assert-InlineReadCommandsInvoked -Source $source) | Should Be $true
         }
+    }
+
+    It 'rejects a lookup followed by invocation of a different read command' {
+        $source = @'
+$readCommand = @(Get-Command -Name 'Get-AzExpectedResource' -ErrorAction Stop)[0]
+$readParameters = @{}
+$resource = Get-AzDifferentResource @readParameters
+'@
+
+        (Assert-InlineReadCommandsInvoked -Source $source) | Should Be $false
     }
 
     It 'keeps exact expanded and via-identity read variants for authorization rules' {
         $source = Get-Content -Path (Join-Path $PSScriptRoot '..\custom\Set-AzEventHubAuthorizationRule.ps1') -Raw
 
-        $source | Should Match "CommandName 'Az\.EventHub\.private\\Get-AzEventHubAuthorizationRule_Get'"
-        $source | Should Match "CommandName 'Az\.EventHub\.private\\Get-AzEventHubAuthorizationRule_GetViaIdentity'"
-        $source | Should Match "CommandName 'Az\.EventHub\.private\\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity'"
+        $source | Should Match "Get-Command -Name 'Az.EventHub.private\\Get-AzEventHubAuthorizationRule_Get'"
+        $source | Should Match "Get-Command -Name 'Az.EventHub.private\\Get-AzEventHubAuthorizationRule_GetViaIdentity'"
+        $source | Should Match "Get-Command -Name 'Az.EventHub.private\\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity'"
     }
 
-    It 'packages the internal helper and triggers regeneration' {
-        $customPath = Join-Path $PSScriptRoot '..\custom'
-        $helperPath = Join-Path $customPath 'Get-AzEventHubReadParameters.ps1'
-        $moduleSource = Get-Content -Path (Join-Path $customPath 'Az.EventHub.custom.psm1') -Raw
-        $helperSource = Get-Content -Path $helperPath -Raw
+    It 'has no helper source and retains the regeneration trigger' {
+        $helperPath = Join-Path $PSScriptRoot '..\custom\Get-AzEventHubReadParameters.ps1'
         $generation = Get-Content -Path (Join-Path $PSScriptRoot '..\generate-info.json') -Raw | ConvertFrom-Json
 
-        Test-Path -Path $helperPath | Should Be $true
-        $helperSource | Should Match '\[Microsoft\.Azure\.PowerShell\.Cmdlets\.EventHub\.DoNotExportAttribute\(\)\]'
-        $moduleSource | Should Match "Get-ChildItem\s+-Path\s+\`$PSScriptRoot\s+-Recurse\s+-Include\s+'\*\.ps1'"
+        Test-Path -Path $helperPath | Should Be $false
         { [guid]::Parse($generation.generate_Id) } | Should Not Throw
         $generation.generate_Id | Should Not Be '37e57dcc-9680-41ff-a019-ec549669f7b0'
     }

@@ -152,12 +152,56 @@ function Set-AzEventHubAuthorizationRule{
             $null = $targetParameters.Remove('Confirm')
 
             if ($PSCmdlet.ParameterSetName -eq 'SetExpandedNamespace'){
-                $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_Get' -BoundParameters $targetParameters
+                $readCommand = @(Get-Command -Name 'Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_Get' -ErrorAction Stop)[0]
+
+                while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+
+                    $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+
+                }
+
+                $readParameterNames = @($readCommand.Parameters.Keys)
+
+                $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+
+                $readParameters = @{}
+
+                foreach ($parameter in $targetParameters.GetEnumerator()) {
+
+                    if ($parameter.Key -in $readParameterNames) {
+
+                        $readParameters[$parameter.Key] = $parameter.Value
+
+                    }
+
+                }
                 $authRule = Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_Get @readParameters
             }
 
             elseif($PSCmdlet.ParameterSetName -eq 'SetExpandedEntity'){
-                $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubAuthorizationRule_Get' -BoundParameters $targetParameters
+                $readCommand = @(Get-Command -Name 'Az.EventHub.private\Get-AzEventHubAuthorizationRule_Get' -ErrorAction Stop)[0]
+
+                while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+
+                    $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+
+                }
+
+                $readParameterNames = @($readCommand.Parameters.Keys)
+
+                $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+
+                $readParameters = @{}
+
+                foreach ($parameter in $targetParameters.GetEnumerator()) {
+
+                    if ($parameter.Key -in $readParameterNames) {
+
+                        $readParameters[$parameter.Key] = $parameter.Value
+
+                    }
+
+                }
                 $authRule = Az.EventHub.private\Get-AzEventHubAuthorizationRule_Get @readParameters
             }
 
@@ -169,11 +213,55 @@ function Set-AzEventHubAuthorizationRule{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
                 if ($ResourceHashTable['EventHubName'] -ne $null){
-                    $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity' -BoundParameters $targetParameters
+                    $readCommand = @(Get-Command -Name 'Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity' -ErrorAction Stop)[0]
+
+                    while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+
+                        $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+
+                    }
+
+                    $readParameterNames = @($readCommand.Parameters.Keys)
+
+                    $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+
+                    $readParameters = @{}
+
+                    foreach ($parameter in $targetParameters.GetEnumerator()) {
+
+                        if ($parameter.Key -in $readParameterNames) {
+
+                            $readParameters[$parameter.Key] = $parameter.Value
+
+                        }
+
+                    }
                     $authRule = Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity @readParameters
                 }
                 elseif ($ResourceHashTable['NamespaceName'] -ne $null){
-                    $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity' -BoundParameters $targetParameters
+                    $readCommand = @(Get-Command -Name 'Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity' -ErrorAction Stop)[0]
+
+                    while ($readCommand.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
+
+                        $readCommand = Get-Command -Name $readCommand.ResolvedCommandName -ErrorAction Stop
+
+                    }
+
+                    $readParameterNames = @($readCommand.Parameters.Keys)
+
+                    $readParameterNames += @($readCommand.Parameters.Values | ForEach-Object { $_.Aliases })
+
+                    $readParameters = @{}
+
+                    foreach ($parameter in $targetParameters.GetEnumerator()) {
+
+                        if ($parameter.Key -in $readParameterNames) {
+
+                            $readParameters[$parameter.Key] = $parameter.Value
+
+                        }
+
+                    }
                     $authRule = Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity @readParameters
                 }
                 else{
