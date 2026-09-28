@@ -56,14 +56,14 @@ Describe 'CDN read parameter forwarding' {
     }
 
     It 'includes aliases from the resolved read command metadata' {
-        $command = Get-Command -Name 'Get-AzCdnReadTestAlias'
-        while ($command.CommandType -eq [System.Management.Automation.CommandTypes]::Alias) {
-            $command = Get-Command -Name $command.ResolvedCommandName
+        $writeParameters = @{
+            ResourceName = 'profile'
         }
-        $parameterNames = @($command.Parameters.Keys)
-        $parameterNames += @($command.Parameters.Values | ForEach-Object { $_.Aliases })
 
-        ($parameterNames -contains 'ResourceName') | Should Be $true
+        $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnReadTestAlias' -BoundParameters $writeParameters
+
+        $readParameters.ContainsKey('ResourceName') | Should Be $true
+        $readParameters.ResourceName | Should Be 'profile'
     }
 
     It 'uses an exact helper and GET pair in every affected parameter-set branch' {
