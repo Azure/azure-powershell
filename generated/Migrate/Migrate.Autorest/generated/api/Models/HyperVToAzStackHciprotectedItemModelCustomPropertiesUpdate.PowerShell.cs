@@ -138,6 +138,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).OSType, global::System.Convert.ToString);
             }
+            if (content.Contains("SecurityOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).SecurityOption = (string) content.GetValueForProperty("SecurityOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).SecurityOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConvertToGen2"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).ConvertToGen2 = (bool?) content.GetValueForProperty("ConvertToGen2",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).ConvertToGen2, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MigrateAsArcVM"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).MigrateAsArcVM = (bool?) content.GetValueForProperty("MigrateAsArcVM",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).MigrateAsArcVM, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("InstanceType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModelCustomPropertiesUpdateInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModelCustomPropertiesUpdateInternal)this).InstanceType, global::System.Convert.ToString);
@@ -182,6 +194,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("OSType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).OSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecurityOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).SecurityOption = (string) content.GetValueForProperty("SecurityOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).SecurityOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConvertToGen2"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).ConvertToGen2 = (bool?) content.GetValueForProperty("ConvertToGen2",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).ConvertToGen2, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MigrateAsArcVM"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).MigrateAsArcVM = (bool?) content.GetValueForProperty("MigrateAsArcVM",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal)this).MigrateAsArcVM, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("InstanceType"))
             {
