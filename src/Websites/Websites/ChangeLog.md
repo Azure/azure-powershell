@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed App Service Plan output to retain zone redundancy, worker counts, identities, scaling options, extended locations, custom hosting settings, and resource metadata.
+* Fixed Web App output to retain networking, hosting, affinity, encryption, client certificate, identity, and resource metadata properties returned by the upgraded API.
+* Fixed Web App configuration reads and updates to preserve metadata, public network access, access-restriction defaults, HTTP/2 proxy settings, minimum TLS (Transport Layer Security) cipher suites, and scaling limits.
+* Preserved Boolean push settings and proxy resource interface compatibility after the Microsoft.Web API upgrade.
+    - `PushSettings.IsPushEnabled` remains a Boolean value, and proxy resource models remain compatible with Azure resource handling.
 * Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.
 
 ## Version 4.1.0

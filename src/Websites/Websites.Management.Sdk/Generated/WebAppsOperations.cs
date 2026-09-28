@@ -8980,7 +8980,10 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "pushSettings");
             }
-
+            if (pushSettings != null)
+            {
+                pushSettings.Validate();
+            }
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -45729,7 +45732,10 @@ namespace Microsoft.Azure.Management.WebSites
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "pushSettings");
             }
-
+            if (pushSettings != null)
+            {
+                pushSettings.Validate();
+            }
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");

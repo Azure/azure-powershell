@@ -923,7 +923,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
 
-
+            if (this.Push != null)
+            {
+                this.Push.Validate();
+            }
 
 
 

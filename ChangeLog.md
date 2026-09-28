@@ -1,3 +1,10 @@
+## Upcoming Release
+#### Az.Websites
+* Fixed App Service Plan output to retain zone redundancy, worker counts, identities, scaling options, extended locations, custom hosting settings, and resource metadata.
+* Fixed Web App output to retain networking, hosting, affinity, encryption, client certificate, identity, and resource metadata properties returned by the upgraded API.
+* Fixed Web App configuration reads and updates to preserve metadata, public network access, access-restriction defaults, HTTP/2 proxy settings, minimum TLS (Transport Layer Security) cipher suites, and scaling limits.
+* Preserved Boolean push settings and proxy resource interface compatibility after the Microsoft.Web API upgrade.
+
 ## 16.3.0 - September 2026
 #### Az.Accounts 5.5.3
 * Fixed 'Get-AzSubscription' to throw a clear error instead of returning nothing when '-TenantId' does not match the current Managed Service Identity (MSI) context. [#25710]
