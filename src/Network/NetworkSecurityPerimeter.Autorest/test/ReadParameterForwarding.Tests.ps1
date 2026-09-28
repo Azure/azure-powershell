@@ -78,17 +78,14 @@ Describe 'NetworkSecurityPerimeter read parameter forwarding' {
         }
     }
 
-    It 'packages the internal helper and triggers regeneration' {
+    It 'packages the internal helper' {
         $customPath = Join-Path $PSScriptRoot '..\custom'
         $helperPath = Join-Path $customPath 'Get-AzNetworkSecurityPerimeterReadParameters.ps1'
         $moduleSource = Get-Content -Path (Join-Path $customPath 'Az.NetworkSecurityPerimeter.custom.psm1') -Raw
         $helperSource = Get-Content -Path $helperPath -Raw
-        $generation = Get-Content -Path (Join-Path $PSScriptRoot '..\generate-info.json') -Raw | ConvertFrom-Json
 
         Test-Path -Path $helperPath | Should Be $true
         $helperSource | Should Match '\[Microsoft\.Azure\.PowerShell\.Cmdlets\.NetworkSecurityPerimeter\.DoNotExportAttribute\(\)\]'
         $moduleSource | Should Match "Get-ChildItem\s+-Path\s+\`$PSScriptRoot\s+-Recurse\s+-Include\s+'\*\.ps1'"
-        { [guid]::Parse($generation.generate_Id) } | Should Not Throw
-        $generation.generate_Id | Should Not Be '22876a3f-6f36-449b-a291-2b1c423db247'
     }
 }

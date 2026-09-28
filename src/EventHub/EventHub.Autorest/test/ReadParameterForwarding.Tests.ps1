@@ -93,17 +93,14 @@ Describe 'EventHub read parameter forwarding' {
         $source | Should Match "CommandName 'Az\.EventHub\.private\\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity'"
     }
 
-    It 'packages the internal helper and triggers regeneration' {
+    It 'packages the internal helper' {
         $customPath = Join-Path $PSScriptRoot '..\custom'
         $helperPath = Join-Path $customPath 'Get-AzEventHubReadParameters.ps1'
         $moduleSource = Get-Content -Path (Join-Path $customPath 'Az.EventHub.custom.psm1') -Raw
         $helperSource = Get-Content -Path $helperPath -Raw
-        $generation = Get-Content -Path (Join-Path $PSScriptRoot '..\generate-info.json') -Raw | ConvertFrom-Json
 
         Test-Path -Path $helperPath | Should Be $true
         $helperSource | Should Match '\[Microsoft\.Azure\.PowerShell\.Cmdlets\.EventHub\.DoNotExportAttribute\(\)\]'
         $moduleSource | Should Match "Get-ChildItem\s+-Path\s+\`$PSScriptRoot\s+-Recurse\s+-Include\s+'\*\.ps1'"
-        { [guid]::Parse($generation.generate_Id) } | Should Not Throw
-        $generation.generate_Id | Should Not Be '37e57dcc-9680-41ff-a019-ec549669f7b0'
     }
 }

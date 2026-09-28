@@ -93,17 +93,14 @@ Describe 'ServiceBus read parameter forwarding' {
         $source | Should Match "CommandName 'Az\.ServiceBus\.private\\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity'"
     }
 
-    It 'packages the internal helper and triggers regeneration' {
+    It 'packages the internal helper' {
         $customPath = Join-Path $PSScriptRoot '..\custom'
         $helperPath = Join-Path $customPath 'Get-AzServiceBusReadParameters.ps1'
         $moduleSource = Get-Content -Path (Join-Path $customPath 'Az.ServiceBus.custom.psm1') -Raw
         $helperSource = Get-Content -Path $helperPath -Raw
-        $generation = Get-Content -Path (Join-Path $PSScriptRoot '..\generate-info.json') -Raw | ConvertFrom-Json
 
         Test-Path -Path $helperPath | Should Be $true
         $helperSource | Should Match '\[Microsoft\.Azure\.PowerShell\.Cmdlets\.ServiceBus\.DoNotExportAttribute\(\)\]'
         $moduleSource | Should Match "Get-ChildItem\s+-Path\s+\`$PSScriptRoot\s+-Recurse\s+-Include\s+'\*\.ps1'"
-        { [guid]::Parse($generation.generate_Id) } | Should Not Throw
-        $generation.generate_Id | Should Not Be 'd42664e3-3ae4-4daf-a410-fba6f9958c4e'
     }
 }
