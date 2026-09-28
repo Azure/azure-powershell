@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxHeavyJobDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxheavyjobdetailsobject
 schema: 2.0.0
 ---
 
@@ -13,12 +13,34 @@ Create an in-memory object for DataBoxHeavyJobDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxHeavyJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscriminator>
- [-DevicePassword <String>] [-DataExportDetail <IDataExportDetails[]>]
- [-DataImportDetail <IDataImportDetails[]>] [-ExpectedDataSizeInTeraByte <Int32>]
- [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
- [-ReverseShippingDetail <IReverseShippingDetails>] [-ShippingAddress <IShippingAddress>]
- [<CommonParameters>]
+New-AzDataBoxHeavyJobDetailsObject -ContactDetailEmailList <String[]> -ContactDetailsContactName <String>
+ -ContactDetailsPhone <String> [-DevicePassword <String>] [-City <String>] [-CompanyName <String>]
+ [-ContactDetailNotificationPreference <INotificationPreference[]>] [-ContactDetailsMobile <String>]
+ [-ContactDetailsPhoneExtension <String>] [-Country <String>] [-DataExportDetail <IDataExportDetails[]>]
+ [-DataImportDetail <IDataImportDetails[]>] [-EncryptionPreferenceDoubleEncryption <String>]
+ [-EncryptionPreferenceHardwareEncryption <String>] [-ExpectedDataSizeInTeraByte <Int32>]
+ [-IdentityPropertyType <String>] [-KeyEncryptionKeyKekType <String>] [-KeyEncryptionKeyKekUrl <String>]
+ [-KeyEncryptionKeyKekVaultResourceId <String>] [-PostalCode <String>]
+ [-PreferencePreferredDataCenterRegion <String[]>] [-PreferenceStorageAccountAccessTierPreference <String[]>]
+ [-ReverseShippingDetailsContactDetailsMobile <String>] [-ReverseShippingDetailsContactDetailsPhone <String>]
+ [-ReverseShippingDetailsContactDetailsPhoneExtension <String>] [-ReverseShippingDetailsContactName <String>]
+ [-ReverseShippingDetailsShippingAddressCity <String>]
+ [-ReverseShippingDetailsShippingAddressCompanyName <String>]
+ [-ReverseShippingDetailsShippingAddressCountry <String>]
+ [-ReverseShippingDetailsShippingAddressPostalCode <String>]
+ [-ReverseShippingDetailsShippingAddressSkipAddressValidation <Boolean>]
+ [-ReverseShippingDetailsShippingAddressStateOrProvince <String>]
+ [-ReverseShippingDetailsShippingAddressStreetAddress1 <String>]
+ [-ReverseShippingDetailsShippingAddressStreetAddress2 <String>]
+ [-ReverseShippingDetailsShippingAddressStreetAddress3 <String>]
+ [-ReverseShippingDetailsShippingAddressTaxIdentificationNumber <String>]
+ [-ReverseShippingDetailsShippingAddressType <String>]
+ [-ReverseShippingDetailsShippingAddressZipExtendedCode <String>]
+ [-ReverseTransportPreferencePreferredShipmentType <String>] [-ShippingAddressType <String>]
+ [-SkipAddressValidation <Boolean>] [-StateOrProvince <String>] [-StreetAddress1 <String>]
+ [-StreetAddress2 <String>] [-StreetAddress3 <String>] [-TaxIdentificationNumber <String>]
+ [-TransportPreferencePreferredShipmentType <String>] [-UserAssignedResourceId <String>]
+ [-ZipExtendedCode <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,12 +66,41 @@ Create a in-memory object for DataBoxHeavyJobDetails
 
 ## PARAMETERS
 
-### -ContactDetail
-Contact details for notification and shipping.
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
+### -City
+Name of the City.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CompanyName
+Name of the company.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailEmailList
+List of Email-ids to be notified about job progress.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -60,12 +111,101 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataExportDetail
-Details of the data to be exported from azure.
-To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
+### -ContactDetailNotificationPreference
+Notification preference for a job stage.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.INotificationPreference[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailsContactName
+Contact name of the person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailsMobile
+Mobile number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailsPhone
+Phone number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactDetailsPhoneExtension
+Phone extension number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Country
+Name of the Country.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataExportDetail
+Details of the data to be exported from azure.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataExportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -78,10 +218,9 @@ Accept wildcard characters: False
 
 ### -DataImportDetail
 Details of the data to be imported into azure.
-To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataImportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,6 +252,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionPreferenceDoubleEncryption
+Defines secondary layer of software-based encryption enablement.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionPreferenceHardwareEncryption
+Defines Hardware level encryption (Only for disk).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpectedDataSizeInTeraByte
 The expected size of the data, which needs to be transferred in this job, in terabytes.
 
@@ -128,12 +297,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyEncryptionKey
-Details about which key encryption type is being used.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
+### -IdentityPropertyType
+Managed service identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,12 +312,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Preference
-Preferences for the order.
-To construct, see NOTES section for PREFERENCE properties and create a hash table.
+### -KeyEncryptionKeyKekType
+Type of encryption key used for key encryption.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,12 +327,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReverseShippingDetail
-Optional Reverse Shipping details for order.
-To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
+### -KeyEncryptionKeyKekUrl
+Key encryption key.
+It is required in case of Customer managed KekType.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,12 +343,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ShippingAddress
-Shipping address of the customer.
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
+### -KeyEncryptionKeyKekVaultResourceId
+Kek vault resource id.
+It is required in case of Customer managed KekType.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -192,15 +359,450 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Type
-Indicates the type of job details.
+### -PostalCode
+Postal code.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferencePreferredDataCenterRegion
+Preferred data center region.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PreferenceStorageAccountAccessTierPreference
+Preferences related to the Access Tier of storage accounts.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsContactDetailsMobile
+Mobile number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsContactDetailsPhone
+Phone number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsContactDetailsPhoneExtension
+Phone extension number of the contact person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsContactName
+Contact name of the person.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressCity
+Name of the City.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressCompanyName
+Name of the company.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressCountry
+Name of the Country.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressPostalCode
+Postal code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressSkipAddressValidation
+Flag to indicate if customer has chosen to skip default address validation.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressStateOrProvince
+Name of the State or Province.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressStreetAddress1
+Street Address line 1.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressStreetAddress2
+Street Address line 2.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressStreetAddress3
+Street Address line 3.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressTaxIdentificationNumber
+Tax Identification Number.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressType
+Type of address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseShippingDetailsShippingAddressZipExtendedCode
+Extended Zip Code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReverseTransportPreferencePreferredShipmentType
+Indicates Shipment Logistics type that the customer preferred.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShippingAddressType
+Type of address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipAddressValidation
+Flag to indicate if customer has chosen to skip default address validation.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StateOrProvince
+Name of the State or Province.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StreetAddress1
+Street Address line 1.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StreetAddress2
+Street Address line 2.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StreetAddress3
+Street Address line 3.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TaxIdentificationNumber
+Tax Identification Number.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransportPreferencePreferredShipmentType
+Indicates Shipment Logistics type that the customer preferred.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedResourceId
+Arm resource id for user assigned identity to be used to fetch MSI token.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZipExtendedCode
+Extended Zip Code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -214,7 +816,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxHeavyJobDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxHeavyJobDetails
 
 ## NOTES
 
