@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.4.0
 * Added Change Safety support for additional cmdlets.
 
 ## Version 4.3.0
