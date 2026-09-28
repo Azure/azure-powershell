@@ -51,6 +51,9 @@
 * Added `SourceGeoLocation` and `DestinationGeoLocation` parameters to `New-AzFirewallPolicyNetworkRule` to support geographic location (ISO 3166-1 alpha-2 country code) filters in Firewall Policy network rules.
     - Source types (`SourceAddress`, `SourceIpGroup`, `SourceGeoLocation`) are mutually exclusive.
     - Destination types (`DestinationAddress`, `DestinationIpGroup`, `DestinationFqdn`, `DestinationGeoLocation`) are mutually exclusive.
+* Removed client-side validation of the `-FormatVersion` parameter for `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
+    - Flow log format versions are now validated by the service, so newly supported versions can be used without a module update.
+    - Corrected the error message shown for an invalid `-FormatType` value, which previously reported an invalid format version.
 * Added Change Safety support for additional cmdlets.
 * Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
     - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
