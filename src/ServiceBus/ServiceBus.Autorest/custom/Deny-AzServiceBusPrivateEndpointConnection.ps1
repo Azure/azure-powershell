@@ -135,13 +135,14 @@ function Deny-AzServiceBusPrivateEndpointConnection{
     }
     process{
 		try{
-            $hasDescription = $PSBoundParameters.Remove('Description')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasDescription = $targetParameters.Remove('Description')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $connection = Get-AzServiceBusPrivateEndpointConnection @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusPrivateEndpointConnection' -BoundParameters $targetParameters
+            $connection = Get-AzServiceBusPrivateEndpointConnection @readParameters
             $connection.ConnectionState = "Rejected"
 
             if($hasDescription){
@@ -152,14 +153,14 @@ function Deny-AzServiceBusPrivateEndpointConnection{
             }
 
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             if ($PSCmdlet.ShouldProcess("Approve ServiceBus Namespace PrivateEndpoint Connection $($Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusPrivateEndpointConnection_CreateViaIdentity -InputObject $connection -Parameter $connection @PSBoundParameters
+                Az.ServiceBus.private\New-AzServiceBusPrivateEndpointConnection_CreateViaIdentity -InputObject $connection -Parameter $connection @targetParameters
             }
 		}
 		catch{

@@ -146,7 +146,7 @@ function Set-AzEventHub{
         [System.String]
         # Resource id of the storage account to be used to create the blobs
         ${StorageAccountResourceId},
-        
+
         [Parameter(HelpMessage = "Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -235,36 +235,37 @@ function Set-AzEventHub{
     }
 	process{
 		try{
-            $hasCaptureEnabled = $PSBoundParameters.Remove('CaptureEnabled')
-            $hasEncoding = $PSBoundParameters.Remove('Encoding')
-            $hasIntervalInSeconds = $PSBoundParameters.Remove('IntervalInSeconds')
-            $hasSizeLimitInBytes = $PSBoundParameters.Remove('SizeLimitInBytes')
-            $hasSkipEmptyArchive = $PSBoundParameters.Remove('SkipEmptyArchive')
-            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
-            $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
-            $hasRetentionTimeInHour = $PSBoundParameters.Remove('RetentionTimeInHour')
-            $hasTombstoneRetentionTimeInHour = $PSBoundParameters.Remove('TombstoneRetentionTimeInHour')
-            $hasStatus = $PSBoundParameters.Remove('Status')
-            $hasDestinationName = $PSBoundParameters.Remove('DestinationName')
-            $hasStorageAccountResourceId = $PSBoundParameters.Remove('StorageAccountResourceId')
-            $hasArchiveNameFormat = $PSBoundParameters.Remove('ArchiveNameFormat')
-            $hasBlobContainer = $PSBoundParameters.Remove('BlobContainer')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
-            $hasUserMetadata = $PSBoundParameters.Remove('UserMetadata')
-            $hasMinCompactionLagInMin = $PSBoundParameters.Remove('MinCompactionLagInMin')
-            $hasTimestampType = $PSBoundParameters.Remove('TimestampType')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasCaptureEnabled = $targetParameters.Remove('CaptureEnabled')
+            $hasEncoding = $targetParameters.Remove('Encoding')
+            $hasIntervalInSeconds = $targetParameters.Remove('IntervalInSeconds')
+            $hasSizeLimitInBytes = $targetParameters.Remove('SizeLimitInBytes')
+            $hasSkipEmptyArchive = $targetParameters.Remove('SkipEmptyArchive')
+            $hasUserAssignedIdentityId = $targetParameters.Remove('UserAssignedIdentityId')
+            $hasIdentityType = $targetParameters.Remove('IdentityType')
+            $hasRetentionTimeInHour = $targetParameters.Remove('RetentionTimeInHour')
+            $hasTombstoneRetentionTimeInHour = $targetParameters.Remove('TombstoneRetentionTimeInHour')
+            $hasStatus = $targetParameters.Remove('Status')
+            $hasDestinationName = $targetParameters.Remove('DestinationName')
+            $hasStorageAccountResourceId = $targetParameters.Remove('StorageAccountResourceId')
+            $hasArchiveNameFormat = $targetParameters.Remove('ArchiveNameFormat')
+            $hasBlobContainer = $targetParameters.Remove('BlobContainer')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $hasPartitionCount = $targetParameters.Remove('PartitionCount')
+            $hasUserMetadata = $targetParameters.Remove('UserMetadata')
+            $hasMinCompactionLagInMin = $targetParameters.Remove('MinCompactionLagInMin')
+            $hasTimestampType = $targetParameters.Remove('TimestampType')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $eventHub = Get-AzEventHub @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHub' -BoundParameters $targetParameters
+            $eventHub = Get-AzEventHub @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -361,11 +362,11 @@ function Set-AzEventHub{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Entity $($eventHub.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHub_CreateViaIdentity -InputObject $eventHub -Parameter $eventHub @PSBoundParameters
+                Az.EventHub.private\New-AzEventHub_CreateViaIdentity -InputObject $eventHub -Parameter $eventHub @targetParameters
             }
 		}
 		catch{

@@ -73,7 +73,7 @@ function Set-AzEventHubApplicationGroup{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]]
         # List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
         ${Policy},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -146,22 +146,22 @@ function Set-AzEventHubApplicationGroup{
     }
     process{
 		try{
-            
-            $hasIsEnabled = $PSBoundParameters.Remove('IsEnabled')
-            $hasPolicy = $PSBoundParameters.Remove('Policy')
-            $hasClientAppGroupIdentifier = $PSBoundParameters.Remove('ClientAppGroupIdentifier')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasIsEnabled = $targetParameters.Remove('IsEnabled')
+            $hasPolicy = $targetParameters.Remove('Policy')
+            $hasClientAppGroupIdentifier = $targetParameters.Remove('ClientAppGroupIdentifier')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $appGroup = Get-AzEventHubApplicationGroup @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubApplicationGroup' -BoundParameters $targetParameters
+            $appGroup = Get-AzEventHubApplicationGroup @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -183,12 +183,12 @@ function Set-AzEventHubApplicationGroup{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
 
             if ($PSCmdlet.ShouldProcess("EventHub Application Group $($appGroup.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubApplicationGroup_CreateViaIdentity -InputObject $appGroup -Parameter $appGroup @PSBoundParameters
+                Az.EventHub.private\New-AzEventHubApplicationGroup_CreateViaIdentity -InputObject $appGroup -Parameter $appGroup @targetParameters
             }
 		}
 		catch{

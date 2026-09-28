@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -168,7 +168,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
 
     process {
         try {
-            
+            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -177,23 +177,22 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
             }
 
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterAssociation @PSBoundParameters
-
-            
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAssociation' -BoundParameters $targetParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterAssociation @readParameters
             # 2. PUT
-            
+
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
-            ForEach($pathParam in $pathParams){        
-                $null = $PSBoundParameters.Remove($pathParam)
+            ForEach($pathParam in $pathParams){
+                $null = $targetParameters.Remove($pathParam)
             }
-            
+
             foreach ($item in $bodyParamsMap.GetEnumerator() )
             {
                 if ($item.Value){
@@ -205,9 +204,9 @@ function Update-AzNetworkSecurityPerimeterAssociation {
                 }
             }
 
-            
+
             # Call PUT method
-            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
 
         }
         catch {

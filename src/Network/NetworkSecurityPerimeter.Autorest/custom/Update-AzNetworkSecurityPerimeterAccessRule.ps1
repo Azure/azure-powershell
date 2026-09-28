@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -79,7 +79,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
 
         # Azure parameters
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -134,7 +134,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
 
         # Body paramters
-        
+
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String[]]
@@ -199,7 +199,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
     process {
         try {
-            
+            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -208,21 +208,21 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
             }
 
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
 
-            $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @PSBoundParameters
-
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAccessRule' -BoundParameters $targetParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @readParameters
             # 2. PUT
 
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName', 'ProfileName'
 
-            ForEach($pathParam in $pathParams){        
-                $null = $PSBoundParameters.Remove($pathParam)
+            ForEach($pathParam in $pathParams){
+                $null = $targetParameters.Remove($pathParam)
             }
 
             foreach ($item in $bodyParamsMap.GetEnumerator() )
@@ -235,9 +235,9 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
                     $GETObject.$key = $variable
                 }
             }
-            
+
             # Call PUT method
-            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
 
         }
 

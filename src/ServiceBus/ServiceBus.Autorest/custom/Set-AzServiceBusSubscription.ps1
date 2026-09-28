@@ -128,7 +128,7 @@ function Set-AzServiceBusSubscription{
         [System.Management.Automation.SwitchParameter]
         # Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
         ${DeadLetteringOnMessageExpiration},
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -202,30 +202,31 @@ function Set-AzServiceBusSubscription{
     }
     process{
         try{
-            $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
-            $hasDefaultMessageTimeToLive = $PSBoundParameters.Remove('DefaultMessageTimeToLive')
-            $hasLockDuration = $PSBoundParameters.Remove('LockDuration')
-            $hasDuplicateDetectionHistoryTimeWindow = $PSBoundParameters.Remove('DuplicateDetectionHistoryTimeWindow')
-            $hasEnableBatchedOperations = $PSBoundParameters.Remove('EnableBatchedOperations')
-            $hasDeadLetteringOnFilterEvaluationException = $PSBoundParameters.Remove('DeadLetteringOnFilterEvaluationException')
-            $hasMaxDeliveryCount = $PSBoundParameters.Remove('MaxDeliveryCount')
-            $hasForwardTo = $PSBoundParameters.Remove('ForwardTo')
-            $hasForwardDeadLetteredMessagesTo = $PSBoundParameters.Remove('ForwardDeadLetteredMessagesTo')
-            $hasStatus = $PSBoundParameters.Remove('Status')
-            $hasDeadLetteringOnMessageExpiration = $PSBoundParameters.Remove('DeadLetteringOnMessageExpiration')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $targetParameters = @{} + $PSBoundParameters
+            $hasAutoDeleteOnIdle = $targetParameters.Remove('AutoDeleteOnIdle')
+            $hasDefaultMessageTimeToLive = $targetParameters.Remove('DefaultMessageTimeToLive')
+            $hasLockDuration = $targetParameters.Remove('LockDuration')
+            $hasDuplicateDetectionHistoryTimeWindow = $targetParameters.Remove('DuplicateDetectionHistoryTimeWindow')
+            $hasEnableBatchedOperations = $targetParameters.Remove('EnableBatchedOperations')
+            $hasDeadLetteringOnFilterEvaluationException = $targetParameters.Remove('DeadLetteringOnFilterEvaluationException')
+            $hasMaxDeliveryCount = $targetParameters.Remove('MaxDeliveryCount')
+            $hasForwardTo = $targetParameters.Remove('ForwardTo')
+            $hasForwardDeadLetteredMessagesTo = $targetParameters.Remove('ForwardDeadLetteredMessagesTo')
+            $hasStatus = $targetParameters.Remove('Status')
+            $hasDeadLetteringOnMessageExpiration = $targetParameters.Remove('DeadLetteringOnMessageExpiration')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $subscription = Get-AzServiceBusSubscription @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusSubscription' -BoundParameters $targetParameters
+            $subscription = Get-AzServiceBusSubscription @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('TopicName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('TopicName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -279,11 +280,11 @@ function Set-AzServiceBusSubscription{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Subscription $($subscription.Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentity -InputObject $subscription -Parameter $subscription @PSBoundParameters
+                Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentity -InputObject $subscription -Parameter $subscription @targetParameters
             }
         }
         catch{

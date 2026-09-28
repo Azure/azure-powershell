@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * Added Change Safety support for additional cmdlets.
+* Fixed Change Safety parameter forwarding in custom GET-before-write cmdlets.
 
 ## Version 4.3.0
 * Added parameters 'GeoDataReplicationMaxReplicationLagDurationInSecond', 'GeoDataReplicationLocation', and 'IPAddressType' to cmdlets 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace'

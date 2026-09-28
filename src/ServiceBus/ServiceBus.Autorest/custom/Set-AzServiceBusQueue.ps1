@@ -134,7 +134,7 @@ function Set-AzServiceBusQueue{
         [System.String]
         ${Status},
 
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -213,31 +213,32 @@ function Set-AzServiceBusQueue{
 
     process{
         try{
-            $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
-            $hasDefaultMessageTimeToLive = $PSBoundParameters.Remove('DefaultMessageTimeToLive')
-            $hasDeadLetteringOnMessageExpiration = $PSBoundParameters.Remove('DeadLetteringOnMessageExpiration')
-            $hasDuplicateDetectionHistoryTimeWindow = $PSBoundParameters.Remove('DuplicateDetectionHistoryTimeWindow')
-            $hasLockDuration = $PSBoundParameters.Remove('LockDuration')
-            $hasEnableBatchedOperations = $PSBoundParameters.Remove('EnableBatchedOperations')
-            $hasEnableExpress = $PSBoundParameters.Remove('EnableExpress')
-            $hasForwardDeadLetteredMessagesTo = $PSBoundParameters.Remove('ForwardDeadLetteredMessagesTo')
-            $hasForwardTo = $PSBoundParameters.Remove('ForwardTo')
-            $hasMaxDeliveryCount = $PSBoundParameters.Remove('MaxDeliveryCount')
-            $hasMaxMessageSizeInKilobytes = $PSBoundParameters.Remove('MaxMessageSizeInKilobytes')
-            $hasMaxSizeInMegabytes = $PSBoundParameters.Remove('MaxSizeInMegabytes')
-            $hasStatus = $PSBoundParameters.Remove('Status')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $targetParameters = @{} + $PSBoundParameters
+            $hasAutoDeleteOnIdle = $targetParameters.Remove('AutoDeleteOnIdle')
+            $hasDefaultMessageTimeToLive = $targetParameters.Remove('DefaultMessageTimeToLive')
+            $hasDeadLetteringOnMessageExpiration = $targetParameters.Remove('DeadLetteringOnMessageExpiration')
+            $hasDuplicateDetectionHistoryTimeWindow = $targetParameters.Remove('DuplicateDetectionHistoryTimeWindow')
+            $hasLockDuration = $targetParameters.Remove('LockDuration')
+            $hasEnableBatchedOperations = $targetParameters.Remove('EnableBatchedOperations')
+            $hasEnableExpress = $targetParameters.Remove('EnableExpress')
+            $hasForwardDeadLetteredMessagesTo = $targetParameters.Remove('ForwardDeadLetteredMessagesTo')
+            $hasForwardTo = $targetParameters.Remove('ForwardTo')
+            $hasMaxDeliveryCount = $targetParameters.Remove('MaxDeliveryCount')
+            $hasMaxMessageSizeInKilobytes = $targetParameters.Remove('MaxMessageSizeInKilobytes')
+            $hasMaxSizeInMegabytes = $targetParameters.Remove('MaxSizeInMegabytes')
+            $hasStatus = $targetParameters.Remove('Status')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $queue = Get-AzServiceBusQueue @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusQueue' -BoundParameters $targetParameters
+            $queue = Get-AzServiceBusQueue @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -299,11 +300,11 @@ function Set-AzServiceBusQueue{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Queue $($queue.Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusQueue_CreateViaIdentity -InputObject $queue -Parameter $queue @PSBoundParameters
+                Az.ServiceBus.private\New-AzServiceBusQueue_CreateViaIdentity -InputObject $queue -Parameter $queue @targetParameters
             }
         }
         catch{

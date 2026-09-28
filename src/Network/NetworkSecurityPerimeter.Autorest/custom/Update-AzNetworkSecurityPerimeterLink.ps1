@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterLink {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -169,7 +169,7 @@ function Update-AzNetworkSecurityPerimeterLink {
 
     process {
         try {
-            
+            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -178,23 +178,22 @@ function Update-AzNetworkSecurityPerimeterLink {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
             }
 
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterLink @PSBoundParameters
-
-            
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLink' -BoundParameters $targetParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterLink @readParameters
             # 2. PUT
-            
+
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
-            ForEach($pathParam in $pathParams){        
-                $null = $PSBoundParameters.Remove($pathParam)
+            ForEach($pathParam in $pathParams){
+                $null = $targetParameters.Remove($pathParam)
             }
-            
+
             foreach ($item in $bodyParamsMap.GetEnumerator() )
             {
                 if ($item.Value){
@@ -206,9 +205,9 @@ function Update-AzNetworkSecurityPerimeterLink {
                 }
             }
 
-            
+
             # Call PUT method
-            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
 
         }
         catch {

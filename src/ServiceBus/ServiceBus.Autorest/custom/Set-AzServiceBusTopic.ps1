@@ -109,7 +109,7 @@ function Set-AzServiceBusTopic{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.String]
         ${Status},
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -188,28 +188,29 @@ function Set-AzServiceBusTopic{
 
     process{
         try{
-            $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
-            $hasDefaultMessageTimeToLive = $PSBoundParameters.Remove('DefaultMessageTimeToLive')
-            $hasDuplicateDetectionHistoryTimeWindow = $PSBoundParameters.Remove('DuplicateDetectionHistoryTimeWindow')
-            $hasEnableBatchedOperations = $PSBoundParameters.Remove('EnableBatchedOperations')
-            $hasEnableExpress = $PSBoundParameters.Remove('EnableExpress')
-            $hasMaxMessageSizeInKilobytes = $PSBoundParameters.Remove('MaxMessageSizeInKilobytes')
-            $hasMaxSizeInMegabytes = $PSBoundParameters.Remove('MaxSizeInMegabytes')
-            $hasRequiresDuplicateDetection = $PSBoundParameters.Remove('RequiresDuplicateDetection')
-            $hasSupportOrdering = $PSBoundParameters.Remove('SupportOrdering')
-            $hasStatus = $PSBoundParameters.Remove('Status')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $targetParameters = @{} + $PSBoundParameters
+            $hasAutoDeleteOnIdle = $targetParameters.Remove('AutoDeleteOnIdle')
+            $hasDefaultMessageTimeToLive = $targetParameters.Remove('DefaultMessageTimeToLive')
+            $hasDuplicateDetectionHistoryTimeWindow = $targetParameters.Remove('DuplicateDetectionHistoryTimeWindow')
+            $hasEnableBatchedOperations = $targetParameters.Remove('EnableBatchedOperations')
+            $hasEnableExpress = $targetParameters.Remove('EnableExpress')
+            $hasMaxMessageSizeInKilobytes = $targetParameters.Remove('MaxMessageSizeInKilobytes')
+            $hasMaxSizeInMegabytes = $targetParameters.Remove('MaxSizeInMegabytes')
+            $hasRequiresDuplicateDetection = $targetParameters.Remove('RequiresDuplicateDetection')
+            $hasSupportOrdering = $targetParameters.Remove('SupportOrdering')
+            $hasStatus = $targetParameters.Remove('Status')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $topic = Get-AzServiceBusTopic @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusTopic' -BoundParameters $targetParameters
+            $topic = Get-AzServiceBusTopic @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -259,11 +260,11 @@ function Set-AzServiceBusTopic{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Topic $($topic.Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusTopic_CreateViaIdentity -InputObject $topic -Parameter $topic @PSBoundParameters
+                Az.ServiceBus.private\New-AzServiceBusTopic_CreateViaIdentity -InputObject $topic -Parameter $topic @targetParameters
             }
         }
         catch{

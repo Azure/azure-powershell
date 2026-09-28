@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -157,7 +157,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
 
     process {
         try {
-
+            $targetParameters = @{} + $PSBoundParameters
             # 1. GET
 
             # body params and AsJob
@@ -166,22 +166,22 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
             $bodyParamsMap = @{}
 
             ForEach($bodyParam in $bodyParams){
-                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
+                $bodyParamsMap[$bodyParam] = $targetParameters.Remove($bodyParam)
             }
 
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @PSBoundParameters
-            
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLoggingConfiguration' -BoundParameters $targetParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @readParameters
             # 2. PUT
-            
+
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
-            ForEach($pathParam in $pathParams){        
-                $null = $PSBoundParameters.Remove($pathParam)
+            ForEach($pathParam in $pathParams){
+                $null = $targetParameters.Remove($pathParam)
             }
-            
+
             foreach ($item in $bodyParamsMap.GetEnumerator() )
             {
                 if ($item.Value){
@@ -193,9 +193,9 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
                 }
             }
 
-            
+
             # Call PUT method
-            New-AzNetworkSecurityPerimeterLoggingConfiguration_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            New-AzNetworkSecurityPerimeterLoggingConfiguration_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @targetParameters
 
         }
         catch {

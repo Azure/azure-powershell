@@ -135,19 +135,20 @@ function Set-AzEventHubCluster{
     }
     process{
 		try{
-            $hasCapacity = $PSBoundParameters.Remove('Capacity')
-            $hasTag = $PSBoundParameters.Remove('Tag')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasCapacity = $targetParameters.Remove('Capacity')
+            $hasTag = $targetParameters.Remove('Tag')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $cluster = Get-AzEventHubCluster @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubCluster' -BoundParameters $targetParameters
+            $cluster = Get-AzEventHubCluster @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -165,11 +166,11 @@ function Set-AzEventHubCluster{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Cluster $($cluster.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubCluster_CreateViaIdentity -InputObject $cluster -Parameter $cluster @PSBoundParameters
+                Az.EventHub.private\New-AzEventHubCluster_CreateViaIdentity -InputObject $cluster -Parameter $cluster @targetParameters
             }
 		}
 		catch{

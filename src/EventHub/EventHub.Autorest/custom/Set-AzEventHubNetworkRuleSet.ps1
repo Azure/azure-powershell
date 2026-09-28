@@ -53,7 +53,7 @@ function Set-AzEventHubNetworkRuleSet{
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. ")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
-        #This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
+        #This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Value that indicates whether Trusted Service Access is Enabled or not.")]
@@ -152,22 +152,23 @@ function Set-AzEventHubNetworkRuleSet{
     }
     process{
 		try{
-            $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
-            $hasTrustedServiceAccessEnabled = $PSBoundParameters.Remove('TrustedServiceAccessEnabled')
-            $hasDefaultAction = $PSBoundParameters.Remove('DefaultAction')
-            $hasIPRule = $PSBoundParameters.Remove('IPRule')
-            $hasVirtualNetworkRule = $PSBoundParameters.Remove('VirtualNetworkRule')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasPublicNetworkAccess = $targetParameters.Remove('PublicNetworkAccess')
+            $hasTrustedServiceAccessEnabled = $targetParameters.Remove('TrustedServiceAccessEnabled')
+            $hasDefaultAction = $targetParameters.Remove('DefaultAction')
+            $hasIPRule = $targetParameters.Remove('IPRule')
+            $hasVirtualNetworkRule = $targetParameters.Remove('VirtualNetworkRule')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $networkRuleSet = Get-AzEventHubNetworkRuleSet @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubNetworkRuleSet' -BoundParameters $targetParameters
+            $networkRuleSet = Get-AzEventHubNetworkRuleSet @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('SubscriptionId')
 
             $hasProperty = $false
 
@@ -197,11 +198,11 @@ function Set-AzEventHubNetworkRuleSet{
             }
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Network Rule Set on namespace $($networkRuleSet.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubNetworkRuleSet_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @PSBoundParameters
+                Az.EventHub.private\New-AzEventHubNetworkRuleSet_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @targetParameters
             }
 		}
 		catch{

@@ -54,7 +54,7 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -127,43 +127,44 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
     }
     process{
 		try{
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $drConfig = Get-AzEventHubGeoDRConfiguration @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubGeoDRConfiguration' -BoundParameters $targetParameters
+            $drConfig = Get-AzEventHubGeoDRConfiguration @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('InputObject')
 
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if($PSCmdlet.ParameterSetName -eq 'Break'){
                 if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Break Pair")) {
-                    Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break @PSBoundParameters
+                    Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break @targetParameters
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'BreakViaIdentity'){
                 $EnvPSBoundParameters = @{}
 
-                if ($PSBoundParameters.ContainsKey('Debug')) {
+                if ($targetParameters.ContainsKey('Debug')) {
                     $EnvPSBoundParameters['Debug'] = $Debug
                 }
-                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                if ($targetParameters.ContainsKey('HttpPipelineAppend')) {
                     $EnvPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
                 }
-                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                if ($targetParameters.ContainsKey('HttpPipelinePrepend')) {
                     $EnvPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
                 }
-                if ($PSBoundParameters.ContainsKey('Proxy')) {
+                if ($targetParameters.ContainsKey('Proxy')) {
                     $EnvPSBoundParameters['Proxy'] = $Proxy
                 }
-                if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
+                if ($targetParameters.ContainsKey('ProxyCredential')) {
                     $EnvPSBoundParameters['ProxyCredential'] = $ProxyCredential
                 }
-                if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
+                if ($targetParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
 

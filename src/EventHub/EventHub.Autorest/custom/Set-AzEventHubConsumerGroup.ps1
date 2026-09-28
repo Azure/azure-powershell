@@ -68,7 +68,7 @@ function Set-AzEventHubConsumerGroup{
         [System.String]
         # User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
         ${UserMetadata},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -141,29 +141,30 @@ function Set-AzEventHubConsumerGroup{
     }
     process{
 		try{
-            $hasUserMetadata = $PSBoundParameters.Remove('UserMetadata')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
+		    $targetParameters = @{} + $PSBoundParameters
+            $hasUserMetadata = $targetParameters.Remove('UserMetadata')
+            $hasAsJob = $targetParameters.Remove('AsJob')
+            $null = $targetParameters.Remove('WhatIf')
+            $null = $targetParameters.Remove('Confirm')
 
-            $consumerGroup = Get-AzEventHubConsumerGroup @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubConsumerGroup' -BoundParameters $targetParameters
+            $consumerGroup = Get-AzEventHubConsumerGroup @readParameters
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('EventHubName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $targetParameters.Remove('InputObject')
+            $null = $targetParameters.Remove('ResourceGroupName')
+            $null = $targetParameters.Remove('NamespaceName')
+            $null = $targetParameters.Remove('EventHubName')
+            $null = $targetParameters.Remove('Name')
+            $null = $targetParameters.Remove('SubscriptionId')
             if ($hasUserMetadata) {
                 $consumerGroup.UserMetadata = $UserMetadata
             }
             if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
+                $targetParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Consumer Group $($consumerGroup.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubConsumerGroup_CreateViaIdentity -InputObject $consumerGroup -Parameter $consumerGroup @PSBoundParameters
+                Az.EventHub.private\New-AzEventHubConsumerGroup_CreateViaIdentity -InputObject $consumerGroup -Parameter $consumerGroup @targetParameters
             }
 		}
 		catch{
