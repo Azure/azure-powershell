@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace.
 .Description
-Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace.
 .Example
 Invoke-AzNewRelicResubscribeMonitor -MonitorName "test-01" -ResourceGroupName "ps-test" -OrganizationId "987654321" -PlanId "newrelicpaygtestplan3@123456789123456@PUBIDnewrelicinc1234567891234" -PublisherId "newrelicinc1234567891234" -OfferId "newrelic-pay-as-you-go"
 .Example
@@ -245,8 +245,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
