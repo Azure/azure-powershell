@@ -52,12 +52,12 @@ function Set-AzServiceBusNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.String]
         ${AlternateName},
-        
+
         [Parameter(HelpMessage = "This property disables SAS authentication for the Service Bus namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableLocalAuth},
-		
+
         [Parameter(HelpMessage = "Properties of KeyVault")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]]
@@ -211,8 +211,8 @@ function Set-AzServiceBusNamespace{
                 $hasNoWait = $PSBoundParameters.Remove('NoWait')
                 $null = $PSBoundParameters.Remove('WhatIf')
                 $null = $PSBoundParameters.Remove('Confirm')
-                $serviceBusNamespace = Get-AzServiceBusNamespace @PSBoundParameters
-
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusNamespace' -BoundParameters $PSBoundParameters
+                $serviceBusNamespace = Get-AzServiceBusNamespace @readParameters
                 # 2. PUT
                 $null = $PSBoundParameters.Remove('InputObject')
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -238,11 +238,11 @@ function Set-AzServiceBusNamespace{
                 }
                 if ($hasUserAssignedIdentityId) {
                     $identityHashTable = @{}
-	            
+
 		    foreach ($resourceID in $UserAssignedIdentityId){
 		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.UserAssignedIdentity]::new())
 	            }
-                    
+
 		    $serviceBusNamespace.UserAssignedIdentity = $identityHashTable
                }
                if ($hasMinimumTlsVersion) {

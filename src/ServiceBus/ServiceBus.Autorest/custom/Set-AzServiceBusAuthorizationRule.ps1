@@ -82,7 +82,7 @@ function Set-AzServiceBusAuthorizationRule{
         [System.String[]]
         # The rights associated with the rule.
         ${Rights},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -161,15 +161,18 @@ function Set-AzServiceBusAuthorizationRule{
             $null = $PSBoundParameters.Remove('Confirm')
 
             if ($PSCmdlet.ParameterSetName -eq 'SetExpandedQueue'){
-                $authRule = Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get @PSBoundParameters
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get' -BoundParameters $PSBoundParameters
+                $authRule = Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_Get @readParameters
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetExpandedTopic'){
-                $authRule = Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get @PSBoundParameters
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get' -BoundParameters $PSBoundParameters
+                $authRule = Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_Get @readParameters
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetExpandedNamespace'){
-                $authRule = Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get @PSBoundParameters
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get' -BoundParameters $PSBoundParameters
+                $authRule = Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_Get @readParameters
             }
 
             if ($hasAsJob) {
@@ -177,7 +180,7 @@ function Set-AzServiceBusAuthorizationRule{
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded'){
-                
+
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
                 }
@@ -186,20 +189,23 @@ function Set-AzServiceBusAuthorizationRule{
                 }
 
                 if ($ResourceHashTable['QueueName'] -ne $null){
-                    $authRule = Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_GetViaIdentity @PSBoundParameters
+                    $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_GetViaIdentity' -BoundParameters $PSBoundParameters
+                    $authRule = Az.ServiceBus.private\Get-AzServiceBusQueueAuthorizationRule_GetViaIdentity @readParameters
                 }
                 elseif ($ResourceHashTable['TopicName'] -ne $null){
-                    $authRule = Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity @PSBoundParameters
+                    $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity' -BoundParameters $PSBoundParameters
+                    $authRule = Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity @readParameters
                 }
                 elseif ($ResourceHashTable['NamespaceName'] -ne $null){
-                    $authRule = Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity @PSBoundParameters
+                    $readParameters = Get-AzServiceBusReadParameters -CommandName 'Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity' -BoundParameters $PSBoundParameters
+                    $authRule = Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity @readParameters
                 }
                 else{
                     throw 'Invalid -InputObject. Please Check ResourceId'
                 }
 
             }
-            
+
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -235,7 +241,7 @@ function Set-AzServiceBusAuthorizationRule{
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded'){
-                
+
                 if ($ResourceHashTable['QueueName'] -ne $null){
                     if ($PSCmdlet.ShouldProcess("ServiceBus Queue Authorization Rule $($ResourceHashTable['AuthorizationRuleName'])", "Create or update")) {
                         Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentity -InputObject $authRule -Parameter $authRule @PSBoundParameters
