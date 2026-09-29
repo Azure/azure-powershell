@@ -32,19 +32,16 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageVersion", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class RemoveAzureRmGalleryImageVersion : ComputeAutomationBaseCmdlet
+    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageVersion", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSGalleryImageVersion))]
+    public partial class RestoreAzGalleryImageVersion : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.Name, VerbsCommon.Remove)
-                    && (this.Force.IsPresent ||
-                        this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzGalleryImageVersion operation")))
+                if (ShouldProcess(this.Name, VerbsData.Restore))
                 {
                     string resourceGroupName;
                     string galleryName;
@@ -59,10 +56,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImageVersionName = GetVersion(this.ResourceId, "Microsoft.Compute/galleries", "images", "versions");
                             break;
                         case "ObjectParameter":
-                            resourceGroupName = GetResourceGroupName(this.InputObject.Id);
-                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/galleries", "images", "versions");
-                            galleryImageDefinitionName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/galleries", "images", "versions");
-                            galleryImageVersionName = GetVersion(this.InputObject.Id, "Microsoft.Compute/galleries", "images", "versions");
+                            resourceGroupName = GetResourceGroupName(this.InputObject.ResourceArmId);
+                            galleryName = GetResourceName(this.InputObject.ResourceArmId, "Microsoft.Compute/galleries", "images", "versions");
+                            galleryImageDefinitionName = GetInstanceId(this.InputObject.ResourceArmId, "Microsoft.Compute/galleries", "images", "versions");
+                            galleryImageVersionName = GetVersion(this.InputObject.ResourceArmId, "Microsoft.Compute/galleries", "images", "versions");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
@@ -72,20 +69,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
 
-                    bool? bypassSoftDelete = this.IsParameterBound(c => c.BypassSoftDelete) ? (bool?)this.BypassSoftDelete.IsPresent : null;
-                    var result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageDefinitionName, galleryImageVersionName, bypassSoftDelete).GetAwaiter().GetResult();
-                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    GalleryImageVersionUpdate galleryImageVersionUpdate = new GalleryImageVersionUpdate
                     {
-                        StartTime = this.StartTime,
-                        EndTime = DateTime.Now
+                        Restore = true,
+                        StorageProfile = new GalleryImageVersionStorageProfile()
                     };
 
-                    if (result != null && result.Request != null && result.Request.RequestUri != null)
-                    {
-                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
-                    }
-
-                    WriteObject(output);
+                    var result = GalleryImageVersionsClient.Update(resourceGroupName, galleryName, galleryImageDefinitionName, galleryImageVersionName, galleryImageVersionUpdate);
+                    var psObject = new PSGalleryImageVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -122,30 +115,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false)]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies whether to bypass the gallery's soft-delete policy and permanently delete the gallery image version. If specified, the version is not retained in the recycle bin and cannot be restored. If omitted, the version is soft-deleted when the gallery's soft-delete policy is enabled and permanently deleted when the policy is disabled.")]
-        public SwitchParameter BypassSoftDelete { get; set; }
-
-        [Parameter(
             ParameterSetName = "ResourceIdParameter",
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the gallery image version to restore.")]
         public string ResourceId { get; set; }
 
-        [Alias("GalleryImageVersion")]
+        [Alias("GallerySoftDeletedResource")]
         [Parameter(
             ParameterSetName = "ObjectParameter",
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "The soft-deleted gallery image version, as returned by Get-AzGallerySoftDeletedImageVersion, to restore.")]
         [ValidateNotNullOrEmpty]
-        public PSGalleryImageVersion InputObject { get; set; }
+        public PSGallerySoftDeletedResource InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

@@ -149,6 +149,9 @@ Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAcc
 ### [Get-AzGalleryInVMAccessControlProfileVersion](Get-AzGalleryInVMAccessControlProfileVersion.md)
 Gets the specified version of a gallery inVMAccessControlProfile or a list of versions from the specified gallery inVMAccessControlProfile.
 
+### [Get-AzGallerySoftDeletedImageVersion](Get-AzGallerySoftDeletedImageVersion.md)
+List the soft-deleted (recycle bin) gallery image versions of a gallery image definition.
+
 ### [Get-AzHost](Get-AzHost.md)
 Get or list hosts.
 
@@ -616,6 +619,9 @@ Restarts an Azure virtual machine.
 
 ### [Restart-AzVmss](Restart-AzVmss.md)
 Restarts the VMSS or a virtual machine within the VMSS.
+
+### [Restore-AzGalleryImageVersion](Restore-AzGalleryImageVersion.md)
+Restore a soft-deleted gallery image version.
 
 ### [Revoke-AzDiskAccess](Revoke-AzDiskAccess.md)
 Revokes an access to a disk.

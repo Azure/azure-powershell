@@ -33,12 +33,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="softDeletedTime">The timestamp for when the resource is soft-deleted. In dateTime offset
         /// format.
         /// </param>
-        public GallerySoftDeletedResourceProperties(string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string))
+        public GallerySoftDeletedResourceProperties(string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string), string consumptionEndTime = default(string), string hardDeletionTargetTime = default(string))
 
         {
             this.ResourceArmId = resourceArmId;
             this.SoftDeletedArtifactType = softDeletedArtifactType;
             this.SoftDeletedTime = softDeletedTime;
+            this.ConsumptionEndTime = consumptionEndTime;
+            this.HardDeletionTargetTime = hardDeletionTargetTime;
             CustomInit();
         }
 
@@ -66,5 +68,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "softDeletedTime")]
         public string SoftDeletedTime {get; set; }
+
+        [Newtonsoft.Json.JsonProperty(PropertyName = "consumptionEndTime")]
+        public string ConsumptionEndTime {get; set; }
+
+        [Newtonsoft.Json.JsonProperty(PropertyName = "hardDeletionTargetTime")]
+        public string HardDeletionTargetTime {get; set; }
     }
 }

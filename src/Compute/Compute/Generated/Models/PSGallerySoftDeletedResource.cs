@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSGalleryImageVersion
+    public partial class PSGallerySoftDeletedResource
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
@@ -40,16 +40,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
-        public GalleryImageVersionPublishingProfile PublishingProfile { get; set; }
-        public string ProvisioningState { get; set; }
-        public GalleryImageVersionStorageProfile StorageProfile { get; set; }
-        public ReplicationStatus ReplicationStatus { get; set; }
-        public GalleryImageVersionSafetyProfile SafetyProfile { get; set; }
-        public bool? Restore { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
+        public string ResourceArmId { get; set; }
+        public string SoftDeletedArtifactType { get; set; }
+        public string SoftDeletedTime { get; set; }
+        public string ConsumptionEndTime { get; set; }
+        public string HardDeletionTargetTime { get; set; }
     }
 }

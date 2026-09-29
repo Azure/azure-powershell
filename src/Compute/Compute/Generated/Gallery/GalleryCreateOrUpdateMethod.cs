@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
+                    if (this.IsParameterBound(c => c.SoftDeleteEnabled))
+                    {
+                        gallery.SoftDeletePolicy = new SoftDeletePolicy(this.SoftDeleteEnabled);
+                    }
+
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
                     bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity)
                         && this.UserAssignedIdentity != null
@@ -216,6 +221,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
         public string[] UserAssignedIdentity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables soft-deletion for resources in this gallery, allowing them to be recovered within the retention time instead of being permanently deleted.")]
+        public bool? SoftDeleteEnabled { get; set; }
+
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -289,6 +300,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+
+                    if (this.IsParameterBound(c => c.SoftDeleteEnabled))
+                    {
+                        if (galleryUpdate.SoftDeletePolicy == null)
+                        {
+                            galleryUpdate.SoftDeletePolicy = new SoftDeletePolicy();
+                        }
+                        galleryUpdate.SoftDeletePolicy.IsSoftDeleteEnabled = this.SoftDeleteEnabled;
                     }
 
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
@@ -410,12 +430,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         // so reject parameters that would be silently discarded.
                         bool hasNonSharingParams = this.IsParameterBound(c => c.Description)
                             || this.IsParameterBound(c => c.Tag)
+                            || this.IsParameterBound(c => c.SoftDeleteEnabled)
                             || hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound;
 
                         if (hasNonSharingParams)
                         {
                             throw new ArgumentException(
-                                "Parameters '-Description', '-Tag', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
+                                "Parameters '-Description', '-Tag', '-SoftDeleteEnabled', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
                                 + "'-UserAssignedIdentity', and '-RemoveUserAssignedIdentity' cannot be combined with '-Share', '-Community', or '-Reset'. "
                                 + "Please run the sharing update and property update as separate commands.");
                         }
@@ -681,5 +702,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities.")]
         public string[] RemoveUserAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or disables soft-deletion for resources in this gallery, allowing them to be recovered within the retention time instead of being permanently deleted.")]
+        public bool? SoftDeleteEnabled { get; set; }
     }
 }

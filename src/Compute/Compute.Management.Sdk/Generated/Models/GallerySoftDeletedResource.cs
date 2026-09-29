@@ -51,13 +51,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="softDeletedTime">The timestamp for when the resource is soft-deleted. In dateTime offset
         /// format.
         /// </param>
-        public GallerySoftDeletedResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string))
+        public GallerySoftDeletedResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string resourceArmId = default(string), string softDeletedArtifactType = default(string), string softDeletedTime = default(string), string consumptionEndTime = default(string), string hardDeletionTargetTime = default(string))
 
         : base(location, id, name, type, tags)
         {
             this.ResourceArmId = resourceArmId;
             this.SoftDeletedArtifactType = softDeletedArtifactType;
             this.SoftDeletedTime = softDeletedTime;
+            this.ConsumptionEndTime = consumptionEndTime;
+            this.HardDeletionTargetTime = hardDeletionTargetTime;
             CustomInit();
         }
 
@@ -85,6 +87,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.softDeletedTime")]
         public string SoftDeletedTime {get; set; }
+
+        /// <summary>
+        /// Gets or sets the timestamp when the soft-deleted resource can no longer be restored.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.consumptionEndTime")]
+        public string ConsumptionEndTime {get; set; }
+
+        /// <summary>
+        /// Gets or sets the timestamp when the soft-deleted resource is permanently deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hardDeletionTargetTime")]
+        public string HardDeletionTargetTime {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

@@ -153,6 +153,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return ComputeClient.ComputeManagementClient.GalleryImageVersions;
             }
         }
+
+        public ISoftDeletedResourceOperations SoftDeletedResourceClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SoftDeletedResource;
+            }
+        }
         public IGallerySharingProfileOperations GallerySharingProfileClient
         {
             get
