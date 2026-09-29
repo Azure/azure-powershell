@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added Change Safety support for additional cmdlets.
+* Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.
 
 ## Version 5.6.0
 * Added parameter `IPAddressType` to cmdlets 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace'
