@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </summary>
 
         /// <param name="profileMonitorStatus">The profile-level monitoring status of the Traffic Manager profile.
-        /// Possible values include: 'CheckingEndpoints', 'Online', 'Degraded',
-        /// 'Disabled', 'Inactive'</param>
+        /// Possible values include: &#39;CheckingEndpoints&#39;, &#39;Online&#39;, &#39;Degraded&#39;,
+        /// &#39;Disabled&#39;, &#39;Inactive&#39;</param>
 
         /// <param name="protocol">The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
-        /// Possible values include: 'HTTP', 'HTTPS', 'TCP'</param>
+        /// Possible values include: &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;TCP&#39;</param>
 
         /// <param name="port">The TCP port used to probe for endpoint health.
         /// </param>
