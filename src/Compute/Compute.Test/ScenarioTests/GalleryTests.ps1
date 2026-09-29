@@ -1801,17 +1801,17 @@ function Test-GalleryImageVersionSoftDelete
         $description1 = "Original Description";
 
         # Create the gallery with soft-delete enabled
-        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc -SoftDeleteEnabled $true;
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7;
 
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Assert-NotNull $gallery.SoftDeletePolicy;
         Assert-True { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
 
         # Disable and re-enable soft-delete through Update-AzGallery
-        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -SoftDeleteEnabled $false;
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSoftDelete;
         Assert-False { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
 
-        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -SoftDeleteEnabled $true;
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7;
         Assert-True { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
 
         # Gallery Image Definition

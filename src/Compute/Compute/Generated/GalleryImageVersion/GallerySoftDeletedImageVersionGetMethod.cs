@@ -33,7 +33,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GallerySoftDeletedImageVersion", DefaultParameterSetName = "DefaultParameter")]
-    [OutputType(typeof(PSGallerySoftDeletedResource))]
+    [OutputType(typeof(PSGallerySoftDeletedImageVersion))]
     public partial class GetAzGallerySoftDeletedImageVersion : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
 
-                var psObject = new List<PSGallerySoftDeletedResource>();
+                var psObject = new List<PSGallerySoftDeletedImageVersion>();
                 foreach (var r in resultList)
                 {
-                    var mapped = new PSGallerySoftDeletedResource();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<GallerySoftDeletedResource, PSGallerySoftDeletedResource>(r, mapped);
+                    var mapped = new PSGallerySoftDeletedImageVersion();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GallerySoftDeletedResource, PSGallerySoftDeletedImageVersion>(r, mapped);
                     psObject.Add(mapped);
                 }
 

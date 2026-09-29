@@ -21,7 +21,7 @@
 -->
 ## Upcoming Release
 * Added support for gallery soft-delete (recycle bin) for gallery image versions.
-    - Added the `-SoftDeleteEnabled` parameter to `New-AzGallery` and `Update-AzGallery` to enable or disable the gallery's soft-delete policy.
+    - Added gallery soft-delete policy, recycle-bin discovery, restore, and permanent-delete bypass support.
     - Added the `-BypassSoftDelete` parameter to `Remove-AzGalleryImageVersion` to permanently delete a gallery image version instead of soft-deleting it.
     - Added the `Get-AzGallerySoftDeletedImageVersion` cmdlet to list soft-deleted gallery image versions.
     - Added the `Restore-AzGalleryImageVersion` cmdlet to recover a soft-deleted gallery image version within its retention time.

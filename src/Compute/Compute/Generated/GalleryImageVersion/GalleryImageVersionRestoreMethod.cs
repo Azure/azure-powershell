@@ -43,39 +43,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.Name, VerbsData.Restore))
                 {
-                    string resourceGroupName;
-                    string galleryName;
-                    string galleryImageDefinitionName;
-                    string galleryImageVersionName;
-                    switch (this.ParameterSetName)
+                    GalleryImageVersion galleryImageVersion = new GalleryImageVersion
                     {
-                        case "ResourceIdParameter":
-                            resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/galleries", "images", "versions");
-                            galleryImageDefinitionName = GetInstanceId(this.ResourceId, "Microsoft.Compute/galleries", "images", "versions");
-                            galleryImageVersionName = GetVersion(this.ResourceId, "Microsoft.Compute/galleries", "images", "versions");
-                            break;
-                        case "ObjectParameter":
-                            resourceGroupName = GetResourceGroupName(this.InputObject.ResourceArmId);
-                            galleryName = GetResourceName(this.InputObject.ResourceArmId, "Microsoft.Compute/galleries", "images", "versions");
-                            galleryImageDefinitionName = GetInstanceId(this.InputObject.ResourceArmId, "Microsoft.Compute/galleries", "images", "versions");
-                            galleryImageVersionName = GetVersion(this.InputObject.ResourceArmId, "Microsoft.Compute/galleries", "images", "versions");
-                            break;
-                        default:
-                            resourceGroupName = this.ResourceGroupName;
-                            galleryName = this.GalleryName;
-                            galleryImageDefinitionName = this.GalleryImageDefinitionName;
-                            galleryImageVersionName = this.Name;
-                            break;
-                    }
-
-                    GalleryImageVersionUpdate galleryImageVersionUpdate = new GalleryImageVersionUpdate
-                    {
-                        Restore = true,
-                        StorageProfile = new GalleryImageVersionStorageProfile()
+                        Location = this.Location
                     };
 
-                    var result = GalleryImageVersionsClient.Update(resourceGroupName, galleryName, galleryImageDefinitionName, galleryImageVersionName, galleryImageVersionUpdate);
+                    var result = GalleryImageVersionsClient.CreateOrUpdate(this.ResourceGroupName, this.GalleryName, this.GalleryImageDefinitionName, this.Name, galleryImageVersion);
                     var psObject = new PSGalleryImageVersion();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
                     WriteObject(psObject);
@@ -115,22 +88,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = "ResourceIdParameter",
-            Position = 0,
+            ParameterSetName = "DefaultParameter",
+            Position = 4,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the gallery image version to restore.")]
-        public string ResourceId { get; set; }
-
-        [Alias("GallerySoftDeletedResource")]
-        [Parameter(
-            ParameterSetName = "ObjectParameter",
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The soft-deleted gallery image version, as returned by Get-AzGallerySoftDeletedImageVersion, to restore.")]
-        [ValidateNotNullOrEmpty]
-        public PSGallerySoftDeletedResource InputObject { get; set; }
+            ValueFromPipelineByPropertyName = true)]
+        public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

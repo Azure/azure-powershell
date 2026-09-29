@@ -16,7 +16,7 @@ Create a gallery.
 New-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Location] <String>
  [-Description <String>] [-Tag <Hashtable>] [-Permission <String>] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-SoftDeleteEnabled <Boolean>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>] [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -57,7 +57,7 @@ Create a gallery with a user-assigned managed identity.
 
 ### Example 5
 ```powershell
-New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -SoftDeleteEnabled $true
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7
 ```
 
 Create a gallery with soft-delete (recycle bin) enabled, so that deleted gallery image versions can be recovered with `Restore-AzGalleryImageVersion` within the retention period instead of being permanently deleted.
@@ -244,7 +244,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SoftDeleteEnabled
+### -EnableSoftDelete
 Enables soft-deletion for resources in this gallery, allowing them to be recovered within the retention time instead of being permanently deleted.
 
 ```yaml

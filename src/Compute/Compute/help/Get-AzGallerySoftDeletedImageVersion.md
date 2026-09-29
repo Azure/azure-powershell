@@ -185,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSGallerySoftDeletedResource
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSGallerySoftDeletedImageVersion
 
 ## NOTES
 

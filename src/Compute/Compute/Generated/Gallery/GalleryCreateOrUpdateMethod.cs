@@ -92,9 +92,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.IsParameterBound(c => c.SoftDeleteEnabled))
+                    if (this.EnableSoftDelete.IsPresent || this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays) || this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays))
                     {
-                        gallery.SoftDeletePolicy = new SoftDeletePolicy(this.SoftDeleteEnabled);
+                        if ((this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays) || this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays)) && !this.EnableSoftDelete.IsPresent)
+                        {
+                            throw new ArgumentException("Soft-delete retention and grace periods require '-EnableSoftDelete'.");
+                        }
+                        gallery.SoftDeletePolicy = new SoftDeletePolicy(this.EnableSoftDelete.IsPresent)
+                        {
+                            RetentionPeriodInDays = this.SoftDeleteRetentionPeriodInDays,
+                            GracePeriodInDays = this.SoftDeleteGracePeriodInDays
+                        };
                     }
 
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
@@ -225,7 +233,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enables soft-deletion for resources in this gallery, allowing them to be recovered within the retention time instead of being permanently deleted.")]
-        public bool? SoftDeleteEnabled { get; set; }
+        public SwitchParameter EnableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public int? SoftDeleteRetentionPeriodInDays { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public int? SoftDeleteGracePeriodInDays { get; set; }
 
     }
 
@@ -302,13 +316,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.IsParameterBound(c => c.SoftDeleteEnabled))
+                    if (this.EnableSoftDelete.IsPresent || this.DisableSoftDelete.IsPresent || this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays) || this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays))
                     {
+                        if (this.EnableSoftDelete.IsPresent && this.DisableSoftDelete.IsPresent)
+                        {
+                            throw new ArgumentException("Parameters '-EnableSoftDelete' and '-DisableSoftDelete' cannot be combined.");
+                        }
                         if (galleryUpdate.SoftDeletePolicy == null)
                         {
                             galleryUpdate.SoftDeletePolicy = new SoftDeletePolicy();
                         }
-                        galleryUpdate.SoftDeletePolicy.IsSoftDeleteEnabled = this.SoftDeleteEnabled;
+                        if (this.EnableSoftDelete.IsPresent)
+                            galleryUpdate.SoftDeletePolicy.IsSoftDeleteEnabled = true;
+                        else if (this.DisableSoftDelete.IsPresent)
+                            galleryUpdate.SoftDeletePolicy.IsSoftDeleteEnabled = false;
+                        if (this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays))
+                            galleryUpdate.SoftDeletePolicy.RetentionPeriodInDays = this.SoftDeleteRetentionPeriodInDays;
+                        if (this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays))
+                            galleryUpdate.SoftDeletePolicy.GracePeriodInDays = this.SoftDeleteGracePeriodInDays;
                     }
 
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
@@ -430,13 +455,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         // so reject parameters that would be silently discarded.
                         bool hasNonSharingParams = this.IsParameterBound(c => c.Description)
                             || this.IsParameterBound(c => c.Tag)
-                            || this.IsParameterBound(c => c.SoftDeleteEnabled)
+                            || this.EnableSoftDelete.IsPresent || this.DisableSoftDelete.IsPresent
+                            || this.IsParameterBound(c => c.SoftDeleteRetentionPeriodInDays)
+                            || this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays)
                             || hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound;
 
                         if (hasNonSharingParams)
                         {
                             throw new ArgumentException(
-                                "Parameters '-Description', '-Tag', '-SoftDeleteEnabled', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
+                                "Parameters '-Description', '-Tag', '-EnableSoftDelete', '-DisableSoftDelete', '-SoftDeleteRetentionPeriodInDays', '-SoftDeleteGracePeriodInDays', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
                                 + "'-UserAssignedIdentity', and '-RemoveUserAssignedIdentity' cannot be combined with '-Share', '-Community', or '-Reset'. "
                                 + "Please run the sharing update and property update as separate commands.");
                         }
@@ -707,6 +734,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enables or disables soft-deletion for resources in this gallery, allowing them to be recovered within the retention time instead of being permanently deleted.")]
-        public bool? SoftDeleteEnabled { get; set; }
+        public SwitchParameter EnableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter DisableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public int? SoftDeleteRetentionPeriodInDays { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public int? SoftDeleteGracePeriodInDays { get; set; }
     }
 }

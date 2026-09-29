@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSGallerySoftDeletedResource
+    public partial class PSGallerySoftDeletedImageVersion
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName

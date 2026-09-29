@@ -149,8 +149,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSGalleryImage, FROM.GalleryImage>();
                 cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, FROM.GalleryImageVersion>();
-                cfg.CreateMap<FROM.GallerySoftDeletedResource, TO.PSGallerySoftDeletedResource>();
-                cfg.CreateMap<TO.PSGallerySoftDeletedResource, FROM.GallerySoftDeletedResource>();
+                cfg.CreateMap<FROM.GallerySoftDeletedResource, TO.PSGallerySoftDeletedImageVersion>();
+                cfg.CreateMap<TO.PSGallerySoftDeletedImageVersion, FROM.GallerySoftDeletedResource>();
                 cfg.CreateMap<FROM.Image, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();

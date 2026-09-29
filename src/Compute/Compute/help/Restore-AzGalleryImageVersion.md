@@ -34,7 +34,7 @@ Restore the soft-deleted gallery image version named `1.0.0`.
 
 ### Example 2
 ```powershell
-Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name "1.0.0" | Restore-AzGalleryImageVersion
+Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name "1.0.0" -Location $loc
 ```
 
 Find the soft-deleted gallery image version named `1.0.0` and restore it using pipeline input.

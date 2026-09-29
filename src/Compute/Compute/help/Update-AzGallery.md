@@ -20,7 +20,7 @@ Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Descr
  [-PublisherUri <String>] [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
- [-SoftDeleteEnabled <Boolean>]
+ [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>] [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
- [-SoftDeleteEnabled <Boolean>]
+ [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>] [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -46,7 +46,7 @@ Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-T
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
  [-UserAssignedIdentity <String[]>] [-RemoveUserAssignedIdentity <String[]>]
- [-SoftDeleteEnabled <Boolean>]
+ [-EnableSoftDelete] [-DisableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>] [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -118,10 +118,10 @@ Update a gallery to remove a specific user-assigned managed identity.
 
 ### Example 9
 ```powershell
-Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -SoftDeleteEnabled $true
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7
 ```
 
-Enable soft-delete (recycle bin) on an existing gallery, so that deleted gallery image versions can be recovered with `Restore-AzGalleryImageVersion` within the retention period instead of being permanently deleted. Use `-SoftDeleteEnabled $false` to disable it again.
+Enable soft-delete (recycle bin) on an existing gallery, so that deleted gallery image versions can be recovered with `Restore-AzGalleryImageVersion` within the retention period instead of being permanently deleted. Use `-DisableSoftDelete` to disable it again.
 
 ## PARAMETERS
 
@@ -440,7 +440,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SoftDeleteEnabled
+### -EnableSoftDelete
 Enables or disables soft-deletion for resources in this gallery, allowing them to be recovered within the retention time instead of being permanently deleted.
 
 ```yaml
