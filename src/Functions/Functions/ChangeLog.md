@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added Change Safety support.
 
 ## Version 5.0.1
 * Updated the Function App stacks parser to handle a runtime definition that does not include a `FUNCTIONS_WORKER_RUNTIME` app setting. [#29630]
@@ -136,3 +135,4 @@
 
 ## Version 0.0.1
 * the first preview release
+
