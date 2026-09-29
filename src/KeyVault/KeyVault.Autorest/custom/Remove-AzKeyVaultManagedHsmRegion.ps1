@@ -138,12 +138,9 @@ function Remove-AzKeyVaultManagedHsmRegion {
 
     process {
         try {
-            $GetParameters = @{}
-            foreach ($key in @('ResourceGroupName', 'SubscriptionId', 'DefaultProfile', 'Break', 'HttpPipelineAppend', 'HttpPipelinePrepend', 'Proxy', 'ProxyCredential', 'ProxyUseDefaultCredentials', 'AsJob')) {
-                if ($PSBoundParameters.ContainsKey($key)) {
-                    $GetParameters[$key] = $PSBoundParameters[$key]
-                }
-            }
+            $GetParameters = Get-AzKeyVaultReadParameters `
+                -CommandName 'Az.KeyVault.internal\Get-AzKeyVaultManagedHsm' `
+                -BoundParameters $PSBoundParameters
             $GetParameters['Name'] = $HsmName
             $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @GetParameters
             $Parameter = Az.KeyVault.private\Get-ParameterForRegion -Parameter $Parameter -Region $Region -RemoveRegion
@@ -158,13 +155,9 @@ function Remove-AzKeyVaultManagedHsmRegion {
             $UpdateParameters['Parameter'] = $Parameter
             $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @UpdateParameters
             if($PassThru.IsPresent){
-                $RegionParameters = @{}
-                foreach ($key in @('ResourceGroupName', 'SubscriptionId', 'DefaultProfile', 'Break', 'HttpPipelineAppend', 'HttpPipelinePrepend', 'Proxy', 'ProxyCredential', 'ProxyUseDefaultCredentials', 'AsJob')) {
-                    if ($PSBoundParameters.ContainsKey($key)) {
-                        $RegionParameters[$key] = $PSBoundParameters[$key]
-                    }
-                }
-                $RegionParameters['HsmName'] = $HsmName
+                $RegionParameters = Get-AzKeyVaultReadParameters `
+                    -CommandName 'Az.KeyVault\Get-AzKeyVaultManagedHsmRegion' `
+                    -BoundParameters $PSBoundParameters
                 Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @RegionParameters
             }
         } catch {
