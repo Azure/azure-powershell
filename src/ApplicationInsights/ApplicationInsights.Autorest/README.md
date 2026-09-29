@@ -45,6 +45,7 @@ input-file:
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-04-01/workbooks_API.json
 module-version: 0.1.0
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 directive:
   - from: swagger-document

@@ -45,6 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: FrontDoor
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 # The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
 # identity-correction-for-post: true

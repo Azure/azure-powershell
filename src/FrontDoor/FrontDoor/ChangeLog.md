@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 2.3.0
 * Added support for Front Door WAF managed rule exceptions.

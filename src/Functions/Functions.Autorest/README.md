@@ -90,6 +90,7 @@ input-file:
 module-version: 1.0.1
 title: Functions
 subject-prefix: ''
+enable-change-safety: true
 
 metadata:
   authors: Microsoft Corporation

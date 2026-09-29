@@ -58,6 +58,7 @@ title: HanaOnAzure
 # A work-around is to specify "service-name", which is of higher priority when calc the module name
 service-name: HanaOnAzure
 subject-prefix: SapMonitor
+enable-change-safety: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs

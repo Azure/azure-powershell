@@ -49,6 +49,7 @@ title: Authorization
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization
 # remove subject-prefix for all generated cmdlets.
 subject-prefix: ''
+enable-change-safety: true
 default-exclude-tableview-properties: false
 
 directive:
