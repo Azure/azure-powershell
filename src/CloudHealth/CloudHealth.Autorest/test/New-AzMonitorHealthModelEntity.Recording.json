@@ -1,0 +1,177 @@
+{
+  "New-AzMonitorHealthModelEntity+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"Create entity\",\n    \"healthObjective\": 99.5,\n    \"impact\": \"Standard\",\n    \"signalAggregationGroups\": [\n      {\n        \"name\": \"availability\",\n        \"aggregationType\": \"WorstOf\",\n        \"members\": [ \"signal-one\", \"signal-two\" ],\n        \"ignoreUnknown\": true\n      },\n      {\n        \"name\": \"performance\",\n        \"aggregationType\": \"BestOf\",\n        \"members\": [ \"signal-three\" ],\n        \"ignoreUnknown\": false\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "477" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000116" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000117" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000118" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052202Z:00000000-0000-4000-8000-000000000118" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0CBA58BCFF5F468C8A735449E101300F Ref B: GVA201070812029 Ref C: 2026-09-10T05:22:01Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:22:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "871" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo\",\"name\":\"azps-ent-create-a9skjo\",\"type\":\"microsoft.cloudhealth/healthmodels/entities\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:22:01.9893833Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:22:01.9893833Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Create entity\",\"healthObjective\":99.5,\"impact\":\"Standard\",\"signalAggregationGroups\":[{\"name\":\"availability\",\"aggregationType\":\"WorstOf\",\"members\":[\"signal-one\",\"signal-two\"],\"ignoreUnknown\":true},{\"name\":\"performance\",\"aggregationType\":\"BestOf\",\"members\":[\"signal-three\"],\"ignoreUnknown\":false}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelEntity+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000119" ],
+        "CommandName": [ "New-AzMonitorHealthModelEntity" ],
+        "FullCommandName": [ "New-AzMonitorHealthModelEntity_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000120" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000121" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000122" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052233Z:00000000-0000-4000-8000-000000000122" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F961FA97F58E4E65A6F96821185BCD4F Ref B: GVA201070812029 Ref C: 2026-09-10T05:22:33Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:22:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1048" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo\",\"name\":\"azps-ent-create-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/entities\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:22:01.9893833Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:22:02.1495175Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Create entity\",\"healthObjective\":99.5,\"impact\":\"Standard\",\"signalAggregationGroups\":[{\"name\":\"availability\",\"aggregationType\":\"WorstOf\",\"members\":[\"signal-one\",\"signal-two\"],\"ignoreUnknown\":true,\"aggregatedHealthState\":\"Unknown\",\"unresolvedMembers\":[\"signal-one\",\"signal-two\"]},{\"name\":\"performance\",\"aggregationType\":\"BestOf\",\"members\":[\"signal-three\"],\"ignoreUnknown\":false,\"aggregatedHealthState\":\"Unknown\",\"unresolvedMembers\":[\"signal-three\"]}],\"healthState\":\"Unknown\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelEntity+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "63" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000119" ],
+        "CommandName": [ "New-AzMonitorHealthModelEntity" ],
+        "FullCommandName": [ "New-AzMonitorHealthModelEntity_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000123" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000124" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000125" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052234Z:00000000-0000-4000-8000-000000000125" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B51CFA17033945388C8B211F1A6BCFC9 Ref B: GVA201070812029 Ref C: 2026-09-10T05:22:33Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:22:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1048" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo\",\"name\":\"azps-ent-create-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/entities\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:22:01.9893833Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:22:02.1495175Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Create entity\",\"healthObjective\":99.5,\"impact\":\"Standard\",\"signalAggregationGroups\":[{\"name\":\"availability\",\"aggregationType\":\"WorstOf\",\"members\":[\"signal-one\",\"signal-two\"],\"ignoreUnknown\":true,\"aggregatedHealthState\":\"Unknown\",\"unresolvedMembers\":[\"signal-one\",\"signal-two\"]},{\"name\":\"performance\",\"aggregationType\":\"BestOf\",\"members\":[\"signal-three\"],\"ignoreUnknown\":false,\"aggregatedHealthState\":\"Unknown\",\"unresolvedMembers\":[\"signal-three\"]}],\"healthState\":\"Unknown\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModelEntity+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000126" ],
+        "CommandName": [ "Get-AzMonitorHealthModelEntity" ],
+        "FullCommandName": [ "Get-AzMonitorHealthModelEntity_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000127" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000128" ],
+        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000129" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052234Z:00000000-0000-4000-8000-000000000129" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F016B1ECB6AB427D8F51C21665CDF5AB Ref B: GVA201070812029 Ref C: 2026-09-10T05:22:34Z" ],
+        "Date": [ "Thu, 10 Sep 2026 05:22:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1048" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-create-a9skjo\",\"name\":\"azps-ent-create-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/entities\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:22:01.9893833Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:22:02.1495175Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Create entity\",\"healthObjective\":99.5,\"impact\":\"Standard\",\"signalAggregationGroups\":[{\"name\":\"availability\",\"aggregationType\":\"WorstOf\",\"members\":[\"signal-one\",\"signal-two\"],\"ignoreUnknown\":true,\"aggregatedHealthState\":\"Unknown\",\"unresolvedMembers\":[\"signal-one\",\"signal-two\"]},{\"name\":\"performance\",\"aggregationType\":\"BestOf\",\"members\":[\"signal-three\"],\"ignoreUnknown\":false,\"aggregatedHealthState\":\"Unknown\",\"unresolvedMembers\":[\"signal-three\"]}],\"healthState\":\"Unknown\"}}",
+      "isContentBase64": false
+    }
+  }
+}
