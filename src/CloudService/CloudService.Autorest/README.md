@@ -54,7 +54,6 @@ input-file:
 
 title: CloudService
 module-version: 0.1.0
-enable-change-safety: true
 
 directive:
   - where:
