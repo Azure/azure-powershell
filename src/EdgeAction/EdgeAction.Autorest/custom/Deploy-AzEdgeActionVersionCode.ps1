@@ -243,8 +243,10 @@ function Deploy-AzEdgeActionVersionCode {
             if ($PSBoundParameters.ContainsKey('Proxy')) { $params['Proxy'] = $Proxy }
             if ($PSBoundParameters.ContainsKey('ProxyCredential')) { $params['ProxyCredential'] = $ProxyCredential }
             if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) { $params['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials }
-            if ($PSBoundParameters.ContainsKey('AcquirePolicyToken')) { $params['AcquirePolicyToken'] = $PSBoundParameters['AcquirePolicyToken'] }
-            if ($PSBoundParameters.ContainsKey('ChangeReference')) { $params['ChangeReference'] = $PSBoundParameters['ChangeReference'] }
+            Add-AzEdgeActionBoundDynamicParameter `
+                -CommandName 'Az.EdgeAction.private\Deploy-AzEdgeActionVersionCode_DeployExpanded' `
+                -BoundParameters $PSBoundParameters `
+                -TargetParameters $params
 
             Write-Verbose "Calling internal deployment implementation with Content and Name parameters"
             
