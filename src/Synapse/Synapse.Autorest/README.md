@@ -60,7 +60,6 @@ input-file:
 module-version: 0.1.0
 title: Synapse
 subject-prefix: $(service-name)
-enable-change-safety: true
 ```
 
 > Folders
