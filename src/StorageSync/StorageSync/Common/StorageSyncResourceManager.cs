@@ -51,6 +51,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public ISyncServerRegistration CreateSyncServerManagement() => new SyncServerRegistrationClient(CreateEcsManagement(), ServerManagedIdentityProvider);
 
         /// <summary>
+        /// Creates the server managed identity provider.
+        /// </summary>
+        /// <returns>IServerManagedIdentityProvider.</returns>
+        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => ServerManagedIdentityProvider;
+
+        /// <summary>
         /// Gets the afs agent installer path.
         /// </summary>
         /// <param name="afsAgentInstallerPath">The afs agent installer path.</param>

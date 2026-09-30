@@ -17,5 +17,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
     public static class StorageSyncTestConstants
     {
         public const string TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+
+        /// <summary>
+        /// Deterministic server managed identity application id used by the remote
+        /// server registration sequence test so that Register and Connect agree in playback.
+        /// </summary>
+        public const string RemoteRegistrationApplicationId = "11111111-1111-1111-1111-111111111111";
     }
 }

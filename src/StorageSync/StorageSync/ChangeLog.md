@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Split managed identity server onboarding into independent commands
+    - Added `Get-StorageSyncServer` to read local server ID, cluster information, and managed identity through the Azure File Sync agent
+    - `Register-AzStorageSyncServer` now creates the registered server resource in Azure without accessing the local server
+    - `Connect-StorageSyncServer` connects the local server using values returned by `Register-AzStorageSyncServer`
+    - Removed certificate registration and Role-Based Access Control (RBAC) assignment from this flow
 * Improved help for the `ChangeEnumerationIntervalDay` parameter
 * Fixed `Set-AzStorageSyncServer` to retrieve the registered server using the validated server ID
 * Added `ChangeEnumerationIntervalDay` parameter to `New-AzStorageSyncCloudEndpoint` cmdlet

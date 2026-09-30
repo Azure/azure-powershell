@@ -45,7 +45,13 @@ This command creates a new server endpoint on a registered server. This enables 
 This command creates a new storage sync service in a resource group.
 
 ### [Register-AzStorageSyncServer](Register-AzStorageSyncServer.md)
-This command registers a server to a storage sync service which creates a trust relationship. PowerShell or the Azure portal can then be used to configure sync on this server.
+Creates a managed identity registered server resource in Azure.
+
+### [Connect-StorageSyncServer](Connect-StorageSyncServer.md)
+Connects the local server to an existing managed identity registered server resource.
+
+### [Get-StorageSyncServer](Get-StorageSyncServer.md)
+Reads local Azure File Sync server information through the server agent.
 
 ### [Remove-AzStorageSyncCloudEndpoint](Remove-AzStorageSyncCloudEndpoint.md)
 This command will delete the specified cloud endpoint from a sync group. Without at least one cloud endpoint, no other server endpoints in this sync group can sync.
@@ -85,4 +91,3 @@ This command helps to migrate storage sync service in a resource group to start 
 
 ### [Unregister-AzStorageSyncServer](Unregister-AzStorageSyncServer.md)
 Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server from it's storage sync service.
-

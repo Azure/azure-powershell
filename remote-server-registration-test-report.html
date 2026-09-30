@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Server Registration — Test Report</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+    }
+    main { width: min(1200px, calc(100% - 40px)); margin: 0 auto 72px; }
+    a { color: var(--cp-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 0.92em;
+    }
+    h1, h2, h3 { line-height: 1.2; margin-top: 0; }
+    h2 { font-size: 24px; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; }
+    h3 { font-size: 18px; margin: 0 0 10px; }
+    p { margin: 0 0 12px; }
+
+    /* Header */
+    header {
+      margin: 32px 0 28px;
+      padding: 34px 34px 30px;
+      border: 1px solid var(--cp-border);
+      border-radius: 20px;
+      background:
+        radial-gradient(1200px 220px at 100% -40%, var(--cp-highlight), transparent 60%),
+        var(--cp-bg-elevated);
+      box-shadow: var(--cp-shadow);
+    }
+    .eyebrow {
+      display: inline-block; margin-bottom: 14px; padding: 5px 12px;
+      border-radius: 999px; background: var(--cp-accent-soft); color: var(--cp-accent);
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 12px;
+    }
+    header h1 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 10px; }
+    .lede { color: var(--cp-text-muted); max-width: 820px; font-size: 17px; }
+    .status-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 14px;
+      border: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+    }
+    .status-pill.pass { border-color: color-mix(in srgb, var(--cp-success) 45%, var(--cp-border)); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .dot.ok { background: var(--cp-success); }
+    .dot.accent { background: var(--cp-accent); }
+
+    /* Metric cards */
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; margin-top: 24px; }
+    .metric {
+      padding: 18px; border: 1px solid var(--cp-border); border-radius: 16px;
+      background: var(--cp-surface);
+    }
+    .metric .k { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+    .metric .l { color: var(--cp-text-muted); font-size: 13px; margin-top: 4px; }
+    .metric .k.ok { color: var(--cp-success); }
+
+    section { margin-top: 40px; }
+    .section-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 9px; font-size: 15px;
+      background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 800;
+    }
+
+    /* Legend */
+    .legend { display: flex; flex-wrap: wrap; gap: 18px; margin: 0 0 18px; color: var(--cp-text-muted); font-size: 14px; }
+    .legend span { display: inline-flex; align-items: center; gap: 8px; }
+    .swatch { width: 26px; height: 14px; border-radius: 5px; border: 1px solid var(--cp-border-strong); }
+    .swatch.remote { background: color-mix(in srgb, var(--cp-link) 22%, var(--cp-surface)); border-color: var(--cp-link); }
+    .swatch.local  { background: var(--cp-accent-soft); border-color: var(--cp-accent); }
+
+    /* Cmdlet cards */
+    .cmdlets { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+    .cmd {
+      position: relative; padding: 20px; border: 1px solid var(--cp-border);
+      border-radius: 16px; background: var(--cp-surface); overflow: hidden;
+    }
+    .cmd::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; }
+    .cmd.remote::before { background: var(--cp-link); }
+    .cmd.local::before  { background: var(--cp-accent); }
+    .cmd .tag {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 800;
+      letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .cmd.remote .tag { background: color-mix(in srgb, var(--cp-link) 14%, transparent); color: var(--cp-link); }
+    .cmd.local .tag  { background: var(--cp-accent-soft); color: var(--cp-accent); }
+    .cmd h3 { font-family: Consolas, "Courier New", Courier, monospace; font-size: 15.5px; word-break: break-word; }
+    .cmd .role { color: var(--cp-text-muted); font-size: 13.5px; margin: 2px 0 12px; }
+    .cmd ul { margin: 0; padding-left: 18px; }
+    .cmd li { margin: 5px 0; font-size: 13.5px; }
+    .cmd .io { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--cp-border); font-size: 12.5px; color: var(--cp-text-soft); }
+    .cmd .io b { color: var(--cp-text); font-weight: 600; }
+
+    /* Sequence diagram */
+    .diagram-wrap { border: 1px solid var(--cp-border); border-radius: 18px; background: var(--cp-surface); padding: 8px; overflow-x: auto; }
+    .diagram { min-width: 940px; }
+
+    /* Boundary strip */
+    .boundary { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 16px 12px 4px; border-radius: 12px; overflow: hidden; border: 1px solid var(--cp-border); }
+    .boundary > div { padding: 10px 16px; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .boundary .b-remote { background: color-mix(in srgb, var(--cp-link) 14%, var(--cp-surface)); color: var(--cp-link); }
+    .boundary .b-local  { background: var(--cp-accent-soft); color: var(--cp-accent); }
+
+    .lanes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; padding: 0 12px; }
+    .lane-head { text-align: center; padding: 12px 6px; }
+    .lane-head .actor {
+      display: inline-block; padding: 10px 12px; border-radius: 10px; font-weight: 700; font-size: 13px;
+      border: 1px solid var(--cp-border-strong); background: var(--cp-bg-elevated); min-width: 92%;
+    }
+    .lane-head .actor small { display:block; font-weight: 500; font-size: 11px; color: var(--cp-text-muted); margin-top: 2px; text-transform: none; letter-spacing: 0; }
+    .lane-head.remote .actor { border-color: var(--cp-link); }
+    .lane-head.local  .actor { border-color: var(--cp-accent); }
+
+    .flowgrid { position: relative; padding: 6px 12px 18px; }
+    .rail { position: absolute; top: 0; bottom: 18px; width: 2px; background: var(--cp-border); transform: translateX(-1px); }
+    .msgrow { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; min-height: 52px; }
+    .msg {
+      grid-row: 1; align-self: center; margin: 6px 0; padding: 9px 12px; border-radius: 10px;
+      font-size: 13px; border: 1px solid var(--cp-border); background: var(--cp-bg-elevated); position: relative; z-index: 2;
+    }
+    .msg .n { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:11px; font-weight:800; margin-right:8px; color: var(--cp-accent-fg); background: var(--cp-accent); }
+    .msg.remote { border-color: color-mix(in srgb, var(--cp-link) 55%, var(--cp-border)); }
+    .msg.remote .n { background: var(--cp-link); }
+    .msg.ret { background: var(--cp-surface); border-style: dashed; }
+    .msg .sub { display:block; color: var(--cp-text-muted); font-size: 11.5px; margin-top: 3px; margin-left: 28px; }
+    .arrow-note { text-align:center; grid-column: 1 / -1; color: var(--cp-text-soft); font-size: 12px; padding: 2px 0; }
+
+    /* Timeline / steps */
+    .steps { display: grid; gap: 14px; }
+    .step {
+      display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: center;
+      padding: 16px 18px; border: 1px solid var(--cp-border); border-radius: 14px; background: var(--cp-surface);
+    }
+    .step .idx {
+      width: 44px; height: 44px; border-radius: 12px; display:flex; align-items:center; justify-content:center;
+      font-weight: 800; font-size: 18px; color: var(--cp-accent-fg);
+    }
+    .step.remote .idx { background: var(--cp-link); }
+    .step.local  .idx { background: var(--cp-accent); }
+    .step .title { font-weight: 700; }
+    .step .title code { font-size: 13.5px; }
+    .step .desc { color: var(--cp-text-muted); font-size: 13.5px; margin-top: 3px; }
+    .step .verdict { display:inline-flex; align-items:center; gap:7px; font-weight:700; color: var(--cp-success); font-size: 13.5px; white-space: nowrap; }
+    .badge-io { display:inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 999px; margin-left: 8px; }
+    .badge-io.remote { color: var(--cp-link); background: color-mix(in srgb, var(--cp-link) 14%, transparent); }
+    .badge-io.local  { color: var(--cp-accent); background: var(--cp-accent-soft); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 14px; overflow: hidden; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--cp-border); font-size: 14px; vertical-align: top; }
+    th { background: var(--cp-surface-soft); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--cp-text-muted); }
+    tr:last-child td { border-bottom: none; }
+    td .ok { color: var(--cp-success); font-weight: 700; }
+
+    .callout {
+      display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start;
+      padding: 16px 18px; border-radius: 14px; background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border); border-left: 4px solid var(--cp-warning);
+    }
+    .callout .ic { font-size: 20px; line-height: 1.2; }
+
+    .env { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px 24px; }
+    .env .row { display:flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px dashed var(--cp-border); font-size: 14px; }
+    .env .row span:first-child { color: var(--cp-text-muted); }
+    .env .row span:last-child { font-family: Consolas, "Courier New", Courier, monospace; text-align: right; }
+
+    footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--cp-border); color: var(--cp-text-soft); font-size: 13px; }
+
+    @media (max-width: 860px) {
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .cmdlets { grid-template-columns: 1fr; }
+      .env { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 44px 1fr; }
+      .step .verdict { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="eyebrow">Azure File Sync · Record-mode Test Report</span>
+      <h1>Remote Server Registration — Sequence Test</h1>
+      <p class="lede">
+        A three-step onboarding flow validated end-to-end against live Azure. Each command is independent and
+        uses only plain parameters — the operator reads values from one step and passes them to the next.
+        Steps are clearly split between <strong>remote</strong> (Azure Resource Manager) and
+        <strong>local</strong> (Azure File Sync agent, COM) boundaries.
+      </p>
+      <div class="status-row">
+        <span class="status-pill pass"><span class="dot ok"></span> Result: PASSED</span>
+        <span class="status-pill"><span class="dot accent"></span> Mode: Record (live Azure)</span>
+        <span class="status-pill"><span class="dot ok"></span> Playback re-verified: Passed 1</span>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><div class="k ok">1 / 1</div><div class="l">Tests passed</div></div>
+        <div class="metric"><div class="k">8</div><div class="l">Succeeded LRO states</div></div>
+        <div class="metric"><div class="k ok">0</div><div class="l">Validation errors</div></div>
+        <div class="metric"><div class="k">312 KB</div><div class="l">Session recording</div></div>
+      </div>
+    </header>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <span><span class="swatch remote"></span> <strong>Remote cmdlet</strong> — Azure Resource Manager (runs anywhere)</span>
+      <span><span class="swatch local"></span> <strong>Local cmdlet</strong> — Azure File Sync agent via COM (runs on the server, elevated)</span>
+    </div>
+
+    <!-- SECTION 1: CMDLETS -->
+    <section id="cmdlets">
+      <h2><span class="section-num">1</span> Cmdlets in the flow</h2>
+      <div class="cmdlets">
+        <article class="cmd local">
+          <span class="tag"><span class="dot accent"></span> Local · COM</span>
+          <h3>Get-StorageSyncServer</h3>
+          <div class="role">Reads local server identity &amp; state through the Azure File Sync agent.</div>
+          <ul>
+            <li>Server ID, server role (Standalone / ClusterNode)</li>
+            <li>Cluster ID &amp; name (for cluster nodes)</li>
+            <li>Agent version &amp; OS version</li>
+            <li>Managed-identity Application ID &amp; Tenant ID</li>
+          </ul>
+          <div class="io"><b>In:</b> none &nbsp;·&nbsp; <b>Out:</b> PSLocalStorageSyncServer</div>
+        </article>
+
+        <article class="cmd remote">
+          <span class="tag"><span class="dot" style="background:var(--cp-link)"></span> Remote · ARM</span>
+          <h3>Register-AzStorageSyncServer</h3>
+          <div class="role">Creates the registered-server resource in Azure using managed identity.</div>
+          <ul>
+            <li>Generates a new <code>ServerId</code> (deterministic in tests)</li>
+            <li>Sends ApplicationId, AgentVersion, ServerRole</li>
+            <li>No certificate, no RBAC, no local calls</li>
+            <li>Runs from any workstation or automation host</li>
+          </ul>
+          <div class="io"><b>In:</b> RG, Service, ApplicationId, AgentVersion, ServerRole &nbsp;·&nbsp; <b>Out:</b> PSRegisteredServer</div>
+        </article>
+
+        <article class="cmd local">
+          <span class="tag"><span class="dot accent"></span> Local · COM</span>
+          <h3>Connect-StorageSyncServer</h3>
+          <div class="role">Persists the registration on the local server from Azure-returned values.</div>
+          <ul>
+            <li>Takes ServerId, ServiceUid, endpoints, locations</li>
+            <li>Validates identity &amp; discovers cluster config</li>
+            <li>Writes registration into the local agent</li>
+            <li>No second Azure create call</li>
+          </ul>
+          <div class="io"><b>In:</b> explicit scalars from step 2 &nbsp;·&nbsp; <b>Out:</b> PSRegisteredServer</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SEQUENCE DIAGRAM -->
+    <section id="sequence">
+      <h2><span class="section-num">2</span> Sequence diagram</h2>
+      <div class="diagram-wrap">
+        <div class="diagram">
+          <div class="boundary">
+            <div class="b-local">Local boundary · Azure File Sync agent (COM, elevated)</div>
+            <div class="b-remote">Remote boundary · Azure Resource Manager</div>
+          </div>
+
+          <div class="lanes">
+            <div class="lane-head local"><span class="actor">Operator<small>elevated shell</small></span></div>
+            <div class="lane-head local"><span class="actor">PowerShell cmdlet<small>Az.StorageSync</small></span></div>
+            <div class="lane-head local"><span class="actor">IECsManagement<small>COM · local agent</small></span></div>
+            <div class="lane-head remote"><span class="actor">ARM REST API<small>Microsoft.StorageSync</small></span></div>
+            <div class="lane-head remote"><span class="actor">Registered Server<small>Azure resource</small></span></div>
+          </div>
+
+          <div class="flowgrid">
+            <div class="rail" style="left:10%"></div>
+            <div class="rail" style="left:30%"></div>
+            <div class="rail" style="left:50%"></div>
+            <div class="rail" style="left:70%"></div>
+            <div class="rail" style="left:90%"></div>
+
+            <div class="arrow-note">— Step 1 · LOCAL — Get-StorageSyncServer —</div>
+            <div class="msgrow">
+              <div class="msg local" style="grid-column:1 / 3"><span class="n">1</span>Run Get-StorageSyncServer</div>
+            </div>
+            <div class="msgrow">
+              <div class="msg local" style="grid-column:2 / 4"><span class="n">2</span>Read ServerId, role, agent, identity<span class="sub">GetSyncServerId · IsInCluster · IMDS identity</span></div>
+            </div>
+            <div class="msgrow">
+              <div class="msg local ret" style="grid-column:1 / 3"><span class="n">3</span>PSLocalStorageSyncServer<span class="sub">operator copies values</span></div>
+            </div>
+
+            <div class="arrow-note">— Step 2 · REMOTE — Register-AzStorageSyncServer —</div>
+            <div class="msgrow">
+              <div class="msg remote" style="grid-column:2 / 5"><span class="n">4</span>Register-AzStorageSyncServer (ApplicationId, AgentVersion, ServerRole)</div>
+            </div>
+            <div class="msgrow">
+              <div class="msg remote" style="grid-column:4 / 6"><span class="n">5</span>PUT registeredServers/{newServerId}<span class="sub">LRO → Succeeded</span></div>
+            </div>
+            <div class="msgrow">
+              <div class="msg remote ret" style="grid-column:2 / 5"><span class="n">6</span>PSRegisteredServer (Uid, endpoints, locations)</div>
+            </div>
+
+            <div class="arrow-note">— Step 3 · LOCAL — Connect-StorageSyncServer —</div>
+            <div class="msgrow">
+              <div class="msg local" style="grid-column:1 / 3"><span class="n">7</span>Connect-StorageSyncServer (values from step 2)</div>
+            </div>
+            <div class="msgrow">
+              <div class="msg local" style="grid-column:2 / 4"><span class="n">8</span>Persist registration + monitoring<span class="sub">PersistSyncServerRegistration · RegisterMonitoringAgent</span></div>
+            </div>
+            <div class="msgrow">
+              <div class="msg local ret" style="grid-column:1 / 3"><span class="n">9</span>PSRegisteredServer (connected)</div>
+            </div>
+
+            <div class="arrow-note">— Verify &amp; teardown · REMOTE —</div>
+            <div class="msgrow">
+              <div class="msg remote" style="grid-column:2 / 6"><span class="n">10</span>Get-AzStorageSyncServer → confirm · then Unregister + cleanup</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STEP-BY-STEP RESULT -->
+    <section id="steps">
+      <h2><span class="section-num">3</span> Step-by-step result</h2>
+      <div class="steps">
+        <div class="step local">
+          <div class="idx">1</div>
+          <div>
+            <div class="title"><code>Get-StorageSyncServer</code><span class="badge-io local">Local · COM</span></div>
+            <div class="desc">Read local ServerId, ServerRole = Standalone, AgentVersion, OS version, and the Arc managed-identity ApplicationId.</div>
+          </div>
+          <div class="verdict">✓ Passed</div>
+        </div>
+        <div class="step remote">
+          <div class="idx">2</div>
+          <div>
+            <div class="title"><code>Register-AzStorageSyncServer</code><span class="badge-io remote">Remote · ARM</span></div>
+            <div class="desc">Created the registered-server resource (PUT <code>registeredServers/{id}</code>); long-running operation completed <b>Succeeded</b>.</div>
+          </div>
+          <div class="verdict">✓ Passed</div>
+        </div>
+        <div class="step local">
+          <div class="idx">3</div>
+          <div>
+            <div class="title"><code>Connect-StorageSyncServer</code><span class="badge-io local">Local · COM</span></div>
+            <div class="desc">Persisted the registration locally using the exact values returned by step 2 — no pipeline object, no second Azure create.</div>
+          </div>
+          <div class="verdict">✓ Passed</div>
+        </div>
+        <div class="step remote">
+          <div class="idx">4</div>
+          <div>
+            <div class="title">Verify &amp; teardown<span class="badge-io remote">Remote · ARM</span></div>
+            <div class="desc"><code>Get-AzStorageSyncServer</code> confirmed the resource; then unregister server, remove service, and delete the resource group.</div>
+          </div>
+          <div class="verdict">✓ Passed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: RECORDING EVIDENCE -->
+    <section id="evidence">
+      <h2><span class="section-num">4</span> Recording evidence</h2>
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>Value</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Recording size</td><td class="ok">312 KB</td><td>Full sequence captured (a partial/failed run was ~198 KB)</td></tr>
+          <tr><td><code>"is invalid"</code> errors</td><td class="ok">0</td><td>No service-side property rejections</td></tr>
+          <tr><td><code>"must have a value"</code> errors</td><td class="ok">0</td><td>All required create properties supplied</td></tr>
+          <tr><td><code>Succeeded</code> LRO states</td><td class="ok">8</td><td>Long-running operations completed cleanly</td></tr>
+          <tr><td>registeredServers PUT</td><td class="ok">Present</td><td>Register created the resource</td></tr>
+          <tr><td>registeredServers DELETE</td><td class="ok">Present</td><td>Teardown unregistered the server</td></tr>
+          <tr><td>Playback replay</td><td class="ok">Passed 1</td><td>Same recording verifies deterministically</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px; color:var(--cp-text-muted); font-size:13.5px;">
+        Recording:
+        <code>src/StorageSync/StorageSync.Test/SessionRecords/StorageSyncTests.RemoteServerRegistrationTests/TestRemoteServerRegistrationSequence.json</code>
+      </p>
+    </section>
+
+    <!-- SECTION 5: ENVIRONMENT -->
+    <section id="env">
+      <h2><span class="section-num">5</span> Environment</h2>
+      <div class="metric" style="padding:20px;">
+        <div class="env">
+          <div class="row"><span>Test</span><span>Test-RemoteServerRegistrationSequence</span></div>
+          <div class="row"><span>Recorder mode</span><span>Record → Playback</span></div>
+          <div class="row"><span>Subscription</span><span>KAILANI-INT-02</span></div>
+          <div class="row"><span>Server type</span><span>ArcEnabledHybridServer</span></div>
+          <div class="row"><span>AFS agent</span><span>v22.4.0.0</span></div>
+          <div class="row"><span>Server role</span><span>Standalone</span></div>
+          <div class="row"><span>Runner</span><span>run-test.ps1 (elevated)</span></div>
+          <div class="row"><span>Build</span><span>StorageSync + Test · 0 / 0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: WHY IT MATTERS -->
+    <section id="notes">
+      <h2><span class="section-num">6</span> Why the split matters</h2>
+      <div class="callout">
+        <div class="ic">🔀</div>
+        <div>
+          <p style="margin:0 0 6px;"><strong>Remote and Local are cleanly separated.</strong> The remote cmdlet touches only
+          Azure Resource Manager and can run from anywhere. The local cmdlets touch only the on-box Azure File Sync agent
+          through the COM <code>IECsManagement</code> interface and must run elevated on the server.</p>
+          <p style="margin:0;">The three commands share <em>no objects</em> and are not piped — the operator carries plain
+          values between them. This makes remote registration possible from a management host while local persistence
+          stays on the target server.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Azure File Sync · Remote Server Registration sequence test · Record-mode run verified and re-confirmed in Playback.
+    </footer>
+  </main>
+</body>
+</html>

@@ -26,6 +26,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
 
         public Task<ServerApplicationIdentity> GetServerApplicationIdentityAsync(LocalServerType serverType, bool throwIfNotFound = true, bool validateSystemAssignedManagedIdentity = true)
         {
+            if (TestName == "TestRemoteServerRegistrationSequence")
+            {
+                return Task.FromResult(new ServerApplicationIdentity(
+                    new Guid(StorageSyncTestConstants.RemoteRegistrationApplicationId),
+                    new Guid(StorageSyncTestConstants.TenantId)));
+            }
             return Task.FromResult(new ServerApplicationIdentity(Guid.Empty, Guid.Empty));
         }
 
