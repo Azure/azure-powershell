@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             }
         }
         /// <summary>
-        /// Create or update a subscription-level key used for Real User Metrics
-        /// collection.
+        /// Create or update a subscription-level key used for Real User Metrics collection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,8 +51,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         }
 
         /// <summary>
-        /// Create or update a subscription-level key used for Real User Metrics
-        /// collection.
+        /// Create or update a subscription-level key used for Real User Metrics collection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

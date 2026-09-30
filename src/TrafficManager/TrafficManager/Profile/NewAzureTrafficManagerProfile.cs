@@ -103,11 +103,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 8)]
         public List<TrafficManagerExpectedStatusCodeRange> ExpectedStatusCodeRange { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "When RecordType is set, the Traffic Manager profile only allows endpoints that match the specified DNS record type. When it is not set, the profile allows endpoints of any supported type. Valid values are A, AAAA, and CNAME.")]
-        [ValidateSet(Constants.A, Constants.AAAA, Constants.CNAME, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string RecordType { get; set; }
-
         public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerProfile should not overwrite any existing profile.
@@ -139,8 +134,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MaxReturn,
                     this.Tag,
                     this.CustomHeader,
-                    this.ExpectedStatusCodeRange,
-                    this.RecordType);
+                    this.ExpectedStatusCodeRange);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);
