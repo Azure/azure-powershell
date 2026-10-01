@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             "System.Memory.Data",
             "System.Text.Json",
             "Microsoft.Bcl.AsyncInterfaces",
+            "Microsoft.Extensions.Options", // Azure.Identity depends on v10, Az.Resources depends on v2
             "Microsoft.IdentityModel.Abstractions", // Azure.Identity 1.13 depends on v6, MSAL 4.82 depends on v8 (what we ship)
             "System.Text.Encodings.Web"
         };
