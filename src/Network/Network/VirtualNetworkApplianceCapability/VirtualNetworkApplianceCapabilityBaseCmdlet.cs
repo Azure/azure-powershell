@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
         // serializer emits as the top-level discriminator). The Private-Link kinds carry an "ipVersion" (the
         // service validates it against the kind: PLGatewayFastpath -> DualStack; PLGateway / PLIPForwarders ->
         // IPv6). NAT64 is property-less and must not carry an ipVersion. Exposed for unit testing (no service dependency).
-        public static VirtualNetworkApplianceCapabilityCreateOrUpdate BuildCapabilityParameters(string kind, string ipVersion)
+        public static VirtualNetworkApplianceCapability BuildCapabilityParameters(string kind, string ipVersion)
         {
             bool isNat64 = string.Equals(kind, VirtualNetworkApplianceCapabilityKind.Nat64, StringComparison.OrdinalIgnoreCase);
             bool ipVersionProvided = !string.IsNullOrEmpty(ipVersion);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 // NAT64 is property-less; the wire contract still carries an empty "properties" object
                 // (no ipVersion). An empty properties bag serializes to "properties": {} to match the service contract.
-                return new Nat64CapabilityCreateOrUpdate { Properties = new VirtualNetworkApplianceCapabilityProperties() };
+                return new Nat64Capability { Properties = new VirtualNetworkApplianceCapabilityProperties() };
             }
 
             var properties = new VirtualNetworkApplianceCapabilityProperties
@@ -139,17 +139,17 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PLGatewayFastpath, StringComparison.OrdinalIgnoreCase))
             {
-                return new PLGatewayFastpathCapabilityCreateOrUpdate { Properties = properties };
+                return new PLGatewayFastpathCapability { Properties = properties };
             }
 
             if (string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PLGateway, StringComparison.OrdinalIgnoreCase))
             {
-                return new PLGatewayCapabilityCreateOrUpdate { Properties = properties };
+                return new PLGatewayCapability { Properties = properties };
             }
 
             if (string.Equals(kind, VirtualNetworkApplianceCapabilityKind.PlipForwarders, StringComparison.OrdinalIgnoreCase))
             {
-                return new PlipForwardersCapabilityCreateOrUpdate { Properties = properties };
+                return new PlipForwardersCapability { Properties = properties };
             }
 
             throw new ArgumentException($"Unsupported virtual network appliance capability kind '{kind}'.", nameof(kind));

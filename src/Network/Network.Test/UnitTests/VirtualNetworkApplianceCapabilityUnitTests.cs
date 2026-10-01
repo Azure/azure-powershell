@@ -34,7 +34,7 @@ namespace Commands.Network.Test.UnitTests
         {
             var parameters = VirtualNetworkApplianceCapabilityBaseCmdlet.BuildCapabilityParameters("PLGatewayFastpath", "DualStack");
 
-            var fastpath = Assert.IsType<PLGatewayFastpathCapabilityCreateOrUpdate>(parameters);
+            var fastpath = Assert.IsType<PLGatewayFastpathCapability>(parameters);
             Assert.NotNull(fastpath.Properties);
             Assert.Equal("DualStack", fastpath.Properties.IPVersion);
         }
@@ -45,7 +45,7 @@ namespace Commands.Network.Test.UnitTests
         {
             var parameters = VirtualNetworkApplianceCapabilityBaseCmdlet.BuildCapabilityParameters("PLGateway", "IPv6");
 
-            var gateway = Assert.IsType<PLGatewayCapabilityCreateOrUpdate>(parameters);
+            var gateway = Assert.IsType<PLGatewayCapability>(parameters);
             Assert.Equal("IPv6", gateway.Properties.IPVersion);
         }
 
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.UnitTests
         {
             var parameters = VirtualNetworkApplianceCapabilityBaseCmdlet.BuildCapabilityParameters("PLIPForwarders", "IPv6");
 
-            var ipForwarders = Assert.IsType<PlipForwardersCapabilityCreateOrUpdate>(parameters);
+            var ipForwarders = Assert.IsType<PlipForwardersCapability>(parameters);
             Assert.Equal("IPv6", ipForwarders.Properties.IPVersion);
         }
 
@@ -65,7 +65,7 @@ namespace Commands.Network.Test.UnitTests
         {
             var parameters = VirtualNetworkApplianceCapabilityBaseCmdlet.BuildCapabilityParameters("NAT64", null);
 
-            var nat64 = Assert.IsType<Nat64CapabilityCreateOrUpdate>(parameters);
+            var nat64 = Assert.IsType<Nat64Capability>(parameters);
             // NAT64 carries an empty properties bag with no ipVersion, matching the service contract.
             Assert.NotNull(nat64.Properties);
             Assert.Null(nat64.Properties.IPVersion);
@@ -77,7 +77,7 @@ namespace Commands.Network.Test.UnitTests
         {
             var parameters = VirtualNetworkApplianceCapabilityBaseCmdlet.BuildCapabilityParameters("plgateway", "ipv6");
 
-            var gateway = Assert.IsType<PLGatewayCapabilityCreateOrUpdate>(parameters);
+            var gateway = Assert.IsType<PLGatewayCapability>(parameters);
             // The ip version is canonicalized to the exact wire casing.
             Assert.Equal("IPv6", gateway.Properties.IPVersion);
         }

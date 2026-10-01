@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='capabilityName'>
         /// The name of the virtual network appliance capability.
         /// </param>
-        public static VirtualNetworkApplianceCapability CreateOrUpdate(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapabilityCreateOrUpdate parameters)
+        public static VirtualNetworkApplianceCapability CreateOrUpdate(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapability parameters)
         {
                 return ((IVirtualNetworkApplianceCapabilitiesOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, parameters).GetAwaiter().GetResult();
         }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkApplianceCapability> CreateOrUpdateAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapabilityCreateOrUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkApplianceCapability> CreateOrUpdateAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapability parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='capabilityName'>
         /// The name of the virtual network appliance capability.
         /// </param>
-        public static VirtualNetworkApplianceCapability BeginCreateOrUpdate(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapabilityCreateOrUpdate parameters)
+        public static VirtualNetworkApplianceCapability BeginCreateOrUpdate(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapability parameters)
         {
                 return ((IVirtualNetworkApplianceCapabilitiesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, parameters).GetAwaiter().GetResult();
         }
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkApplianceCapability> BeginCreateOrUpdateAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapabilityCreateOrUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkApplianceCapability> BeginCreateOrUpdateAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, VirtualNetworkApplianceCapability parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, parameters, null, cancellationToken).ConfigureAwait(false))
             {

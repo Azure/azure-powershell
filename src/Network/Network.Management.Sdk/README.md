@@ -46,7 +46,12 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkingOperations.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/serviceGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualNetwork.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualNetworkAppliance.json
+  # Pulled from a newer commit than $(commit) because this file now also defines the
+  # Virtual Network Appliance capability resource (Microsoft.Network/virtualNetworkAppliances/capabilities),
+  # added in https://github.com/Azure/azure-rest-api-specs/pull/46629. The 2026-03-01 version of this file
+  # is additive over 2026-01-01 (same pre-existing paths plus the new capability paths), so the
+  # VirtualNetworkAppliances* directive below pins the pre-existing operations back to 2026-01-01.
+  - https://github.com/Azure/azure-rest-api-specs/blob/b8522b0ea77d6fc7fbdc8f987ec749d06309b846/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-03-01/virtualNetworkAppliance.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualWan.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2018-10-01/vmssNetwork.json
 
@@ -84,6 +89,14 @@ directive:
   - from: IpamPoolsOperations.cs
     where: $
     transform: $ = $.replace(/string apiVersion = "2025-09-01";/g, 'string apiVersion = "2026-01-01";');
+# virtualNetworkAppliance.json is now pulled from the 2026-03-01 version (see the input-file
+# comment above) solely to pick up the new capability resource. Pin the pre-existing
+# VirtualNetworkAppliances operations back to 2026-01-01 so this upgrade does not change the
+# wire api-version of any already-released cmdlet; only VirtualNetworkApplianceCapabilities*
+# (new in this version) is meant to use 2026-03-01.
+  - from: VirtualNetworkAppliancesOperations.cs
+    where: $
+    transform: $ = $.replace(/string apiVersion = "2026-03-01";/g, 'string apiVersion = "2026-01-01";');
 # The 2025-09-01 service response returns resourceGuid at the resource root, while the
 # published swagger places it under properties. Move the schema property during generation
 # until the current and next API specifications are corrected.
