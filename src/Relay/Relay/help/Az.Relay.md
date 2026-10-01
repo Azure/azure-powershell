@@ -14,6 +14,18 @@ Microsoft Azure PowerShell: Relay cmdlets
 ### [Get-AzRelayAuthorizationRule](Get-AzRelayAuthorizationRule.md)
 Authorization rule for a namespace by name.
 
+### [Get-AzRelayCluster](Get-AzRelayCluster.md)
+Gets a Relay cluster.
+
+### [Get-AzRelayClusterAvailableClusterRegion](Get-AzRelayClusterAvailableClusterRegion.md)
+Lists regions containing available pre-provisioned Relay clusters.
+
+### [Get-AzRelayClusterNamespace](Get-AzRelayClusterNamespace.md)
+Lists Relay namespace resource IDs assigned to a Relay cluster.
+
+### [Get-AzRelayClusterSku](Get-AzRelayClusterSku.md)
+Lists SKUs supported by a Relay cluster.
+
 ### [Get-AzRelayHybridConnection](Get-AzRelayHybridConnection.md)
 Returns the description for the specified hybrid connection.
 
@@ -31,6 +43,9 @@ Returns the description for the specified WCF relay.
 
 ### [New-AzRelayAuthorizationRule](New-AzRelayAuthorizationRule.md)
 Create an authorization rule for a namespace.
+
+### [New-AzRelayCluster](New-AzRelayCluster.md)
+Create a Relay cluster.
 
 ### [New-AzRelayHybridConnection](New-AzRelayHybridConnection.md)
 Create a service hybrid connection.
@@ -52,6 +67,9 @@ This operation is idempotent.
 ### [Remove-AzRelayAuthorizationRule](Remove-AzRelayAuthorizationRule.md)
 Deletes a namespace authorization rule.
 
+### [Remove-AzRelayCluster](Remove-AzRelayCluster.md)
+Deletes a Relay cluster.
+
 ### [Remove-AzRelayHybridConnection](Remove-AzRelayHybridConnection.md)
 Deletes a hybrid connection.
 
@@ -64,6 +82,9 @@ Deletes a WCF relay.
 
 ### [Set-AzRelayAuthorizationRule](Set-AzRelayAuthorizationRule.md)
 Creates or updates an authorization rule for a namespace.
+
+### [Set-AzRelayCluster](Set-AzRelayCluster.md)
+Update a Relay cluster.
 
 ### [Set-AzRelayHybridConnection](Set-AzRelayHybridConnection.md)
 Creates or updates a service hybrid connection.
@@ -78,6 +99,9 @@ This operation is idempotent.
 
 ### [Test-AzRelayName](Test-AzRelayName.md)
 Check the specified namespace name availability.
+
+### [Update-AzRelayCluster](Update-AzRelayCluster.md)
+Update mutable properties of a Relay cluster.
 
 ### [Update-AzRelayNamespace](Update-AzRelayNamespace.md)
 Update a namespace.
