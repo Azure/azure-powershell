@@ -1,8 +1,8 @@
 {
-  "Test-AzKeyVaultManagedHsmNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkMhsmNameAvailability?api-version=2024-11-01+1": {
+  "Test-AzKeyVaultManagedHsmNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkMhsmNameAvailability?api-version=2026-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkMhsmNameAvailability?api-version=2024-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkMhsmNameAvailability?api-version=2026-02-01",
       "Content": "{\r\n            \"name\": \"bezmshtsdfsf\"\r\n          }",
       "isContentBase64": false,
       "Headers": {
