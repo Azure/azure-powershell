@@ -166,7 +166,7 @@ $generalCommands = @(
         Name    = "Import Az.Accounts in Parallel (Process)"
         Command = {
             if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT) {
-                Write-Warning "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
+                Write-Host "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
                 return
             }
             $importJobs = @()
@@ -268,6 +268,10 @@ $testInfo.FailureDetails | ForEach-Object {
     $_.Details | Write-Output
 }
 $testInfo.Times | Format-Table
+
+if ($testInfo.FailedTests.Count -gt 0) {
+    throw "Smoke test failed: $($testInfo.FailedTests.Count) of $($testInfo.TotalCount) test(s) failed: $($testInfo.FailedTests -join ', ')"
+}
 
 if ($testInfo.FailedTests.Count -gt 0) {
     throw ("Test run failed with " + $testInfo.FailedTests.Count + " failures.")
