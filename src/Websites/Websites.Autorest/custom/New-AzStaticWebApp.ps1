@@ -432,6 +432,7 @@ param(
         $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
         $variant = switch ($PSCmdlet.ParameterSetName) {
             'CreateExpanded' { 'CreateExpanded' }
+            'CreateViaIdentityExpanded' { 'CreateExpanded' }
             'CreateViaJsonFilePath' { 'CreateViaJsonFilePath' }
             'CreateViaJsonString' { 'CreateViaJsonString' }
         }
@@ -449,6 +450,38 @@ param(
 
     process {
         try {
+            if ($PSCmdlet.ParameterSetName -eq 'CreateViaIdentityExpanded') {
+                if ($InputObject.Id) {
+                    $resourceId = [System.Uri]::UnescapeDataString($InputObject.Id)
+                    $resourceIdMatch = [System.Text.RegularExpressions.Regex]::Match(
+                        $resourceId,
+                        '^/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft\.Web/staticSites/([^/]+)$',
+                        [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
+                    if (-not $resourceIdMatch.Success) {
+                        throw [System.ArgumentException]::new("InputObject.Id '$($InputObject.Id)' is not a valid static web app resource ID.", 'InputObject')
+                    }
+
+                    $SubscriptionId = [System.Uri]::UnescapeDataString($resourceIdMatch.Groups[1].Value)
+                    $ResourceGroupName = [System.Uri]::UnescapeDataString($resourceIdMatch.Groups[2].Value)
+                    $Name = [System.Uri]::UnescapeDataString($resourceIdMatch.Groups[3].Value)
+                } else {
+                    foreach ($propertyName in 'SubscriptionId', 'ResourceGroupName', 'Name') {
+                        if (-not $InputObject.$propertyName) {
+                            throw [System.ArgumentException]::new("InputObject has no value for $propertyName.", 'InputObject')
+                        }
+                    }
+
+                    $SubscriptionId = $InputObject.SubscriptionId
+                    $ResourceGroupName = $InputObject.ResourceGroupName
+                    $Name = $InputObject.Name
+                }
+
+                $null = $PSBoundParameters.Remove('InputObject')
+                $PSBoundParameters['SubscriptionId'] = $SubscriptionId
+                $PSBoundParameters['ResourceGroupName'] = $ResourceGroupName
+                $PSBoundParameters['Name'] = $Name
+            }
+
             if(!$PSBoundParameters.ContainsKey('RepositoryUrl')) {
                 $PSBoundParameters.RepositoryUrl = ''
             }
