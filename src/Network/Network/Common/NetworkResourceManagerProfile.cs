@@ -1819,6 +1819,8 @@ namespace Microsoft.Azure.Commands.Network
                 //// DDoS custom policy
 
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSDdosCustomPolicyMitigationRule, MNM.DdosMitigationRule>()
+                    .ConvertUsing(src => DdosCustomPolicyMitigationRuleUtils.ToSdk(src));
                 cfg.CreateMap<CNM.PSDdosCustomPolicy, MNM.DdosCustomPolicy>();
                 cfg.CreateMap<CNM.PSDdosCustomPolicyDetectionRule, MNM.DdosDetectionRule>()
                     .ForMember(
@@ -1836,6 +1838,8 @@ namespace Microsoft.Azure.Commands.Network
                         }));
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.DdosMitigationRule, CNM.PSDdosCustomPolicyMitigationRule>()
+                    .ConvertUsing(src => DdosCustomPolicyMitigationRuleUtils.FromSdk(src));
                 cfg.CreateMap<MNM.DdosCustomPolicy, CNM.PSDdosCustomPolicy>();
                 cfg.CreateMap<MNM.DdosDetectionRule, CNM.PSDdosCustomPolicyDetectionRule>()
                     .ForMember(
