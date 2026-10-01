@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.7.0
 * Added Change Safety support for additional cmdlets.
 * Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.
 
