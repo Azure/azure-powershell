@@ -18,22 +18,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<BackupManagementUsage> List(this IBackupUsageSummariesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupSummariesQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupSummariesQueryObject>), string skipToken = default(string))
+        public static Microsoft.Rest.Azure.IPage<BackupManagementUsage> List(this IBackupUsageSummariesOperations operations, string vaultName, string resourceGroupName, string filter = default(string), string skipToken = default(string))
         {
-                return ((IBackupUsageSummariesOperations)operations).ListAsync(vaultName, resourceGroupName, odataQuery, skipToken).GetAwaiter().GetResult();
+                return ((IBackupUsageSummariesOperations)operations).ListAsync(vaultName, resourceGroupName, filter, skipToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -42,15 +41,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -58,9 +56,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<BackupManagementUsage>> ListAsync(this IBackupUsageSummariesOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupSummariesQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupSummariesQueryObject>), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackupManagementUsage>> ListAsync(this IBackupUsageSummariesOperations operations, string vaultName, string resourceGroupName, string filter = default(string), string skipToken = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, odataQuery, skipToken, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, filter, skipToken, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Fetches the backup management usage summaries of the vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BackupManagementUsage> ListNext(this IBackupUsageSummariesOperations operations, string nextPageLink)
+        {
+                return ((IBackupUsageSummariesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Fetches the backup management usage summaries of the vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackupManagementUsage>> ListNextAsync(this IBackupUsageSummariesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

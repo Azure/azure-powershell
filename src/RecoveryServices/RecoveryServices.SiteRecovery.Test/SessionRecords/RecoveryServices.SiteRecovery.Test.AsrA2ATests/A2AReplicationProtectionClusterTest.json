@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamipowershelltest?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pcG93ZXJzaGVsbHRlc3Q/YXBpLXZlcnNpb249MjAyNi0wMS0wMQ==",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamipowershelltest?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pcG93ZXJzaGVsbHRlc3Q/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -73,8 +73,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamipowershelltest/extendedInformation/vaultExtendedInfo?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pcG93ZXJzaGVsbHRlc3QvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI2LTAxLTAx",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamipowershelltest/extendedInformation/vaultExtendedInfo?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pcG93ZXJzaGVsbHRlc3QvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI2LTA3LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -148,8 +148,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults?api-version=2026-01-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAyNi0wMS0wMQ==",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults?api-version=2026-07-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [

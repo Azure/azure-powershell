@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         Update = true,
         Description = @"Restore Criteria",
         SerializedName = @"restoreCriteria",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteria) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteria),typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteria) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteria> RestoreCriterion { get; set; }
 
     }

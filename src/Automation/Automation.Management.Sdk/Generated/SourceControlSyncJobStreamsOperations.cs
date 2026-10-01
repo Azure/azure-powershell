@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve a list of sync job streams identified by sync job id.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='sourceControlName'>
-        /// The source control name.
+        /// The name of source control.
         /// </param>
         /// <param name='sourceControlSyncJobId'>
         /// The source control sync job id.
@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Management.Automation
 
 
  
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -97,10 +98,6 @@ namespace Microsoft.Azure.Management.Automation
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
             }
             if (automationAccountName == null)
             {
@@ -114,12 +111,7 @@ namespace Microsoft.Azure.Management.Automation
 
 
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            string apiVersion = "2023-11-01";
+            string apiVersion = "2024-10-23";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -127,12 +119,12 @@ namespace Microsoft.Azure.Management.Automation
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
                 tracingParameters.Add("sourceControlName", sourceControlName);
                 tracingParameters.Add("sourceControlSyncJobId", sourceControlSyncJobId);
                 tracingParameters.Add("filter", filter);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -142,20 +134,20 @@ namespace Microsoft.Azure.Management.Automation
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
             _url = _url.Replace("{sourceControlName}", System.Uri.EscapeDataString(sourceControlName));
             _url = _url.Replace("{sourceControlSyncJobId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(sourceControlSyncJobId, this.Client.SerializationSettings).Trim('"')));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (filter != null)
-            {
-                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
-            }
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (filter != null)
+            {
+                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -286,13 +278,13 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve a sync job stream identified by stream id.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='sourceControlName'>
-        /// The source control name.
+        /// The name of source control.
         /// </param>
         /// <param name='sourceControlSyncJobId'>
         /// The source control sync job id.
@@ -327,6 +319,7 @@ namespace Microsoft.Azure.Management.Automation
 
 
  
+
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
@@ -340,10 +333,6 @@ namespace Microsoft.Azure.Management.Automation
                 if (resourceGroupName.Length < 1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
                 }
             }
             if (automationAccountName == null)
@@ -362,12 +351,7 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "streamId");
             }
 
-            if (this.Client.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-
-            string apiVersion = "2023-11-01";
+            string apiVersion = "2024-10-23";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -375,12 +359,12 @@ namespace Microsoft.Azure.Management.Automation
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("automationAccountName", automationAccountName);
                 tracingParameters.Add("sourceControlName", sourceControlName);
                 tracingParameters.Add("sourceControlSyncJobId", sourceControlSyncJobId);
                 tracingParameters.Add("streamId", streamId);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -390,12 +374,12 @@ namespace Microsoft.Azure.Management.Automation
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
             _url = _url.Replace("{sourceControlName}", System.Uri.EscapeDataString(sourceControlName));
             _url = _url.Replace("{sourceControlSyncJobId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(sourceControlSyncJobId, this.Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{streamId}", System.Uri.EscapeDataString(streamId));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)

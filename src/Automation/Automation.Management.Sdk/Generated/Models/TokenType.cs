@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class TokenType
     {
+        /// <summary>
+        /// PersonalAccessToken
+        /// </summary>
         public const string PersonalAccessToken = "PersonalAccessToken";
+        /// <summary>
+        /// Oauth
+        /// </summary>
         public const string Oauth = "Oauth";
     }
 }

@@ -116,6 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).AzureRbacDataAction = (System.Collections.Generic.List<string>) content.GetValueForProperty("AzureRbacDataAction",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).AzureRbacDataAction, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("RequiredAzureRoleDefinitionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).RequiredAzureRoleDefinitionId = (System.Collections.Generic.List<string>) content.GetValueForProperty("RequiredAzureRoleDefinitionId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).RequiredAzureRoleDefinitionId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("RuntimePropertyKind"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).RuntimePropertyKind = (string) content.GetValueForProperty("RuntimePropertyKind",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).RuntimePropertyKind, global::System.Convert.ToString);
@@ -176,6 +180,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             if (content.Contains("AzureRbacDataAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).AzureRbacDataAction = (System.Collections.Generic.List<string>) content.GetValueForProperty("AzureRbacDataAction",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).AzureRbacDataAction, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RequiredAzureRoleDefinitionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).RequiredAzureRoleDefinitionId = (System.Collections.Generic.List<string>) content.GetValueForProperty("RequiredAzureRoleDefinitionId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityTypePropertiesInternal)this).RequiredAzureRoleDefinitionId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("RuntimePropertyKind"))
             {

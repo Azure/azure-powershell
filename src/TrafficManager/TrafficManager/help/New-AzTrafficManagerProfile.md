@@ -18,7 +18,7 @@ New-AzTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-Profile
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
  -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
  [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-MaxReturn <Int64>]
- [-Tag <Hashtable>]
+ [-RecordType <String>] [-Tag <Hashtable>]
  [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
  [-ExpectedStatusCodeRange <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -236,6 +236,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecordType
+When RecordType is set, the Traffic Manager profile only allows endpoints that match the specified DNS record type.
+When it is not set, the profile allows endpoints of any supported type.
+Valid values are:
+
+- A
+- AAAA
+- CNAME
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: A, AAAA, CNAME
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RelativeDnsName
 Specifies the relative DNS name that this Traffic Manager profile provides.
 Traffic Manager combines this value and the DNS domain name that Azure Traffic Manager uses to form the fully qualified domain name (FQDN) of the profile.
@@ -349,5 +371,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzTrafficManagerProfile](./Remove-AzTrafficManagerProfile.md)
 
 [Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)
-
 

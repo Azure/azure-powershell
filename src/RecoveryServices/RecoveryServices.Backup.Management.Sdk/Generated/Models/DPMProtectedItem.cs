@@ -84,7 +84,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the protected item datasource.
+        /// </param>
+
         /// <param name="vaultId">ID of the vault which protects this item
+        /// </param>
+
+        /// <param name="sourceSideScanInfo">Source side threat information
         /// </param>
 
         /// <param name="friendlyName">Friendly name of the managed item
@@ -100,9 +106,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="extendedInfo">Extended info of the backup item.
         /// </param>
-        public DPMProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string vaultId = default(string), string friendlyName = default(string), string backupEngineName = default(string), string protectionState = default(string), DPMProtectedItemExtendedInfo extendedInfo = default(DPMProtectedItemExtendedInfo))
+        public DPMProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string sourceLocation = default(string), string vaultId = default(string), SourceSideScanInfo sourceSideScanInfo = default(SourceSideScanInfo), string friendlyName = default(string), string backupEngineName = default(string), string protectionState = default(string), DPMProtectedItemExtendedInfo extendedInfo = default(DPMProtectedItemExtendedInfo))
 
-        : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriodInDays, vaultId)
+        : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriodInDays, sourceLocation, vaultId, sourceSideScanInfo)
         {
             this.FriendlyName = friendlyName;
             this.BackupEngineName = backupEngineName;

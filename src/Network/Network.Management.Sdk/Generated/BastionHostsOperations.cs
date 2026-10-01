@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2025-09-01";
+            string apiVersion = "2026-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2025-09-01";
+            string apiVersion = "2026-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-09-01";
+            string apiVersion = "2026-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the Bastion Host.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to update BastionHost tags.
+        /// Parameters supplied to update BastionHost tags or identity.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -701,10 +701,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> UpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHostUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<BastionHost> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<BastionHost> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -802,7 +802,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-09-01";
+            string apiVersion = "2026-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -996,7 +996,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the Bastion Host.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to update BastionHost tags.
+        /// Parameters supplied to update BastionHost tags or identity.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHostUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1054,7 +1054,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-09-01";
+            string apiVersion = "2026-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("parameters", parameters);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateTags", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
             }
             // Construct URL
 
@@ -1278,7 +1278,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-09-01";
+            string apiVersion = "2026-01-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

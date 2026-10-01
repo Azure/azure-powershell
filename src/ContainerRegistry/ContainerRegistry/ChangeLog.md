@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 
 ## Version 5.1.0
 * Added ChangeSafety Support

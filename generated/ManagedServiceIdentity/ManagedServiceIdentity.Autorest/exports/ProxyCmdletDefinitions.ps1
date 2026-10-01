@@ -968,6 +968,33 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ManagedServiceIdentity.private\New-AzFederatedIdentityCredential_CreateExpanded';
+        CreateViaJsonFilePath = 'Az.ManagedServiceIdentity.private\New-AzFederatedIdentityCredential_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ManagedServiceIdentity.private\New-AzFederatedIdentityCredential_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -1178,6 +1205,33 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateExpanded = 'Az.ManagedServiceIdentity.private\New-AzUserAssignedIdentity_CreateExpanded';
+        CreateViaJsonFilePath = 'Az.ManagedServiceIdentity.private\New-AzUserAssignedIdentity_CreateViaJsonFilePath';
+        CreateViaJsonString = 'Az.ManagedServiceIdentity.private\New-AzUserAssignedIdentity_CreateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {
@@ -1398,6 +1452,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ManagedServiceIdentity.private\Remove-AzFederatedIdentityCredential_Delete';
+        DeleteViaIdentity = 'Az.ManagedServiceIdentity.private\Remove-AzFederatedIdentityCredential_DeleteViaIdentity';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -1607,6 +1687,32 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.ManagedServiceIdentity.private\Remove-AzUserAssignedIdentity_Delete';
+        DeleteViaIdentity = 'Az.ManagedServiceIdentity.private\Remove-AzUserAssignedIdentity_DeleteViaIdentity';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {
@@ -1865,6 +1971,34 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ManagedServiceIdentity.private\Update-AzFederatedIdentityCredential_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ManagedServiceIdentity.private\Update-AzFederatedIdentityCredential_UpdateViaIdentityExpanded';
+        UpdateViaJsonFilePath = 'Az.ManagedServiceIdentity.private\Update-AzFederatedIdentityCredential_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.ManagedServiceIdentity.private\Update-AzFederatedIdentityCredential_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null
@@ -2106,6 +2240,34 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.ManagedServiceIdentity.private\Update-AzUserAssignedIdentity_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.ManagedServiceIdentity.private\Update-AzUserAssignedIdentity_UpdateViaIdentityExpanded';
+        UpdateViaJsonFilePath = 'Az.ManagedServiceIdentity.private\Update-AzUserAssignedIdentity_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.ManagedServiceIdentity.private\Update-AzUserAssignedIdentity_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {

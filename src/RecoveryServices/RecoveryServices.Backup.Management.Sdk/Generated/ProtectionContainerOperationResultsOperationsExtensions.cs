@@ -18,26 +18,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// backupFabrics
         /// </param>
         /// <param name='containerName'>
-        /// Container name whose information should be fetched.
+        /// The name of the ProtectionContainerResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be
-        /// fetched.
+        /// The name of the ProtectionContainerResource
         /// </param>
-        public static ProtectionContainerResource Get(this IProtectionContainerOperationResultsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string operationId)
+        public static ProtectionContainerResource Get(this IProtectionContainerOperationResultsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string operationId)
         {
-                return ((IProtectionContainerOperationResultsOperations)operations).GetAsync(vaultName, resourceGroupName, fabricName, containerName, operationId).GetAwaiter().GetResult();
+                return ((IProtectionContainerOperationResultsOperations)operations).GetAsync(resourceGroupName, vaultName, fabricName, containerName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -46,29 +44,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the container.
+        /// backupFabrics
         /// </param>
         /// <param name='containerName'>
-        /// Container name whose information should be fetched.
+        /// The name of the ProtectionContainerResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be
-        /// fetched.
+        /// The name of the ProtectionContainerResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionContainerResource> GetAsync(this IProtectionContainerOperationResultsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionContainerResource> GetAsync(this IProtectionContainerOperationResultsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

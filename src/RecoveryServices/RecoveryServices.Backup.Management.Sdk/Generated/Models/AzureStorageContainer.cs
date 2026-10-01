@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="protectableObjectType">Type of the protectable object associated with this container
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the container
+        /// </param>
+
         /// <param name="sourceResourceId">Fully qualified ARM url.
         /// </param>
 
@@ -59,9 +62,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="operationType">Re-Do Operation
         /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;, &#39;Rehydrate&#39;</param>
-        public AzureStorageContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), string storageAccountVersion = default(string), string resourceGroup = default(string), long? protectedItemCount = default(long?), string acquireStorageAccountLock = default(string), string operationType = default(string))
 
-        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)
+        /// <param name="accessType">Whether access to the storage account is key-based or identity-based.
+        /// When `IdentityBased`, `identityInfo` must be provided to identify the
+        /// managed identity used to access the storage account.
+        /// Possible values include: &#39;KeyBased&#39;, &#39;IdentityBased&#39;</param>
+
+        /// <param name="identityInfo">Managed identity information required to access the storage account.
+        /// </param>
+        public AzureStorageContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceLocation = default(string), string sourceResourceId = default(string), string storageAccountVersion = default(string), string resourceGroup = default(string), long? protectedItemCount = default(long?), string acquireStorageAccountLock = default(string), string operationType = default(string), string accessType = default(string), IdentityInfo identityInfo = default(IdentityInfo))
+
+        : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType, sourceLocation)
         {
             this.SourceResourceId = sourceResourceId;
             this.StorageAccountVersion = storageAccountVersion;
@@ -69,6 +80,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.ProtectedItemCount = protectedItemCount;
             this.AcquireStorageAccountLock = acquireStorageAccountLock;
             this.OperationType = operationType;
+            this.AccessType = accessType;
+            this.IdentityInfo = identityInfo;
             CustomInit();
         }
 
@@ -114,5 +127,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "operationType")]
         public string OperationType {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether access to the storage account is key-based or
+        /// identity-based.
+        /// When `IdentityBased`, `identityInfo` must be provided to identify the
+        /// managed identity used to access the storage account. Possible values include: &#39;KeyBased&#39;, &#39;IdentityBased&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accessType")]
+        public string AccessType {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed identity information required to access the storage
+        /// account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identityInfo")]
+        public IdentityInfo IdentityInfo {get; set; }
     }
 }

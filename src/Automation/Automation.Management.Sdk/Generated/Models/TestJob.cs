@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="logActivityTrace">The activity-level tracing options of the runbook.
         /// </param>
-        public TestJob(System.DateTimeOffset creationTime = default(System.DateTimeOffset), string status = default(string), string statusDetails = default(string), string runOn = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string exception = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), System.DateTimeOffset? lastStatusModifiedTime = default(System.DateTimeOffset?), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), int? logActivityTrace = default(int?))
+        public TestJob(System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string status = default(string), string statusDetails = default(string), string runOn = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string exception = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastStatusModifiedTime = default(System.DateTimeOffset?), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), int? logActivityTrace = default(int?))
 
         {
             this.CreationTime = creationTime;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time of the test job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the status of the test job.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the last modified time of the test job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last status modified time of the test job.

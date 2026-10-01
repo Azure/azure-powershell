@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class ScheduleFrequency
     {
+        /// <summary>
+        /// OneTime
+        /// </summary>
         public const string OneTime = "OneTime";
+        /// <summary>
+        /// Day
+        /// </summary>
         public const string Day = "Day";
+        /// <summary>
+        /// Hour
+        /// </summary>
         public const string Hour = "Hour";
+        /// <summary>
+        /// Week
+        /// </summary>
         public const string Week = "Week";
+        /// <summary>
+        /// Month
+        /// </summary>
         public const string Month = "Month";
         /// <summary>
         /// The minimum allowed interval for Minute schedules is 15 minutes.

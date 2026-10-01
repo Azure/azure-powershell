@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<MaintenanceConfiguration> List(this IPublicMaintenanceConfigurationsOperations operations)
+        public static Microsoft.Rest.Azure.IPage<MaintenanceConfiguration> List(this IPublicMaintenanceConfigurationsOperations operations)
         {
                 return ((IPublicMaintenanceConfigurationsOperations)operations).ListAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<MaintenanceConfiguration>> ListAsync(this IPublicMaintenanceConfigurationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>> ListAsync(this IPublicMaintenanceConfigurationsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         public static MaintenanceConfiguration Get(this IPublicMaintenanceConfigurationsOperations operations, string resourceName)
         {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceName'>
-        /// Maintenance Configuration Name
+        /// The name of the MaintenanceConfiguration
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -68,6 +68,39 @@ namespace Microsoft.Azure.Management.Maintenance
         public static async System.Threading.Tasks.Task<MaintenanceConfiguration> GetAsync(this IPublicMaintenanceConfigurationsOperations operations, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get Public Maintenance Configuration records
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<MaintenanceConfiguration> ListNext(this IPublicMaintenanceConfigurationsOperations operations, string nextPageLink)
+        {
+                return ((IPublicMaintenanceConfigurationsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get Public Maintenance Configuration records
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<MaintenanceConfiguration>> ListNextAsync(this IPublicMaintenanceConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

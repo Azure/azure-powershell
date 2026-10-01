@@ -31,6 +31,10 @@
     {
       "serviceDatasourceType": "Microsoft.DocumentDB/databaseAccounts",
       "clientDatasourceType": "AzureCosmosDB"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",
+      "clientDatasourceType": "AzureElasticSAN"
     }
   ]
 }

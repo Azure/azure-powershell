@@ -13,70 +13,13 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class JobStreamOperationsExtensions
     {
         /// <summary>
-        /// Retrieve the job stream identified by job stream id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='jobName'>
-        /// The job name.
-        /// </param>
-        /// <param name='jobStreamId'>
-        /// The job stream id.
-        /// </param>
-        /// <param name='clientRequestId'>
-        /// Identifies this specific client request.
-        /// </param>
-        public static JobStream Get(this IJobStreamOperations operations, string resourceGroupName, string automationAccountName, string jobName, string jobStreamId, string clientRequestId = default(string))
-        {
-                return ((IJobStreamOperations)operations).GetAsync(resourceGroupName, automationAccountName, jobName, jobStreamId, clientRequestId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieve the job stream identified by job stream id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='jobName'>
-        /// The job name.
-        /// </param>
-        /// <param name='jobStreamId'>
-        /// The job stream id.
-        /// </param>
-        /// <param name='clientRequestId'>
-        /// Identifies this specific client request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<JobStream> GetAsync(this IJobStreamOperations operations, string resourceGroupName, string automationAccountName, string jobName, string jobStreamId, string clientRequestId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, jobName, jobStreamId, clientRequestId, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieve a list of jobs streams identified by job name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -102,7 +45,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -122,6 +65,63 @@ namespace Microsoft.Azure.Management.Automation
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobStream>> ListByJobAsync(this IJobStreamOperations operations, string resourceGroupName, string automationAccountName, string jobName, string filter = default(string), string clientRequestId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByJobWithHttpMessagesAsync(resourceGroupName, automationAccountName, jobName, filter, clientRequestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieve the job stream identified by job stream id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='jobName'>
+        /// The job name.
+        /// </param>
+        /// <param name='jobStreamId'>
+        /// The job stream id.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// Identifies this specific client request.
+        /// </param>
+        public static JobStream Get(this IJobStreamOperations operations, string resourceGroupName, string automationAccountName, string jobName, string jobStreamId, string clientRequestId = default(string))
+        {
+                return ((IJobStreamOperations)operations).GetAsync(resourceGroupName, automationAccountName, jobName, jobStreamId, clientRequestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieve the job stream identified by job stream id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='jobName'>
+        /// The job name.
+        /// </param>
+        /// <param name='jobStreamId'>
+        /// The job stream id.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// Identifies this specific client request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<JobStream> GetAsync(this IJobStreamOperations operations, string resourceGroupName, string automationAccountName, string jobName, string jobStreamId, string clientRequestId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, automationAccountName, jobName, jobStreamId, clientRequestId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

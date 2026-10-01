@@ -65,9 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return;
             }
+            {_customerDataStorage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("customerDataStorage"), out var __jsonCustomerDataStorage) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.CustomerDataStorageProperties.FromJson(__jsonCustomerDataStorage) : _customerDataStorage;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_step = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("steps"), out var __jsonSteps) ? If( __jsonSteps as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep) (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Step.FromJson(__u) )) ))() : null : _step;}
-            {_selector = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("selectors"), out var __jsonSelectors) ? If( __jsonSelectors as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector) (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Selector.FromJson(__p) )) ))() : null : _selector;}
+            {_step = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("steps"), out var __jsonSteps) ? If( __jsonSteps as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentStep) (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentStep.FromJson(__u) )) ))() : null : _step;}
+            {_selector = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("selectors"), out var __jsonSelectors) ? If( __jsonSelectors as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosTargetSelector) (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosTargetSelector.FromJson(__p) )) ))() : null : _selector;}
             AfterFromJson(json);
         }
 
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return container;
             }
+            AddIf( null != this._customerDataStorage ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._customerDataStorage.ToJson(null,serializationMode) : null, "customerDataStorage" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

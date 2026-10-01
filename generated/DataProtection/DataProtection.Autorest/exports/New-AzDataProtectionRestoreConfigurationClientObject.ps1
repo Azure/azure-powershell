@@ -133,7 +133,23 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Staging storage account Id for restore.
-    ${StagingStorageAccountId}
+    ${StagingStorageAccountId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # List of source volume names to be restored.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # The service currently supports exactly one volume per restore request.
+    ${ResourceIdentifier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Collections.Hashtable]
+    # Map of source volume name to target volume name to restore into.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # Any source name not included will be restored with a default naming format.
+    ${ResourceNameOverride}
 )
 
 begin {

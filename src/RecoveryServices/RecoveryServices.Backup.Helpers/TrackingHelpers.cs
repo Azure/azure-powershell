@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             where T : ServiceClientModel.OperationStatus
         {
             var operationId = response.Response.Headers.GetOperationResultId();
+
             var opStatusResponse = getOpStatus(operationId);
 
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
@@ -178,6 +179,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             where T : ServiceClientModel.ProtectionContainerResource
         {
             var operationId = response.Response.Headers.GetOperationResultId();
+
             var opStatusResponse = getOpStatus(operationId);
 
             string testMode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
@@ -208,6 +210,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             Func<string, PrepareDataMoveResponse> getCorrelationId)
         {
             var operationId = response.Response.Headers.GetAzureAsyncOperationId();
+
             var opStatusResponse = getCorrelationId(operationId);
             return opStatusResponse;
         }

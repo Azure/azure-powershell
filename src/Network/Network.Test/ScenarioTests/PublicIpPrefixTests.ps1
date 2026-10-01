@@ -116,6 +116,56 @@ function Test-PublicIpPrefixCRUD
 
 <#
 .SYNOPSIS
+Tests associating a first party service tag with a public IP prefix.
+#>
+function Test-PublicIpPrefixFirstPartyServiceTag
+{
+    $resourceGroupName = Get-ResourceGroupName
+    $serviceTagName = Get-ResourceName
+    $publicIpPrefixName = Get-ResourceName
+    $location = Get-ProviderLocation ResourceManagement "eastus2euap"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $serviceTag = New-AzFirstPartyServiceTag `
+            -ResourceGroupName $resourceGroupName `
+            -Name $serviceTagName `
+            -Location $location `
+            -Value "/NrpBIServiceTag"
+
+        $ipTag = [Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefixTag]@{
+            IpTagType = "FirstPartyUsage"
+            Tag = "/NrpBIServiceTag"
+            FirstPartyServiceTagId = $serviceTag.Id
+        }
+
+        $created = New-AzPublicIpPrefix `
+            -ResourceGroupName $resourceGroupName `
+            -Name $publicIpPrefixName `
+            -Location $location `
+            -Sku Standard `
+            -PrefixLength 30 `
+            -IpAddressVersion IPv4 `
+            -IpTag $ipTag
+
+        Assert-AreEqual $serviceTag.Id $created.IpTags[0].FirstPartyServiceTagId
+
+        $retrieved = Get-AzPublicIpPrefix `
+            -ResourceGroupName $resourceGroupName `
+            -Name $publicIpPrefixName
+
+        Assert-AreEqual $serviceTag.Id $retrieved.IpTags[0].FirstPartyServiceTagId
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpPrefix.
 #>
 function Test-GlobalPublicIpPrefixCRUD

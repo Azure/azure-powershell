@@ -454,6 +454,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapacityReservationFutureReservation()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationFutureReservation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMwithSSHKey()
         {
             TestRunner.RunTestScript("Test-VMwithSSHKey");
@@ -520,6 +527,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMProcessorModeFeatures()
         {
             TestRunner.RunTestScript("Test-VMProcessorModeFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSpotPlusPriority()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSpotPlusPriority");
         }
 
         [Fact]
@@ -660,6 +674,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestCapacityReservationSharingProfile()
         {
             TestRunner.RunTestScript("Test-CapacityReservationSharingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestOpenCapacityReservationGroup()
+        {
+            TestRunner.RunTestScript("Test-OpenCapacityReservationGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDisableCapacityReservationAssignment()
+        {
+            TestRunner.RunTestScript("Test-VMDisableCapacityReservationAssignment");
         }
 
         [Fact]

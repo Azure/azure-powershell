@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Extensions;
 
-    /// <summary>Model that represents the base action model. 9 total per experiment.</summary>
+    /// <summary>Model that represents an Action resource.</summary>
     public partial class Action
     {
 
@@ -65,42 +65,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return;
             }
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ProxyResource(json);
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 
         /// <summary>
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction.
-        /// Note: the Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction interface is polymorphic, and the precise model class
-        /// that will get deserialized is determined at runtime based on the payload.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>an instance of Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction FromJson(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode node)
         {
-            if (!(node is Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject json))
-            {
-                return null;
-            }
-            // Polymorphic type -- select the appropriate constructor using the discriminator
-
-            switch ( json.StringProperty("type") )
-            {
-                case "delay":
-                {
-                    return new DelayAction(json);
-                }
-                case "discrete":
-                {
-                    return new DiscreteAction(json);
-                }
-                case "continuous":
-                {
-                    return new ContinuousAction(json);
-                }
-            }
-            return new Action(json);
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject json ? new Action(json) : null;
         }
 
         /// <summary>
@@ -122,8 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            __proxyResource?.ToJson(container, serializationMode);
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

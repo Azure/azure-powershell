@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="startDate">Gets or sets the start date of the resource.
         /// </param>
-        public DscReportResource(string resourceId = default(string), string sourceInfo = default(string), System.Collections.Generic.IList<DscReportResourceNavigation> dependsOn = default(System.Collections.Generic.IList<DscReportResourceNavigation>), string moduleName = default(string), string moduleVersion = default(string), string resourceName = default(string), string error = default(string), string status = default(string), double? durationInSeconds = default(double?), System.DateTimeOffset startDate = default(System.DateTimeOffset))
+        public DscReportResource(string resourceId = default(string), string sourceInfo = default(string), System.Collections.Generic.IList<DscReportResourceNavigation> dependsOn = default(System.Collections.Generic.IList<DscReportResourceNavigation>), string moduleName = default(string), string moduleVersion = default(string), string resourceName = default(string), string error = default(string), string status = default(string), double? durationInSeconds = default(double?), System.DateTimeOffset? startDate = default(System.DateTimeOffset?))
 
         {
             this.ResourceId = resourceId;
@@ -135,6 +135,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the start date of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "startDate")]
-        public System.DateTimeOffset StartDate {get; set; }
+        public System.DateTimeOffset? StartDate {get; set; }
     }
 }

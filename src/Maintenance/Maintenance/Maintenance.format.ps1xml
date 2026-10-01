@@ -91,5 +91,52 @@
         </CustomEntries>
       </CustomControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Maintenance.Models.MaintenanceError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Maintenance.Models.MaintenanceError</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>$_ | ConvertTo-Json -Depth 10</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  if ($null -eq $_.Error) {
+                    $_ | ConvertTo-Json -Depth 10
+                  } else {
+                    $errorDisplay = [ordered]@{
+                      Code = $_.Error.Code
+                      Message = $_.Error.Message
+                    }
+                    if ($null -ne $_.Error.Details) {
+                      $errorDisplay['Details'] = $_.Error.Details
+                    }
+                    [ordered]@{ Error = $errorDisplay } | ConvertTo-Json -Depth 10
+                  }
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

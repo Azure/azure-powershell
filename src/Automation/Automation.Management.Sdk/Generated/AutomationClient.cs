@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Automation
     using Models;
 
     /// <summary>
-    /// APIs for managing software update configurations.
+    /// Automation Client
     /// </summary>
     public partial class AutomationClient : Microsoft.Rest.ServiceClient<AutomationClient>, IAutomationClient, IAzureClient
     {
@@ -33,11 +33,9 @@ namespace Microsoft.Azure.Management.Automation
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -58,53 +56,77 @@ namespace Microsoft.Azure.Management.Automation
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
+        /// Gets the IOperations
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+        /// <summary>
+        /// Gets the IAutomationAccountOperations
+        /// </summary>
+        public virtual IAutomationAccountOperations AutomationAccount { get; private set; }
+        /// <summary>
+        /// Gets the IDeletedAutomationAccountsOperations
+        /// </summary>
+        public virtual IDeletedAutomationAccountsOperations DeletedAutomationAccounts { get; private set; }
+        /// <summary>
         /// Gets the IAgentRegistrationInformationOperations
         /// </summary>
         public virtual IAgentRegistrationInformationOperations AgentRegistrationInformation { get; private set; }
-        /// <summary>
-        /// Gets the IDscNodeOperations
-        /// </summary>
-        public virtual IDscNodeOperations DscNode { get; private set; }
-        /// <summary>
-        /// Gets the INodeReportsOperations
-        /// </summary>
-        public virtual INodeReportsOperations NodeReports { get; private set; }
-        /// <summary>
-        /// Gets the IDscNodeConfigurationOperations
-        /// </summary>
-        public virtual IDscNodeConfigurationOperations DscNodeConfiguration { get; private set; }
-        /// <summary>
-        /// Gets the IDscCompilationJobOperations
-        /// </summary>
-        public virtual IDscCompilationJobOperations DscCompilationJob { get; private set; }
-        /// <summary>
-        /// Gets the IDscCompilationJobStreamOperations
-        /// </summary>
-        public virtual IDscCompilationJobStreamOperations DscCompilationJobStream { get; private set; }
         /// <summary>
         /// Gets the ICertificateOperations
         /// </summary>
         public virtual ICertificateOperations Certificate { get; private set; }
         /// <summary>
+        /// Gets the IDscConfigurationOperations
+        /// </summary>
+        public virtual IDscConfigurationOperations DscConfiguration { get; private set; }
+        /// <summary>
+        /// Gets the IConnectionTypeOperations
+        /// </summary>
+        public virtual IConnectionTypeOperations ConnectionType { get; private set; }
+        /// <summary>
+        /// Gets the IConnectionOperations
+        /// </summary>
+        public virtual IConnectionOperations Connection { get; private set; }
+        /// <summary>
         /// Gets the ICredentialOperations
         /// </summary>
         public virtual ICredentialOperations Credential { get; private set; }
+        /// <summary>
+        /// Gets the IHybridRunbookWorkerGroupOperations
+        /// </summary>
+        public virtual IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; private set; }
+        /// <summary>
+        /// Gets the IHybridRunbookWorkersOperations
+        /// </summary>
+        public virtual IHybridRunbookWorkersOperations HybridRunbookWorkers { get; private set; }
         /// <summary>
         /// Gets the IJobScheduleOperations
         /// </summary>
         public virtual IJobScheduleOperations JobSchedule { get; private set; }
         /// <summary>
-        /// Gets the IScheduleOperations
+        /// Gets the IJobOperations
         /// </summary>
-        public virtual IScheduleOperations Schedule { get; private set; }
+        public virtual IJobOperations Job { get; private set; }
         /// <summary>
-        /// Gets the IActivityOperations
+        /// Gets the IJobStreamOperations
         /// </summary>
-        public virtual IActivityOperations Activity { get; private set; }
+        public virtual IJobStreamOperations JobStream { get; private set; }
+        /// <summary>
+        /// Gets the ILinkedWorkspaceOperations
+        /// </summary>
+        public virtual ILinkedWorkspaceOperations LinkedWorkspace { get; private set; }
+        /// <summary>
+        /// Gets the IKeysOperations
+        /// </summary>
+        public virtual IKeysOperations Keys { get; private set; }
         /// <summary>
         /// Gets the IModuleOperations
         /// </summary>
         public virtual IModuleOperations Module { get; private set; }
+        /// <summary>
+        /// Gets the IActivityOperations
+        /// </summary>
+        public virtual IActivityOperations Activity { get; private set; }
         /// <summary>
         /// Gets the IObjectDataTypesOperations
         /// </summary>
@@ -114,17 +136,77 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual IFieldsOperations Fields { get; private set; }
         /// <summary>
-        /// Gets the IVariableOperations
+        /// Gets the IDscNodeConfigurationOperations
         /// </summary>
-        public virtual IVariableOperations Variable { get; private set; }
+        public virtual IDscNodeConfigurationOperations DscNodeConfiguration { get; private set; }
         /// <summary>
-        /// Gets the IConnectionOperations
+        /// Gets the INodeCountInformationOperations
         /// </summary>
-        public virtual IConnectionOperations Connection { get; private set; }
+        public virtual INodeCountInformationOperations NodeCountInformation { get; private set; }
         /// <summary>
-        /// Gets the IConnectionTypeOperations
+        /// Gets the IDscNodeOperations
         /// </summary>
-        public virtual IConnectionTypeOperations ConnectionType { get; private set; }
+        public virtual IDscNodeOperations DscNode { get; private set; }
+        /// <summary>
+        /// Gets the INodeReportsOperations
+        /// </summary>
+        public virtual INodeReportsOperations NodeReports { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+        /// <summary>
+        /// Gets the IPython2PackageOperations
+        /// </summary>
+        public virtual IPython2PackageOperations Python2Package { get; private set; }
+        /// <summary>
+        /// Gets the IPython3PackageOperations
+        /// </summary>
+        public virtual IPython3PackageOperations Python3Package { get; private set; }
+        /// <summary>
+        /// Gets the IRunbookOperations
+        /// </summary>
+        public virtual IRunbookOperations Runbook { get; private set; }
+        /// <summary>
+        /// Gets the IRunbookDraftOperations
+        /// </summary>
+        public virtual IRunbookDraftOperations RunbookDraft { get; private set; }
+        /// <summary>
+        /// Gets the ITestJobOperations
+        /// </summary>
+        public virtual ITestJobOperations TestJob { get; private set; }
+        /// <summary>
+        /// Gets the ITestJobStreamsOperations
+        /// </summary>
+        public virtual ITestJobStreamsOperations TestJobStreams { get; private set; }
+        /// <summary>
+        /// Gets the IRuntimeEnvironmentsOperations
+        /// </summary>
+        public virtual IRuntimeEnvironmentsOperations RuntimeEnvironments { get; private set; }
+        /// <summary>
+        /// Gets the IPackageOperations
+        /// </summary>
+        public virtual IPackageOperations Package { get; private set; }
+        /// <summary>
+        /// Gets the IScheduleOperations
+        /// </summary>
+        public virtual IScheduleOperations Schedule { get; private set; }
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; private set; }
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationRunsOperations
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; private set; }
+        /// <summary>
+        /// Gets the ISoftwareUpdateConfigurationsOperations
+        /// </summary>
+        public virtual ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; private set; }
         /// <summary>
         /// Gets the ISourceControlOperations
         /// </summary>
@@ -138,34 +220,6 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual ISourceControlSyncJobStreamsOperations SourceControlSyncJobStreams { get; private set; }
         /// <summary>
-        /// Gets the IDscConfigurationOperations
-        /// </summary>
-        public virtual IDscConfigurationOperations DscConfiguration { get; private set; }
-        /// <summary>
-        /// Gets the IJobOperations
-        /// </summary>
-        public virtual IJobOperations Job { get; private set; }
-        /// <summary>
-        /// Gets the IJobStreamOperations
-        /// </summary>
-        public virtual IJobStreamOperations JobStream { get; private set; }
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationsOperations
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationsOperations SoftwareUpdateConfigurations { get; private set; }
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationRunsOperations
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationRunsOperations SoftwareUpdateConfigurationRuns { get; private set; }
-        /// <summary>
-        /// Gets the ISoftwareUpdateConfigurationMachineRunsOperations
-        /// </summary>
-        public virtual ISoftwareUpdateConfigurationMachineRunsOperations SoftwareUpdateConfigurationMachineRuns { get; private set; }
-        /// <summary>
-        /// Gets the IAutomationAccountOperations
-        /// </summary>
-        public virtual IAutomationAccountOperations AutomationAccount { get; private set; }
-        /// <summary>
         /// Gets the IStatisticsOperations
         /// </summary>
         public virtual IStatisticsOperations Statistics { get; private set; }
@@ -174,45 +228,25 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
         /// <summary>
-        /// Gets the IKeysOperations
+        /// Gets the IVariableOperations
         /// </summary>
-        public virtual IKeysOperations Keys { get; private set; }
+        public virtual IVariableOperations Variable { get; private set; }
+        /// <summary>
+        /// Gets the IWatcherOperations
+        /// </summary>
+        public virtual IWatcherOperations Watcher { get; private set; }
         /// <summary>
         /// Gets the IWebhookOperations
         /// </summary>
         public virtual IWebhookOperations Webhook { get; private set; }
         /// <summary>
-        /// Gets the IRunbookDraftOperations
+        /// Gets the IDscCompilationJobOperations
         /// </summary>
-        public virtual IRunbookDraftOperations RunbookDraft { get; private set; }
+        public virtual IDscCompilationJobOperations DscCompilationJob { get; private set; }
         /// <summary>
-        /// Gets the IRunbookOperations
+        /// Gets the IDscCompilationJobStreamOperations
         /// </summary>
-        public virtual IRunbookOperations Runbook { get; private set; }
-        /// <summary>
-        /// Gets the ITestJobStreamsOperations
-        /// </summary>
-        public virtual ITestJobStreamsOperations TestJobStreams { get; private set; }
-        /// <summary>
-        /// Gets the ITestJobOperations
-        /// </summary>
-        public virtual ITestJobOperations TestJob { get; private set; }
-        /// <summary>
-        /// Gets the IPowerShell72ModuleOperations
-        /// </summary>
-        public virtual IPowerShell72ModuleOperations PowerShell72Module { get; private set; }
-        /// <summary>
-        /// Gets the IHybridRunbookWorkersOperations
-        /// </summary>
-        public virtual IHybridRunbookWorkersOperations HybridRunbookWorkers { get; private set; }
-        /// <summary>
-        /// Gets the IHybridRunbookWorkerGroupOperations
-        /// </summary>
-        public virtual IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; private set; }
-        /// <summary>
-        /// Gets the IPython3PackageOperations
-        /// </summary>
-        public virtual IPython3PackageOperations Python3Package { get; private set; }
+        public virtual IDscCompilationJobStreamOperations DscCompilationJobStream { get; private set; }
         /// <summary>
         /// Initializes a new instance of the AutomationClient class.
         /// </summary>
@@ -417,6 +451,9 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -448,45 +485,54 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         private void Initialize()
         {
+            this.Operations = new Operations(this);
+            this.AutomationAccount = new AutomationAccountOperations(this);
+            this.DeletedAutomationAccounts = new DeletedAutomationAccountsOperations(this);
             this.AgentRegistrationInformation = new AgentRegistrationInformationOperations(this);
-            this.DscNode = new DscNodeOperations(this);
-            this.NodeReports = new NodeReportsOperations(this);
-            this.DscNodeConfiguration = new DscNodeConfigurationOperations(this);
-            this.DscCompilationJob = new DscCompilationJobOperations(this);
-            this.DscCompilationJobStream = new DscCompilationJobStreamOperations(this);
             this.Certificate = new CertificateOperations(this);
+            this.DscConfiguration = new DscConfigurationOperations(this);
+            this.ConnectionType = new ConnectionTypeOperations(this);
+            this.Connection = new ConnectionOperations(this);
             this.Credential = new CredentialOperations(this);
+            this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
+            this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
             this.JobSchedule = new JobScheduleOperations(this);
-            this.Schedule = new ScheduleOperations(this);
-            this.Activity = new ActivityOperations(this);
+            this.Job = new JobOperations(this);
+            this.JobStream = new JobStreamOperations(this);
+            this.LinkedWorkspace = new LinkedWorkspaceOperations(this);
+            this.Keys = new KeysOperations(this);
             this.Module = new ModuleOperations(this);
+            this.Activity = new ActivityOperations(this);
             this.ObjectDataTypes = new ObjectDataTypesOperations(this);
             this.Fields = new FieldsOperations(this);
-            this.Variable = new VariableOperations(this);
-            this.Connection = new ConnectionOperations(this);
-            this.ConnectionType = new ConnectionTypeOperations(this);
+            this.DscNodeConfiguration = new DscNodeConfigurationOperations(this);
+            this.NodeCountInformation = new NodeCountInformationOperations(this);
+            this.DscNode = new DscNodeOperations(this);
+            this.NodeReports = new NodeReportsOperations(this);
+            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            this.Python2Package = new Python2PackageOperations(this);
+            this.Python3Package = new Python3PackageOperations(this);
+            this.Runbook = new RunbookOperations(this);
+            this.RunbookDraft = new RunbookDraftOperations(this);
+            this.TestJob = new TestJobOperations(this);
+            this.TestJobStreams = new TestJobStreamsOperations(this);
+            this.RuntimeEnvironments = new RuntimeEnvironmentsOperations(this);
+            this.Package = new PackageOperations(this);
+            this.Schedule = new ScheduleOperations(this);
+            this.SoftwareUpdateConfigurationMachineRuns = new SoftwareUpdateConfigurationMachineRunsOperations(this);
+            this.SoftwareUpdateConfigurationRuns = new SoftwareUpdateConfigurationRunsOperations(this);
+            this.SoftwareUpdateConfigurations = new SoftwareUpdateConfigurationsOperations(this);
             this.SourceControl = new SourceControlOperations(this);
             this.SourceControlSyncJob = new SourceControlSyncJobOperations(this);
             this.SourceControlSyncJobStreams = new SourceControlSyncJobStreamsOperations(this);
-            this.DscConfiguration = new DscConfigurationOperations(this);
-            this.Job = new JobOperations(this);
-            this.JobStream = new JobStreamOperations(this);
-            this.SoftwareUpdateConfigurations = new SoftwareUpdateConfigurationsOperations(this);
-            this.SoftwareUpdateConfigurationRuns = new SoftwareUpdateConfigurationRunsOperations(this);
-            this.SoftwareUpdateConfigurationMachineRuns = new SoftwareUpdateConfigurationMachineRunsOperations(this);
-            this.AutomationAccount = new AutomationAccountOperations(this);
             this.Statistics = new StatisticsOperations(this);
             this.Usages = new UsagesOperations(this);
-            this.Keys = new KeysOperations(this);
+            this.Variable = new VariableOperations(this);
+            this.Watcher = new WatcherOperations(this);
             this.Webhook = new WebhookOperations(this);
-            this.RunbookDraft = new RunbookDraftOperations(this);
-            this.Runbook = new RunbookOperations(this);
-            this.TestJobStreams = new TestJobStreamsOperations(this);
-            this.TestJob = new TestJobOperations(this);
-            this.PowerShell72Module = new PowerShell72ModuleOperations(this);
-            this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
-            this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
-            this.Python3Package = new Python3PackageOperations(this);
+            this.DscCompilationJob = new DscCompilationJobOperations(this);
+            this.DscCompilationJobStream = new DscCompilationJobStreamOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
@@ -520,6 +566,232 @@ namespace Microsoft.Azure.Management.Automation
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());
+        }
+        /// <summary>
+        /// Post operation to serialize or deserialize GraphRunbookContent
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='parameters'>
+        /// Input data describing the graphical runbook.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GraphicalRunbookContent>> ConvertGraphRunbookContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, GraphicalRunbookContent parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (automationAccountName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "automationAccountName");
+            }
+
+            string apiVersion = "2024-10-23";
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("automationAccountName", automationAccountName);
+
+                tracingParameters.Add("parameters", parameters);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ConvertGraphRunbookContent", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.SubscriptionId, this.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{automationAccountName}", System.Uri.EscapeDataString(automationAccountName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(parameters != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, this.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<GraphicalRunbookContent>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GraphicalRunbookContent>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
         }
     }
 }

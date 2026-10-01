@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (runbook == null) return;
 
-            this.CreationTime = runbook.CreationTime.ToLocalTime();
-            this.LastModifiedTime = runbook.LastModifiedTime.ToLocalTime();
+            this.CreationTime = runbook.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = runbook.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.Description = runbook.Description;
 
             this.LogVerbose = runbook.LogVerbose ?? false;
