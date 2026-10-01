@@ -166,7 +166,7 @@ function Test-DdosCustomPolicyCRUDWithoutRules
 
         Assert-ThrowsLike {
             New-AzDdosCustomPolicy -ResourceGroupName $rgName -Name $ddosCustomPolicyName -Location $rgLocation
-        } "*At least one detection rule is required*"
+        } "*At least one detection rule or mitigation rule is required*"
     }
     finally
     {
@@ -945,6 +945,164 @@ function Test-DdosCustomPolicyDuplicateTrafficTypePersistFailure
     finally
     {
         # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
+
+<#
+.SYNOPSIS
+Test creation of the nested mitigation rule objects.
+#>
+function Test-DdosCustomPolicyMitigationRuleCreation
+{
+    $geoMatch = New-AzDdosCustomPolicyGeoMatch -Continent Europe -CountryCode DE
+    Assert-AreEqual "Europe" $geoMatch.Continent
+    Assert-AreEqual "DE" $geoMatch.CountryCode
+
+    $sourceOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix @("192.0.2.0/24", "2001:db8::/32") -GeoMatch @($geoMatch)
+    Assert-AreEqual "Deny" $sourceOverride.PolicyAction.ActionType
+    Assert-AreEqual 2 $sourceOverride.Conditions.IpPrefixes.Count
+    Assert-AreEqual 1 $sourceOverride.Conditions.GeoMatches.Count
+
+    $tcpRule = New-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+        -TcpPacketsPerSecond 100000 -TcpConnectionsPerSecond 10000 `
+        -SourcePolicyOverride @($sourceOverride)
+    Assert-AreEqual "tcpRule" $tcpRule.Name
+    Assert-AreEqual "Tcp" $tcpRule.Properties.TrafficScope
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+    Assert-AreEqual 1 $tcpRule.Properties.SourcePolicyOverrides.Count
+
+    $udpRule = New-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Udp `
+        -UdpPacketsPerSecond 200000
+    Assert-AreEqual "udpRule" $udpRule.Name
+    Assert-AreEqual "Udp" $udpRule.Properties.TrafficScope
+    Assert-AreEqual 200000 $udpRule.Properties.UdpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+}
+
+<#
+.SYNOPSIS
+Test local mitigation rule validation.
+#>
+function Test-DdosCustomPolicyMitigationRuleValidation
+{
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyGeoMatch
+    } "*continent, a country code*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyGeoMatch -CountryCode de
+    } "*uppercase two-letter*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny -IpPrefix "192.0.2.1"
+    } "*CIDR*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny
+    } "*IP prefix or geographic match*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name invalidTcp -TrafficScope Tcp -UdpPacketsPerSecond 100
+    } "*UdpPacketsPerSecond cannot be used*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name invalidUdp -TrafficScope Udp -TcpPacketsPerSecond 100
+    } "*TCP rate limits cannot be used*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name invalidRate -TrafficScope Tcp -TcpPacketsPerSecond 0
+    } "*greater than zero*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name emptyRule -TrafficScope Tcp
+    } "*applicable rate limit or at least one source policy override*"
+}
+
+<#
+.SYNOPSIS
+Test case-insensitive in-memory mitigation rule mutation.
+#>
+function Test-DdosCustomPolicyMitigationRuleMutation
+{
+    $policy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $policy.Name = "policy"
+
+    $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+        -TcpPacketsPerSecond 100000
+    $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Udp `
+        -UdpPacketsPerSecond 200000
+    Assert-AreEqual 2 $policy.MitigationRules.Count
+
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name TCPRULE
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name TcPrUlE -TrafficScope Tcp `
+        -TcpPacketsPerSecond 150000 -TcpConnectionsPerSecond 15000
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    Assert-AreEqual 150000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 15000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    Assert-ThrowsLike {
+        $policy | Add-AzDdosCustomPolicyMitigationRule -Name TCPRULE -TrafficScope Tcp -TcpPacketsPerSecond 100
+    } "*already exists*"
+
+    $policy = $policy | Remove-AzDdosCustomPolicyMitigationRule -Name UDPRULE
+    Assert-AreEqual 1 $policy.MitigationRules.Count
+    Assert-AreEqual "tcpRule" $policy.MitigationRules[0].Name
+
+    Assert-ThrowsLike {
+        $policy | Get-AzDdosCustomPolicyMitigationRule -Name missingRule
+    } "*was not found*"
+}
+
+<#
+.SYNOPSIS
+Test persisted mitigation rule CRUD on a DDoS custom policy.
+#>
+function Test-DdosCustomPolicyMitigationRuleCRUD
+{
+    $resourceTypeParent = "Microsoft.Network/ddosCustomPolicies"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $rgName = Get-ResourceGroupName
+    $policyName = Get-ResourceName
+
+    try
+    {
+        New-AzResourceGroup -Name $rgName -Location $location
+
+        $geoMatch = New-AzDdosCustomPolicyGeoMatch -Continent Europe -CountryCode DE
+        $sourceOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+            -IpPrefix "192.0.2.0/24" -GeoMatch @($geoMatch)
+        $tcpRule = New-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+            -TcpPacketsPerSecond 100000 -TcpConnectionsPerSecond 10000 `
+            -SourcePolicyOverride @($sourceOverride)
+
+        $policy = New-AzDdosCustomPolicy -ResourceGroupName $rgName -Name $policyName `
+            -Location $location -MitigationRule @($tcpRule)
+        Assert-NotNull $policy
+        Assert-AreEqual 1 $policy.MitigationRules.Count
+        Assert-AreEqual "tcpRule" $policy.MitigationRules[0].Name
+        Assert-AreEqual "Tcp" $policy.MitigationRules[0].Properties.TrafficScope
+
+        $policy = Get-AzDdosCustomPolicy -ResourceGroupName $rgName -Name $policyName
+        $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Udp `
+            -UdpPacketsPerSecond 200000
+        $policy = $policy | Set-AzDdosCustomPolicy
+        Assert-AreEqual 2 $policy.MitigationRules.Count
+
+        $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+            -TcpPacketsPerSecond 150000 -TcpConnectionsPerSecond 15000
+        $policy = $policy | Remove-AzDdosCustomPolicyMitigationRule -Name udpRule
+        $policy = $policy | Set-AzDdosCustomPolicy
+        Assert-AreEqual 1 $policy.MitigationRules.Count
+        Assert-AreEqual 150000 $policy.MitigationRules[0].Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+
+        Remove-AzDdosCustomPolicy -ResourceGroupName $rgName -Name $policyName -PassThru | Out-Null
+    }
+    finally
+    {
         Clean-ResourceGroup $rgName
     }
 }

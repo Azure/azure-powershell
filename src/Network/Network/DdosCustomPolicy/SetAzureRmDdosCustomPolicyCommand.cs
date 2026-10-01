@@ -49,10 +49,17 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Name is required.");
             }
 
+            if ((this.DdosCustomPolicy.DetectionRules == null || this.DdosCustomPolicy.DetectionRules.Count == 0)
+                && (this.DdosCustomPolicy.MitigationRules == null || this.DdosCustomPolicy.MitigationRules.Count == 0))
+            {
+                throw new ArgumentException("At least one detection rule or mitigation rule is required.");
+            }
+
             var vDdosCustomPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.DdosCustomPolicy>(this.DdosCustomPolicy);
             vDdosCustomPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.DdosCustomPolicy.Tag, validate: true);
 
             vDdosCustomPolicyModel.DetectionRules = BuildDetectionRules(this.DdosCustomPolicy.DetectionRules);
+            vDdosCustomPolicyModel.MitigationRules = BuildMitigationRules(this.DdosCustomPolicy.MitigationRules);
             // Service no longer accepts frontEndIpConfiguration on update payload.
             vDdosCustomPolicyModel.FrontEndIPConfiguration = null;
 
@@ -131,6 +138,17 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return rules;
+        }
+
+        private static List<MNM.DdosMitigationRule> BuildMitigationRules(IList<PSDdosCustomPolicyMitigationRule> mitigationRules)
+        {
+            if (mitigationRules == null)
+            {
+                return null;
+            }
+
+            DdosCustomPolicyMitigationRuleUtils.ValidateRules(mitigationRules);
+            return mitigationRules.Select(DdosCustomPolicyMitigationRuleUtils.ToSdk).ToList();
         }
     }
 }
