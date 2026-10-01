@@ -53,6 +53,14 @@ namespace Microsoft.Azure.Commands.Network
             vDdosCustomPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.DdosCustomPolicy.Tag, validate: true);
 
             vDdosCustomPolicyModel.DetectionRules = BuildDetectionRules(this.DdosCustomPolicy.DetectionRules);
+            vDdosCustomPolicyModel.MitigationRules = DdosCustomPolicyMitigationRuleUtils.ToSdkRules(this.DdosCustomPolicy.MitigationRules);
+            bool hasDetectionRules = vDdosCustomPolicyModel.DetectionRules != null && vDdosCustomPolicyModel.DetectionRules.Count > 0;
+            bool hasMitigationRules = vDdosCustomPolicyModel.MitigationRules != null && vDdosCustomPolicyModel.MitigationRules.Count > 0;
+            if (!hasDetectionRules && !hasMitigationRules)
+            {
+                throw new ArgumentException("At least one detection rule or mitigation rule is required when updating a DDoS custom policy.");
+            }
+
             // Service no longer accepts frontEndIpConfiguration on update payload.
             vDdosCustomPolicyModel.FrontEndIPConfiguration = null;
 

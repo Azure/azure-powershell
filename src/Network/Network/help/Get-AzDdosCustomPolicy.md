@@ -44,6 +44,14 @@ Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy" | Format-List
 
 This example gets the DDoS custom policy and displays all its properties.
 
+### Example 4: Inspect a mitigation rule
+```powershell
+$policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
+$policy.MitigationRules[0].Properties
+```
+
+This example accesses the non-flattened mitigation rule properties returned by the service.
+
 ## PARAMETERS
 
 ### -DefaultProfile

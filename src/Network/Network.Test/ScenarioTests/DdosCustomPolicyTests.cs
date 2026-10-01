@@ -36,6 +36,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleCreation()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleCreation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleValidation()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosCustomPolicyCRUD()
         {
             TestRunner.RunTestScript("Test-DdosCustomPolicyCRUD");

@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Specifies one or more DDoS detection rules for the policy.")]
         public PSDdosCustomPolicyDetectionRule[] DetectionRule { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies one or more DDoS mitigation rules for the policy.")]
+        public PSDdosCustomPolicyMitigationRule[] MitigationRule { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -73,9 +78,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (this.DetectionRule == null || this.DetectionRule.Length == 0)
+            bool hasDetectionRules = this.DetectionRule != null && this.DetectionRule.Length > 0;
+            bool hasMitigationRules = this.MitigationRule != null && this.MitigationRule.Length > 0;
+            if (!hasDetectionRules && !hasMitigationRules)
             {
-                throw new PSArgumentException("At least one detection rule is required when creating a DDoS custom policy.");
+                throw new PSArgumentException("At least one detection rule or mitigation rule is required when creating a DDoS custom policy.");
             }
 
             var vDdosCustomPolicy = new PSDdosCustomPolicy
@@ -86,6 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             var vDdosCustomPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.DdosCustomPolicy>(vDdosCustomPolicy);
             vDdosCustomPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             vDdosCustomPolicyModel.DetectionRules = BuildDetectionRules();
+            vDdosCustomPolicyModel.MitigationRules = DdosCustomPolicyMitigationRuleUtils.ToSdkRules(this.MitigationRule);
             // Service no longer accepts frontEndIpConfiguration on create payload.
             vDdosCustomPolicyModel.FrontEndIPConfiguration = null;
             var present = true;
@@ -125,6 +133,10 @@ namespace Microsoft.Azure.Commands.Network
 
         private List<MNM.DdosDetectionRule> BuildDetectionRules()
         {
+            if (this.DetectionRule == null)
+            {
+                return null;
+            }
 
             var rules = new List<MNM.DdosDetectionRule>();
             var allowedTrafficTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)

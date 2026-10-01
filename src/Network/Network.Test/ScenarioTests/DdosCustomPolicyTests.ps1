@@ -43,6 +43,79 @@ function Test-DdosCustomPolicyDetectionRuleCreation
 
 <#
 .SYNOPSIS
+Test creating and mutating DDoS custom policy mitigation rules
+#>
+function Test-DdosCustomPolicyMitigationRuleCreation
+{
+    $geoMatch = New-AzDdosCustomPolicyGeoMatch -Continent Europe -CountryCode DE
+    Assert-AreEqual "Europe" $geoMatch.Continent
+    Assert-AreEqual "DE" $geoMatch.CountryCode
+
+    $sourceOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix @("203.0.113.0/24") -GeoMatch @($geoMatch)
+    Assert-AreEqual "Deny" $sourceOverride.PolicyAction.ActionType
+    Assert-AreEqual "203.0.113.0/24" $sourceOverride.Conditions.IpPrefixes[0]
+    Assert-AreEqual "DE" $sourceOverride.Conditions.GeoMatches[0].CountryCode
+
+    $tcpRule = New-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+        -TcpPacketsPerSecond 100000 -TcpConnectionsPerSecond 10000 `
+        -SourcePolicyOverride @($sourceOverride)
+    Assert-AreEqual "tcpRule" $tcpRule.Name
+    Assert-AreEqual "Tcp" $tcpRule.Properties.TrafficScope
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+    Assert-AreEqual "Deny" $tcpRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    $policy = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy
+    $policy.Name = "policy"
+    $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+        -TcpPacketsPerSecond 100000 -SourcePolicyOverride @($sourceOverride)
+    Assert-AreEqual 1 $policy.MitigationRules.Count
+
+    $rule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name TCPRULE
+    Assert-AreEqual "Tcp" $rule.Properties.TrafficScope
+
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name TCPRULE -TrafficScope Udp `
+        -UdpPacketsPerSecond 50000
+    Assert-AreEqual "Udp" $policy.MitigationRules[0].Properties.TrafficScope
+    Assert-AreEqual 50000 $policy.MitigationRules[0].Properties.UdpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-Null $policy.MitigationRules[0].Properties.TcpDefaultMitigations
+
+    $policy = $policy | Remove-AzDdosCustomPolicyMitigationRule -Name TcPrUlE
+    Assert-AreEqual 0 $policy.MitigationRules.Count
+}
+
+<#
+.SYNOPSIS
+Test validation for DDoS custom policy mitigation rule builders
+#>
+function Test-DdosCustomPolicyMitigationRuleValidation
+{
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyGeoMatch
+    } "*requires a continent, a country code, or both*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny -IpPrefix "not-a-prefix"
+    } "*not a valid IPv4 or IPv6 CIDR prefix*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp -UdpPacketsPerSecond 100
+    } "*cannot be used with a TCP mitigation rule*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Udp
+    } "*requires an applicable rate limit or at least one source policy override*"
+
+    $denyOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny -IpPrefix "203.0.113.0/24"
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+            -SourcePolicyOverride @($denyOverride, $denyOverride)
+    } "*Duplicate source policy action*"
+}
+
+<#
+.SYNOPSIS
 Test DDoS custom policy CRUD operations
 #>
 function Test-DdosCustomPolicyCRUD
@@ -166,7 +239,7 @@ function Test-DdosCustomPolicyCRUDWithoutRules
 
         Assert-ThrowsLike {
             New-AzDdosCustomPolicy -ResourceGroupName $rgName -Name $ddosCustomPolicyName -Location $rgLocation
-        } "*At least one detection rule is required*"
+        } "*At least one detection rule or mitigation rule is required*"
     }
     finally
     {

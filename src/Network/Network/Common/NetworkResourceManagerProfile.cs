@@ -1834,6 +1834,8 @@ namespace Microsoft.Azure.Commands.Network
                             TrafficType = src.TrafficType,
                             PacketsPerSecond = src.PacketsPerSecond,
                         }));
+                cfg.CreateMap<CNM.PSDdosCustomPolicyMitigationRule, MNM.DdosMitigationRule>()
+                    .ConvertUsing(src => DdosCustomPolicyMitigationRuleUtils.ToSdkRule(src));
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DdosCustomPolicy, CNM.PSDdosCustomPolicy>();
@@ -1849,6 +1851,8 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.TrafficDetectionRule != null && src.TrafficDetectionRule.PacketsPerSecond.HasValue
                             ? src.TrafficDetectionRule.PacketsPerSecond.Value
                             : 0));
+                cfg.CreateMap<MNM.DdosMitigationRule, CNM.PSDdosCustomPolicyMitigationRule>()
+                    .ConvertUsing(src => DdosCustomPolicyMitigationRuleUtils.ToPowerShellRule(src));
 
                 // Service Endpoint Policy
                 // CNM to MNM
