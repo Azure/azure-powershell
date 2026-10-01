@@ -35,7 +35,7 @@ This example creates a TCP rule with per-source packet and new-connection rate l
 ### Example 2: Create a UDP rule with a source override
 ```powershell
 $override = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny -IpPrefix "192.0.2.0/24"
-$rule = New-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 200000 -SourcePolicyOverride $override
+$rule = New-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 -SourcePolicyOverride $override
 ```
 
 This example creates a UDP rule that combines a per-source packet rate limit with a prefix-specific deny action.

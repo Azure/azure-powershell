@@ -54,7 +54,7 @@ This example shows how to preview the changes without actually updating the poli
 ### Example 4: Add and persist a mitigation rule
 ```powershell
 Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy" |
-  Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 200000 |
+  Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 |
   Set-AzDdosCustomPolicy
 ```
 

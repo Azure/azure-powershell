@@ -28,7 +28,7 @@ The **Add-AzDdosCustomPolicyMitigationRule** cmdlet creates a mitigation rule an
 ### Example 1: Add and persist a UDP mitigation rule
 ```powershell
 $policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
-$policy | Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 200000 | Set-AzDdosCustomPolicy
+$policy | Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 | Set-AzDdosCustomPolicy
 ```
 
 This example adds a UDP per-source packet rate limit and persists the updated policy.
