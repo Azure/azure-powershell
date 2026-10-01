@@ -273,6 +273,10 @@ if ($testInfo.FailedTests.Count -gt 0) {
     throw "Smoke test failed: $($testInfo.FailedTests.Count) of $($testInfo.TotalCount) test(s) failed: $($testInfo.FailedTests -join ', ')"
 }
 
+if ($testInfo.FailedTests.Count -gt 0) {
+    throw ("Test run failed with " + $testInfo.FailedTests.Count + " failures.")
+}
+
 # Resolve-AzError
 # $DebugPreference = $oldDebug
 # $VerbosePreference = $oldVerbose
