@@ -479,6 +479,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -524,8 +525,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-Availability zones for resources.
-This field should only contain a single element in the array.
+The availability zones.
 
 ```yaml
 Type: System.String[]
