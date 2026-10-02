@@ -46,5 +46,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isSoftDeleteEnabled")]
         public bool? IsSoftDeleteEnabled {get; set; }
+
+        [Newtonsoft.Json.JsonProperty(PropertyName = "retentionPeriodInDays")]
+        public int? RetentionPeriodInDays { get; set; }
+
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gracePeriodInDays")]
+        public int? GracePeriodInDays { get; set; }
     }
 }

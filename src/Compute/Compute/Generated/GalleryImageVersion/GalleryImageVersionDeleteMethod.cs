@@ -72,7 +72,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
 
-                    var result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageDefinitionName, galleryImageVersionName).GetAwaiter().GetResult();
+                    bool? bypassSoftDelete = this.IsParameterBound(c => c.BypassSoftDelete) ? (bool?)this.BypassSoftDelete.IsPresent : null;
+                    var result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageDefinitionName, galleryImageVersionName, bypassSoftDelete).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -123,6 +124,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether to bypass the gallery's soft-delete policy and permanently delete the gallery image version. If specified, the version is not retained in the recycle bin and cannot be restored. If omitted, the version is soft-deleted when the gallery's soft-delete policy is enabled and permanently deleted when the policy is disabled.")]
+        public SwitchParameter BypassSoftDelete { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",

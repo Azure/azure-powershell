@@ -1778,3 +1778,145 @@ function Test-DisableGalleryIdentities
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
     }
 }
+
+<#
+.SYNOPSIS
+Tests gallery soft-delete (recycle bin) policy, and soft-deleting, listing,
+restoring and permanently deleting a gallery image version.
+#>
+function Test-GalleryImageVersionSoftDelete
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $galleryImageName = 'galleryimage' + $rgname;
+    $galleryImageVersionName = "1.0.0";
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $description1 = "Original Description";
+
+        # Create the gallery with soft-delete enabled
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7;
+
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-NotNull $gallery.SoftDeletePolicy;
+        Assert-True { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
+
+        # Disable and re-enable soft-delete through Update-AzGallery
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSoftDelete;
+        Assert-False { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
+
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7;
+        Assert-True { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
+
+        # Gallery Image Definition
+        $publisherName = "galleryPublisher20180927";
+        $offerName = "galleryOffer20180927";
+        $skuName = "gallerySku20180927";
+        $osState = "Generalized";
+        $osType = "Windows";
+
+        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
+                                          -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
+                                          -OsState $osState -OsType $osType -Description $description1;
+
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
+        Assert-NotNull $definition;
+
+        # Create a VM first to source a gallery image version from
+        $vmsize = 'Standard_A2_v2';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nic.Id -Primary;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        # Create Image using the VM's OS disk.
+        $imageName = 'image' + $rgname;
+        $imageConfig = New-AzImageConfig -Location $loc;
+        Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
+        $image = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
+
+        New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                       -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
+                                       -Location $loc -SourceImageId $image.Id -ReplicaCount 1 `
+                                       -StorageAccountType Standard_LRS;
+
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                                  -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
+        Assert-NotNull $version;
+
+        # Soft-delete the image version (default behavior when the gallery's soft-delete policy is enabled)
+        Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                          -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Force;
+        Wait-Seconds 60;
+
+        # The version should no longer be retrievable through the normal Get, but should show up as soft-deleted
+        $softDeletedVersions = Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                          -GalleryImageDefinitionName $galleryImageName;
+        Assert-NotNull $softDeletedVersions;
+        $softDeletedVersion = $softDeletedVersions | Where-Object { $_.Name -eq $galleryImageVersionName };
+        Assert-NotNull $softDeletedVersion;
+        Assert-AreEqual "Images" $softDeletedVersion.SoftDeletedArtifactType;
+
+        # Restore the soft-deleted image version
+        Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                           -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location $loc;
+        Wait-Seconds 60;
+
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                                  -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
+        Assert-NotNull $version;
+
+        # Permanently delete the image version, bypassing the soft-delete policy
+        Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                          -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
+                                          -BypassSoftDelete -Force;
+        Wait-Seconds 300;
+
+        $definition | Remove-AzGalleryImageDefinition -Force;
+        Wait-Seconds 300;
+        $gallery | Remove-AzGallery -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

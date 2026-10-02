@@ -1,57 +1,43 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryimageversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/restore-azgalleryimageversion
 schema: 2.0.0
 ---
 
-# Remove-AzGalleryImageVersion
+# Restore-AzGalleryImageVersion
 
 ## SYNOPSIS
-Delete a gallery image version.
+Restore a soft-deleted gallery image version.
 
 ## SYNTAX
 
 ### DefaultParameter (Default)
 ```
-Remove-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- [-GalleryImageDefinitionName] <String> [-Name] <String> [-Force] [-BypassSoftDelete] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ResourceIdParameter
-```
-Remove-AzGalleryImageVersion [-Force] [-BypassSoftDelete] [-ResourceId] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ObjectParameter
-```
-Remove-AzGalleryImageVersion [-Force] [-BypassSoftDelete] [-InputObject] <PSGalleryImageVersion> [-AsJob]
+Restore-AzGalleryImageVersion -ResourceGroupName <String> -GalleryName <String>
+ -GalleryImageDefinitionName <String> -Name <String> -Location <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a gallery image version.
+Restore a gallery image version that has been soft-deleted (moved to the recycle bin), as long as it is still within its retention time. Use `Get-AzGallerySoftDeletedImageVersion` to find soft-deleted image versions that are eligible to be restored.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $image -Name $version
+Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name "1.0.0" -Location $loc
 ```
 
-Delete the given gallery image version. If the gallery's soft-delete policy is enabled, the version is soft-deleted and can be recovered with `Restore-AzGalleryImageVersion` within the retention period; otherwise it is permanently deleted.
+Restore the soft-deleted gallery image version named `1.0.0`.
 
 ### Example 2
 ```powershell
-Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -GalleryImageDefinitionName $image -Name $version -BypassSoftDelete
+Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name "1.0.0" -Location $loc
 ```
 
-Permanently delete the given gallery image version, bypassing the gallery's soft-delete policy. The version is not retained in the recycle bin and cannot be restored.
+Find the soft-deleted gallery image version named `1.0.0` and restore it using pipeline input.
 
 ## PARAMETERS
 
@@ -85,36 +71,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BypassSoftDelete
-Specifies whether to bypass the gallery's soft-delete policy and permanently delete the gallery image version. If specified, the version is not retained in the recycle bin and cannot be restored. If omitted, the version is soft-deleted when the gallery's soft-delete policy is enabled and permanently deleted when the policy is disabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryImageDefinitionName
 The name of the gallery image definition.
 
@@ -145,23 +101,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The PS Gallery Image Version Object
+
+### -Location
+The original home region of the soft-deleted gallery image version.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImageVersion
-Parameter Sets: ObjectParameter
-Aliases: GalleryImageVersion
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases:
 
 Required: True
-Position: 0
+Position: 4
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the gallery image version.
+The name of the gallery image version to restore.
 
 ```yaml
 Type: System.String
@@ -190,20 +147,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource ID for gallery image version
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameter
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -243,11 +186,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImageVersion
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSGallerySoftDeletedImageVersion
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSOperationStatusResponse
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImageVersion
 
 ## NOTES
 
