@@ -1,0 +1,85 @@
+{
+  "resourceType": "usagePlans",
+  "apiVersion": "2026-09-30-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliency"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResiliencyUsagePlan",
+      "description": "Get a UsagePlan",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureResilienceManagement/usagePlans/{usagePlanName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyusageplan"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a UsagePlan",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.usagePlanName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResiliencyUsagePlan",
+      "description": "Delete a UsagePlan",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureResilienceManagement/usagePlans/{usagePlanName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliency/remove-azresiliencyusageplan"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a UsagePlan",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.usagePlanName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
