@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         /// This function processes the registration and perform following steps
         /// 1. EnsureSyncServerCertificate
         /// 2. GetSyncServerCertificate
-        /// 3. GetSyncServerId
-        /// 4. Get ClusterInfo
-        /// 5. Populate RegistrationServerResource
+        /// 3. Uses the server ID returned by Azure
+        /// 4. Gets cluster information
+        /// 5. Populates registration data
         /// </summary>
         /// <param name="managementEndpointUri">Management Endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -107,6 +107,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine name</param>
         /// <param name="assignIdentity">Assign Identity</param>
+        /// <param name="serverId">Server ID returned by Azure.</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
@@ -126,7 +127,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            bool assignIdentity)
+            bool assignIdentity,
+            Guid serverId)
         {
             int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                 subscriptionId.ToString(),
@@ -152,19 +154,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
             }
 
-            hr = EcsManagementInteropClient.GetSyncServerId(out string syncServerId);
-
-            bool hasServerGuid = Guid.TryParse(syncServerId, out Guid serverGuid);
-            if (!hasServerGuid)
-            {
-                throw new ArgumentException(nameof(Guid.Empty));
-            }
-
-            success = hr == 0;
-            if (!success)
-            {
-                throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerIdFailed, hr, ErrorCategory.InvalidResult);
-            }
+            string syncServerId = serverId.ToString();
 
             bool isInCluster;
             isInCluster = EcsManagementInteropClient.IsInCluster();
@@ -224,7 +214,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
             var serverRegistrationData = new ServerRegistrationData
             {
                 Id = resourceId,
-                ServerId = serverGuid,
+                ServerId = serverId,
                 ServerCertificate = syncServerCertificate.ToBase64Bytes(throwException: true),
                 ServerRole = isInCluster ? ServerRoleType.ClusterNode : ServerRoleType.Standalone,
                 ServerOSVersion = osVersion,
@@ -304,8 +294,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
                 resourceGroupName,
                 clusterId.Equals(Guid.Empty) ? string.Empty : clusterId.ToString(),
                 registeredServerResource.ClusterName ?? string.Empty,
-                storageSyncServiceUid.ToString(),
                 registeredServerResource.DiscoveryEndpointUri,
+                storageSyncServiceUid.ToString(),
                 registeredServerResource.ServiceLocation,
                 registeredServerResource.ResourceLocation);
 
@@ -327,14 +317,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
                 ServiceEndpoint = registeredServerResource.MonitoringEndpointUri ?? registeredServerResource.ManagementEndpointUri,
                 SubscriptionId = subscriptionId,
                 ResourceGroupName = resourceGroupName,
+                ServerId = Guid.Parse(registeredServerResource.ServerId),
                 StorageSyncServiceName = storageSyncServiceName,
                 StorageSyncServiceUid = storageSyncServiceUid,
                 ClusterName = registeredServerResource.ClusterName ?? string.Empty,
                 ClusterId = clusterId,
                 MonitoringConfiguration = monitoringConfiguration,
-                ServerCertificate = registeredServerResource.ServerCertificate.ToBase64Bytes(),
                 ResourceLocation = registeredServerResource.ResourceLocation
             };
+
+            if (registeredServerResource.ServerCertificate != null)
+            {
+                registrationInfo.ServerCertificate = registeredServerResource.ServerCertificate.ToBase64Bytes();
+            }
 
             if (Guid.TryParse(registeredServerResource.ApplicationId,out Guid applicationGuid))
             {
@@ -383,6 +378,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
             if(TestName == "TestPatchRegisteredServer")
             {
                 return new ServerApplicationIdentity(new Guid("3b990c8b-9607-4c2a-8b04-1d41985facca"), testTenantGuid);
+            }
+            if (TestName == "TestRemoteServerRegistrationSequence")
+            {
+                return new ServerApplicationIdentity(new Guid(StorageSyncTestConstants.RemoteRegistrationApplicationId), testTenantGuid);
             }
             return new ServerApplicationIdentity(Guid.NewGuid(), testTenantGuid);
         }

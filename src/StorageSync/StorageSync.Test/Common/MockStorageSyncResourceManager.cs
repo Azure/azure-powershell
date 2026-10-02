@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
 
         LocalServerType IStorageSyncResourceManager.GetServerTypeFromRegistry()
         {
-            if (TestName == "TestPatchRegisteredServer")
+            if (TestName == "TestPatchRegisteredServer" || TestName == "TestRemoteServerRegistrationSequence")
             {
                 return LocalServerType.ArcEnabledHybridServer;
             }

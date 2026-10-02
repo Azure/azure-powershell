@@ -252,8 +252,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         /// <param name="resourceGroupName">Name of the resource group.</param>
         /// <param name="clusterId">The cluster identifier.</param>
         /// <param name="clusterName">Name of the cluster.</param>
-        /// <param name="storageSyncServiceUid">The storage sync service uid.</param>
         /// <param name="discoveryUri">The discovery URI.</param>
+        /// <param name="storageSyncServiceUid">The storage sync service uid.</param>
         /// <param name="serviceLocation">The service location.</param>
         /// <param name="resourceLocation">The resource location.</param>
         /// <returns>System.Int32.</returns>
@@ -264,8 +264,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
             [In, MarshalAs(UnmanagedType.BStr)] string resourceGroupName,
             [In, MarshalAs(UnmanagedType.BStr)] string clusterId,
             [In, MarshalAs(UnmanagedType.BStr)] string clusterName,
-            [In, MarshalAs(UnmanagedType.BStr)] string storageSyncServiceUid,
             [In, MarshalAs(UnmanagedType.BStr)] string discoveryUri,
+            [In, MarshalAs(UnmanagedType.BStr)] string storageSyncServiceUid,
             [In, MarshalAs(UnmanagedType.BStr)] string serviceLocation,
             [In, MarshalAs(UnmanagedType.BStr)] string resourceLocation)
         {
