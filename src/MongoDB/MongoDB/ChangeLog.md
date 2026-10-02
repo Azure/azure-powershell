@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
 
 ## Version 0.2.0
 * Added cmdlets for MongoDB Atlas Project management: `Get-AzMongoDBProject`, `New-AzMongoDBProject`, `Remove-AzMongoDBProject`
