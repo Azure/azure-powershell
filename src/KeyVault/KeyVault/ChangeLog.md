@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Change Safety support for additional cmdlets.
 
 ## Version 6.6.1
 * Upgraded the Key Vault control plane API version to '2026-02-01'.

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.
