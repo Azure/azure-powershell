@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.1
 * Corrected the `Invoke-AzNewRelicResubscribeMonitor` command description wording (`underline` corrected to `underlying`).
 
 ## Version 0.3.0
