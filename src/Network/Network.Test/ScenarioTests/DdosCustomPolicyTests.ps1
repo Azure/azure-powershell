@@ -75,6 +75,59 @@ function Test-DdosCustomPolicyGetDetectionRule
 
 <#
 .SYNOPSIS
+Test updating DDoS custom policy detection rules.
+#>
+function Test-DdosCustomPolicySetDetectionRule
+{
+    $policy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $policy.Name = "policy"
+    $policy = $policy |
+        Add-AzDdosCustomPolicyDetectionRule -Name tcpRule -TrafficType Tcp -PacketsPerSecond 1000000
+    $policy = $policy |
+        Add-AzDdosCustomPolicyDetectionRule -Name udpRule -TrafficType Udp -PacketsPerSecond 100000
+
+    $policy = $policy |
+        Set-AzDdosCustomPolicyDetectionRule -Name TCPRULE -TrafficType Tcp -PacketsPerSecond 120000
+    Assert-AreEqual "policy" $policy.Name
+    Assert-AreEqual 2 $policy.DetectionRules.Count
+    $tcpRule = $policy | Get-AzDdosCustomPolicyDetectionRule -Name tcpRule
+    Assert-AreEqual "tcpRule" $tcpRule.Name
+    Assert-AreEqual "Tcp" $tcpRule.TrafficType
+    Assert-AreEqual 120000 $tcpRule.PacketsPerSecond
+    Assert-AreEqual 100000 ($policy | Get-AzDdosCustomPolicyDetectionRule -Name udpRule).PacketsPerSecond
+
+    $policy = $policy |
+        Set-AzDdosCustomPolicyDetectionRule -Name tcpRule -TrafficType TcpSyn
+    $tcpRule = $policy | Get-AzDdosCustomPolicyDetectionRule -Name tcpRule
+    Assert-AreEqual "TcpSyn" $tcpRule.TrafficType
+    Assert-AreEqual 120000 $tcpRule.PacketsPerSecond
+
+    Assert-ThrowsLike {
+        $policy | Set-AzDdosCustomPolicyDetectionRule -Name tcpRule -TrafficType Udp
+    } "*already exists*"
+    $tcpRule = $policy | Get-AzDdosCustomPolicyDetectionRule -Name tcpRule
+    Assert-AreEqual "TcpSyn" $tcpRule.TrafficType
+    Assert-AreEqual 120000 $tcpRule.PacketsPerSecond
+
+    Assert-ThrowsLike {
+        $policy | Set-AzDdosCustomPolicyDetectionRule -Name missingRule -PacketsPerSecond 50000
+    } "*was not found*"
+    Assert-AreEqual 2 $policy.DetectionRules.Count
+
+    Assert-ThrowsLike {
+        $policy | Set-AzDdosCustomPolicyDetectionRule -Name tcpRule -PacketsPerSecond 0
+    } "*range*"
+    $tcpRule = $policy | Get-AzDdosCustomPolicyDetectionRule -Name tcpRule
+    Assert-AreEqual 120000 $tcpRule.PacketsPerSecond
+
+    $policy = $policy | Set-AzDdosCustomPolicyDetectionRule -Name tcpRule
+    $tcpRule = $policy | Get-AzDdosCustomPolicyDetectionRule -Name tcpRule
+    Assert-AreEqual "TcpSyn" $tcpRule.TrafficType
+    Assert-AreEqual 120000 $tcpRule.PacketsPerSecond
+}
+
+<#
+.SYNOPSIS
 Test DDoS custom policy CRUD operations
 #>
 function Test-DdosCustomPolicyCRUD
