@@ -1,0 +1,51 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Dns/Dns.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "Dns"
+    service-name: Dns
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Provider operations are implementation details, not public cmdlets.
+      - where:
+          subject: Operation
+        hide: true
+      # Use the active Azure context when SubscriptionId is omitted.
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Remove unexpanded create and update parameter sets except for DNSSEC.
+      - where:
+          variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+          subject: ^(?!.*DnssecConfig).*$
+        remove: true
+      # Set cmdlets are not part of the public command surface.
+      - where:
+          verb: Set
+        remove: true
+      # This project only exposes DNSSEC cmdlets; zone and record-set cmdlets are handwritten.
+      - where:
+          subject: ^(?!.*DnssecConfig).*$
+        remove: true
+      # DNSSEC support for Azure DNS public zones is still in preview.
+      - where:
+          subject: ^DnssecConfig
+        set:
+          preview-announcement:
+            preview-message: DNSSEC support for Azure DNS Public Zones is in preview.
+      # Formatting is supplied by the handwritten Az.Dns module.
+      - where:
+          model-name: (.*)
+        set:
+          suppress-format: true
