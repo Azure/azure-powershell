@@ -17,9 +17,9 @@ Create a DbSystem
 New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AdminPassword <SecureString>] [-ClusterName <String>] [-ComputeCount <Int32>] [-ComputeModel <String>]
  [-DatabaseEdition <String>] [-DbSystemOptionStorageManagement <String>] [-DbVersion <String>]
- [-DiskRedundancy <String>] [-DisplayName <String>] [-DomainV2 <String>] [-Hostname <String>]
- [-InitialDataStorageSizeInGb <Int32>] [-LicenseModelV2 <String>] [-NetworkAnchorId <String>]
- [-NodeCount <Int32>] [-PdbName <String>] [-ResourceAnchorId <String>] [-Shape <String>]
+ [-DiskRedundancy <String>] [-DisplayName <String>] [-Domain <String>] [-Hostname <String>]
+ [-InitialDataStorageSizeInGb <Int32>] [-LicenseModel <String>] [-NetworkAnchorId <String>]
+ [-NodeCount <Int32>] [-PdbName <String>] [-ResourceAnchorId <String>] [-Shape <String>] [-Source <String>]
  [-SshPublicKey <String[]>] [-StorageVolumePerformanceMode <String>] [-Tag <Hashtable>] [-TimeZone <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -308,7 +308,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainV2
+### -Domain
 The domain name for the DB system.
 
 ```yaml
@@ -385,7 +385,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LicenseModelV2
+### -LicenseModel
 The Oracle license model that applies to all the databases on the DB system.
 The default is LicenseIncluded.
 
@@ -531,6 +531,22 @@ The shape of the DB system.
 The shape determines resources to allocate to the DB system.
 For virtual machine shapes, the number of CPU cores and memory.
 For bare metal and Exadata shapes, the number of CPU cores, storage, and memory.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Source
+The source of the database: Use `None` for creating a new database.
+The default is `None`.
 
 ```yaml
 Type: System.String
