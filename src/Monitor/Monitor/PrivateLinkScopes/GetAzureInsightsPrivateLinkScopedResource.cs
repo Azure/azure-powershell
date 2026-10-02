@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
             {
                 identifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = identifier.ResourceGroupName;
-                this.ScopeName = identifier.ParentResource;
+                this.ScopeName = identifier.ParentResource.Split('/')[1];
                 this.Name = identifier.ResourceName;
             }
 
-            if (!this.IsParameterBound(c => c.Name))
+            if (string.IsNullOrEmpty(this.Name))
             {
                 var response = this.MonitorManagementClient
                                        .PrivateLinkScopedResources
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .Result;
                 WriteObject(response.Body.Select(scope => PSMonitorPrivateLinkScopedResource.ToPSMonitorPrivateLinkScopedResource(scope)).ToList(), true);
             }
-            else if (this.IsParameterBound(c => c.Name))
+            else
             {
                 var response = this.MonitorManagementClient
                                        .PrivateLinkScopedResources
