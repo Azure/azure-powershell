@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -33,6 +34,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void ManagedDatabaseShortTermRetentionPolicy()
         {
             TestRunner.RunTestScript("Test-ManagedLiveDatabaseShortTermRetentionPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagedDatabaseShortTermRetentionLockImmutability()
+        {
+            // Rollout is in progress for the short term retention lock immutability feature.
+            // Hence recorded only in Canary.
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ManagedDatabaseShortTermRetentionLockImmutability");
+            }
         }
 
         [Fact]
