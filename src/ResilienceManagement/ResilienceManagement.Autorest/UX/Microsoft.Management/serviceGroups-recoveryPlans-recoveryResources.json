@@ -1,0 +1,47 @@
+{
+  "resourceType": "serviceGroups/recoveryPlans/recoveryResources",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementRecoveryResource",
+      "description": "Get a RecoveryResource",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/recoveryResources/{recoveryResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementrecoveryresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-RecoveryPlanName <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a RecoveryResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.recoveryResourceName]"
+            },
+            {
+              "name": "-RecoveryPlanName",
+              "value": "[Path.recoveryPlanName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
