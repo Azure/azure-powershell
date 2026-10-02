@@ -15,20 +15,21 @@ Update an OpenAI integration rule for a given Elastic monitor resource, enabling
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Key <String>] [-OpenAiConnectorId <String>] [-OpenAiResourceEndpoint <String>]
- [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Key <SecureString>] [-OpenAiConnectorId <String>]
+ [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiConnectorId <String>]
+Update-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <SecureString>] [-OpenAiConnectorId <String>]
  [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMonitorExpanded
 ```
-Update-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdentity> [-Key <String>]
+Update-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdentity> [-Key <SecureString>]
  [-OpenAiConnectorId <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -IntegrationName
-OpenAI Integration name
+A sequence of textual characters.
 
 ```yaml
 Type: System.String
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 Value of API key for Open AI resource
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
+A sequence of textual characters.
 
 ```yaml
 Type: System.String
