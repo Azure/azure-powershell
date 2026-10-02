@@ -2,63 +2,87 @@
 
 
 def get_pr_regression_coverage_summary(pr_number):
-    """Find changed service modules without focused TestFx changes."""
+    """Find modules without changed TestFx or AutoRest/Pester test artifacts."""
     changes = get_pr_file_changes(
         owner="Azure",
         repo="azure-powershell",
         pr_number=pr_number,
     )
-    files = [
-        item.get("filename")
-        for item in changes
-        if isinstance(item, dict) and item.get("filename")
-    ]
+
+    def test_layout(parts):
+        if len(parts) < 4 or parts[0].casefold() != "src":
+            return None
+        project = parts[2].casefold()
+        if project.endswith((".test", ".tests")) or project == "livetests":
+            return "testfx"
+        if (
+            len(parts) >= 5
+            and project.endswith(".autorest")
+            and parts[3].casefold() in {"test", "tests"}
+        ):
+            return "pester"
+        return None
+
+    records = []
+    for item in changes:
+        if not isinstance(item, dict) or not isinstance(
+            item.get("filename"), str,
+        ) or not item["filename"]:
+            raise ValueError("PR file changes must contain a filename.")
+        path = item["filename"].replace("\\", "/")
+        records.append((path, str(item.get("status") or "").casefold()))
+        previous = item.get("previous_filename")
+        if previous and previous.replace("\\", "/") != path:
+            records.append((previous.replace("\\", "/"), "removed"))
+
     production_files = []
     modules = {}
-    for path in files:
-        normalized = str(path).replace("\\", "/")
-        parts = normalized.split("/")
-        name = parts[-1]
+    for path, status in records:
+        parts = path.split("/")
+        name = parts[-1].casefold()
         if (
             len(parts) >= 3
             and parts[0].casefold() == "src"
-            and not parts[2].casefold().endswith(".test")
-            and not name.casefold().endswith(".md")
+            and test_layout(parts) is None
+            and not name.endswith((".md", ".rst", ".txt"))
+            and not (
+                len(parts) >= 5
+                and parts[3].casefold() in {"help", "docs", "examples"}
+            )
         ):
-            production_files.append(normalized)
+            if path not in production_files:
+                production_files.append(path)
             module_key = parts[1].casefold()
-            if module_key not in modules:
-                modules[module_key] = parts[1]
+            modules.setdefault(module_key, parts[1])
 
     test_files = []
     recording_files = []
     covered = set()
-    for path in files:
-        normalized = str(path).replace("\\", "/")
-        lowered = normalized.casefold()
-        parts = normalized.split("/")
+    for path, status in records:
+        if status in {"removed", "deleted"}:
+            continue
+        lowered = path.casefold()
+        parts = path.split("/")
         module_key = parts[1].casefold() if len(parts) > 1 else None
+        if module_key not in modules:
+            continue
+        layout = test_layout(parts)
         if (
-            len(parts) >= 4
-            and parts[0].casefold() == "src"
-            and module_key in modules
-            and parts[2].casefold().endswith(".test")
-            and (
-                lowered.endswith(".cs")
-                or lowered.endswith(".ps1")
-            )
+            (layout == "testfx" and lowered.endswith((".cs", ".ps1")))
+            or (layout == "pester" and lowered.endswith(".tests.ps1"))
         ):
-            test_files.append(normalized)
+            test_files.append(path)
             covered.add(module_key)
         if (
-            len(parts) >= 5
-            and parts[0].casefold() == "src"
-            and module_key in modules
-            and parts[2].casefold().endswith(".test")
-            and parts[3].casefold() == "sessionrecords"
-            and lowered.endswith(".json")
+            (
+                layout == "testfx"
+                and len(parts) >= 5
+                and parts[3].casefold() == "sessionrecords"
+                and lowered.endswith(".json")
+            )
+            or (layout == "pester" and lowered.endswith(".recording.json"))
         ):
-            recording_files.append(normalized)
+            recording_files.append(path)
             covered.add(module_key)
 
     uncovered = sorted(set(modules) - covered)

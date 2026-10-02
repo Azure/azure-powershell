@@ -1,0 +1,27 @@
+name: X Agent review policy
+
+on:
+  pull_request:
+    paths:
+      - '.x/**'
+      - 'tools/XAgent.Tests/**'
+      - '.github/workflows/x-agent-review-policy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test repository review skills
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -m unittest discover -s tools/XAgent.Tests -p "test_*.py" -v

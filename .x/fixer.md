@@ -19,6 +19,10 @@ suggestion with `pr_title_for(style="powershell")` and include
 `pr_format_guidance(style="powershell")`. Require a complete PR template,
 `Fixes #N`, focused tests, and the appropriate `ChangeLog.md` entry; there is
 no Azure CLI-style enforced title gate.
+For public cmdlet changes, include matching help and design-review evidence.
+New cmdlets need PowerShell live/scenario tests and playback recordings, not
+only C# mocks or `-WhatIf` tests. Use the affected project's TestFx or
+AutoRest/Pester layout and include successful service-call coverage.
 
 If target inference returns `unknown` or `none`, request the affected module
 as missing information and stop. Do not dispatch with a guessed module.
@@ -26,6 +30,9 @@ as missing information and stop. Do not dispatch with a guessed module.
 Include `codegen_execution_guidance` when generator-owned `*.Autorest` inputs
 or generated commands are involved. The coding agent must run the repository
 generator and provide its artifacts rather than hand-edit generated output.
+Do not require regeneration merely because handwritten custom code or tests
+are inside an `.Autorest` project. Escalate Codegen migration or missing
+design/owner approval instead of treating it as an ordinary code correction.
 Only after requirements, module, scope, verification, metadata guidance, and
 the complete sanitized analysis are ready, call the repository-owned
 `dispatch_powershell_copilot` custom skill exactly once. Pass the issue number,
