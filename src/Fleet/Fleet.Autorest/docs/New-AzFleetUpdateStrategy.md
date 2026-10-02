@@ -12,25 +12,25 @@ Create a FleetUpdateStrategy
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzFleetUpdateStrategy -InputObject <IFleetIdentity> -StrategyStage <IUpdateStage[]> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzFleetUpdateStrategy -FleetName <String> -Name <String> -ResourceGroupName <String>
- -StrategyStage <IUpdateStage[]> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-StrategyStage <IUpdateStage[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzFleetUpdateStrategy -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-StrategyStage <IUpdateStage[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityFleetExpanded
 ```
-New-AzFleetUpdateStrategy -FleetInputObject <IFleetIdentity> -Name <String> -StrategyStage <IUpdateStage[]>
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFleetUpdateStrategy -FleetInputObject <IFleetIdentity> -Name <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-StrategyStage <IUpdateStage[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -313,7 +313,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFleetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -322,6 +322,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
