@@ -12,14 +12,14 @@ Get a userSession.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzWvdUserSession -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Filter <String>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
+ [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
 Get-AzWvdUserSession -HostPoolName <String> -ResourceGroupName <String> -SessionHostName <String>
  [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
@@ -122,7 +122,7 @@ Valid properties for filtering are userprincipalname and sessionstate.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: False
@@ -152,7 +152,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List1, Get
+Parameter Sets: List1, List, Get
 Aliases:
 
 Required: True
@@ -182,7 +182,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List1, List
 Aliases:
 
 Required: False
@@ -212,7 +212,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List, List1
+Parameter Sets: List1, List
 Aliases:
 
 Required: False
@@ -227,7 +227,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List1, List
 Aliases:
 
 Required: False
@@ -243,7 +243,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List1, Get
+Parameter Sets: List1, List, Get
 Aliases:
 
 Required: True
@@ -273,7 +273,7 @@ The name of the session host within the specified host pool
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get, GetViaIdentityHostPool
+Parameter Sets: List, Get, GetViaIdentityHostPool
 Aliases:
 
 Required: True
@@ -289,7 +289,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get
+Parameter Sets: List1, List, Get
 Aliases:
 
 Required: False

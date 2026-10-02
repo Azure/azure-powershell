@@ -12,7 +12,7 @@ Get a scaling plan.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzWvdScalingPlan [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -30,16 +30,16 @@ Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProf
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
-Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
- [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdScalingPlan -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
-Get-AzWvdScalingPlan -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-InitialSkip <Int32>]
+ [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +97,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: List2
+Parameter Sets: List1
 Aliases:
 
 Required: True
@@ -188,7 +188,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List1, List2
 Aliases:
 
 Required: True
