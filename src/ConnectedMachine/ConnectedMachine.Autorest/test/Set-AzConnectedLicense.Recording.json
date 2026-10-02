@@ -1,8 +1,8 @@
 {
-  "Set-AzConnectedLicense+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-31-preview+1": {
+  "Set-AzConnectedLicense+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2026-06-16-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2026-06-16-preview",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"licenseDetails\": {\r\n      \"state\": \"Deactivated\",\r\n      \"target\": \"Windows Server 2012\",\r\n      \"edition\": \"Datacenter\",\r\n      \"type\": \"pCore\",\r\n      \"processors\": 16\r\n    },\r\n    \"licenseType\": \"ESU\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzConnectedLicense+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-31-preview+2": {
+  "Set-AzConnectedLicense+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2026-06-16-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2026-06-16-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

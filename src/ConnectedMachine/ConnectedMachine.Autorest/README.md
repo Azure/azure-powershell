@@ -38,12 +38,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: a9980ec5181a161dd26c5277f7651722b60503ea
+commit: e0594098dde23f29e9908a1f230021e5f4609a4b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/HybridCompute/preview/2026-06-16-preview/openapi.json
  
 module-version: 0.1.0
 title: ConnectedMachine
@@ -54,18 +53,29 @@ disable-transform-identity-type-for-operation:
   - Machines_Update
 
 directive:
+  # Fix License model - autorest incorrectly generates duplicate Location property from TrackedResource inheritance
+  # We suppress the generated Location1 by telling autorest to inline the TrackedResource properties for License only
+  - from: swagger-document
+    where: $.definitions.License
+    transform: >-
+      var trackedProps = { "tags": {"type": "object", "description": "Resource tags.", "additionalProperties": {"type": "string"}}, "location": {"type": "string", "description": "The geo-location where the resource lives", "x-ms-mutability": ["read", "create"]} };
+      if (!$.properties.tags) { $.properties.tags = trackedProps.tags; }
+      if (!$.properties.location) { $.properties.location = trackedProps.location; }
+      $.allOf = [{"$ref": "../../../../../../common-types/resource-management/v6/types.json#/definitions/Resource"}];
+      return $;
+
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}"].get.parameters
     transform: >-
       return [
           {
-            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+            "$ref": "../../../../../../common-types/resource-management/v6/types.json#/parameters/ApiVersionParameter"
           },
           {
-            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+            "$ref": "../../../../../../common-types/resource-management/v6/types.json#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+            "$ref": "../../../../../../common-types/resource-management/v6/types.json#/parameters/ResourceGroupNameParameter"
           },
           {
             "name": "machineName",
@@ -207,7 +217,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            "$ref": "../../../../../../common-types/resource-management/v6/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -393,6 +403,16 @@ directive:
   # These APIs are used by the agent so they do not need to be in the cmdlets
   - remove-operation: Machines_CreateOrUpdate
   - remove-operation: MachineRunCommands_Update
+  # SetupExtensions is a non-standard operation that conflicts with MachineExtension parameter types
+  - remove-operation: SetupExtensions
+
+  # Fix MaximumDuration: swagger 'duration' format maps to System.TimeSpan which can't parse ISO 8601 (PT4H)
+  # Use string type instead so the ISO 8601 value passes through directly to the API
+  - from: swagger-document
+    where: $.definitions.MachineInstallPatchesParameters.properties.maximumDuration
+    transform: >-
+      delete $.format;
+      return $;
 
   # Create model cmdlet for complex object
   - model-cmdlet:
