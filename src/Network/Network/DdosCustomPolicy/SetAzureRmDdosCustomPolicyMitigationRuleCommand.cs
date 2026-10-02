@@ -8,7 +8,9 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -24,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Tcp", "Udp")]
         public string TrafficScope { get; set; }
@@ -39,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network
         public int? UdpPacketsPerSecond { get; set; }
 
         [Parameter]
+        [AllowEmptyCollection]
         public PSDdosCustomPolicySourcePolicyOverride[] SourcePolicyOverride { get; set; }
 
         public override void Execute()
@@ -62,13 +65,41 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var existing = DdosCustomPolicy.MitigationRules[index];
+            var existingProperties = existing.Properties
+                ?? throw new ArgumentException($"Mitigation rule '{Name}' has no properties.");
+            var trafficScope = MyInvocation.BoundParameters.ContainsKey(nameof(TrafficScope))
+                ? TrafficScope
+                : existingProperties.TrafficScope;
+            var preserveTcpLimits =
+                string.Equals(existingProperties.TrafficScope, MNM.DdosMitigationTrafficScope.Tcp, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(trafficScope, MNM.DdosMitigationTrafficScope.Tcp, StringComparison.OrdinalIgnoreCase);
+            var preserveUdpLimit =
+                string.Equals(existingProperties.TrafficScope, MNM.DdosMitigationTrafficScope.Udp, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(trafficScope, MNM.DdosMitigationTrafficScope.Udp, StringComparison.OrdinalIgnoreCase);
+            IEnumerable<PSDdosCustomPolicySourcePolicyOverride> sourcePolicyOverrides =
+                MyInvocation.BoundParameters.ContainsKey(nameof(SourcePolicyOverride))
+                    ? (IEnumerable<PSDdosCustomPolicySourcePolicyOverride>)SourcePolicyOverride
+                    : existingProperties.SourcePolicyOverrides;
+
             var replacement = DdosCustomPolicyMitigationRuleUtils.BuildRule(
                 existing.Name,
-                TrafficScope,
-                TcpPacketsPerSecond,
-                TcpConnectionsPerSecond,
-                UdpPacketsPerSecond,
-                SourcePolicyOverride);
+                trafficScope,
+                MyInvocation.BoundParameters.ContainsKey(nameof(TcpPacketsPerSecond))
+                    ? TcpPacketsPerSecond
+                    : preserveTcpLimits
+                        ? existingProperties.TcpDefaultMitigations?.PerSourceRateLimiting?.PacketsPerSecond
+                        : null,
+                MyInvocation.BoundParameters.ContainsKey(nameof(TcpConnectionsPerSecond))
+                    ? TcpConnectionsPerSecond
+                    : preserveTcpLimits
+                        ? existingProperties.TcpDefaultMitigations?.PerSourceConnectionRateLimiting?.ConnectionsPerSecond
+                        : null,
+                MyInvocation.BoundParameters.ContainsKey(nameof(UdpPacketsPerSecond))
+                    ? UdpPacketsPerSecond
+                    : preserveUdpLimit
+                        ? existingProperties.UdpDefaultMitigations?.PerSourceRateLimiting?.PacketsPerSecond
+                        : null,
+                sourcePolicyOverrides);
             replacement.Id = existing.Id;
             replacement.Etag = existing.Etag;
             replacement.Type = existing.Type;

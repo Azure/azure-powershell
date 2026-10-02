@@ -8,30 +8,30 @@ schema: 2.0.0
 # Set-AzDdosCustomPolicyMitigationRule
 
 ## SYNOPSIS
-Replaces a mitigation rule in an in-memory DDoS custom policy.
+Updates a mitigation rule in an in-memory DDoS custom policy.
 
 ## SYNTAX
 
 ```
 Set-AzDdosCustomPolicyMitigationRule -DdosCustomPolicy <PSDdosCustomPolicy> -Name <String>
- -TrafficScope <String> [-TcpPacketsPerSecond <Int32>] [-TcpConnectionsPerSecond <Int32>]
+ [-TrafficScope <String>] [-TcpPacketsPerSecond <Int32>] [-TcpConnectionsPerSecond <Int32>]
  [-UdpPacketsPerSecond <Int32>] [-SourcePolicyOverride <PSDdosCustomPolicySourcePolicyOverride[]>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzDdosCustomPolicyMitigationRule** cmdlet replaces the configurable properties of an existing named mitigation rule. Rule-name matching is case-insensitive, and response metadata is preserved. The cmdlet does not update Azure. Pipe the returned policy to **Set-AzDdosCustomPolicy** to persist the change.
+The **Set-AzDdosCustomPolicyMitigationRule** cmdlet updates the explicitly specified properties of an existing named mitigation rule. Properties that are not supplied retain their existing values. Rule-name matching is case-insensitive, and response metadata is preserved. The cmdlet does not update Azure. Pipe the returned policy to **Set-AzDdosCustomPolicy** to persist the change.
 
 ## EXAMPLES
 
 ### Example 1: Update and persist a TCP mitigation rule
 ```powershell
 $policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
-$policy | Set-AzDdosCustomPolicyMitigationRule -Name "tcpRule" -TrafficScope Tcp -TcpPacketsPerSecond 150000 -TcpConnectionsPerSecond 15000 | Set-AzDdosCustomPolicy
+$policy | Set-AzDdosCustomPolicyMitigationRule -Name "tcpRule" -TcpConnectionsPerSecond 15000 | Set-AzDdosCustomPolicy
 ```
 
-This example replaces the TCP rate limits on `tcpRule` and persists the updated policy.
+This example updates only the TCP connection rate on `tcpRule`. The existing packet rate and source policy overrides are retained when the updated policy is persisted.
 
 ## PARAMETERS
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the existing mitigation rule to replace.
+Specifies the name of the existing mitigation rule to update.
 
 ```yaml
 Type: System.String
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourcePolicyOverride
-Specifies source-specific actions and match conditions created by **New-AzDdosCustomPolicySourcePolicyOverride**.
+Specifies the complete source-specific action and match-condition collection to apply. If this parameter is omitted, the existing source policy overrides are retained.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicySourcePolicyOverride[]
@@ -171,14 +171,14 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficScope
-Specifies the traffic protocol to which the replacement rule applies. Common values are `Tcp` and `Udp`.
+Specifies the traffic protocol to which the rule applies. If this parameter is omitted, the existing traffic scope is retained. Common values are `Tcp` and `Udp`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

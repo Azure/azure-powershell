@@ -1035,8 +1035,10 @@ function Test-DdosCustomPolicyMitigationRuleMutation
     $policy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
     $policy.Name = "policy"
 
+    $sourceOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix "192.0.2.0/24"
     $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
-        -TcpPacketsPerSecond 100000
+        -TcpPacketsPerSecond 100000 -SourcePolicyOverride @($sourceOverride)
     $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Udp `
         -UdpPacketsPerSecond 90000
     Assert-AreEqual 2 $policy.MitigationRules.Count
@@ -1044,11 +1046,20 @@ function Test-DdosCustomPolicyMitigationRuleMutation
     $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name TCPRULE
     Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
 
-    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name TcPrUlE -TrafficScope Tcp `
-        -TcpPacketsPerSecond 150000 -TcpConnectionsPerSecond 15000
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name TcPrUlE `
+        -TcpConnectionsPerSecond 15000
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 15000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+    Assert-AreEqual "Deny" $tcpRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+    Assert-AreEqual "192.0.2.0/24" $tcpRule.Properties.SourcePolicyOverrides[0].Conditions.IpPrefixes[0]
+
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule `
+        -TcpPacketsPerSecond 150000
     $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
     Assert-AreEqual 150000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
     Assert-AreEqual 15000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+    Assert-AreEqual "Deny" $tcpRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
 
     Assert-ThrowsLike {
         $policy | Add-AzDdosCustomPolicyMitigationRule -Name TCPRULE -TrafficScope Tcp -TcpPacketsPerSecond 100
@@ -1115,8 +1126,7 @@ function Test-DdosCustomPolicyMitigationRuleCRUD
         Assert-AreEqual "198.51.100.0/24" $persistedUdpRule.Properties.SourcePolicyOverrides[0].Conditions.IpPrefixes[0]
 
         $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
-            -TcpPacketsPerSecond 140000 -TcpConnectionsPerSecond 14000 `
-            -SourcePolicyOverride @($persistedTcpRule.Properties.SourcePolicyOverrides)
+            -TcpPacketsPerSecond 140000 -TcpConnectionsPerSecond 14000
         $policy = $policy | Set-AzDdosCustomPolicy
 
         $policy = Get-AzDdosCustomPolicy -ResourceGroupName $rgName -Name $policyName
