@@ -1,0 +1,75 @@
+{
+  "resourceType": "serviceGroups/goalTemplates",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resilience"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceGoalTemplate",
+      "description": "Get a GoalTemplate",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalTemplates/{goalTemplateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resilience/get-azresiliencegoaltemplate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a GoalTemplate",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.goalTemplateName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResilienceGoalTemplate",
+      "description": "Delete a GoalTemplate",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/goalTemplates/{goalTemplateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resilience/remove-azresiliencegoaltemplate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a GoalTemplate",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.goalTemplateName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
