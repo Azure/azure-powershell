@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/databaseSystemShapes",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracle"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleDatabaseSystemShapeResource",
+      "description": "Get a DatabaseSystemShape",
+      "path": "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/databaseSystemShapes/{databasesystemshapename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracle/get-azoracledatabasesystemshaperesource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Databasesystemshapename <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DatabaseSystemShape",
+          "parameters": [
+            {
+              "name": "-Databasesystemshapename",
+              "value": "[Path.databasesystemshapename]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

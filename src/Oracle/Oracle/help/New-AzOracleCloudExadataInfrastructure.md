@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoraclecloudexadatainfrastructure
 schema: 2.0.0
@@ -14,30 +14,32 @@ Create a CloudExadataInfrastructure
 
 ### CreateExpanded (Default)
 ```
-New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Zone <String[]> [-ComputeCount <Int32>] [-CustomerContact <ICustomerContact[]>]
+New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> -Location <String>
+ -Zone <String[]> [-SubscriptionId <String>] [-ComputeCount <Int32>] [-CustomerContact <ICustomerContact[]>]
  [-DatabaseServerType <String>] [-DisplayName <String>] [-MaintenanceWindowCustomActionTimeoutInMin <Int32>]
  [-MaintenanceWindowDaysOfWeek <IDayOfWeek[]>] [-MaintenanceWindowHoursOfDay <Int32[]>]
  [-MaintenanceWindowIsCustomActionTimeoutEnabled] [-MaintenanceWindowIsMonthlyPatchingEnabled]
  [-MaintenanceWindowLeadTimeInWeek <Int32>] [-MaintenanceWindowMonth <IMonth[]>]
  [-MaintenanceWindowPatchingMode <String>] [-MaintenanceWindowPreference <String>]
- [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>] [-StorageCount <Int32>]
- [-StorageServerType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-ProximityPlacementGroupEntityTypeIntendedToUse <String>]
+ [-ProximityPlacementGroupProximityAnchorId <String>]
+ [-ProximityPlacementGroupProximityPlacementGroupId <String>] [-ResourceAnchorId <String>] [-Shape <String>]
+ [-StorageCount <Int32>] [-StorageServerType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -409,6 +411,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProximityPlacementGroupEntityTypeIntendedToUse
+Entity type intended to use the proximity placement group
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityAnchorId
+Proximity Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityPlacementGroupId
+Proximity placement group ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceAnchorId
+Azure Resource Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -559,3 +621,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

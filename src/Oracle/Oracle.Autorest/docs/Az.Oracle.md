@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Oracle
-Module Guid: 7fe37b20-8414-454f-98c1-fee11f1b09fa
+Module Guid: fc49748c-7d7e-4fda-a3b4-419081c2c67d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.oracle
 Help Version: 1.0.0.0
 Locale: en-US
@@ -34,6 +34,12 @@ Get a CloudExadataInfrastructure
 
 ### [Get-AzOracleCloudVMCluster](Get-AzOracleCloudVMCluster.md)
 Get a CloudVmCluster
+
+### [Get-AzOracleDatabaseEdition](Get-AzOracleDatabaseEdition.md)
+Get a DatabaseEdition
+
+### [Get-AzOracleDatabaseSystemShapeResource](Get-AzOracleDatabaseSystemShapeResource.md)
+Get a DatabaseSystemShape
 
 ### [Get-AzOracleDbNode](Get-AzOracleDbNode.md)
 Get a DbNode
@@ -74,6 +80,18 @@ Get a GiMinorVersion
 ### [Get-AzOracleGiVersion](Get-AzOracleGiVersion.md)
 Get a GiVersion
 
+### [Get-AzOracleGoldenGateConnection](Get-AzOracleGoldenGateConnection.md)
+Get a GoldenGateConnection
+
+### [Get-AzOracleGoldenGateConnectionAssignedDeployment](Get-AzOracleGoldenGateConnectionAssignedDeployment.md)
+Get assigned deployment by GoldenGate connection.
+
+### [Get-AzOracleGoldenGateDeployment](Get-AzOracleGoldenGateDeployment.md)
+Get a GoldenGateDeployment
+
+### [Get-AzOracleGoldenGateDeploymentAssignedConnection](Get-AzOracleGoldenGateDeploymentAssignedConnection.md)
+Get assigned connection by GoldenGate deployment.
+
 ### [Get-AzOracleNetworkAnchor](Get-AzOracleNetworkAnchor.md)
 Get a NetworkAnchor
 
@@ -91,6 +109,12 @@ VM actions on DbNode of ExadbVmCluster by the provided filter
 
 ### [Invoke-AzOracleSwitchoverAutonomousDatabase](Invoke-AzOracleSwitchoverAutonomousDatabase.md)
 Perform switchover action on Autonomous Database
+
+### [Invoke-AzOracleUnassignGoldenGateConnectionDeployment](Invoke-AzOracleUnassignGoldenGateConnectionDeployment.md)
+Unassign a GoldenGate deployment from a connection.
+
+### [Invoke-AzOracleUnassignGoldenGateDeploymentConnection](Invoke-AzOracleUnassignGoldenGateDeploymentConnection.md)
+Unassign a GoldenGate connection from a deployment.
 
 ### [New-AzOracleAutonomousDatabase](New-AzOracleAutonomousDatabase.md)
 Create a AutonomousDatabase
@@ -115,6 +139,12 @@ Create a ExadbVmCluster
 
 ### [New-AzOracleExascaleDbStorageVault](New-AzOracleExascaleDbStorageVault.md)
 Create a ExascaleDbStorageVault
+
+### [New-AzOracleGoldenGateConnection](New-AzOracleGoldenGateConnection.md)
+Create a GoldenGateConnection
+
+### [New-AzOracleGoldenGateDeployment](New-AzOracleGoldenGateDeployment.md)
+Create a GoldenGateDeployment
 
 ### [New-AzOracleNetworkAnchor](New-AzOracleNetworkAnchor.md)
 Create a NetworkAnchor
@@ -152,6 +182,12 @@ Remove VMs from the VM Cluster
 ### [Remove-AzOracleExascaleDbStorageVault](Remove-AzOracleExascaleDbStorageVault.md)
 Delete a ExascaleDbStorageVault
 
+### [Remove-AzOracleGoldenGateConnection](Remove-AzOracleGoldenGateConnection.md)
+Delete a GoldenGateConnection
+
+### [Remove-AzOracleGoldenGateDeployment](Remove-AzOracleGoldenGateDeployment.md)
+Delete a GoldenGateDeployment
+
 ### [Remove-AzOracleNetworkAnchor](Remove-AzOracleNetworkAnchor.md)
 Delete a NetworkAnchor
 
@@ -181,6 +217,12 @@ Update a ExadbVmCluster
 
 ### [Update-AzOracleExascaleDbStorageVault](Update-AzOracleExascaleDbStorageVault.md)
 Update a ExascaleDbStorageVault
+
+### [Update-AzOracleGoldenGateConnection](Update-AzOracleGoldenGateConnection.md)
+Update a GoldenGateConnection
+
+### [Update-AzOracleGoldenGateDeployment](Update-AzOracleGoldenGateDeployment.md)
+Update a GoldenGateDeployment
 
 ### [Update-AzOracleNetworkAnchor](Update-AzOracleNetworkAnchor.md)
 Update a NetworkAnchor
