@@ -72,6 +72,7 @@ function Retry-AzCommand {
 
 # The name of resource group is 1~90 charactors complying with ^[-\w\._\(\)]+$
 $resourceGroupName = "azpssmokerg$randomValue"
+$resourceCmdletResourceGroupName = "azpssmokecmdletrg$randomValue"
 # The name of storage account should be 3~24 lowercase letters and numbers.
 $storageAccountName = "azpssmokesa$randomValue"
 
@@ -81,6 +82,11 @@ $resourceSetUpCommands = @(
 
 $resourceCleanUpCommands = @(
     @{Name = "Az.Storage [Cleanup]"; Command = { Remove-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -Force } },
+    @{Name = "Az.Resources [Resource Cmdlets Cleanup]"; Command = {
+        if (Get-AzResourceGroup -Name $resourceCmdletResourceGroupName -ErrorAction SilentlyContinue) {
+            Remove-AzResourceGroup -Name $resourceCmdletResourceGroupName -Force
+        }
+    } },
     @{Name = "Az.Resources [Cleanup]"; Command = { Remove-AzResourceGroup -Name $resourceGroupName -Force } }
 )
 
@@ -155,6 +161,10 @@ $resourceTestCommands = @(
     @{Name = "Az.StreamAnalytics"; Command = { Get-AzStreamAnalyticsJob } },
     @{Name = "Az.StorageSync"; Command = { Get-AzStorageSyncService } },
     @{Name = "Az.Support"; Command = { Get-AzSupportTicket } },
+    @{Name = "Az.Resources [Resource Cmdlets]"; Command = {
+        New-AzResource -ResourceName $resourceCmdletResourceGroupName -ResourceType "Microsoft.Resources/resourceGroups" -Location westus -Force
+        Remove-AzResource -ResourceName $resourceCmdletResourceGroupName -ResourceType "Microsoft.Resources/resourceGroups" -Force
+    } },
     @{Name = "Az.Resources [Tags]"; Command = { Get-AzTag } },
     @{Name = "Az.Resources [MSGraph]"; Command = { Get-AzADUser -First 1 -Select Id } },
     @{Name = "Az.TrafficManager"; Command = { Get-AzTrafficManagerProfile } },
