@@ -36,6 +36,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyGetDetectionRule()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyGetDetectionRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosCustomPolicyCRUD()
         {
             TestRunner.RunTestScript("Test-DdosCustomPolicyCRUD");

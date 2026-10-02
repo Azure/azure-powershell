@@ -43,6 +43,38 @@ function Test-DdosCustomPolicyDetectionRuleCreation
 
 <#
 .SYNOPSIS
+Test retrieving DDoS custom policy detection rules.
+#>
+function Test-DdosCustomPolicyGetDetectionRule
+{
+    $policy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $policy.Name = "policy"
+    $policy = $policy |
+        Add-AzDdosCustomPolicyDetectionRule -Name tcpRule -TrafficType Tcp -PacketsPerSecond 1000000
+    $policy = $policy |
+        Add-AzDdosCustomPolicyDetectionRule -Name udpRule -TrafficType Udp -PacketsPerSecond 100000
+
+    $allRules = $policy | Get-AzDdosCustomPolicyDetectionRule
+    Assert-AreEqual 2 $allRules.Count
+
+    $tcpRule = $policy | Get-AzDdosCustomPolicyDetectionRule -Name TCPRULE
+    Assert-AreEqual "tcpRule" $tcpRule.Name
+    Assert-AreEqual "Tcp" $tcpRule.TrafficType
+    Assert-AreEqual 1000000 $tcpRule.PacketsPerSecond
+
+    Assert-ThrowsLike {
+        $policy | Get-AzDdosCustomPolicyDetectionRule -Name missingRule
+    } "*was not found*"
+
+    $emptyPolicy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    Assert-AreEqual 0 @($emptyPolicy | Get-AzDdosCustomPolicyDetectionRule).Count
+    Assert-ThrowsLike {
+        $emptyPolicy | Get-AzDdosCustomPolicyDetectionRule -Name missingRule
+    } "*was not found*"
+}
+
+<#
+.SYNOPSIS
 Test DDoS custom policy CRUD operations
 #>
 function Test-DdosCustomPolicyCRUD
