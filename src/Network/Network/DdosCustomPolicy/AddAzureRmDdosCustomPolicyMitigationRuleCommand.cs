@@ -51,20 +51,24 @@ namespace Microsoft.Azure.Commands.Network
                 return;
             }
 
-            DdosCustomPolicy.MitigationRules = DdosCustomPolicy.MitigationRules ?? new List<PSDdosCustomPolicyMitigationRule>();
-            if (DdosCustomPolicy.MitigationRules.Exists(item => string.Equals(item.Name, Name, StringComparison.OrdinalIgnoreCase)))
+            var existingRules = DdosCustomPolicy.MitigationRules ?? new List<PSDdosCustomPolicyMitigationRule>();
+            if (existingRules.Exists(item => string.Equals(item.Name, Name, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new ArgumentException($"Mitigation rule '{Name}' already exists.");
             }
 
-            DdosCustomPolicy.MitigationRules.Add(DdosCustomPolicyMitigationRuleUtils.BuildRule(
-                Name,
-                TrafficScope,
-                TcpPacketsPerSecond,
-                TcpConnectionsPerSecond,
-                UdpPacketsPerSecond,
-                SourcePolicyOverride));
-            DdosCustomPolicyMitigationRuleUtils.ValidateRules(DdosCustomPolicy.MitigationRules);
+            var updatedRules = new List<PSDdosCustomPolicyMitigationRule>(existingRules)
+            {
+                DdosCustomPolicyMitigationRuleUtils.BuildRule(
+                    Name,
+                    TrafficScope,
+                    TcpPacketsPerSecond,
+                    TcpConnectionsPerSecond,
+                    UdpPacketsPerSecond,
+                    SourcePolicyOverride),
+            };
+            DdosCustomPolicyMitigationRuleUtils.ValidateRules(updatedRules);
+            DdosCustomPolicy.MitigationRules = updatedRules;
             WriteObject(DdosCustomPolicy, true);
         }
     }

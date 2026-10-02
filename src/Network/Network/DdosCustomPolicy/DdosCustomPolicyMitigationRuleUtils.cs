@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network
             var udpPackets = rule.Properties.UdpDefaultMitigations?.PerSourceRateLimiting?.PacketsPerSecond;
 
             ValidatePositive(tcpPackets, "TcpPacketsPerSecond");
-            ValidatePositive(tcpConnections, "TcpConnectionsPerSecond");
+            ValidateNonNegative(tcpConnections, "TcpConnectionsPerSecond");
             ValidatePositive(udpPackets, "UdpPacketsPerSecond");
 
             if (string.Equals(scope, MNM.DdosMitigationTrafficScope.Tcp, StringComparison.OrdinalIgnoreCase) && udpPackets.HasValue)
@@ -340,6 +340,14 @@ namespace Microsoft.Azure.Commands.Network
             if (value.HasValue && value.Value <= 0)
             {
                 throw new ArgumentException($"{parameterName} must be greater than zero.");
+            }
+        }
+
+        private static void ValidateNonNegative(int? value, string parameterName)
+        {
+            if (value.HasValue && value.Value < 0)
+            {
+                throw new ArgumentException($"{parameterName} cannot be negative.");
             }
         }
 

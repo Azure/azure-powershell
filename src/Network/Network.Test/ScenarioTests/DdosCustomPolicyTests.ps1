@@ -1001,6 +1001,14 @@ function Test-DdosCustomPolicyMitigationRuleValidation
         New-AzDdosCustomPolicyGeoMatch -CountryCode de
     } "*uppercase two-letter*"
 
+    $continentOnly = New-AzDdosCustomPolicyGeoMatch -Continent Asia
+    Assert-AreEqual "Asia" $continentOnly.Continent
+    Assert-Null $continentOnly.CountryCode
+
+    $countryOnly = New-AzDdosCustomPolicyGeoMatch -CountryCode JP
+    Assert-Null $countryOnly.Continent
+    Assert-AreEqual "JP" $countryOnly.CountryCode
+
     Assert-ThrowsLike {
         New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny -IpPrefix "192.0.2.1"
     } "*CIDR*"
@@ -1020,6 +1028,39 @@ function Test-DdosCustomPolicyMitigationRuleValidation
     Assert-ThrowsLike {
         New-AzDdosCustomPolicyMitigationRule -Name invalidRate -TrafficScope Tcp -TcpPacketsPerSecond 0
     } "*greater than zero*"
+
+    $zeroConnectionRule = New-AzDdosCustomPolicyMitigationRule -Name zeroConnectionRate `
+        -TrafficScope Tcp -TcpConnectionsPerSecond 0
+    Assert-AreEqual 0 $zeroConnectionRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name invalidConnectionRate -TrafficScope Tcp `
+            -TcpConnectionsPerSecond -1
+    } "*cannot be negative*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name invalidUdpRate -TrafficScope Udp `
+            -UdpPacketsPerSecond 0
+    } "*greater than zero*"
+
+    $denyOverride1 = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix "192.0.2.0/24"
+    $denyOverride2 = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix "198.51.100.0/24"
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicyMitigationRule -Name duplicateActions -TrafficScope Tcp `
+            -SourcePolicyOverride @($denyOverride1, $denyOverride2)
+    } "*Duplicate source policy action*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicySourcePolicyOverride -ActionType Permit `
+            -IpPrefix "2001:db8::/129"
+    } "*not a valid IPv4 or IPv6 CIDR prefix*"
+
+    Assert-ThrowsLike {
+        New-AzDdosCustomPolicySourcePolicyOverride -ActionType Permit `
+            -IpPrefix "192.0.2.0/33"
+    } "*not a valid IPv4 or IPv6 CIDR prefix*"
 
     Assert-ThrowsLike {
         New-AzDdosCustomPolicyMitigationRule -Name emptyRule -TrafficScope Tcp
@@ -1072,6 +1113,232 @@ function Test-DdosCustomPolicyMitigationRuleMutation
     Assert-ThrowsLike {
         $policy | Get-AzDdosCustomPolicyMitigationRule -Name missingRule
     } "*was not found*"
+}
+
+<#
+.SYNOPSIS
+Test mitigation-rule edge cases and failure atomicity.
+#>
+function Test-DdosCustomPolicyMitigationRuleEdgeCases
+{
+    $denyOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix "192.0.2.0/24"
+
+    $policy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $policy.Name = "policy"
+    $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name tcpRule -TrafficScope Tcp `
+        -TcpPacketsPerSecond 100000 -TcpConnectionsPerSecond 10000 `
+        -SourcePolicyOverride @($denyOverride)
+    $policy = $policy | Add-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Udp `
+        -UdpPacketsPerSecond 90000
+
+    $allRules = $policy | Get-AzDdosCustomPolicyMitigationRule
+    Assert-AreEqual 2 $allRules.Count
+
+    Assert-ThrowsLike {
+        $policy | Add-AzDdosCustomPolicyMitigationRule -Name secondTcpRule -TrafficScope Tcp `
+            -TcpPacketsPerSecond 200000
+    } "*Duplicate mitigation traffic scope*"
+    Assert-AreEqual 2 $policy.MitigationRules.Count
+    Assert-Null ($policy.MitigationRules | Where-Object { $_.Name -eq "secondTcpRule" })
+
+    Assert-ThrowsLike {
+        $policy | Set-AzDdosCustomPolicyMitigationRule -Name udpRule -TrafficScope Tcp `
+            -TcpPacketsPerSecond 200000
+    } "*Duplicate mitigation traffic scope*"
+    $udpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name udpRule
+    Assert-AreEqual "Udp" $udpRule.Properties.TrafficScope
+    Assert-AreEqual 90000 $udpRule.Properties.UdpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+
+    $secondDenyOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -IpPrefix "198.51.100.0/24"
+    Assert-ThrowsLike {
+        $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule `
+            -SourcePolicyOverride @($denyOverride, $secondDenyOverride)
+    } "*Duplicate source policy action*"
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    Assert-AreEqual 1 $tcpRule.Properties.SourcePolicyOverrides.Count
+    Assert-AreEqual "192.0.2.0/24" $tcpRule.Properties.SourcePolicyOverrides[0].Conditions.IpPrefixes[0]
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    $tcpRule.Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/ddosCustomPolicies/policy/ddosMitigationRules/tcpRule"
+    $tcpRule.Etag = "etag"
+    $tcpRule.Type = "Microsoft.Network/ddosCustomPolicies/ddosMitigationRules"
+    $tcpRule.Properties.ProvisioningState = "Succeeded"
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    Assert-AreEqual "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/ddosCustomPolicies/policy/ddosMitigationRules/tcpRule" $tcpRule.Id
+    Assert-AreEqual "etag" $tcpRule.Etag
+    Assert-AreEqual "Microsoft.Network/ddosCustomPolicies/ddosMitigationRules" $tcpRule.Type
+    Assert-AreEqual "Succeeded" $tcpRule.Properties.ProvisioningState
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+    Assert-AreEqual "Deny" $tcpRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule `
+        -SourcePolicyOverride @()
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    Assert-AreEqual 0 $tcpRule.Properties.SourcePolicyOverrides.Count
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    $policy = $policy | Set-AzDdosCustomPolicyMitigationRule -Name tcpRule `
+        -TcpConnectionsPerSecond $null
+    $tcpRule = $policy | Get-AzDdosCustomPolicyMitigationRule -Name tcpRule
+    Assert-AreEqual 100000 $tcpRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-Null $tcpRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting
+    Assert-AreEqual 0 $tcpRule.Properties.SourcePolicyOverrides.Count
+
+    $transitionPolicy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $transitionPolicy.Name = "transitionPolicy"
+    $transitionPolicy = $transitionPolicy |
+        Add-AzDdosCustomPolicyMitigationRule -Name transitionRule -TrafficScope Udp `
+            -UdpPacketsPerSecond 90000 -SourcePolicyOverride @($denyOverride)
+    $transitionPolicy = $transitionPolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name transitionRule -TrafficScope Tcp `
+            -TcpPacketsPerSecond 200000
+    $transitionRule = $transitionPolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name transitionRule
+    Assert-AreEqual "Tcp" $transitionRule.Properties.TrafficScope
+    Assert-AreEqual 200000 $transitionRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-Null $transitionRule.Properties.UdpDefaultMitigations
+    Assert-AreEqual "Deny" $transitionRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    $transitionPolicy = $transitionPolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name transitionRule -TcpPacketsPerSecond $null
+    $transitionRule = $transitionPolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name transitionRule
+    Assert-Null $transitionRule.Properties.TcpDefaultMitigations
+    Assert-AreEqual "Deny" $transitionRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    $transitionPolicy = $transitionPolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name transitionRule -TrafficScope Udp `
+            -UdpPacketsPerSecond 80000
+    $transitionRule = $transitionPolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name transitionRule
+    Assert-AreEqual "Udp" $transitionRule.Properties.TrafficScope
+    Assert-Null $transitionRule.Properties.TcpDefaultMitigations
+    Assert-AreEqual 80000 $transitionRule.Properties.UdpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual "Deny" $transitionRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    $transitionPolicy = $transitionPolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name transitionRule -UdpPacketsPerSecond $null
+    $transitionRule = $transitionPolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name transitionRule
+    Assert-Null $transitionRule.Properties.UdpDefaultMitigations
+    Assert-AreEqual "Deny" $transitionRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    Assert-ThrowsLike {
+        $transitionPolicy | Set-AzDdosCustomPolicyMitigationRule -Name transitionRule `
+            -SourcePolicyOverride @()
+    } "*applicable rate limit or at least one source policy override*"
+    $transitionRule = $transitionPolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name transitionRule
+    Assert-AreEqual "Udp" $transitionRule.Properties.TrafficScope
+    Assert-Null $transitionRule.Properties.UdpDefaultMitigations
+    Assert-AreEqual 1 $transitionRule.Properties.SourcePolicyOverrides.Count
+    Assert-AreEqual "Deny" $transitionRule.Properties.SourcePolicyOverrides[0].PolicyAction.ActionType
+
+    $germany = New-AzDdosCustomPolicyGeoMatch -Continent Europe -CountryCode DE
+    $europeDeny = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -GeoMatch @($germany)
+    $overridePolicy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $overridePolicy.Name = "overridePolicy"
+    $overridePolicy = $overridePolicy |
+        Add-AzDdosCustomPolicyMitigationRule -Name overrideRule -TrafficScope Tcp `
+            -TcpPacketsPerSecond 100000 -TcpConnectionsPerSecond 10000 `
+            -SourcePolicyOverride @($europeDeny)
+
+    $overridePolicy = $overridePolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name overrideRule -TcpPacketsPerSecond 110000
+    $overrideRule = $overridePolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name overrideRule
+    Assert-AreEqual 110000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+    Assert-AreEqual "Europe" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].Continent
+    Assert-AreEqual "DE" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].CountryCode
+
+    $france = New-AzDdosCustomPolicyGeoMatch -Continent Europe -CountryCode FR
+    $europeDeny = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -GeoMatch @($germany, $france)
+    $overridePolicy = $overridePolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name overrideRule `
+            -SourcePolicyOverride @($europeDeny)
+    $overrideRule = $overridePolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name overrideRule
+    Assert-AreEqual 2 $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches.Count
+    Assert-AreEqual "DE" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].CountryCode
+    Assert-AreEqual "FR" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[1].CountryCode
+    Assert-AreEqual 110000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    $unitedStates = New-AzDdosCustomPolicyGeoMatch -Continent NorthAmerica -CountryCode US
+    $northAmericaDeny = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -GeoMatch @($unitedStates)
+    $permitOverride = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Permit `
+        -IpPrefix "198.51.100.0/24"
+    $overridePolicy = $overridePolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name overrideRule `
+            -SourcePolicyOverride @($northAmericaDeny, $permitOverride)
+    $overrideRule = $overridePolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name overrideRule
+    Assert-AreEqual 2 $overrideRule.Properties.SourcePolicyOverrides.Count
+    Assert-AreEqual "NorthAmerica" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].Continent
+    Assert-AreEqual "US" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].CountryCode
+    Assert-AreEqual "Permit" $overrideRule.Properties.SourcePolicyOverrides[1].PolicyAction.ActionType
+    Assert-AreEqual "198.51.100.0/24" $overrideRule.Properties.SourcePolicyOverrides[1].Conditions.IpPrefixes[0]
+    Assert-AreEqual 110000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    $canada = New-AzDdosCustomPolicyGeoMatch -Continent NorthAmerica -CountryCode CA
+    $northAmericaDeny = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -GeoMatch @($unitedStates, $canada)
+    $overridePolicy = $overridePolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name overrideRule `
+            -SourcePolicyOverride @($northAmericaDeny, $permitOverride)
+    $overrideRule = $overridePolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name overrideRule
+    Assert-AreEqual 2 $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches.Count
+    Assert-AreEqual "US" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].CountryCode
+    Assert-AreEqual "CA" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[1].CountryCode
+    Assert-AreEqual "Permit" $overrideRule.Properties.SourcePolicyOverrides[1].PolicyAction.ActionType
+    Assert-AreEqual 110000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    $australia = New-AzDdosCustomPolicyGeoMatch -Continent Oceania -CountryCode AU
+    $oceaniaDeny = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny `
+        -GeoMatch @($australia)
+    $overridePolicy = $overridePolicy |
+        Set-AzDdosCustomPolicyMitigationRule -Name overrideRule `
+            -SourcePolicyOverride @($oceaniaDeny, $permitOverride)
+    $overrideRule = $overridePolicy |
+        Get-AzDdosCustomPolicyMitigationRule -Name overrideRule
+    Assert-AreEqual "Oceania" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].Continent
+    Assert-AreEqual "AU" $overrideRule.Properties.SourcePolicyOverrides[0].Conditions.GeoMatches[0].CountryCode
+    Assert-AreEqual "Permit" $overrideRule.Properties.SourcePolicyOverrides[1].PolicyAction.ActionType
+    Assert-AreEqual 110000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceRateLimiting.PacketsPerSecond
+    Assert-AreEqual 10000 $overrideRule.Properties.TcpDefaultMitigations.PerSourceConnectionRateLimiting.ConnectionsPerSecond
+
+    $emptyPolicy = [Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy]::new()
+    $emptyPolicy.Name = "emptyPolicy"
+    Assert-AreEqual 0 @($emptyPolicy | Get-AzDdosCustomPolicyMitigationRule).Count
+    Assert-ThrowsLike {
+        $emptyPolicy | Add-AzDdosCustomPolicyMitigationRule -Name invalidRule -TrafficScope Tcp
+    } "*applicable rate limit or at least one source policy override*"
+    Assert-Null $emptyPolicy.MitigationRules
+    $emptyPolicy = $emptyPolicy |
+        Remove-AzDdosCustomPolicyMitigationRule -Name missingRule
+    Assert-Null $emptyPolicy.MitigationRules
+
+    $policy = $policy |
+        Remove-AzDdosCustomPolicyMitigationRule -Name missingRule
+    Assert-AreEqual 2 $policy.MitigationRules.Count
+
+    $policy = $policy | Remove-AzDdosCustomPolicyMitigationRule -Name UDPRULE
+    Assert-AreEqual 1 $policy.MitigationRules.Count
+    $policy = $policy | Remove-AzDdosCustomPolicyMitigationRule -Name TCPRULE
+    Assert-Null $policy.MitigationRules
 }
 
 <#

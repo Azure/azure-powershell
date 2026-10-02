@@ -28,13 +28,15 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (DdosCustomPolicy.MitigationRules == null)
             {
-                throw new ArgumentException($"Mitigation rule '{Name}' was not found.");
+                WriteObject(DdosCustomPolicy, true);
+                return;
             }
 
             var rule = DdosCustomPolicy.MitigationRules.Find(item => string.Equals(item.Name, Name, StringComparison.OrdinalIgnoreCase));
             if (rule == null)
             {
-                throw new ArgumentException($"Mitigation rule '{Name}' was not found.");
+                WriteObject(DdosCustomPolicy, true);
+                return;
             }
 
             if (!ShouldProcess(DdosCustomPolicy.Name, $"Remove mitigation rule '{Name}'"))

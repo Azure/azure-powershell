@@ -212,6 +212,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestDdosCustomPolicyMitigationRuleEdgeCases()
+        {
+            TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleEdgeCases");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestDdosCustomPolicyMitigationRuleCRUD()
         {
             TestRunner.RunTestScript("Test-DdosCustomPolicyMitigationRuleCRUD");

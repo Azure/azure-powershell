@@ -105,8 +105,10 @@ namespace Microsoft.Azure.Commands.Network
             replacement.Type = existing.Type;
             replacement.Properties.ProvisioningState = existing.Properties?.ProvisioningState;
 
-            DdosCustomPolicy.MitigationRules[index] = replacement;
-            DdosCustomPolicyMitigationRuleUtils.ValidateRules(DdosCustomPolicy.MitigationRules);
+            var updatedRules = new List<PSDdosCustomPolicyMitigationRule>(DdosCustomPolicy.MitigationRules);
+            updatedRules[index] = replacement;
+            DdosCustomPolicyMitigationRuleUtils.ValidateRules(updatedRules);
+            DdosCustomPolicy.MitigationRules = updatedRules;
             WriteObject(DdosCustomPolicy, true);
         }
     }
