@@ -1,0 +1,95 @@
+{
+  "resourceType": "appLinks/appLinkMembers",
+  "apiVersion": "2025-08-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.appnetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAppNetworkMember",
+      "description": "Get an AppLinkMember.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}/appLinkMembers/{appLinkMemberName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/get-azappnetworkmember"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppLinkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an AppLinkMember.",
+          "parameters": [
+            {
+              "name": "-AppLinkName",
+              "value": "[Path.appLinkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.appLinkMemberName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAppNetworkMember",
+      "description": "Delete an AppLinkMember.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}/appLinkMembers/{appLinkMemberName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appnetwork/remove-azappnetworkmember"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppLinkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an AppLinkMember.",
+          "parameters": [
+            {
+              "name": "-AppLinkName",
+              "value": "[Path.appLinkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.appLinkMemberName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
