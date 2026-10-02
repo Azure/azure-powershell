@@ -29,11 +29,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// policies.
         /// </param>
 
+        /// <param name="backupRetentionLockExpirationTimestamp">The UTC timestamp until which changes that reduce backup retention are
+        /// locked.
+        /// While active, this timestamp can only be extended.
+        /// </param>
+
         /// <param name="periodicModeProperties">Configuration values for periodic mode backup
         /// </param>
-        public PeriodicModeBackupPolicy(BackupPolicyMigrationState migrationState = default(BackupPolicyMigrationState), PeriodicModeProperties periodicModeProperties = default(PeriodicModeProperties))
+        public PeriodicModeBackupPolicy(BackupPolicyMigrationState migrationState = default(BackupPolicyMigrationState), System.DateTime? backupRetentionLockExpirationTimestamp = default(System.DateTime?), PeriodicModeProperties periodicModeProperties = default(PeriodicModeProperties))
 
-        : base(migrationState)
+        : base(migrationState, backupRetentionLockExpirationTimestamp)
         {
             this.PeriodicModeProperties = periodicModeProperties;
             CustomInit();
