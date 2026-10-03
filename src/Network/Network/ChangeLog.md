@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added DDoS custom policy mitigation rule support for TCP and UDP traffic.
+    - Added cmdlets to build geographic matches and source policy overrides, and to create, get, add, update, and remove mitigation rules.
+    - Added mitigation rule support to `New-AzDdosCustomPolicy`, `Get-AzDdosCustomPolicy`, and `Set-AzDdosCustomPolicy`.
+    - Implements [Azure/azure-rest-api-specs#46716](https://github.com/Azure/azure-rest-api-specs/pull/46716).
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
 * Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
     - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
