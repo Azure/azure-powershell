@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.2.0
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
 * Fixed `Restore-AzSqlDatabase` to omit the high availability (HA) replica count when the parameter is not specified.
 * Added selective-fields support to Azure SQL auditing
