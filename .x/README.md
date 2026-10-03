@@ -2,7 +2,7 @@
 
 This repository owns its agents, domain settings, review/title policy, and tooling implementations. Edit `definitions/`, `tools/` and `x.yml` here; the engine discovers the complete package from its approved upstream ref at the start of each loop round.
 
-Every asset except `x.yml` must be listed in its `files` inventory. Declare each Python tool module once, with its owning role and `path`. Functions named with `_` are private; other functions are public. Dedicated execution validators are always private Coordinator tools.
+Agents and tools are discovered from their directories; no file or function inventory is needed in `x.yml`. Put each Python tool module under its owning role in `tools/<role>/`. Functions named with `_` are private; other functions are public. Dedicated execution validators are always private Coordinator tools.
 
 A round and its durable jobs retain the original verified commit and source digest. Candidate edits cannot replace their agents or repository checks. A later upstream commit applies only to a later round. An unavailable enabled package blocks explicitly; it never selects a sibling repository or central implementation as a fallback.
 
@@ -17,3 +17,5 @@ python -m x_engineering_agent.repository_packages --root .x --repository Azure/a
 ```
 
 Local validation checks the source-only contract; it does not authorize a new runtime ref. Maintain these implementations here rather than regenerating them from central specialist copies.
+
+Onboarding: keep `x.yml` to the repository identity, `profile: profile.yml`, and any pinned Python dependencies. Put workflow/routing settings in `profile.yml`, agent definitions in `definitions/`, and Python tools under `tools/<role>/`. Do not maintain duplicate agent, tool or file lists. Validation checks under `tools/validation/` are private Coordinator tools.
