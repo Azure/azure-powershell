@@ -4,6 +4,8 @@ This repository owns its agents, domain settings, review/title policy, and tooli
 
 Agents and tools are discovered from their directories; no file or function inventory is needed in `x.yml`. Put each Python tool module under its owning role in `tools/<role>/`. Functions named with `_` are private; other functions are public. Dedicated execution validators are always private Coordinator tools.
 
+`x.yml` and `profile.yml` use the same engine-validated schema in every repository. Identity and optional Python pins belong in `x.yml`; workflow, target and routing fields belong in `profile.yml`. Optional feature fields are omitted when unused, not replaced with repository-specific keys or dummy values.
+
 A round and its durable jobs retain the original verified commit and source digest. Candidate edits cannot replace their agents or repository checks. A later upstream commit applies only to a later round. An unavailable enabled package blocks explicitly; it never selects a sibling repository or central implementation as a fallback.
 
 Azure CLI and Extensions started from the same preservation baseline but own independent copies and versions. A shared fix needs separate reviewed commits in both repositories; there is no sibling import, shared mutable cache, or automatic synchronisation.
