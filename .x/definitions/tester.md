@@ -65,12 +65,12 @@ conventions to PowerShell.
 4. **Dispatch (only if no existing run for this head exists):**
    ```python
    from x_engineering_agent.tools.live_tests.workflows import dispatch_live_test_workflow
-   # Do NOT pass `module` — the dispatcher resolves the target (module or
-   # extension) automatically from the PR's changed files against the live
-   # Azure/azure-cli and Azure/azure-cli-extensions lists.
+   # The dispatcher reads this repository's profile and changed files.
+   # PowerShell uses changed_ps_test_files, resolves a psmodule and selects
+   # live-test-powershell.yml. An empty selection returns a neutral skip.
+   # CLI repositories resolve a module or extension and use live-test.yml.
    run = dispatch_live_test_workflow(
-       pr_number=pr["pr_number"],
-       pr_repo=pr["repo"],  # "Azure/azure-cli" or "Azure/azure-cli-extensions"
+       pr_number=pr["pr_number"], pr_repo=pr["repo"],
    )
    # {"id": ..., "html_url": ..., "status": "queued", "pr_number": ..., "pr_repo": ...}
    ```

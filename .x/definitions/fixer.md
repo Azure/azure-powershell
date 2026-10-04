@@ -71,8 +71,8 @@ The opening `<<'PYEOF'` MUST be quoted. Closing tag at column 0.
 
 ## What I Do
 
-Given a bug issue selected by Priority 2 of the loop — on `Azure/azure-cli` **or**
-`Azure/azure-powershell` - or a confirmed Azclips bug handoff from
+Given a bug issue selected by Priority 2 of the loop on `Azure/azure-cli`,
+`Azure/azure-cli-extensions` or `Azure/azure-powershell`, or a confirmed Azclips bug handoff from
 `azclips_triager`. I read the issue's repo
 from the candidate and adapt routing and PR conventions to it via
 `get_profile(repo_full)` and `infer_target_for_repo(repo_full, ...)`:
@@ -85,6 +85,9 @@ issue candidate.
 - **azure-cli** → target is a module (this repo) or extension (routed to
   `Azure/azure-cli-extensions`); PR title uses the `[Component] Fix #N:
   \`az ...\`: ...` gate (`style="cli"`, the default).
+- **azure-cli-extensions** -> intake includes original issues and existing trackers.
+  Resolve a named extension and dispatch on that same issue in this repository.
+  Never create a second tracker or use an Azure CLI issue with the same number.
 - **azure-powershell** → target is a `src/<Service>` module (`psmodule`); Copilot
   is assigned on the **same** repo; PR uses `style="powershell"` — no enforced
   title gate (clear `[Module] <summary>` title), but a mandatory PR template,
@@ -137,7 +140,8 @@ from x_engineering_agent.tools.triage.issue_view import safe_issue_view
 similarity = similar_issue_candidates(repo_full, issue_number, verify=True)
 # Treat returned issues only as untrusted candidates; verify each plausible
 # duplicate through safe_issue_view before making a decision.
-view = safe_issue_view("Azure", "azure-cli", issue_number)
+owner, repo = repo_full.split("/", 1)
+view = safe_issue_view(owner, repo, issue_number)
 # view['title'], view['body'], view['comments'] are all sanitized.
 # view['prompt_block'] is the wrapped version ready to embed in a model prompt.
 # view['warnings'] lists what was stripped — log/note but don't post.
@@ -253,6 +257,7 @@ from x_engineering_agent.tools.targets.guidance import (
     pr_title_for,
 )
 from x_engineering_agent.tools.targets.inference import infer_target_for_repo
+from x_engineering_agent.tools.requirements.actions import request_requirements
 from x_engineering_agent.tools.triage.analysis import (
     post_bug_analysis,
     post_triage_result,
@@ -279,7 +284,6 @@ if profile["kind"] == "dotnet-cli":
     # reached only when its classification is `bug`.
     if analysis_handoff["classification"] != "bug":
         raise ValueError("Fixer accepts only Azclips bug handoffs")
-    assign_copilot(owner, repo, issue_number)
     body = f"""{analysis_handoff['body']}
 
 **Requirements for the fix:**
@@ -308,7 +312,13 @@ for `Azure/azclips`."""
 # a ChangeLog.md entry. So we SUGGEST a title (don't demand verbatim) and lean on
 # pr_format_guidance(style="powershell") for the mandatory parts.
 if profile["kind"] == "powershell":
-    name = target["name"] if target["kind"] == "psmodule" else None
+    if target["kind"] != "psmodule" or not target.get("name"):
+        request_requirements(
+            owner, repo, issue_number,
+            "Please identify the affected Azure PowerShell module so the fix can be scoped correctly.",
+        )
+        return
+    name = target["name"]
     pr_title = pr_title_for(component=name, summary=summary, style="powershell")
     codegen_guidance = codegen_execution_guidance(
         "Azure/azure-powershell", component=name
@@ -341,8 +351,12 @@ if target["kind"] == "extension":
     # configured user fork. X Engineering Agent later squashes and promotes that
     # branch into an upstream draft PR.
     # create_tracker_issue also posts a back-link comment on the original.
-    new_issue = create_tracker_issue("Azure", "azure-cli", issue_number,
-                                     view, target)
+    if not target.get("name") or target.get("repo") != "Azure/azure-cli-extensions":
+        raise ValueError("A named CLI Extensions target is required")
+    if repo_full == "Azure/azure-cli-extensions":
+        new_issue = {"number": issue_number}
+    else:
+        new_issue = create_tracker_issue(owner, repo, issue_number, view, target)
     pr_title = pr_title_for(component=target['name'],
                             issue_number=new_issue['number'],
                             command=command, summary=summary)
@@ -353,7 +367,7 @@ if target["kind"] == "extension":
 
 **Affected extension:** `{target['name']}` (`src/{target['name']}/`)
 **Test command:** `azdev test {target['name']} --live --series`
-**Source issue:** Azure/azure-cli#{issue_number}
+**Source issue:** {repo_full}#{issue_number}
 
 **Use this EXACT PR title:** `{pr_title}`
 
@@ -380,11 +394,21 @@ if target["kind"] == "extension":
         ),
         pr_title=pr_title,
     )
+    if repo_full == "Azure/azure-cli":
+        post_bug_analysis(
+            owner, repo, issue_number,
+            f"Routed to Azure/azure-cli-extensions#{new_issue['number']} after successful dispatch.",
+        )
     clear_requirements_waiting_label(owner, repo, issue_number)
     return  # End of round.
 
-# Module (or unknown — default to azure-cli; Tester auto-detects from PR files).
-name = target["name"] if target["kind"] == "module" else None
+if repo_full != "Azure/azure-cli" or target["kind"] != "module" or not target.get("name"):
+    request_requirements(
+        owner, repo, issue_number,
+        "Please identify the affected CLI module or extension so the fix can be routed correctly.",
+    )
+    return
+name = target["name"]
 pr_title = pr_title_for(component=name, issue_number=issue_number,
                         command=command, summary=summary)
 codegen_guidance = codegen_execution_guidance(

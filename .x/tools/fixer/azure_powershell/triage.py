@@ -124,7 +124,8 @@ def dispatch_powershell_copilot(owner, repo, issue_number, body, token=None):
         owner, repo, issue_number, token=token,
     )
     return {
-        "dispatched": True,
+        "dispatched": assignment["started"],
+        "skipped": not assignment["started"],
         "assignment": assignment,
         "comment": comment,
     }

@@ -36,7 +36,7 @@ _AZURE_POWERSHELL_GENERATED_ROOT_SUFFIXES = (
 
 
 def _is_powershell_production_file(path):
-    return path.startswith("src/") and path.endswith((".cs", ".ps1"))
+    return path.startswith("src/") and path.endswith((".cs", ".ps1", ".psm1", ".psd1"))
 
 
 def _powershell_review_component(parts):

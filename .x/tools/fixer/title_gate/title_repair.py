@@ -142,7 +142,9 @@ def repaired_pr_title(repo_full_name, current_title, component=None,
     if style == "cli":
         summary = _CLI_PARAMETER_PATTERN.sub(r"`\1`", summary)
         if command and _CLI_PARAMETER_PATTERN.search(command):
-            command = None
+            command = command[:_CLI_PARAMETER_PATTERN.search(command).start()].rstrip()
+            if command == "az":
+                command = None
 
     if style == "powershell":
         return pr_title_for(
