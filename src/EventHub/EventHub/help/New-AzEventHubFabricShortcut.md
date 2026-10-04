@@ -20,7 +20,7 @@ New-AzEventHubFabricShortcut -Name <String> -EventHubName <String> -NamespaceNam
  [-ConfigurationPremiumCapacityId <String>] [-ConfigurationTenantId <String>]
  [-ConfigurationWorkspaceId <String>] [-ConfigurationWorkspaceName <String>] [-ShortcutStatus <String>]
  [-ShortcutType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -30,14 +30,15 @@ New-AzEventHubFabricShortcut -Name <String> -EventHubName <String> -NamespaceInp
  [-ConfigurationLogAnalyticsResourceId <String>] [-ConfigurationPremiumCapacityId <String>]
  [-ConfigurationTenantId <String>] [-ConfigurationWorkspaceId <String>] [-ConfigurationWorkspaceName <String>]
  [-ShortcutStatus <String>] [-ShortcutType <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHubFabricShortcut -Name <String> -EventHubName <String> -NamespaceInputObject <IEventHubIdentity>
  -Resource <IFabricShortcut> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEventhubExpanded
@@ -47,14 +48,15 @@ New-AzEventHubFabricShortcut -Name <String> -EventhubInputObject <IEventHubIdent
  [-ConfigurationLogAnalyticsResourceId <String>] [-ConfigurationPremiumCapacityId <String>]
  [-ConfigurationTenantId <String>] [-ConfigurationWorkspaceId <String>] [-ConfigurationWorkspaceName <String>]
  [-ShortcutStatus <String>] [-ShortcutType <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEventhub
 ```
 New-AzEventHubFabricShortcut -Name <String> -EventhubInputObject <IEventHubIdentity>
  -Resource <IFabricShortcut> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,29 +64,62 @@ Create a Microsoft Fabric shortcut.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Fabric shortcut on an EventHub entity
 ```powershell
-{{ Add code here }}
+New-AzEventHubFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -Name orders-shortcut -ShortcutType Entity -ConfigurationArtifactId "33333333-3333-3333-3333-333333333333" -ConfigurationArtifactName "orders-eventstream" -ConfigurationPremiumCapacityId "44444444-4444-4444-4444-444444444444" -ConfigurationTenantId "11111111-1111-1111-1111-111111111111" -ConfigurationWorkspaceId "22222222-2222-2222-2222-222222222222" -ConfigurationWorkspaceName "contoso-workspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConfigurationArtifactId        : 33333333-3333-3333-3333-333333333333
+ConfigurationArtifactName      : orders-eventstream
+ConfigurationPremiumCapacityId : 44444444-4444-4444-4444-444444444444
+ConfigurationTenantId          : 11111111-1111-1111-1111-111111111111
+ConfigurationWorkspaceId       : 22222222-2222-2222-2222-222222222222
+ConfigurationWorkspaceName     : contoso-workspace
+CreatedAt                      : 7/1/2026 12:00:00 PM
+Id                             : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.EventHub/namespaces/contoso-eventhub/eventhubs/orders/fabricShortcuts/orders-shortcut
+Location                       : southcentralus
+ModifiedAt                     : 7/1/2026 12:00:00 PM
+Name                           : orders-shortcut
+ShortcutStatus                 : Pending
+ShortcutType                   : Entity
+StatusDescription              : Pending approval
+Type                           : Microsoft.EventHub/namespaces/eventhubs/fabricShortcuts
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a new Fabric shortcut `orders-shortcut` of type `Entity` on the EventHub entity `orders` in namespace `contoso-eventhub`.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ConfigurationArtifactId
 The Microsoft Fabric artifact ID.

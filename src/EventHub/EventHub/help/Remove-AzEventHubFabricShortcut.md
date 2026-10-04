@@ -16,27 +16,29 @@ Deletes a Microsoft Fabric shortcut.
 ```
 Remove-AzEventHubFabricShortcut -EventHubName <String> -Name <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityNamespace
 ```
 Remove-AzEventHubFabricShortcut -EventHubName <String> -Name <String> -NamespaceInputObject <IEventHubIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityEventhub
 ```
 Remove-AzEventHubFabricShortcut -Name <String> -EventhubInputObject <IEventHubIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzEventHubFabricShortcut -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,29 +46,45 @@ Deletes a Microsoft Fabric shortcut.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Fabric shortcut from an EventHub entity
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -Name orders-shortcut
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the Fabric shortcut `orders-shortcut` from the EventHub entity `orders` in namespace `contoso-eventhub`.
+This cmdlet does not return any output.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

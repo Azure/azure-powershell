@@ -16,26 +16,29 @@ Rejects a Microsoft Fabric shortcut.
 ```
 Invoke-AzEventHubRejectFabricShortcut -EventHubName <String> -FabricShortcutName <String>
  -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### RejectViaIdentityNamespace
 ```
 Invoke-AzEventHubRejectFabricShortcut -EventHubName <String> -FabricShortcutName <String>
  -NamespaceInputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RejectViaIdentityEventhub
 ```
 Invoke-AzEventHubRejectFabricShortcut -FabricShortcutName <String> -EventhubInputObject <IEventHubIdentity>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RejectViaIdentity
 ```
 Invoke-AzEventHubRejectFabricShortcut -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,29 +46,61 @@ Rejects a Microsoft Fabric shortcut.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reject a Fabric shortcut on an EventHub entity
 ```powershell
-{{ Add code here }}
+Invoke-AzEventHubRejectFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -Name orders-shortcut
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConfigurationArtifactId    : 33333333-3333-3333-3333-333333333333
+ConfigurationArtifactName  : orders-eventstream
+ConfigurationTenantId      : 11111111-1111-1111-1111-111111111111
+ConfigurationWorkspaceId   : 22222222-2222-2222-2222-222222222222
+ConfigurationWorkspaceName : contoso-workspace
+CreatedAt                  : 7/1/2026 12:00:00 PM
+Id                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.EventHub/namespaces/contoso-eventhub/eventhubs/orders/fabricShortcuts/orders-shortcut
+Location                   : southcentralus
+ModifiedAt                 : 7/1/2026 12:05:00 PM
+Name                       : orders-shortcut
+ShortcutStatus             : Rejected
+ShortcutType               : Entity
+StatusDescription          : Rejected by the Event Hubs owner
+Type                       : Microsoft.EventHub/namespaces/eventhubs/fabricShortcuts
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Rejects the Fabric shortcut `orders-shortcut` on the EventHub entity `orders` in namespace `contoso-eventhub`, moving its status to `Rejected`.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

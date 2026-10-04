@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Fabric shortcut from an EventHub entity
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -Name orders-shortcut
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the Fabric shortcut `orders-shortcut` from the EventHub entity `orders` in namespace `contoso-eventhub`. This cmdlet does not return any output.
 
