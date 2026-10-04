@@ -17,7 +17,6 @@ from x_engineering_agent.tools.github.api import _require_fix_workflow
 from x_engineering_agent.tools.github.issues import (
     _trusted_agent_comment_has_marker,
     get_issue_comments,
-    get_issue,
     post_comment,
     update_comment,
 )
@@ -41,15 +40,16 @@ def dispatch_powershell_copilot(owner, repo, issue_number, body, token=None):
         raise ValueError(
             "PowerShell analysis body contains a reserved state marker"
         )
-    comments = get_issue_comments(owner, repo, issue_number, token=token)
     title_match = re.search(
         r"\*\*(?:Suggested|Use this EXACT) PR title:\*\*\s*`([^`]+)`",
         body,
     )
-    title = (
-        title_match.group(1) if title_match
-        else get_issue(owner, repo, issue_number, token=token)["title"]
-    )
+    if title_match is None or not title_match.group(1).strip():
+        raise ValueError("PowerShell analysis requires a trusted suggested PR title")
+    title = title_match.group(1).strip()
+    if "\n" in title or "\r" in title:
+        raise ValueError("PowerShell suggested PR title must be a single line")
+    comments = get_issue_comments(owner, repo, issue_number, token=token)
     completed = next(
         (
             comment for comment in reversed(comments)
