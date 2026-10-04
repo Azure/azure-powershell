@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMissionVirtualEnclave')
 }
 
 Describe 'New-AzMissionVirtualEnclave' {
-    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission preview subscription.
+    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission subscription.
     It 'CreateExpanded' -skip {
         {
             $enclave = New-AzMissionVirtualEnclave -Name $env.enclaveName -ResourceGroupName $env.resourceGroup -Location $env.location -CommunityResourceId $env.communityResourceId -EnclaveVirtualNetworkName 'enclave-vnet' -EnclaveVirtualNetworkCustomCidrRange '10.0.1.0/24'

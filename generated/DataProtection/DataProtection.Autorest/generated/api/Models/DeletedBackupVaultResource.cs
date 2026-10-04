@@ -26,6 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string BcdrSecurityLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).BcdrSecurityLevel; }
 
+        /// <summary>Settings for granularity level</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
+        public string CostManagementSettingGranularityLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).CostManagementSettingGranularityLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).CostManagementSettingGranularityLevel = value ?? null; }
+
         /// <summary>CrossRegionRestore state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
         public string CrossRegionRestoreState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).CrossRegionRestoreState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).CrossRegionRestoreState = value ?? null; }
@@ -54,6 +58,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
 
         /// <summary>Internal Acessors for BcdrSecurityLevel</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal.BcdrSecurityLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).BcdrSecurityLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).BcdrSecurityLevel = value ?? null; }
+
+        /// <summary>Internal Acessors for CostManagementSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal.CostManagementSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).CostManagementSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).CostManagementSetting = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for FeatureSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureSettings Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceInternal.FeatureSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).FeatureSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultInternal)Property).FeatureSetting = value ?? null /* model class */; }
@@ -321,6 +328,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Poor", "Fair", "Good", "Excellent", "NotSupported")]
         string BcdrSecurityLevel { get;  }
+        /// <summary>Settings for granularity level</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Settings for granularity level",
+        SerializedName = @"granularityLevel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        string CostManagementSettingGranularityLevel { get; set; }
         /// <summary>CrossRegionRestore state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -583,6 +602,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// <summary>Security Level of Backup Vault</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Poor", "Fair", "Good", "Excellent", "NotSupported")]
         string BcdrSecurityLevel { get; set; }
+        /// <summary>Cost Management Settings of the vault</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings CostManagementSetting { get; set; }
+        /// <summary>Settings for granularity level</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        string CostManagementSettingGranularityLevel { get; set; }
         /// <summary>CrossRegionRestore state</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         string CrossRegionRestoreState { get; set; }

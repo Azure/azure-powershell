@@ -142,7 +142,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the recovery services vault is present.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -157,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the recovery services vault.
+The name of the Vault
 
 ```yaml
 Type: System.String

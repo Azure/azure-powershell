@@ -1,7 +1,896 @@
 {
   "ModuleName": "Az.Maintenance",
-  "ModuleVersion": "1.6.0",
+  "ModuleVersion": "1.7.0",
   "Cmdlets": [
+    {
+      "VerbName": "Approve",
+      "NounName": "AzScheduledEvent",
+      "Name": "Approve-AzScheduledEvent",
+      "ClassName": "Microsoft.Azure.Commands.Maintenance.ApproveAzureRmScheduledEvent",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "DefaultParameter",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+            "Name": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Value": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              },
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "value",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+            "Name": "Microsoft.Azure.Management.Maintenance.Models.MaintenanceError",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.MaintenanceError, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Error": "Microsoft.Azure.Management.Maintenance.Models.ErrorDetails"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              },
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "error",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceType",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ScheduledEventId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "DefaultParameter",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledEventId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "VerbName": "Approve",
+      "NounName": "AzScheduledEventList",
+      "Name": "Approve-AzScheduledEventList",
+      "ClassName": "Microsoft.Azure.Commands.Maintenance.ApproveAzureRmScheduledEventList",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "DefaultParameter",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+            "Name": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Value": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              },
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "value",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
+            "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsApproveResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsApproveResponse, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Response": "Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsListApproveStatus",
+              "Details": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails]"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+            "Name": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Error": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorDetails"
+            },
+            "Methods": [
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              },
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "error",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceType",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ScheduledEventIdList",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ProgressAction",
+          "AliasList": [
+            "proga"
+          ],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ActionPreference",
+            "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "DefaultParameter",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ScheduledEventIdList",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
     {
       "VerbName": "Get",
       "NounName": "AzApplyUpdate",
@@ -16,7 +905,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
               "Status": "System.String",
@@ -377,7 +1266,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Location": "System.String",
               "MaintenanceConfigurationId": "System.String",
@@ -744,7 +1633,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -1003,7 +1892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -1628,7 +2517,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
               "Status": "System.String",
@@ -2130,7 +3019,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Location": "System.String",
               "MaintenanceConfigurationId": "System.String",
@@ -2838,7 +3727,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -4930,7 +5819,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -5016,7 +5905,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -5146,7 +6035,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
                   "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
                     "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -5412,23 +6301,61 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "System.Nullable`1[System.DateTime]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.DateTime]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.DateTime"
-      ]
-    },
-    "System.DateTime": {
-      "Namespace": "System",
-      "Name": "System.DateTime",
-      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
       "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    },
+    "Microsoft.Azure.Management.Maintenance.Models.ErrorDetails": {
+      "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+      "Name": "Microsoft.Azure.Management.Maintenance.Models.ErrorDetails",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.ErrorDetails, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Code": "System.String",
+        "Message": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        },
+        {
+          "Name": "",
+          "Parameters": [
+            {
+              "Name": "code",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "message",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -5567,6 +6494,177 @@
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
       ]
+    },
+    "Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsListApproveStatus": {
+      "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
+      "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsListApproveStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSScheduledEventsListApproveStatus, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Code": "System.String",
+        "Message": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        }
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails"
+      ]
+    },
+    "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails": {
+      "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+      "Name": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Target": "System.String",
+        "Code": "System.String",
+        "Message": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        },
+        {
+          "Name": "",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "code",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "message",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorDetails": {
+      "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
+      "Name": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorDetails",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeErrorDetails, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Details": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsAcknowledgeErrorDetails]",
+        "Message": "System.String",
+        "Code": "System.String"
+      },
+      "Methods": [
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": ""
+        },
+        {
+          "Name": "",
+          "Parameters": [
+            {
+              "Name": "code",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "message",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "details",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
     "System.String[]": {
       "Namespace": "System",

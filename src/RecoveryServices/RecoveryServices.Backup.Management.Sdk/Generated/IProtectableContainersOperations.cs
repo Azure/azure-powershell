@@ -19,18 +19,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Lists the containers that can be registered to Recovery Services Vault.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='fabricName'>
         /// 
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProtectableContainerResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<BMSContainerQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSContainerQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProtectableContainerResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the containers that can be registered to Recovery Services Vault.

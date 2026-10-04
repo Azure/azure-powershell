@@ -146,7 +146,7 @@ function Set-AzEventHub{
         [System.String]
         # Resource id of the storage account to be used to create the blobs
         ${StorageAccountResourceId},
-        
+
         [Parameter(HelpMessage = "Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -218,6 +218,21 @@ function Set-AzEventHub{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 	)
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.EventHub.private\New-AzEventHub_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 	process{
 		try{
             $hasCaptureEnabled = $PSBoundParameters.Remove('CaptureEnabled')
@@ -242,8 +257,8 @@ function Set-AzEventHub{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $eventHub = Get-AzEventHub @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHub' -BoundParameters $PSBoundParameters
+            $eventHub = Get-AzEventHub @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

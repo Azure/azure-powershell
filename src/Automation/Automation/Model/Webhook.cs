@@ -51,16 +51,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (webhook == null) return;
 
-            this.CreationTime = webhook.CreationTime.ToLocalTime();
+            this.CreationTime = webhook.CreationTime.GetValueOrDefault().ToLocalTime();
             this.Description = webhook.Description;
-            this.ExpiryTime = webhook.ExpiryTime.ToLocalTime();
+            this.ExpiryTime = webhook.ExpiryTime.GetValueOrDefault().ToLocalTime();
             this.IsEnabled = webhook.IsEnabled;
             if (webhook.LastInvokedTime.HasValue)
             {
                 this.LastInvokedTime = webhook.LastInvokedTime.Value.ToLocalTime();
             }
 
-            this.LastModifiedTime = webhook.LastModifiedTime.ToLocalTime();
+            this.LastModifiedTime = webhook.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             if (webhook.Parameters != null)
             {

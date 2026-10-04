@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackup(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesAdhocBackupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerBackupRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesAdhocBackupViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesAdhocBackupViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesAdhocBackupWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerBackupRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesCreateOrUpdate(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1393,7 +1393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesDelete(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1444,7 +1444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesDeleteViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1687,7 +1687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesExtensionRoutingList(string resourceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesExtensionRoutingListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1771,7 +1771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList> BackupInstancesExtensionRoutingListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1817,7 +1817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList> BackupInstancesExtensionRoutingListWithResult(string resourceId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1989,7 +1989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesGet(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2037,7 +2037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesGetBackupInstanceOperationResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2083,7 +2083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesGetBackupInstanceOperationResultViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2140,7 +2140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesGetBackupInstanceOperationResultViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2201,7 +2201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesGetBackupInstanceOperationResultWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2400,7 +2400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2454,7 +2454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2511,7 +2511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource> BackupInstancesGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2695,7 +2695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesList(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2737,7 +2737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2789,7 +2789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList> BackupInstancesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResourceList> BackupInstancesListWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3022,7 +3022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesResumeBackups(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3066,7 +3066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesResumeBackupsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3298,7 +3298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesResumeProtection(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3342,7 +3342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesResumeProtectionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3579,7 +3579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesStopProtection(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStopProtectionRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3638,7 +3638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesStopProtectionViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStopProtectionRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3712,7 +3712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesStopProtectionViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3952,7 +3952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesSuspendBackups(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISuspendBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4012,7 +4012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesSuspendBackupsViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISuspendBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4087,7 +4087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesSuspendBackupsViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4326,7 +4326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesSyncBackupInstance(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISyncBackupInstanceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4379,7 +4379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesSyncBackupInstanceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISyncBackupInstanceRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4447,7 +4447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesSyncBackupInstanceViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4674,7 +4674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerCrossRegionRestore(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4722,7 +4722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerCrossRegionRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4780,7 +4780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesTriggerCrossRegionRestoreViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreRequestObject body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4841,7 +4841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerCrossRegionRestoreViaJsonString(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4888,7 +4888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesTriggerCrossRegionRestoreViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4936,7 +4936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesTriggerCrossRegionRestoreWithResult(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreRequestObject body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5316,7 +5316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerRehydrate(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRehydrationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5367,7 +5367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerRehydrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRehydrationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5433,7 +5433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerRehydrateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5669,7 +5669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestore(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5726,7 +5726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestoreViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5794,7 +5794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesTriggerRestoreViaIdentityWithResult(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5866,7 +5866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesTriggerRestoreViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5923,7 +5923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesTriggerRestoreViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5981,7 +5981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesTriggerRestoreWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6371,7 +6371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateCrossRegionRestore(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateCrossRegionRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6419,7 +6419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateCrossRegionRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateCrossRegionRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6477,7 +6477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateCrossRegionRestoreViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateCrossRegionRestoreRequestObject body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6538,7 +6538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateCrossRegionRestoreViaJsonString(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6585,7 +6585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateCrossRegionRestoreViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6633,7 +6633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateCrossRegionRestoreWithResult(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateCrossRegionRestoreRequestObject body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7011,7 +7011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackup(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7059,7 +7059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7117,7 +7117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForBackupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForBackupRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7178,7 +7178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForBackupViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7225,7 +7225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForBackupViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7273,7 +7273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForBackupWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForBackupRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7649,7 +7649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForModifyBackup(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForModifyBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7699,7 +7699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForModifyBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForModifyBackupRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7760,7 +7760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForModifyBackupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForModifyBackupRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7825,7 +7825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForModifyBackupViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7875,7 +7875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForModifyBackupViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7926,7 +7926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForModifyBackupWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateForModifyBackupRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8311,7 +8311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForRestore(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8361,7 +8361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateRestoreRequestObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8422,7 +8422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForRestoreViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateRestoreRequestObject body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8487,7 +8487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupInstancesValidateForRestoreViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8537,7 +8537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForRestoreViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8588,7 +8588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> BackupInstancesValidateForRestoreWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IValidateRestoreRequestObject body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8971,7 +8971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9020,7 +9020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9080,7 +9080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource> BackupPoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9144,7 +9144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9193,7 +9193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource> BackupPoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9243,7 +9243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource> BackupPoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9435,7 +9435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesDelete(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9479,7 +9479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9621,7 +9621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesGet(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9664,7 +9664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9718,7 +9718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource> BackupPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9775,7 +9775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource> BackupPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupPolicyName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9956,7 +9956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesList(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9998,7 +9998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupPoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10050,7 +10050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResourceList> BackupPoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10104,7 +10104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResourceList> BackupPoliciesListWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10284,7 +10284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultOperationResultsGet(string subscriptionId, string resourceGroupName, string vaultName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10328,7 +10328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultOperationResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10382,7 +10382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultOperationResultsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10439,7 +10439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultOperationResultsGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10636,7 +10636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsCheckNameAvailability(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10684,7 +10684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10742,7 +10742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityResult> BackupVaultsCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10803,7 +10803,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsCheckNameAvailabilityViaJsonString(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10850,7 +10850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityResult> BackupVaultsCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10898,7 +10898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityResult> BackupVaultsCheckNameAvailabilityWithResult(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11090,7 +11090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsCreateOrUpdate(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, string xMSDeletedVaultId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11149,7 +11149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, string xMSDeletedVaultId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11218,7 +11218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, string xMSDeletedVaultId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11290,7 +11290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, string xMSDeletedVaultId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11348,7 +11348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, string xMSDeletedVaultId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11407,7 +11407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, string xMSDeletedVaultId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11798,7 +11798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsDelete(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11840,7 +11840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12069,7 +12069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsGet(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12111,7 +12111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsGetInResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12151,7 +12151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsGetInResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12200,7 +12200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList> BackupVaultsGetInResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12250,7 +12250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList> BackupVaultsGetInResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12424,7 +12424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsGetInSubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12462,7 +12462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsGetInSubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12508,7 +12508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList> BackupVaultsGetInSubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12554,7 +12554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResourceList> BackupVaultsGetInSubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12722,7 +12722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12773,7 +12773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12826,7 +12826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13008,7 +13008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsUpdate(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13064,7 +13064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsUpdateViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13130,7 +13130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsUpdateViaIdentityWithResult(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInput body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13199,7 +13199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task BackupVaultsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13254,7 +13254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13310,7 +13310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> BackupVaultsUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInput body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13689,7 +13689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DataProtectionCheckFeatureSupport(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationRequestBase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationResponseBase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13735,7 +13735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DataProtectionCheckFeatureSupportViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationRequestBase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationResponseBase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13790,7 +13790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationResponseBase> DataProtectionCheckFeatureSupportViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationRequestBase body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13847,7 +13847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DataProtectionCheckFeatureSupportViaJsonString(string subscriptionId, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationResponseBase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13891,7 +13891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationResponseBase> DataProtectionCheckFeatureSupportViaJsonStringWithResult(string subscriptionId, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13936,7 +13936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationResponseBase> DataProtectionCheckFeatureSupportWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFeatureValidationRequestBase body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14115,7 +14115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DataProtectionOperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14151,7 +14151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DataProtectionOperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14194,7 +14194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationListResult> DataProtectionOperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14236,7 +14236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationListResult> DataProtectionOperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14403,7 +14403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupInstancesGet(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14446,7 +14446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupInstancesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14500,7 +14500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResource> DeletedBackupInstancesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14557,7 +14557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResource> DeletedBackupInstancesGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14740,7 +14740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupInstancesList(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14782,7 +14782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupInstancesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14834,7 +14834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResourceList> DeletedBackupInstancesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14888,7 +14888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupInstanceResourceList> DeletedBackupInstancesListWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15069,7 +15069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupInstancesUndelete(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15113,7 +15113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupInstancesUndeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15341,7 +15341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupVaultsGet(string subscriptionId, string location, string deletedVaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15382,7 +15382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupVaultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15433,7 +15433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource> DeletedBackupVaultsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15486,7 +15486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource> DeletedBackupVaultsGetWithResult(string subscriptionId, string location, string deletedVaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15661,7 +15661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupVaultsListByLocation(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15701,7 +15701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DeletedBackupVaultsListByLocationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15750,7 +15750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceListResult> DeletedBackupVaultsListByLocationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15800,7 +15800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResourceListResult> DeletedBackupVaultsListByLocationWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15978,7 +15978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyCreateOrUpdate(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16027,7 +16027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16087,7 +16087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource> DppResourceGuardProxyCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16151,7 +16151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16200,7 +16200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource> DppResourceGuardProxyCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16250,7 +16250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource> DppResourceGuardProxyCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16445,7 +16445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyDelete(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16489,7 +16489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16634,7 +16634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyGet(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16679,7 +16679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16735,7 +16735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource> DppResourceGuardProxyGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16794,7 +16794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource> DppResourceGuardProxyGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16976,7 +16976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyList(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17018,7 +17018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17070,7 +17070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResourceList> DppResourceGuardProxyListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17124,7 +17124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResourceList> DppResourceGuardProxyListWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17308,7 +17308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyUnlockDelete(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17365,7 +17365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyUnlockDeleteViaIdentity(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17433,7 +17433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteResponse> DppResourceGuardProxyUnlockDeleteViaIdentityWithResult(global::System.String viaIdentity, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17505,7 +17505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task DppResourceGuardProxyUnlockDeleteViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, string xMSAuthorizationAuxiliary, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17562,7 +17562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteResponse> DppResourceGuardProxyUnlockDeleteViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, string xMSAuthorizationAuxiliary, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17620,7 +17620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteResponse> DppResourceGuardProxyUnlockDeleteWithResult(string subscriptionId, string resourceGroupName, string vaultName, string resourceGuardProxyName, string xMSAuthorizationAuxiliary, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IUnlockDeleteRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17825,7 +17825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ExportJobsOperationResultGet(string subscriptionId, string resourceGroupName, string vaultName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IExportJobsResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17872,7 +17872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ExportJobsOperationResultGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IExportJobsResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17929,7 +17929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IExportJobsResult> ExportJobsOperationResultGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17989,7 +17989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IExportJobsResult> ExportJobsOperationResultGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18185,7 +18185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ExportJobsTrigger(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18228,7 +18228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ExportJobsTriggerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18460,7 +18460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchCrossRegionRestoreJobGet(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18508,7 +18508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchCrossRegionRestoreJobGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18566,7 +18566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource> FetchCrossRegionRestoreJobGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18627,7 +18627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchCrossRegionRestoreJobGetViaJsonString(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18674,7 +18674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource> FetchCrossRegionRestoreJobGetViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18722,7 +18722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource> FetchCrossRegionRestoreJobGetWithResult(string subscriptionId, string resourceGroupName, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18913,7 +18913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchCrossRegionRestoreJobsList(string subscriptionId, string resourceGroupName, string location, string Filter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18964,7 +18964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchCrossRegionRestoreJobsListViaIdentity(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19025,7 +19025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList> FetchCrossRegionRestoreJobsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobsRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19089,7 +19089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchCrossRegionRestoreJobsListViaJsonString(string subscriptionId, string resourceGroupName, string location, string Filter, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19139,7 +19139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList> FetchCrossRegionRestoreJobsListViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string location, string Filter, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19190,7 +19190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList> FetchCrossRegionRestoreJobsListWithResult(string subscriptionId, string resourceGroupName, string location, string Filter, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICrossRegionRestoreJobsRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19388,7 +19388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchSecondaryRecoveryPointsList(string subscriptionId, string resourceGroupName, string location, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFetchSecondaryRPsRequestParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19444,7 +19444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchSecondaryRecoveryPointsListViaIdentity(global::System.String viaIdentity, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFetchSecondaryRPsRequestParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19510,7 +19510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList> FetchSecondaryRecoveryPointsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFetchSecondaryRPsRequestParameters body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19579,7 +19579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task FetchSecondaryRecoveryPointsListViaJsonString(string subscriptionId, string resourceGroupName, string location, string Filter, string SkipToken, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19634,7 +19634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList> FetchSecondaryRecoveryPointsListViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string location, string Filter, string SkipToken, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19690,7 +19690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList> FetchSecondaryRecoveryPointsListWithResult(string subscriptionId, string resourceGroupName, string location, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IFetchSecondaryRPsRequestParameters body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19887,7 +19887,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task JobsGet(string subscriptionId, string resourceGroupName, string vaultName, string jobId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19930,7 +19930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task JobsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19984,7 +19984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource> JobsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20041,7 +20041,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource> JobsGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string jobId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20222,7 +20222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task JobsList(string subscriptionId, string resourceGroupName, string vaultName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20264,7 +20264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task JobsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20316,7 +20316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList> JobsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20370,7 +20370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResourceList> JobsListWithResult(string subscriptionId, string resourceGroupName, string vaultName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20549,7 +20549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationResultGet(string subscriptionId, string operationId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20591,7 +20591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationResultGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20642,7 +20642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> OperationResultGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20695,7 +20695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo> OperationResultGetWithResult(string subscriptionId, string operationId, string location, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20884,7 +20884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusBackupVaultContextGet(string subscriptionId, string resourceGroupName, string vaultName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20927,7 +20927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusBackupVaultContextGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20981,7 +20981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource> OperationStatusBackupVaultContextGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21038,7 +21038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource> OperationStatusBackupVaultContextGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21223,7 +21223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21264,7 +21264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21315,7 +21315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource> OperationStatusGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21368,7 +21368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource> OperationStatusGetWithResult(string subscriptionId, string location, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21544,7 +21544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusResourceGroupContextGet(string subscriptionId, string resourceGroupName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21585,7 +21585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusResourceGroupContextGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21636,7 +21636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource> OperationStatusResourceGroupContextGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21689,7 +21689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationResource> OperationStatusResourceGroupContextGetWithResult(string subscriptionId, string resourceGroupName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21872,7 +21872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RecoveryPointsGet(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string recoveryPointId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21917,7 +21917,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RecoveryPointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21974,7 +21974,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResource> RecoveryPointsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22035,7 +22035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResource> RecoveryPointsGetWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string recoveryPointId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22223,7 +22223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RecoveryPointsList(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string Filter, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22273,7 +22273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RecoveryPointsListViaIdentity(global::System.String viaIdentity, string Filter, string SkipToken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22334,7 +22334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList> RecoveryPointsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22398,7 +22398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPointResourceList> RecoveryPointsListWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, string Filter, string SkipToken, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22589,7 +22589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsDelete(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22631,7 +22631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22767,7 +22767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGet(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22812,7 +22812,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetBackupSecurityPinRequestsObjects(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22856,7 +22856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetBackupSecurityPinRequestsObjectsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22910,7 +22910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetBackupSecurityPinRequestsObjectsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22966,7 +22966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetBackupSecurityPinRequestsObjectsWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23151,7 +23151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultBackupSecurityPinRequestsObject(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23196,7 +23196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultBackupSecurityPinRequestsObjectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23252,7 +23252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultBackupSecurityPinRequestsObjectViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23311,7 +23311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultBackupSecurityPinRequestsObjectWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23499,7 +23499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultDeleteProtectedItemRequestsObject(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23544,7 +23544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23600,7 +23600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23659,7 +23659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23847,7 +23847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObject(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23892,7 +23892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23948,7 +23948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24007,7 +24007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24195,7 +24195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultDisableSoftDeleteRequestsObject(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24240,7 +24240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24296,7 +24296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24355,7 +24355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24543,7 +24543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultUpdateProtectedItemRequestsObject(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24588,7 +24588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24644,7 +24644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24703,7 +24703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24891,7 +24891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObject(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24936,7 +24936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24992,7 +24992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25051,7 +25051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResource> ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, string requestName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25238,7 +25238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDeleteProtectedItemRequestsObjects(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25282,7 +25282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDeleteProtectedItemRequestsObjectsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25336,7 +25336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetDeleteProtectedItemRequestsObjectsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25392,7 +25392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetDeleteProtectedItemRequestsObjectsWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25576,7 +25576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDeleteResourceGuardProxyRequestsObjects(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25620,7 +25620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25674,7 +25674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25730,7 +25730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25914,7 +25914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDisableSoftDeleteRequestsObjects(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25958,7 +25958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetDisableSoftDeleteRequestsObjectsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26012,7 +26012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetDisableSoftDeleteRequestsObjectsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26068,7 +26068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetDisableSoftDeleteRequestsObjectsWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26249,7 +26249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetResourcesInResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26289,7 +26289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetResourcesInResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26338,7 +26338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList> ResourceGuardsGetResourcesInResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26388,7 +26388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList> ResourceGuardsGetResourcesInResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26564,7 +26564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetResourcesInSubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26602,7 +26602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetResourcesInSubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26648,7 +26648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList> ResourceGuardsGetResourcesInSubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26694,7 +26694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResourceList> ResourceGuardsGetResourcesInSubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26868,7 +26868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetUpdateProtectedItemRequestsObjects(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26912,7 +26912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetUpdateProtectedItemRequestsObjectsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26966,7 +26966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetUpdateProtectedItemRequestsObjectsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27022,7 +27022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetUpdateProtectedItemRequestsObjectsWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27206,7 +27206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetUpdateProtectionPolicyRequestsObjects(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27250,7 +27250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27304,7 +27304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27360,7 +27360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppBaseResourceList> ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27540,7 +27540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27591,7 +27591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27644,7 +27644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsGetWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27825,7 +27825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsPatch(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceGuardInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27874,7 +27874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsPatchViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceGuardInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27933,7 +27933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsPatchViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceGuardInput body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27995,7 +27995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsPatchViaJsonString(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28043,7 +28043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsPatchViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28092,7 +28092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsPatchWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceGuardInput body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28279,7 +28279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsPut(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28327,7 +28327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28384,7 +28384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsPutViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28445,7 +28445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceGuardsPutViaJsonString(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28491,7 +28491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsPutViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28538,7 +28538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource> ResourceGuardsPutWithResult(string subscriptionId, string resourceGroupName, string resourceGuardsName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28738,7 +28738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RestorableTimeRangesFind(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28788,7 +28788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RestorableTimeRangesFindViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28849,7 +28849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource> RestorableTimeRangesFindViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28914,7 +28914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task RestorableTimeRangesFindViaJsonString(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28964,7 +28964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource> RestorableTimeRangesFindViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29015,7 +29015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesResponseResource> RestorableTimeRangesFindWithResult(string subscriptionId, string resourceGroupName, string vaultName, string backupInstanceName, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupFindRestorableTimeRangesRequest body, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-03-01";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

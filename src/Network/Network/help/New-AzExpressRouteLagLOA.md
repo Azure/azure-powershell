@@ -16,20 +16,20 @@ Generates and downloads a letter of authorization (LOA) for an Azure ExpressRout
 ```
 New-AzExpressRouteLagLOA -LagName <String> -ResourceGroupName <String> -CustomerName <String>
  -Members <String[]> [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
 New-AzExpressRouteLagLOA -ExpressRouteLag <PSExpressRouteLag> -CustomerName <String> -Members <String[]>
  [-Destination <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 New-AzExpressRouteLagLOA -Id <String> -CustomerName <String> -Members <String[]> [-Destination <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -221,21 +221,6 @@ Parameter Sets: ResourceNameParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

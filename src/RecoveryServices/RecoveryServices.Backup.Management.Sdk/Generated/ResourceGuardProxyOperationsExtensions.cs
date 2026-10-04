@@ -19,19 +19,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
         /// </param>
-        public static ResourceGuardProxyBaseResource Get(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName)
+        public static ResourceGuardProxyBaseResource Get(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName)
         {
-                return ((IResourceGuardProxyOperations)operations).GetAsync(vaultName, resourceGroupName, resourceGuardProxyName).GetAwaiter().GetResult();
+                return ((IResourceGuardProxyOperations)operations).GetAsync(resourceGroupName, vaultName, resourceGuardProxyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -41,12 +40,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -54,48 +52,46 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ResourceGuardProxyBaseResource> GetAsync(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGuardProxyBaseResource> GetAsync(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, resourceGuardProxyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, resourceGuardProxyName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault Secures vault critical
-        /// operations
+        /// Add or Update ResourceGuardProxy under vault
+        /// Secures vault critical operations
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
         /// </param>
-        public static ResourceGuardProxyBaseResource Put(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName, ResourceGuardProxyBaseResource parameters)
+        public static ResourceGuardProxyBaseResource Put(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName, ResourceGuardProxyBaseResource parameters)
         {
-                return ((IResourceGuardProxyOperations)operations).PutAsync(vaultName, resourceGroupName, resourceGuardProxyName, parameters).GetAwaiter().GetResult();
+                return ((IResourceGuardProxyOperations)operations).PutAsync(resourceGroupName, vaultName, resourceGuardProxyName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault Secures vault critical
-        /// operations
+        /// Add or Update ResourceGuardProxy under vault
+        /// Secures vault critical operations
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -103,9 +99,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ResourceGuardProxyBaseResource> PutAsync(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName, ResourceGuardProxyBaseResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGuardProxyBaseResource> PutAsync(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName, ResourceGuardProxyBaseResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PutWithHttpMessagesAsync(vaultName, resourceGroupName, resourceGuardProxyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, vaultName, resourceGuardProxyName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -116,19 +112,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
         /// </param>
-        public static void Delete(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName)
+        public static void Delete(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName)
         {
-                ((IResourceGuardProxyOperations)operations).DeleteAsync(vaultName, resourceGroupName, resourceGuardProxyName).GetAwaiter().GetResult();
+                ((IResourceGuardProxyOperations)operations).DeleteAsync(resourceGroupName, vaultName, resourceGuardProxyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -137,12 +132,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -150,9 +144,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(vaultName, resourceGroupName, resourceGuardProxyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, resourceGuardProxyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Secures delete ResourceGuardProxy operations.
@@ -160,19 +154,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
         /// </param>
-        public static UnlockDeleteResponse UnlockDelete(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string resourceToBeDeleted = default(string))
+        public static UnlockDeleteResponse UnlockDelete(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string resourceToBeDeleted = default(string))
         {
-                return ((IResourceGuardProxyOperations)operations).UnlockDeleteAsync(vaultName, resourceGroupName, resourceGuardProxyName, resourceGuardOperationRequests, resourceToBeDeleted).GetAwaiter().GetResult();
+                return ((IResourceGuardProxyOperations)operations).UnlockDeleteAsync(resourceGroupName, vaultName, resourceGuardProxyName, resourceGuardOperationRequests, resourceToBeDeleted).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +174,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -194,9 +186,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<UnlockDeleteResponse> UnlockDeleteAsync(this IResourceGuardProxyOperations operations, string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string resourceToBeDeleted = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<UnlockDeleteResponse> UnlockDeleteAsync(this IResourceGuardProxyOperations operations, string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string resourceToBeDeleted = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UnlockDeleteWithHttpMessagesAsync(vaultName, resourceGroupName, resourceGuardProxyName, resourceGuardOperationRequests, resourceToBeDeleted, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UnlockDeleteWithHttpMessagesAsync(resourceGroupName, vaultName, resourceGuardProxyName, resourceGuardOperationRequests, resourceToBeDeleted, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

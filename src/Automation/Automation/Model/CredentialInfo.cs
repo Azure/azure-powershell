@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             if (credential == null) return;
 
             this.Description = credential.Description;
-            this.CreationTime = credential.CreationTime.ToLocalTime();
-            this.LastModifiedTime = credential.LastModifiedTime.ToLocalTime();
+            this.CreationTime = credential.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = credential.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.UserName = credential.UserName;
         }
 

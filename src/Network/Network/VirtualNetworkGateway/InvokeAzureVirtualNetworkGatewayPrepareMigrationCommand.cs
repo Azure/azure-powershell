@@ -80,6 +80,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 migrationParamaterModel.ResourceUrl = this.MigrationParameter.ResourceUrl;
             }
+            if (!String.IsNullOrEmpty(this.MigrationParameter.MigrationType))
+            {
+                migrationParamaterModel.MigrationType = this.MigrationParameter.MigrationType;
+            }
 
             string shouldProcessMessage = string.Format($"Execute Invoke-AzVirtualNetworkGatewayPrepareMigration for ResourceGroupName {0} VirtualNetworkGateway {1}", this.ResourceGroupName, this.Name);
             if (ShouldProcess(shouldProcessMessage))

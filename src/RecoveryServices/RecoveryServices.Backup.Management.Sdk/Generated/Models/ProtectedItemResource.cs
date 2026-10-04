@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     /// <summary>
     /// Base class for backup items.
     /// </summary>
-    public partial class ProtectedItemResource : Resource
+    public partial class ProtectedItemResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ProtectedItemResource class.
@@ -24,32 +24,40 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the ProtectedItemResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id represents the complete path to the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name associated with the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type represents the complete path of the form
-        /// Namespace/ResourceType/ResourceType/...
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="properties">ProtectedItemResource properties
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
         /// <param name="eTag">Optional ETag.
         /// </param>
+        public ProtectedItemResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), ProtectedItem properties = default(ProtectedItem), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string eTag = default(string))
 
-        /// <param name="properties">ProtectedItemResource properties
-        /// </param>
-        public ProtectedItemResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string eTag = default(string), ProtectedItem properties = default(ProtectedItem))
-
-        : base(id, name, type, location, tags, eTag)
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Tags = tags;
+            this.Location = location;
+            this.ETag = eTag;
             CustomInit();
         }
 
@@ -64,5 +72,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public ProtectedItem Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional ETag.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "eTag")]
+        public string ETag {get; set; }
     }
 }

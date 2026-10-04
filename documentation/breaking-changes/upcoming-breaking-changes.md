@@ -9,6 +9,43 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
+### Standalone EdgeAction resource cmdlets
+
+The standalone EdgeAction resource cmdlets listed below are planned for removal
+in Az.Cdn 7.0.0 and Az 17.0.0, with a planned effective date of November 15, 2026.
+This is a documentation-only advance announcement; the cmdlets remain available
+in the current release. No cmdlet attributes or runtime warnings are added by
+this announcement.
+
+- `Add-AzCdnEdgeActionAttachment`
+- `Deploy-AzCdnEdgeActionVersionCode`
+- `Get-AzCdnEdgeAction`
+- `Get-AzCdnEdgeActionExecutionFilter`
+- `Get-AzCdnEdgeActionVersion`
+- `Get-AzCdnEdgeActionVersionCode`
+- `New-AzCdnEdgeAction`
+- `New-AzCdnEdgeActionExecutionFilter`
+- `New-AzCdnEdgeActionVersion`
+- `Remove-AzCdnEdgeAction`
+- `Remove-AzCdnEdgeActionAttachment`
+- `Remove-AzCdnEdgeActionExecutionFilter`
+- `Remove-AzCdnEdgeActionVersion`
+- `Update-AzCdnEdgeAction`
+- `Update-AzCdnEdgeActionExecutionFilter`
+- `Update-AzCdnEdgeActionVersion`
+
+The removal will stop generating the standalone EdgeAction resource API from
+`Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json`, including resource,
+attachment, execution filter, version, and version-code operations. Scripts
+using these cmdlets will need to be updated before adopting the removal release.
+Review those dependencies now; this announcement does not specify a replacement
+cmdlet or announce retirement of the underlying service.
+
+This change does not remove EdgeAction delivery-rule actions or URL signing
+properties from the CDN/AFD API. It is independent of the CDN/AFD upgrade to API
+version `2026-07-01`. The EdgeAction Swagger input, command implementations,
+exports, and existing tests are unchanged by this announcement.
+
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
 - Parameter breaking-change will happen to all parameter sets
@@ -462,7 +499,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzManagedServicesDefinition_CreateExpanded`
   - `-Authorization`
     - The parameter : 'Authorization' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -665,7 +702,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzSubscriptionDiagnosticSetting_CreateExpanded`
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -739,6 +776,64 @@ Preview modules are not included in this list. Read more about [module version t
     The type of the parameter is changing from 'Array' to 'List'.
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+## Az.NetAppFiles
+
+### `Get-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Get-AzNetAppFilesSubvolumeMetadata`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Get-AzNetAppFilesVolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Volume.GetAzureRmNetAppFilesVolume' is changing
+  - The following properties in the output type are being deprecated : 'EnableSubvolumes'
+  - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
+
+### `New-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `New-AzNetAppFilesVolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Volume.NewAzureRmNetAppFilesVolume' is changing
+  - The following properties in the output type are being deprecated : 'EnableSubvolumes'
+  - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableSubvolume`
+    - EnableSubvolume is being deprecated and removed in a future release; there is no replacement.
+    - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
+
+### `Remove-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Update-AzNetAppFilesSubvolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The cmdlet is being deprecated. There will be no replacement for it.
+  - This change is expected to take effect from Az.NetAppFiles version: 2.0.0 and Az version: 17.0.0
+
+### `Update-AzNetAppFilesVolume`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Volume.UpdateAzureRmNetAppFilesVolume' is changing
+  - The following properties in the output type are being deprecated : 'EnableSubvolumes'
+  - This change is expected to take effect from Az.NetAppFiles version: 7.0.0 and Az version: 12.0.0
 
 ## Az.Network
 

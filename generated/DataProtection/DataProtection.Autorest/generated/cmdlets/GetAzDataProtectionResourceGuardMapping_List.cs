@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Returns the list of ResourceGuardProxies associated with the vault")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies", ApiVersion = "2026-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies", ApiVersion = "2026-06-01")]
     public partial class GetAzDataProtectionResourceGuardMapping_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IContext

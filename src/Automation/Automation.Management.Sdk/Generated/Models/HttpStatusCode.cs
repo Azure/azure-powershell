@@ -13,52 +13,193 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class HttpStatusCode
     {
+        /// <summary>
+        /// Continue
+        /// </summary>
         public const string Continue = "Continue";
+        /// <summary>
+        /// SwitchingProtocols
+        /// </summary>
         public const string SwitchingProtocols = "SwitchingProtocols";
+        /// <summary>
+        /// OK
+        /// </summary>
         public const string OK = "OK";
+        /// <summary>
+        /// Created
+        /// </summary>
         public const string Created = "Created";
+        /// <summary>
+        /// Accepted
+        /// </summary>
         public const string Accepted = "Accepted";
+        /// <summary>
+        /// NonAuthoritativeInformation
+        /// </summary>
         public const string NonAuthoritativeInformation = "NonAuthoritativeInformation";
+        /// <summary>
+        /// NoContent
+        /// </summary>
         public const string NoContent = "NoContent";
+        /// <summary>
+        /// ResetContent
+        /// </summary>
         public const string ResetContent = "ResetContent";
+        /// <summary>
+        /// PartialContent
+        /// </summary>
         public const string PartialContent = "PartialContent";
+        /// <summary>
+        /// MultipleChoices
+        /// </summary>
         public const string MultipleChoices = "MultipleChoices";
+        /// <summary>
+        /// Ambiguous
+        /// </summary>
         public const string Ambiguous = "Ambiguous";
+        /// <summary>
+        /// MovedPermanently
+        /// </summary>
         public const string MovedPermanently = "MovedPermanently";
+        /// <summary>
+        /// Moved
+        /// </summary>
         public const string Moved = "Moved";
+        /// <summary>
+        /// Found
+        /// </summary>
         public const string Found = "Found";
+        /// <summary>
+        /// Redirect
+        /// </summary>
         public const string Redirect = "Redirect";
+        /// <summary>
+        /// SeeOther
+        /// </summary>
         public const string SeeOther = "SeeOther";
+        /// <summary>
+        /// RedirectMethod
+        /// </summary>
         public const string RedirectMethod = "RedirectMethod";
+        /// <summary>
+        /// NotModified
+        /// </summary>
         public const string NotModified = "NotModified";
+        /// <summary>
+        /// UseProxy
+        /// </summary>
         public const string UseProxy = "UseProxy";
+        /// <summary>
+        /// Unused
+        /// </summary>
         public const string Unused = "Unused";
+        /// <summary>
+        /// TemporaryRedirect
+        /// </summary>
         public const string TemporaryRedirect = "TemporaryRedirect";
+        /// <summary>
+        /// RedirectKeepVerb
+        /// </summary>
         public const string RedirectKeepVerb = "RedirectKeepVerb";
+        /// <summary>
+        /// BadRequest
+        /// </summary>
         public const string BadRequest = "BadRequest";
+        /// <summary>
+        /// Unauthorized
+        /// </summary>
         public const string Unauthorized = "Unauthorized";
+        /// <summary>
+        /// PaymentRequired
+        /// </summary>
         public const string PaymentRequired = "PaymentRequired";
+        /// <summary>
+        /// Forbidden
+        /// </summary>
         public const string Forbidden = "Forbidden";
+        /// <summary>
+        /// NotFound
+        /// </summary>
         public const string NotFound = "NotFound";
+        /// <summary>
+        /// MethodNotAllowed
+        /// </summary>
         public const string MethodNotAllowed = "MethodNotAllowed";
+        /// <summary>
+        /// NotAcceptable
+        /// </summary>
         public const string NotAcceptable = "NotAcceptable";
+        /// <summary>
+        /// ProxyAuthenticationRequired
+        /// </summary>
         public const string ProxyAuthenticationRequired = "ProxyAuthenticationRequired";
+        /// <summary>
+        /// RequestTimeout
+        /// </summary>
         public const string RequestTimeout = "RequestTimeout";
+        /// <summary>
+        /// Conflict
+        /// </summary>
         public const string Conflict = "Conflict";
+        /// <summary>
+        /// Gone
+        /// </summary>
         public const string Gone = "Gone";
+        /// <summary>
+        /// LengthRequired
+        /// </summary>
         public const string LengthRequired = "LengthRequired";
+        /// <summary>
+        /// PreconditionFailed
+        /// </summary>
         public const string PreconditionFailed = "PreconditionFailed";
+        /// <summary>
+        /// RequestEntityTooLarge
+        /// </summary>
         public const string RequestEntityTooLarge = "RequestEntityTooLarge";
+        /// <summary>
+        /// RequestUriTooLong
+        /// </summary>
         public const string RequestUriTooLong = "RequestUriTooLong";
+        /// <summary>
+        /// UnsupportedMediaType
+        /// </summary>
         public const string UnsupportedMediaType = "UnsupportedMediaType";
+        /// <summary>
+        /// RequestedRangeNotSatisfiable
+        /// </summary>
         public const string RequestedRangeNotSatisfiable = "RequestedRangeNotSatisfiable";
+        /// <summary>
+        /// ExpectationFailed
+        /// </summary>
         public const string ExpectationFailed = "ExpectationFailed";
+        /// <summary>
+        /// UpgradeRequired
+        /// </summary>
         public const string UpgradeRequired = "UpgradeRequired";
+        /// <summary>
+        /// InternalServerError
+        /// </summary>
         public const string InternalServerError = "InternalServerError";
+        /// <summary>
+        /// NotImplemented
+        /// </summary>
         public const string NotImplemented = "NotImplemented";
+        /// <summary>
+        /// BadGateway
+        /// </summary>
         public const string BadGateway = "BadGateway";
+        /// <summary>
+        /// ServiceUnavailable
+        /// </summary>
         public const string ServiceUnavailable = "ServiceUnavailable";
+        /// <summary>
+        /// GatewayTimeout
+        /// </summary>
         public const string GatewayTimeout = "GatewayTimeout";
+        /// <summary>
+        /// HttpVersionNotSupported
+        /// </summary>
         public const string HttpVersionNotSupported = "HttpVersionNotSupported";
     }
 }

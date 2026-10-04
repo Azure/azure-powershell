@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "ServiceProviderProperties ServiceProviderName", Target = ViewControl.Table, ScriptBlock = "$_.ServiceProviderProperties.ServiceProviderName")]
         public PSServiceProviderProperties ServiceProviderProperties { get; set; }
         public PSResourceId ExpressRoutePort { get; set; }
+        public PSResourceId ExpressRouteLag { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public double? BandwidthInGbps { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
@@ -99,6 +100,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ExpressRoutePortText
         {
             get { return JsonConvert.SerializeObject(ExpressRoutePort, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExpressRouteLagText
+        {
+            get { return JsonConvert.SerializeObject(ExpressRouteLag, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -19,19 +19,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Provides the result of an operation.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='policyName'>
-        /// Backup policy name whose operation&#39;s result needs to be fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be
-        /// fetched.
+        /// The name of the ProtectionPolicyResource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -45,7 +43,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string policyName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

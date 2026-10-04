@@ -57,5 +57,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int? JSChallengeCookieExpirationInMins { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? CaptchaExpirationInMins { get; set; }
     }
 }

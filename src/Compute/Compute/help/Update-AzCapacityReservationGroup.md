@@ -15,28 +15,29 @@ Update the Capacity Reservation Group.
 ### DefaultParameter (Default)
 ```
 Update-AzCapacityReservationGroup [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ReservationType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
 ```
 Update-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> [-SharingProfile <String[]>]
- [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-AsJob] [-Tag <Hashtable>] [-ReservationType <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzCapacityReservationGroup -CapacityReservationGroup <PSCapacityReservationGroup>
- [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>] [-ReservationType <String>]
+ [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
 Update-AzCapacityReservationGroup -ResourceId <String> [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ReservationType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -115,6 +116,25 @@ Parameter Sets: DefaultParameterSet
 Aliases: CapacityReservationGroupName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ReservationType
+Specifies the type of the capacity reservation group.
+'Targeted' reservations are consumed by virtual machines that are explicitly associated with the group.
+'Block' reservations are consumed only from the capacity block.
+'Open' reservations are implicitly consumed by eligible virtual machines with a matching VM size and zone without associating the group.
+The reservation type cannot be changed after the group is created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

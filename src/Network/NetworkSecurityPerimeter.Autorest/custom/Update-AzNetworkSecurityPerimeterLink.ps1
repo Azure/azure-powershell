@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterLink {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -151,9 +151,24 @@ function Update-AzNetworkSecurityPerimeterLink {
         # Add only those paramters which can be updated
     )
 
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
+
     process {
         try {
-            
             # 1. GET
 
             # body params and AsJob
@@ -168,17 +183,16 @@ function Update-AzNetworkSecurityPerimeterLink {
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterLink @PSBoundParameters
-
-            
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterLink' -BoundParameters $PSBoundParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterLink @readParameters
             # 2. PUT
-            
+
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
-            ForEach($pathParam in $pathParams){        
+            ForEach($pathParam in $pathParams){
                 $null = $PSBoundParameters.Remove($pathParam)
             }
-            
+
             foreach ($item in $bodyParamsMap.GetEnumerator() )
             {
                 if ($item.Value){
@@ -190,7 +204,7 @@ function Update-AzNetworkSecurityPerimeterLink {
                 }
             }
 
-            
+
             # Call PUT method
             Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
