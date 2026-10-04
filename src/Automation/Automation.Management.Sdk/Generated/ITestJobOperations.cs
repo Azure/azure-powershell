@@ -14,45 +14,13 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface ITestJobOperations
     {
         /// <summary>
-        /// Create a test job of the runbook.
-        /// </summary>
-        /// <remarks>
-        /// Create a test job of the runbook.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='runbookName'>
-        /// The parameters supplied to the create test job operation.
-        /// </param>
-        /// <param name='parameters'>
-        /// The parameters supplied to the create test job operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TestJob>> CreateWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, TestJobCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Retrieve the test job for the specified runbook.
         /// </summary>
         /// <remarks>
         /// Retrieve the test job for the specified runbook.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -75,13 +43,45 @@ namespace Microsoft.Azure.Management.Automation
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TestJob>> GetWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Create a test job of the runbook.
+        /// </summary>
+        /// <remarks>
+        /// Create a test job of the runbook.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='runbookName'>
+        /// The runbook name.
+        /// </param>
+        /// <param name='parameters'>
+        /// The parameters supplied to the create test job operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TestJob>> CreateWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, TestJobCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Resume the test job.
         /// </summary>
         /// <remarks>
         /// Resume the test job.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Stop the test job.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Suspend the test job.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="syncType">The sync type.
         /// Possible values include: &#39;PartialSync&#39;, &#39;FullSync&#39;</param>
-        public SourceControlSyncJobProperties(string sourceControlSyncJobId = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string provisioningState = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string syncType = default(string))
+        public SourceControlSyncJobProperties(string sourceControlSyncJobId = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string provisioningState = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), string syncType = default(string))
 
         {
             this.SourceControlSyncJobId = sourceControlSyncJobId;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets the creation time of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the provisioning state of the job. Possible values include: &#39;Completed&#39;, &#39;Failed&#39;, &#39;Running&#39;

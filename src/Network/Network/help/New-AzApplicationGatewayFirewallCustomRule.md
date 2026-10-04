@@ -145,7 +145,7 @@ Type of Actions.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Block, Log
+Accepted values: Allow, Block, Log, CAPTCHA
 
 Required: True
 Position: Named

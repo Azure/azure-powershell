@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class SyncType
     {
+        /// <summary>
+        /// PartialSync
+        /// </summary>
         public const string PartialSync = "PartialSync";
+        /// <summary>
+        /// FullSync
+        /// </summary>
         public const string FullSync = "FullSync";
     }
 }

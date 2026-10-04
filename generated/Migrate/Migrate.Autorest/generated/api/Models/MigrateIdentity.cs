@@ -208,13 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
-        /// <summary>Backing field for <see cref="PrivateEndpointConnectionProxyName" /> property.</summary>
-        private string _privateEndpointConnectionProxyName;
-
-        /// <summary>The private endpoint connection proxy name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string PrivateEndpointConnectionProxyName { get => this._privateEndpointConnectionProxyName; set => this._privateEndpointConnectionProxyName = value; }
-
         /// <summary>Backing field for <see cref="PrivateLinkResourceName" /> property.</summary>
         private string _privateLinkResourceName;
 
@@ -295,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
         private string _resourceName;
 
-        /// <summary>The name of the recovery services vault.</summary>
+        /// <summary>The name of the Vault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
 
@@ -679,17 +672,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The private endpoint connection proxy name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The private endpoint connection proxy name.",
-        SerializedName = @"privateEndpointConnectionProxyName",
-        PossibleTypes = new [] { typeof(string) })]
-        string PrivateEndpointConnectionProxyName { get; set; }
         /// <summary>The private link name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -811,14 +793,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the recovery services vault.</summary>
+        /// <summary>The name of the Vault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the recovery services vault.",
+        Description = @"The name of the Vault",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceName { get; set; }
@@ -982,8 +964,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string PolicyName { get; set; }
         /// <summary>The private endpoint connection name.</summary>
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The private endpoint connection proxy name.</summary>
-        string PrivateEndpointConnectionProxyName { get; set; }
         /// <summary>The private link name.</summary>
         string PrivateLinkResourceName { get; set; }
         /// <summary>Protectable item name.</summary>
@@ -1006,7 +986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string ReplicationProtectionClusterName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the recovery services vault.</summary>
+        /// <summary>The name of the Vault</summary>
         string ResourceName { get; set; }
         /// <summary>Site name.</summary>
         string SiteName { get; set; }

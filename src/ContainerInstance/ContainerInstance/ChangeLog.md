@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 5.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)

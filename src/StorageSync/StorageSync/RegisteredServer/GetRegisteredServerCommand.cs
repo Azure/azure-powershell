@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, parentResourceName, ServerId.ToString()));
+                    WriteObject(StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, parentResourceName, ServerId));
                 }
             });
         }

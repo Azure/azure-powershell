@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the Schedule class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="advancedSchedule">Gets or sets the advanced schedule.
@@ -76,9 +82,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public Schedule(string id = default(string), string name = default(string), string type = default(string), AdvancedSchedule advancedSchedule = default(AdvancedSchedule), System.DateTimeOffset startTime = default(System.DateTimeOffset), double startTimeOffsetMinutes = default(double), System.DateTimeOffset? expiryTime = default(System.DateTimeOffset?), double expiryTimeOffsetMinutes = default(double), bool? isEnabled = default(bool?), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?), double nextRunOffsetMinutes = default(double), object interval = default(object), string frequency = default(string), string timeZone = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public Schedule(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), AdvancedSchedule advancedSchedule = default(AdvancedSchedule), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), double? startTimeOffsetMinutes = default(double?), System.DateTimeOffset? expiryTime = default(System.DateTimeOffset?), double? expiryTimeOffsetMinutes = default(double?), bool? isEnabled = default(bool?), System.DateTimeOffset? nextRun = default(System.DateTimeOffset?), double? nextRunOffsetMinutes = default(double?), object interval = default(object), string frequency = default(string), string timeZone = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.AdvancedSchedule = advancedSchedule;
             this.StartTime = startTime;
@@ -113,13 +119,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the start time of the schedule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTime")]
-        public System.DateTimeOffset StartTime {get; set; }
+        public System.DateTimeOffset? StartTime {get; set; }
 
         /// <summary>
         /// Gets gets the start time&#39;s offset in minutes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTimeOffsetMinutes")]
-        public double StartTimeOffsetMinutes {get; private set; }
+        public double? StartTimeOffsetMinutes {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the end time of the schedule.
@@ -131,7 +137,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the expiry time&#39;s offset in minutes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.expiryTimeOffsetMinutes")]
-        public double ExpiryTimeOffsetMinutes {get; set; }
+        public double? ExpiryTimeOffsetMinutes {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets a value indicating whether this schedule is
@@ -150,7 +156,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the next run time&#39;s offset in minutes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextRunOffsetMinutes")]
-        public double NextRunOffsetMinutes {get; set; }
+        public double? NextRunOffsetMinutes {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the interval of the schedule.
@@ -174,13 +180,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; set; }
+        public System.DateTimeOffset? CreationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

@@ -14,53 +14,51 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Gets the operation result of operation triggered by Export Jobs API. If the
-        /// operation is successful, then it also contains URL of a Blob and a SAS key
-        /// to access the same. The blob contains exported jobs in JSON serialized
-        /// format.
+        /// operation is successful, then it also
+        /// contains URL of a Blob and a SAS key to access the same. The blob contains
+        /// exported jobs in JSON serialized format.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the export job.
+        /// The name of the JobResource
         /// </param>
-        public static OperationResultInfoBaseResource Get(this IExportJobsOperationResultsOperations operations, string vaultName, string resourceGroupName, string operationId)
+        public static OperationResultInfoBaseResource Get(this IExportJobsOperationResultsOperations operations, string resourceGroupName, string vaultName, string operationId)
         {
-                return ((IExportJobsOperationResultsOperations)operations).GetAsync(vaultName, resourceGroupName, operationId).GetAwaiter().GetResult();
+                return ((IExportJobsOperationResultsOperations)operations).GetAsync(resourceGroupName, vaultName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Gets the operation result of operation triggered by Export Jobs API. If the
-        /// operation is successful, then it also contains URL of a Blob and a SAS key
-        /// to access the same. The blob contains exported jobs in JSON serialized
-        /// format.
+        /// operation is successful, then it also
+        /// contains URL of a Blob and a SAS key to access the same. The blob contains
+        /// exported jobs in JSON serialized format.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the export job.
+        /// The name of the JobResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OperationResultInfoBaseResource> GetAsync(this IExportJobsOperationResultsOperations operations, string vaultName, string resourceGroupName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OperationResultInfoBaseResource> GetAsync(this IExportJobsOperationResultsOperations operations, string resourceGroupName, string vaultName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

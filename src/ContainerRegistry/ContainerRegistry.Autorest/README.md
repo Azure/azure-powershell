@@ -53,6 +53,7 @@ try-require:
 module-version: 0.1.0
 title: ContainerRegistry
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 inlining-threshold: 100
 

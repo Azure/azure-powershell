@@ -21,12 +21,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Returns ResourceGuardProxy under vault and with the name referenced in
         /// request
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -43,22 +42,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGuardProxyBaseResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGuardProxyBaseResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault Secures vault critical
-        /// operations
+        /// Add or Update ResourceGuardProxy under vault
+        /// Secures vault critical operations
         /// </summary>
         /// <remarks>
-        /// Add or Update ResourceGuardProxy under vault Secures vault critical
-        /// operations
+        /// Add or Update ResourceGuardProxy under vault
+        /// Secures vault critical operations
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -78,7 +76,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGuardProxyBaseResource>> PutWithHttpMessagesAsync(string vaultName, string resourceGroupName, string resourceGuardProxyName, ResourceGuardProxyBaseResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGuardProxyBaseResource>> PutWithHttpMessagesAsync(string resourceGroupName, string vaultName, string resourceGuardProxyName, ResourceGuardProxyBaseResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete ResourceGuardProxy under vault
@@ -86,12 +84,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Delete ResourceGuardProxy under vault
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -105,7 +102,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Secures delete ResourceGuardProxy operations.
@@ -113,12 +110,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Secures delete ResourceGuardProxy operations.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -141,7 +137,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UnlockDeleteResponse>> UnlockDeleteWithHttpMessagesAsync(string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string resourceToBeDeleted = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UnlockDeleteResponse>> UnlockDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, string resourceGuardProxyName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string resourceToBeDeleted = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

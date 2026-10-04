@@ -76,5 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         public StorageKeyKind StorageKeyType { get; set; }
 
         public uint? RetentionInDays { get; set; }
+
+        public string[] RequiredFields { get; set; }
     }
 }

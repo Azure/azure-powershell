@@ -19,11 +19,12 @@
 -->
 
 ## Upcoming Release
-* Added new cmdlets to support SQL Vulnerability Assessment (2026-04-01-preview) API:
-    - `Get-AzSecuritySqlVulnerabilityAssessmentSetting`, `New-AzSecuritySqlVulnerabilityAssessmentSetting`, `Update-AzSecuritySqlVulnerabilityAssessmentSetting`, `Remove-AzSecuritySqlVulnerabilityAssessmentSetting`
-    - `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `New-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule`
-    - `Get-AzSecuritySqlVulnerabilityAssessmentScan`, `Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult`, `Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan`
-    - `Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult` is named to reflect that it returns per-rule scan results (similar to `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`), avoiding a name collision with the existing legacy `Get-AzSecuritySqlVulnerabilityAssessmentScanResult` cmdlet
+
+## Version 1.10.0
+* Added SQL Vulnerability Assessment cmdlets for the 2026-04-01-preview API:
+    - `Get-AzSecuritySqlVulnerabilityAssessmentSetting`, `New-AzSecuritySqlVulnerabilityAssessmentSetting`, `Update-AzSecuritySqlVulnerabilityAssessmentSetting`, and `Remove-AzSecuritySqlVulnerabilityAssessmentSetting`.
+    - `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `New-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, and `Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule`.
+    - `Get-AzSecuritySqlVulnerabilityAssessmentScan`, `Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult`, and `Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan`. The per-rule name avoids a collision with legacy `Get-AzSecuritySqlVulnerabilityAssessmentScanResult`.
 
 ## Version 1.9.0
 * Added ChangeSafety Support

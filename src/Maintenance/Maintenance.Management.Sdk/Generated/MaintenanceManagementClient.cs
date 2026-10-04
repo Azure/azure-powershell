@@ -38,11 +38,9 @@ namespace Microsoft.Azure.Management.Maintenance
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Subscription credentials that uniquely identify a Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -63,29 +61,13 @@ namespace Microsoft.Azure.Management.Maintenance
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
-        /// Gets the IPublicMaintenanceConfigurationsOperations
+        /// Gets the IOperations
         /// </summary>
-        public virtual IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurations { get; private set; }
+        public virtual IOperations Operations { get; private set; }
         /// <summary>
         /// Gets the IApplyUpdatesOperations
         /// </summary>
         public virtual IApplyUpdatesOperations ApplyUpdates { get; private set; }
-        /// <summary>
-        /// Gets the IConfigurationAssignmentsOperations
-        /// </summary>
-        public virtual IConfigurationAssignmentsOperations ConfigurationAssignments { get; private set; }
-        /// <summary>
-        /// Gets the IMaintenanceConfigurationsOperations
-        /// </summary>
-        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
-        /// <summary>
-        /// Gets the IMaintenanceConfigurationsForResourceGroupOperations
-        /// </summary>
-        public virtual IMaintenanceConfigurationsForResourceGroupOperations MaintenanceConfigurationsForResourceGroup { get; private set; }
-        /// <summary>
-        /// Gets the IApplyUpdateForResourceGroupOperations
-        /// </summary>
-        public virtual IApplyUpdateForResourceGroupOperations ApplyUpdateForResourceGroup { get; private set; }
         /// <summary>
         /// Gets the IConfigurationAssignmentsWithinSubscriptionOperations
         /// </summary>
@@ -95,17 +77,37 @@ namespace Microsoft.Azure.Management.Maintenance
         /// </summary>
         public virtual IConfigurationAssignmentsForSubscriptionsOperations ConfigurationAssignmentsForSubscriptions { get; private set; }
         /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations
+        /// </summary>
+        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IPublicMaintenanceConfigurationsOperations
+        /// </summary>
+        public virtual IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IConfigurationAssignmentsOperations
+        /// </summary>
+        public virtual IConfigurationAssignmentsOperations ConfigurationAssignments { get; private set; }
+        /// <summary>
+        /// Gets the IApplyUpdateForResourceGroupOperations
+        /// </summary>
+        public virtual IApplyUpdateForResourceGroupOperations ApplyUpdateForResourceGroup { get; private set; }
+        /// <summary>
         /// Gets the IConfigurationAssignmentsForResourceGroupOperations
         /// </summary>
         public virtual IConfigurationAssignmentsForResourceGroupOperations ConfigurationAssignmentsForResourceGroup { get; private set; }
         /// <summary>
-        /// Gets the IOperations
+        /// Gets the IMaintenanceConfigurationsForResourceGroupOperations
         /// </summary>
-        public virtual IOperations Operations { get; private set; }
+        public virtual IMaintenanceConfigurationsForResourceGroupOperations MaintenanceConfigurationsForResourceGroup { get; private set; }
         /// <summary>
         /// Gets the IUpdatesOperations
         /// </summary>
         public virtual IUpdatesOperations Updates { get; private set; }
+        /// <summary>
+        /// Gets the IScheduledEventsOperations
+        /// </summary>
+        public virtual IScheduledEventsOperations ScheduledEvents { get; private set; }
         /// <summary>
         /// Initializes a new instance of the MaintenanceManagementClient class.
         /// </summary>
@@ -310,6 +312,9 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -341,19 +346,20 @@ namespace Microsoft.Azure.Management.Maintenance
         /// </summary>
         private void Initialize()
         {
-            this.PublicMaintenanceConfigurations = new PublicMaintenanceConfigurationsOperations(this);
+            this.Operations = new Operations(this);
             this.ApplyUpdates = new ApplyUpdatesOperations(this);
-            this.ConfigurationAssignments = new ConfigurationAssignmentsOperations(this);
-            this.MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
-            this.MaintenanceConfigurationsForResourceGroup = new MaintenanceConfigurationsForResourceGroupOperations(this);
-            this.ApplyUpdateForResourceGroup = new ApplyUpdateForResourceGroupOperations(this);
             this.ConfigurationAssignmentsWithinSubscription = new ConfigurationAssignmentsWithinSubscriptionOperations(this);
             this.ConfigurationAssignmentsForSubscriptions = new ConfigurationAssignmentsForSubscriptionsOperations(this);
+            this.MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
+            this.PublicMaintenanceConfigurations = new PublicMaintenanceConfigurationsOperations(this);
+            this.ConfigurationAssignments = new ConfigurationAssignmentsOperations(this);
+            this.ApplyUpdateForResourceGroup = new ApplyUpdateForResourceGroupOperations(this);
             this.ConfigurationAssignmentsForResourceGroup = new ConfigurationAssignmentsForResourceGroupOperations(this);
-            this.Operations = new Operations(this);
+            this.MaintenanceConfigurationsForResourceGroup = new MaintenanceConfigurationsForResourceGroupOperations(this);
             this.Updates = new UpdatesOperations(this);
+            this.ScheduledEvents = new ScheduledEventsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-09-01-preview";
+            this.ApiVersion = "2025-10-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

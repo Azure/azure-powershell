@@ -25,19 +25,28 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the JobCollectionItem class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="runbook">The runbook association.
         /// </param>
 
         /// <param name="jobId">The id of the job.
+        /// </param>
+
+        /// <param name="startedBy">Gets or sets the job started by.
         /// </param>
 
         /// <param name="creationTime">The creation time of the job.
@@ -60,20 +69,25 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="provisioningState">The provisioning state of a resource.
         /// </param>
 
+        /// <param name="jobRuntimeEnvironment">Runtime Environment Property
+        /// </param>
+
         /// <param name="runOn">Specifies the runOn group name where the job was executed.
         /// </param>
-        public JobCollectionItem(string id = default(string), string name = default(string), string type = default(string), RunbookAssociationProperty runbook = default(RunbookAssociationProperty), System.Guid jobId = default(System.Guid), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string status = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string provisioningState = default(string), string runOn = default(string))
+        public JobCollectionItem(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), RunbookAssociationProperty runbook = default(RunbookAssociationProperty), System.Guid? jobId = default(System.Guid?), string startedBy = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string status = default(string), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string provisioningState = default(string), JobRuntimeEnvironment jobRuntimeEnvironment = default(JobRuntimeEnvironment), string runOn = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Runbook = runbook;
             this.JobId = jobId;
+            this.StartedBy = startedBy;
             this.CreationTime = creationTime;
             this.Status = status;
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.LastModifiedTime = lastModifiedTime;
             this.ProvisioningState = provisioningState;
+            this.JobRuntimeEnvironment = jobRuntimeEnvironment;
             this.RunOn = runOn;
             CustomInit();
         }
@@ -94,13 +108,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets the id of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.jobId")]
-        public System.Guid JobId {get; private set; }
+        public System.Guid? JobId {get; private set; }
+
+        /// <summary>
+        /// Gets gets or sets the job started by.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startedBy")]
+        public string StartedBy {get; private set; }
 
         /// <summary>
         /// Gets the creation time of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets the status of the job. Possible values include: &#39;New&#39;, &#39;Activating&#39;, &#39;Running&#39;, &#39;Completed&#39;, &#39;Failed&#39;, &#39;Stopped&#39;, &#39;Blocked&#39;, &#39;Suspended&#39;, &#39;Disconnected&#39;, &#39;Suspending&#39;, &#39;Stopping&#39;, &#39;Resuming&#39;, &#39;Removing&#39;
@@ -131,6 +151,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets runtime Environment Property
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.jobRuntimeEnvironment")]
+        public JobRuntimeEnvironment JobRuntimeEnvironment {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the runOn group name where the job was executed.

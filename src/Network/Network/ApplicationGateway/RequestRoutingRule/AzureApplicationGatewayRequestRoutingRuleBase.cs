@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                 Mandatory = true,
                 HelpMessage = "The type of rule")]
-        [ValidateSet("Basic", "PathBasedRouting", IgnoreCase = true)]
+        [ValidateSet("Basic", "PathBasedRouting", "AdvancedRouting", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RuleType { get; set; }
 
@@ -109,6 +109,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRedirectConfiguration RedirectConfiguration { get; set; }
 
+        [Parameter(
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway AdvancedRoutingMap. Applicable when RuleType is AdvancedRouting")]
+        [ValidateNotNullOrEmpty]
+        public string AdvancedRoutingMapId { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway AdvancedRoutingMap. Applicable when RuleType is AdvancedRouting")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayAdvancedRoutingMap AdvancedRoutingMap { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -130,6 +142,10 @@ namespace Microsoft.Azure.Commands.Network
                 if (UrlPathMap != null)
                 {
                     this.UrlPathMapId = this.UrlPathMap.Id;
+                }
+                if (AdvancedRoutingMap != null)
+                {
+                    this.AdvancedRoutingMapId = this.AdvancedRoutingMap.Id;
                 }
                 if (RewriteRuleSet != null)
                 {
@@ -169,6 +185,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 requestRoutingRule.UrlPathMap = new PSResourceId();
                 requestRoutingRule.UrlPathMap.Id = this.UrlPathMapId;
+            }
+            if (!string.IsNullOrEmpty(this.AdvancedRoutingMapId))
+            {
+                requestRoutingRule.AdvancedRoutingMap = new PSResourceId();
+                requestRoutingRule.AdvancedRoutingMap.Id = this.AdvancedRoutingMapId;
             }
             if (!string.IsNullOrEmpty(this.RewriteRuleSetId))
             {

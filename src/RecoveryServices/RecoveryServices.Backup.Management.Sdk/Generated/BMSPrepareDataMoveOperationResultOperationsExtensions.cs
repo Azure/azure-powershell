@@ -13,48 +13,46 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class BmsPrepareDataMoveOperationResultOperationsExtensions
     {
         /// <summary>
-        /// Fetches Operation Result for Prepare Data Move
+        /// Fetches operation status for data move operation on vault
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='operationId'>
-        /// 
+        /// The name of the BackupResourceConfigResource
         /// </param>
-        public static VaultStorageConfigOperationResultResponse Get(this IBmsPrepareDataMoveOperationResultOperations operations, string vaultName, string resourceGroupName, string operationId)
+        public static VaultStorageConfigOperationResultResponse Get(this IBmsPrepareDataMoveOperationResultOperations operations, string resourceGroupName, string vaultName, string operationId)
         {
-                return ((IBmsPrepareDataMoveOperationResultOperations)operations).GetAsync(vaultName, resourceGroupName, operationId).GetAwaiter().GetResult();
+                return ((IBmsPrepareDataMoveOperationResultOperations)operations).GetAsync(resourceGroupName, vaultName, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Fetches Operation Result for Prepare Data Move
+        /// Fetches operation status for data move operation on vault
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='operationId'>
-        /// 
+        /// The name of the BackupResourceConfigResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VaultStorageConfigOperationResultResponse> GetAsync(this IBmsPrepareDataMoveOperationResultOperations operations, string vaultName, string resourceGroupName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VaultStorageConfigOperationResultResponse> GetAsync(this IBmsPrepareDataMoveOperationResultOperations operations, string resourceGroupName, string vaultName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

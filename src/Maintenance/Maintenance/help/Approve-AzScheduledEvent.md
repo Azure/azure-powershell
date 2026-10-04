@@ -1,0 +1,258 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
+Module Name: Az.Maintenance
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/approve-azscheduledevent
+schema: 2.0.0
+---
+
+# Approve-AzScheduledEvent
+
+## SYNOPSIS
+
+Approves an event in the ScheduledEvents for a resource.
+
+## SYNTAX
+
+```powershell
+Approve-AzScheduledEvent [-ResourceGroupName] <String> [-ResourceType] <String> [-ResourceName] <String>
+ [-ScheduledEventId] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+
+Approves an event in the ScheduledEvents for a virtual machine, virtual machine scale set, or availability set.
+On success, the cmdlet returns a ScheduledEvents approval response.
+For non-success responses, the cmdlet raises a terminating PowerShell error displaying the HTTP status name followed by indented service error JSON.
+
+## EXAMPLES
+
+### Example 1
+
+```powershell
+Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachines' -ResourceName 'example-vm' -ScheduledEventId '11111111-1111-1111-1111-111111111111' -Confirm:$false
+```
+
+```output
+Value
+-----
+Successfully approved scheduled event
+```
+
+Approves the specified ScheduledEvents entry for a virtual machine and returns the service response.
+
+### Example 2: Approve an event that cannot be found
+
+```powershell
+Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
+```
+
+```output
+Approve-AzScheduledEvent: NotFound
+{
+  "error": {
+    "code": "InvalidScheduledEventId",
+    "message": "Scheduled event not found"
+  }
+}
+```
+
+Attempts to approve an event that the service cannot find and raises a terminating PowerShell error for HTTP 404 Not Found.
+Use `try`/`catch`, as shown below, to inspect the error.
+
+### Example 3: Catch and inspect a service error
+
+```powershell
+try {
+  Approve-AzScheduledEvent -ResourceGroupName 'example-rg' -ResourceType 'virtualMachineScaleSets' -ResourceName 'example-vmss' -ScheduledEventId '22222222-2222-2222-2222-222222222222' -Confirm:$false
+}
+catch {
+  $_.Exception.Body.Error.Code
+  $_.Exception.Body.Error.Message
+  $_.ErrorDetails.Message
+}
+```
+
+Catches the terminating error when the event cannot be found. Inside `catch`, `$_` is the PowerShell error record, and `Exception` retains the original SDK exception.
+`$_.Exception.Body.Error` contains the structured service error when the service provides an error body.
+`$_.ErrorDetails.Message` contains the HTTP status name followed by the formatted service JSON, or the exception message when no usable service error body is available.
+
+## PARAMETERS
+
+### -AcquirePolicyToken
+
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+
+The resource Group Name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceName
+
+The resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceType
+
+The Microsoft.Compute resource type that owns the ScheduledEvents.
+Supported values are `virtualMachines`, `virtualMachineScaleSets`, and `availabilitySets`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ScheduledEventId
+
+The ScheduledEvents ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.String
+
+## OUTPUTS
+
+### Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse
+
+## NOTES
+
+## RELATED LINKS

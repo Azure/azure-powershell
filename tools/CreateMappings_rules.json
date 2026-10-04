@@ -937,14 +937,6 @@
     "alias": "ScVmm"
   },
   {
-    "alias": "ArizeAI",
-    "module": "ArizeAI"
-  },
-  {
-    "alias": "LambdaTest",
-    "module": "LambdaTest"
-  },
-  {
     "alias": "Carbon",
     "module": "Carbon"
   },
@@ -963,6 +955,10 @@
   {
     "alias": "CloudHsm",
     "module": "CloudHsm"
+  },
+  {
+    "alias": "CloudHealth",
+    "module": "CloudHealth"
   },
   {
     "alias": "StorageDiscovery",

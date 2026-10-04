@@ -18,19 +18,131 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using ProxyResource = Microsoft.Azure.Management.Sql.Models.ProxyResource;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 {
     /// <summary>
+    /// Validates RequiredFields using the rules enforced by the 2026-08-01-preview auditing API.
+    /// </summary>
+    internal static class AuditingRequiredFieldsValidator
+    {
+        private const int MaxRequiredFieldsLength = 4000;
+
+        private static readonly HashSet<string> ValidAuditEventFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "audit_schema_version", "event_time", "sequence_number", "action_id", "succeeded",
+            "is_column_permission", "session_id", "server_principal_id", "database_principal_id",
+            "target_server_principal_id", "target_database_principal_id", "object_id",
+            "user_defined_event_id", "transaction_id", "class_type", "duration_milliseconds",
+            "response_rows", "affected_rows", "client_tls_version", "database_transaction_id",
+            "ledger_start_sequence_number", "is_local_secondary_replica", "client_ip",
+            "permission_bitmask", "sequence_group_id", "session_server_principal_name",
+            "server_principal_name", "server_principal_sid", "database_principal_name",
+            "target_server_principal_name", "target_server_principal_sid",
+            "target_database_principal_name", "server_instance_name", "database_name",
+            "schema_name", "object_name", "statement", "additional_information",
+            "user_defined_information", "application_name", "connection_id",
+            "data_sensitivity_information", "host_name", "session_context",
+            "client_tls_version_name", "external_policy_permissions_checked",
+            "obo_middle_tier_app_id", "event_id", "is_server_level_audit",
+            "action_name", "class_type_description", "securable_class_type"
+        };
+
+        private static readonly int MaxRequiredFieldNameLength = ValidAuditEventFields.Max(fieldName => fieldName.Length);
+
+        /// <summary>
+        /// Validates the required fields and effective auditing target state.
+        /// </summary>
+        /// <param name="model">The user auditing policy model.</param>
+        internal static void Validate(ServerAuditModel model)
+        {
+            string[] requiredFields = model.RequiredFields;
+            if (requiredFields == null || requiredFields.Length == 0)
+            {
+                return;
+            }
+
+            if (requiredFields.Length > ValidAuditEventFields.Count)
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. The array exceeds the maximum allowed number of {ValidAuditEventFields.Count} fields.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            if (requiredFields.Any(fieldName => fieldName != null && fieldName.Length > MaxRequiredFieldNameLength))
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. Each field name cannot exceed {MaxRequiredFieldNameLength} characters.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            bool isPolicyEnabled = model.BlobStorageTargetState == AuditStateType.Enabled ||
+                model.EventHubTargetState == AuditStateType.Enabled ||
+                model.LogAnalyticsTargetState == AuditStateType.Enabled;
+            bool isAzureMonitorTargetEnabled = model.EventHubTargetState == AuditStateType.Enabled ||
+                model.LogAnalyticsTargetState == AuditStateType.Enabled;
+
+            if (isPolicyEnabled && !isAzureMonitorTargetEnabled)
+            {
+                throw new PSArgumentException(
+                    "Invalid parameter 'RequiredFields'. RequiredFields parameter can only be specified when isAzureMonitorTargetEnabled is set to true.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            string[] fieldNames = requiredFields
+                .Select(fieldName => fieldName?.Trim())
+                .ToArray();
+
+            if (fieldNames.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new PSArgumentException(
+                    "Invalid parameter 'RequiredFields'. Must contain at least one valid field name.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            string[] duplicateFields = fieldNames.GroupBy(fieldName => fieldName, StringComparer.OrdinalIgnoreCase)
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key)
+                .ToArray();
+
+            if (duplicateFields.Length > 0)
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. Duplicate field names found: '{string.Join(",", duplicateFields)}'.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+
+            foreach (string fieldName in fieldNames)
+            {
+                if (!ValidAuditEventFields.Contains(fieldName))
+                {
+                    throw new PSArgumentException(
+                        $"Invalid audit field name '{fieldName}' in RequiredFields. Must be one of the valid audit_event fields.",
+                        nameof(ServerAuditModel.RequiredFields));
+                }
+            }
+
+            string internalRequiredFields = string.Join(",", fieldNames);
+            if (internalRequiredFields.Length > MaxRequiredFieldsLength)
+            {
+                throw new PSArgumentException(
+                    $"Invalid parameter 'RequiredFields'. The value exceeds the maximum allowed length of {MaxRequiredFieldsLength} characters.",
+                    nameof(ServerAuditModel.RequiredFields));
+            }
+        }
+    }
+
+    /// <summary>
     /// The SqlAuditClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
     /// </summary>
-    public abstract class SqlAuditAdapter<AuditPolicyType, AuditModelType> where AuditPolicyType : ProxyResource
+    public abstract class SqlAuditAdapter<AuditPolicyType, AuditModelType> where AuditPolicyType : IResource
                                                                            where AuditModelType : ServerDevOpsAuditModel
     {
         /// <summary>
@@ -298,7 +410,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return true;
         }
 
-        protected virtual void PolicizeAuditModel(AuditModelType model, ProxyResource policy)
+        protected virtual void PolicizeAuditModel(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -332,7 +444,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        internal virtual void PolicizePublicStorageInfo(AuditModelType model, ProxyResource policy) 
+        internal virtual void PolicizePublicStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -340,7 +452,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 model.StorageAccountResourceId).GetAwaiter().GetResult()[GetStorageKeyKind(model) == StorageKeyKind.Secondary ? StorageKeyKind.Secondary : StorageKeyKind.Primary];
         }
 
-        internal virtual void PolicizeStorageInfo(AuditModelType model, ProxyResource policy)
+        internal virtual void PolicizeStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -672,6 +784,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 throw new Exception($"Operation is not supported when multiple Diagnostic Settings enable {GetDiagnosticsEnablingAuditCategoryName()}");
             }
+
+            if (model is ServerAuditModel userAuditModel)
+            {
+                AuditingRequiredFieldsValidator.Validate(userAuditModel);
+            }
         }
 
         internal bool IsAnotherCategoryEnabled(DiagnosticSettingsResource settings)
@@ -683,8 +800,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
     }
 
     public abstract class SqlUserAuditAdapter<AuditPolicyType, ExtendedAuditPolicyType, AuditModelType> : SqlAuditAdapter<ExtendedAuditPolicyType, AuditModelType>
-        where AuditPolicyType : ProxyResource, new()
-        where ExtendedAuditPolicyType : ProxyResource, new()
+        where AuditPolicyType : IResource, new()
+        where ExtendedAuditPolicyType : IResource, new()
         where AuditModelType : ServerAuditModel
     {
         public SqlUserAuditAdapter(IAzureContext context, Guid roleAssignmentId = default(Guid)) : base(context, roleAssignmentId)
@@ -715,7 +832,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 dynamicPolicy.RetentionDays, dynamicPolicy.IsManagedIdentityInUse);
 
             model.PredicateExpression = dynamicPolicy.PredicateExpression;
-            model.AuditActionGroup = ExtractAuditActionGroups(dynamicPolicy.AuditActionsAndGroups);            
+            model.AuditActionGroup = ExtractAuditActionGroups(dynamicPolicy.AuditActionsAndGroups);
+            model.RequiredFields = ((IEnumerable<string>)dynamicPolicy.RequiredFields)?.ToArray();
+        }
+
+        protected override void PolicizeAuditModel(AuditModelType model, IResource policy)
+        {
+            base.PolicizeAuditModel(model, policy);
+
+            dynamic dynamicPolicy = (dynamic)policy;
+            dynamicPolicy.RequiredFields = model.RequiredFields;
         }
 
         internal override void ModelizeStorageKeyType(AuditModelType model, bool? isSecondary) 
@@ -728,7 +854,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        internal override void PolicizeStorageInfo(AuditModelType model, ProxyResource policy)
+        internal override void PolicizeStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -740,7 +866,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        internal override void PolicizePublicStorageInfo(AuditModelType model, ProxyResource policy)
+        internal override void PolicizePublicStorageInfo(AuditModelType model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -833,7 +959,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return Communicator.SetExtendedAuditingPolicy(resourceGroup, serverName, policy);
         }
 
-        protected override void PolicizeAuditModel(ServerAuditModel model, ProxyResource policy)
+        protected override void PolicizeAuditModel(ServerAuditModel model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 
@@ -911,7 +1037,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return base.SetAudit(model);
         }
 
-        protected override void PolicizeAuditModel(DatabaseAuditModel model, ProxyResource policy)
+        protected override void PolicizeAuditModel(DatabaseAuditModel model, IResource policy)
         {
             dynamic dynamicPolicy = (dynamic)policy;
 

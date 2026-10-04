@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountName;
 
             this.Name = nodeConfiguration.Name;
-            this.CreationTime = nodeConfiguration.CreationTime.ToLocalTime();
-            this.LastModifiedTime = nodeConfiguration.LastModifiedTime.ToLocalTime();
+            this.CreationTime = nodeConfiguration.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = nodeConfiguration.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.RollupStatus = rollUpStatus;
             if (nodeConfiguration.Configuration != null)
             {

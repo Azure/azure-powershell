@@ -27,18 +27,18 @@ For information on how to develop for `Az.Mission`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 342124d3fe26c2499104206005a703695e471eb7
-tag: package-2026-03-01-preview
+commit: ae8bfcbd69fc161651b0509f4869f55376750f1a
+tag: package-2026-04-01
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/mission/resource-manager/Microsoft.Mission/Mission/preview/2026-03-01-preview/openapi.json
+  - $(repo)/specification/mission/resource-manager/Microsoft.Mission/Mission/stable/2026-04-01/openapi.json
 # Normally, title is the service name
 root-module-name: $(prefix).Mission
 title: Mission
-module-version: 0.1.0
+module-version: 1.0.0
 subject-prefix: Mission
 identity-correction-for-post: true
 

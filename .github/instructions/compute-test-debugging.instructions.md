@@ -34,47 +34,23 @@ Key points for this workflow:
 
 Automatically discover which test(s) were added or modified on the current branch. Do not ask the user for the test name — detect it.
 
-> **REQUIRED: GitHub MCP must be configured.** This step uses the GitHub MCP server exclusively — do NOT fall back to local `git` CLI commands, `code_search`, `file_search`, or manual file reading as a substitute for this step. You MUST attempt to call the GitHub MCP tools below. If the tools do not exist in your available tool set, or any call fails with a connectivity/tool-not-found error, **stop immediately** and walk the user through the **GitHub MCP Setup** section below. Do not proceed to Step 2 until GitHub MCP is working. Do NOT silently skip this step or work around it by reading files directly.
+Prefer the pull request diff because it is the clearest review surface for the proposed changes. If the branch has no pull request, the PR cannot be retrieved, or GitHub tools are unavailable, use a local three-dot git diff against the base branch. Do not block test development on GitHub MCP availability.
 
-You MUST use the GitHub MCP server to compare the current branch against the base branch and find changed test files. Start by attempting the first tool call. If the tool does not exist or the call fails with a connectivity/tool-not-found/authentication error, jump to the **GitHub MCP Setup** section below and guide the user through configuration. Do not continue to the next sub-step.
-
-1. Call `compare_branches` (owner/repo from the active git remote, base: `main`, head: current branch name) to get the list of changed files.
-2. Filter the changed files for paths matching `src/Compute/Compute.Test/ScenarioTests/*.cs`.
-3. For each changed C# test file, retrieve the **diff** (not the full file) using `get_pull_request` with `get_diff`, or by comparing the file content on the branch against `main`. Extract only the **newly added** `[Fact]` methods that appear in the diff as added lines (prefixed with `+`). Do NOT include pre-existing test methods that were already on `main` — only tests that were added or modified on this branch. Each test method calls `TestRunner.RunTestScript("FunctionName")`, which maps to a PowerShell function.
-4. Record the fully qualified test class name and **only the new/changed** method name(s) for use in later steps.
+1. Determine the current branch and its pull request, if one exists. Use the active pull request or search for an open pull request whose head branch matches the current branch.
+2. If a pull request exists, retrieve its changed files and diff. Filter for paths matching `src/Compute/Compute.Test/ScenarioTests/*.cs`.
+3. If no pull request or PR diff is available, fetch the base branch and run `git diff --name-only origin/main...HEAD -- src/Compute/Compute.Test/ScenarioTests/*.cs`, then retrieve each matching file's diff with `git diff origin/main...HEAD -- <path>`.
+4. For each changed C# test file, inspect the **diff**, not just the full file. Extract only `[Fact]` methods that are newly added or whose method body changed in the diff. Do NOT include pre-existing unchanged test methods from `main`. Each test method calls `TestRunner.RunTestScript("FunctionName")`, which maps to a PowerShell function.
+5. Confirm that the corresponding PowerShell function was added or modified in the matching scenario `.ps1` diff. This guards against selecting a C# harness change that does not exercise the feature under development.
+6. Record the fully qualified test class name and **only the new/changed** method name(s) for use in later steps.
 
 After this step you should have one or more concrete test identifiers in the form `<TestClassName>.<TestMethodName>`. These must be tests that are **new or modified on this branch** — never pre-existing unchanged tests.
 
-#### GitHub MCP Setup
-
-If any GitHub MCP tool call above failed (tool not found, connection error, authentication error), guide the user through the following setup and **do not proceed** to Step 2 until setup is complete and the `compare_branches` call succeeds:
-
-1. In the Visual Studio menu bar, click **View**, then click **GitHub Copilot Chat**.
-2. At the bottom of the chat panel, select **Agent** from the mode dropdown.
-3. In the Copilot Chat window, click the **tools icon**, then click the **plus icon** in the tool picker window.
-4. In the "Configure MCP server" pop-up window, fill out the fields:
-   - For **Server ID**, type `github`.
-   - For **Type**, select **HTTP/SSE** from the dropdown.
-   - For **URL**, type `https://api.githubcopilot.com/mcp/`.
-5. Click **Save**. The configuration in the `mcp.json` file should look like this:
-   ```json
-   {
-     "servers": {
-       "github": {
-         "url": "https://api.githubcopilot.com/mcp/"
-       }
-     }
-   }
-   ```
-6. In the tools menu again, click the **three dots** next to **github** under added tools and click **Configure**. In the new window, go to the **Authentication** tab and authenticate. A pop-up will appear allowing you to authenticate with your GitHub account.
-7. Once authenticated, retry from the top of this step.
-
 ### Step 2: Build the Module
 
-Before running any test, ensure the code compiles:
+Before running any test, build the complete Compute solution. This compiles all Compute projects and their required dependencies, but does not build every Azure PowerShell module:
 ```bash
 cd src/Compute
-dotnet build
+dotnet build Compute.sln
 ```
 Fix any compilation errors before proceeding.
 

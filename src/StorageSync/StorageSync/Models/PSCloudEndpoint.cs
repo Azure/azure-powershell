@@ -86,5 +86,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The change enumeration status.</value>
         public PSCloudEndpointChangeEnumerationStatus ChangeEnumerationStatus { get; set; }
+        /// <summary>
+        /// Gets or sets the change enumeration interval days.
+        /// </summary>
+        /// <value>The change enumeration interval days.</value>
+        public int? ChangeEnumerationIntervalDays { get; set; }
     }
 }

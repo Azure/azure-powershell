@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="tasks">Tasks information for the Software update configuration.
         /// </param>
-        public SoftwareUpdateConfigurationProperties(UpdateConfiguration updateConfiguration, SUCScheduleProperties scheduleInfo, string provisioningState = default(string), ErrorResponse error = default(ErrorResponse), System.DateTimeOffset creationTime = default(System.DateTimeOffset), string createdBy = default(string), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string lastModifiedBy = default(string), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks))
+        public SoftwareUpdateConfigurationProperties(UpdateConfiguration updateConfiguration, SUCScheduleProperties scheduleInfo, string provisioningState = default(string), AutomationErrorResponse error = default(AutomationErrorResponse), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), string createdBy = default(string), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string lastModifiedBy = default(string), SoftwareUpdateConfigurationTasks tasks = default(SoftwareUpdateConfigurationTasks))
 
         {
             this.UpdateConfiguration = updateConfiguration;
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets details of provisioning error
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorResponse Error {get; set; }
+        public AutomationErrorResponse Error {get; set; }
 
         /// <summary>
         /// Gets creation time of the resource, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets createdBy property, which only appears in the response.
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets last time resource was modified, which only appears in the response.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets lastModifiedBy property, which only appears in the response.

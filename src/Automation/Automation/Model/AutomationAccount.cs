@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
             
             this.Plan = automationAccount.Sku != null ? automationAccount.Sku.Name : null;
-            this.CreationTime = automationAccount.CreationTime.ToLocalTime();
-            this.LastModifiedTime = automationAccount.LastModifiedTime.ToLocalTime();
+            this.CreationTime = automationAccount.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = automationAccount.LastModifiedTime.GetValueOrDefault().ToLocalTime();
             this.State = automationAccount.State;
             this.LastModifiedBy = automationAccount.LastModifiedBy;
             this.Identity = automationAccount.Identity;

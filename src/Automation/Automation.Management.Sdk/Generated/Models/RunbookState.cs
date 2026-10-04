@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class RunbookState
     {
+        /// <summary>
+        /// New
+        /// </summary>
         public const string New = "New";
+        /// <summary>
+        /// Edit
+        /// </summary>
         public const string Edit = "Edit";
+        /// <summary>
+        /// Published
+        /// </summary>
         public const string Published = "Published";
     }
 }

@@ -13,48 +13,109 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class RecoveryServicesBackupClientExtensions
     {
         /// <summary>
-        /// Fetches operation status for data move operation on vault
+        /// Move recovery point from one datastore to another store.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='operationId'>
-        /// 
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
-        public static OperationStatus GetOperationStatus(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, string operationId)
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        public static MoveRecoveryPointHeaders MoveRecoveryPoint(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters)
         {
-                return ((IRecoveryServicesBackupClient)operations).GetOperationStatusAsync(vaultName, resourceGroupName, operationId).GetAwaiter().GetResult();
+                return ((IRecoveryServicesBackupClient)operations).MoveRecoveryPointAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Fetches operation status for data move operation on vault
+        /// Move recovery point from one datastore to another store.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='operationId'>
-        /// 
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OperationStatus> GetOperationStatusAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MoveRecoveryPointHeaders> MoveRecoveryPointAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetOperationStatusWithHttpMessagesAsync(vaultName, resourceGroupName, operationId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.MoveRecoveryPointWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Fetches Operation Result for Prepare Data Move
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
+        /// </param>
+        /// <param name='operationId'>
+        /// The name of the BackupResourceConfigResource
+        /// </param>
+        public static OperationStatus GetOperationStatus(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, string operationId)
+        {
+                return ((IRecoveryServicesBackupClient)operations).GetOperationStatusAsync(resourceGroupName, vaultName, operationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Fetches Operation Result for Prepare Data Move
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
+        /// </param>
+        /// <param name='operationId'>
+        /// The name of the BackupResourceConfigResource
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<OperationStatus> GetOperationStatusAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetOperationStatusWithHttpMessagesAsync(resourceGroupName, vaultName, operationId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -65,16 +126,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void BMSPrepareDataMove(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, PrepareDataMoveRequest parameters)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static BmsPrepareDataMoveHeaders BMSPrepareDataMove(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, PrepareDataMoveRequest parameters)
         {
-                ((IRecoveryServicesBackupClient)operations).BMSPrepareDataMoveAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IRecoveryServicesBackupClient)operations).BMSPrepareDataMoveAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -83,19 +143,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BMSPrepareDataMoveAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, PrepareDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BmsPrepareDataMoveHeaders> BMSPrepareDataMoveAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, PrepareDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BMSPrepareDataMoveWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BMSPrepareDataMoveWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Triggers Data Move Operation on target vault
@@ -103,16 +165,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void BMSTriggerDataMove(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, TriggerDataMoveRequest parameters)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static BmsTriggerDataMoveHeaders BMSTriggerDataMove(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, TriggerDataMoveRequest parameters)
         {
-                ((IRecoveryServicesBackupClient)operations).BMSTriggerDataMoveAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IRecoveryServicesBackupClient)operations).BMSTriggerDataMoveAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -121,19 +182,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BMSTriggerDataMoveAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, TriggerDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BmsTriggerDataMoveHeaders> BMSTriggerDataMoveAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, TriggerDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BMSTriggerDataMoveWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BMSTriggerDataMoveWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Move recovery point from one datastore to another store.
@@ -141,28 +204,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// 
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// 
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// 
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// 
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
-        public static void MoveRecoveryPoint(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters)
+        public static MoveRecoveryPointHeaders BeginMoveRecoveryPoint(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters)
         {
-                ((IRecoveryServicesBackupClient)operations).MoveRecoveryPointAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters).GetAwaiter().GetResult();
+                return ((IRecoveryServicesBackupClient)operations).BeginMoveRecoveryPointAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -171,31 +233,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// 
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// 
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// 
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// 
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task MoveRecoveryPointAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<MoveRecoveryPointHeaders> BeginMoveRecoveryPointAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.MoveRecoveryPointWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginMoveRecoveryPointWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Prepares source vault for Data Move operation
@@ -203,16 +267,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void BeginBMSPrepareDataMove(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, PrepareDataMoveRequest parameters)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static BmsPrepareDataMoveHeaders BeginBMSPrepareDataMove(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, PrepareDataMoveRequest parameters)
         {
-                ((IRecoveryServicesBackupClient)operations).BeginBMSPrepareDataMoveAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IRecoveryServicesBackupClient)operations).BeginBMSPrepareDataMoveAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,19 +284,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginBMSPrepareDataMoveAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, PrepareDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BmsPrepareDataMoveHeaders> BeginBMSPrepareDataMoveAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, PrepareDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginBMSPrepareDataMoveWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginBMSPrepareDataMoveWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Triggers Data Move Operation on target vault
@@ -241,16 +306,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void BeginBMSTriggerDataMove(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, TriggerDataMoveRequest parameters)
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        public static BmsTriggerDataMoveHeaders BeginBMSTriggerDataMove(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, TriggerDataMoveRequest parameters)
         {
-                ((IRecoveryServicesBackupClient)operations).BeginBMSTriggerDataMoveAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IRecoveryServicesBackupClient)operations).BeginBMSTriggerDataMoveAsync(resourceGroupName, vaultName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -259,81 +323,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginBMSTriggerDataMoveAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, TriggerDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BmsTriggerDataMoveHeaders> BeginBMSTriggerDataMoveAsync(this IRecoveryServicesBackupClient operations, string resourceGroupName, string vaultName, TriggerDataMoveRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginBMSTriggerDataMoveWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Move recovery point from one datastore to another store.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='fabricName'>
-        /// 
-        /// </param>
-        /// <param name='containerName'>
-        /// 
-        /// </param>
-        /// <param name='protectedItemName'>
-        /// 
-        /// </param>
-        /// <param name='recoveryPointId'>
-        /// 
-        /// </param>
-        public static void BeginMoveRecoveryPoint(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters)
-        {
-                ((IRecoveryServicesBackupClient)operations).BeginMoveRecoveryPointAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Move recovery point from one datastore to another store.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='fabricName'>
-        /// 
-        /// </param>
-        /// <param name='containerName'>
-        /// 
-        /// </param>
-        /// <param name='protectedItemName'>
-        /// 
-        /// </param>
-        /// <param name='recoveryPointId'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginMoveRecoveryPointAsync(this IRecoveryServicesBackupClient operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, MoveRPAcrossTiersRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginMoveRecoveryPointWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginBMSTriggerDataMoveWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

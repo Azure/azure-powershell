@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="endTime">The end time of the job.
         /// </param>
-        public SourceControlSyncJob(string name = default(string), string type = default(string), string id = default(string), string provisioningState = default(string), string syncType = default(string), string sourceControlSyncJobId = default(string), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?))
+        public SourceControlSyncJob(string name = default(string), string type = default(string), string id = default(string), string provisioningState = default(string), string syncType = default(string), string sourceControlSyncJobId = default(string), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), System.DateTimeOffset? endTime = default(System.DateTimeOffset?))
 
         {
             this.Name = name;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets the creation time of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets the start time of the job.

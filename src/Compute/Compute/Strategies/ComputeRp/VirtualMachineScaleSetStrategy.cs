@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string edgeZone,
             string orchestrationMode,
             string capacityReservationId,
+            bool? disableCapacityReservationAssignment,
             string userData,
             string imageReferenceId,
             Dictionary<string, List<string>> auxAuthHeader,
@@ -189,9 +190,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Priority = priority,
                             EvictionPolicy = evictionPolicy,
                             BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                            CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
+                            CapacityReservation = (capacityReservationId == null && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                             {
-                                CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
+                                CapacityReservationGroup = (capacityReservationId == null) ? null : new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId),
+                                DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                             },
                             UserData = userData,
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
@@ -274,6 +276,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string edgeZone,
             string orchestrationMode,
             string capacityReservationId,
+            bool? disableCapacityReservationAssignment,
             Dictionary<string, List<string>> auxAuthHeader,
             string processorMode = null,
             bool? enableVtpm = null,
@@ -375,9 +378,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Priority = priority,
                             EvictionPolicy = evictionPolicy,
                             BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                            CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
+                            CapacityReservation = (capacityReservationId == null && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
                             {
-                                CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
+                                CapacityReservationGroup = (capacityReservationId == null) ? null : new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId),
+                                DisableCapacityReservationAssignment = disableCapacityReservationAssignment
                             },
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
                             {
