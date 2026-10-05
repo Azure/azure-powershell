@@ -227,17 +227,17 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
 	# Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName
 	# The immutability scenarios assume the following live backups already exist:
-	# - $databaseWithUnlockedImmutableBackup has an LTR backup with time-based immutability enabled and unlocked.
-	# - $databaseWithLockedImmutableBackup has an LTR backup with time-based immutability enabled and locked.
-	# - $databaseWithLegalHoldBackup has an LTR backup with legal hold enabled.
+	# - $databaseWithRemovableImmutabilityBackup has an LTR backup with time-based immutability enabled and unlocked.
+	# - $databaseWithLockableImmutabilityBackup has an LTR backup with time-based immutability enabled and unlocked.
+	# - $databaseWithLegalHoldBackup has an LTR backup with legal hold disabled.
 	# Provision these backups outside this test and update the names below before manual execution.
 	$resourceGroup = "v-sntani-test-mi-rg"
 	$locationName = "westcentralus"
 	$managedInstanceName = "managedinstancearm"
 	$databaseName = "ps-test-1"
 	$databaseWithRemovableBackup = "ps-test-2";
-	$databaseWithUnlockedImmutableBackup = "ps-test-immutable-unlocked"
-	$databaseWithLockedImmutableBackup = "ps-test-immutable-locked"
+	$databaseWithRemovableImmutabilityBackup = "ps-test-immutable-remove"
+	$databaseWithLockableImmutabilityBackup = "ps-test-immutable-lock"
 	$databaseWithLegalHoldBackup = "ps-test-immutable-legal-hold"
 
 	# Basic Get Tests
@@ -250,27 +250,54 @@ function Test-ManagedInstanceLongTermRetentionBackup
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -BackupName $backups[0].BackupName
 	Assert-AreNotEqual $backups.Count 0
 
-	# Validate an existing backup with unlocked time-based immutability.
-	$backup = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithUnlockedImmutableBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
-	Assert-NotNull $backup
-	Assert-AreEqual $backup.IsBackupImmutable $true
-	Assert-AreEqual $backup.TimeBasedImmutability "Enabled"
-	Assert-AreEqual $backup.TimeBasedImmutabilityMode "Unlocked"
-	Assert-AreEqual $backup.LegalHoldImmutability "Disabled"
+	# Remove time-based immutability from an unlocked immutable backup.
+	$backupForRemoveImmutability = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithRemovableImmutabilityBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
+	Assert-NotNull $backupForRemoveImmutability
+	Assert-AreEqual $backupForRemoveImmutability.IsBackupImmutable $true
+	Assert-AreEqual $backupForRemoveImmutability.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backupForRemoveImmutability.TimeBasedImmutabilityMode "Unlocked"
 
-	# Validate an existing backup with locked time-based immutability.
-	$backup = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockedImmutableBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
-	Assert-NotNull $backup
-	Assert-AreEqual $backup.IsBackupImmutable $true
-	Assert-AreEqual $backup.TimeBasedImmutability "Enabled"
-	Assert-AreEqual $backup.TimeBasedImmutabilityMode "Locked"
-	Assert-AreEqual $backup.LegalHoldImmutability "Disabled"
+	# An unlocked immutable backup cannot be removed before its immutability is removed.
+	Assert-Throws { Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithRemovableImmutabilityBackup -BackupName $backupForRemoveImmutability.BackupName -ResourceGroupName $resourceGroup -Force }
 
-	# Validate an existing backup protected by legal hold.
-	$backup = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
-	Assert-NotNull $backup
-	Assert-AreEqual $backup.IsBackupImmutable $true
-	Assert-AreEqual $backup.LegalHoldImmutability "Enabled"
+	Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithRemovableImmutabilityBackup -BackupName $backupForRemoveImmutability.BackupName -ResourceGroupName $resourceGroup -Force
+	$backupAfterRemoveImmutability = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithRemovableImmutabilityBackup -BackupName $backupForRemoveImmutability.BackupName -ResourceGroupName $resourceGroup
+	Assert-AreEqual $backupAfterRemoveImmutability.IsBackupImmutable $false
+	Assert-AreEqual $backupAfterRemoveImmutability.TimeBasedImmutability "Disabled"
+
+	# Lock time-based immutability on a second unlocked immutable backup.
+	$backupForLockImmutability = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockableImmutabilityBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
+	Assert-NotNull $backupForLockImmutability
+	Assert-AreEqual $backupForLockImmutability.IsBackupImmutable $true
+	Assert-AreEqual $backupForLockImmutability.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backupForLockImmutability.TimeBasedImmutabilityMode "Unlocked"
+
+	Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockableImmutabilityBackup -BackupName $backupForLockImmutability.BackupName -ResourceGroupName $resourceGroup -Force
+	$backupAfterLockImmutability = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockableImmutabilityBackup -BackupName $backupForLockImmutability.BackupName -ResourceGroupName $resourceGroup
+	Assert-AreEqual $backupAfterLockImmutability.IsBackupImmutable $true
+	Assert-AreEqual $backupAfterLockImmutability.TimeBasedImmutability "Enabled"
+	Assert-AreEqual $backupAfterLockImmutability.TimeBasedImmutabilityMode "Locked"
+
+	# A locked immutable backup cannot be removed and its immutability cannot be removed.
+	Assert-Throws { Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockableImmutabilityBackup -BackupName $backupForLockImmutability.BackupName -ResourceGroupName $resourceGroup -Force }
+	Assert-Throws { Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLockableImmutabilityBackup -BackupName $backupForLockImmutability.BackupName -ResourceGroupName $resourceGroup -Force }
+
+	# Set and remove legal hold on an existing backup.
+	$backupForLegalHold = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -ResourceGroupName $resourceGroup | Select-Object -First 1
+	Assert-NotNull $backupForLegalHold
+	Assert-AreEqual $backupForLegalHold.LegalHoldImmutability "Disabled"
+
+	Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup -Force
+	$backupAfterSetLegalHold = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup
+	Assert-AreEqual $backupAfterSetLegalHold.IsBackupImmutable $true
+	Assert-AreEqual $backupAfterSetLegalHold.LegalHoldImmutability "Enabled"
+
+	# A backup protected by legal hold cannot be removed.
+	Assert-Throws { Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup -Force }
+
+	Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup -Force
+	$backupAfterRemoveLegalHold = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseWithLegalHoldBackup -BackupName $backupForLegalHold.BackupName -ResourceGroupName $resourceGroup
+	Assert-AreEqual $backupAfterRemoveLegalHold.LegalHoldImmutability "Disabled"
 
 	# Test Get Optional Parameters
 	$backups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $locationName -InstanceName $managedInstanceName -DatabaseName $databaseName -OnlyLatestPerDatabase

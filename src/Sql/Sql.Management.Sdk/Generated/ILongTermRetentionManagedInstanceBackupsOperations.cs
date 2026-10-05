@@ -335,6 +335,154 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<LongTermRetentionManagedInstanceBackupsDeleteByResourceGroupHeaders>> DeleteByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsLockTimeBasedImmutabilityByResourceGroupHeaders>> LockTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsRemoveLegalHoldImmutabilityByResourceGroupHeaders>> RemoveLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsRemoveTimeBasedImmutabilityByResourceGroupHeaders>> RemoveTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsSetLegalHoldImmutabilityByResourceGroupHeaders>> SetLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Lists the long term retention backups for a given managed instance.
         /// </summary>
         /// <remarks>
@@ -430,6 +578,154 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<LongTermRetentionManagedInstanceBackupsDeleteByResourceGroupHeaders>> BeginDeleteByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsLockTimeBasedImmutabilityByResourceGroupHeaders>> BeginLockTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsRemoveLegalHoldImmutabilityByResourceGroupHeaders>> BeginRemoveLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsRemoveTimeBasedImmutabilityByResourceGroupHeaders>> BeginRemoveTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceLongTermRetentionBackup,LongTermRetentionManagedInstanceBackupsSetLegalHoldImmutabilityByResourceGroupHeaders>> BeginSetLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the long term retention backups for managed databases in a given

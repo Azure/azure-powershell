@@ -280,5 +280,49 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
                 GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.DeleteByResourceGroup(resourceGroupName, locationName, instanceName, databaseName, backupName);
             }
         }
+
+        public ManagedInstanceLongTermRetentionBackup LockManagedDatabaseLongTermRetentionBackupImmutability(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.LockTimeBasedImmutabilityByResourceGroup(
+                resourceGroupName, locationName, instanceName, databaseName, backupName);
+        }
+
+        public ManagedInstanceLongTermRetentionBackup RemoveManagedDatabaseLongTermRetentionBackupImmutability(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveTimeBasedImmutabilityByResourceGroup(
+                resourceGroupName, locationName, instanceName, databaseName, backupName);
+        }
+
+        public ManagedInstanceLongTermRetentionBackup SetManagedDatabaseLongTermRetentionBackupLegalHold(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.SetLegalHoldImmutabilityByResourceGroup(
+                resourceGroupName, locationName, instanceName, databaseName, backupName);
+        }
+
+        public ManagedInstanceLongTermRetentionBackup RemoveManagedDatabaseLongTermRetentionBackupLegalHold(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveLegalHoldImmutabilityByResourceGroup(
+                resourceGroupName, locationName, instanceName, databaseName, backupName);
+        }
     }
 }

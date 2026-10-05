@@ -21,6 +21,8 @@
 * Added immutability support for Azure SQL Managed Instance long-term retention backups.
     - Added time-based immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`.
     - Exposed immutability state in managed database long-term retention policy and backup output.
+    - Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` to manage time-based immutability.
+    - Added `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` to manage legal holds.
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
 
 ## Version 7.1.0

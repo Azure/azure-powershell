@@ -546,6 +546,242 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup LockTimeBasedImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).LockTimeBasedImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> LockTimeBasedImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.LockTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup RemoveLegalHoldImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).RemoveLegalHoldImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> RemoveLegalHoldImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RemoveLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup RemoveTimeBasedImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).RemoveTimeBasedImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> RemoveTimeBasedImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RemoveTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup SetLegalHoldImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).SetLegalHoldImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> SetLegalHoldImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SetLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists the long term retention backups for a given managed instance.
         /// </summary>
         /// <param name='operations'>
@@ -710,6 +946,242 @@ namespace Microsoft.Azure.Management.Sql
             using (var _result = await operations.BeginDeleteByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup BeginLockTimeBasedImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).BeginLockTimeBasedImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lock time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> BeginLockTimeBasedImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginLockTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup BeginRemoveLegalHoldImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).BeginRemoveLegalHoldImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Remove legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> BeginRemoveLegalHoldImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRemoveLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup BeginRemoveTimeBasedImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).BeginRemoveTimeBasedImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Remove time based immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> BeginRemoveTimeBasedImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRemoveTimeBasedImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        public static ManagedInstanceLongTermRetentionBackup BeginSetLegalHoldImmutabilityByResourceGroup(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName)
+        {
+                return ((ILongTermRetentionManagedInstanceBackupsOperations)operations).BeginSetLegalHoldImmutabilityByResourceGroupAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Set legal hold immutability of an existing managed instance long term
+        /// retention backup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the managed database.
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedInstanceLongTermRetentionBackup> BeginSetLegalHoldImmutabilityByResourceGroupAsync(this ILongTermRetentionManagedInstanceBackupsOperations operations, string resourceGroupName, string locationName, string managedInstanceName, string databaseName, string backupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSetLegalHoldImmutabilityByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, managedInstanceName, databaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
