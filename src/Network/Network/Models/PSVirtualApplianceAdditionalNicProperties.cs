@@ -23,6 +23,5 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
         public bool HasPublicIP { get; set; }
-        public string AddressFamily { get; set; }
     }
 }
