@@ -28,6 +28,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// NAT64 (stateful IPv6-to-IPv4 translation).
         /// </summary>
-        public const string Nat64 = "NAT64";
+        public const string NAT64 = "NAT64";
     }
 }

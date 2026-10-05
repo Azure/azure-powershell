@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Network.Models
     /// workloads reaching IPv4
     /// destinations) on the appliance&#39;s floating NIC; supported on a dual-stack
     /// appliance. This kind is
-    /// property-less: it carries no `ipVersion` (the parent appliance&#39;s
-    /// dual-stack configuration is the
+    /// property-less: it carries no `ipVersion` (the parent appliance&#39;s dual-stack
+    /// configuration is the
     /// precondition, service-validated) beyond the properties common to every
     /// capability.
     /// </summary>
@@ -61,15 +61,5 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

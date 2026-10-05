@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
                 case PlipForwardersCapability _:
                     return VirtualNetworkApplianceCapabilityKind.PlipForwarders;
                 case Nat64Capability _:
-                    return VirtualNetworkApplianceCapabilityKind.Nat64;
+                    return VirtualNetworkApplianceCapabilityKind.NAT64;
                 default:
                     return null;
             }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         // IPv6). NAT64 is property-less and must not carry an ipVersion. Exposed for unit testing (no service dependency).
         public static VirtualNetworkApplianceCapability BuildCapabilityParameters(string kind, string ipVersion)
         {
-            bool isNat64 = string.Equals(kind, VirtualNetworkApplianceCapabilityKind.Nat64, StringComparison.OrdinalIgnoreCase);
+            bool isNat64 = string.Equals(kind, VirtualNetworkApplianceCapabilityKind.NAT64, StringComparison.OrdinalIgnoreCase);
             bool ipVersionProvided = !string.IsNullOrEmpty(ipVersion);
 
             if (isNat64 && ipVersionProvided)

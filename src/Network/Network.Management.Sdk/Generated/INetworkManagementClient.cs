@@ -766,6 +766,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualNetworkAppliancesOperations
         /// </summary>
         IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; }
+
         /// <summary>
         /// Gets the IVirtualNetworkApplianceCapabilitiesOperations
         /// </summary>

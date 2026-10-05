@@ -37,9 +37,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// (`PLGatewayFastpath`)
         /// only accepts `DualStack`; Private Link Gateway (`PLGateway`) and Private
         /// Link IP-forwarders
-        /// (`PLIPForwarders`) only accept `IPv6`. The service validates the value
-        /// against the resource&#39;s
-        /// `kind` when the capability is created or updated.
+        /// (`PLIPForwarders`) only accept `IPv6`. Not applicable to `NAT64`, which is
+        /// property-less and must
+        /// omit this value. The service validates the value against the resource&#39;s
+        /// `kind` when the
+        /// capability is created or updated.
         /// Possible values include: &#39;IPv6&#39;, &#39;DualStack&#39;</param>
         public VirtualNetworkApplianceCapabilityProperties(string linkedResourceId = default(string), string provisioningState = default(string), string ipVersion = default(string))
 
@@ -74,9 +76,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// FastPath (`PLGatewayFastpath`)
         /// only accepts `DualStack`; Private Link Gateway (`PLGateway`) and Private
         /// Link IP-forwarders
-        /// (`PLIPForwarders`) only accept `IPv6`. The service validates the value
-        /// against the resource&#39;s
-        /// `kind` when the capability is created or updated. Possible values include: &#39;IPv6&#39;, &#39;DualStack&#39;
+        /// (`PLIPForwarders`) only accept `IPv6`. Not applicable to `NAT64`, which is
+        /// property-less and must
+        /// omit this value. The service validates the value against the resource&#39;s
+        /// `kind` when the
+        /// capability is created or updated. Possible values include: &#39;IPv6&#39;, &#39;DualStack&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipVersion")]
         public string IPVersion {get; set; }

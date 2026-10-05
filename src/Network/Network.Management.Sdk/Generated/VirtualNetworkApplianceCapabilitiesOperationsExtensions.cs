@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='capabilityName'>
         /// The name of the virtual network appliance capability.
         /// </param>
-        public static VirtualNetworkApplianceCapabilitiesDeleteHeaders Delete(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName)
+        public static void Delete(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName)
         {
-                return ((IVirtualNetworkApplianceCapabilitiesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName).GetAwaiter().GetResult();
+                ((IVirtualNetworkApplianceCapabilitiesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,12 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkApplianceCapabilitiesDeleteHeaders> DeleteAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a capability on a virtual network appliance.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='capabilityName'>
         /// The name of the virtual network appliance capability.
         /// </param>
-        public static VirtualNetworkApplianceCapabilitiesDeleteHeaders BeginDelete(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName)
+        public static void BeginDelete(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName)
         {
-                return ((IVirtualNetworkApplianceCapabilitiesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName).GetAwaiter().GetResult();
+                ((IVirtualNetworkApplianceCapabilitiesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -269,12 +266,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkApplianceCapabilitiesDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkApplianceCapabilitiesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, string capabilityName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, capabilityName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all capabilities of a virtual network appliance.
