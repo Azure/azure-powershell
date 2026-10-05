@@ -16,7 +16,7 @@ Requests rollback of a provider-led ExpressRoute cross-connection migration.
 ```
 Invoke-AzExpressRouteCrossConnectionRollbackMigration [-PortId <String>] [-TargetPeeringLocation <String>]
  [-TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]>] -Name <String> -ResourceGroupName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Invoke-AzExpressRouteCrossConnectionRollbackMigration [-PortId <String>] [-Targe
 ```
 Invoke-AzExpressRouteCrossConnectionRollbackMigration [-PortId <String>] [-TargetPeeringLocation <String>]
  [-TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]>] -InputObject <PSExpressRouteCrossConnection>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Invoke-AzExpressRouteCrossConnectionRollbackMigration [-PortId <String>] [-Targe
 ```
 Invoke-AzExpressRouteCrossConnectionRollbackMigration [-PortId <String>] [-TargetPeeringLocation <String>]
  [-TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -242,21 +242,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
