@@ -150,27 +150,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.ParameterCategory.Path)]
         public string ResourceUri { get => this._resourceUri; set => this._resourceUri = value; }
 
-        /// <summary>The relationship source resource id. Must be a service group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The relationship source resource id. Must be a service group.")]
+        /// <summary>The relationship target resource id.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The relationship target resource id.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The relationship source resource id. Must be a service group.",
-        SerializedName = @"sourceId",
+        Description = @"The relationship target resource id.",
+        SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
-        public string SourceId { get => _resourceBody.SourceId ?? null; set => _resourceBody.SourceId = value; }
+        public string TargetId { get => _resourceBody.TargetId ?? null; set => _resourceBody.TargetId = value; }
 
-        /// <summary>The relationship source tenant id.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The relationship source tenant id.")]
+        /// <summary>The relationship target tenant id.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The relationship target tenant id.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The relationship source tenant id.",
-        SerializedName = @"sourceTenant",
+        Description = @"The relationship target tenant id.",
+        SerializedName = @"targetTenant",
         PossibleTypes = new [] { typeof(string) })]
-        public string SourceTenant { get => _resourceBody.SourceTenant ?? null; set => _resourceBody.SourceTenant = value; }
+        public string TargetTenant { get => _resourceBody.TargetTenant ?? null; set => _resourceBody.TargetTenant = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -484,13 +484,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Cmdlets
 
         private void Update_resourceBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SourceId")))
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TargetId")))
             {
-                this.SourceId = (string)(this.MyInvocation?.BoundParameters["SourceId"]);
+                this.TargetId = (string)(this.MyInvocation?.BoundParameters["TargetId"]);
             }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SourceTenant")))
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TargetTenant")))
             {
-                this.SourceTenant = (string)(this.MyInvocation?.BoundParameters["SourceTenant"]);
+                this.TargetTenant = (string)(this.MyInvocation?.BoundParameters["TargetTenant"]);
             }
         }
 
