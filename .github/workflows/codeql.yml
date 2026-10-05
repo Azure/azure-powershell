@@ -89,6 +89,8 @@ jobs:
         # real array so -TargetModule binds to individual module names rather than one string.
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
           $modules = "${{ matrix.shard.modules }}" -split ':'
           ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug -TargetModule $modules
 
