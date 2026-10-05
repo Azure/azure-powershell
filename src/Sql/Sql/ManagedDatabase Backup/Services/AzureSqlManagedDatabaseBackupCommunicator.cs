@@ -288,8 +288,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             string databaseName,
             string backupName)
         {
-            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.LockTimeBasedImmutabilityByResourceGroup(
+            GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.LockTimeBasedImmutabilityByResourceGroup(
                 resourceGroupName, locationName, instanceName, databaseName, backupName);
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
         }
 
         public ManagedInstanceLongTermRetentionBackup RemoveManagedDatabaseLongTermRetentionBackupImmutability(
@@ -299,8 +302,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             string databaseName,
             string backupName)
         {
-            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveTimeBasedImmutabilityByResourceGroup(
+            GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveTimeBasedImmutabilityByResourceGroup(
                 resourceGroupName, locationName, instanceName, databaseName, backupName);
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
         }
 
         public ManagedInstanceLongTermRetentionBackup SetManagedDatabaseLongTermRetentionBackupLegalHold(
@@ -310,8 +316,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             string databaseName,
             string backupName)
         {
-            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.SetLegalHoldImmutabilityByResourceGroup(
+            GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.SetLegalHoldImmutabilityByResourceGroup(
                 resourceGroupName, locationName, instanceName, databaseName, backupName);
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
         }
 
         public ManagedInstanceLongTermRetentionBackup RemoveManagedDatabaseLongTermRetentionBackupLegalHold(
@@ -321,8 +330,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
             string databaseName,
             string backupName)
         {
-            return GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveLegalHoldImmutabilityByResourceGroup(
+            GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveLegalHoldImmutabilityByResourceGroup(
                 resourceGroupName, locationName, instanceName, databaseName, backupName);
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
         }
     }
 }
