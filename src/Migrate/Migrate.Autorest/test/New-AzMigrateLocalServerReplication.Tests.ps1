@@ -102,7 +102,7 @@ Describe 'New-AzMigrateLocalServerReplication' {
         }
 
         $err | Should -Not -BeNullOrEmpty
-        $err.Exception.Message | Should -BeLike '*Trusted Launch requires Secure Boot*'
+        $err.Exception.Message | Should -BeLike "*Trusted Launch requires -EnableSecureBoot 'true'*"
     }
 
     # The custom helpers live in a nested module that Get-Module and InModuleScope cannot reach, so

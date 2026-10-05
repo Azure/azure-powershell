@@ -207,7 +207,7 @@ function New-AzMigrateLocalServerReplication {
         # Purely a contradiction between parameters, so reject it before the module and service checks.
         if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
             $HasEnableSecureBoot -and -not $secureBootEnabled) {
-            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires Secure Boot."
+            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires -EnableSecureBoot 'true'."
         }
 
         CheckResourceGraphModuleDependency
