@@ -48,7 +48,7 @@ Rejects a Microsoft Fabric shortcut.
 
 ### Example 1: Reject a Fabric shortcut on an EventHub entity
 ```powershell
-Invoke-AzEventHubRejectFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -Name orders-shortcut
+Invoke-AzEventHubRejectFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -FabricShortcutName orders-shortcut
 ```
 
 ```output
