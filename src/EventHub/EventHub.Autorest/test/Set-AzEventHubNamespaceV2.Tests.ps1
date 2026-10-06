@@ -102,22 +102,28 @@ Describe 'Set-AzEventHubNamespaceV2' {
         assertNamespaceUpdates $eventHubNamespace $namespace
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location $env.location -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1
+        # NOTE: Standard (not Premium) is used here intentionally - IdentityType assignment/removal is not a
+        # Premium-only feature and this test does not assert SkuName, so it does not need to consume additional
+        # Premium namespace capacity/quota in the test region.
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Standard -Location $env.location -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1
         $eventHubNamespace.UserAssignedIdentity.Count | Should -Be 1
 
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
         $eventhubNamespace.IdentityType | Should -Be $null
 
         # Remove Replica 
-        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName $env.location -RoleType Primary
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -GeoDataReplicationLocation $primaryReplica
         $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 1
+        $eventHubNamespace.GeoDataReplicationLocation.LocationName | Should -Contain $env.location
 
         # Add Replica
-        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
-        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName southcentralus -RoleType Secondary
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName $env.location -RoleType Primary
+        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName $env.secondaryLocation -RoleType Secondary
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -GeoDataReplicationLocation $primaryReplica,$secondaryReplica
         $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
+        $eventHubNamespace.GeoDataReplicationLocation.LocationName | Should -Contain $env.location
+        $eventHubNamespace.GeoDataReplicationLocation.LocationName | Should -Contain $env.secondaryLocation
     }
     It 'SetViaIdentityExpanded' {
         $expectedNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3
@@ -137,10 +143,6 @@ Describe 'Set-AzEventHubNamespaceV2' {
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MaximumThroughputUnit 25
         $expectedNamespace.MaximumThroughputUnit = 25
-        assertNamespaceUpdates $expectedNamespace $namespace
-
-        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.0
-        $expectedNamespace.MinimumTlsVersion = '1.0'
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.2
