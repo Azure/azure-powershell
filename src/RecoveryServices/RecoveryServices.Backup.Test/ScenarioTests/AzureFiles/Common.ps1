@@ -21,6 +21,24 @@ $saName = "pstestsa8895"
 $skuName="Standard_LRS"
 $policyName = "afspolicy1"
 
+function Get-AzureFSMsiTestValue(
+	[string] $Name,
+	[string] $PlaybackValue)
+{
+	if ($env:AZURE_TEST_MODE -eq "Record")
+	{
+		$value = [Environment]::GetEnvironmentVariable($Name)
+		if ([string]::IsNullOrWhiteSpace($value))
+		{
+			throw "Environment variable '$Name' is required to record Azure Files managed identity tests."
+		}
+
+		return $value
+	}
+
+	return $PlaybackValue
+}
+
 # Setup Instructions:
 # 1. Create a resource group
 #New-AzResourceGroup -Name $resourceGroupName -Location $location

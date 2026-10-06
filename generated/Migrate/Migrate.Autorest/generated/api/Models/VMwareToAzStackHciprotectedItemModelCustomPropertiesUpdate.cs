@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModelCustomPropertiesUpdate __protectedItemModelCustomPropertiesUpdate = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelCustomPropertiesUpdate();
 
+        /// <summary>Backing field for <see cref="ConvertToGen2" /> property.</summary>
+        private bool? _convertToGen2;
+
+        /// <summary>Gets or sets a value indicating whether conversion to Gen 2 is required.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public bool? ConvertToGen2 { get => this._convertToGen2; set => this._convertToGen2 = value; }
+
         /// <summary>Backing field for <see cref="DynamicMemoryConfig" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemDynamicMemoryConfig _dynamicMemoryConfig;
 
@@ -38,6 +45,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public bool? IsDynamicRam { get => this._isDynamicRam; set => this._isDynamicRam = value; }
 
+        /// <summary>Backing field for <see cref="MigrateAsArcVM" /> property.</summary>
+        private bool? _migrateAsArcVM;
+
+        /// <summary>Gets or sets a value indicating whether VM is to be migrated as Arc VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public bool? MigrateAsArcVM { get => this._migrateAsArcVM; set => this._migrateAsArcVM = value; }
+
         /// <summary>Backing field for <see cref="NicsToInclude" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareToAzStackHcinicInput> _nicsToInclude;
 
@@ -51,6 +65,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Gets or sets the type of the OS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string OSType { get => this._oSType; set => this._oSType = value; }
+
+        /// <summary>Backing field for <see cref="SecurityOption" /> property.</summary>
+        private string _securityOption;
+
+        /// <summary>Gets or sets the security options for this VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string SecurityOption { get => this._securityOption; set => this._securityOption = value; }
 
         /// <summary>Backing field for <see cref="TargetCpuCore" /> property.</summary>
         private int? _targetCpuCore;
@@ -91,6 +112,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModelCustomPropertiesUpdate
     {
+        /// <summary>Gets or sets a value indicating whether conversion to Gen 2 is required.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets a value indicating whether conversion to Gen 2 is required.",
+        SerializedName = @"convertToGen2",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ConvertToGen2 { get; set; }
         /// <summary>Protected item dynamic memory config.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -113,6 +145,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"isDynamicRam",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsDynamicRam { get; set; }
+        /// <summary>Gets or sets a value indicating whether VM is to be migrated as Arc VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets a value indicating whether VM is to be migrated as Arc VM.",
+        SerializedName = @"migrateAsArcVM",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? MigrateAsArcVM { get; set; }
         /// <summary>Gets or sets the list of VM NIC to replicate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -135,6 +178,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"osType",
         PossibleTypes = new [] { typeof(string) })]
         string OSType { get; set; }
+        /// <summary>Gets or sets the security options for this VM.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets the security options for this VM.",
+        SerializedName = @"securityOption",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("None", "SecureBootEnabled", "EnablevTPM", "TrustedLaunch")]
+        string SecurityOption { get; set; }
         /// <summary>Gets or sets the target CPU cores.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -163,14 +218,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     internal partial interface IVMwareToAzStackHciprotectedItemModelCustomPropertiesUpdateInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModelCustomPropertiesUpdateInternal
     {
+        /// <summary>Gets or sets a value indicating whether conversion to Gen 2 is required.</summary>
+        bool? ConvertToGen2 { get; set; }
         /// <summary>Protected item dynamic memory config.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemDynamicMemoryConfig DynamicMemoryConfig { get; set; }
         /// <summary>Gets or sets a value indicating whether memory is dynamical.</summary>
         bool? IsDynamicRam { get; set; }
+        /// <summary>Gets or sets a value indicating whether VM is to be migrated as Arc VM.</summary>
+        bool? MigrateAsArcVM { get; set; }
         /// <summary>Gets or sets the list of VM NIC to replicate.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareToAzStackHcinicInput> NicsToInclude { get; set; }
         /// <summary>Gets or sets the type of the OS.</summary>
         string OSType { get; set; }
+        /// <summary>Gets or sets the security options for this VM.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("None", "SecureBootEnabled", "EnablevTPM", "TrustedLaunch")]
+        string SecurityOption { get; set; }
         /// <summary>Gets or sets the target CPU cores.</summary>
         int? TargetCpuCore { get; set; }
         /// <summary>Gets or sets the target memory in mega-bytes.</summary>

@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Maintenance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Maintenance;
 using Microsoft.Azure.Management.Maintenance.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsLifecycle.Approve, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledEventList", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
-    [OutputType(typeof(ScheduledEventsApproveResponse), typeof(PSScheduledEventsApproveResponse), typeof(ScheduledEventsListAcknowledgeError))]
+    [OutputType(typeof(ScheduledEventsApproveResponse), typeof(ScheduledEventsListAcknowledgeError))]
     public partial class ApproveAzureRmScheduledEventList : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -56,71 +53,23 @@ namespace Microsoft.Azure.Commands.Maintenance
                             scheduledEventIds);
                         WriteObject(response);
                     }
-                    catch (ScheduledEventsListAcknowledgeErrorException exception) when ((int?)exception.Response?.StatusCode == 207)
-                    {
-                        PSScheduledEventsApproveResponse response = GetMultiStatusResponse(exception);
-                        PopulateMissingTargets(response.Details, scheduledEventIds);
-                        WriteObject(response);
-                    }
                     catch (ScheduledEventsListAcknowledgeErrorException exception)
                     {
-                        WriteObject(exception.Body ?? new ScheduledEventsListAcknowledgeError(
-                            new ScheduledEventsListAcknowledgeErrorDetails(
-                                exception.Response?.StatusCode.ToString(),
-                                exception.Message)));
+                        if ((int?)exception.Response?.StatusCode == 207)
+                        {
+                            WriteObject(exception.Body ?? new ScheduledEventsListAcknowledgeError(
+                                new ScheduledEventsListAcknowledgeErrorDetails(
+                                    exception.Response.StatusCode.ToString(), exception.Message)));
+                        }
+                        else
+                        {
+                            ThrowScheduledEventError(exception, exception.Response?.StatusCode,
+                                exception.Body?.Error == null ? null : exception.Body,
+                                exception.Body?.Error?.Code, target);
+                        }
                     }
                 }
             });
-        }
-
-        /// <summary>
-        /// Maps the service's HTTP 207 payload to the PowerShell response model. The service returns
-        /// { "response": { "code", "message" }, "details": [...] }, while the existing AutoRest default
-        /// response model expects { "error": { "code", "message", "details" } }. The SDK model is retained
-        /// as a fallback for responses that follow the published specification.
-        /// </summary>
-        private static PSScheduledEventsApproveResponse GetMultiStatusResponse(ScheduledEventsListAcknowledgeErrorException exception)
-        {
-            PSScheduledEventsApproveResponse result = null;
-            if (!string.IsNullOrWhiteSpace(exception.Response?.Content))
-            {
-                try
-                {
-                    result = JsonConvert.DeserializeObject<PSScheduledEventsApproveResponse>(exception.Response.Content);
-                }
-                catch (JsonException)
-                {
-                    // Fall back to the generated SDK body and transport-level status below.
-                }
-            }
-
-            result = result ?? new PSScheduledEventsApproveResponse();
-            result.Response = result.Response ?? new PSScheduledEventsListApproveStatus();
-
-            ScheduledEventsListAcknowledgeErrorDetails sdkError = exception.Body?.Error;
-            result.Response.Code = result.Response.Code ?? sdkError?.Code ?? exception.Response.StatusCode.ToString();
-            result.Response.Message = result.Response.Message ?? sdkError?.Message ?? exception.Message;
-            result.Details = result.Details ?? sdkError?.Details ?? new List<ScheduledEventsAcknowledgeErrorDetails>();
-
-            return result;
-        }
-
-        private static void PopulateMissingTargets(
-            IList<ScheduledEventsAcknowledgeErrorDetails> details,
-            IReadOnlyList<string> requestedIds)
-        {
-            if (details == null)
-            {
-                return;
-            }
-
-            for (int index = 0; index < details.Count && index < requestedIds.Count; index++)
-            {
-                if (string.IsNullOrEmpty(details[index].Target))
-                {
-                    details[index].Target = requestedIds[index];
-                }
-            }
         }
 
         [Parameter(

@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return;
             }
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentity.FromJson(__jsonIdentity) : _identity;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Tags.FromJson(__jsonTags) : _tag;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentUpdateTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 

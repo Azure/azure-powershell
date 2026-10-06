@@ -29,13 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsPropertiesInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsPropertiesInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsError Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsPropertiesInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentExecutionActionTargetDetailsError()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsPropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsPropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsErrorInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionActionTargetDetailsPropertiesInternal.Status { get => this._status; set { {_status = value;} } }
