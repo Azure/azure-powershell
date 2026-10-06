@@ -62,7 +62,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the virtual network appliance resource.
         /// </param>
-        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string resourceGuid = default(string))
+
+        /// <param name="capacityProvider">The reference to another VirtualNetworkAppliance resource used to provide
+        /// additional capacity.
+        /// </param>
+        public VirtualNetworkAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), Subnet subnet = default(Subnet), double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string resourceGuid = default(string), SubResource capacityProvider = default(SubResource))
 
         : base(id, name, type, location, tags)
         {
@@ -73,6 +77,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.IPConfigurations = ipConfigurations;
             this.PrivateIPAddressVersion = privateIPAddressVersion;
             this.ResourceGuid = resourceGuid;
+            this.CapacityProvider = capacityProvider;
             CustomInit();
         }
 
@@ -125,5 +130,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the reference to another VirtualNetworkAppliance resource used to
+        /// provide additional capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.capacityProvider")]
+        public SubResource CapacityProvider {get; set; }
     }
 }

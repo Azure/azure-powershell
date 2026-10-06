@@ -43,7 +43,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="subnet">The reference to the subnet resource.
         /// </param>
-        public VirtualNetworkAppliancePropertiesFormat(double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string provisioningState = default(string), string resourceGuid = default(string), Subnet subnet = default(Subnet))
+
+        /// <param name="capacityProvider">The reference to another VirtualNetworkAppliance resource used to provide
+        /// additional capacity.
+        /// </param>
+        public VirtualNetworkAppliancePropertiesFormat(double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string provisioningState = default(string), string resourceGuid = default(string), Subnet subnet = default(Subnet), SubResource capacityProvider = default(SubResource))
 
         {
             this.BandwidthInGbps = bandwidthInGbps;
@@ -52,6 +56,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
             this.Subnet = subnet;
+            this.CapacityProvider = capacityProvider;
             CustomInit();
         }
 
@@ -97,5 +102,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
         public Subnet Subnet {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference to another VirtualNetworkAppliance resource used to
+        /// provide additional capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityProvider")]
+        public SubResource CapacityProvider {get; set; }
     }
 }

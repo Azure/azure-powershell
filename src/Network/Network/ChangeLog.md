@@ -21,6 +21,8 @@
 ## Upcoming Release
 * Added cmdlets to manage Virtual Network Appliance capabilities.
     - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
+* Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
+    - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
 * Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
     - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
