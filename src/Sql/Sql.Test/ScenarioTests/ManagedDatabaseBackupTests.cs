@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
         }
 
-        [Fact(Skip = "Not recordable without manual steps")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "Not recordable without manual steps")]
+        [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {
