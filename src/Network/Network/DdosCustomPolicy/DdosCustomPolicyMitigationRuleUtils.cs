@@ -12,24 +12,22 @@ using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text.RegularExpressions;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     internal static class DdosCustomPolicyMitigationRuleUtils
     {
-        private static readonly Regex CountryCodePattern = new Regex("^[A-Z]{2}$", RegexOptions.CultureInvariant);
-
         internal static PSDdosCustomPolicyMitigationRule BuildRule(
             string name,
             string trafficScope,
             int? tcpPacketsPerSecond,
             int? tcpConnectionsPerSecond,
             int? udpPacketsPerSecond,
-            IEnumerable<PSDdosCustomPolicySourcePolicyOverride> sourcePolicyOverrides)
+            IEnumerable<string> denyIpPrefixes,
+            IEnumerable<string> denyGeoMatches,
+            IEnumerable<string> permitIpPrefixes,
+            IEnumerable<string> permitGeoMatches)
         {
             var rule = new PSDdosCustomPolicyMitigationRule
             {
@@ -37,7 +35,11 @@ namespace Microsoft.Azure.Commands.Network
                 Properties = new PSDdosCustomPolicyMitigationRuleProperties
                 {
                     TrafficScope = trafficScope,
-                    SourcePolicyOverrides = sourcePolicyOverrides?.ToList(),
+                    SourcePolicyOverrides = BuildSourcePolicyOverrides(
+                        denyIpPrefixes,
+                        denyGeoMatches,
+                        permitIpPrefixes,
+                        permitGeoMatches),
                 },
             };
 
@@ -77,7 +79,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            var scopes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
             foreach (var rule in rules)
             {
@@ -85,11 +86,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (!names.Add(rule.Name))
                 {
                     throw new ArgumentException($"Duplicate mitigation rule name '{rule.Name}'.");
-                }
-
-                if (!scopes.Add(rule.Properties.TrafficScope))
-                {
-                    throw new ArgumentException($"Duplicate mitigation traffic scope '{rule.Properties.TrafficScope}'.");
                 }
             }
         }
@@ -121,84 +117,81 @@ namespace Microsoft.Azure.Commands.Network
             var tcpConnections = rule.Properties.TcpDefaultMitigations?.PerSourceConnectionRateLimiting?.ConnectionsPerSecond;
             var udpPackets = rule.Properties.UdpDefaultMitigations?.PerSourceRateLimiting?.PacketsPerSecond;
 
-            ValidatePositive(tcpPackets, "TcpPacketsPerSecond");
-            ValidateNonNegative(tcpConnections, "TcpConnectionsPerSecond");
-            ValidatePositive(udpPackets, "UdpPacketsPerSecond");
-
-            if (string.Equals(scope, MNM.DdosMitigationTrafficScope.Tcp, StringComparison.OrdinalIgnoreCase) && udpPackets.HasValue)
+            if (udpPackets.HasValue
+                && !string.Equals(scope, MNM.DdosMitigationTrafficScope.Udp, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException("UdpPacketsPerSecond cannot be used with a TCP mitigation rule.");
+                throw new ArgumentException("UdpPacketsPerSecond can only be used with a UDP mitigation rule.");
             }
 
-            if (string.Equals(scope, MNM.DdosMitigationTrafficScope.Udp, StringComparison.OrdinalIgnoreCase)
-                && (tcpPackets.HasValue || tcpConnections.HasValue))
+            if ((tcpPackets.HasValue || tcpConnections.HasValue)
+                && !string.Equals(scope, MNM.DdosMitigationTrafficScope.Tcp, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException("TCP rate limits cannot be used with a UDP mitigation rule.");
-            }
-
-            ValidateOverrides(rule.Properties.SourcePolicyOverrides);
-
-            if (!tcpPackets.HasValue
-                && !tcpConnections.HasValue
-                && !udpPackets.HasValue
-                && (rule.Properties.SourcePolicyOverrides == null || rule.Properties.SourcePolicyOverrides.Count == 0))
-            {
-                throw new ArgumentException("A mitigation rule requires an applicable rate limit or at least one source policy override.");
+                throw new ArgumentException("TCP rate limits can only be used with a TCP mitigation rule.");
             }
         }
 
-        internal static void ValidateGeoMatch(PSDdosCustomPolicyGeoMatch geoMatch)
+        internal static List<PSDdosCustomPolicySourcePolicyOverride> UpdateSourcePolicyOverrides(
+            IList<PSDdosCustomPolicySourcePolicyOverride> existing,
+            bool denyIpPrefixesBound,
+            IEnumerable<string> denyIpPrefixes,
+            bool denyGeoMatchesBound,
+            IEnumerable<string> denyGeoMatches,
+            bool permitIpPrefixesBound,
+            IEnumerable<string> permitIpPrefixes,
+            bool permitGeoMatchesBound,
+            IEnumerable<string> permitGeoMatches)
         {
-            if (geoMatch == null)
+            var updateDeny = denyIpPrefixesBound || denyGeoMatchesBound;
+            var updatePermit = permitIpPrefixesBound || permitGeoMatchesBound;
+            var updated = existing?
+                .Where(item =>
+                    !(updateDeny && IsAction(item, MNM.DdosSourcePolicyActionType.Deny))
+                    && !(updatePermit && IsAction(item, MNM.DdosSourcePolicyActionType.Permit)))
+                .ToList()
+                ?? new List<PSDdosCustomPolicySourcePolicyOverride>();
+
+            if (updateDeny)
             {
-                throw new ArgumentException("GeoMatch cannot be null.");
+                AddSourcePolicyOverride(
+                    updated,
+                    MNM.DdosSourcePolicyActionType.Deny,
+                    denyIpPrefixesBound ? denyIpPrefixes : GetIpPrefixes(existing, MNM.DdosSourcePolicyActionType.Deny),
+                    denyGeoMatchesBound ? denyGeoMatches : GetGeoMatches(existing, MNM.DdosSourcePolicyActionType.Deny));
             }
 
-            if (string.IsNullOrWhiteSpace(geoMatch.Continent) && string.IsNullOrWhiteSpace(geoMatch.CountryCode))
+            if (updatePermit)
             {
-                throw new ArgumentException("A geographic match requires a continent, a country code, or both.");
+                AddSourcePolicyOverride(
+                    updated,
+                    MNM.DdosSourcePolicyActionType.Permit,
+                    permitIpPrefixesBound ? permitIpPrefixes : GetIpPrefixes(existing, MNM.DdosSourcePolicyActionType.Permit),
+                    permitGeoMatchesBound ? permitGeoMatches : GetGeoMatches(existing, MNM.DdosSourcePolicyActionType.Permit));
             }
 
-            if (!string.IsNullOrWhiteSpace(geoMatch.CountryCode) && !CountryCodePattern.IsMatch(geoMatch.CountryCode))
-            {
-                throw new ArgumentException($"Country code '{geoMatch.CountryCode}' must be an uppercase two-letter ISO code.");
-            }
+            return updated.Count == 0 ? null : updated;
         }
 
-        internal static void ValidateSourcePolicyOverride(PSDdosCustomPolicySourcePolicyOverride sourcePolicyOverride)
+        internal static List<string> GetIpPrefixes(
+            IEnumerable<PSDdosCustomPolicySourcePolicyOverride> overrides,
+            string actionType)
         {
-            if (sourcePolicyOverride?.PolicyAction == null || string.IsNullOrWhiteSpace(sourcePolicyOverride.PolicyAction.ActionType))
-            {
-                throw new ArgumentException("SourcePolicyOverride.PolicyAction.ActionType is required.");
-            }
+            return overrides?
+                .Where(item => IsAction(item, actionType))
+                .SelectMany(item => item.Conditions?.IpPrefixes ?? Enumerable.Empty<string>())
+                .ToList()
+                ?? new List<string>();
+        }
 
-            if (sourcePolicyOverride.Conditions == null)
-            {
-                throw new ArgumentException("SourcePolicyOverride.Conditions is required.");
-            }
-
-            var prefixes = sourcePolicyOverride.Conditions.IpPrefixes;
-            var geoMatches = sourcePolicyOverride.Conditions.GeoMatches;
-            if ((prefixes == null || prefixes.Count == 0) && (geoMatches == null || geoMatches.Count == 0))
-            {
-                throw new ArgumentException("A source policy override requires at least one IP prefix or geographic match.");
-            }
-
-            if (prefixes != null)
-            {
-                foreach (var prefix in prefixes)
-                {
-                    ValidateCidr(prefix);
-                }
-            }
-
-            if (geoMatches != null)
-            {
-                foreach (var geoMatch in geoMatches)
-                {
-                    ValidateGeoMatch(geoMatch);
-                }
-            }
+        internal static List<string> GetGeoMatches(
+            IEnumerable<PSDdosCustomPolicySourcePolicyOverride> overrides,
+            string actionType)
+        {
+            return overrides?
+                .Where(item => IsAction(item, actionType))
+                .SelectMany(item => item.Conditions?.GeoMatches ?? Enumerable.Empty<PSDdosCustomPolicyGeoMatch>())
+                .Select(FormatGeoMatch)
+                .ToList()
+                ?? new List<string>();
         }
 
         internal static MNM.DdosMitigationRule ToSdk(PSDdosCustomPolicyMitigationRule rule)
@@ -260,12 +253,13 @@ namespace Microsoft.Azure.Commands.Network
 
         private static MNM.DdosSourcePolicyOverride ToSdk(PSDdosCustomPolicySourcePolicyOverride value)
         {
-            ValidateSourcePolicyOverride(value);
             return new MNM.DdosSourcePolicyOverride(
-                new MNM.DdosSourcePolicyAction(value.PolicyAction.ActionType),
-                new MNM.DdosSourceMatchConditions(
-                    value.Conditions.IpPrefixes,
-                    value.Conditions.GeoMatches?.Select(item => new MNM.DdosGeoMatch(item.Continent, item.CountryCode)).ToList()));
+                value.PolicyAction == null ? null : new MNM.DdosSourcePolicyAction(value.PolicyAction.ActionType),
+                value.Conditions == null
+                    ? null
+                    : new MNM.DdosSourceMatchConditions(
+                        value.Conditions.IpPrefixes,
+                        value.Conditions.GeoMatches?.Select(item => new MNM.DdosGeoMatch(item?.Continent, item?.CountryCode)).ToList()));
         }
 
         private static PSDdosCustomPolicyTcpDefaultMitigations FromSdk(MNM.DdosTcpDefaultMitigations value)
@@ -317,56 +311,78 @@ namespace Microsoft.Azure.Commands.Network
                 };
         }
 
-        private static void ValidateOverrides(IList<PSDdosCustomPolicySourcePolicyOverride> overrides)
+        private static List<PSDdosCustomPolicySourcePolicyOverride> BuildSourcePolicyOverrides(
+            IEnumerable<string> denyIpPrefixes,
+            IEnumerable<string> denyGeoMatches,
+            IEnumerable<string> permitIpPrefixes,
+            IEnumerable<string> permitGeoMatches)
         {
-            if (overrides == null)
+            var overrides = new List<PSDdosCustomPolicySourcePolicyOverride>();
+            AddSourcePolicyOverride(overrides, MNM.DdosSourcePolicyActionType.Deny, denyIpPrefixes, denyGeoMatches);
+            AddSourcePolicyOverride(overrides, MNM.DdosSourcePolicyActionType.Permit, permitIpPrefixes, permitGeoMatches);
+            return overrides.Count == 0 ? null : overrides;
+        }
+
+        private static void AddSourcePolicyOverride(
+            ICollection<PSDdosCustomPolicySourcePolicyOverride> overrides,
+            string actionType,
+            IEnumerable<string> ipPrefixes,
+            IEnumerable<string> geoMatches)
+        {
+            var prefixes = ipPrefixes?.ToList();
+            var matches = geoMatches?.Select(ParseGeoMatch).ToList();
+            if ((prefixes == null || prefixes.Count == 0) && (matches == null || matches.Count == 0))
             {
                 return;
             }
 
-            var actions = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            foreach (var sourcePolicyOverride in overrides)
+            overrides.Add(new PSDdosCustomPolicySourcePolicyOverride
             {
-                ValidateSourcePolicyOverride(sourcePolicyOverride);
-                if (!actions.Add(sourcePolicyOverride.PolicyAction.ActionType))
+                PolicyAction = new PSDdosCustomPolicySourcePolicyAction { ActionType = actionType },
+                Conditions = new PSDdosCustomPolicySourceMatchConditions
                 {
-                    throw new ArgumentException($"Duplicate source policy action '{sourcePolicyOverride.PolicyAction.ActionType}'.");
-                }
-            }
+                    IpPrefixes = prefixes,
+                    GeoMatches = matches,
+                },
+            });
         }
 
-        private static void ValidatePositive(int? value, string parameterName)
+        private static PSDdosCustomPolicyGeoMatch ParseGeoMatch(string value)
         {
-            if (value.HasValue && value.Value <= 0)
+            if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException($"{parameterName} must be greater than zero.");
+                throw new ArgumentException("Geographic matches cannot contain null or empty entries.");
             }
+
+            var parts = value.Split('.');
+            if (parts.Length > 2 || parts.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new ArgumentException(
+                    $"Geographic match '{value}' must use <Country>, <Continent>, or <Continent>.<Country> format.");
+            }
+
+            return parts.Length == 2
+                ? new PSDdosCustomPolicyGeoMatch { Continent = parts[0], CountryCode = parts[1] }
+                : parts[0].Length == 2
+                    ? new PSDdosCustomPolicyGeoMatch { CountryCode = parts[0] }
+                    : new PSDdosCustomPolicyGeoMatch { Continent = parts[0] };
         }
 
-        private static void ValidateNonNegative(int? value, string parameterName)
+        private static string FormatGeoMatch(PSDdosCustomPolicyGeoMatch value)
         {
-            if (value.HasValue && value.Value < 0)
+            if (value == null)
             {
-                throw new ArgumentException($"{parameterName} cannot be negative.");
+                return null;
             }
+
+            return !string.IsNullOrEmpty(value.Continent) && !string.IsNullOrEmpty(value.CountryCode)
+                ? $"{value.Continent}.{value.CountryCode}"
+                : value.CountryCode ?? value.Continent;
         }
 
-        private static void ValidateCidr(string prefix)
+        private static bool IsAction(PSDdosCustomPolicySourcePolicyOverride value, string actionType)
         {
-            var parts = prefix?.Split('/');
-            if (parts == null
-                || parts.Length != 2
-                || !IPAddress.TryParse(parts[0], out var address)
-                || !int.TryParse(parts[1], out var prefixLength))
-            {
-                throw new ArgumentException($"'{prefix}' is not a valid IPv4 or IPv6 CIDR prefix.");
-            }
-
-            var maximum = address.AddressFamily == AddressFamily.InterNetwork ? 32 : 128;
-            if (prefixLength < 0 || prefixLength > maximum)
-            {
-                throw new ArgumentException($"'{prefix}' is not a valid IPv4 or IPv6 CIDR prefix.");
-            }
+            return string.Equals(value?.PolicyAction?.ActionType, actionType, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

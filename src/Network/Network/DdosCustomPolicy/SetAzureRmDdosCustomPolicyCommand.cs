@@ -49,12 +49,6 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Name is required.");
             }
 
-            if ((this.DdosCustomPolicy.DetectionRules == null || this.DdosCustomPolicy.DetectionRules.Count == 0)
-                && (this.DdosCustomPolicy.MitigationRules == null || this.DdosCustomPolicy.MitigationRules.Count == 0))
-            {
-                throw new ArgumentException("At least one detection rule or mitigation rule is required.");
-            }
-
             var vDdosCustomPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.DdosCustomPolicy>(this.DdosCustomPolicy);
             vDdosCustomPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.DdosCustomPolicy.Tag, validate: true);
 

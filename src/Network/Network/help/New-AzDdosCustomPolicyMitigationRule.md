@@ -15,13 +15,15 @@ Creates a DDoS custom policy mitigation rule.
 ```
 New-AzDdosCustomPolicyMitigationRule -Name <String> -TrafficScope <String> [-TcpPacketsPerSecond <Int32>]
  [-TcpConnectionsPerSecond <Int32>] [-UdpPacketsPerSecond <Int32>]
- [-SourcePolicyOverride <PSDdosCustomPolicySourcePolicyOverride[]>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
+ [-DenyIpPrefix <String[]>] [-DenyGeoMatch <String[]>] [-PermitIpPrefix <String[]>]
+ [-PermitGeoMatch <String[]>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDdosCustomPolicyMitigationRule** cmdlet creates an in-memory mitigation rule for TCP or UDP traffic. Configure at least one applicable per-source rate limit or source policy override, then pass the rule to **New-AzDdosCustomPolicy** or add it to an existing policy object.
+The **New-AzDdosCustomPolicyMitigationRule** cmdlet creates an in-memory mitigation rule for TCP or UDP traffic. Deny matches drop traffic from matching sources. Permit matches skip source-level mitigations for matching sources, while destination-level mitigations still apply. Within one action, IP prefixes and geographic matches use OR semantics, so a source matches if it matches any entry.
+
+Geographic matches use `<Country>`, `<Continent>`, or `<Continent>.<Country>` format, such as `US`, `Africa`, or `Africa.ZM`. Pass the rule to **New-AzDdosCustomPolicy** or add it to an existing policy object.
 
 ## EXAMPLES
 
@@ -32,13 +34,12 @@ $rule = New-AzDdosCustomPolicyMitigationRule -Name "tcpRule" -TrafficScope Tcp -
 
 This example creates a TCP rule with per-source packet and new-connection rate limits.
 
-### Example 2: Create a UDP rule with a source override
+### Example 2: Create a UDP rule with source actions
 ```powershell
-$override = New-AzDdosCustomPolicySourcePolicyOverride -ActionType Deny -IpPrefix "192.0.2.0/24"
-$rule = New-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 -SourcePolicyOverride $override
+$rule = New-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 -DenyIpPrefix "192.0.2.0/24" -PermitGeoMatch "US", "Africa.ZM"
 ```
 
-This example creates a UDP rule that combines a per-source packet rate limit with a prefix-specific deny action.
+This example creates a UDP rule that drops traffic from the specified IP prefix and skips source-level mitigations for traffic from the specified geographic sources.
 
 ## PARAMETERS
 
@@ -117,11 +118,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourcePolicyOverride
-Source-specific policy overrides.
+### -DenyGeoMatch
+Specifies geographic sources whose matching traffic is dropped. Use `<Country>`, `<Continent>`, or `<Continent>.<Country>` format. Deny IP prefixes and geographic matches use OR semantics.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicySourcePolicyOverride[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DenyIpPrefix
+Specifies IPv4 or IPv6 CIDR prefixes whose matching traffic is dropped. Deny IP prefixes and geographic matches use OR semantics.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermitGeoMatch
+Specifies geographic sources that skip source-level mitigations. Destination-level mitigations still apply. Use `<Country>`, `<Continent>`, or `<Continent>.<Country>` format. Permit IP prefixes and geographic matches use OR semantics.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermitIpPrefix
+Specifies IPv4 or IPv6 CIDR prefixes that skip source-level mitigations. Destination-level mitigations still apply. Permit IP prefixes and geographic matches use OR semantics.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -241,5 +287,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzDdosCustomPolicy](./New-AzDdosCustomPolicy.md)
 
 [Add-AzDdosCustomPolicyMitigationRule](./Add-AzDdosCustomPolicyMitigationRule.md)
-
-[New-AzDdosCustomPolicySourcePolicyOverride](./New-AzDdosCustomPolicySourcePolicyOverride.md)

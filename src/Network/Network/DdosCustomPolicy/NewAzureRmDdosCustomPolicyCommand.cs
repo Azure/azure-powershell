@@ -78,12 +78,6 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if ((this.DetectionRule == null || this.DetectionRule.Length == 0)
-                && (this.MitigationRule == null || this.MitigationRule.Length == 0))
-            {
-                throw new PSArgumentException("At least one detection rule or mitigation rule is required when creating a DDoS custom policy.");
-            }
-
             var vDdosCustomPolicy = new PSDdosCustomPolicy
             {
                 Location = this.Location,

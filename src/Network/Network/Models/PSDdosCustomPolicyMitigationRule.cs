@@ -9,6 +9,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Network;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -17,6 +18,26 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Type { get; set; }
 
         public PSDdosCustomPolicyMitigationRuleProperties Properties { get; set; }
+
+        public List<string> DenyIpPrefixes =>
+            DdosCustomPolicyMitigationRuleUtils.GetIpPrefixes(
+                Properties?.SourcePolicyOverrides,
+                Microsoft.Azure.Management.Network.Models.DdosSourcePolicyActionType.Deny);
+
+        public List<string> DenyGeoMatches =>
+            DdosCustomPolicyMitigationRuleUtils.GetGeoMatches(
+                Properties?.SourcePolicyOverrides,
+                Microsoft.Azure.Management.Network.Models.DdosSourcePolicyActionType.Deny);
+
+        public List<string> PermitIpPrefixes =>
+            DdosCustomPolicyMitigationRuleUtils.GetIpPrefixes(
+                Properties?.SourcePolicyOverrides,
+                Microsoft.Azure.Management.Network.Models.DdosSourcePolicyActionType.Permit);
+
+        public List<string> PermitGeoMatches =>
+            DdosCustomPolicyMitigationRuleUtils.GetGeoMatches(
+                Properties?.SourcePolicyOverrides,
+                Microsoft.Azure.Management.Network.Models.DdosSourcePolicyActionType.Permit);
     }
 
     public class PSDdosCustomPolicyMitigationRuleProperties

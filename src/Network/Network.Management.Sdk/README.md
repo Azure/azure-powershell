@@ -55,8 +55,9 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
-# Import only the DDoS mitigation-rule schemas from the 2026-03-01 contract
-# without upgrading unrelated virtual network operations.
+# Import the merged 2026-03-01 DDoS mitigation-rule schemas without upgrading
+# unrelated virtual network operations. Remove this compatibility transform when
+# the Network module's full Swagger baseline advances to 2026-03-01 or later.
   - from: swagger-document
     where: $
     transform: >

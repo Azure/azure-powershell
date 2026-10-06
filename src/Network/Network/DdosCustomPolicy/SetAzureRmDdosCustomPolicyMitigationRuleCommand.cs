@@ -42,7 +42,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter]
         [AllowEmptyCollection]
-        public PSDdosCustomPolicySourcePolicyOverride[] SourcePolicyOverride { get; set; }
+        public string[] DenyIpPrefix { get; set; }
+
+        [Parameter]
+        [AllowEmptyCollection]
+        public string[] DenyGeoMatch { get; set; }
+
+        [Parameter]
+        [AllowEmptyCollection]
+        public string[] PermitIpPrefix { get; set; }
+
+        [Parameter]
+        [AllowEmptyCollection]
+        public string[] PermitGeoMatch { get; set; }
 
         public override void Execute()
         {
@@ -76,10 +88,16 @@ namespace Microsoft.Azure.Commands.Network
             var preserveUdpLimit =
                 string.Equals(existingProperties.TrafficScope, MNM.DdosMitigationTrafficScope.Udp, StringComparison.OrdinalIgnoreCase)
                 && string.Equals(trafficScope, MNM.DdosMitigationTrafficScope.Udp, StringComparison.OrdinalIgnoreCase);
-            IEnumerable<PSDdosCustomPolicySourcePolicyOverride> sourcePolicyOverrides =
-                MyInvocation.BoundParameters.ContainsKey(nameof(SourcePolicyOverride))
-                    ? (IEnumerable<PSDdosCustomPolicySourcePolicyOverride>)SourcePolicyOverride
-                    : existingProperties.SourcePolicyOverrides;
+            var sourcePolicyOverrides = DdosCustomPolicyMitigationRuleUtils.UpdateSourcePolicyOverrides(
+                existingProperties.SourcePolicyOverrides,
+                MyInvocation.BoundParameters.ContainsKey(nameof(DenyIpPrefix)),
+                DenyIpPrefix,
+                MyInvocation.BoundParameters.ContainsKey(nameof(DenyGeoMatch)),
+                DenyGeoMatch,
+                MyInvocation.BoundParameters.ContainsKey(nameof(PermitIpPrefix)),
+                PermitIpPrefix,
+                MyInvocation.BoundParameters.ContainsKey(nameof(PermitGeoMatch)),
+                PermitGeoMatch);
 
             var replacement = DdosCustomPolicyMitigationRuleUtils.BuildRule(
                 existing.Name,
@@ -99,7 +117,11 @@ namespace Microsoft.Azure.Commands.Network
                     : preserveUdpLimit
                         ? existingProperties.UdpDefaultMitigations?.PerSourceRateLimiting?.PacketsPerSecond
                         : null,
-                sourcePolicyOverrides);
+                null,
+                null,
+                null,
+                null);
+            replacement.Properties.SourcePolicyOverrides = sourcePolicyOverrides;
             replacement.Id = existing.Id;
             replacement.Etag = existing.Etag;
             replacement.Type = existing.Type;

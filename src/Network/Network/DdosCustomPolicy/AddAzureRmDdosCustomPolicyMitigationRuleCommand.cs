@@ -40,7 +40,16 @@ namespace Microsoft.Azure.Commands.Network
         public int? UdpPacketsPerSecond { get; set; }
 
         [Parameter]
-        public PSDdosCustomPolicySourcePolicyOverride[] SourcePolicyOverride { get; set; }
+        public string[] DenyIpPrefix { get; set; }
+
+        [Parameter]
+        public string[] DenyGeoMatch { get; set; }
+
+        [Parameter]
+        public string[] PermitIpPrefix { get; set; }
+
+        [Parameter]
+        public string[] PermitGeoMatch { get; set; }
 
         public override void Execute()
         {
@@ -65,7 +74,10 @@ namespace Microsoft.Azure.Commands.Network
                     TcpPacketsPerSecond,
                     TcpConnectionsPerSecond,
                     UdpPacketsPerSecond,
-                    SourcePolicyOverride),
+                    DenyIpPrefix,
+                    DenyGeoMatch,
+                    PermitIpPrefix,
+                    PermitGeoMatch),
             };
             DdosCustomPolicyMitigationRuleUtils.ValidateRules(updatedRules);
             DdosCustomPolicy.MitigationRules = updatedRules;

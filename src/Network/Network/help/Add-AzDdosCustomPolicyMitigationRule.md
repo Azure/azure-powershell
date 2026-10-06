@@ -15,23 +15,26 @@ Adds a mitigation rule to an in-memory DDoS custom policy.
 ```
 Add-AzDdosCustomPolicyMitigationRule -DdosCustomPolicy <PSDdosCustomPolicy> -Name <String>
  -TrafficScope <String> [-TcpPacketsPerSecond <Int32>] [-TcpConnectionsPerSecond <Int32>]
- [-UdpPacketsPerSecond <Int32>] [-SourcePolicyOverride <PSDdosCustomPolicySourcePolicyOverride[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-UdpPacketsPerSecond <Int32>] [-DenyIpPrefix <String[]>] [-DenyGeoMatch <String[]>]
+ [-PermitIpPrefix <String[]>] [-PermitGeoMatch <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzDdosCustomPolicyMitigationRule** cmdlet creates a mitigation rule and adds it to a DDoS custom policy object. The cmdlet does not update Azure. Pipe the returned policy to **Set-AzDdosCustomPolicy** to persist the change.
+The **Add-AzDdosCustomPolicyMitigationRule** cmdlet creates a mitigation rule and adds it to a DDoS custom policy object. Deny matches drop traffic from matching sources. Permit matches skip source-level mitigations for matching sources, while destination-level mitigations still apply. Within one action, IP prefixes and geographic matches use OR semantics.
+
+Geographic matches use `<Country>`, `<Continent>`, or `<Continent>.<Country>` format, such as `US`, `Africa`, or `Africa.ZM`. The cmdlet does not update Azure. Pipe the returned policy to **Set-AzDdosCustomPolicy** to persist the change.
 
 ## EXAMPLES
 
 ### Example 1: Add and persist a UDP mitigation rule
 ```powershell
 $policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
-$policy | Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 | Set-AzDdosCustomPolicy
+$policy | Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 -DenyIpPrefix "192.0.2.0/24" | Set-AzDdosCustomPolicy
 ```
 
-This example adds a UDP per-source packet rate limit and persists the updated policy.
+This example adds a UDP per-source packet rate limit with a prefix-specific Deny action and persists the updated policy.
 
 ## PARAMETERS
 
@@ -125,11 +128,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourcePolicyOverride
-Specifies source-specific actions and match conditions created by **New-AzDdosCustomPolicySourcePolicyOverride**.
+### -DenyGeoMatch
+Specifies geographic sources whose matching traffic is dropped. Use `<Country>`, `<Continent>`, or `<Continent>.<Country>` format. Deny IP prefixes and geographic matches use OR semantics.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicySourcePolicyOverride[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DenyIpPrefix
+Specifies IPv4 or IPv6 CIDR prefixes whose matching traffic is dropped. Deny IP prefixes and geographic matches use OR semantics.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermitGeoMatch
+Specifies geographic sources that skip source-level mitigations. Destination-level mitigations still apply. Use `<Country>`, `<Continent>`, or `<Continent>.<Country>` format. Permit IP prefixes and geographic matches use OR semantics.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermitIpPrefix
+Specifies IPv4 or IPv6 CIDR prefixes that skip source-level mitigations. Destination-level mitigations still apply. Permit IP prefixes and geographic matches use OR semantics.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

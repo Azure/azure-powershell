@@ -33,8 +33,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(HelpMessage = "The maximum UDP packet rate per source IP.")]
         public int? UdpPacketsPerSecond { get; set; }
 
-        [Parameter(HelpMessage = "Source-specific policy overrides.")]
-        public PSDdosCustomPolicySourcePolicyOverride[] SourcePolicyOverride { get; set; }
+        [Parameter(HelpMessage = "The CIDR prefixes whose matching traffic is denied.")]
+        public string[] DenyIpPrefix { get; set; }
+
+        [Parameter(HelpMessage = "The geographic sources whose matching traffic is denied.")]
+        public string[] DenyGeoMatch { get; set; }
+
+        [Parameter(HelpMessage = "The CIDR prefixes that bypass source-level mitigations.")]
+        public string[] PermitIpPrefix { get; set; }
+
+        [Parameter(HelpMessage = "The geographic sources that bypass source-level mitigations.")]
+        public string[] PermitGeoMatch { get; set; }
 
         public override void Execute()
         {
@@ -50,7 +59,10 @@ namespace Microsoft.Azure.Commands.Network
                 TcpPacketsPerSecond,
                 TcpConnectionsPerSecond,
                 UdpPacketsPerSecond,
-                SourcePolicyOverride));
+                DenyIpPrefix,
+                DenyGeoMatch,
+                PermitIpPrefix,
+                PermitGeoMatch));
         }
     }
 }
