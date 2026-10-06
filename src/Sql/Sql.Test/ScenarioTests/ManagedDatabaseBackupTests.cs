@@ -47,7 +47,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionPolicy()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
+            if (IsPlaybackMode())
+            {
+                TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
+            }
         }
 
         [Fact()]
