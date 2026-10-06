@@ -40,6 +40,16 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public bool HasPublicIP { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The Address Family for IP for Interface.")]
+        [ValidateSet(
+           IPv4,
+           IPv6,
+           IgnoreCase = true)]
+        public string AddressFamily { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -49,6 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             var additionalNicProperty = new PSVirtualApplianceAdditionalNicProperties();
             additionalNicProperty.Name = this.NicName;
             additionalNicProperty.HasPublicIP = this.HasPublicIP;
+            additionalNicProperty.AddressFamily = "IPv4";
 
             var additionalNicProperties = new List<PSVirtualApplianceAdditionalNicProperties>
             {
