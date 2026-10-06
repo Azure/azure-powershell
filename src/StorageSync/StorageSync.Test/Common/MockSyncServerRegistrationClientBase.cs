@@ -76,12 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         public abstract bool Validate(Uri managementEndpointUri, Guid subscriptionId, string storageSyncService, string resourceGroupName, string monitoringDataPath);
 
         /// <summary>
-        /// This function processes the registration and perform following steps
-        /// 1. EnsureSyncServerCertificate
-        /// 2. GetSyncServerCertificate
-        /// 3. GetSyncServerId
-        /// 4. Get ClusterInfo
-        /// 5. Populate RegistrationServerResource
+        /// Connects the local server to an existing registered server resource.
         /// </summary>
         /// <param name="managementEndpointUri">Management Endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -95,6 +90,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server machine name.</param>
         /// <param name="assignIdentity">Assign Identity</param>
+        /// <param name="serverId">Server ID returned by Azure.</param>
         /// <returns>Registered Server resource</returns>
         public abstract ServerRegistrationData Setup(
             Uri managementEndpointUri,
@@ -108,7 +104,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            bool assignIdentity);
+            bool assignIdentity,
+            Guid serverId);
 
         /// <summary>
         /// Persisting the register server resource from cloud to the local service.
@@ -142,9 +139,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         /// This function processes the registration and perform following steps
         /// 1. EnsureSyncServerCertificate
         /// 2. GetSyncServerCertificate
-        /// 3. GetSyncServerId
-        /// 4. Get ClusterInfo
-        /// 5. Populate RegistrationServerResource
+        /// 3. Uses the server ID returned by Azure
+        /// 4. Gets cluster information
+        /// 5. Populates registration data
         /// </summary>
         /// <param name="storageSyncServiceTenantId">Storage Sync Service Tenant Id</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
@@ -157,12 +154,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server machine name.</param>
-        /// <param name="registerOnlineCallback">Register Online Callback</param>
+        /// <param name="registeredServerResource">Registered server resource created in Azure.</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
         /// <exception cref="ServerRegistrationException"></exception>
-        public RegisteredServer Register(
+        public RegisteredServer Connect(
             string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
@@ -174,17 +171,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback,
-            bool assignIdentity)
+            RegisteredServer registeredServerResource)
         {
-            // Get ApplicationId
-            ServerApplicationIdentity serverApplicationIdentity = assignIdentity ? GetServerApplicationIdentityOrNull() : null;
-            // Discover the server type , Get the application id, 
+            if (registeredServerResource == null)
+            {
+                throw new ArgumentNullException(nameof(registeredServerResource));
+            }
+
+            ServerApplicationIdentity serverApplicationIdentity = GetServerApplicationIdentityOrNull();
             Guid? applicationId = serverApplicationIdentity?.ApplicationId;
 
-            if (serverApplicationIdentity != null && serverApplicationIdentity.TenantId != Guid.Empty)
+            if (serverApplicationIdentity == null || applicationId.GetValueOrDefault() == Guid.Empty)
             {
-                // Check that tenants match
+                throw new PSArgumentException("This server is not configured properly to use managed identities.");
+            }
+
+            if (serverApplicationIdentity.TenantId != Guid.Empty)
+            {
                 if (!string.Equals(storageSyncServiceTenantId, serverApplicationIdentity.TenantId.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
                     throw new ServerRegistrationException(
@@ -205,27 +208,38 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.Common
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ValidateSyncServerFailed);
             }
 
-            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName, assignIdentity);
+            if (!Guid.TryParse(registeredServerResource.ServerId, out Guid registeredServerId)
+                || registeredServerId == Guid.Empty)
+            {
+                throw new PSArgumentException("The registered server resource does not contain a valid server ID.", nameof(registeredServerResource));
+            }
+
+            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName, true, registeredServerId);
             if (null == serverRegistrationData)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ProcessSyncRegistrationFailed);
             }
 
-            RegisteredServer resultantRegisteredServerResource = registerOnlineCallback(resourceGroupName, storageSyncServiceName, serverRegistrationData);
-            if (null == resultantRegisteredServerResource)
+            if (!Guid.TryParse(registeredServerResource.ApplicationId, out Guid registeredApplicationId)
+                || registeredApplicationId != applicationId.Value)
             {
-                throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterOnlineSyncRegistrationFailed);
+                throw new PSArgumentException("The registered server application ID does not match the local server managed identity.", nameof(registeredServerResource));
             }
 
-            // Setting ServerCertificate from request resource to response resource so that it can be used by Monitoring pipeline
-            resultantRegisteredServerResource.ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate);
+            registeredServerResource.ServerRole = serverRegistrationData.ServerRole.ToString();
+            registeredServerResource.ClusterId = serverRegistrationData.ClusterId.GetValueOrDefault() == Guid.Empty
+                ? null
+                : serverRegistrationData.ClusterId.Value.ToString();
+            registeredServerResource.ClusterName = serverRegistrationData.ClusterName;
+            registeredServerResource.AgentVersion = serverRegistrationData.AgentVersion;
+            registeredServerResource.ServerOSVersion = serverRegistrationData.ServerOSVersion;
 
-            if (!Persist(resultantRegisteredServerResource, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
+            if (!Persist(registeredServerResource, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.PersistSyncServerRegistrationFailed);
             }
 
-            return resultantRegisteredServerResource;
+            return registeredServerResource;
         }
 
         /// <summary>

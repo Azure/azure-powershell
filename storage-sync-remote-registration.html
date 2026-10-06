@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azure File Sync remote server registration</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 32px auto 64px; }
+    header {
+      padding: 28px;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-bg-elevated);
+      box-shadow: var(--cp-shadow);
+    }
+    h1, h2, h3 { margin-top: 0; line-height: 1.2; }
+    h1 { margin-bottom: 8px; font-size: clamp(28px, 4vw, 44px); }
+    h2 { margin-bottom: 16px; font-size: 24px; }
+    h3 { margin-bottom: 8px; font-size: 18px; }
+    p { margin: 0 0 12px; }
+    code {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 2px 6px;
+    }
+    .subtitle { color: var(--cp-text-muted); max-width: 850px; }
+    .badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 0.625rem;
+      background: var(--cp-accent-soft);
+      color: var(--cp-accent);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    section { margin-top: 28px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+    }
+    .remote { border-top: 4px solid var(--cp-link); }
+    .local { border-top: 4px solid var(--cp-accent); }
+    .label { color: var(--cp-text-muted); font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .sequence {
+      overflow-x: auto;
+      padding: 20px;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+    }
+    .actors {
+      min-width: 920px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .actor {
+      text-align: center;
+      padding: 12px 8px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+      background: var(--cp-bg-elevated);
+      font-weight: 700;
+    }
+    .timeline {
+      min-width: 920px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      position: relative;
+      padding: 12px 0 4px;
+    }
+    .lane { min-height: 520px; border-left: 2px dashed var(--cp-border); justify-self: center; }
+    .messages { min-width: 920px; margin-top: -520px; position: relative; height: 520px; }
+    .message {
+      position: absolute;
+      height: 34px;
+      border-top: 2px solid var(--cp-accent);
+      color: var(--cp-text);
+      font-size: 13px;
+      padding-top: 5px;
+    }
+    .message::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -6px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid var(--cp-accent);
+    }
+    .return { border-top-style: dashed; border-top-color: var(--cp-success); }
+    .return::after { border-left-color: var(--cp-success); }
+    .m1 { top: 20px; left: 2%; width: 20%; }
+    .m2b { top: 78px; left: 22%; width: 40%; }
+    .m3b { top: 136px; left: 2%; width: 20%; }
+    .m4b { top: 194px; left: 2%; width: 40%; }
+    .m5b { top: 252px; left: 22%; width: 40%; }
+    .m6b { top: 310px; left: 2%; width: 60%; }
+    .m7b { top: 368px; left: 2%; width: 60%; }
+    .m8b { top: 426px; left: 22%; width: 60%; }
+    .m9b { top: 484px; left: 2%; width: 60%; }
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .arrow { align-self: center; color: var(--cp-accent); font-size: 30px; font-weight: 700; }
+    .callout {
+      padding: 16px;
+      border-left: 4px solid var(--cp-warning);
+      border-radius: 0.625rem;
+      background: var(--cp-surface-soft);
+    }
+    table { width: 100%; border-collapse: collapse; background: var(--cp-surface); }
+    th, td { padding: 12px; border: 1px solid var(--cp-border); text-align: left; vertical-align: top; }
+    th { background: var(--cp-surface-soft); }
+    .yes { color: var(--cp-success); font-weight: 700; }
+    .no { color: var(--cp-danger); font-weight: 700; }
+    @media (max-width: 760px) {
+      .grid, .flow { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); justify-self: center; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="badge">Proposed command architecture</span>
+      <h1>Azure File Sync remote registration</h1>
+      <p class="subtitle">
+        Split the existing mixed registration workflow into an Azure-only resource command and a local-only
+        agent connection command. The Azure command runs first; its output is transferred to and consumed on
+        the target server.
+      </p>
+    </header>
+
+    <section>
+      <h2>Command responsibilities</h2>
+      <article class="card local" style="margin-bottom:16px;">
+        <div class="label">Local / Azure File Sync agent</div>
+        <h3><code>Get-StorageSyncServer</code></h3>
+        <ul>
+          <li>Runs locally on the Windows Server that has the Azure File Sync agent installed.</li>
+          <li>Reads the local server ID and, for cluster nodes, the cluster ID and cluster name through COM.</li>
+          <li>Reads the server system-assigned managed identity application ID and tenant ID.</li>
+          <li>Read-only; creates or modifies nothing in Azure or on the server.</li>
+          <li>Returns <code>PSLocalStorageSyncServer</code> for the operator to inspect.</li>
+        </ul>
+      </article>
+      <div class="grid">
+        <article class="card remote">
+          <div class="label">Remote / Azure Resource Manager</div>
+          <h3><code>Register-AzStorageSyncServer</code></h3>
+          <ul>
+            <li>Runs from an administrator workstation, automation host, or other remote environment.</li>
+            <li>Accepts the Storage Sync Service and managed identity <code>ApplicationId</code>.</li>
+            <li>Creates a new <code>ServerId</code> GUID before the Azure Resource Manager request.</li>
+            <li>Uses managed identity mode implicitly; there is no <code>Identity</code> switch.</li>
+            <li>Calls the Microsoft.StorageSync registered servers REST API.</li>
+            <li>Does not invoke local COM APIs, create certificates, or assign RBAC roles.</li>
+            <li>Returns <code>PSRegisteredServer</code> whose values the operator supplies to the connect step.</li>
+          </ul>
+        </article>
+        <article class="card local">
+          <div class="label">Local / Azure File Sync agent</div>
+          <h3><code>Connect-StorageSyncServer</code></h3>
+          <ul>
+            <li>Runs locally on the Windows Server that has the Azure File Sync agent installed.</li>
+            <li>Accepts explicit scalar parameters that the operator copies from the register step's output.</li>
+            <li>Uses <code>ISyncServerRegistration</code> orchestration over the existing COM interface.</li>
+            <li>Treats the Azure-returned server ID as authoritative and validates the managed identity application ID.</li>
+            <li>Discovers standalone or failover cluster role, cluster ID, and cluster name through COM.</li>
+            <li>Persists the Azure response into the local FileSyncSvc configuration.</li>
+            <li>Does not create or update the Azure registered server resource.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Three independent steps</h2>
+      <p class="subtitle">The three commands are independent and are not connected through the pipeline. The operator reads values from step 1 and supplies them as explicit parameters to steps 2 and 3.</p>
+      <div class="flow">
+        <article class="card local">
+          <div class="label">Step 1 (local)</div>
+          <h3>Read local info</h3>
+          <p><code>Get-StorageSyncServer</code></p>
+          <p>Reads server ID, cluster role, cluster ID, cluster name, and managed identity application ID through COM.</p>
+        </article>
+        <div class="arrow" aria-hidden="true">→</div>
+        <article class="card remote">
+          <div class="label">Step 2 (Azure)</div>
+          <h3>Register remotely</h3>
+          <p><code>Register-AzStorageSyncServer</code></p>
+          <p>Creates a new <code>ServerId</code> GUID and the registered server resource in Azure. Returns service endpoints, <code>StorageSyncServiceUid</code>, and locations.</p>
+        </article>
+        <div class="arrow" aria-hidden="true">→</div>
+        <article class="card local">
+          <div class="label">Step 3 (local)</div>
+          <h3>Connect locally</h3>
+          <p><code>Connect-StorageSyncServer</code></p>
+          <p>Takes the Azure-returned values as explicit parameters and persists the registration through COM. No pipeline handoff and no second Azure create call.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sequence diagram</h2>
+      <div class="sequence" role="img" aria-label="Sequence diagram for local read, remote register, and local connect">
+        <div class="actors">
+          <div class="actor">Operator</div>
+          <div class="actor">PowerShell cmdlet</div>
+          <div class="actor">ARM REST API</div>
+          <div class="actor">Registration client</div>
+          <div class="actor">IECsManagement COM</div>
+        </div>
+        <div class="timeline" aria-hidden="true">
+          <div class="lane"></div><div class="lane"></div><div class="lane"></div><div class="lane"></div><div class="lane"></div>
+        </div>
+        <div class="messages">
+          <div class="message m1">1. Get-StorageSyncServer</div>
+          <div class="message m2b">2. Read server ID, cluster info, application ID</div>
+          <div class="message return m3b">3. PSLocalStorageSyncServer</div>
+          <div class="message m4b">4. Register-AzStorageSyncServer (operator supplies ApplicationId)</div>
+          <div class="message m5b">5. PUT registeredServers/{newServerId}</div>
+          <div class="message return m6b">6. PSRegisteredServer</div>
+          <div class="message m7b">7. Connect-StorageSyncServer (operator supplies returned values)</div>
+          <div class="message m8b">8. ISyncServerRegistration.Connect + Persist through COM</div>
+          <div class="message return m9b">9. PSRegisteredServer</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>API boundary</h2>
+      <table>
+        <thead>
+          <tr><th>Operation</th><th>ARM REST API</th><th>COM API</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>Register-AzStorageSyncServer</code></td>
+            <td class="yes">Yes</td>
+            <td class="no">No</td>
+            <td>Creates only a managed identity registered server resource. Certificate and RBAC logic are excluded.</td>
+          </tr>
+          <tr>
+            <td><code>Connect-StorageSyncServer</code></td>
+            <td class="no">No create/update</td>
+            <td class="yes">Yes</td>
+            <td>Uses existing <code>IECsManagement</code> methods through a restructured <code>ISyncServerRegistration</code>. The COM interface itself remains unchanged.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Service GUID stitching</h2>
+      <div class="card">
+        <p>
+          The remote cmdlet generates <code>ServerId</code>, while Azure generates and returns
+          <code>properties.storageSyncServiceUid</code> on the registered server resource.
+          The first command exposes this value as <code>PSRegisteredServer.StorageSyncServiceUid</code>.
+          <code>Connect-StorageSyncServer</code> receives it through the explicit <code>StorageSyncServiceUid</code>
+          parameter, constructs the internal registration model, and passes it into <code>ISyncServerRegistration.Connect</code>.
+        </p>
+        <p>
+          The local registration client parses the value as a non-empty GUID and calls
+          <code>IECsManagement.PersistSyncServerRegistration</code> with the GUID in the existing
+          <code>storageSyncServiceUid</code> COM parameter. The COM interface remains unchanged.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Validation and failure behavior</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Before Azure registration</h3>
+          <ul>
+            <li><code>ServerId</code> and <code>ApplicationId</code> must be non-empty GUIDs.</li>
+            <li>The Storage Sync Service resource ID must be valid.</li>
+            <li><code>-WhatIf</code> prevents the REST operation.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Before local persistence</h3>
+          <ul>
+            <li>The Azure File Sync agent and monitoring path must exist.</li>
+            <li>The local managed identity tenant must match the Azure context tenant.</li>
+            <li>The local flow uses the Azure-returned server ID and does not call <code>GetSyncServerId</code>.</li>
+            <li>Local and remote application IDs must match.</li>
+            <li>Cluster role, cluster ID, and cluster name are discovered locally and merged before persistence.</li>
+            <li>COM failures remain explicit <code>ServerRegistrationException</code> errors.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="callout">
+      <strong>Key design constraint:</strong> <code>IECsManagement</code> remains unchanged. The split is implemented
+      in the PowerShell cmdlets and the managed <code>ISyncServerRegistration</code> orchestration layer.
+    </section>
+  </main>
+</body>
+</html>

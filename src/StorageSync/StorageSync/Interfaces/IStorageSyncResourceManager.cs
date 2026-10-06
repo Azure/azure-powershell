@@ -16,6 +16,7 @@ using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
@@ -42,6 +43,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// </summary>
         /// <returns>IEcsManagement.</returns>
         ISyncServerRegistration CreateSyncServerManagement();
+
+        /// <summary>
+        /// Creates the server managed identity provider.
+        /// </summary>
+        /// <returns>IServerManagedIdentityProvider.</returns>
+        IServerManagedIdentityProvider CreateServerManagedIdentityProvider();
 
         /// <summary>
         /// Gets the unique identifier.

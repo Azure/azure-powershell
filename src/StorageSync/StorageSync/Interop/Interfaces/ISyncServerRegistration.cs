@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Commands.StorageSync.Interop.DataObjects;
 using Microsoft.Azure.Management.StorageSync.Models;
 using System;
 
@@ -26,12 +25,7 @@ namespace Commands.StorageSync.Interop.Interfaces
     public interface ISyncServerRegistration : IDisposable
     {
         /// <summary>
-        /// Note: This is used for ServerRegistration.exe (UI) and AzureRM Registration paths, NOT SDK tests/Az Modules        /// 
-        /// This function processes the registration and performs the following steps:
-        /// 1. Validates Sync Server Registration Information
-        /// 2. Sets up ServerRegistrationData
-        /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
-        /// 4. Persists registered server resource from cloud to local FileSyncSvc service
+        /// Connects the local server to an existing registered server resource.
         /// <param name="storageSyncServiceTenantId">Storage Sync Service TenantId</param>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -43,11 +37,10 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine Name</param>
-        /// <param name="registerOnlineCallback">Register Online Callback</param>
-        /// <param name="assignIdentity"/>
+        /// <param name="registeredServerResource">Registered server resource created in Azure.</param>
         /// <returns>Registered Server Resource</returns>
         /// </summary>
-        RegisteredServer Register(
+        RegisteredServer Connect(
             string storageSyncServiceTenantId,
             Uri managementEndpointUri,
             Guid subscriptionId,
@@ -59,8 +52,7 @@ namespace Commands.StorageSync.Interop.Interfaces
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback,
-            bool assignIdentity);
+            RegisteredServer registeredServerResource);
 
         /// <summary>
         /// This function processes the unregistration of the server and performs following steps:

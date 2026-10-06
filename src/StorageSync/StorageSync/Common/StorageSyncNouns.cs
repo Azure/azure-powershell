@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string NounAzureRmStorageSyncServer = StorageSyncConstants.ProductPrefix + "Server";
         /// <summary>
+        /// The noun for local storage sync server operations.
+        /// </summary>
+        public const string NounStorageSyncServer = "StorageSyncServer";
+        /// <summary>
         /// The noun azure rm storage sync cloud endpoint
         /// </summary>
         public const string NounAzureRmStorageSyncCloudEndpoint = StorageSyncConstants.ProductPrefix + "CloudEndpoint";

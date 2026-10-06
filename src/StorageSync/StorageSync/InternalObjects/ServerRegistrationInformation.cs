@@ -65,6 +65,17 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
         }
 
         /// <summary>
+        /// Gets or sets the server identifier returned by Azure.
+        /// </summary>
+        /// <value>The server identifier.</value>
+        [JsonProperty(PropertyName = "serverId", Required = Required.Default)]
+        public Guid ServerId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the name of the storage sync service.
         /// </summary>
         /// <value>The name of the storage sync service.</value>
