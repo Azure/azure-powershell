@@ -158,7 +158,7 @@ function Set-AzMigrateLocalServerReplication {
         # Purely a contradiction between parameters, so reject it before the module and service checks.
         if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
             $HasEnableSecureBoot -and -not $secureBootEnabled) {
-            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires -EnableSecureBoot 'true'."
+            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'."
         }
 
         CheckResourcesModuleDependency
@@ -252,7 +252,7 @@ function Set-AzMigrateLocalServerReplication {
                 # Only an explicit request is an error. The inherit-Secure-Boot default above is a
                 # Gen 2 convention, so on Gen 1 it resolves to None instead of being rejected.
                 if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or ($HasEnableSecureBoot -and $secureBootEnabled)) {
-                    throw "Secure Boot and Trusted Launch require a Generation 2 target VM. Protected item '$TargetObjectID' has a Generation 1 target VM."
+                    throw "Secure Boot and Trusted Launch require a Generation 2 (EFI) target VM. Protected item '$TargetObjectID' has a Generation 1 (BIOS) target VM."
                 }
 
                 $secureBootEnabled = $false

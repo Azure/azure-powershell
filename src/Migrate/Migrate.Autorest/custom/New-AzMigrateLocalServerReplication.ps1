@@ -207,7 +207,7 @@ function New-AzMigrateLocalServerReplication {
         # Purely a contradiction between parameters, so reject it before the module and service checks.
         if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
             $HasEnableSecureBoot -and -not $secureBootEnabled) {
-            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'. Trusted Launch requires -EnableSecureBoot 'true'."
+            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'."
         }
 
         CheckResourceGraphModuleDependency
@@ -775,7 +775,7 @@ function New-AzMigrateLocalServerReplication {
 
             if ($customProperties.HyperVGeneration -eq "1" -and
                 ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or $secureBootEnabled)) {
-                throw "Secure Boot and Trusted Launch require a Generation 2 target VM. The source server '$sourceName' maps to a Generation 1 target VM."
+                throw "Secure Boot and Trusted Launch capabilities require a Generation 2 (EFI) VM. The source server '$sourceName' maps to a Generation 1 (BIOS) VM."
             }
 
             # Only send securityOption once a choice is expressed. '-TargetVMSecurityOption Standard'
