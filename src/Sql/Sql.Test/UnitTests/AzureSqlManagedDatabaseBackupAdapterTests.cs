@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             var result = AzureSqlManagedDatabaseBackupAdapter.GetBackupModel(backup, "westcentralus");
 
             Assert.Equal("Geo", result.BackupStorageRedundancy);
-            Assert.True(result.IsBackupImmutable);
+            Assert.True(result.IsBackupImmutable.Value);
             Assert.Equal("Enabled", result.TimeBasedImmutability);
             Assert.Equal("Locked", result.TimeBasedImmutabilityMode);
             Assert.Equal("Enabled", result.LegalHoldImmutability);

@@ -9,11 +9,12 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.Remove-ResourceGroupForTest
+// limitations under the License.
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -49,18 +50,24 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionPolicy");
         }
 
-        [Fact()]
+        [Fact(Skip = "Not recordable without manual steps")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionBackup");
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionBackup");
+            }
         }
 
-        [Fact()]
+        [Fact(Skip = "Not recordable without manual steps")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {
-            TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup");
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup");
+            }
         }
     }
 }
