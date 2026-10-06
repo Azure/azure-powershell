@@ -85,7 +85,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-02-01-preview/OutboundFirewallRules.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-02-01-preview/Usages.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2024-11-01-preview/LongTermRetentionBackups.json
-  - https://github.com/brandong-ms/azure-rest-api-specs/blob/e1e1ea07809fa40f01ac7c96e34a8f6f491e3b8a/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2026-08-01-preview/longTermRetentionManagedInstanceBackups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2026-08-01-preview/longTermRetentionManagedInstanceBackups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-05-01-preview/RestorableDroppedManagedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2025-08-01-preview/distributedAvailabilityGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/SQL/preview/2021-11-01-preview/ServerTrustCertificates.json

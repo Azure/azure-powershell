@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
-            if (TestMockSupport.RunningMocked)
+            if (IsPlaybackMode())
             {
                 TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionBackup");
             }
@@ -64,10 +64,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {
-            if (TestMockSupport.RunningMocked)
+            if (IsPlaybackMode())
             {
                 TestRunner.RunTestScript("Test-ManagedInstanceLongTermRetentionResourceGroupBasedBackup");
             }
+        }
+
+        private bool IsPlaybackMode()
+        {
+            var value = System.Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+
+            if (value == null)
+            {
+                return false;
+            }
+
+            return value.Equals("Playback", System.StringComparison.OrdinalIgnoreCase);
         }
     }
 }
