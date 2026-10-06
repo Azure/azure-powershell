@@ -40,6 +40,7 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -55,6 +56,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -70,6 +72,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -275,6 +278,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -446,6 +450,7 @@ DISASTERRECOVERYCONFIGINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -461,6 +466,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -476,6 +482,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -991,6 +998,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -1006,6 +1014,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -1460,6 +1469,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -1475,6 +1485,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -1693,6 +1704,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -1708,6 +1720,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -1928,6 +1941,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2112,6 +2126,7 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2127,6 +2142,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2142,6 +2158,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2402,6 +2419,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2597,6 +2615,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2750,6 +2769,192 @@ end {
 
 <#
 .Synopsis
+Create a Microsoft Fabric shortcut.
+.Description
+Create a Microsoft Fabric shortcut.
+.Example
+New-AzEventHubFabricShortcut -ResourceGroupName contoso-rg -NamespaceName contoso-eventhub -EventHubName orders -Name orders-shortcut -ShortcutType Entity -ConfigurationArtifactId "33333333-3333-3333-3333-333333333333" -ConfigurationArtifactName "orders-eventstream" -ConfigurationPremiumCapacityId "44444444-4444-4444-4444-444444444444" -ConfigurationTenantId "11111111-1111-1111-1111-111111111111" -ConfigurationWorkspaceId "22222222-2222-2222-2222-222222222222" -ConfigurationWorkspaceName "contoso-workspace"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFabricShortcut
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFabricShortcut
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCE <IFabricShortcut>: A Microsoft Fabric shortcut attached to an Event Hub.
+  [ConfigurationArtifactId <String>]: The Microsoft Fabric artifact ID.
+  [ConfigurationArtifactName <String>]: The Microsoft Fabric artifact name.
+  [ConfigurationLogAnalyticsResourceId <String>]: The resource ID of the Log Analytics workspace.
+  [ConfigurationPremiumCapacityId <String>]: The Microsoft Fabric premium capacity ID.
+  [ConfigurationTenantId <String>]: The Microsoft Fabric tenant ID.
+  [ConfigurationWorkspaceId <String>]: The Microsoft Fabric workspace ID.
+  [ConfigurationWorkspaceName <String>]: The Microsoft Fabric workspace name.
+  [ShortcutStatus <String>]: The current shortcut status. Only Pending can be supplied on create or update.
+  [ShortcutType <String>]: The type of the shortcut.
+.Link
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubfabricshortcut
+#>
+function New-AzEventHubFabricShortcut {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFabricShortcut])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFabricShortcut]
+    # A Microsoft Fabric shortcut attached to an Event Hub.
+    ${Resource},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubFabricShortcut_CreateViaIdentity';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubFabricShortcut_CreateViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create a new Alias(Disaster Recovery configuration)
 .Description
 Create a new Alias(Disaster Recovery configuration)
@@ -2774,6 +2979,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2954,6 +3160,7 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -2969,6 +3176,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -3247,6 +3455,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -3262,6 +3471,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -3499,6 +3709,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -3767,6 +3978,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -4200,6 +4412,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -4458,6 +4671,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -4473,6 +4687,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -4675,6 +4890,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -4690,6 +4906,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -4952,6 +5169,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -5108,6 +5326,196 @@ end {
 
 <#
 .Synopsis
+Create the upgrade preferences for an Event Hubs Dedicated cluster.
+.Description
+Create the upgrade preferences for an Event Hubs Dedicated cluster.
+.Example
+$maintenanceWindow1 = @{ DayOfWeek = 'Saturday'; StartTimeOfDay = 'PT2H'; DurationMinutes = 480 }
+$maintenanceWindow2 = @{ DayOfWeek = 'Sunday'; StartTimeOfDay = 'PT2H'; DurationMinutes = 480 }
+$exceptionWindow = @{ Action = 'Allow'; Date = '2026-08-22'; StartTimeOfDay = 'PT4H'; DurationMinutes = 480 }
+
+New-AzEventHubUpgradePreferencesOperation -ResourceGroupName contoso-rg -ClusterName contoso-cluster -MaintenanceWindow $maintenanceWindow1, $maintenanceWindow2 -ExceptionWindow $exceptionWindow
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IUpgradePreferences
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IUpgradePreferences
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+RESOURCE <IUpgradePreferences>: Upgrade preferences for an Event Hubs Dedicated cluster.
+  [ExceptionWindow <List<IExceptionWindow>>]: Date-specific exceptions to the recurring maintenance windows.
+    Action <String>: Whether the exception blocks or allows upgrades.
+    Date <DateTime>: The UTC date on which the exception starts.
+    DurationMinute <Int32>: The exception duration in minutes. Allow exceptions must be between 480 and 1440 minutes in 60-minute increments. Block exceptions must be 1440 minutes.
+    StartTimeOfDay <TimeSpan>: The UTC time of day at which the exception starts, represented as an ISO 8601 duration since midnight.
+  [MaintenanceWindow <List<IMaintenanceWindow>>]: Recurring weekly maintenance windows in UTC. At least one window must be supplied when preferences are created or updated. A maximum of two windows can be configured, and their combined duration must be at least 16 hours per week.
+    DayOfWeek <String>: The UTC day of the week on which the maintenance window starts.
+    DurationMinute <Int32>: The maintenance window duration in minutes. The value must be between 480 and 1440 in 60-minute increments.
+    StartTimeOfDay <TimeSpan>: The UTC time of day at which the maintenance window starts, represented as an ISO 8601 duration since midnight.
+.Link
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubupgradepreferencesoperation
+#>
+function New-AzEventHubUpgradePreferencesOperation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IUpgradePreferences])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IUpgradePreferences]
+    # Upgrade preferences for an Event Hubs Dedicated cluster.
+    ${Resource},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubUpgradePreferencesOperation_CreateViaIdentity';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubUpgradePreferencesOperation_CreateViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create a new Event Hub as a nested resource within a Namespace.
 .Description
 Create a new Event Hub as a nested resource within a Namespace.
@@ -5136,6 +5544,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -5335,6 +5744,7 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -5350,6 +5760,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -5365,6 +5776,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -5599,6 +6011,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -5614,6 +6027,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -6669,6 +7083,260 @@ begin {
             UpdateExpanded = 'Az.EventHub.private\Set-AzEventHubConsumerGroup_UpdateExpanded';
             UpdateViaJsonFilePath = 'Az.EventHub.private\Set-AzEventHubConsumerGroup_UpdateViaJsonFilePath';
             UpdateViaJsonString = 'Az.EventHub.private\Set-AzEventHubConsumerGroup_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a Microsoft Fabric shortcut.
+.Description
+Update a Microsoft Fabric shortcut.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFabricShortcut
+.Link
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubfabricshortcut
+#>
+function Set-AzEventHubFabricShortcut {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IFabricShortcut])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The Event Hub name
+    ${EventHubName},
+
+    [Parameter(Mandatory)]
+    [Alias('FabricShortcutName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The Microsoft Fabric shortcut name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The Namespace name
+    ${NamespaceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The Microsoft Fabric artifact ID.
+    ${ConfigurationArtifactId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The Microsoft Fabric artifact name.
+    ${ConfigurationArtifactName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The resource ID of the Log Analytics workspace.
+    ${ConfigurationLogAnalyticsResourceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The Microsoft Fabric premium capacity ID.
+    ${ConfigurationPremiumCapacityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The Microsoft Fabric tenant ID.
+    ${ConfigurationTenantId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The Microsoft Fabric workspace ID.
+    ${ConfigurationWorkspaceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The Microsoft Fabric workspace name.
+    ${ConfigurationWorkspaceName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Pending", "Approved", "Rejected")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The current shortcut status.
+    # Only Pending can be supplied on create or update.
+    ${ShortcutStatus},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Entity", "Network")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The type of the shortcut.
+    ${ShortcutType},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.EventHub.private\Set-AzEventHubFabricShortcut_UpdateExpanded';
+        UpdateViaJsonFilePath = 'Az.EventHub.private\Set-AzEventHubFabricShortcut_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.EventHub.private\Set-AzEventHubFabricShortcut_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.EventHub.private\Set-AzEventHubFabricShortcut_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.EventHub.private\Set-AzEventHubFabricShortcut_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.EventHub.private\Set-AzEventHubFabricShortcut_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
@@ -8225,6 +8893,221 @@ end {
 
 <#
 .Synopsis
+Update the upgrade preferences for an Event Hubs Dedicated cluster.
+.Description
+Update the upgrade preferences for an Event Hubs Dedicated cluster.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IUpgradePreferences
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+EXCEPTIONWINDOW <IExceptionWindow[]>: Date-specific exceptions to the recurring maintenance windows.
+  Action <String>: Whether the exception blocks or allows upgrades.
+  Date <DateTime>: The UTC date on which the exception starts.
+  DurationMinute <Int32>: The exception duration in minutes. Allow exceptions must be between 480 and 1440 minutes in 60-minute increments. Block exceptions must be 1440 minutes.
+  StartTimeOfDay <TimeSpan>: The UTC time of day at which the exception starts, represented as an ISO 8601 duration since midnight.
+
+MAINTENANCEWINDOW <IMaintenanceWindow[]>: Recurring weekly maintenance windows in UTC. At least one window must be supplied when preferences are created or updated. A maximum of two windows can be configured, and their combined duration must be at least 16 hours per week.
+  DayOfWeek <String>: The UTC day of the week on which the maintenance window starts.
+  DurationMinute <Int32>: The maintenance window duration in minutes. The value must be between 480 and 1440 in 60-minute increments.
+  StartTimeOfDay <TimeSpan>: The UTC time of day at which the maintenance window starts, represented as an ISO 8601 duration since midnight.
+.Link
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubupgradepreferencesoperation
+#>
+function Set-AzEventHubUpgradePreferencesOperation {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IUpgradePreferences])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The name of the Event Hubs Cluster.
+    ${ClusterName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IExceptionWindow[]]
+    # Date-specific exceptions to the recurring maintenance windows.
+    ${ExceptionWindow},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IMaintenanceWindow[]]
+    # Recurring weekly maintenance windows in UTC.
+    # At least one window must be supplied when preferences are created or updated.
+    # A maximum of two windows can be configured, and their combined duration must be at least 16 hours per week.
+    ${MaintenanceWindow},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.EventHub.private\Set-AzEventHubUpgradePreferencesOperation_UpdateExpanded';
+        UpdateViaJsonFilePath = 'Az.EventHub.private\Set-AzEventHubUpgradePreferencesOperation_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.EventHub.private\Set-AzEventHubUpgradePreferencesOperation_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.EventHub.private\Set-AzEventHubUpgradePreferencesOperation_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.EventHub.private\Set-AzEventHubUpgradePreferencesOperation_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.EventHub.private\Set-AzEventHubUpgradePreferencesOperation_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a new Event Hub as a nested resource within a Namespace.
 .Description
 Update a new Event Hub as a nested resource within a Namespace.
@@ -8601,6 +9484,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
