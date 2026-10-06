@@ -20,7 +20,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-EnableFipsCompliance] [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
@@ -41,7 +41,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-EnableFipsCompliance] [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
@@ -539,6 +539,21 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -UserAssignedIdentit
 
 This example demonstrates how to configure a virtual network gateway with a user-assigned managed identity. This uses the UserAssignedIdentityId parameter to create the managed identity object. User-assigned identities are useful for accessing Azure Key Vault certificates for gateway authentication.
 
+### Example 14: Enable and disable FIPS compliance for point-to-site VPN connections
+```powershell
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -EnableFipsCompliance
+$gateway.VpnClientConfiguration.EnableFipsCompliance
+
+$gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -EnableFipsCompliance:$false
+$gateway.VpnClientConfiguration.EnableFipsCompliance
+```
+
+The gateway must already have a point-to-site VPN client configuration, or the required point-to-site settings must be supplied with the update.
+The first update enables FIPS (Federal Information Processing Standards) compliance; the second explicitly disables it.
+Omitting the switch preserves the FIPS value in the input gateway object. VPN clients must use compatible cryptographic settings when FIPS is enabled.
+This parameter does not configure site-to-site connections.
+
 ## PARAMETERS
 
 ### -AadAudienceId
@@ -768,6 +783,23 @@ Accept wildcard characters: False
 
 ### -EnableActiveActiveFeature
 Flag to enable Active Active feature on virtual network gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFipsCompliance
+Enables FIPS (Federal Information Processing Standards) compliance for point-to-site VPN connections.
+Use `-EnableFipsCompliance:$false` to disable it. If omitted, the FIPS value in the input gateway object is preserved.
+Requires an existing VPN client configuration or point-to-site settings supplied with this update.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

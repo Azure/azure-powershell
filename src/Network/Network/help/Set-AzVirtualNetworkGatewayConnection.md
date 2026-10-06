@@ -17,7 +17,7 @@ Configures a virtual network gateway connection.
 ```
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
  [-EnableBgp <Boolean>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
- [-UsePolicyBasedTrafficSelectors <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
+ [-UsePolicyBasedTrafficSelectors <Boolean>] [-EnableFipsCompliance] [-UseLocalAzureIpAddress <Boolean>]
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-Force] [-AsJob]
@@ -31,7 +31,7 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
 ```
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
  [-EnableBgp <Boolean>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
- [-UsePolicyBasedTrafficSelectors <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
+ [-UsePolicyBasedTrafficSelectors <Boolean>] [-EnableFipsCompliance] [-UseLocalAzureIpAddress <Boolean>]
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] -Tag <Hashtable> [-Force] [-AsJob]
@@ -257,6 +257,25 @@ GatewayCustomBgpIpAddresses : []
 
 This will update gateway connection with removing these GatewayCustomBgpIpAddress.
 
+### Example 5: Enable FIPS compliance on an existing VPN connection
+```powershell
+$connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName "myResourceGroup" -Name "myConnection"
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -EnableFipsCompliance
+```
+
+This example enables Federal Information Processing Standards (FIPS) compliance on the connection.
+The VPN peer must use a compatible IPsec policy. Changing FIPS settings can interrupt connectivity.
+
+### Example 6: Explicitly disable FIPS compliance
+```powershell
+$connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName "myResourceGroup" -Name "myConnection"
+$connection | Set-AzVirtualNetworkGatewayConnection -EnableFipsCompliance:$false
+```
+
+This example explicitly disables FIPS compliance using pipeline input.
+Omitting the parameter instead preserves the input connection object's current FIPS value.
+Use a freshly retrieved connection when updating other settings to avoid sending stale configuration.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -407,6 +426,25 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableFipsCompliance
+Enables Federal Information Processing Standards (FIPS) compliance for this VPN connection.
+Specify `-EnableFipsCompliance:$false` to explicitly disable it.
+If omitted, the input connection object's `EnableFipsCompliance` value is preserved, including direct edits to that property.
+An unspecified value is not sent. This preserves the supplied object's value, not a separately refreshed service value.
+The setting is connection-level and does not change point-to-site settings on the referenced gateway.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable FIPS compliance for this VPN connection. Specify -EnableFipsCompliance:$false to disable it. If omitted, the input object's setting is preserved.")]
+        public SwitchParameter EnableFipsCompliance { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Whether to use PrivateIP for a S2S connection")]
         public bool? UseLocalAzureIpAddress { get; set; }
 
@@ -179,6 +184,11 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)
                     {
                         this.VirtualNetworkGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
+                    }
+
+                    if (this.MyInvocation.BoundParameters.ContainsKey(nameof(EnableFipsCompliance)))
+                    {
+                        this.VirtualNetworkGatewayConnection.EnableFipsCompliance = this.EnableFipsCompliance.IsPresent;
                     }
 
                     if (this.UseLocalAzureIpAddress.HasValue)

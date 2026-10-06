@@ -20,7 +20,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
  [-SharedKey <String>] [-Peer <PSPeering>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
- [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
+ [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-EnableFipsCompliance] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AuthenticationType <String>]
@@ -37,7 +37,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
  [-SharedKey <String>] [-PeerId <String>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
- [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
+ [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-EnableFipsCompliance] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
  [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-AuthenticationType <String>]
@@ -111,6 +111,20 @@ This example creates a new virtual network gateway connection with certificate-b
 The first two commands get the virtual network gateway and local network gateway.
 The New-AzVirtualNetworkGatewayCertificateAuthentication cmdlet creates the certificate authentication configuration with the Key Vault certificate URL for outbound authentication, the certificate subject name for inbound authentication, and the certificate chain.
 The final command creates the new connection with certificate-based authentication instead of a pre-shared key.
+
+### Example 5: Create a site-to-site VPN connection with FIPS compliance enabled
+```powershell
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myVnetGateway"
+$localGateway = Get-AzLocalNetworkGateway -ResourceGroupName "myResourceGroup" -Name "myLocalGateway"
+# Supply the pre-shared key agreed with the on-premises VPN administrator in $sharedKey.
+New-AzVirtualNetworkGatewayConnection -Name "myFipsConnection" -ResourceGroupName "myResourceGroup" `
+    -Location $gateway.Location -VirtualNetworkGateway1 $gateway -LocalNetworkGateway2 $localGateway `
+    -ConnectionType IPsec -ConnectionProtocol IKEv2 -SharedKey $sharedKey -EnableFipsCompliance
+```
+
+This example requests Federal Information Processing Standards (FIPS) compliance on the VPN connection.
+The setting is connection-level; it does not change point-to-site settings on the referenced gateway.
+The VPN peer must use a compatible IPsec policy. Changing FIPS settings can interrupt connectivity.
 
 ## PARAMETERS
 
@@ -309,6 +323,25 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableFipsCompliance
+Enables Federal Information Processing Standards (FIPS) compliance for this VPN connection.
+Specify `-EnableFipsCompliance:$false` to explicitly disable it.
+If omitted, the cmdlet does not send a FIPS setting; omission is not an explicit disable.
+The setting is returned in the connection object's `EnableFipsCompliance` property.
+It does not configure the remote VPN peer or the gateway's point-to-site VPN client configuration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

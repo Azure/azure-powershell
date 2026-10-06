@@ -21,6 +21,8 @@ Get-AzVirtualNetworkGateway [-Name <String>] -ResourceGroupName <String>
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
 The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in Azure based on Name and Resource Group Name.
+For point-to-site VPN, the `VpnClientConfiguration.EnableFipsCompliance` property reports the Federal Information Processing Standards (FIPS) setting returned by the service.
+If the service omits the property, its value is unspecified, not an explicit false.
 
 ## EXAMPLES
 
@@ -37,6 +39,15 @@ Get-AzVirtualNetworkGateway -Name myGateway* -ResourceGroupName myRG
 ```
 
 Returns all Virtual Network Gateways that start with "myGateway" within the resource group "myRG"
+
+### Example 3: Inspect the point-to-site FIPS setting
+```powershell
+$gateway = Get-AzVirtualNetworkGateway -Name "myGateway1" -ResourceGroupName "myRG"
+$gateway.VpnClientConfiguration.EnableFipsCompliance
+```
+
+This example reads the FIPS setting from an existing point-to-site configuration.
+The returned configuration alone does not verify that VPN clients negotiated FIPS-compliant algorithms.
 
 ## PARAMETERS
 
