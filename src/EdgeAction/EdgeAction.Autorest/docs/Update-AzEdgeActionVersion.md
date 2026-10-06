@@ -8,15 +8,17 @@ schema: 2.0.0
 # Update-AzEdgeActionVersion
 
 ## SYNOPSIS
-Update a EdgeActionVersion
+Validates an Edge Action version update request without changing the version.
+Version properties and tags are not updated.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityEdgeAction
@@ -28,14 +30,16 @@ Update-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version
 
 ### UpdateViaIdentityEdgeActionExpanded
 ```
-Update-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
+ [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DeploymentType <String>]
+ [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -53,13 +57,16 @@ Update-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Update a EdgeActionVersion
+Validates an Edge Action version update request without changing the version.
+Version properties and tags are not updated.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
 
 ## EXAMPLES
 
-### Example 1: Update an edge action version with tags
+### Example 1: Validate an edge action version without changing it
 ```powershell
-Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -Tag @{ Environment = "Production"; Team = "Platform" }
+$version = Get-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
+Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -DeploymentType $version.DeploymentType -IsDefaultVersion $version.IsDefaultVersion
 ```
 
 ```output
@@ -68,7 +75,9 @@ Name Location ProvisioningState
 v1   global   Succeeded
 ```
 
-Updates the specified edge action version with the provided tags.
+Validates the request using the version's existing values.
+The operation does not change version properties or tags.
+Use `Switch-AzEdgeActionVersionDefault` to change the default version.
 
 ## PARAMETERS
 
@@ -95,6 +104,23 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentType
+The deployment type.
+If supplied in a version PATCH request, it must match the existing value.
+Version PATCH validates the request without changing the version.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -148,6 +174,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IsDefaultVersion
+Indicates whether this is the default version.
+If supplied in a version PATCH request, it must match the existing value.
+Use swapDefault to change the default version.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Update operation
 
@@ -194,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Concrete tracked resource types can be created by aliasing this type using a specific property type.
+The type used for update operations of the EdgeActionVersion.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate

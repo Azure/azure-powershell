@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>
-    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
-    /// </summary>
+    /// <summary>The type used for update operations of the EdgeAction.</summary>
     public partial class EdgeActionUpdate
     {
 
@@ -67,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 return;
             }
-            __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate(json);
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.SkuTypeUpdate.FromJson(__jsonSku) : _sku;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.Any.FromJson(__jsonProperties) : _property;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdateTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 
@@ -104,12 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 return container;
             }
-            __azureResourceManagerCommonTypesTrackedResourceUpdate?.ToJson(container, serializationMode);
             AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            }
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

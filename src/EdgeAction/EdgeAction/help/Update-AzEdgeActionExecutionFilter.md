@@ -15,8 +15,10 @@ Update a EdgeActionExecutionFilter
 ### UpdateExpanded (Default)
 ```
 Update-AzEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ExecutionFilterIdentifierHeaderName <String>]
+ [-ExecutionFilterIdentifierHeaderValue <String>] [-Tag <Hashtable>] [-VersionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -36,7 +38,8 @@ Update-AzEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <St
 ### UpdateViaIdentityEdgeActionExpanded
 ```
 Update-AzEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <IEdgeActionIdentity>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
+ [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,9 +52,10 @@ Update-AzEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObj
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeActionExecutionFilter -InputObject <IEdgeActionIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzEdgeActionExecutionFilter -InputObject <IEdgeActionIdentity>
+ [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
+ [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,6 +154,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExecutionFilterIdentifierHeaderName
+Custom Header Key associated with the execution filter
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionFilterIdentifierHeaderValue
+Custom Header Value associated with the execution filter
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -211,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Concrete tracked resource types can be created by aliasing this type using a specific property type.
+The type used for update operations of the EdgeActionExecutionFilter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate
@@ -262,6 +296,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VersionId
+The referenced versionId of the edgeaction version
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
 Aliases:
 

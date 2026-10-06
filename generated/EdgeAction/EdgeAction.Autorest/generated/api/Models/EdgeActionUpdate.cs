@@ -7,62 +7,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>
-    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
-    /// </summary>
+    /// <summary>The type used for update operations of the EdgeAction.</summary>
     public partial class EdgeActionUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate();
-
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdate Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.SkuTypeUpdate()); set { {_sku = value;} } }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id = value ?? null; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType = value ?? null; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type = value ?? null; }
-
-        /// <summary>The name of the resource</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny _property;
@@ -74,7 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdate _sku;
 
-        /// <summary>The sku type of the edge action</summary>
+        /// <summary>
+        /// The SKU of the Edge Action. Do not include sku in PATCH requests; any supplied sku, including null or the existing value,
+        /// is rejected.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdate Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.SkuTypeUpdate()); set => this._sku = value; }
 
@@ -86,75 +41,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inlined)]
         public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdateInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdateInternal)Sku).Tier = value ?? null; }
 
-        /// <summary>
-        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        internal Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
-
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; }
-
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; }
-
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; }
-
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; }
-
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.DoNotFormat]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; }
-
-        /// <summary>Resource tags.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag = value ?? null /* model class */; }
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags _tag;
 
         /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and null tags are
+        /// rejected.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; }
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdateTags()); set => this._tag = value; }
 
         /// <summary>Creates an new <see cref="EdgeActionUpdate" /> instance.</summary>
         public EdgeActionUpdate()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
-            await eventListener.AssertObjectIsValid(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
-        }
     }
-    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    /// The type used for update operations of the EdgeAction.
     public partial interface IEdgeActionUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable
     {
         /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
@@ -162,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The resource-specific properties for this resource.",
         SerializedName = @"properties",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny) })]
@@ -189,20 +94,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         string SkuTier { get; set; }
+        /// <summary>
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and null tags are
+        /// rejected.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and null tags are rejected.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags Tag { get; set; }
 
     }
-    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
-    internal partial interface IEdgeActionUpdateInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal
+    /// The type used for update operations of the EdgeAction.
+    internal partial interface IEdgeActionUpdateInternal
+
     {
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny Property { get; set; }
-        /// <summary>The sku type of the edge action</summary>
+        /// <summary>
+        /// The SKU of the Edge Action. Do not include sku in PATCH requests; any supplied sku, including null or the existing value,
+        /// is rejected.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdate Sku { get; set; }
         /// <summary>The name of the SKU</summary>
         string SkuName { get; set; }
         /// <summary>The tier of the SKU</summary>
         string SkuTier { get; set; }
+        /// <summary>
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and null tags are
+        /// rejected.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags Tag { get; set; }
 
     }
 }

@@ -49,11 +49,11 @@ INPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
-PROPERTY <IEdgeActionExecutionFilterUpdate>: Concrete tracked resource types can be created by aliasing this type using a specific property type.
-  [Tag <IAzureResourceManagerCommonTypesTrackedResourceUpdateTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
+PROPERTY <IEdgeActionExecutionFilterUpdate>: The type used for update operations of the EdgeActionExecutionFilter.
   [ExecutionFilterIdentifierHeaderName <String>]: Custom Header Key associated with the execution filter
   [ExecutionFilterIdentifierHeaderValue <String>]: Custom Header Value associated with the execution filter
+  [Tag <IEdgeActionExecutionFilterUpdateTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
   [VersionId <String>]: The referenced versionId of the edgeaction version
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/update-azedgeactionexecutionfilter
@@ -116,15 +116,39 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags]))]
+    [System.String]
+    # Custom Header Key associated with the execution filter
+    ${ExecutionFilterIdentifierHeaderName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
+    [System.String]
+    # Custom Header Value associated with the execution filter
+    ${ExecutionFilterIdentifierHeaderValue},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
+    [System.String]
+    # The referenced versionId of the edgeaction version
+    ${VersionId},
+
     [Parameter(ParameterSetName='UpdateViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate]
-    # Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    # The type used for update operations of the EdgeActionExecutionFilter.
     ${Property},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"create a EdgeActionVersion")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2026-10-01")]
     public partial class NewAzEdgeActionVersion_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -71,13 +71,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>The deployment type</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The deployment type")]
+        /// <summary>
+        /// The deployment type. If supplied in a version PATCH request, it must match the existing value. Version PATCH validates
+        /// the request without changing the version.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The deployment type. If supplied in a version PATCH request, it must match the existing value. Version PATCH validates the request without changing the version.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The deployment type",
+        Description = @"The deployment type. If supplied in a version PATCH request, it must match the existing value. Version PATCH validates the request without changing the version.",
         SerializedName = @"deploymentType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
@@ -115,13 +118,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The active state</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The active state")]
+        /// <summary>
+        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
+        /// Use swapDefault to change the default version.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The active state",
+        Description = @"Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.",
         SerializedName = @"isDefaultVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]

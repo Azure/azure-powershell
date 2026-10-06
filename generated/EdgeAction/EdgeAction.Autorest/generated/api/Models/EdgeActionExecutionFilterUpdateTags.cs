@@ -8,28 +8,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
     /// <summary>Resource tags.</summary>
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags :
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTagsInternal
+    public partial class EdgeActionExecutionFilterUpdateTags :
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags,
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTagsInternal
     {
 
-        /// <summary>
-        /// Creates an new <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" /> instance.
-        /// </summary>
-        public AzureResourceManagerCommonTypesTrackedResourceUpdateTags()
+        /// <summary>Creates an new <see cref="EdgeActionExecutionFilterUpdateTags" /> instance.</summary>
+        public EdgeActionExecutionFilterUpdateTags()
         {
 
         }
     }
     /// Resource tags.
-    public partial interface IAzureResourceManagerCommonTypesTrackedResourceUpdateTags :
+    public partial interface IEdgeActionExecutionFilterUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IAssociativeArray<string>
     {
 
     }
     /// Resource tags.
-    internal partial interface IAzureResourceManagerCommonTypesTrackedResourceUpdateTagsInternal
+    internal partial interface IEdgeActionExecutionFilterUpdateTagsInternal
 
     {
 
