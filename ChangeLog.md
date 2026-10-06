@@ -77,6 +77,9 @@
 * Removed client-side validation of the '-FormatVersion' parameter for 'New-AzNetworkWatcherFlowLog' and 'Set-AzNetworkWatcherFlowLog'.
 * Added Change Safety support for additional cmdlets.
 * Added the 'CAPTCHA' action to Application Gateway WAF policies.
+* Added provider-led ExpressRoute cross-connection migration commands, typed health results, and a port-mapping helper. Migration actions support confirmation, WhatIf, and background jobs.
+    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
+    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 
 #### Az.RecoveryServices 7.15.0
 * Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated 'listInstantItemRecoveryOperationResult' action (api-version '2026-08-01'); 'Get-AzRecoveryServicesBackupRPMountScript' no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
@@ -115,12 +118,6 @@
 
 #### Az.Websites 4.2.0
 * Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.
-
-## Upcoming Release
-#### Az.Network
-* Added provider-led ExpressRoute cross-connection migration commands, typed health results, and a port-mapping helper. Migration actions support confirmation, WhatIf, and background jobs.
-    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
-    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 
 ## 16.3.0 - September 2026
 #### Az.Accounts 5.5.3
