@@ -82,7 +82,17 @@ jobs:
           languages: csharp
 
       - name: Build
-        run: dotnet msbuild build.proj /p:TargetModule="${{ matrix.shard.modules }}"
+        # NOTE: build.proj's default "Build" target ignores TargetModule (always builds every
+        # module), and its "BuildNormalModules" target forwards -CoreTests/-RepoArtifacts
+        # parameters that BuildModules.ps1 doesn't define, so neither can be used here. Call
+        # BuildModules.ps1 directly instead, splitting the colon-delimited shard value into a
+        # real array so -TargetModule binds to individual module names rather than one string.
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          $modules = "${{ matrix.shard.modules }}" -split ':'
+          ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug -TargetModule $modules
 
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3

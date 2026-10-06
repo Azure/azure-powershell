@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.3.0'
+ModuleVersion = '4.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -148,10 +148,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added parameters ''GeoDataReplicationMaxReplicationLagDurationInSecond'', ''GeoDataReplicationLocation'', and ''IPAddressType'' to cmdlets ''New-AzServiceBusNamespace'' and ''Set-AzServiceBusNamespace''
-* Added new cmdlets for doing namespace failover - ''Start-AzServiceBusNamespaceFailOver''
-* Added new cmdlets for generating replication object for Replication parameter - ''New-AzServiceBusLocationsNameObject''
-* Added new cmdlets ''Get-AzServiceBusNetworkSecurityPerimeterConfiguration'', ''Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation'''
+        ReleaseNotes = '* Added Change Safety support for additional cmdlets.
+* Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.'
 
         # Prerelease string of this module
         # Prerelease = ''
