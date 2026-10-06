@@ -77,9 +77,6 @@
 * Removed client-side validation of the '-FormatVersion' parameter for 'New-AzNetworkWatcherFlowLog' and 'Set-AzNetworkWatcherFlowLog'.
 * Added Change Safety support for additional cmdlets.
 * Added the 'CAPTCHA' action to Application Gateway WAF policies.
-* Added provider-led ExpressRoute cross-connection migration commands, typed health results, and a port-mapping helper. Migration actions support confirmation, WhatIf, and background jobs.
-    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
-    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 
 #### Az.RecoveryServices 7.15.0
 * Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated 'listInstantItemRecoveryOperationResult' action (api-version '2026-08-01'); 'Get-AzRecoveryServicesBackupRPMountScript' no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
