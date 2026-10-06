@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Management.TrafficManager
     public static partial class GeographicHierarchiesOperationsExtensions
     {
         /// <summary>
-        /// Gets the default Geographic Hierarchy used by the Geographic traffic
-        /// routing method.
+        /// Gets the default Geographic Hierarchy used by the Geographic traffic routing method.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -25,8 +24,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         }
 
         /// <summary>
-        /// Gets the default Geographic Hierarchy used by the Geographic traffic
-        /// routing method.
+        /// Gets the default Geographic Hierarchy used by the Geographic traffic routing method.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

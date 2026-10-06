@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.6.0'
+ModuleVersion = '5.7.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -148,7 +148,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added parameter ''IPAddressType'' to cmdlets ''New-AzEventHubNamespace'' and ''Set-AzEventHubNamespace'''
+        ReleaseNotes = '* Added Change Safety support for additional cmdlets.
+* Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.'
 
         # Prerelease string of this module
         # Prerelease = ''
