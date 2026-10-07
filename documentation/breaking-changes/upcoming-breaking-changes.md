@@ -9,17 +9,22 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
-### Azure Front Door Standard and Premium URL signing
+### CDN and Azure Front Door URL signing
 
-Azure Front Door Standard and Premium URL signing support is planned for removal
-in Az.Cdn 7.0.0 and Az 17.0.0, with a planned effective date of November 15, 2026.
-This is a documentation-only advance announcement; the affected functionality
-remains available in the current release. No cmdlet attributes or runtime
-warnings are added by this announcement.
+URL signing support is planned for removal from Az.Cdn 7.0.0 and Az 17.0.0,
+with a planned effective date of November 15, 2026. This is a
+documentation-only advance announcement; the affected functionality remains
+available in the current release. No cmdlet attributes or runtime warnings are
+added by this announcement.
 
-The following URL signing key object cmdlet is planned for removal:
+The following object-construction cmdlets are planned for removal:
 
+- `New-AzCdnUrlSigningActionObject`
+- `New-AzFrontDoorCdnRuleUrlSigningActionObject`
 - `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject`
+
+The `-UrlSigningKey` parameter is planned for removal from
+`New-AzCdnEndpoint` and `Update-AzCdnEndpoint`.
 
 The `-Parameter` parameter of `New-AzFrontDoorCdnSecret` and
 `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters.
@@ -28,20 +33,19 @@ The `-Action` parameter of `New-AzFrontDoorCdnRule` and
 `AfdUrlSigning` action model that references a Key Group. Az.Cdn does not
 currently provide a dedicated object-construction cmdlet for that action model.
 
-This change corresponds to the planned removal of the URL signing key secret
-type, Key Group resources, and the Azure Front Door URL signing rule action from
-the CDN/AFD stable API version `2026-10-01`. Key Group resource cmdlets are
-already hidden and are not part of the public Az.Cdn command surface. There is
-no replacement PowerShell cmdlet because Azure Front Door Standard and Premium
-URL signing is being removed from the service contract.
+This change removes the complete public URL signing surface exported by
+Az.Cdn 6.2.0. The two URL signing action object cmdlets construct the legacy
+endpoint URL signing model; despite its name,
+`New-AzFrontDoorCdnRuleUrlSigningActionObject` does not construct the Azure
+Front Door Key Group action model. They are included to remove the remaining
+legacy URL signing surface together with the Azure Front Door URL signing key
+secret type, Key Group resources, and `AfdUrlSigning` rule action planned for
+removal from the CDN/AFD stable API version `2026-10-01`.
 
-Legacy private-preview Classic CDN URL signing schemas are outside the scope of
-this announcement. The similarly named `New-AzCdnUrlSigningActionObject`,
-`New-AzFrontDoorCdnRuleUrlSigningActionObject`, and the `-UrlSigningKey`
-parameter of `New-AzCdnEndpoint` and `Update-AzCdnEndpoint` are generated from
-the older endpoint URL signing model. They do not represent the Azure Front Door
-Key Group rule action, and this announcement makes no decision about their
-removal.
+Key Group resource cmdlets are already hidden and are not part of the public
+Az.Cdn command surface, so there are no Key Group CRUD cmdlets to remove. There
+is no replacement PowerShell cmdlet because URL signing is being removed from
+the service contract.
 
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
