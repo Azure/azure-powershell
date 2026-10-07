@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 
+* Documented the planned removal of Azure Front Door Standard and Premium URL signing support in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement does not change cmdlet behavior or add runtime warnings; Classic CDN URL signing is not affected.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
 * Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
 * Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
