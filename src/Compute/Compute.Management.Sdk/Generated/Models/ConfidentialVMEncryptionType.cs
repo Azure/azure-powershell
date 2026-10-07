@@ -17,5 +17,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         public const string EncryptedWithPmk = "EncryptedWithPmk";
         public const string EncryptedWithCmk = "EncryptedWithCmk";
         public const string NonPersistedTPM = "NonPersistedTPM";
+        /// <summary>
+        /// Confidential VM Encryption Type which should be used for encrypting the
+        /// data disks with customer managed keys. This Encryption type should only be
+        /// used for data disks, and should not be used for OS disk encryption. When
+        /// this encryption type is used for data disk encryption.Subscriptions need to
+        /// be enrolled for Confidential VM with data encryption through following AFEC
+        /// - Microsoft.Compute/ConfidentialVMDataDiskEncryptionPreview
+        /// </summary>
+        public const string DataDiskEncryptedWithCmk = "DataDiskEncryptedWithCmk";
     }
 }

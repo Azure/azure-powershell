@@ -27,10 +27,23 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="isSoftDeleteEnabled">Enables soft-deletion for resources in this gallery, allowing them to be
         /// recovered within retention time.
         /// </param>
-        public SoftDeletePolicy(bool? isSoftDeleteEnabled = default(bool?))
+
+        /// <param name="retentionPeriodInDays">The retention period in days for a soft-deleted resource. After this period
+        /// elapses, the soft-deleted gallery image version transitions to a simulated
+        /// hard-deleted state.
+        /// </param>
+
+        /// <param name="gracePeriodInDays">The grace period in days for a simulated hard-deleted resource. During this
+        /// period the gallery image version is unusable but can still be recovered if
+        /// required. After this period elapses, the gallery image version is
+        /// permanently (hard) deleted.
+        /// </param>
+        public SoftDeletePolicy(bool? isSoftDeleteEnabled = default(bool?), int? retentionPeriodInDays = default(int?), int? gracePeriodInDays = default(int?))
 
         {
             this.IsSoftDeleteEnabled = isSoftDeleteEnabled;
+            this.RetentionPeriodInDays = retentionPeriodInDays;
+            this.GracePeriodInDays = gracePeriodInDays;
             CustomInit();
         }
 
@@ -46,5 +59,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isSoftDeleteEnabled")]
         public bool? IsSoftDeleteEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets the retention period in days for a soft-deleted resource.
+        /// After this period elapses, the soft-deleted gallery image version
+        /// transitions to a simulated hard-deleted state.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "retentionPeriodInDays")]
+        public int? RetentionPeriodInDays {get; set; }
+
+        /// <summary>
+        /// Gets or sets the grace period in days for a simulated hard-deleted
+        /// resource. During this period the gallery image version is unusable but can
+        /// still be recovered if required. After this period elapses, the gallery
+        /// image version is permanently (hard) deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gracePeriodInDays")]
+        public int? GracePeriodInDays {get; set; }
     }
 }

@@ -67,7 +67,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="restore">Indicates if this is a soft-delete resource restoration request.
         /// </param>
-        public GalleryImageVersion(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ReplicationStatus replicationStatus = default(ReplicationStatus), ValidationsProfile validationsProfile = default(ValidationsProfile), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionStorageProfile storageProfile = default(GalleryImageVersionStorageProfile), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?))
+
+        /// <param name="imageMetadataProfiles">The image metadata profiles associated with the gallery image version.
+        /// </param>
+        public GalleryImageVersion(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ReplicationStatus replicationStatus = default(ReplicationStatus), ValidationsProfile validationsProfile = default(ValidationsProfile), GalleryImageVersionPublishingProfile publishingProfile = default(GalleryImageVersionPublishingProfile), string provisioningState = default(string), GalleryImageVersionStorageProfile storageProfile = default(GalleryImageVersionStorageProfile), GalleryImageVersionSafetyProfile safetyProfile = default(GalleryImageVersionSafetyProfile), ImageVersionSecurityProfile securityProfile = default(ImageVersionSecurityProfile), bool? restore = default(bool?), System.Collections.Generic.IList<ImageMetadataProfile> imageMetadataProfiles = default(System.Collections.Generic.IList<ImageMetadataProfile>))
 
         : base(location, id, name, type, tags)
         {
@@ -79,6 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.SafetyProfile = safetyProfile;
             this.SecurityProfile = securityProfile;
             this.Restore = restore;
+            this.ImageMetadataProfiles = imageMetadataProfiles;
             CustomInit();
         }
 
@@ -136,6 +140,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.restore")]
         public bool? Restore {get; set; }
+
+        /// <summary>
+        /// Gets the image metadata profiles associated with the gallery image version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.imageMetadataProfiles")]
+        public System.Collections.Generic.IList<ImageMetadataProfile> ImageMetadataProfiles {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -152,6 +162,16 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
 
+            if (this.ImageMetadataProfiles != null)
+            {
+                foreach (var element in this.ImageMetadataProfiles)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

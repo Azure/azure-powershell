@@ -8,20 +8,20 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Contains security profile for an OS disk image.
+    /// Contains security profile for a DataDisk image.
     /// </summary>
-    public partial class OSDiskImageSecurityProfile
+    public partial class DataDiskImageSecurityProfile
     {
         /// <summary>
-        /// Initializes a new instance of the OSDiskImageSecurityProfile class.
+        /// Initializes a new instance of the DataDiskImageSecurityProfile class.
         /// </summary>
-        public OSDiskImageSecurityProfile()
+        public DataDiskImageSecurityProfile()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OSDiskImageSecurityProfile class.
+        /// Initializes a new instance of the DataDiskImageSecurityProfile class.
         /// </summary>
 
         /// <param name="confidentialVMEncryptionType">confidential VM encryption types
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="secureVMDiskEncryptionSetId">secure VM disk encryption set id
         /// </param>
-        public OSDiskImageSecurityProfile(string confidentialVMEncryptionType = default(string), string secureVMDiskEncryptionSetId = default(string))
+        public DataDiskImageSecurityProfile(string confidentialVMEncryptionType = default(string), string secureVMDiskEncryptionSetId = default(string))
 
         {
             this.ConfidentialVMEncryptionType = confidentialVMEncryptionType;
