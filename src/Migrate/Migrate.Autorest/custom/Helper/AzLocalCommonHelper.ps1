@@ -654,3 +654,92 @@ function Get-AzMigrateSourceSecureBootState {
 
     return [bool]$properties.secureBootEnabled
 }
+
+function Resolve-AzMigrateTargetSecurityOption {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        # 'Create' leaves the target inheriting the source unless Secure Boot is explicitly chosen.
+        # 'Update' always sends a value, matching how the portal rewrites the field on edit.
+        [Parameter(Mandatory)]
+        [ValidateSet('Create', 'Update')]
+        [string]
+        ${Mode},
+
+        [Parameter()]
+        [string]
+        ${HyperVGeneration},
+
+        [Parameter()]
+        [bool]
+        ${HasTargetVMSecurityOption},
+
+        [Parameter()]
+        [string]
+        ${TargetVMSecurityOption},
+
+        [Parameter()]
+        [bool]
+        ${HasEnableSecureBoot},
+
+        [Parameter()]
+        [bool]
+        ${SecureBootEnabled}
+    )
+
+    # Returns a decision rather than throwing so New- and Set- keep their own error wording, and so
+    # the Secure Boot downgrade check stays out of this function and remains network free.
+    $decision = [PSCustomObject]@{
+        SecurityOption         = $null
+        Gen2Required           = $false
+        VerifySourceSecureBoot = $false
+    }
+
+    if (-not ($HasTargetVMSecurityOption -or $HasEnableSecureBoot)) {
+        return $decision
+    }
+
+    $securityType = if ($HasTargetVMSecurityOption) { $TargetVMSecurityOption } else { $TargetVMSecurityTypes.Standard }
+    $isTrustedLaunch = $securityType -eq $TargetVMSecurityTypes.TrustedLaunch
+
+    if ($Mode -eq 'Create') {
+        $enabled = if ($isTrustedLaunch) { $true } elseif ($HasEnableSecureBoot) { $SecureBootEnabled } else { $false }
+
+        if ($HyperVGeneration -eq "1" -and ($isTrustedLaunch -or $enabled)) {
+            $decision.Gen2Required = $true
+            return $decision
+        }
+
+        # '-TargetVMSecurityOption Standard' on its own is not a choice about Secure Boot, so the
+        # target keeps inheriting the source and no securityOption is sent.
+        if ($isTrustedLaunch) {
+            $decision.SecurityOption = $SecurityOptions.TrustedLaunch
+        }
+        elseif ($HasEnableSecureBoot) {
+            $decision.VerifySourceSecureBoot = (-not $enabled) -and $HyperVGeneration -eq "2"
+            $decision.SecurityOption = if ($enabled) { $SecurityOptions.SecureBootEnabled } else { $SecurityOptions.None }
+        }
+
+        return $decision
+    }
+
+    $enabled = if ($isTrustedLaunch -or -not $HasEnableSecureBoot) { $true } else { $SecureBootEnabled }
+
+    if ($HyperVGeneration -eq "1") {
+        # Only an explicit request is an error. The inherit-Secure-Boot default above is a Gen 2
+        # convention, so on Gen 1 it resolves to None instead of being rejected.
+        if ($isTrustedLaunch -or ($HasEnableSecureBoot -and $enabled)) {
+            $decision.Gen2Required = $true
+            return $decision
+        }
+
+        $enabled = $false
+    }
+
+    $decision.VerifySourceSecureBoot = (-not $enabled) -and $HyperVGeneration -eq "2"
+    $decision.SecurityOption =
+        if ($isTrustedLaunch) { $SecurityOptions.TrustedLaunch }
+        elseif ($enabled) { $SecurityOptions.SecureBootEnabled }
+        else { $SecurityOptions.None }
+
+    return $decision
+}

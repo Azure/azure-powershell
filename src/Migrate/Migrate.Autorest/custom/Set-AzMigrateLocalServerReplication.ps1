@@ -241,36 +241,27 @@ function Set-AzMigrateLocalServerReplication {
 
         # Gen 1 target VMs do not support Secure Boot or vTPM; fail before the service round-trip.
         if ($HasTargetVMSecurityOption -or $HasEnableSecureBoot) {
-            $securityType = if ($HasTargetVMSecurityOption) { $TargetVMSecurityOption } else { $TargetVMSecurityTypes.Standard }
+            $securityDecision = Resolve-AzMigrateTargetSecurityOption `
+                -Mode 'Update' `
+                -HyperVGeneration $customProperties.HyperVGeneration `
+                -HasTargetVMSecurityOption $HasTargetVMSecurityOption `
+                -TargetVMSecurityOption $TargetVMSecurityOption `
+                -HasEnableSecureBoot $HasEnableSecureBoot `
+                -SecureBootEnabled ([bool]$secureBootEnabled)
 
-            # Trusted Launch always includes Secure Boot; moving to Standard drops vTPM but keeps it, matching the portal.
-            if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or -not $HasEnableSecureBoot) {
-                $secureBootEnabled = $true
+            if ($securityDecision.Gen2Required) {
+                throw "Secure Boot and Trusted Launch require a Generation 2 (EFI) target VM. Protected item '$TargetObjectID' has a Generation 1 (BIOS) target VM."
             }
 
-            if ($customProperties.HyperVGeneration -eq "1") {
-                # Only an explicit request is an error. The inherit-Secure-Boot default above is a
-                # Gen 2 convention, so on Gen 1 it resolves to None instead of being rejected.
-                if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch -or ($HasEnableSecureBoot -and $secureBootEnabled)) {
-                    throw "Secure Boot and Trusted Launch require a Generation 2 (EFI) target VM. Protected item '$TargetObjectID' has a Generation 1 (BIOS) target VM."
-                }
-
-                $secureBootEnabled = $false
+            # The service rejects turning Secure Boot off for a Gen 2 source that has it on.
+            if ($securityDecision.VerifySourceSecureBoot -and
+                $true -eq (Get-AzMigrateSourceSecureBootState -MachineId $customProperties.FabricDiscoveryMachineId)) {
+                # For VMware sources $MachineName is an opaque id, so report the discovered name.
+                $sourceName = if ([string]::IsNullOrEmpty($customProperties.SourceVMName)) { $MachineName } else { $customProperties.SourceVMName }
+                throw "Source server '$sourceName' has Secure Boot enabled, so it cannot be migrated with -EnableSecureBoot 'false'. Omit -EnableSecureBoot to keep Secure Boot enabled on the target VM, or disable Secure Boot on the source server first."
             }
 
-            if (-not $secureBootEnabled -and $customProperties.HyperVGeneration -eq "2") {
-                # The service rejects turning Secure Boot off for a Gen 2 source that has it on.
-                if ($true -eq (Get-AzMigrateSourceSecureBootState -MachineId $customProperties.FabricDiscoveryMachineId)) {
-                    # For VMware sources $MachineName is an opaque id, so report the discovered name.
-                    $sourceName = if ([string]::IsNullOrEmpty($customProperties.SourceVMName)) { $MachineName } else { $customProperties.SourceVMName }
-                    throw "Source server '$sourceName' has Secure Boot enabled, so it cannot be migrated with -EnableSecureBoot 'false'. Omit -EnableSecureBoot to keep Secure Boot enabled on the target VM, or disable Secure Boot on the source server first."
-                }
-            }
-
-            $customPropertiesUpdate.SecurityOption =
-                if ($securityType -eq $TargetVMSecurityTypes.TrustedLaunch) { $SecurityOptions.TrustedLaunch }
-                elseif ($secureBootEnabled) { $SecurityOptions.SecureBootEnabled }
-                else { $SecurityOptions.None }
+            $customPropertiesUpdate.SecurityOption = $securityDecision.SecurityOption
         }
 
         # Update target CPU core
