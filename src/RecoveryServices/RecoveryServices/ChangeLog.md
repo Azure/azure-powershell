@@ -19,11 +19,15 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.15.0
+* Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listInstantItemRecoveryOperationResult` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
+* Added Managed Identity (MI) based authentication support for Azure File Share backup:
+    - Supports identity-based registration and restore for Azure File Share backup, including Cross Subscription Restore.
 * Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
+* Fixed cross-subscription Azure VM protection for virtual machines with user-assigned managed identities.
 * Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
-    - Added support in `Update-AzRecoveryServicesVault -SourceScanState` to enable or disable vault-level Source Scan.
-    - Added support in `Set-AzRecoveryServicesBackupItemSourceScanConfiguration`, or its `Set-AzRecoveryServicesBISourceScanConfiguration` alias, to enable or disable Source Scan for a protected item.
-    - Added Source Scan and threat details to backup item and recovery point output.
+    - Supports vault and protected-item configuration and exposes Source Scan and threat details in backup output.
 
 ## Version 7.14.1
 * Added Cross Region Restore for Azure File Share backups through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.
@@ -47,6 +51,7 @@
 ## Version 7.13.0
 * Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
 * Added Cross region restore support for Delos cloud regions
+* Added Cross region restore support for USSec cloud - USSec West Central region
 * Updated Az.RecoveryServices.SiteRecovery to use API version 2026-02-01.
 * Added Private Disk Access support for Azure-to-Azure managed disk replication: new `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` parameters on `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig`; values are honored by `New-AzRecoveryServicesAsrReplicationProtectedItem` and surfaced on `ASRAzureToAzureProtectedDiskDetails`.
 

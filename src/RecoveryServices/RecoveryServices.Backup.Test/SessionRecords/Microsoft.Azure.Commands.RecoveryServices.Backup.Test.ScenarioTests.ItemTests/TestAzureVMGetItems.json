@@ -151,8 +151,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupconfig/vaultconfig?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupconfig/vaultconfig?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -226,8 +226,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupconfig/vaultconfig?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupconfig/vaultconfig?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "Accept-Language": [
@@ -307,8 +307,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQb2xpY2llcy9EZWZhdWx0UG9saWN5P2FwaS12ZXJzaW9uPTIwMjYtMDctMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQb2xpY2llcy9EZWZhdWx0UG9saWN5P2FwaS12ZXJzaW9uPTIwMjYtMDgtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -382,8 +382,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectionContainers?api-version=2026-07-01&$filter=friendlyName%20eq%20%27pstest-ccy-vm%27%20and%20backupManagementType%20eq%20%27AzureIaasVM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9ZnJpZW5kbHlOYW1lJTIwZXElMjAlMjdwc3Rlc3QtY2N5LXZtJTI3JTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectionContainers?api-version=2026-08-01&$filter=friendlyName%20eq%20%27pstest-ccy-vm%27%20and%20backupManagementType%20eq%20%27AzureIaasVM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9ZnJpZW5kbHlOYW1lJTIwZXElMjAlMjdwc3Rlc3QtY2N5LXZtJTI3JTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -448,8 +448,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -523,8 +523,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -598,8 +598,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -673,8 +673,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -748,8 +748,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -823,8 +823,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -898,8 +898,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -964,8 +964,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1030,8 +1030,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-07-01&$filter=expand%20eq%20%27extendedinfo%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-08-01&$filter=expand%20eq%20%27extendedinfo%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1105,8 +1105,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-07-01&$filter=expand%20eq%20%27extendedinfo%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-08-01&$filter=expand%20eq%20%27extendedinfo%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1180,8 +1180,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-07-01&$filter=expand%20eq%20%27extendedinfo%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-08-01&$filter=expand%20eq%20%27extendedinfo%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1255,8 +1255,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-07-01&$filter=expand%20eq%20%27extendedinfo%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDctMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm/protectedItems/VM%3Biaasvmcontainerv2%3Bhiagarg%3Bpstest-ccy-vm?api-version=2026-08-01&$filter=expand%20eq%20%27extendedinfo%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBGYWJyaWNzL0F6dXJlL3Byb3RlY3Rpb25Db250YWluZXJzL0lhYXNWTUNvbnRhaW5lciUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCaGlhZ2FyZyUzQnBzdGVzdC1jY3ktdm0vcHJvdGVjdGVkSXRlbXMvVk0lM0JpYWFzdm1jb250YWluZXJ2MiUzQmhpYWdhcmclM0Jwc3Rlc3QtY2N5LXZtP2FwaS12ZXJzaW9uPTIwMjYtMDgtMDEmJGZpbHRlcj1leHBhbmQlMjBlcSUyMCUyN2V4dGVuZGVkaW5mbyUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1330,8 +1330,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27%20and%20policyName%20eq%20%27DefaultPolicy%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA3LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3JTIwYW5kJTIwcG9saWN5TmFtZSUyMGVxJTIwJTI3RGVmYXVsdFBvbGljeSUyNw==",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27%20and%20policyName%20eq%20%27DefaultPolicy%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdC9iYWNrdXBQcm90ZWN0ZWRJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTA4LTAxJiRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3JTIwYW5kJTIwaXRlbVR5cGUlMjBlcSUyMCUyN1ZNJTI3JTIwYW5kJTIwcG9saWN5TmFtZSUyMGVxJTIwJTI3RGVmYXVsdFBvbGljeSUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [

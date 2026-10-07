@@ -212,6 +212,38 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Fail = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_Fail';
+        FailExpanded = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailExpanded';
+        FailViaIdentity = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentity';
+        FailViaIdentityExpanded = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentityExpanded';
+        FailViaIdentityNamespace = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentityNamespace';
+        FailViaIdentityNamespaceExpanded = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentityNamespaceExpanded';
+        FailViaJsonFilePath = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaJsonFilePath';
+        FailViaJsonString = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null

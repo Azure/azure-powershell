@@ -7,7 +7,7 @@
       "type": "string"
     },
     "secondaryLocation": {
-      "defaultValue": "southcentralus",
+      "defaultValue": "chilecentral",
       "type": "string"
     },
     "namespace_name": {
@@ -104,6 +104,9 @@
       "identity": {
         "type": "SystemAssigned"
       },
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
       "properties": {
         "minimumTlsVersion": "1.2",
         "publicNetworkAccess": "Enabled",
@@ -344,7 +347,7 @@
         "minimumTlsVersion": "1.2",
         "publicNetworkAccess": "Enabled",
         "disableLocalAuth": false,
-        "zoneRedundant": "[parameters('useZoneRedundancy')]",
+        "zoneRedundant": false,
         "isAutoInflateEnabled": false,
         "maximumThroughputUnits": 0,
         "kafkaEnabled": true

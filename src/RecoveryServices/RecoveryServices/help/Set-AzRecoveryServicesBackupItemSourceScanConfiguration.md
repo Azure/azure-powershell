@@ -13,7 +13,8 @@ Configures Source Scan (Microsoft Defender for Cloud) for a Backup-protected ite
 ## SYNTAX
 
 ```
-Set-AzRecoveryServicesBackupItemSourceScanConfiguration [-Item] <ItemBase> [-State] <String> [-Force] [-VaultId <String>]
+Set-AzRecoveryServicesBackupItemSourceScanConfiguration [-Item] <ItemBase> [-State] <String> [-Force] [-PassThru]
+ [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,12 +30,12 @@ Currently, only Azure VM backup items are supported. Set the vault context by us
 $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
 $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -VaultId $vault.ID
 $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM -VaultId $vault.ID
-Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $PI[0] -State Enabled -VaultId $vault.ID
+Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $PI[0] -State Enabled -VaultId $vault.ID -PassThru
 ```
 
 The first command gets an array of backup containers, and then stores it in the $Cont array.
 The second command gets the Backup item corresponding to the first container item, and then stores it in the $PI variable.
-The last command enables Source Scan for the item in $PI\[0\], and returns the tracking job.
+The last command waits for Source Scan to be enabled and returns the updated backup item.
 
 ### Example 2: Disable Source Scan for an Azure VM backup item without confirmation
 ```powershell
@@ -45,6 +46,7 @@ Set-AzRecoveryServicesBackupItemSourceScanConfiguration -Item $item[0] -State Di
 
 The first cmdlet fetches the AzureVM backup items for the recovery services vault.
 The second cmdlet disables Source Scan for $item[0] without prompting for confirmation.
+The command waits for the operation to complete and produces no output.
 
 ## PARAMETERS
 
@@ -91,6 +93,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns the updated backup item after the Source Scan configuration operation completes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -167,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
 
 ## NOTES
 

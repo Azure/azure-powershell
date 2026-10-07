@@ -198,6 +198,125 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse CommitCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).CommitCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> CommitCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CommitCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse GetCircuitMigrationInfo(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).GetCircuitMigrationInfoAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> GetCircuitMigrationInfoAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCircuitMigrationInfoWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse MigrateCircuit(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).MigrateCircuitAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> MigrateCircuitAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.MigrateCircuitWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the currently advertised ARP table associated with the express route
         /// cross connection in a resource group.
         /// </summary>
@@ -357,6 +476,205 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Prepares an express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse PrepareCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).PrepareCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Prepares an express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> PrepareCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PrepareCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse RestoreBgpForCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).RestoreBgpForCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> RestoreBgpForCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RestoreBgpForCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse RollbackCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).RollbackCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> RollbackCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RollbackCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse ShutDownBgpForCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).ShutDownBgpForCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> ShutDownBgpForCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ShutDownBgpForCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Validates express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitValidateResponse ValidateCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).ValidateCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitValidateResponse> ValidateCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Update the specified ExpressRouteCrossConnection.
         /// </summary>
         /// <param name='operations'>
@@ -391,6 +709,125 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<ExpressRouteCrossConnection> BeginCreateOrUpdateAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, ExpressRouteCrossConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginCommitCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginCommitCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginCommitCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCommitCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginGetCircuitMigrationInfo(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginGetCircuitMigrationInfoAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginGetCircuitMigrationInfoAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetCircuitMigrationInfoWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginMigrateCircuit(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginMigrateCircuitAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginMigrateCircuitAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginMigrateCircuitWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -550,6 +987,205 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<ExpressRouteCrossConnectionsRoutesTableSummaryListResult> BeginListRoutesTableSummaryAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginListRoutesTableSummaryWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Prepares an express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginPrepareCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginPrepareCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Prepares an express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginPrepareCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPrepareCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginRestoreBgpForCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginRestoreBgpForCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginRestoreBgpForCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRestoreBgpForCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginRollbackCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginRollbackCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginRollbackCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRollbackCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitHealthCheckResponse BeginShutDownBgpForCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginShutDownBgpForCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitHealthCheckResponse> BeginShutDownBgpForCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginShutDownBgpForCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Validates express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        public static MigrateExpressRouteCircuitValidateResponse BeginValidateCircuitMigration(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters)
+        {
+                return ((IExpressRouteCrossConnectionsOperations)operations).BeginValidateCircuitMigrationAsync(resourceGroupName, crossConnectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Validates express route circuit migration for a cross connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<MigrateExpressRouteCircuitValidateResponse> BeginValidateCircuitMigrationAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateCircuitMigrationWithHttpMessagesAsync(resourceGroupName, crossConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

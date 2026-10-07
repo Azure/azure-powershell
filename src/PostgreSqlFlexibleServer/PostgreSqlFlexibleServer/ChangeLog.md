@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Added Change Safety support.
+
 ## Version 0.1.0
 * First preview release for module Az.PostgreSqlFlexibleServer
 

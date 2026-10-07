@@ -287,6 +287,38 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Invite = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_Invite';
+        InviteExpanded = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteExpanded';
+        InviteViaIdentity = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentity';
+        InviteViaIdentityCluster = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentityCluster';
+        InviteViaIdentityClusterExpanded = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentityClusterExpanded';
+        InviteViaIdentityExpanded = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaIdentityExpanded';
+        InviteViaJsonFilePath = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaJsonFilePath';
+        InviteViaJsonString = 'Az.Kusto.private\Invoke-AzKustoInviteDatabaseFollower_InviteViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null

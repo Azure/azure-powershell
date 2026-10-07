@@ -13,6 +13,75 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ItemLevelRecoveryConnectionsOperationsExtensions
     {
         /// <summary>
+        /// Fetches the mount scripts (iSCSI connection details) for an active Instant
+        /// Item Recovery (ILR) session on the recovery point. Required from API
+        /// version 2026-08-01 onwards; replaces the scripts previously returned inline
+        /// in the operationsStatus (ILR provision) response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        public static InstantItemRecoveryTarget ListInstantItemRecoveryOperationResult(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, string provisionInstantItemRecoveryOperationId)
+        {
+                return ((IItemLevelRecoveryConnectionsOperations)operations).ListInstantItemRecoveryOperationResultAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, provisionInstantItemRecoveryOperationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Fetches the mount scripts (iSCSI connection details) for an active Instant
+        /// Item Recovery (ILR) session on the recovery point. Required from API
+        /// version 2026-08-01 onwards; replaces the scripts previously returned inline
+        /// in the operationsStatus (ILR provision) response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<InstantItemRecoveryTarget> ListInstantItemRecoveryOperationResultAsync(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, string provisionInstantItemRecoveryOperationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListInstantItemRecoveryOperationResultWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, provisionInstantItemRecoveryOperationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Provisions a script which invokes an iSCSI connection to the backup data.
         /// Executing this script opens a file
         /// explorer displaying all the recoverable files and folders. This is an

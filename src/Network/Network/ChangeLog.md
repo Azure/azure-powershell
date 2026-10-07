@@ -19,9 +19,25 @@
 --->
 
 ## Upcoming Release
-* Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
-    - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
-    - Added the `-CaptchaExpirationInMins` parameter to `New-AzApplicationGatewayFirewallPolicySetting`.
+
+## Version 8.3.0
+* Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
+* Added provider-led ExpressRoute cross-connection migration commands.
+* Added First Party Service Tag association support to IP tags used by `New-AzPublicIpPrefix`.
+* Added support for provisioning an ExpressRoute circuit on an `ExpressRouteLag` resource (Microsoft.Network 2026-01-01 API).
+* Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
+* Added Application Gateway advanced routing support.
+* Added `AdvancedRouting` as a supported value for `-RuleType` on `New-AzApplicationGatewayRequestRoutingRule`, `Add-AzApplicationGatewayRequestRoutingRule`, and `Set-AzApplicationGatewayRequestRoutingRule`.
+* Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the frontend mutual TLS (mTLS) client certificate verification mode.
+* Upgraded Network SDK to API version `2026-01-01`.
+* Fixed `-EnableOnlyIpv6Peering` on `New-AzVirtualHubVnetConnection` so that the `Enabled` and `Disabled` values are correctly translated to the boolean `enableOnlyIPv6Peering` property expected by the service.
+* Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
+* Added `Get-AzExpressRouteCircuitAuthorizationKey` and `Get-AzExpressRoutePortAuthorizationKey` to retrieve the authorization key for an ExpressRoute circuit or port authorization (Microsoft.Network 2026-01-01 API).
+* Added WAF (Web Application Firewall) managed rule set display name and managed rule paranoia level to Application Gateway WAF cmdlet output.
+* Added `SourceGeoLocation` and `DestinationGeoLocation` filters to `New-AzFirewallPolicyNetworkRule`.
+* Removed client-side validation of the `-FormatVersion` parameter for `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
+* Added Change Safety support for additional cmdlets.
+* Added the `CAPTCHA` action to Application Gateway WAF policies.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).

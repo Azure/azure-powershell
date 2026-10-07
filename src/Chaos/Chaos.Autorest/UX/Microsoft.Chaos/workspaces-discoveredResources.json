@@ -1,0 +1,52 @@
+{
+  "resourceType": "workspaces/discoveredResources",
+  "apiVersion": "2026-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosDiscoveredResource",
+      "description": "Get a discovered resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/workspaces/{workspaceName}/discoveredResources/{discoveredResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosdiscoveredresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a discovered resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.discoveredResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

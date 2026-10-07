@@ -175,6 +175,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string[] MultipleSourceFilePath { get; set; }
 
         /// <summary>
+        /// Use the vault's system-assigned managed identity for identity-based Azure Files restore.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreFS.IsSystemAssignedIdentity)]
+        public SwitchParameter IsSystemAssignedIdentity { get; set; }
+
+        /// <summary>
+        /// ARM url of the user-assigned managed identity for identity-based Azure Files restore.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreFS.UserAssignedIdentityArmUrl)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityArmUrl { get; set; }
+
+        /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AzureVMUnManagedDiskParameterSet,
@@ -317,6 +332,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubscriptionId)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreFS.TargetSubscriptionId)]
         public string TargetSubscriptionId { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
@@ -410,6 +427,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }*/
                 }
 
+                if (ParameterSetName == AzureFileShareParameterSet &&
+                    IsSystemAssignedIdentity.IsPresent &&
+                    !string.IsNullOrEmpty(UserAssignedIdentityArmUrl))
+                {
+                    throw new ArgumentException(Resources.AFSIdentityBothSpecified);
+                }
+
+                if (ParameterSetName == AzureFileShareParameterSet &&
+                    RestoreToSecondaryRegion.IsPresent &&
+                    (IsSystemAssignedIdentity.IsPresent ||
+                     !string.IsNullOrEmpty(UserAssignedIdentityArmUrl)))
+                {
+                    throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreIdentityNotSupported);
+                }
+
+                if (ParameterSetName == AzureFileShareParameterSet &&
+                    MyInvocation.BoundParameters.ContainsKey(nameof(TargetSubscriptionId)) &&
+                    string.IsNullOrEmpty(TargetSubscriptionId))
+                {
+                    throw new ArgumentException(Resources.AzureFileTargetSubscriptionCannotBeEmpty);
+                }
+
+                if (ParameterSetName == AzureFileShareParameterSet &&
+                    !string.IsNullOrEmpty(TargetSubscriptionId) &&
+                    string.IsNullOrEmpty(TargetStorageAccountName))
+                {
+                    throw new ArgumentException(Resources.AzureFileTargetSubscriptionRequiresStorageAccount);
+                }
+
                 string RestoreType = null;
                 if (string.Compare(ParameterSetName, AzureManagedVMReplaceExistingParameterSet) == 0)
                 {
@@ -428,6 +474,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreFSBackupItemParams.TargetStorageAccountName, TargetStorageAccountName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFileShareName, TargetFileShareName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFolder, TargetFolder);
+                providerParameters.Add(RestoreFSBackupItemParams.IsSystemAssignedIdentity, IsSystemAssignedIdentity.IsPresent);
+                providerParameters.Add(RestoreFSBackupItemParams.UserAssignedIdentityArmUrl, UserAssignedIdentityArmUrl);
+                providerParameters.Add(RestoreFSBackupItemParams.TargetSubscriptionId, TargetSubscriptionId);
                 providerParameters.Add(RestoreWLBackupItemParams.WLRecoveryConfig, WLRecoveryConfig);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreDiskList, RestoreDiskList);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);

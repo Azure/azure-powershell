@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mission.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Description(@"Delete a ApprovalResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}", ApiVersion = "2026-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Mission/approvals/{approvalName}", ApiVersion = "2026-04-01")]
     public partial class RemoveAzMissionApproval_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IContext

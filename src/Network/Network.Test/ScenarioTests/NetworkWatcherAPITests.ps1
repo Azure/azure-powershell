@@ -950,12 +950,12 @@ function Test-FlowLog {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # create workspace
         $workspaceName = 'tawspace' + $workspaceName
-        $workspaceSku = 'free'
+        $workspaceSku = 'PerGB2018'
 
         New-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $workspaceLocation -Sku $workspaceSku
         $workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName
@@ -1039,13 +1039,11 @@ function Test-CRUDNsgFlowLog {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create flow log
-        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw Name $flowLogName -TargetResourceId $getNsg.Id -StorageAccountId $sto.Id -Enabled $true
-        $job | Wait-Job
-        $config = $job | Receive-Job
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $getNsg.Id -StorageId $sto.Id -Enabled $true
 
         # Validation set operation
         Assert-AreEqual $config.TargetResourceId $getNsg.Id
@@ -1102,7 +1100,7 @@ function Test-CRUDVnetFlowLog {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 
@@ -1116,20 +1114,18 @@ function Test-CRUDVnetFlowLog {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create flow log
-        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw Name $flowLogName -TargetResourceId $vnet.Id -StorageAccountId $sto.Id -Enabled $true
-        $job | Wait-Job
-        $config = $job | Receive-Job
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true
 
         # Validation set operation
         Assert-AreEqual $config.TargetResourceId $vnet.Id
         Assert-AreEqual $config.StorageId $sto.Id
         Assert-AreEqual $config.Enabled $true
-        Assert-AreEqual $config.Format.Type "JSON"
-        Assert-AreEqual $config.Format.Version 1
+        Assert-AreEqual $config.Format.Type "FlowLogJSON"
+        Assert-AreEqual $config.Format.Version 2
 
         # Get flow log
         $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
@@ -1138,8 +1134,8 @@ function Test-CRUDVnetFlowLog {
         Assert-AreEqual $flowLog.TargetResourceId $vnet.Id
         Assert-AreEqual $flowLog.StorageId $sto.Id
         Assert-AreEqual $flowLog.Enabled $true
-        Assert-AreEqual $flowLog.Format.Type "JSON"
-        Assert-AreEqual $flowLog.Format.Version 1
+        Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
+        Assert-AreEqual $flowLog.Format.Version 2
 
         # Set flow log
         $flowLog.Enabled = $false
@@ -1180,7 +1176,7 @@ function Test-CRUDVnetFlowLogWithManagedIdentity {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 
@@ -1194,7 +1190,7 @@ function Test-CRUDVnetFlowLogWithManagedIdentity {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create Managed Identity
@@ -1254,7 +1250,7 @@ function Test-CRUDVnetFlowLogWithNoneManagedIdentity {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 
@@ -1268,7 +1264,7 @@ function Test-CRUDVnetFlowLogWithNoneManagedIdentity {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create Managed Identity
@@ -1340,7 +1336,7 @@ function Test-SetVnetFlowLogWithManagedIdentity {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 
@@ -1354,7 +1350,7 @@ function Test-SetVnetFlowLogWithManagedIdentity {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create flow log
@@ -1419,7 +1415,7 @@ function Test-CRUDSubnetFlowLog {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -VirtualNetwork $vnet
@@ -1434,20 +1430,18 @@ function Test-CRUDSubnetFlowLog {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create flow log
-        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw Name $flowLogName -TargetResourceId $subnet.Id -StorageAccountId $sto.Id -Enabled $true
-        $job | Wait-Job
-        $config = $job | Receive-Job
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $subnet.Id -StorageId $sto.Id -Enabled $true
 
         # Validation set operation
         Assert-AreEqual $config.TargetResourceId $subnet.Id
         Assert-AreEqual $config.StorageId $sto.Id
         Assert-AreEqual $config.Enabled $true
-        Assert-AreEqual $config.Format.Type "JSON"
-        Assert-AreEqual $config.Format.Version 1
+        Assert-AreEqual $config.Format.Type "FlowLogJSON"
+        Assert-AreEqual $config.Format.Version 2
 
         # Get flow log
         $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
@@ -1456,8 +1450,8 @@ function Test-CRUDSubnetFlowLog {
         Assert-AreEqual $flowLog.TargetResourceId $subnet.Id
         Assert-AreEqual $flowLog.StorageId $sto.Id
         Assert-AreEqual $flowLog.Enabled $true
-        Assert-AreEqual $flowLog.Format.Type "JSON"
-        Assert-AreEqual $flowLog.Format.Version 1
+        Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
+        Assert-AreEqual $flowLog.Format.Version 2
 
         # Set flow log
         $flowLog.Enabled = $false
@@ -1488,6 +1482,7 @@ function Test-CRUDNicFlowLog {
     $nwRgName = Get-NrpResourceGroupName
     $flowLogName = Get-NrpResourceName
     $domainNameLabel = Get-NrpResourceName
+    $vnetName = Get-NrpResourceName
     $nicName = Get-NrpResourceName
     $stoname = Get-NrpResourceName
     $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "West Central US"
@@ -1496,7 +1491,7 @@ function Test-CRUDNicFlowLog {
         # Create Resource group
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -VirtualNetwork $vnet
@@ -1516,20 +1511,18 @@ function Test-CRUDNicFlowLog {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
 
         # Create flow log
-        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw Name $flowLogName -TargetResourceId $nic.Id -StorageAccountId $sto.Id -Enabled $true
-        $job | Wait-Job
-        $config = $job | Receive-Job
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $nic.Id -StorageId $sto.Id -Enabled $true
 
         # Validation set operation
         Assert-AreEqual $config.TargetResourceId $nic.Id
         Assert-AreEqual $config.StorageId $sto.Id
         Assert-AreEqual $config.Enabled $true
-        Assert-AreEqual $config.Format.Type "JSON"
-        Assert-AreEqual $config.Format.Version 1
+        Assert-AreEqual $config.Format.Type "FlowLogJSON"
+        Assert-AreEqual $config.Format.Version 2
 
         # Get flow log
         $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
@@ -1538,8 +1531,8 @@ function Test-CRUDNicFlowLog {
         Assert-AreEqual $flowLog.TargetResourceId $nic.Id
         Assert-AreEqual $flowLog.StorageId $sto.Id
         Assert-AreEqual $flowLog.Enabled $true
-        Assert-AreEqual $flowLog.Format.Type "JSON"
-        Assert-AreEqual $flowLog.Format.Version 1
+        Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
+        Assert-AreEqual $flowLog.Format.Version 2
 
         # Set flow log
         $flowLog.Enabled = $false
@@ -1579,7 +1572,7 @@ function Test-VnetFlowLogWithFiltering {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         Start-TestSleep -Seconds 10
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
@@ -1596,22 +1589,20 @@ function Test-VnetFlowLogWithFiltering {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
         Start-TestSleep -Seconds 10
 
         # Create flow log
-        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -EnabledFilteringCriteria "srcIP!=158.255.7.153 || dstPort=56891"
-        $job | Wait-Job
-        $config = $job | Receive-Job
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -EnabledFilteringCriteria "srcIP!=158.255.7.153 || dstPort=56891"
         Start-TestSleep -Seconds 5
 
         # Validation set operation
         Assert-AreEqual $config.TargetResourceId $vnet.Id
         Assert-AreEqual $config.StorageId $sto.Id
         Assert-AreEqual $config.Enabled $true
-        Assert-AreEqual $config.Format.Type "JSON"
-        Assert-AreEqual $config.Format.Version 1
+        Assert-AreEqual $config.Format.Type "FlowLogJSON"
+        Assert-AreEqual $config.Format.Version 2
 
         # Get flow log
         $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
@@ -1621,8 +1612,8 @@ function Test-VnetFlowLogWithFiltering {
         Assert-AreEqual $flowLog.StorageId $sto.Id
         Assert-AreEqual $flowLog.EnabledFilteringCriteria "srcIP!=158.255.7.153 || dstPort=56891"
         Assert-AreEqual $flowLog.Enabled $true
-        Assert-AreEqual $flowLog.Format.Type "JSON"
-        Assert-AreEqual $flowLog.Format.Version 1
+        Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
+        Assert-AreEqual $flowLog.Format.Version 2
 
         # Set flow log
         $flowLog.Enabled = $false
@@ -1662,7 +1653,7 @@ function Test-VnetFlowLogWithEmptyFilteringCondition {
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         Start-TestSleep -Seconds 10
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
@@ -1679,22 +1670,20 @@ function Test-VnetFlowLogWithEmptyFilteringCondition {
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname
         Start-TestSleep -Seconds 10
 
         # Create flow log
-        $job = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -EnabledFilteringCriteria ""
-        $job | Wait-Job
-        $config = $job | Receive-Job
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -EnabledFilteringCriteria ""
         Start-TestSleep -Seconds 5
 
         # Validation set operation
         Assert-AreEqual $config.TargetResourceId $vnet.Id
         Assert-AreEqual $config.StorageId $sto.Id
         Assert-AreEqual $config.Enabled $true
-        Assert-AreEqual $config.Format.Type "JSON"
-        Assert-AreEqual $config.Format.Version 1
+        Assert-AreEqual $config.Format.Type "FlowLogJSON"
+        Assert-AreEqual $config.Format.Version 2
 
         # Get flow log
         $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
@@ -1704,8 +1693,8 @@ function Test-VnetFlowLogWithEmptyFilteringCondition {
         Assert-AreEqual $flowLog.StorageId $sto.Id
         Assert-AreEqual $flowLog.EnabledFilteringCriteria ""
         Assert-AreEqual $flowLog.Enabled $true
-        Assert-AreEqual $flowLog.Format.Type "JSON"
-        Assert-AreEqual $flowLog.Format.Version 1
+        Assert-AreEqual $flowLog.Format.Type "FlowLogJSON"
+        Assert-AreEqual $flowLog.Format.Version 2
 
         # Set flow log
         $flowLog.Enabled = $false
@@ -1747,7 +1736,7 @@ function Test-VnetFlowLogWithRecordType
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         Start-Sleep -Seconds 10
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
@@ -1764,7 +1753,7 @@ function Test-VnetFlowLogWithRecordType
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false;
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
         Start-Sleep -Seconds 10
 
@@ -1831,7 +1820,7 @@ function Test-VnetFlowLogWithEmptyRecordTypeCondition
         New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         Start-Sleep -Seconds 10
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
@@ -1848,7 +1837,7 @@ function Test-VnetFlowLogWithEmptyRecordTypeCondition
         $stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype -AllowSharedKeyAccess $false;
         $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
         Start-Sleep -Seconds 10
 

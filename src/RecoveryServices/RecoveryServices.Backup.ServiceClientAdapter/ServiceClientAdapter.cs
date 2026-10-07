@@ -64,17 +64,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             };
         }
 
-        private static RestAzureNS.AzureOperationResponse ToAzureOperationResponseWithoutBody<TBody, THeader>(
-            RestAzureNS.AzureOperationResponse<TBody, THeader> response)
-        {
-            return new RestAzureNS.AzureOperationResponse
-            {
-                Request = response.Request,
-                Response = response.Response,
-                RequestId = response.RequestId
-            };
-        }
-
         /// <summary>
         /// Resource provider namespace that this adapter uses to 
         /// communicate with the backend service.

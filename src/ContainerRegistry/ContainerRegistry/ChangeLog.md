@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.2.0
+* Added Change Safety support for additional cmdlets.
+
 ## Version 5.1.0
 * Added ChangeSafety Support
 

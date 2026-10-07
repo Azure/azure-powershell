@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             BackupResourceConfigResource backupStorageConfig)
         {
             GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.UpdateWithHttpMessagesAsync(
-                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             BackupResourceConfigResource backupStorageConfig)
         {
             GetRecoveryServicesBackupClient.BackupResourceStorageConfigsNonCrr.PatchWithHttpMessagesAsync(
-                vaultName, resouceGroupName, backupStorageConfig, GetRequestHeaders());
+                resouceGroupName, vaultName, backupStorageConfig, GetRequestHeaders());
         }
 
         /// <summary>
