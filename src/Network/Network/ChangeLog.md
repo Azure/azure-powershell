@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets to manage Virtual Network Appliance capabilities.
+    - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
 * Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
     - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
@@ -55,8 +57,6 @@
 * Removed client-side validation of the `-FormatVersion` parameter for `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
     - Flow log format versions are now validated by the service, so newly supported versions can be used without a module update.
     - Corrected the error message shown for an invalid `-FormatType` value, which previously reported an invalid format version.
-* Added cmdlets to manage Virtual Network Appliance capabilities.
-    - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
 * Added Change Safety support for additional cmdlets.
 * Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
     - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
