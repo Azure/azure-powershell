@@ -41,8 +41,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 SqlDatabaseDnsSuffix = ".database.windows.net",
                 StorageEndpointSuffix = "core.windows.net",
                 ActiveDirectoryAuthority = "https://login.microsoftonline.com",
-                GraphUrl = "https://deprecated-graph.windows.net/",
-                GraphEndpointResourceId = "https://deprecated-graph.windows.net/",
+                // GraphUrl and GraphEndpointResourceId intentionally use the deprecated Azure AD Graph
+                // endpoint here because this fixture is compared property-by-property against the
+                // built-in AzureCloud environment, which still exposes https://graph.windows.net/.
+                GraphUrl = "https://graph.windows.net/",
+                GraphEndpointResourceId = "https://graph.windows.net/",
                 TrafficManagerDnsSuffix = "trafficmanager.net",
                 AzureKeyVaultDnsSuffix = "vault.azure.net",
                 DataLakeEndpointResourceId = "https://datalake.azure.net/",
