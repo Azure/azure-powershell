@@ -12,9 +12,10 @@ Preview modules are not included in this list. Read more about [module version t
 ### URL signing
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - `New-AzCdnUrlSigningActionObject`
-  - `New-AzFrontDoorCdnRuleUrlSigningActionObject`
-  - `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject`
+  - The following cmdlets will be removed:
+    - `New-AzCdnUrlSigningActionObject`
+    - `New-AzFrontDoorCdnRuleUrlSigningActionObject`
+    - `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject`
 - Parameter breaking-change will happen to all parameter sets
   - The `-UrlSigningKey` parameter will be removed from `New-AzCdnEndpoint` and `Update-AzCdnEndpoint`.
   - `New-AzFrontDoorCdnSecret` and `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters.
