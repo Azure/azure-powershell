@@ -17,16 +17,16 @@ This is a documentation-only advance announcement; the affected functionality
 remains available in the current release. No cmdlet attributes or runtime
 warnings are added by this announcement.
 
-The following URL signing object cmdlets are planned for removal:
+The following URL signing key object cmdlet is planned for removal:
 
-- `New-AzFrontDoorCdnRuleUrlSigningActionObject`
 - `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject`
 
 The `-Parameter` parameter of `New-AzFrontDoorCdnSecret` and
 `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters.
 The `-Action` parameter of `New-AzFrontDoorCdnRule` and
-`Update-AzFrontDoorCdnRule` will no longer accept Azure Front Door URL signing
-actions.
+`Update-AzFrontDoorCdnRule` will no longer accept the Azure Front Door
+`AfdUrlSigning` action model that references a Key Group. Az.Cdn does not
+currently provide a dedicated object-construction cmdlet for that action model.
 
 This change corresponds to the planned removal of the URL signing key secret
 type, Key Group resources, and the Azure Front Door URL signing rule action from
@@ -35,10 +35,13 @@ already hidden and are not part of the public Az.Cdn command surface. There is
 no replacement PowerShell cmdlet because Azure Front Door Standard and Premium
 URL signing is being removed from the service contract.
 
-Classic CDN URL signing is not affected. This change does not remove
-`New-AzCdnUrlSigningActionObject`, the `-UrlSigningKey` parameter of
-`New-AzCdnEndpoint` or `Update-AzCdnEndpoint`, or the classic CDN URL signing
-delivery-rule action.
+Legacy private-preview Classic CDN URL signing schemas are outside the scope of
+this announcement. The similarly named `New-AzCdnUrlSigningActionObject`,
+`New-AzFrontDoorCdnRuleUrlSigningActionObject`, and the `-UrlSigningKey`
+parameter of `New-AzCdnEndpoint` and `Update-AzCdnEndpoint` are generated from
+the older endpoint URL signing model. They do not represent the Azure Front Door
+Key Group rule action, and this announcement makes no decision about their
+removal.
 
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
