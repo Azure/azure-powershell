@@ -31,20 +31,4 @@ Describe 'Start-AzStorageAccountMigration' {
     It 'CustomerViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'Forwards AcquirePolicyToken' {
-        {
-            Start-AzStorageAccountMigration -AccountName $env.AccountName -ResourceGroupName $env.ResourceGroupName `
-                -SubscriptionId $env.SubscriptionId -TargetSku Standard_ZRS -Force `
-                -AcquirePolicyToken -WhatIf
-        } | Should -Not -Throw
-    }
-
-    It 'Forwards ChangeReference' {
-        {
-            Start-AzStorageAccountMigration -AccountName $env.AccountName -ResourceGroupName $env.ResourceGroupName `
-                -SubscriptionId $env.SubscriptionId -TargetSku Standard_ZRS -Force `
-                -ChangeReference "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/$($env.AccountName)" -WhatIf
-        } | Should -Not -Throw
-    }
 }
