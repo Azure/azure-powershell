@@ -768,6 +768,11 @@ namespace Microsoft.Azure.Management.Network
         IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; }
 
         /// <summary>
+        /// Gets the IVirtualNetworkApplianceCapabilitiesOperations
+        /// </summary>
+        IVirtualNetworkApplianceCapabilitiesOperations VirtualNetworkApplianceCapabilities { get; }
+
+        /// <summary>
         /// Gets the IExpressRouteGatewaysOperations
         /// </summary>
         IExpressRouteGatewaysOperations ExpressRouteGateways { get; }
