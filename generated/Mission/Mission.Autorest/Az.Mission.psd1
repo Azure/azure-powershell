@@ -1,7 +1,7 @@
 @{
   GUID = 'f88df206-0fab-467e-a98a-166766c96b7e'
   RootModule = './Az.Mission.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

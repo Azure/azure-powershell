@@ -50,18 +50,23 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="ruleSetVersion">The version of the web application firewall rule set type.
         /// </param>
 
+        /// <param name="displayName">Human-readable display name for the managed rule set version (e.g.,
+        /// &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </param>
+
         /// <param name="ruleGroups">The rule groups of the web application firewall rule set.
         /// </param>
 
         /// <param name="tiers">Tier of an application gateway that support the rule set.
         /// </param>
-        public ApplicationGatewayFirewallRuleSet(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), string ruleSetType = default(string), string ruleSetVersion = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup> ruleGroups = default(System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup>), System.Collections.Generic.IList<string> tiers = default(System.Collections.Generic.IList<string>))
+        public ApplicationGatewayFirewallRuleSet(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), string ruleSetType = default(string), string ruleSetVersion = default(string), string displayName = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup> ruleGroups = default(System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup>), System.Collections.Generic.IList<string> tiers = default(System.Collections.Generic.IList<string>))
 
         : base(id, name, type, location, tags)
         {
             this.ProvisioningState = provisioningState;
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
+            this.DisplayName = displayName;
             this.RuleGroups = ruleGroups;
             this.Tiers = tiers;
             CustomInit();
@@ -90,6 +95,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ruleSetVersion")]
         public string RuleSetVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets human-readable display name for the managed rule set version
+        /// (e.g., &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.displayName")]
+        public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets the rule groups of the web application firewall rule set.

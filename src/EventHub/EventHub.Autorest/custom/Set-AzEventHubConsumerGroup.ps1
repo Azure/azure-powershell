@@ -68,7 +68,7 @@ function Set-AzEventHubConsumerGroup{
         [System.String]
         # User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
         ${UserMetadata},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -146,8 +146,8 @@ function Set-AzEventHubConsumerGroup{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $consumerGroup = Get-AzEventHubConsumerGroup @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubConsumerGroup' -BoundParameters $PSBoundParameters
+            $consumerGroup = Get-AzEventHubConsumerGroup @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

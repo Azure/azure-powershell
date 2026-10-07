@@ -139,8 +139,8 @@ function Approve-AzEventHubPrivateEndpointConnection{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $connection = Get-AzEventHubPrivateEndpointConnection @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubPrivateEndpointConnection' -BoundParameters $PSBoundParameters
+            $connection = Get-AzEventHubPrivateEndpointConnection @readParameters
             $connection.ConnectionState = "Approved"
 
             if($hasDescription){
