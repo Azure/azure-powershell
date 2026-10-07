@@ -21,3 +21,5 @@ python -m x_engineering_agent.repository_packages --root .x --repository Azure/a
 Local validation checks the source-only contract; it does not authorize a new runtime ref. Maintain these implementations here rather than regenerating them from central specialist copies.
 
 Onboarding: keep identity, workflow/routing settings under `profile`, and optional Python pins in the single `x.yml`. Put agent definitions in `definitions/` and Python tools under `tools/<role>/`. Do not create a separate `profile.yml`. Do not maintain duplicate agent, tool or file lists. Validation checks under `tools/validation/` are private Coordinator tools.
+
+Live-test selection, skip explanations and target planning are owned by this package. The engine executes the private planning helpers from the pinned snapshot and retains workflow authorization, credential handling and privileged writes.
