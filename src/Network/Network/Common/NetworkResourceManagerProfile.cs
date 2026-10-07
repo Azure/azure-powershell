@@ -2627,6 +2627,14 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.PrivateIpAddress,
                         opt => opt.MapFrom(src => src.PrivateIPAddress)
+                    )
+                    .ForMember(
+                        dest => dest.PublicIpAddressV6,
+                        opt => opt.MapFrom(src => src.PublicIPAddressV6)
+                    )
+                    .ForMember(
+                        dest => dest.PrivateIpAddressV6,
+                        opt => opt.MapFrom(src => src.PrivateIPAddressV6)
                     );
                 cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
