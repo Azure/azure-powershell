@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Update-AzPolicyAssignment` to carry over the existing `EnforcementMode` itself when `-EnforcementMode` is not specified, instead of relying on the service to keep it. No behavior change.
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.

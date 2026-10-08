@@ -15,33 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRelationshipsServiceGro
 }
 
 Describe 'New-AzRelationshipsServiceGroupMemberRelationship' {
-    # ResourceGroup source → ServiceGroup target
+    # ServiceGroup source → ResourceGroup target
     It 'CreateExpanded' {
-        $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForNew -TargetId $env.SgmTargetId
+        $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForNew -SourceId $env.SgmSourceId
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameForNew
+        $relationship.SourceId | Should -Be $env.SgmSourceId
+        $relationship.TargetId | Should -Be $env.SgmTargetResourceUri
     }
 
-    # Subscription source → ServiceGroup target
+    # ServiceGroup source → Subscription target
     It 'CreateExpanded_OnSubscription' {
-        $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SubscriptionResourceUri -Name $env.SgmRelNameForNewSub -TargetId $env.SgmTargetId
+        $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SubscriptionResourceUri -Name $env.SgmRelNameForNewSub -SourceId $env.SgmSourceId
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameForNewSub
+        $relationship.TargetId | Should -Be $env.SubscriptionResourceUri
     }
 
     It 'CreateViaJsonString' {
-        $jsonString = '{"properties":{"targetId":"' + $env.SgmTargetId + '"}}'
-        $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForNewJson -JsonString $jsonString
+        $jsonString = '{"properties":{"sourceId":"' + $env.SgmSourceId + '"}}'
+        $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForNewJson -JsonString $jsonString
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameForNewJson
     }
 
     It 'CreateViaJsonFilePath' {
-        $jsonContent = '{"properties":{"targetId":"' + $env.SgmTargetId + '"}}'
+        $jsonContent = '{"properties":{"sourceId":"' + $env.SgmSourceId + '"}}'
         $jsonFilePath = Join-Path -Path $PSScriptRoot -ChildPath 'New-AzRelationshipsServiceGroupMemberRelationship-Params.json'
         $jsonContent | Out-File -FilePath $jsonFilePath -Encoding utf8
         try {
-            $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForNewJsonFile -JsonFilePath $jsonFilePath
+            $relationship = New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForNewJsonFile -JsonFilePath $jsonFilePath
             $relationship | Should -Not -BeNullOrEmpty
             $relationship.Name | Should -Be $env.SgmRelNameForNewJsonFile
         } finally {
@@ -49,13 +52,13 @@ Describe 'New-AzRelationshipsServiceGroupMemberRelationship' {
         }
     }
 
-    # Error: ServiceGroupMember target must be a Service Group, not a resource group
-    It 'CreateExpanded_WithInvalidTarget_ShouldFail' {
-        { New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name 'sgmbadtarget' -TargetId $env.SgmResourceGroupResourceUri } | Should -Throw
+    # Error: ServiceGroupMember source must be a service group resource ID.
+    It 'CreateExpanded_WithInvalidSource_ShouldFail' {
+        { New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name 'sgmbadsource' -SourceId '/invalid/resource/id' -ErrorAction Stop } | Should -Throw
     }
 
-    # Error: ServiceGroupMember target Service Group must exist
+    # Error: ServiceGroupMember source Service Group must exist.
     It 'CreateExpanded_WithNonExistentServiceGroup_ShouldFail' {
-        { New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name 'sgmnosg' -TargetId '/providers/Microsoft.Management/serviceGroups/nonexistentsg' } | Should -Throw
+        { New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name 'sgmnosg' -SourceId '/providers/Microsoft.Management/serviceGroups/nonexistentsg' -ErrorAction Stop } | Should -Throw
     }
 }
