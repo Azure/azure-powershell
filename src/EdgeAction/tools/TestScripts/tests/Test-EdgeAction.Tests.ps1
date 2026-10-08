@@ -1,6 +1,6 @@
 # Copyright Microsoft Corporation. Licensed under the Apache License, Version 2.0.
 #Requires -Version 7.3
-# Pester 4.10.1; no Azure requests, package installation, or generation/build.
+# Pester 4.10.1 and installed native setup prerequisites; fake helpers, no Azure requests or generation/build.
 Import-Module (Join-Path $PSScriptRoot '..' 'EdgeAction.TestRunner.psm1') -Force
 
 InModuleScope EdgeAction.TestRunner {
@@ -173,6 +173,14 @@ InModuleScope EdgeAction.TestRunner {
             { Invoke-EdgeActionScenario $config -Login } | Should -Throw 'only supported for explicit'
             Assert-MockCalled Initialize-EdgeActionTestModules -Scope It -Times 0 -Exactly
         }
+        It 'stops before authentication and scenarios when dependency setup fails' {
+            Mock Initialize-EdgeActionTestModules { throw 'fixture support setup failed' }
+            { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } | Should -Throw 'fixture support setup failed'
+            ($script:stepMessages -join '|') | Should -Be 'Starting test dependency validation and loading.'
+            Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Get-AzContext -Scope It -Times 0 -Exactly
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
+        }
         It 'does not announce context completion or harness launch when login fails' {
             Mock Connect-AzAccount { throw 'fixture login failed' }
             { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } | Should -Throw 'fixture login failed'
@@ -287,6 +295,7 @@ InModuleScope EdgeAction.TestRunner {
                 }
             }
             Mock Import-Module {}
+            Mock Initialize-EdgeActionResources {}
             Mock Get-Module {
                 if ($Name -eq 'Pester') {
                     [pscustomobject]@{ Version = [version]'4.10.1' }
@@ -313,6 +322,7 @@ InModuleScope EdgeAction.TestRunner {
                 $Destination -eq (Join-Path $TestDrive 'Pester')
             }
             Assert-MockCalled Import-Module -Scope It -Times 2 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
         }
         It 'rejects missing built artifacts' {
             Mock Test-Path { $false }
@@ -347,12 +357,139 @@ InModuleScope EdgeAction.TestRunner {
             { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive } |
                 Should -Throw 'different Az.Accounts'
         }
-        It 'requires existing Resources support without provisioning it' {
-            Mock Test-Path { $false } -ParameterFilter { $Path -like '*Az.Resources.TestSupport.psm1' }
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Record $TestDrive } |
-                Should -Throw 'Resources test support is missing'
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Record $TestDrive } |
-                Should -Throw (Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'how-to.md')
+        It 'prepares Resources only after loading Accounts and Pester for <Mode>' -TestCases @(
+            @{ Mode = 'Record' }
+            @{ Mode = 'Live' }
+        ) {
+            param($Mode)
+            Mock Initialize-EdgeActionResources {
+                Assert-MockCalled Import-Module -Scope It -Times 2 -Exactly
+            }
+            Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } $Mode $TestDrive
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 1 -Exactly
+        }
+    }
+
+    Describe 'Automatic Resources support with a local dependency-helper fixture' {
+        BeforeEach {
+            $savedRoot = $script:RepoRoot
+            $savedArtifact = $script:Artifact
+            $script:RepoRoot = Join-Path $TestDrive ([guid]::NewGuid().ToString())
+            $script:Artifact = Join-Path $script:RepoRoot 'artifacts' 'Debug' 'Az.EdgeAction' 'EdgeAction.Autorest'
+            $sourceSupport = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'tools' 'Resources'
+            $fixtureHome = Join-Path $script:RepoRoot 'home'
+            Set-Variable HOME -Value $fixtureHome -Scope Script -Force
+            $destination = Join-Path $fixtureHome '.PSSharedModules' 'Resources'
+            $null = New-Item $script:Artifact, (Join-Path $sourceSupport 'custom'), $fixtureHome -ItemType Directory -Force
+            'fixture specification' | Set-Content (Join-Path $sourceSupport 'README.md')
+            'fixture customization' | Set-Content (Join-Path $sourceSupport 'custom' 'New-AzDeployment.ps1')
+            @'
+param([switch]$NotIsolated, [switch]$Pester, [switch]$Resources)
+if (-not $NotIsolated -or -not $Pester -or -not $Resources) { throw 'Wrong helper arguments' }
+if (-not $RegenerateSupportModule.IsPresent) { throw 'Missing inherited regeneration switch' }
+if (-not (Test-Path (Join-Path $PSScriptRoot 'tools' 'Resources' 'README.md'))) { throw 'Missing specification' }
+if (-not (Test-Path (Join-Path $PSScriptRoot 'tools' 'Resources' 'custom' 'New-AzDeployment.ps1'))) { throw 'Missing customization' }
+@{ Registry = $env:autorest_registry; Sources = $env:RestoreSources; Dotnet = (Get-Command dotnet).Source } |
+    ConvertTo-Json | Set-Content (Join-Path $PSScriptRoot 'helper-environment.json')
+$behavior = Get-Content (Join-Path $PSScriptRoot 'behavior.txt')
+$env:PSModulePath = 'fixture helper changed module path'
+Set-Location $HOME
+if ($behavior -eq 'throw') { throw 'Fixture dependency failure' }
+if ($behavior -eq 'exit') { $global:LASTEXITCODE = 7; return }
+$output = Join-Path $HOME '.PSSharedModules' 'Resources'
+$null = New-Item (Join-Path $output 'bin') -ItemType Directory -Force
+'function Get-SupportFixture { }; Export-ModuleMember Get-SupportFixture' | Set-Content (Join-Path $output 'Az.Resources.TestSupport.psm1')
+if ($behavior -eq 'partial') { return }
+"@{ RootModule = 'Az.Resources.TestSupport.psm1'; ModuleVersion = '0.0.1' }" | Set-Content (Join-Path $output 'Az.Resources.TestSupport.psd1')
+'fixture assembly placeholder' | Set-Content (Join-Path $output 'bin' 'Az.Resources.TestSupport.private.dll')
+if ($behavior -eq 'invalid import') { "throw 'Fixture import failure'" | Set-Content (Join-Path $output 'Az.Resources.TestSupport.psm1') }
+'@ | Set-Content (Join-Path $script:Artifact 'check-dependencies.ps1')
+            'success' | Set-Content (Join-Path $script:Artifact 'behavior.txt')
+            $savedEnvironment = @{}
+            foreach ($name in @('PATH', 'PSModulePath', 'autorest_registry', 'RestoreSources')) {
+                $savedEnvironment[$name] = [Environment]::GetEnvironmentVariable($name)
+            }
+            $beforeLocation = (Get-Location).Path
+            $script:resourceMessages = [Collections.Generic.List[string]]::new()
+            Mock Write-Host { param($Object) $script:resourceMessages.Add([string]$Object) }
+        }
+        AfterEach {
+            try {
+                (Get-Location).Path | Should -Be $beforeLocation
+                foreach ($name in $savedEnvironment.Keys) {
+                    [Environment]::GetEnvironmentVariable($name) | Should -Be $savedEnvironment[$name]
+                }
+            } finally {
+                Remove-Module Az.Resources.TestSupport -ErrorAction SilentlyContinue
+                Remove-Variable HOME -Scope Script -Force
+                $script:RepoRoot = $savedRoot
+                $script:Artifact = $savedArtifact
+            }
+        }
+        It 'builds <State> support through the helper with process-local feeds and preserved artifact inputs' -TestCases @(
+            @{ State = 'missing' }
+            @{ State = 'psm1 only' }
+            @{ State = 'missing assembly' }
+        ) {
+            param($State)
+            if ($State -ne 'missing') {
+                $null = New-Item $destination -ItemType Directory -Force
+                'partial script' | Set-Content (Join-Path $destination 'Az.Resources.TestSupport.psm1')
+                if ($State -eq 'missing assembly') { '@{}' | Set-Content (Join-Path $destination 'Az.Resources.TestSupport.psd1') }
+            }
+            $payload = Join-Path $script:Artifact 'tools' 'Resources'
+            $null = New-Item $payload -ItemType Directory -Force
+            'retained artifact specification' | Set-Content (Join-Path $payload 'README.md')
+            Initialize-EdgeActionResources
+            ($script:resourceMessages -join '|') | Should -Be 'Starting Resources test-support setup.|Completed Resources test-support setup.'
+            Get-Content (Join-Path $payload 'README.md') | Should -Be 'retained artifact specification'
+            Get-Content (Join-Path $payload 'custom' 'New-AzDeployment.ps1') | Should -Be 'fixture customization'
+            $child = Get-Content (Join-Path $script:Artifact 'helper-environment.json') -Raw | ConvertFrom-Json
+            $child.Registry | Should -Be 'https://packagefeedproxy.microsoft.io/npm/'
+            $child.Sources | Should -Be (@(
+                (Join-Path $script:RepoRoot 'tools' 'LocalFeed')
+                'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
+                'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
+            ) -join ';')
+            $child.Dotnet | Should -Not -Match 'node_modules'
+            (Get-Module Az.Resources.TestSupport).ExportedCommands.Count | Should -Be 1
+        }
+        It 'reuses complete support without inspecting build tools or running the helper' {
+            Initialize-EdgeActionResources
+            $before = (Get-FileHash (Join-Path $destination 'Az.Resources.TestSupport.psm1')).Hash
+            $script:resourceMessages.Clear()
+            Remove-Item (Join-Path $sourceSupport 'README.md')
+            'throw' | Set-Content (Join-Path $script:Artifact 'behavior.txt')
+            $env:PATH = $fixtureHome
+            try { Initialize-EdgeActionResources }
+            finally { $env:PATH = $savedEnvironment.PATH }
+            ($script:resourceMessages -join '|') | Should -Be 'Using installed Resources test support.'
+            (Get-FileHash (Join-Path $destination 'Az.Resources.TestSupport.psm1')).Hash | Should -Be $before
+        }
+        It 'rejects <Behavior> without announcing setup completion' -TestCases @(
+            @{ Behavior = 'throw'; Message = 'Fixture dependency failure' }
+            @{ Behavior = 'exit'; Message = 'dependency helper failed (exit 7)' }
+            @{ Behavior = 'partial'; Message = 'test support is incomplete' }
+            @{ Behavior = 'invalid import'; Message = 'Fixture import failure' }
+        ) {
+            param($Behavior, $Message)
+            $Behavior | Set-Content (Join-Path $script:Artifact 'behavior.txt')
+            { Initialize-EdgeActionResources } | Should -Throw $Message
+            ($script:resourceMessages -join '|') | Should -Be 'Starting Resources test-support setup.'
+        }
+        It 'rejects missing source inputs before invoking native tools or the helper' {
+            Remove-Item (Join-Path $sourceSupport 'README.md')
+            { Initialize-EdgeActionResources } | Should -Throw 'Resources setup input is missing'
+            Test-Path (Join-Path $script:Artifact 'helper-environment.json') | Should -Be $false
+        }
+        It 'reports missing build tools without changing artifact payload or invoking the helper' {
+            $env:PATH = $fixtureHome
+            try {
+                { Initialize-EdgeActionResources } | Should -Throw 'node'
+                $env:PATH | Should -Be $fixtureHome
+            } finally { $env:PATH = $savedEnvironment.PATH }
+            Test-Path (Join-Path $script:Artifact 'tools') | Should -Be $false
+            ($script:resourceMessages -join '|') | Should -Be 'Starting Resources test-support setup.'
         }
     }
 
@@ -490,55 +627,6 @@ if ((Get-Location).Path -ne $before -or $repoRoot -ne '__WRONG__') { exit 9 }
         Test-Path $resultPath | Should -Be $true
         Test-Path (Join-Path $wrongRoot 'artifacts') | Should -Be $false
         Test-Path (Join-Path $fixture 'artifacts' 'edgeaction-test-runs') | Should -Be $false
-    }
-    It 'preserves cwd and support files when documented setup encounters <Failure>' -TestCases @(
-        @{ Failure = 'helper failure'; ExistingSupport = $false; Message = 'Fixture dependency failure' }
-        @{ Failure = 'existing support'; ExistingSupport = $true; Message = 'Review the existing or incomplete support folder' }
-    ) {
-        param($Failure, $ExistingSupport, $Message)
-        $docPath = Join-Path $PSScriptRoot '..' '..' '..' 'EdgeAction.Autorest' 'how-to.md'
-        $doc = Get-Content $docPath -Raw
-        $block = @([regex]::Matches($doc, '(?ms)^```powershell\r?\n(.*?)^```') |
-            Where-Object { $_.Groups[1].Value -match '& \.\\check-dependencies\.ps1' })
-        $block.Count | Should -Be 1
-        $supportSource = Join-Path $source 'tools' 'Resources'
-        $null = New-Item (Join-Path $supportSource 'custom') -ItemType Directory -Force
-        'fixture specification' | Set-Content (Join-Path $supportSource 'README.md')
-        'fixture customization' | Set-Content (Join-Path $supportSource 'custom' 'New-AzDeployment.ps1')
-        $fixtureHome = Join-Path $fixture 'home'
-        $null = New-Item $fixtureHome -ItemType Directory
-        if ($ExistingSupport) {
-            $null = New-Item (Join-Path $fixtureHome '.PSSharedModules' 'Resources') -ItemType Directory -Force
-        }
-        @'
-param([switch]$NotIsolated, [switch]$Pester, [switch]$Resources)
-if (-not $NotIsolated -or -not $Pester -or -not $Resources) { throw 'Wrong dependency arguments' }
-if ((Get-Content (Join-Path $PSScriptRoot 'tools' 'Resources' 'README.md')) -ne 'fixture specification') { throw 'Missing specification' }
-if ((Get-Content (Join-Path $PSScriptRoot 'tools' 'Resources' 'custom' 'New-AzDeployment.ps1')) -ne 'fixture customization') { throw 'Missing customization' }
-Set-Location $HOME
-throw 'Fixture dependency failure'
-'@ | Set-Content (Join-Path $artifact 'check-dependencies.ps1')
-        $oldEnvironment = @{}
-        foreach ($name in @('PATH', 'autorest_registry', 'RestoreSources')) {
-            $oldEnvironment[$name] = [Environment]::GetEnvironmentVariable($name)
-        }
-        $artifactDirectory = 'stale-directory'
-        Push-Location $source
-        try {
-            {
-                & {
-                    Set-Variable HOME -Value $fixtureHome -Force
-                    & ([scriptblock]::Create($block[0].Groups[1].Value))
-                }
-            } | Should -Throw $Message
-            (Get-Location).Path | Should -Be $source
-            $artifactDirectory | Should -Be 'stale-directory'
-            Test-Path (Join-Path $artifact 'tools' 'Resources') | Should -Be (-not $ExistingSupport)
-            Get-Content (Join-Path $supportSource 'README.md') | Should -Be 'fixture specification'
-        } finally {
-            Pop-Location
-            foreach ($name in $oldEnvironment.Keys) { [Environment]::SetEnvironmentVariable($name, $oldEnvironment[$name]) }
-        }
     }
     It 'contains Pester EnableExit and leaves recordings in the harness directory without backups' {
         @'

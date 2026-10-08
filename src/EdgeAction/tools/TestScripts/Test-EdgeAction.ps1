@@ -8,7 +8,10 @@ Record/Live require -AllowResourceChanges and an explicit expected subscription.
 Shared settings select AzureCloud; the local example selects Brazilus. Only their
 documented ARM endpoints and the public ARM audience are accepted.
 Use -Login to authenticate inside the same isolated process as the harness.
-No build, recording copy-back, or automatic cleanup of cloud resources is performed.
+Record/Live automatically generate/build missing or incomplete Resources test support
+using the existing artifact dependency helper. Native build tools must be installed.
+Playback never prepares Resources support; complete installations are reused.
+No EdgeAction build, recording copy-back, or automatic cleanup of cloud resources is performed.
 Recordings remain in the artifact test directory without automatic backups.
 Review and copy recordings you need before rebuilding or rerunning scenarios.
 Fresh NUnit results are checked independently of the generated runner's exit code.
