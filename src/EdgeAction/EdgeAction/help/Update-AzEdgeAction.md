@@ -8,14 +8,17 @@ schema: 2.0.0
 # Update-AzEdgeAction
 
 ## SYNOPSIS
-Update a EdgeAction
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkuName <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <IAny>]
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,13 +38,16 @@ Update-AzEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeAction -InputObject <IEdgeActionIdentity> [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzEdgeAction -InputObject <IEdgeActionIdentity> [-Property <IAny>] [-SkuName <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a EdgeAction
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ## EXAMPLES
 
@@ -65,7 +71,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -81,7 +87,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityExpanded
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -156,7 +162,22 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -230,6 +251,8 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -248,7 +271,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityExpanded
 Aliases: cf
 
 Required: False
@@ -264,7 +287,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityExpanded
 Aliases: wi
 
 Required: False

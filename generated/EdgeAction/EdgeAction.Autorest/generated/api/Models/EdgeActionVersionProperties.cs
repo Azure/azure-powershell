@@ -16,14 +16,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         /// <summary>Backing field for <see cref="DeploymentType" /> property.</summary>
         private string _deploymentType;
 
-        /// <summary>The deployment type</summary>
+        /// <summary>
+        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
+        /// Version PATCH updates tags only.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Owned)]
         public string DeploymentType { get => this._deploymentType; set => this._deploymentType = value; }
 
         /// <summary>Backing field for <see cref="IsDefaultVersion" /> property.</summary>
         private string _isDefaultVersion;
 
-        /// <summary>The active state</summary>
+        /// <summary>
+        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
+        /// Use swapDefault to change the default version.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Owned)]
         public string IsDefaultVersion { get => this._isDefaultVersion; set => this._isDefaultVersion = value; }
 
@@ -67,26 +73,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     public partial interface IEdgeActionVersionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable
     {
-        /// <summary>The deployment type</summary>
+        /// <summary>
+        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
+        /// Version PATCH updates tags only.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The deployment type",
+        Description = @"The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value. Version PATCH updates tags only.",
         SerializedName = @"deploymentType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
-        /// <summary>The active state</summary>
+        /// <summary>
+        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
+        /// Use swapDefault to change the default version.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The active state",
+        Description = @"Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.",
         SerializedName = @"isDefaultVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
@@ -132,10 +144,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     internal partial interface IEdgeActionVersionPropertiesInternal
 
     {
-        /// <summary>The deployment type</summary>
+        /// <summary>
+        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
+        /// Version PATCH updates tags only.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
-        /// <summary>The active state</summary>
+        /// <summary>
+        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
+        /// Use swapDefault to change the default version.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
         string IsDefaultVersion { get; set; }
         /// <summary>The last update time in UTC for package update</summary>

@@ -8,15 +8,19 @@ schema: 2.0.0
 # Update-AzEdgeActionVersion
 
 ## SYNOPSIS
-Update a EdgeActionVersion
+Update the tags of an Edge Action version.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Version properties are not changed.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityEdgeAction
@@ -28,14 +32,16 @@ Update-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version
 
 ### UpdateViaIdentityEdgeActionExpanded
 ```
-Update-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeActionVersion -EdgeActionInputObject <IEdgeActionIdentity> -Version <String>
+ [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEdgeActionVersion -InputObject <IEdgeActionIdentity> [-DeploymentType <String>]
+ [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -53,7 +59,11 @@ Update-AzEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Update a EdgeActionVersion
+Update the tags of an Edge Action version.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Version properties are not changed.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
 
 ## EXAMPLES
 
@@ -95,6 +105,23 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentType
+The deployment type for the edge action version.
+If supplied in a version PATCH request, it must match the existing value.
+Version PATCH updates tags only.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -148,6 +175,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IsDefaultVersion
+Indicates whether this is the default version.
+If supplied in a version PATCH request, it must match the existing value.
+Use swapDefault to change the default version.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Update operation
 
@@ -194,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Concrete tracked resource types can be created by aliasing this type using a specific property type.
+The type used for update operations of the EdgeActionVersion.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate

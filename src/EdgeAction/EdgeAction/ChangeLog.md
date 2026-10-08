@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Updated EdgeAction cmdlets and help to the stable 2026-10-01 API.
+    - Refreshed update parameters and documented tag replacement, clearing, and immutable-property behavior.
+* Relocated EdgeAction scenario test tooling to the module directory; cmdlet behavior is unchanged.
+    - Shared settings now default to Azure public cloud, with explicit Brazilus overrides and environment endpoint validation.
+    - Clarified test-runner setup guidance and invocation from different working directories.
+    - Generation and test tooling report major step starts and successful completions; generation also displays the configured specification input.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
@@ -31,4 +37,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.EdgeAction
-

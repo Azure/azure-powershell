@@ -16,9 +16,15 @@
 
 <#
 .Synopsis
-Update a EdgeAction
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 .Description
-Update a EdgeAction
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 .Example
 Update-AzEdgeAction -ResourceGroupName "myResourceGroup" -Name "myEdgeAction" -Tag @{ Environment = "Production"; Team = "Platform" }
 
@@ -82,6 +88,13 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny]
+    # The resource-specific properties for this resource.
+    ${Property},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
     # The name of the SKU
     ${SkuName},
@@ -96,9 +109,11 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
+    # For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+    # Null tags are rejected.
     ${Tag},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
