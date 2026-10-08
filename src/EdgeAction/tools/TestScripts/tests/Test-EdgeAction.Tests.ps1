@@ -276,6 +276,8 @@ InModuleScope EdgeAction.TestRunner {
     Describe 'Dependency isolation without installation' {
         BeforeEach {
             $savedModulePath = $env:PSModulePath
+            Mock New-Item {}
+            Mock Copy-Item {}
             Mock Test-Path { $true }
             Mock Test-Path { $false } -ParameterFilter { $Path -like '*generated*modules*' }
             Mock Test-ModuleManifest {
@@ -303,9 +305,13 @@ InModuleScope EdgeAction.TestRunner {
             } -ParameterFilter { $Name -eq 'Az.Accounts' }
         }
         AfterEach { $env:PSModulePath = $savedModulePath }
-        It 'exposes only the Pester directory, not its sibling installed modules' {
-            Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback
-            ($env:PSModulePath -split [IO.Path]::PathSeparator)[0] | Should -Be (Join-Path $TestDrive 'shared' 'Pester')
+        It 'stages only the selected Pester version under a module search root' {
+            Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive
+            ($env:PSModulePath -split [IO.Path]::PathSeparator)[0] | Should -Be ([string]$TestDrive)
+            Assert-MockCalled Copy-Item -Scope It -Times 1 -Exactly -ParameterFilter {
+                $LiteralPath -eq (Join-Path $TestDrive 'shared' 'Pester' '4.10.1') -and
+                $Destination -eq (Join-Path $TestDrive 'Pester')
+            }
             Assert-MockCalled Import-Module -Scope It -Times 2 -Exactly
         }
         It 'rejects missing built artifacts' {
@@ -333,19 +339,19 @@ InModuleScope EdgeAction.TestRunner {
         }
         It 'rejects the wrong Pester version' {
             Mock Test-ModuleManifest { @{ Name = 'Pester'; Version = [version]'5.7.0' } }
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback } |
+            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive } |
                 Should -Throw 'must identify Pester 4.10.1'
         }
         It 'rejects shadowing Accounts modules instead of using them' {
             Mock Get-Module { @{ Version = [version]'99.0'; ModuleBase = 'wrong' } } -ParameterFilter { $Name -eq 'Az.Accounts' }
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback } |
+            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive } |
                 Should -Throw 'different Az.Accounts'
         }
         It 'requires existing Resources support without provisioning it' {
             Mock Test-Path { $false } -ParameterFilter { $Path -like '*Az.Resources.TestSupport.psm1' }
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Record } |
+            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Record $TestDrive } |
                 Should -Throw 'Resources test support is missing'
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Record } |
+            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Record $TestDrive } |
                 Should -Throw (Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'how-to.md')
         }
     }
@@ -363,6 +369,10 @@ InModuleScope EdgeAction.TestRunner {
         It 'rejects missing or stale results' {
             { Assert-EdgeActionResults (Join-Path $TestDrive 'missing.xml') $started 0 } | Should -Throw 'Missing or stale'
             { Assert-EdgeActionResults $resultPath ([datetime]::UtcNow.AddHours(1)) 0 } | Should -Throw 'Missing or stale'
+        }
+        It 'identifies startup failures before missing results' {
+            { Assert-EdgeActionResults (Join-Path $TestDrive 'missing.xml') $started 1 } |
+                Should -Throw 'Scenario harness failed before producing fresh results (child exit 1)'
         }
         It 'rejects malformed XML or no executed tests' {
             '<invalid' | Set-Content $resultPath
@@ -507,6 +517,12 @@ throw 'Fixture dependency failure'
         @'
 param([switch]$NotIsolated, [switch]$Playback, [string[]]$TestName)
 if (-not $NotIsolated -or -not $Playback -or $TestName.Count -ne 2) { exit 8 }
+# Match the upstream dependency check, path adjustment and unqualified import.
+if (-not (Get-Module -ListAvailable Pester | Where-Object Version -EQ '4.10.1')) { throw 'Dependency helper would download Pester' }
+$env:PSModulePath = (Join-Path $PSScriptRoot 'generated' 'modules') + [IO.Path]::PathSeparator + $env:PSModulePath
+Import-Module -Name Pester
+if ((Get-Command Invoke-Pester).Module.Version -ne [version]'4.10.1') { throw 'Wrong Pester loaded by name' }
+(Get-Command Invoke-Pester).Module.ModuleBase | Set-Content (Join-Path $PSScriptRoot 'test' 'pester-path.txt')
 'fixture recording' | Set-Content (Join-Path $PSScriptRoot 'test' 'fixture.Recording.json')
 Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -EnableExit -OutputFile (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
 '@ | Set-Content $harness
@@ -530,6 +546,48 @@ Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -Enab
         Test-Path $resultPath | Should -Be $true
         Get-Content (Join-Path $artifact 'test' 'fixture.Recording.json') | Should -Be 'fixture recording'
         Test-Path (Join-Path $fixture 'artifacts' 'edgeaction-test-runs') | Should -Be $false
+        $stagedPester = Get-Content (Join-Path $artifact 'test' 'pester-path.txt')
+        Test-Path (Split-Path $stagedPester) | Should -Be $false
+    }
+    It 'imports Pester by name with newer installed versions using <Selection>' -TestCases @(
+        @{ Selection = 'discovery' }
+        @{ Selection = 'explicit manifest' }
+    ) {
+        param($Selection)
+        $moduleRoot = Join-Path $fixture 'installed'
+        $pesterRoot = Join-Path $moduleRoot 'Pester'
+        $null = New-Item $pesterRoot -ItemType Directory -Force
+        Copy-Item (Split-Path $pester) (Join-Path $pesterRoot '4.10.1') -Recurse
+        $newer = Join-Path $pesterRoot '99.0.0'
+        $null = New-Item $newer -ItemType Directory
+        "@{ ModuleVersion='99.0.0'; RootModule='Pester.psm1' }" | Set-Content (Join-Path $newer 'Pester.psd1')
+        "throw 'Newer Pester must not be imported'" | Set-Content (Join-Path $newer 'Pester.psm1')
+        $configPath = Join-Path $scripts 'TestSettings.local.psd1'
+        if ($Selection -eq 'discovery') {
+            '@{}' | Set-Content $configPath
+        } else {
+            $selected = (Join-Path $pesterRoot '4.10.1' 'Pester.psd1').Replace("'", "''")
+            "@{ PesterPath='$selected' }" | Set-Content $configPath
+        }
+        @'
+if (@(Get-Module -ListAvailable Pester).Count -ne 1) { throw 'Pester discovery is not isolated' }
+Remove-Module Pester -Force
+Import-Module -Name Pester
+if ((Get-Command Invoke-Pester).Module.Version -ne [version]'4.10.1') { throw 'Wrong version imported by name' }
+(Get-Command Invoke-Pester).Module.ModuleBase | Set-Content (Join-Path $PSScriptRoot 'test' 'pester-path.txt')
+'<test-results failures="0" errors="0"><test-case executed="True" success="True" /></test-results>' |
+    Set-Content (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
+exit 0
+'@ | Set-Content $harness
+        $oldModulePath = $env:PSModulePath
+        try {
+            $env:PSModulePath = $moduleRoot + [IO.Path]::PathSeparator + $env:PSModulePath
+            & $pwsh -NoProfile -File $runner | Out-Null
+            $LASTEXITCODE | Should -Be 0
+        } finally { $env:PSModulePath = $oldModulePath }
+        Test-Path (Join-Path $newer 'Pester.psd1') | Should -Be $true
+        $stagedPester = Get-Content (Join-Path $artifact 'test' 'pester-path.txt')
+        Test-Path (Split-Path $stagedPester) | Should -Be $false
     }
     It 'rejects fresh failures with a zero exit without backing up results' {
         '<previous />' | Set-Content $resultPath
@@ -555,6 +613,7 @@ exit 0
         $recordingHash = (Get-FileHash $recording).Hash
         $oldHash = (Get-FileHash $oldFile).Hash
         @'
+(Get-Command Invoke-Pester).Module.ModuleBase | Set-Content (Join-Path $PSScriptRoot 'test' 'pester-path.txt')
 'partial recording' | Set-Content (Join-Path $PSScriptRoot 'test' 'partial.Recording.json')
 exit 7
 '@ | Set-Content $harness
@@ -564,6 +623,8 @@ exit 7
         (Get-FileHash $oldFile).Hash | Should -Be $oldHash
         Get-Content (Join-Path $artifact 'test' 'partial.Recording.json') | Should -Be 'partial recording'
         @(Get-ChildItem (Split-Path $oldSnapshot) -Directory).Count | Should -Be 1
+        $stagedPester = Get-Content (Join-Path $artifact 'test' 'pester-path.txt')
+        Test-Path (Split-Path $stagedPester) | Should -Be $false
     }
     It 'does not accept an old XML when the child produces no result' {
         '<test-results failures="0" errors="0"><test-case executed="True" success="True" /></test-results>' | Set-Content $resultPath
