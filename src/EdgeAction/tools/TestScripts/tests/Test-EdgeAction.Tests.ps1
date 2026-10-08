@@ -214,6 +214,15 @@ InModuleScope EdgeAction.TestRunner {
             Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
             Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
         }
+        It 'identifies a missing registered environment before login or context lookup' {
+            Mock Get-AzEnvironment { $null }
+            { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } |
+                Should -Throw "Registered Azure environment does not match: environment 'Brazilus' is missing"
+            Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Get-AzContext -Scope It -Times 0 -Exactly
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
+            ($script:stepMessages -join '|') | Should -Not -Match 'Starting process-scoped login|Completed live context'
+        }
         It 'rejects a subscription mismatch for <Name> before resource access' -TestCases $environments {
             param($Name, $Endpoint)
             $config.EnvironmentName = $Name
@@ -236,7 +245,7 @@ InModuleScope EdgeAction.TestRunner {
                 { Assert-EdgeActionContext $config $context } | Should -Throw 'does not match'
                 $context.Environment[$key] = $saved
             }
-            { Assert-EdgeActionContext $config $null } | Should -Throw 'does not match'
+            { Assert-EdgeActionContext $config $null } | Should -Throw 'Azure context is missing'
         }
         It 'requires an existing readable resource group for <Name>' -TestCases $environments {
             param($Name, $Endpoint)
@@ -490,6 +499,72 @@ if ($behavior -eq 'invalid import') { "throw 'Fixture import failure'" | Set-Con
             } finally { $env:PATH = $savedEnvironment.PATH }
             Test-Path (Join-Path $script:Artifact 'tools') | Should -Be $false
             ($script:resourceMessages -join '|') | Should -Be 'Starting Resources test-support setup.'
+        }
+    }
+
+    Describe 'Redacted context diagnostics' {
+        BeforeEach {
+            $config = @{
+                SubscriptionId = '00000000-0000-0000-0000-000000000001'
+                EnvironmentName = 'Brazilus'
+                ResourceManagerUrl = 'https://brazilus.management.azure.com/'
+                Audience = 'https://management.core.windows.net/'
+            }
+            $context = @{
+                Subscription = @{ Id = $config.SubscriptionId }
+                Environment = @{
+                    Name = 'Brazilus'
+                    ResourceManagerUrl = $config.ResourceManagerUrl
+                    ActiveDirectoryServiceEndpointResourceId = $config.Audience
+                }
+            }
+        }
+        It 'identifies the mismatched <Property> without disclosing subscription IDs' -TestCases @(
+            @{ Property = 'Name'; Value = 'AzureCloud'; Display = 'AzureCloud' }
+            @{ Property = 'ResourceManagerUrl'; Value = 'https://management.azure.com/'; Display = 'https://management.azure.com/' }
+            @{ Property = 'ActiveDirectoryServiceEndpointResourceId'; Value = 'https://management.azure.com/'; Display = 'https://management.azure.com/' }
+            @{ Property = 'ResourceManagerUrl'; Value = $null; Display = '<missing>' }
+            @{ Property = 'ActiveDirectoryServiceEndpointResourceId'; Value = ''; Display = '<missing>' }
+        ) {
+            param($Property, $Value, $Display)
+            $context.Environment[$Property] = $Value
+            $message = try { Assert-EdgeActionContext $config $context } catch { $_.Exception.Message }
+            $message | Should -Match ([regex]::Escape("Azure context environment does not match: $Property expected"))
+            $message | Should -Match ([regex]::Escape("actual '$Display'"))
+            $message | Should -Not -Match $config.SubscriptionId
+        }
+        It 'redacts both subscription IDs while distinguishing a mismatch from missing data' {
+            $context.Subscription.Id = '00000000-0000-0000-0000-000000000002'
+            $message = try { Assert-EdgeActionContext $config $context } catch { $_.Exception.Message }
+            $message | Should -Match 'Subscription.Id expected.*different subscription; IDs redacted'
+            $message | Should -Not -Match $context.Subscription.Id
+            $message | Should -Not -Match $config.SubscriptionId
+            $context.Subscription = $null
+            { Assert-EdgeActionContext $config $context } | Should -Throw "actual '<missing>'"
+            { Assert-EdgeActionContext $config $null } | Should -Throw 'Azure context is missing'
+        }
+        It 'does not print sensitive values in an invalid environment endpoint' -TestCases @(
+            @{ Url = 'https://example.invalid/?token=fixture-secret' }
+            @{ Url = 'https://user:fixture-secret@example.invalid/' }
+            @{ Url = 'https://example.invalid/#fixture-secret' }
+            @{ Url = 'fixture-secret' }
+        ) {
+            param($Url)
+            $context.Environment.ResourceManagerUrl = $Url
+            $message = try { Assert-EdgeActionContext $config $context } catch { $_.Exception.Message }
+            $message | Should -Match 'ResourceManagerUrl expected'
+            $message | Should -Not -Match 'fixture-secret'
+        }
+        It 'redacts IDs embedded in endpoint paths' {
+            $context.Environment.ResourceManagerUrl = 'https://example.invalid/00000000-0000-0000-0000-000000000003'
+            $message = try { Assert-EdgeActionContext $config $context } catch { $_.Exception.Message }
+            $message | Should -Match 'https://example.invalid/<redacted-id>'
+            $message | Should -Not -Match '00000000-0000-0000-0000-000000000003'
+        }
+        It 'preserves trailing-slash equivalence without weakening endpoint checks' {
+            $context.Environment.ResourceManagerUrl = $config.ResourceManagerUrl.TrimEnd('/')
+            $context.Environment.ActiveDirectoryServiceEndpointResourceId = $config.Audience.TrimEnd('/')
+            { Assert-EdgeActionContext $config $context } | Should -Not -Throw
         }
     }
 
@@ -815,5 +890,50 @@ exit 0
         & $pwsh -NoProfile -File $runner -ConfigPath $selectedConfig | Out-Null
         $LASTEXITCODE | Should -Be 0
         Test-Path $resultPath | Should -Be $true
+    }
+}
+
+Describe 'Real Accounts context types without authentication' {
+    $accounts = Join-Path $PSScriptRoot '..' '..' '..' '..' '..' 'artifacts' 'Debug' 'Az.Accounts' 'Az.Accounts.psd1'
+    It 'validates concrete Accounts environment properties and reports missing endpoints' -Skip:(-not (Test-Path $accounts)) {
+        $runnerModule = (Resolve-Path (Join-Path $PSScriptRoot '..' 'EdgeAction.TestRunner.psm1')).Path
+        $command = @'
+$ErrorActionPreference = 'Stop'
+Import-Module '__ACCOUNTS__'
+$runner = Import-Module '__RUNNER__' -PassThru
+$environment = [Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]::new()
+$environment.Name = 'Brazilus'
+$environment.ResourceManagerUrl = 'https://brazilus.management.azure.com/'
+$environment.ActiveDirectoryServiceEndpointResourceId = 'https://management.core.windows.net/'
+$context = [Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext]::new()
+$context.Environment = $environment
+$context.Subscription = [Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription]::new()
+$context.Subscription.Id = '00000000-0000-0000-0000-000000000001'
+$config = @{
+    SubscriptionId = $context.Subscription.Id
+    EnvironmentName = 'Brazilus'
+    ResourceManagerUrl = 'https://brazilus.management.azure.com/'
+    Audience = 'https://management.core.windows.net/'
+}
+& $runner { param($Config, $Context) Assert-EdgeActionContext $Config $Context } $config $context
+$environment.ResourceManagerUrl = $null
+$message = try {
+    & $runner { param($Config, $Context) Assert-EdgeActionContext $Config $Context } $config $context
+} catch { $_.Exception.Message }
+if ($message -notlike "*Azure context environment does not match: ResourceManagerUrl expected*actual '<missing>'*") {
+    throw "Unexpected concrete-type diagnostic: $message"
+}
+$message = try {
+    & $runner { param($Config) Assert-EdgeActionEnvironmentMatch $Config $null 'Registered Azure environment' } $config
+} catch { $_.Exception.Message }
+if ($message -notlike "*Registered Azure environment*is missing*fresh pwsh -NoProfile*") {
+    throw "Unexpected registration diagnostic: $message"
+}
+'Real Accounts type checks passed.'
+'@
+        $command = $command.Replace('__ACCOUNTS__', (Resolve-Path $accounts).Path.Replace("'", "''")).Replace('__RUNNER__', $runnerModule.Replace("'", "''"))
+        $output = & ([Environment]::ProcessPath) -NoProfile -Command $command
+        $LASTEXITCODE | Should -Be 0
+        ($output -join "`n") | Should -Match 'Real Accounts type checks passed'
     }
 }

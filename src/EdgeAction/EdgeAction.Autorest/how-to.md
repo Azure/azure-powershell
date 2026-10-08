@@ -206,6 +206,10 @@ If source support inputs are missing, run the repository generation/build steps 
 
 #### Run with explicit consent
 
+Before `-Login`, the runner checks that the configured environment is registered in its fresh `pwsh -NoProfile` child. A registration made only in another shell is not inherited. An error starting with **Registered Azure environment** identifies this pre-login check; **Azure context** identifies the post-login context check. Errors name the mismatched property without printing subscription IDs or credential-bearing URLs.
+
+For an approved but missing Brazilus registration, import the built Accounts module in a separate setup shell and run `Add-AzEnvironment -Name Brazilus -ARMEndpoint 'https://brazilus.management.azure.com/' -Scope CurrentUser`. This retrieves authentication metadata and persists the registration for new processes; it does not sign in. Do not overwrite an existing registration or change its audience merely to bypass validation. Verify `Get-AzEnvironment -Name Brazilus` in a fresh shell using the same Accounts module before retrying. The runner never creates registrations automatically, and `-Login` cannot repair a missing registration.
+
 ```powershell
 & ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login -TestName 'Get-AzEdgeAction'
 ```

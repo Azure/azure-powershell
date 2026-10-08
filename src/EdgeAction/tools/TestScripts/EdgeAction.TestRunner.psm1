@@ -62,14 +62,44 @@ function Assert-EdgeActionMutation {
     }
 }
 
+function Assert-EdgeActionEnvironmentMatch {
+    param([hashtable]$Config, $Environment, [string]$Stage)
+    if (-not $Environment) {
+        throw "$Stage does not match: environment '$($Config.EnvironmentName)' is missing. Ensure Get-AzEnvironment -Name '$($Config.EnvironmentName)' returns the expected registration in a fresh pwsh -NoProfile process; another shell's process-only registration is not inherited."
+    }
+    $expected = [ordered]@{
+        Name = $Config.EnvironmentName
+        ResourceManagerUrl = $Config.ResourceManagerUrl
+        ActiveDirectoryServiceEndpointResourceId = $Config.Audience
+    }
+    foreach ($property in $expected.Keys) {
+        $actual = [string]$Environment.$property
+        $wanted = [string]$expected[$property]
+        $matches = if ($property -eq 'Name') { $actual -eq $wanted } else { $actual.TrimEnd('/') -eq $wanted.TrimEnd('/') }
+        if (-not $matches) {
+            $display = if (-not $actual) { '<missing>' } else { $actual }
+            if ($actual -and $property -ne 'Name') {
+                $uri = $null
+                if (-not [uri]::TryCreate($actual, [UriKind]::Absolute, [ref]$uri) -or $uri.Scheme -notin @('http', 'https')) {
+                    $display = '<invalid URL>'
+                } elseif ($uri.UserInfo -or $uri.Query -or $uri.Fragment) {
+                    $display = '<URL containing credentials, query, or fragment redacted>'
+                }
+            }
+            $display = $display -replace '(?i)[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}', '<redacted-id>'
+            throw "$Stage does not match: $property expected '$wanted', actual '$display'. Check the selected settings and environment registration; endpoints are not changed automatically."
+        }
+    }
+}
+
 function Assert-EdgeActionContext {
     param([hashtable]$Config, $Context)
-    if (-not $Context -or $Context.Subscription.Id -ne $Config.SubscriptionId -or
-        $Context.Environment.Name -ne $Config.EnvironmentName -or
-        $Context.Environment.ResourceManagerUrl.TrimEnd('/') -ne $Config.ResourceManagerUrl.TrimEnd('/') -or
-        $Context.Environment.ActiveDirectoryServiceEndpointResourceId.TrimEnd('/') -ne $Config.Audience.TrimEnd('/')) {
-        throw 'Azure context does not match the expected subscription, environment, ARM endpoint, and audience.'
+    if (-not $Context) { throw 'Azure context is missing. Use -Login for an explicit Record/Live run.' }
+    if ($Context.Subscription.Id -ne $Config.SubscriptionId) {
+        $actual = if ($Context.Subscription.Id) { '<different subscription; IDs redacted>' } else { '<missing>' }
+        throw "Azure context does not match: Subscription.Id expected '<configured subscription; ID redacted>', actual '$actual'. Use -Login with the intended SubscriptionId."
     }
+    Assert-EdgeActionEnvironmentMatch $Config $Context.Environment 'Azure context environment'
 }
 
 function Initialize-EdgeActionTestModules {
@@ -223,9 +253,7 @@ function Invoke-EdgeActionScenario {
         Write-Host 'Starting live context and resource-group validation.'
         Disable-AzContextAutosave -Scope Process | Out-Null
         $environment = Get-AzEnvironment -Name $Config.EnvironmentName
-        Assert-EdgeActionContext $Config ([pscustomobject]@{
-            Subscription = @{ Id = $Config.SubscriptionId }; Environment = $environment
-        })
+        Assert-EdgeActionEnvironmentMatch $Config $environment 'Registered Azure environment'
         if ($Login) {
             Write-Host 'Starting process-scoped login.'
             Connect-AzAccount -Environment $Config.EnvironmentName -Subscription $Config.SubscriptionId -Scope Process | Out-Null
