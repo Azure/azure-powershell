@@ -84,7 +84,7 @@ function Initialize-EdgeActionTestModules {
         if ($available) { $pesterPath = Join-Path $available.ModuleBase 'Pester.psd1' }
     }
     if (-not $pesterPath) {
-        throw "Install Pester 4.10.1 as described in '$script:HowTo', or set PesterPath to its installed manifest. This runner does not install dependencies."
+        throw "Install Pester 4.10.1 as described in '$script:HowTo', or set PesterPath to its installed manifest. This runner does not install Pester."
     }
     $pester = Test-ModuleManifest -Path $pesterPath
     if ($pester.Name -ne 'Pester' -or $pester.Version -ne [version]'4.10.1') { throw 'PesterPath must identify Pester 4.10.1.' }
@@ -108,15 +108,88 @@ function Initialize-EdgeActionTestModules {
     if (-not $selectedAccounts -or $selectedAccounts.ModuleBase -ne (Split-Path $accounts)) {
         throw 'The generated harness would select a different Az.Accounts module than the Debug artifact.'
     }
-    if ($Mode -ne 'Playback') {
-        $support = Join-Path $HOME '.PSSharedModules' 'Resources' 'Az.Resources.TestSupport.psd1'
-        if (-not (Test-Path $support) -or -not (Test-Path ([IO.Path]::ChangeExtension($support, '.psm1')))) {
-            throw "Resources test support is missing. Follow the Record/Live dependency setup in '$script:HowTo'. This runner will not provision it."
-        }
-    }
     Import-Module $accounts -Force -Global
     Import-Module $pesterPath -Force -Global
+    if ($Mode -ne 'Playback') { Initialize-EdgeActionResources }
     Write-Host "Using built Az.Accounts, Pester 4.10.1, and artifact harness: $script:Artifact"
+}
+
+function Initialize-EdgeActionResources {
+    $ErrorActionPreference = 'Stop'
+    $PSNativeCommandUseErrorActionPreference = $true
+    $destination = Join-Path $HOME '.PSSharedModules' 'Resources'
+    $files = @('Az.Resources.TestSupport.psd1', 'Az.Resources.TestSupport.psm1', (Join-Path 'bin' 'Az.Resources.TestSupport.private.dll'))
+    $missing = @($files | Where-Object { -not (Test-Path (Join-Path $destination $_) -PathType Leaf) })
+    if ($missing.Count) {
+        Write-Host 'Starting Resources test-support setup.'
+        $source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'tools' 'Resources'
+        $helper = Join-Path $script:Artifact 'check-dependencies.ps1'
+        foreach ($path in @((Join-Path $source 'README.md'), (Join-Path $source 'custom' 'New-AzDeployment.ps1'), $helper)) {
+            if (-not (Test-Path $path -PathType Leaf)) {
+                throw "Resources setup input is missing: $path. Run repository generation/build as described in '$script:HowTo'."
+            }
+        }
+        $environment = @{}
+        foreach ($name in @('PATH', 'PSModulePath', 'autorest_registry', 'RestoreSources')) {
+            $environment[$name] = [Environment]::GetEnvironmentVariable($name)
+        }
+        Push-Location $script:Artifact
+        try {
+            $node = Get-Command node -CommandType Application
+            if ([version]((& $node.Source --version).Trim().TrimStart('v') -replace '-.*$', '') -lt [version]'20.0') {
+                throw 'Install Node.js 20+ for Resources setup.'
+            }
+            $dotnet = Get-Command dotnet -CommandType Application -All -ErrorAction SilentlyContinue |
+                Where-Object { -not $IsWindows -or [IO.Path]::GetExtension($_.Source) -eq '.exe' } | Select-Object -First 1
+            if (-not $dotnet -and $IsWindows) {
+                $nativeDotnet = Join-Path $env:ProgramFiles 'dotnet' 'dotnet.exe'
+                if (Test-Path $nativeDotnet) { $dotnet = Get-Command $nativeDotnet }
+            }
+            if (-not $dotnet -or $dotnet.Source -match 'node_modules') { throw 'Install the native .NET SDK 8+; npm dotnet shims are not supported.' }
+            $env:PATH = (Split-Path $dotnet.Source) + [IO.Path]::PathSeparator + $env:PATH
+            if ((Get-Command dotnet).Source -ne $dotnet.Source) { throw 'Remove the shadowing dotnet shim from the native SDK directory.' }
+            if ([version]((& $dotnet.Source --version).Trim() -replace '-.*$', '') -lt [version]'8.0') { throw 'Install the native .NET SDK 8+ for Resources setup.' }
+            $null = Get-Command autorest -CommandType Application, ExternalScript
+            $env:autorest_registry = 'https://packagefeedproxy.microsoft.io/npm/'
+            $env:RestoreSources = @(
+                (Join-Path $script:RepoRoot 'tools' 'LocalFeed')
+                'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
+                'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
+            ) -join ';'
+            $payload = Join-Path $script:Artifact 'tools' 'Resources'
+            foreach ($file in @((Get-Item (Join-Path $source 'README.md'))) + @(Get-ChildItem (Join-Path $source 'custom') -File -Recurse)) {
+                $target = Join-Path $payload ([IO.Path]::GetRelativePath($source, $file.FullName))
+                if (-not (Test-Path $target)) {
+                    $null = New-Item (Split-Path $target) -ItemType Directory -Force
+                    Copy-Item -LiteralPath $file.FullName -Destination $target
+                }
+            }
+            # The existing helper reads this inherited switch, including for psm1-only partial builds.
+            $RegenerateSupportModule = [switch]$true
+            $global:LASTEXITCODE = 0
+            & $helper -NotIsolated -Pester -Resources
+            if ($LASTEXITCODE -ne 0) { throw "Resources dependency helper failed (exit $LASTEXITCODE)." }
+        } catch {
+            throw "Resources test-support setup failed: $($_.Exception.Message) See '$script:HowTo'. Partial support output may remain in '$destination'; no rollback was performed."
+        } finally {
+            Pop-Location
+            foreach ($name in $environment.Keys) {
+                if ($null -eq $environment[$name]) {
+                    if (Test-Path "Env:$name") { Remove-Item "Env:$name" }
+                } else { [Environment]::SetEnvironmentVariable($name, $environment[$name]) }
+            }
+        }
+    }
+    foreach ($file in $files) {
+        if (-not (Test-Path (Join-Path $destination $file) -PathType Leaf)) { throw "Resources test support is incomplete; missing '$file' in '$destination'." }
+    }
+    $manifest = Join-Path $destination 'Az.Resources.TestSupport.psd1'
+    $support = Test-ModuleManifest $manifest
+    if ($support.Name -ne 'Az.Resources.TestSupport') { throw "Unexpected Resources support module: $manifest." }
+    $loaded = Import-Module $manifest -Force -Global -PassThru
+    if (-not $loaded.ExportedCommands.Count) { throw "Resources support exports no commands: $manifest." }
+    if ($missing.Count) { Write-Host 'Completed Resources test-support setup.' }
+    else { Write-Host 'Using installed Resources test support.' }
 }
 
 function Invoke-EdgeActionHarness {

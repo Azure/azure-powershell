@@ -26,6 +26,7 @@
     - Clarified test-runner setup guidance and invocation from different working directories.
     - Generation and test tooling report major step starts and successful completions; generation also displays the configured specification input.
     - Fixed Pester discovery for the artifact test harness by isolating the selected 4.10.1 installation in a temporary module search root.
+    - Record and Live test runs now prepare missing or incomplete Resources test support automatically before authentication; playback and complete installations do not trigger setup.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
