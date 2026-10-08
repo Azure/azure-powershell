@@ -4,6 +4,7 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Internal code generation updated. No user-facing changes in this release.
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -18,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
 
 ## Version 0.4.0
 * Added Expansion Jobs CRUD cmdlets (`New/Get/Update/Remove-AzStorageCacheExpansionJob`) for AML file systems
@@ -42,4 +44,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.StorageCache
-
