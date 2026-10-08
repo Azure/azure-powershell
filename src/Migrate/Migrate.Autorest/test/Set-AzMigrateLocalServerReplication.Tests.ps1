@@ -128,3 +128,51 @@ Describe 'Set-AzMigrateLocalServerReplicationSecurityOption' {
         $err.Exception.Message | Should -BeLike "*cannot be used with -TargetVMSecurityOption 'TrustedLaunch'*"
     }
 }
+
+# Requires a Gen 2 protected item in replication whose source has Secure Boot disabled; with Secure
+# Boot on at the source the None case is blocked by the downgrade check before any request is sent.
+Describe 'Set-AzMigrateLocalServerReplicationSecurityOptionLive' -Tag 'LiveOnly' {
+    It 'ByIdSecurityOptionTrustedLaunch' {
+        # The service returns null for securityOption on later GETs, so the outgoing update is the
+        # only place a dropped or wrong assignment is visible.
+        $script:capturedBody = $null
+        $capture = {
+            param($message, $eventListener, $next)
+            if ($message.RequestUri.AbsoluteUri -match '/protectedItems/' -and
+                $message.Method.Method -in 'PATCH', 'PUT') {
+                $script:capturedBody = $message.Content.ReadAsStringAsync().Result
+            }
+            $next.SendAsync($message, $eventListener)
+        }
+
+        $job = Set-AzMigrateLocalServerReplication `
+            -TargetObjectID $env.hciTvmProtectedItemId `
+            -TargetVMSecurityOption 'TrustedLaunch' `
+            -HttpPipelinePrepend $capture
+
+        $job | Should -Not -BeNullOrEmpty
+        $script:capturedBody | Should -Not -BeNullOrEmpty
+        $script:capturedBody | Should -Match '"securityOption"\s*:\s*"TrustedLaunch"'
+    }
+
+    It 'ByIdSecurityOptionNone' {
+        $script:capturedBody = $null
+        $capture = {
+            param($message, $eventListener, $next)
+            if ($message.RequestUri.AbsoluteUri -match '/protectedItems/' -and
+                $message.Method.Method -in 'PATCH', 'PUT') {
+                $script:capturedBody = $message.Content.ReadAsStringAsync().Result
+            }
+            $next.SendAsync($message, $eventListener)
+        }
+
+        $job = Set-AzMigrateLocalServerReplication `
+            -TargetObjectID $env.hciTvmProtectedItemId `
+            -EnableSecureBoot 'false' `
+            -HttpPipelinePrepend $capture
+
+        $job | Should -Not -BeNullOrEmpty
+        $script:capturedBody | Should -Not -BeNullOrEmpty
+        $script:capturedBody | Should -Match '"securityOption"\s*:\s*"None"'
+    }
+}
