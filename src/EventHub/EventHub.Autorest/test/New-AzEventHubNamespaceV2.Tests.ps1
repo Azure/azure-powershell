@@ -27,12 +27,15 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.DisableLocalAuth | Should -Be $false
         $eventHubNamespace.KafkaEnabled | Should be $true
 
-        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location $env.location -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -MinimumTlsVersion 1.1 -PublicNetworkAccess Disabled -ZoneRedundant:$env.useZoneRedundancy
+        # NOTE: TLS 1.0/1.1 are retired platform-wide, so the service now always reports MinimumTlsVersion '1.2'
+        # regardless of the value requested below '1.1'. Request/assert '1.2' to match current service behavior;
+        # this is unrelated to the Premium/GeoDR fixture changes in this file.
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location $env.location -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -MinimumTlsVersion 1.2 -PublicNetworkAccess Disabled -ZoneRedundant:$env.useZoneRedundancy
         $eventHubNamespace.Name | Should be $env.namespaceV3
         $eventHubNamespace.SkuCapacity | Should be 10
         $eventHubNamespace.SkuName | Should be Standard
         $eventHubNamespace.MaximumThroughputUnit | Should be 18
-        $eventHubNamespace.MinimumTlsVersion | Should be '1.1'
+        $eventHubNamespace.MinimumTlsVersion | Should be '1.2'
         $eventhubNamespace.Location.Replace(' ', '').ToLower() | Should -Be $env.location
         $eventHubNamespace.EnableAutoInflate | Should be $true
         $eventHubNamespace.DisableLocalAuth | Should be $true
@@ -44,7 +47,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.MaximumThroughputUnit | Should -Be 0
         $eventhubNamespace.Name | Should -Be $env.namespaceV4
         $eventhubNamespace.IdentityType | Should -Be SystemAssigned
-        $eventhubNamespace.ZoneRedundant | Should -Be $true
+        $eventhubNamespace.ZoneRedundant | Should -Be $env.useZoneRedundancy
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should be Premium
         $eventhubNamespace.DisableLocalAuth | Should -Be $false
@@ -92,10 +95,13 @@ Describe 'New-AzEventHubNamespaceV2' {
         $listOfNamespaces.Count | Should -BeGreaterOrEqual 5
 
         # Create a geo-Dr namespace
-        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName westus -RoleType Primary
-        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName southcentralus -RoleType Secondary
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -SkuName Premium -Location westus -GeoDataReplicationLocation $primaryReplica, $secondaryReplica
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName $env.location -RoleType Primary
+        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName $env.secondaryLocation -RoleType Secondary
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -SkuName Premium -Location $env.location -GeoDataReplicationLocation $primaryReplica, $secondaryReplica
+        $eventhubNamespace.Location.Replace(' ', '').ToLower() | Should -Be $env.location
         $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
+        $eventHubNamespace.GeoDataReplicationLocation.LocationName | Should -Contain $env.location
+        $eventHubNamespace.GeoDataReplicationLocation.LocationName | Should -Contain $env.secondaryLocation
 
     }
 }

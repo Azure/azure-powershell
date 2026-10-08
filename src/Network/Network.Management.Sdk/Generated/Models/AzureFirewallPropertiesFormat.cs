@@ -70,7 +70,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="afcConfiguration">AFC configuration for the Azure Firewall.
         /// </param>
-        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration))
+
+        /// <param name="aiSecurityAddOn">Indicates whether the AI security add-on is enabled for the Azure Firewall.
+        /// </param>
+        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration), bool? aiSecurityAddOn = default(bool?))
 
         {
             this.ApplicationRuleCollections = applicationRuleCollections;
@@ -88,6 +91,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AdditionalProperties = additionalProperties;
             this.AutoscaleConfiguration = autoscaleConfiguration;
             this.AfcConfiguration = afcConfiguration;
+            this.AiSecurityAddOn = aiSecurityAddOn;
             CustomInit();
         }
 
@@ -190,6 +194,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "afcConfiguration")]
         public AfcConfiguration AfcConfiguration {get; private set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the AI security add-on is enabled for the
+        /// Azure Firewall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "aiSecurityAddOn")]
+        public bool? AiSecurityAddOn {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

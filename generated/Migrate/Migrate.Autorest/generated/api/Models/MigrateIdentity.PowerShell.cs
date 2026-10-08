@@ -176,10 +176,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName = (string) content.GetValueForProperty("AlertSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName, global::System.Convert.ToString);
             }
-            if (content.Contains("VirtualMachineName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
-            }
             if (content.Contains("FabricName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName = (string) content.GetValueForProperty("FabricName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName, global::System.Convert.ToString);
@@ -260,6 +256,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName = (string) content.GetValueForProperty("VaultSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualMachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -283,10 +283,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("EmailConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName = (string) content.GetValueForProperty("EmailConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionProxyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName = (string) content.GetValueForProperty("PrivateEndpointConnectionProxyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
@@ -393,10 +389,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName = (string) content.GetValueForProperty("AlertSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName, global::System.Convert.ToString);
             }
-            if (content.Contains("VirtualMachineName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
-            }
             if (content.Contains("FabricName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName = (string) content.GetValueForProperty("FabricName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName, global::System.Convert.ToString);
@@ -477,6 +469,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName = (string) content.GetValueForProperty("VaultSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualMachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -500,10 +496,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("EmailConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName = (string) content.GetValueForProperty("EmailConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionProxyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName = (string) content.GetValueForProperty("PrivateEndpointConnectionProxyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {

@@ -19,9 +19,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteria __itemLevelRestoreCriteria = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ItemLevelRestoreCriteria();
 
-        /// <summary>Internal Acessors for ResourceSelector</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteria Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IGenericRestoreDatasourceCriteriaInternal.ResourceSelector { get => (this._resourceSelector = this._resourceSelector ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria()); set { {_resourceSelector = value;} } }
-
         /// <summary>Type of the specific object - used for deserializing</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inherited)]
@@ -32,22 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
 
         /// <summary>List of resource identifiers that need to be restored</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteria ResourceSelector { get => (this._resourceSelector = this._resourceSelector ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria()); set => this._resourceSelector = value; }
-
-        /// <summary>Type of the specific object - used for deserializing</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public string ResourceSelectorObjectType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaInternal)ResourceSelector).ObjectType; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaInternal)ResourceSelector).ObjectType = value ; }
-
-        /// <summary>List of resource identifiers to restore from</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> ResourceSelectorResourceIdentifier { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaInternal)ResourceSelector).ResourceIdentifier; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaInternal)ResourceSelector).ResourceIdentifier = value ; }
-
-        /// <summary>
-        /// This is a map of source resource names to target resources names to restore into. Any source name not included in the
-        /// map will be restored with a default naming format
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaResourceNameOverrides ResourceSelectorResourceNameOverride { get => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaInternal)ResourceSelector).ResourceNameOverride; set => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaInternal)ResourceSelector).ResourceNameOverride = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteria ResourceSelector { get => (this._resourceSelector = this._resourceSelector ?? new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria()); set => this._resourceSelector = value; }
 
         /// <summary>Creates an new <see cref="GenericRestoreDatasourceCriteria" /> instance.</summary>
         public GenericRestoreDatasourceCriteria()
@@ -72,42 +54,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IItemLevelRestoreCriteria
     {
-        /// <summary>Type of the specific object - used for deserializing</summary>
+        /// <summary>List of resource identifiers that need to be restored</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Type of the specific object - used for deserializing",
-        SerializedName = @"objectType",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceSelectorObjectType { get; set; }
-        /// <summary>List of resource identifiers to restore from</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"List of resource identifiers to restore from",
-        SerializedName = @"resourceIdentifiers",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> ResourceSelectorResourceIdentifier { get; set; }
-        /// <summary>
-        /// This is a map of source resource names to target resources names to restore into. Any source name not included in the
-        /// map will be restored with a default naming format
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"This is a map of source resource names to target resources names to restore into. Any source name not included in the map will be restored with a default naming format",
-        SerializedName = @"resourceNameOverrides",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaResourceNameOverrides) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaResourceNameOverrides ResourceSelectorResourceNameOverride { get; set; }
+        Description = @"List of resource identifiers that need to be restored",
+        SerializedName = @"resourceSelectors",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteria) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteria ResourceSelector { get; set; }
 
     }
     /// Generic criteria to be used during restore
@@ -116,15 +73,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
     {
         /// <summary>List of resource identifiers that need to be restored</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteria ResourceSelector { get; set; }
-        /// <summary>Type of the specific object - used for deserializing</summary>
-        string ResourceSelectorObjectType { get; set; }
-        /// <summary>List of resource identifiers to restore from</summary>
-        System.Collections.Generic.List<string> ResourceSelectorResourceIdentifier { get; set; }
-        /// <summary>
-        /// This is a map of source resource names to target resources names to restore into. Any source name not included in the
-        /// map will be restored with a default naming format
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceListSelectionCriteriaResourceNameOverrides ResourceSelectorResourceNameOverride { get; set; }
 
     }
 }

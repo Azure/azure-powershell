@@ -141,8 +141,8 @@ function Set-AzEventHubCluster{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $cluster = Get-AzEventHubCluster @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubCluster' -BoundParameters $PSBoundParameters
+            $cluster = Get-AzEventHubCluster @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

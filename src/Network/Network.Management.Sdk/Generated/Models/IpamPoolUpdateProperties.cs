@@ -29,11 +29,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="displayName">String representing a friendly name for the resource.
         /// </param>
-        public IpamPoolUpdateProperties(string description = default(string), string displayName = default(string))
+
+        /// <param name="minAllocationSize">Minimum number of IP addresses required for allocations from this IpamPool
+        /// to be compliant. Must be less than or equal to the maximum allocation size.
+        /// Omit to leave the current value unchanged; set to an empty string to clear
+        /// it.
+        /// </param>
+
+        /// <param name="maxAllocationSize">Maximum number of IP addresses allowed for allocations from this IpamPool
+        /// to be compliant. Must be greater than or equal to the minimum allocation
+        /// size. Omit to leave the current value unchanged; set to an empty string to
+        /// clear it.
+        /// </param>
+        public IpamPoolUpdateProperties(string description = default(string), string displayName = default(string), string minAllocationSize = default(string), string maxAllocationSize = default(string))
 
         {
             this.Description = description;
             this.DisplayName = displayName;
+            this.MinAllocationSize = minAllocationSize;
+            this.MaxAllocationSize = maxAllocationSize;
             CustomInit();
         }
 
@@ -54,5 +68,23 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
         public string DisplayName {get; set; }
+
+        /// <summary>
+        /// Gets or sets minimum number of IP addresses required for allocations from
+        /// this IpamPool to be compliant. Must be less than or equal to the maximum
+        /// allocation size. Omit to leave the current value unchanged; set to an empty
+        /// string to clear it.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minAllocationSize")]
+        public string MinAllocationSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum number of IP addresses allowed for allocations from
+        /// this IpamPool to be compliant. Must be greater than or equal to the minimum
+        /// allocation size. Omit to leave the current value unchanged; set to an empty
+        /// string to clear it.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxAllocationSize")]
+        public string MaxAllocationSize {get; set; }
     }
 }

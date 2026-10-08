@@ -146,7 +146,7 @@ function Set-AzEventHub{
         [System.String]
         # Resource id of the storage account to be used to create the blobs
         ${StorageAccountResourceId},
-        
+
         [Parameter(HelpMessage = "Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -257,8 +257,8 @@ function Set-AzEventHub{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $eventHub = Get-AzEventHub @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHub' -BoundParameters $PSBoundParameters
+            $eventHub = Get-AzEventHub @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

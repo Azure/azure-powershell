@@ -13,11 +13,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal
     {
 
+        /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal.PrivateEndpointConnection { get => this._privateEndpointConnection; set { {_privateEndpointConnection = value;} } }
+
+        /// <summary>Internal Acessors for PrivateEndpointState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal.PrivateEndpointState { get => this._privateEndpointState; set { {_privateEndpointState = value;} } }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for ServiceResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModelPropertiesInternal.ServiceResourceId { get => this._serviceResourceId; set { {_serviceResourceId = value;} } }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointConnection" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection> _privateEndpointConnection;
+
+        /// <summary>List of private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get => this._privateEndpointConnection; }
+
+        /// <summary>Backing field for <see cref="PrivateEndpointState" /> property.</summary>
+        private string _privateEndpointState;
+
+        /// <summary>Private endpoint state for the vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string PrivateEndpointState { get => this._privateEndpointState; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -25,6 +45,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Gets or sets the provisioning state of the vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="PublicNetworkAccess" /> property.</summary>
+        private string _publicNetworkAccess;
+
+        /// <summary>
+        /// Property to enable or disable resource provider inbound network traffic from public clients.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ServiceResourceId" /> property.</summary>
         private string _serviceResourceId;
@@ -50,6 +79,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     public partial interface IVaultModelProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable
     {
+        /// <summary>List of private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"List of private endpoint connection.",
+        SerializedName = @"privateEndpointConnections",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get;  }
+        /// <summary>Private endpoint state for the vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Private endpoint state for the vault.",
+        SerializedName = @"privateEndpointState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("None", "InProgress", "Succeeded", "Deleting", "Failed", "Pending")]
+        string PrivateEndpointState { get;  }
         /// <summary>Gets or sets the provisioning state of the vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -62,6 +114,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("Accepted", "Creating", "Deleting", "Failed", "Moving", "Succeeded", "Canceled", "Deleted", "Updating")]
         string ProvisioningState { get;  }
+        /// <summary>
+        /// Property to enable or disable resource provider inbound network traffic from public clients.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Property to enable or disable resource provider inbound network traffic from public clients.",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>Gets or sets the service resource Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -91,9 +157,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     internal partial interface IVaultModelPropertiesInternal
 
     {
+        /// <summary>List of private endpoint connection.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
+        /// <summary>Private endpoint state for the vault.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("None", "InProgress", "Succeeded", "Deleting", "Failed", "Pending")]
+        string PrivateEndpointState { get; set; }
         /// <summary>Gets or sets the provisioning state of the vault.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("Accepted", "Creating", "Deleting", "Failed", "Moving", "Succeeded", "Canceled", "Deleted", "Updating")]
         string ProvisioningState { get; set; }
+        /// <summary>
+        /// Property to enable or disable resource provider inbound network traffic from public clients.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string PublicNetworkAccess { get; set; }
         /// <summary>Gets or sets the service resource Id.</summary>
         string ServiceResourceId { get; set; }
         /// <summary>Gets or sets the type of vault.</summary>
