@@ -70,6 +70,350 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# Import the merged 2026-03-01 DDoS mitigation-rule schemas without upgrading
+# unrelated virtual network operations. Remove this compatibility transform when
+# the Network module's full Swagger baseline advances to 2026-03-01 or later.
+  - from: swagger-document
+    where: $
+    transform: >
+      if ($.definitions?.DdosCustomPolicyPropertiesFormat) {
+        Object.assign($.definitions,
+      {
+        "DdosContinent": {
+          "type": "string",
+          "description": "A continent used for DDoS geographic source matching.",
+          "enum": [
+            "Africa",
+            "Antarctica",
+            "Asia",
+            "Europe",
+            "NorthAmerica",
+            "Oceania",
+            "SouthAmerica"
+          ],
+          "x-ms-enum": {
+            "name": "DdosContinent",
+            "modelAsString": true,
+            "values": [
+              {
+                "name": "Africa",
+                "value": "Africa",
+                "description": "Matches traffic originating from countries and territories in Africa."
+              },
+              {
+                "name": "Antarctica",
+                "value": "Antarctica",
+                "description": "Matches traffic originating from Antarctica."
+              },
+              {
+                "name": "Asia",
+                "value": "Asia",
+                "description": "Matches traffic originating from countries and territories in Asia."
+              },
+              {
+                "name": "Europe",
+                "value": "Europe",
+                "description": "Matches traffic originating from countries and territories in Europe."
+              },
+              {
+                "name": "NorthAmerica",
+                "value": "NorthAmerica",
+                "description": "Matches traffic originating from countries and territories in North America."
+              },
+              {
+                "name": "Oceania",
+                "value": "Oceania",
+                "description": "Matches traffic originating from countries and territories in Oceania."
+              },
+              {
+                "name": "SouthAmerica",
+                "value": "SouthAmerica",
+                "description": "Matches traffic originating from countries and territories in South America."
+              }
+            ]
+          }
+        },
+        "DdosMitigationTrafficScope": {
+          "type": "string",
+          "description": "The traffic protocol to which a DDoS mitigation rule applies.",
+          "enum": [
+            "Tcp",
+            "Udp"
+          ],
+          "x-ms-enum": {
+            "name": "DdosMitigationTrafficScope",
+            "modelAsString": true,
+            "values": [
+              {
+                "name": "Tcp",
+                "value": "Tcp",
+                "description": "TCP traffic."
+              },
+              {
+                "name": "Udp",
+                "value": "Udp",
+                "description": "UDP traffic."
+              }
+            ]
+          }
+        },
+        "DdosSourcePolicyActionType": {
+          "type": "string",
+          "description": "The action applied to traffic matching a source policy override.",
+          "enum": [
+            "Deny",
+            "Permit"
+          ],
+          "x-ms-enum": {
+            "name": "DdosSourcePolicyActionType",
+            "modelAsString": true,
+            "values": [
+              {
+                "name": "Deny",
+                "value": "Deny",
+                "description": "Deny traffic from matching sources."
+              },
+              {
+                "name": "Permit",
+                "value": "Permit",
+                "description": "Permit traffic from matching sources."
+              }
+            ]
+          }
+        },
+        "DdosGeoMatch": {
+          "type": "object",
+          "description": "A geographic source match. The service validates that at least one of continent or countryCode is specified. If both are specified, the service validates that the country belongs to the continent according to the service-defined mapping. For example, RU, TR, and KZ map to Asia, EG maps to Africa, and CY maps to Europe.",
+          "properties": {
+            "continent": {
+              "$ref": "#/definitions/DdosContinent",
+              "description": "The continent to match. Country membership follows the service-defined mapping documented on DdosGeoMatch."
+            },
+            "countryCode": {
+              "type": "string",
+              "description": "The uppercase two-letter ISO 3166-1 alpha-2 code for the country or territory to match.",
+              "pattern": "^[A-Z]{2}$"
+            }
+          }
+        },
+        "DdosMitigationRule": {
+          "type": "object",
+          "description": "A DDoS mitigation rule resource.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the DDoS mitigation rule."
+            },
+            "id": {
+              "type": "string",
+              "description": "The resource ID of the DDoS mitigation rule.",
+              "readOnly": true
+            },
+            "etag": {
+              "type": "string",
+              "description": "A unique read-only string that changes whenever the resource is updated.",
+              "readOnly": true
+            },
+            "type": {
+              "type": "string",
+              "description": "The resource type.",
+              "readOnly": true
+            },
+            "properties": {
+              "$ref": "#/definitions/DdosMitigationRulePropertiesFormat",
+              "description": "Properties of the DDoS mitigation rule."
+            }
+          },
+          "required": [
+            "name",
+            "properties"
+          ],
+          "allOf": [
+            {
+              "$ref": "./common.json#/definitions/SubResource"
+            }
+          ]
+        },
+        "DdosMitigationRulePropertiesFormat": {
+          "type": "object",
+          "description": "DDoS mitigation rule properties. The service validates that each rule specifies at least one applicable default mitigation or source policy override and that the default mitigations match the selected trafficScope.",
+          "properties": {
+            "provisioningState": {
+              "$ref": "./common.json#/definitions/ProvisioningState",
+              "description": "The provisioning state of the DDoS mitigation rule.",
+              "readOnly": true
+            },
+            "trafficScope": {
+              "$ref": "#/definitions/DdosMitigationTrafficScope",
+              "description": "The traffic protocol to which the mitigation rule applies."
+            },
+            "tcpDefaultMitigations": {
+              "$ref": "#/definitions/DdosTcpDefaultMitigations",
+              "description": "The default TCP mitigations. This property is valid only when trafficScope is Tcp."
+            },
+            "udpDefaultMitigations": {
+              "$ref": "#/definitions/DdosUdpDefaultMitigations",
+              "description": "The default UDP mitigations. This property is valid only when trafficScope is Udp."
+            },
+            "sourcePolicyOverrides": {
+              "type": "array",
+              "description": "Source-specific actions that override the default mitigations. A rule supports at most one Deny override and one Permit override.",
+              "items": {
+                "$ref": "#/definitions/DdosSourcePolicyOverride"
+              },
+              "x-ms-identifiers": [
+                "policyAction/actionType"
+              ]
+            }
+          },
+          "required": [
+            "trafficScope"
+          ]
+        },
+        "DdosSourceMatchConditions": {
+          "type": "object",
+          "description": "Source conditions for a DDoS source policy override. A source matches when it matches any IP prefix or any geographic match.",
+          "properties": {
+            "ipPrefixes": {
+              "type": "array",
+              "description": "The IPv4 or IPv6 CIDR prefixes in `<address>/<prefix-length>` format. Entries are evaluated with OR semantics.",
+              "items": {
+                "type": "string"
+              }
+            },
+            "geoMatches": {
+              "type": "array",
+              "description": "The geographic matches. Entries are evaluated with OR semantics.",
+              "items": {
+                "$ref": "#/definitions/DdosGeoMatch"
+              },
+              "x-ms-identifiers": []
+            }
+          }
+        },
+        "DdosSourcePolicyAction": {
+          "type": "object",
+          "description": "The action to apply to traffic matching a source policy override.",
+          "properties": {
+            "actionType": {
+              "$ref": "#/definitions/DdosSourcePolicyActionType",
+              "description": "The source policy action type."
+            }
+          },
+          "required": [
+            "actionType"
+          ]
+        },
+        "DdosSourcePolicyOverride": {
+          "type": "object",
+          "description": "A source-specific action that overrides the default mitigations.",
+          "properties": {
+            "policyAction": {
+              "$ref": "#/definitions/DdosSourcePolicyAction",
+              "description": "The action to apply to matching traffic."
+            },
+            "conditions": {
+              "$ref": "#/definitions/DdosSourceMatchConditions",
+              "description": "The source conditions that select traffic for the action."
+            }
+          },
+          "required": [
+            "policyAction",
+            "conditions"
+          ]
+        },
+        "DdosTcpDefaultMitigations": {
+          "type": "object",
+          "description": "Default mitigations for TCP traffic.",
+          "properties": {
+            "perSourceRateLimiting": {
+              "$ref": "#/definitions/DdosTcpPerSourceRateLimitPolicy",
+              "description": "The per-source TCP packet rate limit."
+            },
+            "perSourceConnectionRateLimiting": {
+              "$ref": "#/definitions/DdosTcpPerSourceConnectionRateLimitPolicy",
+              "description": "The per-source rate limit for new TCP connection establishments."
+            }
+          }
+        },
+        "DdosTcpPerSourceConnectionRateLimitPolicy": {
+          "type": "object",
+          "description": "A per-source TCP connection establishment rate limit.",
+          "properties": {
+            "connectionsPerSecond": {
+              "type": "integer",
+              "format": "int32",
+              "description": "The maximum number of new TCP connections established per second from a source IP."
+            }
+          },
+          "required": [
+            "connectionsPerSecond"
+          ]
+        },
+        "DdosTcpPerSourceRateLimitPolicy": {
+          "type": "object",
+          "description": "A per-source TCP packet rate limit.",
+          "properties": {
+            "packetsPerSecond": {
+              "type": "integer",
+              "format": "int32",
+              "description": "The maximum number of TCP packets allowed per second from a source IP."
+            }
+          },
+          "required": [
+            "packetsPerSecond"
+          ]
+        },
+        "DdosUdpDefaultMitigations": {
+          "type": "object",
+          "description": "Default mitigations for UDP traffic.",
+          "properties": {
+            "perSourceRateLimiting": {
+              "$ref": "#/definitions/DdosUdpPerSourceRateLimitPolicy",
+              "description": "The per-source UDP packet rate limit."
+            }
+          }
+        },
+        "DdosUdpPerSourceRateLimitPolicy": {
+          "type": "object",
+          "description": "A per-source UDP packet rate limit.",
+          "properties": {
+            "packetsPerSecond": {
+              "type": "integer",
+              "format": "int32",
+              "description": "The maximum number of UDP packets allowed per second from a source IP."
+            }
+          },
+          "required": [
+            "packetsPerSecond"
+          ]
+        }
+      }
+        );
+        const mitigationRules = {
+          type: "array",
+          description: "The list of DDoS mitigation rules associated with the custom policy.",
+          items: {
+            "$ref": "#/definitions/DdosMitigationRule"
+          },
+          "x-ms-identifiers": [
+            "name"
+          ]
+        };
+        const properties = {};
+        for (const [name, value] of Object.entries(
+          $.definitions.DdosCustomPolicyPropertiesFormat.properties)) {
+          properties[name] = value;
+          if (name === "detectionRules") {
+            properties.mitigationRules = mitigationRules;
+          }
+        }
+        $.definitions.DdosCustomPolicyPropertiesFormat.properties = properties;
+      }
+# Use the API version that implements DDoS custom policy mitigation rules.
+  - from: DdosCustomPoliciesOperations.cs
+    where: $
+    transform: $ = $.replace(/string apiVersion = "2026-01-01";/g, 'string apiVersion = "2026-03-01";');
 # Add the IPAM allocation bounds introduced by azure-rest-api-specs commit
 # cd2c909bbb9c0c59ab219bb68222f9d6c6a64100 without upgrading unrelated
 # virtual network operations from the module's 2025-09-01 API baseline.

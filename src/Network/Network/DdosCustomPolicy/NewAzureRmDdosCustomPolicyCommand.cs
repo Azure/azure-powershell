@@ -66,17 +66,17 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Specifies one or more DDoS detection rules for the policy.")]
         public PSDdosCustomPolicyDetectionRule[] DetectionRule { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies one or more DDoS mitigation rules for the policy.")]
+        public PSDdosCustomPolicyMitigationRule[] MitigationRule { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-
-            if (this.DetectionRule == null || this.DetectionRule.Length == 0)
-            {
-                throw new PSArgumentException("At least one detection rule is required when creating a DDoS custom policy.");
-            }
 
             var vDdosCustomPolicy = new PSDdosCustomPolicy
             {
@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Network
             var vDdosCustomPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.DdosCustomPolicy>(vDdosCustomPolicy);
             vDdosCustomPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             vDdosCustomPolicyModel.DetectionRules = BuildDetectionRules();
+            vDdosCustomPolicyModel.MitigationRules = BuildMitigationRules();
             // Service no longer accepts frontEndIpConfiguration on create payload.
             vDdosCustomPolicyModel.FrontEndIPConfiguration = null;
             var present = true;
@@ -125,6 +126,10 @@ namespace Microsoft.Azure.Commands.Network
 
         private List<MNM.DdosDetectionRule> BuildDetectionRules()
         {
+            if (this.DetectionRule == null)
+            {
+                return null;
+            }
 
             var rules = new List<MNM.DdosDetectionRule>();
             var allowedTrafficTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -171,6 +176,18 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return rules;
+        }
+
+        private List<MNM.DdosMitigationRule> BuildMitigationRules()
+        {
+            if (this.MitigationRule == null)
+            {
+                return null;
+            }
+
+            var rules = this.MitigationRule.ToList();
+            DdosCustomPolicyMitigationRuleUtils.ValidateRules(rules);
+            return rules.Select(DdosCustomPolicyMitigationRuleUtils.ToSdk).ToList();
         }
     }
 }
