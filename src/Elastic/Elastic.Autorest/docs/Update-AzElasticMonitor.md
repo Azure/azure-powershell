@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Monitor resource name
+A sequence of textual characters.
 
 ```yaml
 Type: System.String
