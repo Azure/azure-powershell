@@ -27,10 +27,12 @@ For information on how to develop for `Az.Relay`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 591b17c5a50e7fc0ef09211197279e6d9f7ebc22
+commit: bb83f364d8d79a7c64cc5d6ed9677cbe27c8e1cb
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/relay/resource-manager/readme.md
+  - $(repo)/specification/relay/resource-manager/Microsoft.Relay/Relay/readme.md
+
+tag: package-2026-07-preview
 
 title: Relay
 
