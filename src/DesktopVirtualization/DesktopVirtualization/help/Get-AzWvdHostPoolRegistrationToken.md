@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdHostPoolRegistrationToken
 
 ## SYNOPSIS
-Operation to list the RegistrationTokens associated with the HostPool
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity>
 ```
 
 ## DESCRIPTION
-Operation to list the RegistrationTokens associated with the HostPool
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ## EXAMPLES
 
