@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         Description = @"The recovery point type. Values from LatestTime, LatestTag or Custom. In the case of custom, the recovery point provided by RecoveryPointId will be used. In the other two cases, recovery point id will be ignored.",
         SerializedName = @"recoveryPointType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("ApplicationConsistent", "CrashConsistent")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("LatestTime", "LatestTag", "Custom")]
         string RecoveryPointType { get; set; }
 
     }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// The recovery point type. Values from LatestTime, LatestTag or Custom. In the case of custom, the recovery point provided
         /// by RecoveryPointId will be used. In the other two cases, recovery point id will be ignored.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("ApplicationConsistent", "CrashConsistent")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("LatestTime", "LatestTag", "Custom")]
         string RecoveryPointType { get; set; }
 
     }

@@ -16,18 +16,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRelationshipsServiceGro
 
 Describe 'Get-AzRelationshipsServiceGroupMemberRelationship' {
     It 'Get' {
-        $relationship = Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameForGet
+        $relationship = Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameForGet
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameForGet
+        $relationship.SourceId | Should -Be $env.SgmSourceId
+        $relationship.TargetId | Should -Be $env.SgmTargetResourceUri
     }
 
     It 'GetViaIdentity' {
         $identity = @{
-            ResourceUri = $env.SgmResourceGroupResourceUri
+            ResourceUri = $env.SgmTargetResourceUri
             Name = $env.SgmRelNameForGet
         }
         $relationship = Get-AzRelationshipsServiceGroupMemberRelationship -InputObject $identity
         $relationship | Should -Not -BeNullOrEmpty
         $relationship.Name | Should -Be $env.SgmRelNameForGet
+    }
+
+    It 'List' {
+        $relationship = Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri
+        $relationship.Name | Should -Contain $env.SgmRelNameForGet
     }
 }

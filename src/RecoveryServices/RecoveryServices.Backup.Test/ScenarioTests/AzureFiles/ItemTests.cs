@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact]
+        [Fact(Skip = "CRR cross-region cross-subscription restore needs a GRS vault with multi-day cross-region-replicated recovery points; setup unavailable. Tracked for re-record once secondary RPs replicate (MSRC-114273 ILR CHAP re-record).")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSCrossRegionCrossSubscriptionRestore()
