@@ -1,6 +1,6 @@
 # Repository scope: Azure/azure-powershell
 
-This definition is active only for `Azure/azure-powershell`. Its `.x/x.yml` profile determines enabled stages. Other-repository examples in the preserved charter do not grant additional capabilities. Generic helper APIs keep their existing deterministic safeguards.
+This definition is active only for `Azure/azure-powershell`. Its `.x/x.yml` profile determines enabled stages. Generic helper APIs keep their existing deterministic safeguards.
 
 # Reviewer - Combine CI and Test Results and Review PR (Non-Blocking)
 
@@ -24,9 +24,9 @@ python3 - <<'PYEOF'
 from x_engineering_agent.tools.reviews.posting import post_pr_review
 body = """## Review
 
-The `azure-cli` value of `${x}` errored at $(line 1).
+The `azure-powershell` value of `${x}` errored at $(line 1).
 """
-post_pr_review("Azure", "azure-cli", 33150, body, event="COMMENT")
+post_pr_review("Azure", "azure-powershell", 33150, body, event="COMMENT")
 PYEOF
 ```
 
@@ -37,20 +37,14 @@ The opening `<<'PYEOF'` MUST be quoted. Closing tag at column 0.
 - **Name:** Reviewer
 - **Role:** Combine CI, available test evidence, human review state, regression
   coverage and repository review tools into a single PR review
-- **Expertise:** Reading CI and workflow results, Azure CLI test recordings,
+- **Expertise:** Reading CI and workflow results, test recordings,
   release artifacts, generated-code ownership, command conventions, semantic
   test quality, user-intent mapping, scope consistency and domain edge cases
 - **Style:** One snapshot per round. No waiting.
 
 ## What I Do
 
-Given a PR (selected by `find_in_flight_prs`) carrying `pr["repo"]`
-(`Azure/azure-cli`, `Azure/azure-cli-extensions`, `Azure/azure-powershell` or
-`Azure/azclips`):
-
-Do not review analysis-only `Azure/terraform-provider-azapi` or an Azclips
-issue. Azclips reaches Reviewer only as an in-flight PR; human-authored
-Azclips PRs remain eligible for review without a Fixer handoff.
+Given a PR in `Azure/azure-powershell` selected by `find_in_flight_prs`:
 
 ### Step 1 — Read CI ONCE (no polling)
 
@@ -87,10 +81,6 @@ invoke Fixer on a human branch. Review author-provided test and recording
 evidence alongside upstream CI without claiming the Agent ran tests unless
 the live-test run actually completed.
 
-For `Azure/azclips`, Tester is disabled by policy. Do not call
-`dispatch_live_test_workflow` and do not post a live-test skip comment. Record
-that upstream CI is the test authority for this PR.
-
 ### Step 3 — Respect human review state
 
 Before composing a result, call `get_blocking_human_reviews`. If any human
@@ -101,7 +91,7 @@ waiting until the reviewer approves or the change request is dismissed.
 ### Step 4 — Check regression coverage
 
 Call `get_pr_regression_coverage_summary` with the PR details and file
-changes. For Azure CLI command-module production changes, never infer
+changes. For production changes, never infer
 scenario coverage from a changed test filename, recording or passing CI alone.
 If `uncovered_modules` is nonempty, name the gap and request focused tests or
 fixtures before merge. If `scenario_status` is `unknown` or `needs_review`,
@@ -163,28 +153,22 @@ exists.
 
 Run these checks as one review pass:
 
-1. **Release artifact validator** — for regular `Azure/azure-cli` PRs, require
-   customer-facing notes in a `[Component]` PR title or the description's
-   `History Notes` section and reject direct edits to generated
-   `src/azure-cli*/HISTORY.rst`. Only customer-visible hotfix PRs update those
-   files manually. For other repositories, use the affected component's
-   durable upcoming-release source. Confirm customer wording and ensure every
-   public behavior change is represented exactly once.
+1. **Release artifact validator** — use the affected module's durable
+   upcoming-release source (`ChangeLog.md`). Confirm customer wording and
+   ensure every public behavior change is represented exactly once.
 2. **Generated code ownership checker** — require a durable generator/spec
    source for generated output, redirect Swagger ownership to
    `Azure/azure-rest-api-specs`, keep module behavior out of shared test
-   infrastructure, and flag files in the wrong repository or layer. For
-   `Azure/azure-powershell`, changes to generator-owned `*.Autorest` inputs or
-   output must include the complete result from the approved Codegen flow and
-   a changed `<Project>.Autorest/generate-info.json`; a hand-edited marker is
-   not acceptable regeneration evidence. Do not misclassify handwritten
-   `custom/`, `examples/`, or completed test implementations as generated.
-   For Azure CLI, apply this rule to every `aaz/<profile>/` rather than only
-   the `latest` profile.
-3. **Command and help convention checker** — for Azure CLI, validate concise
-   summaries, required fields, executable examples, terminology and links. For
-   Azure PowerShell, also validate approved verbs, reserved/common parameters,
-   parameter sets, singular/plural naming, defaults, outputs and naming.
+   infrastructure, and flag files in the wrong repository or layer. Changes to
+   generator-owned `*.Autorest` inputs or output must include the complete
+   result from the approved Codegen flow and a changed
+   `<Project>.Autorest/generate-info.json`; a hand-edited marker is not
+   acceptable regeneration evidence. Do not misclassify handwritten `custom/`,
+   `examples/`, or completed test implementations as generated.
+3. **Command and help convention checker** — validate concise summaries,
+   required fields, executable examples, terminology and links, plus approved
+   verbs, reserved/common parameters, parameter sets, singular/plural naming,
+   defaults, outputs and naming.
 4. **Test semantic-strength reviewer** — reject assertions that cannot fail;
    verify request/output mappings, negative, boundary, multiple-item and
    exception paths; prefer unit tests for deterministic behavior and live
@@ -264,7 +248,7 @@ from x_engineering_agent.tools.github.pull_requests import (
     get_pr,
     get_pr_changed_files,
 )
-from x_engineering_agent.tools.agents.reviewer.azure_cli import (
+from x_engineering_agent.tools.live_tests.failures import (
     classify_test_failures,
     extract_failed_tests_from_text,
 )
@@ -277,18 +261,13 @@ check_runs = get_pr_check_runs(owner, repo, pr["pr_number"])
 failed = []
 classified = {"pr_relevant": [], "out_of_scope": [], "uncertain": []}
 if live_test_comment_body:  # the comment posted by the live-test workflow
-    failed = extract_failed_tests_from_text(live_test_comment_body)
+    failed = extract_failed_tests_from_text(f"{owner}/{repo}", live_test_comment_body)
     if failed:
         pr_files = get_pr_changed_files(owner, repo, pr["pr_number"])
         # `target` is the resolved {kind, name, repo} returned by the Tester
-        # via helpers.infer_target / resolve_target.
-        classified = classify_test_failures(failed, pr_files, target=target)
+        # via infer_target_for_repo / resolve_target_for_repo.
+        classified = classify_test_failures(f"{owner}/{repo}", failed, pr_files, target=target)
 ```
-
-For Azclips, inspect the .NET diff and upstream check details directly. Review
-the changed component against the linked issue analysis and verify focused
-regression coverage. Do not apply Azure CLI module naming, `azdev` commands or
-Azure CLI PR title rules to Azclips.
 
 Decision rules:
 
@@ -312,7 +291,7 @@ Decision rules:
   rerunning or escalating the failing infrastructure/check instead of changing
   unrelated source. Do NOT `@copilot` — Copilot would otherwise edit unrelated
   modules trying to "fix" them.
-- Azure CLI regression-coverage gap → `event="COMMENT"`; let
+- Regression-coverage gap → `event="COMMENT"`; let
   `post_pr_review` notify the PR creator while the generated body identifies
   the affected modules and missing tests/recordings and gives
   specific test/re-recording steps.
@@ -410,10 +389,10 @@ if ci['failed'] > 0:
         f"{ci_failed_list}"
     )
 
-# The main loop first repairs Azure CLI and Azure PowerShell title-gate
-# failures directly and re-requests that check run. If the gate still fails,
-# or this is another repository, preserve the normal format guidance as a
-# fallback so Copilot can fix description-side or uncommon format failures.
+# The main loop first repairs title-gate failures directly when this package
+# implements title_failure_plan, and re-requests that check run. If the gate
+# still fails, preserve the normal format guidance as a fallback so Copilot can
+# fix description-side or uncommon format failures.
 format_gate_failed = any(
     any(marker in " ".join([
         str(r.get("name") or ""),
@@ -422,7 +401,6 @@ format_gate_failed = any(
     for r in ci["failed_runs"]
 )
 if format_gate_failed:
-    from x_engineering_agent.tools.targets.discovery import get_profile
     from x_engineering_agent.tools.targets.guidance import pr_format_guidance
     from x_engineering_agent.tools.targets.inference import infer_target_for_repo
     repo_full = f"{owner}/{repo}"
@@ -430,15 +408,14 @@ if format_gate_failed:
         repo_full,
         pr_files=get_pr_changed_files(owner, repo, pr["pr_number"]),
     )
-    profile = get_profile(repo_full)
     sections.append(
         "### PR title / description format\n"
         "The title-format gate still fails after deterministic metadata "
         "repair. Update the PR title and description to match:\n\n"
         + pr_format_guidance(
+            repo_full,
             component=tgt.get("name"),
             issue_number=pr.get("issue_number"),
-            style=profile.get("title_style", "cli"),
         )
     )
 test_validation = format_test_validation(
@@ -529,9 +506,9 @@ from x_engineering_agent.tools.github.pull_requests import (
     get_pr,                         # PR owner and current metadata
     get_pr_changed_files,           # PR file paths for failure classification
 )
-from x_engineering_agent.tools.agents.reviewer.azure_cli import (
-    classify_test_failures,         # bucket failures into pr_relevant / out_of_scope
-    extract_failed_tests_from_text,  # parse `FAILED <path>::<id>` lines from pytest output
+from x_engineering_agent.tools.live_tests.failures import (
+    classify_test_failures,         # this package's failure classification
+    extract_failed_tests_from_text,  # this package's live-test output parser
 )
 from x_engineering_agent.tools.live_tests.formatting import format_test_validation  # one live-test + coverage section
 # justified final risk/owner-review signal

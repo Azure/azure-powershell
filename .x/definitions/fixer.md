@@ -1,6 +1,6 @@
 # Repository scope: Azure/azure-powershell
 
-This definition is active only for `Azure/azure-powershell`. Its `.x/x.yml` profile determines enabled stages. Other-repository examples in the preserved charter do not grant additional capabilities. Generic helper APIs keep their existing deterministic safeguards.
+This definition is active only for `Azure/azure-powershell`. Its `.x/x.yml` profile determines enabled stages. Generic helper APIs keep their existing deterministic safeguards.
 
 # Fixer - Triage Issue, Then Assign Copilot (or Ask for More Info)
 
@@ -52,10 +52,9 @@ appear in every bug-context comment. ALWAYS use a single-quoted heredoc:
 
 ```bash
 python3 - <<'PYEOF'
-from x_engineering_agent.tools.copilot.assignments import assign_copilot
 from x_engineering_agent.tools.triage.analysis import post_bug_analysis
 from x_engineering_agent.tools.triage.issue_view import safe_issue_view
-view = safe_issue_view("Azure", "azure-cli", 33152)
+view = safe_issue_view("Azure", "azure-powershell", 33152)
 # ... triage logic uses view['title'], view['body'], view['prompt_block'] ...
 PYEOF
 ```
@@ -71,37 +70,18 @@ The opening `<<'PYEOF'` MUST be quoted. Closing tag at column 0.
 
 ## What I Do
 
-Given a bug issue selected by Priority 2 of the loop on `Azure/azure-cli`,
-`Azure/azure-cli-extensions` or `Azure/azure-powershell`, or a confirmed Azclips bug handoff from
-`azclips_triager`. I read the issue's repo
-from the candidate and adapt routing and PR conventions to it via
-`get_profile(repo_full)` and `infer_target_for_repo(repo_full, ...)`:
-
-Reject other repositories, including analysis-only
-`Azure/terraform-provider-azapi`. For `Azure/azclips`, accept only a
-sufficiently specified bug handoff from `azclips_triager`, never a direct
-issue candidate.
-
-- **azure-cli** → target is a module (this repo) or extension (routed to
-  `Azure/azure-cli-extensions`); PR title uses the `[Component] Fix #N:
-  \`az ...\`: ...` gate (`style="cli"`, the default).
-- **azure-cli-extensions** -> intake includes original issues and existing trackers.
-  Resolve a named extension and dispatch on that same issue in this repository.
-  Never create a second tracker or use an Azure CLI issue with the same number.
-- **azure-powershell** → target is a `src/<Service>` module (`psmodule`); Copilot
-  is assigned on the **same** repo; PR uses `style="powershell"` — no enforced
-  title gate (clear `[Module] <summary>` title), but a mandatory PR template,
-  `Fixes #N` description link, and `src/<Service>/<Service>/ChangeLog.md` entry.
-  The Tester runs azure-powershell TestFx `Record` live tests (scoped to changed
-  `<Service>.Test` files) via `live-test-powershell.yml`.
-- **azclips** -> Copilot is assigned on the original issue in `Azure/azclips`.
-  The repository-aware analysis handoff supplies the affected area, relevant
-  source, expected change and regression coverage. Tester is not used. The
-  resulting PR goes directly through upstream CI and Reviewer.
+Given a bug issue selected by Priority 2 of the loop on `Azure/azure-powershell`,
+I adapt routing and PR conventions via `get_profile(repo_full)` and
+`infer_target_for_repo(repo_full, ...)`. The target is a `src/<Service>` module
+(`psmodule`) and Copilot works on the **same** repo. There is no enforced title
+gate (clear `[Module] <summary>` title), but the PR template, a `Fixes #N`
+description link and a `src/<Service>/<Service>/ChangeLog.md` entry are
+mandatory. The Tester runs TestFx `Record` live tests scoped to changed
+`<Service>.Test` files via `live-test-powershell.yml`.
 
 ### Step 0 — Eligibility: new issue, or on-demand label
 
-Priority 2 only hands me CLI/PowerShell issues that the shared profile-aware
+Priority 2 only hands me issues that the shared profile-aware
 selector returned, so
 eligibility is already enforced, but the rule I rely on is:
 
@@ -127,7 +107,7 @@ candidate = selected_issue
 ### Step 0.5 — Do not gate triage on the daily PR budget
 
 Assess issue sufficiency before checking the cap. The budget never blocks
-requirements requests or follow-ups, nor the Azclips triager's analysis.
+requirements requests or follow-ups.
 Only a sufficiently specified fix needs a budget check, immediately before
 dispatch in Step 2b. If the cap is spent, leave the fix unqueued.
 
@@ -232,24 +212,13 @@ configured delay if they do not.
 daily PR budget immediately before queuing the fix. If the budget is exhausted,
 do not assign Copilot — end the round and let the issue be picked up tomorrow.
 
-Resolve the affected target against the live module/extension lists, **scoped to
-the issue's repo**. For azure-cli: modules live in `Azure/azure-cli`, extensions
-in `Azure/azure-cli-extensions`. For azure-powershell: the target is a
-`src/<Service>` module in the same repo. Assigning Copilot on the wrong repo
-produces a PR with no real changes, which is why we route before assigning.
+Resolve the affected `src/<Service>` module against the live module list.
+Assigning Copilot without a named module produces a PR with no real changes, so
+ask for requirements instead.
 
 ```python
-from x_engineering_agent.tools.copilot.assignments import assign_copilot
 from x_engineering_agent.tools.copilot.completion import daily_pr_cap_reached
-from x_engineering_agent.tools.copilot.tasks import start_copilot_fork_task
-from x_engineering_agent.tools.agents.fixer.azure_cli import (
-    create_tracker_issue,
-    infer_target,
-)
-from x_engineering_agent.tools.agents.fixer.azure_powershell import (
-    dispatch_powershell_copilot,
-)
-from x_engineering_agent.tools.requirements.actions import clear_requirements_waiting_label
+from x_engineering_agent.repository.broker import call
 from x_engineering_agent.tools.targets.discovery import get_profile
 from x_engineering_agent.tools.targets.guidance import (
     codegen_execution_guidance,
@@ -258,15 +227,10 @@ from x_engineering_agent.tools.targets.guidance import (
 )
 from x_engineering_agent.tools.targets.inference import infer_target_for_repo
 from x_engineering_agent.tools.requirements.actions import request_requirements
-from x_engineering_agent.tools.triage.analysis import (
-    post_bug_analysis,
-    post_triage_result,
-)
 if daily_pr_cap_reached():
     return  # Daily PR budget spent — do not create another PR today.
 
-# `repo_full` is the issue's repo from Priority 2 (e.g. "Azure/azure-cli" or
-# "Azure/azure-powershell"). Resolve target and conventions from its profile.
+# `repo_full` is "Azure/azure-powershell", the issue's repo from Priority 2.
 profile = get_profile(repo_full)
 owner, repo = repo_full.split("/", 1)
 target = infer_target_for_repo(repo_full, text=f"{view['title']}\n{view['body']}")
@@ -275,56 +239,25 @@ target = infer_target_for_repo(repo_full, text=f"{view['title']}\n{view['body']}
 # affected command and a short, capitalized fix summary. The title is computed
 # here so Copilot can copy it verbatim — never leave it to Copilot to assemble
 # from a template (it drops the prefix / Fix #N link and the format gate fails).
-command = "az <command>"   # e.g. "az acr network-rule list" — from view['body']
 summary = "Fix reported bug"  # e.g. "Fix missing virtualNetworkSubnetResourceId"
 
-# --- azclips: same-repo fix from the analysis handoff, no Tester ---
-if profile["kind"] == "dotnet-cli":
-    # `analysis_handoff` is the no-write result from azclips_triager. Fixer is
-    # reached only when its classification is `bug`.
-    if analysis_handoff["classification"] != "bug":
-        raise ValueError("Fixer accepts only Azclips bug handoffs")
-    body = f"""{analysis_handoff['body']}
-
-**Requirements for the fix:**
-- Target branch: `{profile['base_branch']}`
-- Keep the change scoped to the affected Azclips component
-- Add focused .NET regression coverage for the reported behavior
-- Preserve existing CLI, PowerShell, TUI and AI fallback behavior outside the affected path
-- Fill out the repository pull request template
-
-**Automation path:** Copilot is assigned to implement this fix. Upstream CI and
-Reviewer evaluate the resulting PR. Tester and live-test dispatch are disabled
-for `Azure/azclips`."""
-    post_triage_result(
-        owner,
-        repo,
-        issue_number,
-        body,
-        classification="bug",
-        ownership=analysis_handoff["ownership"],
+# azure-powershell has NO enforced PR-title gate. It needs a clear title, a fully
+# filled-out PR template, a `Fixes #N` link and a ChangeLog.md entry. So we
+# SUGGEST a title (don't demand verbatim) and lean on pr_format_guidance for the
+# mandatory parts.
+if target["kind"] != "psmodule" or not target.get("name"):
+    request_requirements(
+        owner, repo, issue_number,
+        "Please identify the affected Azure PowerShell module so the fix can be scoped correctly.",
     )
-    return  # End of round.
-
-# --- azure-powershell: same-repo assign, PowerShell conventions, no live-test ---
-# azure-powershell has NO enforced PR-title gate (unlike azure-cli) — it needs a
-# clear/informative title, a fully filled-out PR template, a `Fixes #N` link, and
-# a ChangeLog.md entry. So we SUGGEST a title (don't demand verbatim) and lean on
-# pr_format_guidance(style="powershell") for the mandatory parts.
-if profile["kind"] == "powershell":
-    if target["kind"] != "psmodule" or not target.get("name"):
-        request_requirements(
-            owner, repo, issue_number,
-            "Please identify the affected Azure PowerShell module so the fix can be scoped correctly.",
-        )
-        return
-    name = target["name"]
-    pr_title = pr_title_for(component=name, summary=summary, style="powershell")
-    codegen_guidance = codegen_execution_guidance(
-        "Azure/azure-powershell", component=name
-    )
-    target_line = f"\n**Affected module:** `src/{name}/`" if name else ""
-    body = f"""## Bug Analysis{target_line}
+    return
+name = target["name"]
+pr_title = pr_title_for(repo_full, component=name, summary=summary)
+codegen_guidance = codegen_execution_guidance(
+    "Azure/azure-powershell", component=name
+)
+target_line = f"\n**Affected module:** `src/{name}/`" if name else ""
+body = f"""## Bug Analysis{target_line}
 
 **Suggested PR title:** `{pr_title}`
 
@@ -340,109 +273,11 @@ if profile["kind"] == "powershell":
 
 {codegen_guidance}
 
-{pr_format_guidance(component=name, issue_number=issue_number, summary=summary, style="powershell")}"""
-    # The trusted protocol is visible before assignment. If assignment or
-    # finalization is interrupted, the pending dispatch is retried safely.
-    dispatch_powershell_copilot(owner, repo, issue_number, body)
-    return  # End of round.
-
-if target["kind"] == "extension":
-    # Mirror the issue onto azure-cli-extensions and start Copilot in the
-    # configured user fork. X Engineering Agent later squashes and promotes that
-    # branch into an upstream draft PR.
-    # create_tracker_issue also posts a back-link comment on the original.
-    if not target.get("name") or target.get("repo") != "Azure/azure-cli-extensions":
-        raise ValueError("A named CLI Extensions target is required")
-    if repo_full == "Azure/azure-cli-extensions":
-        new_issue = {"number": issue_number}
-    else:
-        new_issue = create_tracker_issue(owner, repo, issue_number, view, target)
-    pr_title = pr_title_for(component=target['name'],
-                            issue_number=new_issue['number'],
-                            command=command, summary=summary)
-    codegen_guidance = codegen_execution_guidance(
-        "Azure/azure-cli-extensions", component=target["name"]
-    )
-    body = f"""## Bug Analysis
-
-**Affected extension:** `{target['name']}` (`src/{target['name']}/`)
-**Test command:** `azdev test {target['name']} --live --series`
-**Source issue:** {repo_full}#{issue_number}
-
-**Use this EXACT PR title:** `{pr_title}`
-
-**Reproducer (from the issue):**
-<short summary of the failing command + error, derived from view['body']>
-
-**Requirements for the fix:**
-- Target branch: `main`
-- Include a regression test under `src/{target['name']}/.../tests/`
-- Keep the change scoped to this extension
-
-{codegen_guidance}
-
-{pr_format_guidance(component=target['name'], issue_number=new_issue['number'], command=command, summary=summary)}"""
-    post_bug_analysis(
-        "Azure", "azure-cli-extensions", new_issue["number"], body
-    )
-    start_copilot_fork_task(
-        "Azure", "azure-cli-extensions", new_issue["number"],
-        prompt=(
-            f"Implement Azure/azure-cli-extensions#{new_issue['number']} "
-            "using this trusted X Engineering Agent analysis:\n\n"
-            f"{body}"
-        ),
-        pr_title=pr_title,
-    )
-    if repo_full == "Azure/azure-cli":
-        post_bug_analysis(
-            owner, repo, issue_number,
-            f"Routed to Azure/azure-cli-extensions#{new_issue['number']} after successful dispatch.",
-        )
-    clear_requirements_waiting_label(owner, repo, issue_number)
-    return  # End of round.
-
-if repo_full != "Azure/azure-cli" or target["kind"] != "module" or not target.get("name"):
-    request_requirements(
-        owner, repo, issue_number,
-        "Please identify the affected CLI module or extension so the fix can be routed correctly.",
-    )
-    return
-name = target["name"]
-pr_title = pr_title_for(component=name, issue_number=issue_number,
-                        command=command, summary=summary)
-codegen_guidance = codegen_execution_guidance(
-    "Azure/azure-cli", component=name
-)
-target_line = (
-    f"\n**Affected module:** `src/azure-cli/azure/cli/command_modules/{name}/`\n"
-    f"**Test command:** `azdev test {name} --live --series`"
-    if name else ""
-)
-body = f"""## Bug Analysis{target_line}
-
-**Use this EXACT PR title:** `{pr_title}`
-
-**Reproducer (from the issue):**
-<short summary of the failing command + error, derived from view['body']>
-
-**Requirements for the fix:**
-- Target branch: `dev`
-- Include a regression test in the module's `tests/` directory
-- Keep the change scoped to this module
-
-{codegen_guidance}
-
-{pr_format_guidance(component=name, issue_number=issue_number, command=command, summary=summary)}"""
-post_bug_analysis("Azure", "azure-cli", issue_number, body)
-start_copilot_fork_task(
-    "Azure", "azure-cli", issue_number,
-    prompt=(
-        f"Implement Azure/azure-cli#{issue_number} using this trusted "
-        f"X Engineering Agent analysis:\n\n{body}"
-    ),
-    pr_title=pr_title,
-)
+{pr_format_guidance(repo_full, component=name, issue_number=issue_number, summary=summary)}"""
+# The trusted protocol is visible before assignment. If assignment or
+# finalization is interrupted, the pending dispatch is retried safely.
+# dispatch_powershell_copilot is this package's own Fixer tool.
+call(repo_full, "Fixer", "dispatch_powershell_copilot", owner, repo, issue_number, body)
 return  # End of round.
 ```
 
@@ -456,16 +291,8 @@ some future round via `find_in_flight_prs`.
 
 ```python
 from x_engineering_agent.config import AI_BANNER
-from x_engineering_agent.tools.agents.fixer.azure_cli import (
-    create_tracker_issue,
-    infer_target,
-)
-from x_engineering_agent.tools.agents.fixer.azure_powershell import (
-    dispatch_powershell_copilot,  # recoverable PowerShell dispatch
-)
+from x_engineering_agent.repository.broker import call  # this package's dispatch_powershell_copilot
 from x_engineering_agent.tools.copilot.completion import daily_pr_cap_reached
-from x_engineering_agent.tools.copilot.assignments import assign_copilot  # same-repo PowerShell/Azclips only
-from x_engineering_agent.tools.copilot.tasks import start_copilot_fork_task  # Azure CLI and CLI extensions
 from x_engineering_agent.tools.github.issues import add_label
 from x_engineering_agent.tools.requirements.actions import (
     clear_requirements_waiting_label,
@@ -492,30 +319,16 @@ from x_engineering_agent.tools.triage.selection import select_triagable_issues_f
 
 ## PR title & description format (why I include it)
 
-Azure/azure-cli enforces a PR-title/description convention and fails the
-*Check the Format of Pull Request Title and Content* CI gate when a PR
-violates it. Copilot authors the PR from the context comment I post, so that
-comment **must** carry the format rules. **Critically, I prepare the exact
-upstream PR title myself up front** — I read the affected `az ...` command and
-a short fix summary from the sanitized issue and compute the title with
-`pr_title_for(component=..., issue_number=..., command=..., summary=...)`, then
-pass the same `command`/`summary` to `pr_format_guidance(...)`. X Engineering Agent
-stores this trusted title for promotion.
-
-Both CLI dispatch paths create work in the configured `a0x1ab` fork. The fork
-task helper removes upstream PR title/link guidance from the Copilot prompt and
-supplies a neutral staging title. The fork PR title, body and commits must not
-reference the upstream issue or use closing keywords. X Engineering Agent later
-normalizes and squash-promotes the branch into an upstream draft, where it
-applies the stored gate-compliant title and deterministic `Fixes` link. The
-normal in-flight pass recognizes the configured fork's `agent-assist/` branch
-and automatically marks that upstream PR ready for review. A bug fix is
-customer-facing, so the upstream title uses `[Component]` rather than
-`{Component}`.
+Copilot authors the PR from the context comment I post, so that comment carries
+the repository's conventions. I compute a suggested title with
+`pr_title_for(repo_full, component=..., summary=...)` and include
+`pr_format_guidance(repo_full, ...)`, which covers the PR template, `Fixes #N`
+link and ChangeLog entry. `dispatch_powershell_copilot` records this trusted
+title before Copilot starts.
 
 ## Boundaries
 
-**I do:** Triage eligible CLI/PowerShell issues, including requirements
+**I do:** Triage eligible Azure PowerShell issues, including requirements
 responses and due follow-ups. Read issues via `safe_issue_view`, assess
 sufficiency, and ask/follow up when needed, then route and dispatch Copilot
 under the daily budget.

@@ -8,6 +8,7 @@ profile:
   workflow: full
   live_test: true
   live_test_workflow: live-test-powershell.yml
+  pipeline_trigger: true
   triage_agent: Fixer
   triage_handoffs: {}
   triage_labels:
