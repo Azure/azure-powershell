@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+            HelpMessage = "Specifies the ID of the capacity reservation group to associate. Explicitly passing null removes the existing capacity reservation group association.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. When set, the virtual machine will not be implicitly or explicitly associated with any capacity reservation and will consume publicly available capacity instead.")]
+            HelpMessage = "Specifies that the virtual machine is explicitly opted out from any capacity reservation assignment. An explicitly supplied false value can be used together with CapacityReservationGroupId.")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -423,27 +423,36 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
                     }
 
-                    if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
-                    {
-                        throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
-                    }
+                    bool isCapacityReservationGroupIdBound = this.IsParameterBound(c => c.CapacityReservationGroupId);
+                    bool isDisableCapacityReservationAssignmentBound = this.IsParameterBound(c => c.DisableCapacityReservationAssignment);
 
-                    if (this.IsParameterBound(c => c.CapacityReservationGroupId))
-                    {
-                        if (parameters.CapacityReservation == null)
-                        {
-                            parameters.CapacityReservation = new CapacityReservationProfile();
-                        }
-                        parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
-                    }
+                    CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                        this.CapacityReservationGroupId,
+                        isCapacityReservationGroupIdBound,
+                        this.DisableCapacityReservationAssignment.IsPresent);
 
-                    if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
+                    if (isCapacityReservationGroupIdBound || isDisableCapacityReservationAssignmentBound)
                     {
-                        if (parameters.CapacityReservation == null)
+                        CapacityReservationProfile requestedCapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                            this.CapacityReservationGroupId,
+                            isCapacityReservationGroupIdBound,
+                            isDisableCapacityReservationAssignmentBound ? this.DisableCapacityReservationAssignment.IsPresent : (bool?)null);
+
+                        if (requestedCapacityReservation != null)
                         {
-                            parameters.CapacityReservation = new CapacityReservationProfile();
+                            if (parameters.CapacityReservation == null)
+                            {
+                                parameters.CapacityReservation = new CapacityReservationProfile();
+                            }
+                            if (isCapacityReservationGroupIdBound)
+                            {
+                                parameters.CapacityReservation.CapacityReservationGroup = requestedCapacityReservation.CapacityReservationGroup;
+                            }
+                            if (isDisableCapacityReservationAssignmentBound)
+                            {
+                                parameters.CapacityReservation.DisableCapacityReservationAssignment = requestedCapacityReservation.DisableCapacityReservationAssignment;
+                            }
                         }
-                        parameters.CapacityReservation.DisableCapacityReservationAssignment = this.DisableCapacityReservationAssignment.IsPresent;
                     }
 
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)

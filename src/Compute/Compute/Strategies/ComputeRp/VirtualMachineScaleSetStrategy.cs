@@ -92,7 +92,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] excludeZone = null,
             string highSpeedInterconnectPlacement = null,
             string scheduledEventsApiVersion = null,
-            bool? enableAllInstancesDown = null
+            bool? enableAllInstancesDown = null,
+            bool capacityReservationIdSpecified = false
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -190,11 +191,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Priority = priority,
                             EvictionPolicy = evictionPolicy,
                             BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                            CapacityReservation = (capacityReservationId == null && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
-                            {
-                                CapacityReservationGroup = (capacityReservationId == null) ? null : new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId),
-                                DisableCapacityReservationAssignment = disableCapacityReservationAssignment
-                            },
+                            CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                                capacityReservationId,
+                                capacityReservationIdSpecified || !string.IsNullOrEmpty(capacityReservationId),
+                                disableCapacityReservationAssignment,
+                                serializeEmptyCapacityReservationGroupForNullId: false),
                             UserData = userData,
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
                             {
@@ -297,7 +298,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string highSpeedInterconnectPlacement = null,
             string scheduledEventsApiVersion = null,
             bool? enableAllInstancesDown = null,
-            string zonalPlatformFaultDomainAlignMode = null
+            string zonalPlatformFaultDomainAlignMode = null,
+            bool capacityReservationIdSpecified = false
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -378,11 +380,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Priority = priority,
                             EvictionPolicy = evictionPolicy,
                             BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                            CapacityReservation = (capacityReservationId == null && disableCapacityReservationAssignment == null) ? null : new CapacityReservationProfile
-                            {
-                                CapacityReservationGroup = (capacityReservationId == null) ? null : new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId),
-                                DisableCapacityReservationAssignment = disableCapacityReservationAssignment
-                            },
+                            CapacityReservation = CapacityReservationAssignmentHelper.CreateCapacityReservationProfile(
+                                capacityReservationId,
+                                capacityReservationIdSpecified || !string.IsNullOrEmpty(capacityReservationId),
+                                disableCapacityReservationAssignment,
+                                serializeEmptyCapacityReservationGroupForNullId: false),
                             SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
                             {
                                 Id = securityPostureId,
