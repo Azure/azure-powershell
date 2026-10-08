@@ -1,6 +1,90 @@
 # How-To
 This document describes how to develop for `Az.EdgeAction`.
 
+## Regenerating the stable API
+
+First follow [Install the development tools](README.md#install-the-development-tools) for exact validated versions and native prerequisites. From the repository root, run `& ./tools/BuildScripts/Install-EdgeActionDevelopmentTools.ps1` to install repository-local packages and activate the current PowerShell process. Use `-ActivateOnly` in later shells, and `-UseMicrosoftPackageFeedProxy` when that approved proxy is required. Installing npm packages named `dotnet` or `pwsh` does not replace native runtime installation.
+
+`README.md` pins both the PowerShell generator and the specification commit. The `2026-10-01` input comes from [Azure/azure-rest-api-specs#46715](https://github.com/Azure/azure-rest-api-specs/pull/46715). Review the pinned commit rather than relying on a PR description or a moving branch.
+
+From the repository root:
+
+```powershell
+$repoRoot = (Get-Location).Path
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $true
+
+Get-Command node, npm, autorest, pwsh, dotnet | Select-Object Name, Source
+node --version
+pwsh --version
+dotnet --version
+npm view '@autorest/powershell@4.0.758' version --registry $env:autorest_registry
+
+& ./tools/BuildScripts/PrepareAutorestModule.ps1 -RepoRoot $repoRoot -ModuleRootName EdgeAction -ForceRegenerate
+& ./tools/BuildScripts/BuildModules.ps1 -RepoRoot $repoRoot -Configuration Debug -TargetModule EdgeAction
+```
+
+Only preparation uses `-ForceRegenerate`: passing it to `BuildModules.ps1` would also force regeneration of the Accounts dependency. Preparation invokes AutoRest from this source directory, builds the generated proxies and Markdown help in `docs`, and moves generated output into `generated/EdgeAction/EdgeAction.Autorest`. The build assembles the module and its Accounts dependency under `artifacts/Debug`. Keep the original module GUID and release-managed assembly metadata when reviewing the generated diff.
+
+After changing examples or API descriptions, refresh the parent module's help using the same platyPS operations as `AdaptAutorestModule.ps1`:
+
+```powershell
+Import-Module ./artifacts/Debug/Az.EdgeAction/Az.EdgeAction.psd1 -Force
+Import-Module platyPS
+Import-Module ./tools/BuildScripts/HelpMarkDown.psm1
+$helpPath = Join-Path $repoRoot 'src/EdgeAction/EdgeAction/help'
+Get-ChildItem ./src/EdgeAction/EdgeAction.Autorest/docs -Filter '*-*.md' |
+    Copy-Item -Destination $helpPath -Force
+Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+Get-ChildItem $helpPath -Filter '*-*.md' | ForEach-Object {
+    Remove-CommonParameterFromMarkdown -Path $_.FullName -ParameterName 'ProgressAction'
+}
+New-ExternalHelp -Path $helpPath -OutputPath ./artifacts/Debug/Az.EdgeAction -Force
+```
+
+Run builds before importing the module into the validation shell. Exit that shell before rebuilding; Windows locks loaded assemblies.
+
+### Resolving package errors
+
+AutoRest core 3.10.9 defaults to `https://registry.npmjs.org` for extension resolution and installation, independently of npm's configured registry. The installer sets `autorest_registry` to the selected registry for the current process. Without the installer, if `npm view` succeeds through an approved registry but AutoRest reports `Unable to resolve package '@autorest/powershell@4.x'`, set `$env:autorest_registry = (npm config get registry).Trim()` in the process that runs generation. In Git Bash the equivalent is `export autorest_registry="$(npm config get registry)"`. Generator v4 exists; the deprecation warning does not cause this resolution failure. Do not downgrade to v3 or disable TLS verification.
+
+On Windows, if `Get-Command dotnet` identifies an obsolete npm shim and the native SDK is installed at the standard location, prepend it for the current process:
+
+```powershell
+$env:PATH = "C:\Program Files\dotnet;$env:PATH"
+dotnet --version
+```
+
+A subsequent NuGet TLS error is separate from AutoRest. Do not edit `NuGet.Config`. In environments configured to use Microsoft's package-feed proxy, the following process-local override retains the repository's local and Azure feeds and uses that proxy for public NuGet packages:
+
+```powershell
+$env:RestoreSources = @(
+    (Join-Path $repoRoot 'tools/LocalFeed')
+    'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
+    'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
+) -join ';'
+```
+
+Use only an organization-approved mirror. Set this before preparation/build, and leave certificate validation enabled. Review `artifacts/autorest/EdgeAction/EdgeAction.Autorest.log` for generator errors and the build output for restore/compiler errors.
+
+### Offline validation
+
+Use Pester 4.10.1, as required by the repository's AutoRest test harness. The development-tools installer saves this version locally and adds its directory to `PSModulePath`.
+
+```powershell
+Import-Module Pester -RequiredVersion 4.10.1
+Import-Module ./artifacts/Debug/Az.EdgeAction/Az.EdgeAction.psd1 -Force
+Get-Command -Module Az.EdgeAction
+Get-Help Update-AzEdgeActionVersion -Full
+$result = Invoke-Pester -Script ./src/EdgeAction/EdgeAction.Autorest/test/StableApi.Tests.ps1 -PassThru
+if ($result.FailedCount -gt 0) { throw "$($result.FailedCount) stable API contract tests failed." }
+git diff --check
+```
+
+`StableApi.Tests.ps1` uses synthetic HTTP responses to check stable request URLs, update payloads, DELETE status handling, and custom version-code/default-version behavior without Azure access. These tests are not live service recordings.
+
+The existing scenario recordings target `2025-12-01-preview` and cannot replay requests for `2026-10-01`. They require fresh recording against an authorized stable-API test environment; do not replace API-version strings to fabricate stable recordings. Inspect the Pester summary or result XML, not just the generated runner's exit code, which can be zero despite failed tests.
+
 ## Building `Az.EdgeAction`
 To build, run the `build-module.ps1` at the root of the module directory. This will generate the proxy script cmdlets that are the cmdlets being exported by this module. After the build completes, the proxy script cmdlets will be output to the `exports` folder. To read more about the proxy script cmdlets, look at the [README.md](exports/README.md) in the `exports` folder.
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update a EdgeActionExecutionFilter")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2026-10-01")]
     public partial class UpdateAzEdgeActionExecutionFilter_UpdateViaIdentityEdgeAction : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -130,14 +130,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate _property;
 
-        /// <summary>
-        /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Concrete tracked resource types can be created by aliasing this type using a specific property type.", ValueFromPipeline = true)]
+        /// <summary>The type used for update operations of the EdgeActionExecutionFilter.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The type used for update operations of the EdgeActionExecutionFilter.", ValueFromPipeline = true)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Concrete tracked resource types can be created by aliasing this type using a specific property type.",
+        Description = @"The type used for update operations of the EdgeActionExecutionFilter.",
         SerializedName = @"properties",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]

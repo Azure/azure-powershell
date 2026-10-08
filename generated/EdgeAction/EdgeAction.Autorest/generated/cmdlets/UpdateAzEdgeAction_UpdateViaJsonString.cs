@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update a EdgeAction</summary>
+    /// <summary>
+    /// update the tags of an Edge Action. Omitted tags are preserved, and an empty tags object clears all tags. Null tags are
+    /// rejected. Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEdgeAction_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update a EdgeAction")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update the tags of an Edge Action. Omitted tags are preserved, and an empty tags object clears all tags. Null tags are rejected. Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.NotSuggestDefaultParameterSet]
     public partial class UpdateAzEdgeAction_UpdateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,

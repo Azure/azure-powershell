@@ -101,7 +101,9 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentType
-The deployment type
+The deployment type.
+If supplied in a version PATCH request, it must match the existing value.
+Version PATCH validates the request without changing the version.
 
 ```yaml
 Type: System.String
@@ -146,7 +148,9 @@ Accept wildcard characters: False
 ```
 
 ### -IsDefaultVersion
-The active state
+Indicates whether this is the default version.
+If supplied in a version PATCH request, it must match the existing value.
+Use swapDefault to change the default version.
 
 ```yaml
 Type: System.String

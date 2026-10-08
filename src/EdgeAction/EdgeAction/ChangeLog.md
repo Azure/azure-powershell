@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Updated EdgeAction cmdlets to the stable API version 2026-10-01.
+    - Added execution filter update parameters and clarified that version updates validate existing values without changing version properties or tags.
+    - Based on [Azure/azure-rest-api-specs#46715](https://github.com/Azure/azure-rest-api-specs/pull/46715).
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
@@ -31,4 +34,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.EdgeAction
-

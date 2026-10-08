@@ -1,6 +1,6 @@
 {
   "resourceType": "edgeActions/versions",
-  "apiVersion": "2025-12-01-preview",
+  "apiVersion": "2026-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.edgeaction"
   },

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags :
+    public partial class EdgeActionExecutionFilterUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IAssociativeArray<string>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,string> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,string>();
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterUpdateTags source) => source.__additionalProperties;
     }
 }

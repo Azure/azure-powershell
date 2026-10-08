@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update a EdgeActionExecutionFilter")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2026-10-01")]
     public partial class UpdateAzEdgeActionExecutionFilter_UpdateViaIdentityEdgeActionExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -40,9 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>
-        /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
-        /// </summary>
+        /// <summary>The type used for update operations of the EdgeActionExecutionFilter.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
@@ -92,6 +90,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Path)]
         public string ExecutionFilter { get => this._executionFilter; set => this._executionFilter = value; }
+
+        /// <summary>Custom Header Key associated with the execution filter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Custom Header Key associated with the execution filter")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Custom Header Key associated with the execution filter",
+        SerializedName = @"executionFilterIdentifierHeaderName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExecutionFilterIdentifierHeaderName { get => _propertiesBody.ExecutionFilterIdentifierHeaderName ?? null; set => _propertiesBody.ExecutionFilterIdentifierHeaderName = value; }
+
+        /// <summary>Custom Header Value associated with the execution filter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Custom Header Value associated with the execution filter")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Custom Header Value associated with the execution filter",
+        SerializedName = @"executionFilterIdentifierHeaderValue",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExecutionFilterIdentifierHeaderValue { get => _propertiesBody.ExecutionFilterIdentifierHeaderValue ?? null; set => _propertiesBody.ExecutionFilterIdentifierHeaderValue = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -157,8 +177,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+
+        /// <summary>The referenced versionId of the edgeaction version</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The referenced versionId of the edgeaction version")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The referenced versionId of the edgeaction version",
+        SerializedName = @"versionId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string VersionId { get => _propertiesBody.VersionId ?? null; set => _propertiesBody.VersionId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

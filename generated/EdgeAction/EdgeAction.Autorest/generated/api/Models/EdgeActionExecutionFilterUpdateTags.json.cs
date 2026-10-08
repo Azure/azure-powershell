@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>Represents an edge action version</summary>
-    public partial class EdgeActionVersionPropertiesUpdate
+    /// <summary>Resource tags.</summary>
+    public partial class EdgeActionExecutionFilterUpdateTags
     {
 
         /// <summary>
@@ -54,10 +54,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject into a new instance of <see cref="EdgeActionVersionPropertiesUpdate" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject into a new instance of <see cref="EdgeActionExecutionFilterUpdateTags" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal EdgeActionVersionPropertiesUpdate(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json)
+        /// <param name="exclusions"></param>
+        internal EdgeActionExecutionFilterUpdateTags(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -65,31 +66,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 return;
             }
-            {_deploymentType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("deploymentType"), out var __jsonDeploymentType) ? (string)__jsonDeploymentType : (string)_deploymentType;}
-            {_isDefaultVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("isDefaultVersion"), out var __jsonIsDefaultVersion) ? (string)__jsonIsDefaultVersion : (string)_isDefaultVersion;}
+            Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IAssociativeArray<string>)this).AdditionalProperties, null ,exclusions );
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionPropertiesUpdate.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionPropertiesUpdate.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionPropertiesUpdate FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json ? new EdgeActionVersionPropertiesUpdate(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json ? new EdgeActionExecutionFilterUpdateTags(json) : null;
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="EdgeActionVersionPropertiesUpdate" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="EdgeActionExecutionFilterUpdateTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"
+        /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="EdgeActionVersionPropertiesUpdate" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="EdgeActionExecutionFilterUpdateTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode)
         {
@@ -101,8 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._deploymentType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString(this._deploymentType.ToString()) : null, "deploymentType" ,container.Add );
-            AddIf( null != (((object)this._isDefaultVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString(this._isDefaultVersion.ToString()) : null, "isDefaultVersion" ,container.Add );
+            Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IAssociativeArray<string>)this).AdditionalProperties, container);
             AfterToJson(ref container);
             return container;
         }

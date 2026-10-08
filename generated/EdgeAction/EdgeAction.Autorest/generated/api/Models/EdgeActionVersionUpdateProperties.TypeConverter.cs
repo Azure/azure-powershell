@@ -8,10 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-    /// />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="EdgeActionVersionUpdateProperties" />
     /// </summary>
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class EdgeActionVersionUpdatePropertiesTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -27,14 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="EdgeActionVersionUpdateProperties"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="EdgeActionVersionUpdateProperties"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="EdgeActionVersionUpdateProperties" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -97,35 +95,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" />, or <c>null</c> if there is no
-        /// suitable conversion.
+        /// an instance of <see cref="EdgeActionVersionUpdateProperties" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="EdgeActionVersionUpdateProperties"
         /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="EdgeActionVersionUpdateProperties" />.</param>
         /// <returns>
-        /// an instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" />, or <c>null</c> if there is no
-        /// suitable conversion.
+        /// an instance of <see cref="EdgeActionVersionUpdateProperties" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateProperties ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateProperties).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return AzureResourceManagerCommonTypesTrackedResourceUpdateTags.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return EdgeActionVersionUpdateProperties.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -133,11 +128,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return AzureResourceManagerCommonTypesTrackedResourceUpdateTags.DeserializeFromPSObject(sourceValue);
+                return EdgeActionVersionUpdateProperties.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return AzureResourceManagerCommonTypesTrackedResourceUpdateTags.DeserializeFromDictionary(sourceValue);
+                return EdgeActionVersionUpdateProperties.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }
