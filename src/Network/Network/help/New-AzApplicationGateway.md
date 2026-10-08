@@ -29,6 +29,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
@@ -59,6 +61,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
@@ -89,6 +93,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
@@ -120,6 +126,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
@@ -231,6 +239,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdvancedRoutingConditionSets
+The list of AdvancedRoutingConditionSet
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingConditionSet[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AdvancedRoutingMaps
+The list of AdvancedRoutingMap
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingMap[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

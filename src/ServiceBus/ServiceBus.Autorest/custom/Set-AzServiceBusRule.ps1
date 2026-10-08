@@ -150,7 +150,7 @@ function Set-AzServiceBusRule{
         [Parameter(HelpMessage = "Value that indicates whether the rule action requires preprocessing.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        # Value that indicates whether the rule action requires preprocessing. 
+        # Value that indicates whether the rule action requires preprocessing.
         ${ActionRequiresPreprocessing},
 
         [Parameter(HelpMessage = "SQL expression. e.g. MyProperty='ABC'")]
@@ -247,8 +247,8 @@ function Set-AzServiceBusRule{
             $hasActionSqlExpression = $PSBoundParameters.Remove('ActionSqlExpression')
             $hasActionRequiresPreprocessing = $PSBoundParameters.Remove('ActionRequiresPreprocessing')
 
-            $rule = Get-AzServiceBusRule @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusRule' -BoundParameters $PSBoundParameters
+            $rule = Get-AzServiceBusRule @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

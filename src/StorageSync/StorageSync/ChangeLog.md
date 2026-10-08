@@ -21,6 +21,8 @@
 * Improved `Set-AzStorageSyncServer` managed identity troubleshooting
     - The cmdlet now preserves managed identity token acquisition errors and provides guidance based on the local server type
     - Help now includes `ServerId` in the example and explains the elevated session requirement for Azure Arc-enabled servers
+
+## Version 2.7.0
 * Improved help for the `ChangeEnumerationIntervalDay` parameter
 * Fixed `Set-AzStorageSyncServer` to retrieve the registered server using the validated server ID
 * Added `ChangeEnumerationIntervalDay` parameter to `New-AzStorageSyncCloudEndpoint` cmdlet
