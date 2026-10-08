@@ -29,6 +29,7 @@
     - Fixed test startup assembly conflicts by running the artifact harness from its own directory instead of resolving assemblies from the caller's source directory.
     - Record and Live test runs now prepare missing or incomplete Resources test support automatically before authentication; playback and complete installations do not trigger setup.
     - Clarified pre-login environment registration and post-login context failures with property-specific diagnostics that redact subscription IDs and sensitive URL components.
+    - Record and Live runs now verify the environment before Resources support setup and request explicit confirmation before persistently registering a missing Brazilus environment. Existing registrations and playback are unchanged.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
