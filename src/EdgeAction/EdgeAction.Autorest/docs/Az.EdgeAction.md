@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EdgeAction
-Module Guid: 172d8b71-731b-43bd-ab49-2d5b27a1486d
+Module Guid: 17bffbbe-4071-45ac-8bee-4345a1e1f45a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.edgeaction
 Help Version: 1.0.0.0
 Locale: en-US
@@ -64,3 +64,4 @@ Omitted tags are preserved, an empty tags object clears all tags, and supplied t
 Null tags are rejected.
 Version properties are not changed.
 If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+
