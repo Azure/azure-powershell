@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Improved deployment stack What-If output to show configuration details for resource creates and deletes, including potential changes.
+    - Displays top-level fields such as location, kind, SKU, and tags followed by properties, while omitting redundant resource header fields.
+    - Aligns with [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.

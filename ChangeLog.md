@@ -4,6 +4,11 @@
     - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
     - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
 
+#### Az.Resources
+* Improved deployment stack What-If output to show configuration details for resource creates and deletes, including potential changes.
+    - Displays top-level fields such as location, kind, SKU, and tags followed by properties, while omitting redundant resource header fields.
+    - Aligns with [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).
+
 ## 16.3.0 - September 2026
 #### Az.Accounts 5.5.3
 * Fixed 'Get-AzSubscription' to throw a clear error instead of returning nothing when '-TenantId' does not match the current Managed Service Identity (MSI) context. [#25710]
