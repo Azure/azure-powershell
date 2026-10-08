@@ -493,6 +493,33 @@ if ($behavior -eq 'invalid import') { "throw 'Fixture import failure'" | Set-Con
         }
     }
 
+    Describe 'Artifact harness working directory' {
+        It 'restores cwd after the harness <Outcome>' -TestCases @(
+            @{ Outcome = 'returns'; Fail = $false }
+            @{ Outcome = 'throws'; Fail = $true }
+        ) {
+            param($Outcome, $Fail)
+            $savedArtifact = $script:Artifact
+            $before = (Get-Location).Path
+            $script:Artifact = Join-Path $TestDrive ([guid]::NewGuid().ToString())
+            $null = New-Item $script:Artifact -ItemType Directory
+            @'
+param([switch]$NotIsolated, [switch]$Playback, [string[]]$TestName)
+if ((Get-Location).Path -ne $PSScriptRoot) { throw 'Wrong harness directory' }
+Set-Location $HOME
+if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
+'@ | Set-Content (Join-Path $script:Artifact 'test-module.ps1')
+            try {
+                if ($Fail) { { Invoke-EdgeActionHarness Playback 'fail' } | Should -Throw 'Fixture harness failure' }
+                else { Invoke-EdgeActionHarness Playback }
+                (Get-Location).Path | Should -Be $before
+            } finally {
+                $script:Artifact = $savedArtifact
+                Set-Location $before
+            }
+        }
+    }
+
     Describe 'Fresh NUnit results' {
         BeforeEach {
             $resultPath = Join-Path $TestDrive 'result.xml'
@@ -581,6 +608,7 @@ Describe 'Isolated runner integration with a local fixture harness' {
         @'
 param([switch]$NotIsolated, [switch]$Playback)
 if (-not $NotIsolated -or -not $Playback) { exit 8 }
+if ((Get-Location).Path -ne $PSScriptRoot) { throw 'Harness must run from the artifact directory' }
 '<test-results failures="0" errors="0"><test-case executed="True" success="True" /></test-results>' |
     Set-Content (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
 exit 0
@@ -627,6 +655,34 @@ if ((Get-Location).Path -ne $before -or $repoRoot -ne '__WRONG__') { exit 9 }
         Test-Path $resultPath | Should -Be $true
         Test-Path (Join-Path $wrongRoot 'artifacts') | Should -Be $false
         Test-Path (Join-Path $fixture 'artifacts' 'edgeaction-test-runs') | Should -Be $false
+    }
+    It 'loads only artifact assemblies when the caller source directory contains another DLL' {
+        $sourceBin = Join-Path $source 'bin'
+        $artifactBin = Join-Path $artifact 'bin'
+        $null = New-Item $sourceBin, $artifactBin -ItemType Directory -Force
+        $typeSuffix = [guid]::NewGuid().ToString('N')
+        Add-Type -TypeDefinition "public class Source$typeSuffix { }" -OutputAssembly (Join-Path $sourceBin 'Fixture.private.dll')
+        Add-Type -TypeDefinition "public class Artifact$typeSuffix { }" -OutputAssembly (Join-Path $artifactBin 'Fixture.private.dll')
+        "@{ RootModule='Fixture.psm1'; ModuleVersion='1.0.0'; RequiredAssemblies='./bin/Fixture.private.dll' }" |
+            Set-Content (Join-Path $artifact 'Fixture.psd1')
+        '$null = Import-Module (Join-Path $PSScriptRoot ''bin'' ''Fixture.private.dll'')' |
+            Set-Content (Join-Path $artifact 'Fixture.psm1')
+        @'
+Import-Module (Join-Path $PSScriptRoot 'Fixture.psd1')
+$loaded = @([AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.Location -like '*Fixture.private.dll' })
+if ($loaded.Count -ne 1 -or $loaded[0].Location -ne (Join-Path $PSScriptRoot 'bin' 'Fixture.private.dll')) {
+    throw 'A source assembly was loaded instead of only the artifact assembly'
+}
+'<test-results failures="0" errors="0"><test-case executed="True" success="True" /></test-results>' |
+    Set-Content (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
+'@ | Set-Content $harness
+        Push-Location $source
+        try {
+            & $pwsh -NoProfile -File $runner | Out-Null
+            $LASTEXITCODE | Should -Be 0
+            (Get-Location).Path | Should -Be $source
+        } finally { Pop-Location }
+        Test-Path $resultPath | Should -Be $true
     }
     It 'contains Pester EnableExit and leaves recordings in the harness directory without backups' {
         @'

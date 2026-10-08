@@ -26,6 +26,7 @@
     - Clarified test-runner setup guidance and invocation from different working directories.
     - Generation and test tooling report major step starts and successful completions; generation also displays the configured specification input.
     - Fixed Pester discovery for the artifact test harness by isolating the selected 4.10.1 installation in a temporary module search root.
+    - Fixed test startup assembly conflicts by running the artifact harness from its own directory instead of resolving assemblies from the caller's source directory.
     - Record and Live test runs now prepare missing or incomplete Resources test support automatically before authentication; playback and complete installations do not trigger setup.
 
 ## Version 0.1.2

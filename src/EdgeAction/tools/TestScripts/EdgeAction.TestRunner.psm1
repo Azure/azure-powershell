@@ -197,8 +197,14 @@ function Invoke-EdgeActionHarness {
     $parameters = @{ NotIsolated = $true; $Mode = $true }
     if ($TestName) { $parameters.TestName = $TestName }
     $global:LASTEXITCODE = 0
-    & (Join-Path $script:Artifact 'test-module.ps1') @parameters
-    if ($LASTEXITCODE -ne 0) { throw "Scenario harness exited with code $LASTEXITCODE." }
+    # Relative RequiredAssemblies can resolve against cwd before the manifest directory.
+    Push-Location $script:Artifact
+    try {
+        & (Join-Path $script:Artifact 'test-module.ps1') @parameters
+        if ($LASTEXITCODE -ne 0) { throw "Scenario harness exited with code $LASTEXITCODE." }
+    } finally {
+        Pop-Location
+    }
 }
 
 function Invoke-EdgeActionScenario {
