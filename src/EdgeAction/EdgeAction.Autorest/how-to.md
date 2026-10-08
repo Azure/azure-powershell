@@ -98,9 +98,15 @@ Set-Location .\src\EdgeAction\EdgeAction.Autorest
 
 If your shell is elsewhere, navigate directly to that folder in the intended checkout using its full path. Stay there for the remaining test instructions, including offline runner tests. No previously assigned path variables or user-set environment variables are required. The runner derives repository and artifact paths from its own script location.
 
-Complete the dependency and artifact checks below before configuring the runner; it does not install tools, generate code, or build modules.
+Confirm built artifacts and install any missing test prerequisites below before configuring the runner; it does not install tools, generate code, or build modules.
 
-### Install and verify Pester 4.10.1
+### Confirm built artifacts
+
+If artifacts are missing or source files changed, follow the separate [Check inputs, prepare, and build](#check-inputs-prepare-and-build) instructions, then return to this module directory using the test entry step above. The runner requires `artifacts\Debug\Az.Accounts\Az.Accounts.psd1` and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test-module.ps1` under the invoked script's checkout; it does not build them automatically.
+
+### Install test prerequisites
+
+#### Install and verify Pester 4.10.1
 
 Install this exact version once for the current user, then verify discovery in the same PowerShell shell that will launch the runner. Skip the installation line if 4.10.1 is already discoverable. Pester 3 or 5 does not satisfy this requirement; installing 4.10.1 alongside them is sufficient.
 
@@ -131,10 +137,6 @@ $pesterManifest
 ```
 
 Leave `PesterPath = ''` in settings for normal discovery. If 4.10.1 is already installed in a nonstandard location, no reinstall is required: set `PesterPath` in your ignored settings file to the **absolute manifest filename**, for example `C:\tools\modules\Pester\4.10.1\Pester.psd1`, not the containing directory or `Pester.psm1`. Verify that file with `Test-ModuleManifest -Path '<absolute-manifest-path>'` and confirm name `Pester`, version `4.10.1`. Keep the `Pester\4.10.1\Pester.psd1` layout so the isolated child can discover it. `PesterPath` is a configuration key, not a `-PesterPath` runner parameter.
-
-### Confirm built artifacts
-
-If artifacts are missing or source files changed, follow the separate [Check inputs, prepare, and build](#check-inputs-prepare-and-build) instructions, then return to this module directory using the test entry step above. The runner requires `artifacts\Debug\Az.Accounts\Az.Accounts.psd1` and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test-module.ps1` under the invoked script's checkout; it does not build them automatically.
 
 ### Settings
 
