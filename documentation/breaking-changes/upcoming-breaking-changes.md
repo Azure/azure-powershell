@@ -9,18 +9,15 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
-### URL signing
+### AFD URL signing
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The following cmdlets will be removed:
-    - `New-AzCdnUrlSigningActionObject`
-    - `New-AzFrontDoorCdnRuleUrlSigningActionObject`
+  - The following cmdlet will be removed from the stable Az.Cdn module:
     - `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject`
 - Parameter breaking-change will happen to all parameter sets
-  - The `-UrlSigningKey` parameter will be removed from `New-AzCdnEndpoint` and `Update-AzCdnEndpoint`.
-  - `New-AzFrontDoorCdnSecret` and `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters.
-  - `New-AzFrontDoorCdnRule` and `Update-AzFrontDoorCdnRule` will no longer accept the `AfdUrlSigning` action.
-- Change description : URL signing is being removed without a replacement. Key Group resource cmdlets are not public and are not affected.
+  - `New-AzFrontDoorCdnSecret` and `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters in the stable Az.Cdn module.
+  - `New-AzFrontDoorCdnRule` and `Update-AzFrontDoorCdnRule` will no longer accept the `AfdUrlSigning` action in the stable Az.Cdn module.
+- Change description : AFD URL signing is being removed from the stable Az.Cdn module. Support is planned to continue in the separately released Az.Cdn preview module. Preview modules are not included in the Az rollup module and must be installed separately.
 - This change will take effect on '11/15/2026'- The change is expected to take effect from Az version : '17.0.0'
 - The change is expected to take effect in 'Az.Cdn' from version : '7.0.0'
 
