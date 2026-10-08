@@ -24,7 +24,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
-        #Runtime paramters    
+        #Runtime paramters
 
         [Parameter(HelpMessage = "Run the command as a job")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
@@ -168,7 +168,6 @@ function Update-AzNetworkSecurityPerimeterAssociation {
 
     process {
         try {
-            
             # 1. GET
 
             # body params and AsJob
@@ -183,17 +182,16 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterAssociation @PSBoundParameters
-
-            
+            $readParameters = Get-AzNetworkSecurityPerimeterReadParameters -CommandName 'Get-AzNetworkSecurityPerimeterAssociation' -BoundParameters $PSBoundParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterAssociation @readParameters
             # 2. PUT
-            
+
             $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
-            ForEach($pathParam in $pathParams){        
+            ForEach($pathParam in $pathParams){
                 $null = $PSBoundParameters.Remove($pathParam)
             }
-            
+
             foreach ($item in $bodyParamsMap.GetEnumerator() )
             {
                 if ($item.Value){
@@ -205,7 +203,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
                 }
             }
 
-            
+
             # Call PUT method
             Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 

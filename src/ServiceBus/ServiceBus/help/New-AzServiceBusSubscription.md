@@ -21,7 +21,7 @@ New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
  [-IsDurable] [-IsShared] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession]
  [-Status <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -33,14 +33,14 @@ New-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputO
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
  [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputObject <IServiceBusIdentity>
  -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopicExpanded
@@ -52,14 +52,14 @@ New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdenti
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
  [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopic
 ```
 New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
  -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,21 @@ Creates a new ServiceBus subscription `mySubscription` under topic `myTopic`.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AutoDeleteOnIdle
 Idle interval after which the queue is automatically deleted.
 The minimum duration is 5 minutes.
@@ -115,6 +130,21 @@ The minimum duration is 5 minutes.
 ```yaml
 Type: System.TimeSpan
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

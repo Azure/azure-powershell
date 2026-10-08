@@ -22,7 +22,7 @@ Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
  [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-Tag <Hashtable>] [-IPAddressType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -34,7 +34,7 @@ Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
  [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-Tag <Hashtable>] [-IPAddressType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -379,6 +379,21 @@ Created a namespace with UserAssignedIdentity and use Set-Az cmdlet to set Ident
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AlternateName
 Alternate name specified when alias and namespace names are same
 
@@ -399,6 +414,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

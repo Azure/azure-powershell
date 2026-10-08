@@ -140,8 +140,8 @@ function Deny-AzServiceBusPrivateEndpointConnection{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $connection = Get-AzServiceBusPrivateEndpointConnection @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusPrivateEndpointConnection' -BoundParameters $PSBoundParameters
+            $connection = Get-AzServiceBusPrivateEndpointConnection @readParameters
             $connection.ConnectionState = "Rejected"
 
             if($hasDescription){
