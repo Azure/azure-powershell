@@ -1,42 +1,57 @@
 ---
 external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
-online version: https://learn.microsoft.com/powershell/module/az.relationships/update-azrelationshipsservicegroupmemberrelationship
+online version: https://learn.microsoft.com/powershell/module/az.relationships/new-azrelationshipsdependencyofrelationshipsbyservicegroup
 schema: 2.0.0
 ---
 
-# Update-AzRelationshipsServiceGroupMemberRelationship
+# New-AzRelationshipsDependencyOfRelationshipsByServiceGroup
 
 ## SYNOPSIS
-Update a ServiceGroupMemberRelationship
+Create a DependencyOfRelationship
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-SourceId <String>]
- [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String> -ServiceGroupName <String>
+ [-TargetId <String>] [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### CreateViaJsonString
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity> [-SourceId <String>]
- [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String> -ServiceGroupName <String>
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String> -ServiceGroupName <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityServiceGroupExpanded
+```
+New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String>
+ -ServiceGroupInputObject <IRelationshipsIdentity> [-TargetId <String>] [-TargetTenant <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a ServiceGroupMemberRelationship
+Create a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: Update a ServiceGroupMember relationship source
+### Example 1: Create a Service Group dependency relationship
 ```powershell
-Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+New-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName "myServiceGroup" -Name "myDependency" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG"
 ```
 
-Updates the source resource represented by the ServiceGroupMember relationship.
+Creates a dependency relationship from the specified Service Group to the target resource group.
 
 ## PARAMETERS
 
@@ -71,27 +86,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name of ServiceGroupMember relationship.
+Name of dependencyOf relationship.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -116,12 +146,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
+### -ServiceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentity
+Parameter Sets: CreateViaIdentityServiceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceGroupName
+The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -131,13 +176,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceId
-The relationship source resource id.
-Must be a service group.
+### -TargetId
+The relationship target resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded
 Aliases:
 
 Required: False
@@ -147,12 +191,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceTenant
-The relationship source tenant id.
+### -TargetTenant
+The relationship target tenant id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded
 Aliases:
 
 Required: False
@@ -202,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationship
+### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationship
 
 ## NOTES
 

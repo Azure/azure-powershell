@@ -1,42 +1,47 @@
 ---
-external help file: Az.Relationships-help.xml
+external help file:
 Module Name: Az.Relationships
-online version: https://learn.microsoft.com/powershell/module/az.relationships/update-azrelationshipsservicegroupmemberrelationship
+online version: https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsdependencyofrelationshipsbyservicegroup
 schema: 2.0.0
 ---
 
-# Update-AzRelationshipsServiceGroupMemberRelationship
+# Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup
 
 ## SYNOPSIS
-Update a ServiceGroupMemberRelationship
+Delete a DependencyOfRelationship
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-SourceId <String>]
- [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String> -ServiceGroupName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity> [-SourceId <String>]
- [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -InputObject <IRelationshipsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityServiceGroup
+```
+Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String>
+ -ServiceGroupInputObject <IRelationshipsIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a ServiceGroupMemberRelationship
+Delete a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: Update a ServiceGroupMember relationship source
+### Example 1: Delete a Service Group dependency relationship
 ```powershell
-Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName "myServiceGroup" -Name "myDependency"
 ```
 
-Updates the source resource represented by the ServiceGroupMember relationship.
+Deletes the named dependency relationship from the specified Service Group.
 
 ## PARAMETERS
 
@@ -76,7 +81,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -87,11 +92,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of ServiceGroupMember relationship.
+Name of dependencyOf relationship.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete, DeleteViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -116,46 +121,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentity
+Parameter Sets: DeleteViaIdentityServiceGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -SourceId
-The relationship source resource id.
-Must be a service group.
+### -ServiceGroupName
+The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceTenant
-The relationship source tenant id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,8 +206,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationship
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+

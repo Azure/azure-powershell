@@ -1,42 +1,50 @@
 ---
 external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
-online version: https://learn.microsoft.com/powershell/module/az.relationships/update-azrelationshipsservicegroupmemberrelationship
+online version: https://learn.microsoft.com/powershell/module/az.relationships/update-azrelationshipsdependencyofrelationshipsbyservicegroup
 schema: 2.0.0
 ---
 
-# Update-AzRelationshipsServiceGroupMemberRelationship
+# Update-AzRelationshipsDependencyOfRelationshipsByServiceGroup
 
 ## SYNOPSIS
-Update a ServiceGroupMemberRelationship
+Update a DependencyOfRelationship
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-SourceId <String>]
- [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String> -ServiceGroupName <String>
+ [-TargetId <String>] [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServiceGroupExpanded
+```
+Update-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String>
+ -ServiceGroupInputObject <IRelationshipsIdentity> [-TargetId <String>] [-TargetTenant <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity> [-SourceId <String>]
- [-SourceTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzRelationshipsDependencyOfRelationshipsByServiceGroup -InputObject <IRelationshipsIdentity>
+ [-TargetId <String>] [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a ServiceGroupMemberRelationship
+Update a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: Update a ServiceGroupMember relationship source
+### Example 1: Update a Service Group dependency relationship
 ```powershell
-Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -SourceId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
+Update-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName "myServiceGroup" -Name "myDependency" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/newTargetRG"
 ```
 
-Updates the source resource represented by the ServiceGroupMember relationship.
+Updates the target of the named Service Group dependency relationship.
 
 ## PARAMETERS
 
@@ -87,11 +95,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of ServiceGroupMember relationship.
+Name of dependencyOf relationship.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded
 Aliases:
 
 Required: True
@@ -116,8 +124,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
+### -ServiceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentity
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceGroupName
+The name of the service group.
 
 ```yaml
 Type: System.String
@@ -131,9 +154,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceId
-The relationship source resource id.
-Must be a service group.
+### -TargetId
+The relationship target resource id.
 
 ```yaml
 Type: System.String
@@ -147,8 +169,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceTenant
-The relationship source tenant id.
+### -TargetTenant
+The relationship target tenant id.
 
 ```yaml
 Type: System.String
@@ -202,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationship
+### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationship
 
 ## NOTES
 

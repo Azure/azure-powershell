@@ -1,54 +1,60 @@
 ---
 external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
-online version: https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsservicegroupmemberrelationship
+online version: https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsdependencyofrelationshipsbyservicegroup
 schema: 2.0.0
 ---
 
-# Get-AzRelationshipsServiceGroupMemberRelationship
+# Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup
 
 ## SYNOPSIS
-Get a ServiceGroupMemberRelationship
+Get a DependencyOfRelationship
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri <String> [-DefaultProfile <PSObject>]
+Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityServiceGroup
+```
+Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String>
+ -ServiceGroupInputObject <IRelationshipsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String>
+Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup -Name <String> -ServiceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity>
+Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup -InputObject <IRelationshipsIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a ServiceGroupMemberRelationship
+Get a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: Get a ServiceGroupMember relationship by name
+### Example 1: List dependency relationships for a Service Group
 ```powershell
-Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership"
+Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName "myServiceGroup"
 ```
 
-Retrieves the ServiceGroupMember relationship named 'myMembership' scoped to the resource group 'myRG'.
+Lists dependency relationships whose source is the specified Service Group.
 
-### Example 2: Get a ServiceGroupMember relationship using identity input
+### Example 2: Get a Service Group dependency relationship
 ```powershell
-$identity = @{ ResourceUri = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG"; Name = "myMembership" }
-Get-AzRelationshipsServiceGroupMemberRelationship -InputObject $identity
+Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup -ServiceGroupName "myServiceGroup" -Name "myDependency"
 ```
 
-Retrieves the relationship by constructing an identity hashtable with ResourceUri and Name keys.
+Gets the named dependency relationship from the Service Group.
 
 ## PARAMETERS
 
@@ -84,11 +90,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of ServiceGroupMember relationship.
+Name of dependencyOf relationship.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -98,8 +104,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the resource.
+### -ServiceGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipsIdentity
+Parameter Sets: GetViaIdentityServiceGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceGroupName
+The name of the service group.
 
 ```yaml
 Type: System.String
@@ -122,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationship
+### Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IDependencyOfRelationship
 
 ## NOTES
 

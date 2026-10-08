@@ -1,23 +1,23 @@
 {
-  "resourceType": "dependencyOf",
+  "resourceType": "serviceGroups/dependencyOf",
   "apiVersion": "2026-08-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.relationships"
   },
   "commands": [
     {
-      "name": "Get-AzRelationshipsDependencyOfRelationship",
+      "name": "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup",
       "description": "Get a DependencyOfRelationship",
-      "path": "/{resourceUri}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf/{name}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsdependencyofrelationship"
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsdependencyofrelationshipsbyservicegroup"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceUri <String>"
+              "-ServiceGroupName <String>"
             ]
           }
         ]
@@ -31,26 +31,26 @@
               "value": "[Path.name]"
             },
             {
-              "name": "-ResourceUri",
-              "value": "[Path.resourceUri]"
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
             }
           ]
         }
       ]
     },
     {
-      "name": "Remove-AzRelationshipsDependencyOfRelationship",
+      "name": "Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup",
       "description": "Delete a DependencyOfRelationship",
-      "path": "/{resourceUri}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf/{name}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsdependencyofrelationship"
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsdependencyofrelationshipsbyservicegroup"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceUri <String>"
+              "-ServiceGroupName <String>"
             ]
           }
         ]
@@ -64,8 +64,8 @@
               "value": "[Path.name]"
             },
             {
-              "name": "-ResourceUri",
-              "value": "[Path.resourceUri]"
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
             }
           ]
         }
