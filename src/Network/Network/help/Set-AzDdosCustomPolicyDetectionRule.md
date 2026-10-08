@@ -1,55 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/remove-azddoscustompolicydetectionrule
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azddoscustompolicydetectionrule
 schema: 2.0.0
 ---
 
-# Remove-AzDdosCustomPolicyDetectionRule
+# Set-AzDdosCustomPolicyDetectionRule
 
 ## SYNOPSIS
-Removes a detection rule from a DDoS custom policy.
+Updates an existing detection rule on a DDoS custom policy object.
 
 ## SYNTAX
 
 ```
-Remove-AzDdosCustomPolicyDetectionRule -DdosCustomPolicy <PSDdosCustomPolicy> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+Set-AzDdosCustomPolicyDetectionRule -DdosCustomPolicy <PSDdosCustomPolicy> -Name <String>
+ [-TrafficType <String>] [-PacketsPerSecond <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDdosCustomPolicyDetectionRule** cmdlet removes a detection rule from a DDoS custom policy object. After removing the rule, you must use **Set-AzDdosCustomPolicy** to persist the changes to Azure.
+The **Set-AzDdosCustomPolicyDetectionRule** cmdlet updates an existing detection rule selected by its case-insensitive name. Specify **TrafficType**, **PacketsPerSecond**, or both. Properties that are not specified retain their current values.
 
-This cmdlet operates on the policy object in memory before persisting changes to Azure, similar to how **Remove-AzLoadBalancerRuleConfig** works with load balancer configurations.
+The cmdlet updates the supplied policy object. Pass the updated policy to **Set-AzDdosCustomPolicy** to persist the changes to Azure.
 
 ## EXAMPLES
 
-### Example 1: Remove a detection rule from a DDoS custom policy
+### Example 1: Update the packet threshold
 ```powershell
 $policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
-$policy = $policy | Remove-AzDdosCustomPolicyDetectionRule -Name "udpRule1"
-$policy | Set-AzDdosCustomPolicy
+$policy = $policy |
+    Set-AzDdosCustomPolicyDetectionRule -Name "tcpRule" -PacketsPerSecond 120000
 ```
 
-This example retrieves a DDoS custom policy, removes the UDP detection rule from the policy object, and then persists the changes to Azure.
+This example updates the packet threshold of `tcpRule` while preserving its traffic type.
 
-### Example 2: Remove a detection rule using pipeline
+### Example 2: Update the traffic type
 ```powershell
-Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy" |
-  Remove-AzDdosCustomPolicyDetectionRule -Name "tcpSynRule1" |
-  Set-AzDdosCustomPolicy
+$policy = $policy |
+    Set-AzDdosCustomPolicyDetectionRule -Name "tcpRule" -TrafficType TcpSyn
 ```
 
-This example demonstrates the full pipeline for retrieving a policy, removing a specific detection rule by name, and persisting the changes.
-
-### Example 3: Remove a detection rule with WhatIf
-```powershell
-$policy = Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy"
-$policy | Remove-AzDdosCustomPolicyDetectionRule -Name "tcpRule1" -WhatIf
-```
-
-This example shows how to preview the removal of a detection rule without making any changes to the policy object in memory.
+This example changes the traffic type of `tcpRule` to `TcpSyn`. A policy can contain only one detection rule for each traffic type.
 
 ## PARAMETERS
 
@@ -84,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -DdosCustomPolicy
-Specifies the DDoS custom policy object from which to remove the detection rule. The object can be retrieved with **Get-AzDdosCustomPolicy**.
+Specifies the DDoS custom policy object containing the detection rule to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSDdosCustomPolicy
@@ -114,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the detection rule to remove.
+Specifies the name of the detection rule to update. Name matching is case-insensitive.
 
 ```yaml
 Type: System.String
@@ -128,13 +119,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -PacketsPerSecond
+Specifies the updated packets per second threshold. If omitted, the existing threshold is preserved.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -143,13 +134,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -TrafficType
+Specifies the updated traffic type. Allowed values are `Tcp`, `Udp`, and `TcpSyn`. If omitted, the existing traffic type is preserved.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
 Required: False
 Position: Named
@@ -175,16 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzDdosCustomPolicy](Get-AzDdosCustomPolicy.md)
 
+[Set-AzDdosCustomPolicy](Set-AzDdosCustomPolicy.md)
+
 [Get-AzDdosCustomPolicyDetectionRule](Get-AzDdosCustomPolicyDetectionRule.md)
-
-[Set-AzDdosCustomPolicyDetectionRule](Set-AzDdosCustomPolicyDetectionRule.md)
-
-[New-AzDdosCustomPolicy](New-AzDdosCustomPolicy.md)
 
 [Add-AzDdosCustomPolicyDetectionRule](Add-AzDdosCustomPolicyDetectionRule.md)
 
-[Remove-AzDdosCustomPolicy](Remove-AzDdosCustomPolicy.md)
-
-[Set-AzDdosCustomPolicy](Set-AzDdosCustomPolicy.md)
-
-[New-AzDdosCustomPolicyDetectionRule](New-AzDdosCustomPolicyDetectionRule.md)
+[Remove-AzDdosCustomPolicyDetectionRule](Remove-AzDdosCustomPolicyDetectionRule.md)
